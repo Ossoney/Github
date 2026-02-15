@@ -1,0 +1,677 @@
+
+--- INICIO DEL PROCESO DE BÚSQUEDA DE DUPLICADOS en C:\Arquivo XeralOss\RECOPILACIONES\Epublibre ---
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Agirre, Katixa - De nuevo centauro [79376] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Alandes, Javier - El rey del bronce [81752] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Anderson, Sherwood - Pobre blanco.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Anónimo - Romancero viejo [79753] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Asimov, Isaac - Preludio a la Fundación.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Auster, Paul - El libro de las ilusiones.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Bacon, Francis - Nueva Atlántida.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Bakker, R. Scott - En el principio fue la oscuridad.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Banks, Russell - Aflicción [35332] (r1.2).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Barby, Ralph - Crepúsculo rojo.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Barby, Ralph - El escribano de Yama.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Barby, Ralph - El espíritu de la zíngara.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Barby, Ralph - El pavoroso amante de Vivie.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Barby, Ralph - El tren de los muertos vivientes.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Barby, Ralph - Macabra inmortalidad.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Barker, Clive - El ladrón de días.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Barker, Clive - Hellraiser.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Barnes, Julian - Una historia del mundo en diez capítulos y medio.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Bataillon, Marcel - Los jesuitas en la España del siglo XVI [FondoCulturaEconómica].epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Beccaria, César - De los delitos y de las penas [FondoCulturaEconómica].epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Bechtel, Guy - Los grandes libros misteriosos.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Bellem, Robert Leslie - Las estrellas mueren de noche.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Bello, Andrés - Filosofía del entendimiento [FondoCulturaEconómica].epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Bentley, E. C. - El último caso de Philip Trent.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Berna, Joseph - Juguetes, horror y muerte.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Berna, Joseph - Seis cadaveres en potencia.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Berna, Joseph - Teror en el lago negro.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Berna, Joseph - ¡Morded, vamipros, morde!.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Bernanos, Georges - Los grandes cementerios bajo la luna.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Berthoud, Ella - Manual de remedios literarios.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Blake, Nicholas - La bestia debe morir.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Bloch, Marc - Introducción a la historia.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado '[Catedra] [Letras Universales 150] Boccaccio, Giovanni - Decamerón [81852] (r1.1).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Brackett, Leigh - Después del fin [80601] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Bramah, Ernest - Los mejores casos de Max Carrados [42328] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Braudel, Fernand - El Mediterráneo y el mundo mediterráneo en la época de Felipe II [65006] (r1.1).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Braudel, Fernand - El Mediterráneo y el mundo mediterráneo en la época de Felipe II. Tomo 2.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Broncano, Fernando - Russell.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Calderón, Armando Cuevas - El enigma del navegante [73663] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Carrados, Clark - El final del miedo.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Carrados, Clark - La dama de los cien cuchillos.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Carrigan, Lou - El comprador de recuerdos.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Carrigan, Lou - El regreso de los pájaros (2ª Ed.).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Carrigan, Lou - En estado de muerte.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Carrigan, Lou - En la boca del lobo.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Carrigan, Lou - Fetichistas.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Carrigan, Lou - Juegos de cementerio.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Carrigan, Lou - La furia de los instintos.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Carrigan, Lou - La muerte es sueño.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Carrigan, Lou - Los pérfidos ojos del muerto.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Carrigan, Lou - No olvidéis llevarme flores.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Carrigan, Lou - Noches de amor eterno.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Charles, Janet Skeslien - Luz de luna en Odessa.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Chase, James Hadley - Una radiante mañana estival.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Clark, Mary Higgins - ¿Dónde están los niños.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Coe, Jonathan - Expo 58.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Coetzee, J. M. - La edad de hierro.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Colette - La gata.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Corral, José Luis - Corona de Aragón manipulación, mito e historia.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Cortázar, Julio - Todos los fuegos el fuego [3719] (r1.3).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Curtis, Donald - Asesinatos en el Soho.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Curtis, Donald - El ritual de la sangre.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Curtis, Donald - Hollywood, Horror Show.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Dave, Laura - Londres es la mejor ciudad de América.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'David, Saul - 7 días en Entebbe [81431] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Deschanel, Hollie - Compañeros de piso sin derecho.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Doyle, Arthur Conan - Aventuras del profesor Challenger.epub' movido a POSIBLES_DUPLICADOS
+Duplicado '[Club del Misterio 02] Doyle, Arthur Conan - Las aventuras de Sherlock Holmes (Trad. J.M. Valverde y M. Campuzano) (Trad. J.M. Valverde y M. Campuzano) [81652] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Dumézil, Georges - Mito y epopeya, I. La ideología de las tres funciones en las epopeyas de los pueblos indoeuropeos [FondoCulturaEconómica].epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'DíazPlaja, Fernando - El español y los siete pecados capitales.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Eco, Umberto - La Edad Media, I. Bárbaros, cristianos y musulmanes.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Elias, Norbert - Deporte y ocio en el proceso de la civilización.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Elias, Norbert - Sobre el tiempo.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Empoli, Giuliano Da - Los ingenieros del caos [77847] (r1.2).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Fleming, Ian - El hombre de la pistola de oro.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Fleming, Ian - Octopussy.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Flórez, Wenceslao Fernández - El bosque animado [1786] (r1.7).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Foucault, Michel - Historia de la locura en la época clásica I [FondoCulturaEconómica].epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Foucault, Michel - Historia de la locura en la época clásica II [FondoCulturaEconómica].epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'France, Anatole - La isla de los pingüinos [6139] (r1.2).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'García, Julio Scherer - El indio que mato al padre Pro [FondoCulturaEconómica].epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Gardeazábal, Gustavo Álvarez - Manual de crítica literaria [79535] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Glantz, David M. - Antes de Stalingrado [81918] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Goleman, Daniel - La inteligencia social.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Green, Jane - Líos, libros y más líos [54608] (r1.2).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Greene, Graham - El factor humano.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Greene, Graham - Nuestro hombre en La Habana [19206] (r1.1).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Han, Kang - La vegetariana [47871] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Harari, Yuval Noah - Operaciones especiales en la Edad de la Caballería [80248] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Hare, Cyril - Tragedia en el tribunal [53621] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Hayek, Friedrich A. - Los fundamentos de la libertad.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Heidegger, Martin - Arte y poesía.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Heidegger, Martin - Kant y el problema de la metafísica.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Humboldt, Alexander Von - Cuadros de la Naturaleza [57439] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Hume, David - Diálogos sobre religión natural.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Jiménez, Gregorio Hernández - Educación financiera avanzada partiendo de cero [45302] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Ketchum, Jack - La chica de al lado (trad. María Pérez de San Román) (trad. Maria Perez de San Roman) [80050] (r1.1).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Keynes, John Maynard - Teoría general de la ocupación, el interés y el dinero.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'King, Tabitha - Voces del silencio.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Klug, Gerard Christopher - James Bond 007 El juego de rol.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Laurie, Hugh - Una noche de perros.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Lem, Stanislaw - El Invencible (trad. Abel Murcia y Katarzyna Mołoniewicz) (trad. Abel Murcia y Katarzyna Moloniewicz) [78639] (r1.1).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Maalouf, Amin - Los desorientados.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Maalouf, Amin - Orígenes.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Macdonell, A. G. - Los asesinatos silenciosos [66931] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Martin, George R. R. - Y la muerte, su legado [55584] (r1.0 diegoan).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Marías, Javier - Salvajes y sentimentales.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Matsuo, Bashō - Poesía completa [65769] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Milano, Andrea - El guardián.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Milano, Andrea - Secretaria de día amante de noche.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Moix, Terenci - No digas que fue un sueño [4298] (r1.2).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Mommsen, Theodor - El mundo de los césares.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Moran, Caitlin - ¿Y los hombres qué.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Murray, Margaret A. - El dios de los brujos.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Méndez, Alberto - Los girasoles ciegos.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Negev, Yehuda Koren & Eilat - En nuestros corazones éramos gigantes [63581] (r1.1).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Oruña, María - El albatros negro [77477] (r1.1).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Pascal, Blaise - Discurso acerca de las pasiones del amor y otros opúsculos [FondoCulturaEconómica].epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Pears, Iain - El retrato [76772] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Duplicado '[Valdemar] [El Club Diogenes 279] Pedraza, Pilar - La fase del rubí [81841] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Perfumo, Cristian - Los crímenes del glaciar [63556] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Perfumo, Cristian - Rescate gris [47100] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Poyato, José Calvo - Jaque a la reina.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Proust, Marcel - 1.Por el camino de Swann [81638] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Puzo, Mario - Los Borgia.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'PérezReverte, Arturo - Cabo Trafalgar.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'PérezReverte, Arturo - El asedio.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'PérezReverte, Arturo - El francotirador paciente.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'PérezReverte, Arturo - El habla de un bravo del siglo XVII.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'PérezReverte, Arturo - El húsar.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'PérezReverte, Arturo - El problema final [71050] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'PérezReverte, Arturo - El tango de la Guardia Vieja.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'PérezReverte, Arturo - Hombres buenos.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'PérezReverte, Arturo - La guerra civil contada a los jóvenes.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'PérezReverte, Arturo - La Reina del Sur.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'PérezReverte, Arturo - Los perros duros no bailan.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'PérezReverte, Arturo - Perros e hijos de perra.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'PérezReverte, Arturo - Un asunto de honor.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Rachels, James - Introducción a la filosofía moral [FondoCulturaEconómica].epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Rahimi, Atiq - La piedra de la paciencia. (Sangue sabur).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Rampo, Edogawa - Relatos japoneses de misterio e imaginación.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Rampolla, Alessandra - Sexo… ¿Y ahora qué hago.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Rawls, John - Teoría de la justicia (Spanish Edition) [FondoCulturaEconómica].epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Reeman, Douglas - El Saracen [81151] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Reid, Taylor Jenkins - Los dos amores de mi vida [63686] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Reyes, Alfonso - Einstein. Notas de lectura [FondoCulturaEconómica].epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Reyes, Alfonso - Visión de Anáhuac y otros ensayos.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Rhinehart, Luke - El hombre de los dados (prólogo de Emmanuel Carrère) (prologo de Emmanuel Carrere) [82047] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Rodrein, Raquel - El coleccionista de sonrisas [47030] (r1.0 EPL).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Rodrik, Dani - La paradoja de la globalización [58096] (r1.1 diegoan).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Rokossovskii, Konstantin Konstantinovich - El deber de un soldado [81904] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Rossi, Alejandro - Lenguaje y significado [FondoCulturaEconómica].epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Rulfo, Juan - Pedro Páramo (ed. Cátedra) (ed. Catedra) [79480] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Sacheri, Eduardo - Demasiado lejos.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Sanderson, Brandon - Aleación de ley (Ed. ilustrada).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Sanderson, Brandon - Brazales de duelo.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Sanderson, Brandon - El Hombre Iluminado [71685] (r1.2).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Sanderson, Brandon - Trenza del mar Esmeralda [68344] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Sanderson, Brandon - Yumi y el pintor de pesadillas [70351] (r2.1).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Scalzi, John - Redshirts.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Scott, Walter - Ivanhoe.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Sebastián, Isabel San - Imperator.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Sebastián, Isabel San - La dueña [67141] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Sebastián, Isabel San - Los años de plomo [68237] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Serrano, Carlos - Mundus novus [69001] (r1.0 EPL).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Sheckley, Robert - Ciudadano del espacio.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Simenon, Georges - El relojero de Everton.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Simmel, Georg - Sociología estudios sobre las formas de socialización.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Sober, Elliott - Filosofía de la biología [76084] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Sprigg, Christopher St. John - Muerte de un aviador.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Steinbeck, John - Las uvas de la ira [3394] (r1.9).epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Steiner, George - Heidegger.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Sterling, Bruce - Cismatrix.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Stevenson, Robert Louis - Las nuevas mil y una noches (trad. Loayza & Badiola) [82104] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Strauss, Darin - Más me duele a mí.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Surray, Adam - El anticuario.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Surray, Adam - El bebedizo infernal.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Surray, Adam - Hotel Infierno.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Surray, Adam - Tratamiento de terror.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Surray, Adam - ¡Devuélveme mi cabeza!.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Sánchez, Víctor Sánchez - Verdi y España [80892] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Thackeray, William M. - El viudo Lovel.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Torre, Jesús Maeso de la - AlGazal, el viajero de los dos orientes [46173] (r1.2).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Veblen, Thorstein - Teoría de la clase ociosa.epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Venturini, Aurora - Las primas [59890] (r1.0).epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Weber, Max - Economía y sociedad [FondoCulturaEconómica].epub' movido a POSIBLES_DUPLICADOS
+Duplicado 'Weber, Max - La ética protestante y el espíritu del capitalismo.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Wells, H. G. - Doce historias y un sueño.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Wiggershaus, Rolf - La escuela de Fráncfort.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Wilde, Oscar - La importancia de llamarse Ernesto.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Yellin, Tamar - El desván de la casa de los Shepher.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Zavala, José María - Las últimas horas de José Antonio.epub' movido a POSIBLES_DUPLICADOS
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Grupo de duplicados ignorado (ENTER).
+Duplicado 'Zweig, Stefan - Amok.epub' movido a POSIBLES_DUPLICADOS
+--- PROCESO DE BÚSQUEDA DE DUPLICADOS FINALIZADO ---

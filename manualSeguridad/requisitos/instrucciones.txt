@@ -1,0 +1,32 @@
+Los archivos indice.txt, instrucciones.txt y roles.txt no deben ser nunca modificados.
+Si quieres hacer modificaciones crea una nueva versión de estos archivos, tipo indice_v2.txt, restricciones_v2.txt y roles_v2.txt
+y las vas adaptando según tu criterio.
+
+OBJETO DE ESTUDIO:
+# - para cada pregunta del objeto - responder para qué?
+
+HACER:
+1 - definir claramente el objeto de estudio
+2 - los aspectos a analizar
+3 - las preguntas claves que guiarán la investigación
+
+niveles:
+nivel 0 - ¿qué es la seguridad informática?
+    - conceptos generalmente aceptados
+    - ¿son válidos los conceptos generalmente aceptados?
+
+nivel 1a - tipo de seguridad informática
+    - seguridad física
+    - seguridad lógica
+    - seguridad organizativa
+    - seguridad personal
+    
+relacionar con el objeto de estudio y con nivel anterior
+
+niveles.…
+
+- SOBRE TÉRMINOS TÉCNICOS:
+Se pueden utilizar palabras técnicas o términos técnicos, pero hay que explicarlos de forma que cualquier persona de la calle los entienda.
+
+
+

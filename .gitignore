@@ -1,0 +1,9 @@
+﻿node_modules/
+finanzas-visuales/node_modules/
+**/node_modules/
+.~lock.*
+.google_activity/
+.antigravity/
+dist/
+build/
+.next/

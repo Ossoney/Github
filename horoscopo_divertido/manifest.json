@@ -1,0 +1,20 @@
+{
+    "name": "Horóscopo por Horas",
+    "short_name": "Horóscopo",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#2e1065",
+    "theme_color": "#2e1065",
+    "icons": [
+        {
+            "src": "https://cdn-icons-png.flaticon.com/512/2647/2647287.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "https://cdn-icons-png.flaticon.com/512/2647/2647287.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

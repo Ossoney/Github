@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Puedo colgar la ropa?</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app" class="loading">
+        <div class="content-wrapper">
+            <div id="status-icon" class="status-icon">🤔</div>
+            <h1 id="main-status">Analizando...</h1>
+            <p id="sub-status">Consultando el cielo</p>
+            
+            <div class="details-card hidden" id="details">
+                <div class="detail-item">
+                    <span class="label">Lluvia (6h)</span>
+                    <span class="value" id="rain-prob">--%</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Temperatura</span>
+                    <span class="value" id="temp">--°C</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Ciudad</span>
+                    <span class="value" id="location">--</span>
+                </div>
+            </div>
+
+            <button id="refresh-btn" class="refresh-btn">🔄 Actualizar</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+                .then(reg => console.log('SW registrado', reg))
+                .catch(err => console.log('SW error', err));
+        }
+    </script>
+</body>
+</html>

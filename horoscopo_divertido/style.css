@@ -1,0 +1,201 @@
+:root {
+    --bg: #2e1065;
+    /* Violeta oscuro */
+    --card: #4c1d95;
+    --accent: #f472b6;
+    /* Rosa neon */
+    --text: #ffffff;
+    --secondary: #a78bfa;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka', sans-serif;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image: radial-gradient(circle at 50% 50%, #5b21b6 0%, #2e1065 100%);
+}
+
+#app {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+}
+
+header .logo {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+h1 span {
+    font-size: 1.2rem;
+    color: var(--accent);
+    transform: rotate(-5deg);
+    display: inline-block;
+}
+
+/* GRID DE SIGNOS */
+.zodiac-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding-bottom: 50px;
+}
+
+.sign-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    padding: 15px 10px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sign-card:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.sign-icon {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.sign-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 1;
+    transition: opacity 0.3s;
+    padding: 20px;
+}
+
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background: #1e1b4b;
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 30px;
+    text-align: center;
+    position: relative;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 30px rgba(244, 114, 182, 0.3);
+    transform: translateY(0);
+    transition: transform 0.3s;
+}
+
+.modal.hidden .modal-content {
+    transform: translateY(50px);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--secondary);
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-icon {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.prediction {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin: 1.5rem 0;
+    min-height: 100px;
+}
+
+.lucky-number {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+.lucky-number strong {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin-left: 5px;
+}
+
+.compatibility {
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(167, 139, 250, 0.1);
+    border-radius: 10px;
+    font-size: 0.95rem;
+}
+
+.compatibility span {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+/* ANIMACIONES */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+footer {
+    opacity: 0.5;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+}

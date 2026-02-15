@@ -1,0 +1,26 @@
+lista = [0,1,2,3,4,5,6,7,8,9]
+sublista = lista [0:4] #4 elementos a partir del primero 0,1,2,3
+sublista = lista [2:4] #coge dos elementos a partir del tercero
+sublista = lista [0:10:1] #Toda la lista
+sublista = lista [0:10:2] #0,2,4,6,8
+sublista = lista [::] #del primero al último de uno en uno
+sublista = lista [5:] #del 5 en adelante
+sublista = lista [:4] #del 1 al cuarto
+sublista = lista [:-1] #todos menos el último
+sublista = lista [1:-1] #todos menos primero y el último
+sublista = lista [::-1] #todos en orden inverso
+
+print(sublista)
+
+lista = ["arbol.jpg","seta.png","arbusto.gif"]
+print(lista[0][:-4])
+
+#lista_nueva = lista = [] #nueva lista opción 1
+lista_nueva = list() #nueva lista opción 2
+for planta in lista:
+    nombre = planta[0:-4]
+    lista_nueva.append(nombre)
+
+print(lista_nueva)
+lista_nueva=[]
+print(lista_nueva)    

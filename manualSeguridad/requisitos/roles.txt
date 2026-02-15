@@ -1,0 +1,28 @@
+Los mejores roles para preparar un manual de seguridad informática en Debian son aquellos con experiencia técnica profunda y visión organizacional, priorizando sysadmins senior o líderes de seguridad. [innevo](https://innevo.com/blog/roles-y-responsabilidades-iso-27001)
+
+## Roles principales recomendados
+
+Estos roles combinan conocimiento práctico de Debian con habilidades de documentación y gobernanza. [pmg-ssi](https://www.pmg-ssi.com/2016/06/iso-27001-documentar-las-funciones-y-las-responsabilidades/)
+
+- **Administrador de sistemas senior (SysAdmin Lead)**:  
+  Escribe la parte técnica (hardening, configuraciones SSH/nginx, parches, AppArmor), ya que conoce Debian en producción y herramientas como debian-cis o Lynis. [github](https://github.com/captainzero93/security_harden_linux)
+
+- **Responsable de Seguridad de la Información (CISO o Líder ISMS)**:  
+  Define estructura, roles/responsabilidades, alineación con ISO 27001/27002, políticas y auditorías; asegura que sea usable para cumplimiento. [adding-plus](https://www.adding-plus.com/wp-content/uploads/2022/02/politica_seguridad_ISO_27001.docx)
+
+- **Experto en hardening Linux/Debian**:  
+  Valida configuraciones específicas (CIS benchmarks, wiki Debian), scripts automatizados y mejores prácticas; ideal si es DevOps con Ansible. [wiki.debian](https://wiki.debian.org/Hardening)
+
+## Roles de apoyo útiles
+
+Colabora para enriquecer sin sobrecargar el núcleo. [escuelaeuropeaexcelencia](https://www.escuelaeuropeaexcelencia.com/2020/09/requerimientos-documentales-sobre-roles-y-responsabilidades-iso-27001/)
+
+- **Responsable de sistemas o auditor**:  
+  Revisa precisión técnica, añade ejemplos reales de incidentes y pruebas (fail2ban, auditd). [perplexity](https://www.perplexity.ai/search/dfe27de9-e8fa-4cf9-88cf-b688e60490b4)
+
+- **Instructor o redactor técnico**:  
+  Formatea para claridad (tablas, checklists), adapta a tu audiencia (alumnos, juniors) y añade glosario/ejemplos prácticos. [debianhackers](https://debianhackers.net/aprendices-de-sysadmin/)
+
+## Por qué estos roles
+
+Un sysadmin solo cubre lo técnico pero falta gobernanza; un CISO solo da marco alto nivel sin Debian real. Equipo de 2-3 personas (tú como sysadmin + experto hardening + revisor) es ideal para manual profesional, reutilizable en tu VM nginx o clases Linux. Evita roles genéricos como "desarrollador"; prioriza experiencia Debian 12/13 y hardening (UFW, SSH, shadow). [perplexity](https://www.perplexity.ai/search/b343f942-4765-4983-8134-66e0ba492a0d)
