@@ -1,13 +1,15 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronLeft, User, LayoutGrid, Calculator, Repeat, Tag, Wallet, Palette, Database } from 'lucide-react'
-import { ProfileSettings, ThemeSettings, DataSettings, LanguageSettings, CurrencySettings } from '@/components/settings/SystemSettings'
+import { ChevronLeft, User, LayoutGrid, Calculator, Repeat, Tag, Wallet, Palette, Database, HelpCircle } from 'lucide-react'
+import { ProfileSettings, ThemeSettings, LanguageSettings, CurrencySettings } from '@/components/settings/SystemSettings'
+import { DataSettings } from '@/components/settings/DataSettings'
 import { AccountManager } from '@/components/settings/AccountManager'
 import { CategoryManager } from '@/components/settings/CategoryManager'
 import { RecurringManager } from '@/components/settings/RecurringManager'
 import { TagManager } from '@/components/settings/TagManager'
 import { BudgetManager } from '@/components/settings/BudgetManager'
+import { VersionHelp } from '@/components/settings/VersionHelp'
 import { Button } from '@/components/ui/Button'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
@@ -26,6 +28,7 @@ export default function SettingsPage() {
         { id: 'recurring', label: t('recurring'), icon: Repeat },
         { id: 'tags', label: t('tags'), icon: Tag },
         { id: 'data', label: t('data'), icon: Database },
+        { id: 'version_help', label: t('version_help'), icon: HelpCircle },
     ]
 
     return (
@@ -83,6 +86,7 @@ export default function SettingsPage() {
                     {activeTab === 'tags' && <TagManager />}
                     {activeTab === 'budgets' && <BudgetManager />}
                     {activeTab === 'data' && <DataSettings />}
+                    {activeTab === 'version_help' && <VersionHelp />}
                 </section>
 
             </div>

@@ -38,7 +38,13 @@ export default function Dashboard() {
             <header className="flex justify-between items-center mb-6 pt-4">
                 <div>
                     <h1 className="text-3xl font-bold text-slate-100 tracking-tight">{t('app_title')}</h1>
-                    <p className="text-sm text-slate-500 font-medium -mt-1 ml-0.5">{t('app_subtitle')}</p>
+
+                    <p className="text-sm text-slate-500 font-medium -mt-1 ml-0.5">
+                        {settings?.customizeHome && settings?.username
+                            ? t('finances_of').replace('{name}', settings.username)
+                            : t('app_subtitle')
+                        }
+                    </p>
                 </div>
 
                 <div className="flex items-center gap-3">
@@ -85,7 +91,9 @@ export default function Dashboard() {
                 <section>
                     <div className="flex items-center justify-between mb-4">
                         <h2 className="text-lg font-semibold text-slate-200">{t('dashboard_recent_activity')}</h2>
-
+                        <Link href="/transactions" className="text-xs text-sky-400 font-medium hover:text-sky-300 transition-colors">
+                            {t('see_all') || 'See All'}
+                        </Link>
                     </div>
                     <TransactionList />
                 </section>

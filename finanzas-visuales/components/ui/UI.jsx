@@ -11,7 +11,7 @@ import { useLanguage } from '@/lib/i18n'
 // ----------------------------------------------------------------------
 // BUTTON
 // ----------------------------------------------------------------------
-export const Button = forwardRef(({ className, variant = "default", size = "default", ...props }, ref) => {
+export const Button = forwardRef(({ className, variant = "default", size = "default", as: Component = "button", ...props }, ref) => {
     const variants = {
         default: "bg-sky-500 text-slate-50 hover:bg-sky-600 shadow-lg shadow-sky-500/25",
         outline: "border border-slate-700 bg-transparent hover:bg-slate-800 text-slate-100",
@@ -27,7 +27,7 @@ export const Button = forwardRef(({ className, variant = "default", size = "defa
     }
 
     return (
-        <button
+        <Component
             className={cn(
                 "inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-400 disabled:pointer-events-none disabled:opacity-50",
                 variants[variant] || variants.default,
@@ -113,8 +113,32 @@ export function Modal({ isOpen, onClose, title, children, className }) {
 }
 
 // ----------------------------------------------------------------------
-// TOAST
+// SWITCH
 // ----------------------------------------------------------------------
+export function Switch({ checked, onCheckedChange, id, className }) {
+    return (
+        <button
+            type="button"
+            role="switch"
+            aria-checked={checked}
+            id={id}
+            onClick={() => onCheckedChange(!checked)}
+            className={cn(
+                "peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:cursor-not-allowed disabled:opacity-50",
+                checked ? "bg-sky-500" : "bg-slate-700",
+                className
+            )}
+        >
+            <span
+                className={cn(
+                    "pointer-events-none block h-5 w-5 rounded-full bg-slate-100 shadow-lg ring-0 transition-transform",
+                    checked ? "translate-x-5" : "translate-x-0"
+                )}
+            />
+        </button>
+    )
+}
+
 // ----------------------------------------------------------------------
 const ToastContext = createContext(null)
 
@@ -150,6 +174,19 @@ export function ToastProvider({ children }) {
 }
 
 function Toast({ message, type, onRemove }) {
+    const icons = {
+        success: <LucideIcons.CheckCircle2 className="w-5 h-5 text-emerald-500" />,
+        error: <LucideIcons.AlertCircle className="w-5 h-5 text-rose-500" />,
+        info: <LucideIcons.Info className="w-5 h-5 text-sky-500" />,
+        warning: <LucideIcons.AlertTriangle className="w-5 h-5 text-amber-500" />
+    }
+
+    const styles = {
+        success: "border-emerald-500/20 bg-emerald-500/10 text-emerald-200",
+        error: "border-rose-500/20 bg-rose-500/10 text-rose-200",
+        info: "border-sky-500/20 bg-sky-500/10 text-sky-200",
+        warning: "border-amber-500/20 bg-amber-500/10 text-amber-200"
+    }
     // ... icons and styles
 
     return (
@@ -237,7 +274,7 @@ export const DynamicIcon = ({ name, ...props }) => {
     // 3. Check if icon exists in dynamic imports
     if (!dynamicIconImports[iconName]) {
         // Fallback to HelpCircle if not found (Handle potential renaming in Lucide)
-        const Fallback = LucideIcons.HelpCircle || LucideIcons.CircleHelp || LucideIcons.AlertCircle
+        const Fallback = LucideIcons.HelpCircle || LucideIcons.AlertCircle
         return <Fallback {...props} />
     }
 

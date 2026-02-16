@@ -1,0 +1,96 @@
+# 🌟 VISUALIS v1.1.0 (Febrero 2026) - Guía de Funcionalidades
+
+Visualis es una aplicación de gestión financiera personal diseñada para ser privada, potente y visualmente atractiva. A continuación se detallan todas sus capacidades:
+
+## 📊 1. Gestión Financiera Principal
+
+### **Dashboard (Tablero de Control)**
+
+* **Resumen Global**: Visualización inmediata del Patrimonio Neto total y balance mensual.
+* **Selector Temporal**: Navegación fluida entre meses para ver el historial financiero.
+* **Actividad Reciente**: Listado rápido de las últimas operaciones realizadas.
+* **Resumen de Cuentas**: Estado actual de todas las cuentas/proyectos activos.
+
+### **Transacciones (Ingresos y Gastos)**
+
+* **Registro Detallado**: Permite registrar cantidad, fecha, cuenta origen/destino, categoría, descripción, notas y etiquetas.
+* **Edición y Borrado**: Control total para modificar o eliminar cualquier movimiento pasado.
+* **Buscador Avanzado**: Filtros potentes por texto, rango de fechas, tipo, categoría o cuenta.
+
+## 🗂️ 2. Estructura Organizativa
+
+### **Cuentas y Proyectos (Wallets)**
+
+* **Multi-cuenta**: Gestión ilimitada de cuentas (Efectivo, Banco, Ahorros, Tarjetas, Proyectos específicos).
+* **Tipos de Cuenta**: Clasificación visual para distinguir entre liquidez y ahorros.
+
+### **Categorización Inteligente**
+
+* **Sistema Jerárquico**: Categorías Principales (ej. Alimentación) y Subcategorías (ej. Supermercado, Restaurante).
+* **Iconos y Colores**: Cada categoría tiene su propio icono y color para rápida identificación visual.
+* **Personalización**: Posibilidad de crear, editar y eliminar categorías según las necesidades del usuario.
+
+### **Etiquetas (#Tags)**
+
+* **Clasificación Transversal**: Permite agrupar gastos de diferentes categorías bajo un mismo concepto (ej. `#Vacaciones2024`, `#BodaAlberto`).
+* **Gestión de Etiquetas**: Panel dedicado para crear y administrar etiquetas.
+
+## 🔄 3. Planificación y Automatización
+
+### **Presupuestos (Budgets)**
+
+* **Límites Mensuales**: Establecimiento de techos de gasto por categoría (ej. Máximo 200€ en Ocio al mes).
+* **Seguimiento Visual**: Barras de progreso que indican porcentaje gastado vs disponible.
+* **Alertas Visuales**: Indicadores de color cuando te acercas o excedes el límite.
+
+### **Transacciones Recurrentes**
+
+* **Automatización**: Configuración de ingresos o gastos fijos (Nómina, Alquiler, Netflix, etc.).
+* **Frecuencia Estándar**: Generación automática mensual el día elegido.
+* **Gestión**: Panel para activar/desactivar recurrencias sin borrarlas.
+
+## 🎨 4. Personalización y Experiencia (UX)
+
+### **Identidad Visual y Temas**
+
+Sistema de temas completo que cambia toda la paleta de colores de la aplicación:
+
+* 🌌 **Noche Estrellada** (Azul Oscuro/Plata)
+* 🌕 **Eclipse Dorado** (Negro/Oro)
+* 🌲 **Bosque Profundo** (Verde/Pizarra)
+* 🔮 **Nebulosa Púrpura** (Violeta/Deep)
+* 🦾 **Futuro Neón** (Cyberpunk)
+* 🍷 **Vino Selecto** (Burdeos)
+* ☕ **Grano Tostado** (Café/Crema)
+* 💎 **Zafiro Real** (Azul Intenso)
+* ⚪ **Minimalismo Puro** (Blanco/Gris)
+
+### **Perfil de Usuario**
+
+* **Avatar y Nombre**: Personalización de la identidad del usuario.
+* **Personalización de Inicio**: Opción para cambiar el título de la app a "Las finanzas de [Nombre]".
+
+### **Internacionalización (i18n)**
+
+Soporte completo multi-idioma:
+
+* 🇪🇸 Español
+* 🇬🇧 English
+* 🏳️ Gallego
+* 🏳️ Euskera
+
+## 🔒 5. Datos y Privacidad
+
+### **Privacidad Local (Local First)**
+
+* **Sin Nube Externa**: Todos los datos se almacenan en el navegador del usuario (IndexedDB). No viajan a servidores externos, garantizando máxima privacidad.
+
+### **Copias de Seguridad (Backup)**
+
+* **Exportación JSON**: Generación de un archivo completo con toda la base de datos (cuentas, movimientos, configuración) para migrar entre dispositivos.
+* **Restauración**: Capacidad de importar copias de seguridad previas.
+* **Exportación a Excel**: Descarga de datos en formato `.xlsx` para análisis externos detallados.
+
+### **Seguridad de Datos**
+
+* **Zona de Peligro**: Funcionalidad "Botón Nuclear" para reinicio de fábrica (borrado seguro de todos los datos locales).

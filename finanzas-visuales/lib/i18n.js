@@ -20,7 +20,7 @@ const dictionaries = {
         month: 'Mes',
         settings: 'Configuración',
         profile: 'Perfil',
-        accounts: 'Cuentas',
+        accounts: 'Cuentas/Proyectos',
         categories: 'Categorías',
         recurring: 'Recurrentes',
         data: 'Datos',
@@ -84,11 +84,11 @@ const dictionaries = {
         confirm_action: 'Confirmación',
 
         // Settings Managers
-        my_accounts: 'Mis Cuentas',
-        create_account: 'Crear Cuenta',
-        account_name_placeholder: 'Nombre (ej. Revolut)',
+        my_accounts: 'Mis Cuentas/Proyectos',
+        create_account: 'Crear Cuenta/Proyecto',
+        account_name_placeholder: 'Nombre (ej. Revolut, Proyecto X)',
         initial_balance: 'Saldo Inicial',
-        no_accounts: 'No tienes cuentas. Crea una para empezar.',
+        no_accounts: 'No tienes cuentas/proyectos. Crea una para empezar.',
         confirm_delete_account: '¿Seguro que quieres borrar esta cuenta? Se mantendrán las transacciones pero quedarán huérfanas.',
 
         recurring_transactions: 'Recurrentes',
@@ -108,13 +108,14 @@ const dictionaries = {
         settings: 'Configuración',
         profile: 'Perfil',
         appearance: 'Apariencia',
-        accounts: 'Cuentas',
+        accounts: 'Cuentas/Proyectos',
         categories: 'Categorías',
         budgets: 'Presupuestos',
         recurring: 'Recurrentes',
         tags: 'Etiquetas',
         data: 'Datos',
         language: 'Idioma',
+        version_help: 'Versión/Ayuda',
 
         // Profile Settings
         user_profile: 'Perfil de Usuario',
@@ -124,6 +125,39 @@ const dictionaries = {
         save_profile: 'Guardar Perfil',
         saving: 'Guardando...',
         profile_saved: 'Perfil guardado correctamente',
+        customize_home: 'Personalizar Inicio',
+        customize_home_desc: 'Muestra "Las finanzas de [Nombre]" en lugar del texto por defecto.',
+        finances_of: 'las finanzas de {name}',
+
+        // Help Guide
+        help_financial_title: '1. Gestión Financiera Principal',
+        help_dashboard_desc: 'Resumen global del patrimonio, selector temporal y actividad reciente.',
+        help_transactions_desc: 'Registro detallado de ingresos y gastos con buscador avanzado y filtros.',
+
+        help_structure_title: '2. Estructura Organizativa',
+        help_accounts_desc: 'Gestión multi-cuenta (Banco, Efectivo, Ahorros) y proyectos específicos.',
+        help_categories_desc: 'Sistema jerárquico con iconos y colores personalizables.',
+        help_tags_desc: 'Clasificación transversal (tags) para agrupar gastos de distintas categorías.',
+
+        help_planning_title: '3. Planificación y Automatización',
+        help_budgets_desc: 'Límites de gasto mensuales con barras de progreso visuales.',
+        help_recurring_desc: 'Automatización de ingresos y gastos fijos (Nómina, Suscripciones).',
+
+        help_customization_title: '4. Personalización y Experiencia',
+        help_themes_desc: '9 atmósferas únicas (Noche Estrellada, Cyberpunk, Minimalista...).',
+        help_profile_desc: 'Personalización de nombre, avatar y título de inicio.',
+        help_languages_desc: 'Soporte completo para Español, Inglés, Gallego y Euskera.',
+
+        help_data_title: '5. Datos y Privacidad',
+        help_privacy_desc: 'Todos los datos viven en tu navegador. Cero servidores externos.',
+        help_backups_desc: 'Exportación/Importación completa en formato JSON.',
+        help_excel_desc: 'Compatible con hojas de cálculo para análisis externos.',
+        help_safe_zone_desc: 'Restablecimiento de fábrica disponible.',
+
+        // Donation
+        donation_title: 'Invítame a un café',
+        donation_desc: 'Si Visualis te es útil, puedes apoyar su desarrollo con una pequeña donación.',
+        donate_button: 'Invitar (PayPal)',
 
         // Theme Settings
         choose_theme: 'Elige el ambiente para tu aplicación:',
@@ -161,12 +195,38 @@ const dictionaries = {
         danger_desc: 'Si necesitas empezar de cero, puedes borrar toda la base de datos local. Esta acción es irreversible.',
         nuclear_button: 'Botón Nuclear',
 
+        // New Data Settings
+        security_title: 'Seguridad',
+        backup_create: 'Crear Copia de Seguridad',
+        backup_desc: 'Guarda un archivo completo de todos tus datos para poder restaurarlos más tarde si cambias de dispositivo o borras el navegador.',
+        restore_title: 'Restaurar Copia',
+        restore_desc: 'Recupera tus datos desde un archivo de copia de seguridad.',
+        restore_confirm: '⚠️ ¿Restaurar copia de seguridad? ESTO SOBRESCRIBIRÁ TODOS LOS DATOS ACTUALES.',
+        excel_data_title: 'Datos Excel',
+        excel_data_desc: 'Herramientas para trabajar con tus datos en hojas de cálculo externas.',
+        json_backup_title: 'Copia de Seguridad (JSON)',
+        json_restore_success: '✅ Copia de seguridad restaurada correctamente.',
+        json_restore_error: '❌ Error al restaurar la copia: ',
+
         // Data Alerts
         nuclear_warning_1: '⚠️ ¡ADVERTENCIA NUCLEAR! ⚠️\n\n¿Estás SEGURO de querer borrar TODOS los datos?\n\nEsta acción eliminará todas tus transacciones, cuentas, presupuestos y configuración.\n\nNO HAY VUELTA ATRÁS.',
         nuclear_warning_2: '¿De verdad? Confirma una última vez que quieres empezar de cero.',
         import_confirm: '⚠️ ¿Estás seguro de IMPORTAR este archivo?\n\n"{fileName}"\n\nSe ELIMINARÁN todos los datos actuales y se reemplazarán por los del archivo.',
         import_success: '✅ Importación completada. Se han restaurado {count} transacciones.',
         import_error: '❌ Error al importar: ',
+
+        // Advanced Search
+        transaction_history: 'Historial Completo',
+        search_placeholder: 'Buscar por concepto, categoría, nota...',
+        filters: 'Filtros',
+        clear_filters: 'Limpiar',
+        filter_by: 'Filtrar por',
+        type: 'Tipo',
+        all: 'Todos',
+        date: 'Fecha',
+        see_all: 'Ver Todo',
+        no_transactions_found: 'No se encontraron transacciones.',
+        try_adjusting_filters: 'Prueba a cambiar los filtros.',
 
         // Category Translations (ES defaults - map to themselves or variations)
         category_names: {
@@ -187,7 +247,7 @@ const dictionaries = {
         month: 'Month',
         settings: 'Settings',
         profile: 'Profile',
-        accounts: 'Accounts',
+        accounts: 'Accounts/Projects',
         categories: 'Categories',
         recurring: 'Recurring',
         data: 'Data',
@@ -213,6 +273,32 @@ const dictionaries = {
         warning_nuclear: '⚠️ NUCLEAR WARNING! ⚠️',
         confirm_nuclear: 'Are you SURE you want to delete ALL data?',
         nuclear_button: 'Nuclear Button',
+
+        // New Data Settings
+        security_title: 'Security',
+        backup_create: 'Create Backup',
+        backup_desc: 'Save a full backup file of all your data to restore later if you switch devices or clear your browser.',
+        restore_title: 'Restore Backup',
+        restore_desc: 'Recover your data from a backup file.',
+        restore_confirm: '⚠️ Restore backup? THIS WILL OVERWRITE ALL CURRENT DATA.',
+        excel_data_title: 'Excel Data',
+        excel_data_desc: 'Tools to work with your data in external spreadsheets.',
+        json_backup_title: 'Full Backup (JSON)',
+        json_restore_success: '✅ Backup restored successfully.',
+        json_restore_error: '❌ Error restoring backup: ',
+
+        // Advanced Search
+        transaction_history: 'Full History',
+        search_placeholder: 'Search by concept, category, note...',
+        filters: 'Filters',
+        clear_filters: 'Clear',
+        filter_by: 'Filter by',
+        type: 'Type',
+        all: 'All',
+        date: 'Date',
+        see_all: 'See All',
+        no_transactions_found: 'No transactions found.',
+        try_adjusting_filters: 'Try adjusting filters.',
 
         // Wallet Summary
         global_total: 'GLOBAL TOTAL',
@@ -251,11 +337,11 @@ const dictionaries = {
         confirm_action: 'Confirmation',
 
         // Settings Managers
-        my_accounts: 'My Accounts',
-        create_account: 'Create Account',
-        account_name_placeholder: 'Name (e.g. Revolut)',
+        my_accounts: 'My Accounts/Projects',
+        create_account: 'Create Account/Project',
+        account_name_placeholder: 'Name (e.g. Revolut, Project X)',
         initial_balance: 'Initial Balance',
-        no_accounts: 'No accounts yet. Create one to start.',
+        no_accounts: 'No accounts/projects yet. Create one to start.',
         confirm_delete_account: 'Are you sure? Transactions will remain but become orphaned.',
 
         recurring_transactions: 'Recurring',
@@ -275,13 +361,14 @@ const dictionaries = {
         settings: 'Settings',
         profile: 'Profile',
         appearance: 'Appearance',
-        accounts: 'Accounts',
+        accounts: 'Accounts/Projects',
         categories: 'Categories',
         budgets: 'Budgets',
         recurring: 'Recurring',
         tags: 'Tags',
         data: 'Data',
         language: 'Language',
+        version_help: 'Version/Help',
 
         // Profile Settings
         user_profile: 'User Profile',
@@ -291,6 +378,41 @@ const dictionaries = {
         save_profile: 'Save Profile',
         saving: 'Saving...',
         profile_saved: 'Profile saved successfully',
+
+        profile_saved: 'Profile saved successfully',
+        customize_home: 'Customize Home',
+        customize_home_desc: 'Shows "The finances of [Name]" instead of default text.',
+        finances_of: 'the finances of {name}',
+
+        // Help Guide
+        help_financial_title: '1. Main Financial Management',
+        help_dashboard_desc: 'Global wealth summary, time selector and recent activity.',
+        help_transactions_desc: 'Detailed record of income and expenses with advanced search and filters.',
+
+        help_structure_title: '2. Organizational Structure',
+        help_accounts_desc: 'Multi-account management (Bank, Cash, Savings) and specific projects.',
+        help_categories_desc: 'Hierarchical system with customizable icons and colors.',
+        help_tags_desc: 'Transversal classification (tags) to group expenses from different categories.',
+
+        help_planning_title: '3. Planning and Automation',
+        help_budgets_desc: 'Monthly spending limits with visual progress bars.',
+        help_recurring_desc: 'Automation of fixed income and expenses (Salary, Subscriptions).',
+
+        help_customization_title: '4. Customization and Experience',
+        help_themes_desc: '9 unique atmospheres (Starry Night, Cyberpunk, Minimalist...).',
+        help_profile_desc: 'Customization of name, avatar and home title.',
+        help_languages_desc: 'Full support for Spanish, English, Galician and Basque.',
+
+        help_data_title: '5. Data and Privacy',
+        help_privacy_desc: 'All data lives in your browser. Zero external servers.',
+        help_backups_desc: 'Full export/import in JSON format.',
+        help_excel_desc: 'Compatible with spreadsheets for external analysis.',
+        help_safe_zone_desc: 'Factory reset available.',
+
+        // Donation
+        donation_title: 'Buy me a coffee',
+        donation_desc: 'If Visualis is useful to you, you can support its development with a small donation.',
+        donate_button: 'Donate (PayPal)',
 
         // Theme Settings
         choose_theme: 'Choose the ambiance for your app:',
@@ -438,7 +560,7 @@ const dictionaries = {
         month: 'Mes',
         settings: 'Configuración',
         profile: 'Perfil',
-        accounts: 'Contas',
+        accounts: 'Contas/Proxectos',
         categories: 'Categorías',
         recurring: 'Recorrentes',
         data: 'Datos',
@@ -464,15 +586,41 @@ const dictionaries = {
         warning_nuclear: '⚠️ ADVERTENCIA NUCLEAR! ⚠️',
         confirm_nuclear: 'Estás SEGURO de querer borrar TODOS os datos?',
         nuclear_button: 'Botón Nuclear',
+
+        // New Data Settings
+        security_title: 'Seguridade',
+        backup_create: 'Crear Copia de Seguridade',
+        backup_desc: 'Garda un arquivo completo de todos os teus datos para poder restauralos máis tarde se cambias de dispositivo ou borras o navegador.',
+        restore_title: 'Restaurar Copia',
+        restore_desc: 'Recupera os teus datos desde un arquivo de copia de seguridade.',
+        restore_confirm: '⚠️ Restaurar copia de seguridade? ISTO SOBRESCRIBIRÁ TODOS OS DATOS ACTUAIS.',
+        excel_data_title: 'Datos Excel',
+        excel_data_desc: 'Ferramentas para traballar cos teus datos en follas de cálculo externas.',
+        json_backup_title: 'Copia de Seguridade (JSON)',
+        json_restore_success: '✅ Copia de seguridade restaurada correctamente.',
+        json_restore_error: '❌ Erro ao restaurar a copia: ',
+
+        // Advanced Search
+        transaction_history: 'Historial Completo',
+        search_placeholder: 'Buscar por concepto, categoría, nota...',
+        filters: 'Filtros',
+        clear_filters: 'Limpar',
+        filter_by: 'Filtrar por',
+        type: 'Tipo',
+        all: 'Todos',
+        date: 'Data',
+        see_all: 'Ver Todo',
+        no_transactions_found: 'Non se atoparon transaccións.',
+        try_adjusting_filters: 'Proba a cambiar os filtros.',
         confirm: 'Confirmar',
         confirm_action: 'Confirmación',
 
         // Settings Managers
-        my_accounts: 'As Miñas Contas',
-        create_account: 'Crear Conta',
-        account_name_placeholder: 'Nome (ex. Revolut)',
+        my_accounts: 'As Miñas Contas/Proxectos',
+        create_account: 'Crear Conta/Proxecto',
+        account_name_placeholder: 'Nome (ex. Revolut, Proxecto X)',
         initial_balance: 'Saldo Inicial',
-        no_accounts: 'Non tes contas. Crea unha para comezar.',
+        no_accounts: 'Non tes contas/proxectos. Crea unha para comezar.',
         confirm_delete_account: 'Seguro? As transaccións manteranse pero quedarán orfas.',
 
         recurring_transactions: 'Recorrentes',
@@ -492,13 +640,14 @@ const dictionaries = {
         settings: 'Configuración',
         profile: 'Perfil',
         appearance: 'Aparencia',
-        accounts: 'Contas',
+        accounts: 'Contas/Proxectos',
         categories: 'Categorías',
         budgets: 'Orzamentos',
         recurring: 'Recorrentes',
         tags: 'Etiquetas',
         data: 'Datos',
         language: 'Idioma',
+        version_help: 'Versión/Axuda',
 
         // Profile Settings
         user_profile: 'Perfil de Usuario',
@@ -508,6 +657,41 @@ const dictionaries = {
         save_profile: 'Gardar Perfil',
         saving: 'Gardando...',
         profile_saved: 'Perfil gardado correctamente',
+
+        profile_saved: 'Perfil gardado correctamente',
+        customize_home: 'Personalizar Inicio',
+        customize_home_desc: 'Amosa "As finanzas de [Nome]" no lugar do texto por defecto.',
+        finances_of: 'as finanzas de {name}',
+
+        // Help Guide
+        help_financial_title: '1. Xestión Financeira Principal',
+        help_dashboard_desc: 'Resumo global do patrimonio, selector temporal e actividade recente.',
+        help_transactions_desc: 'Rexistro detallado de ingresos e gastos con buscador avanzado e filtros.',
+
+        help_structure_title: '2. Estrutura Organizativa',
+        help_accounts_desc: 'Xestión multi-conta (Banco, Efectivo, Aforros) e proxectos específicos.',
+        help_categories_desc: 'Sistema xerárquico con iconas e cores personalizables.',
+        help_tags_desc: 'Clasificación transversal (tags) para agrupar gastos de distintas categorías.',
+
+        help_planning_title: '3. Planificación e Automatización',
+        help_budgets_desc: 'Límites de gasto mensuais con barras de progreso visuais.',
+        help_recurring_desc: 'Automatización de ingresos e gastos fixos (Nómina, Subscricións).',
+
+        help_customization_title: '4. Personalización e Experiencia',
+        help_themes_desc: '9 atmosferas únicas (Noite Estrelada, Cyberpunk, Minimalista...).',
+        help_profile_desc: 'Personalización de nome, avatar e título de inicio.',
+        help_languages_desc: 'Soporte completo para Español, Inglés, Galego e Euskera.',
+
+        help_data_title: '5. Datos e Privacidade',
+        help_privacy_desc: 'Todos os datos viven no teu navegador. Cero servidores externos.',
+        help_backups_desc: 'Exportación/Importación completa en formato JSON.',
+        help_excel_desc: 'Compatible con follas de cálculo para análises externos.',
+        help_safe_zone_desc: 'Restablecemento de fábrica dispoñible.',
+
+        // Donation
+        donation_title: 'Convídame a un café',
+        donation_desc: 'Se Visualis che é útil, podes apoiar o seu desenvolvemento cunha pequena doazón.',
+        donate_button: 'Convidar (PayPal)',
 
         // Theme Settings
         choose_theme: 'Elixe o ambiente para a túa aplicación:',
@@ -652,7 +836,7 @@ const dictionaries = {
         month: 'Hilabetea',
         settings: 'Ezarpenak',
         profile: 'Profila',
-        accounts: 'Kontuak',
+        accounts: 'Kontuak/Proiektuak',
         categories: 'Kategoriak',
         recurring: 'Errepikakorrak',
         data: 'Datuak',
@@ -678,15 +862,41 @@ const dictionaries = {
         warning_nuclear: '⚠️ OHAR NUKLEARRA! ⚠️',
         confirm_nuclear: 'Ziur zaude datu GUZTIAK ezabatu nahi dituzula?',
         nuclear_button: 'Botoi Nuklearra',
+
+        // New Data Settings
+        security_title: 'Segurtasuna',
+        backup_create: 'Sortu Segurtasun Kopia',
+        backup_desc: 'Gorde zure datu guztien fitxategi oso bat, geroago berreskuratu ahal izateko gailuz aldatzen baduzu edo nabigatzailea garbitzen baduzu.',
+        restore_title: 'Berreskuratu Kopia',
+        restore_desc: 'Berreskuratu zure datuak segurtasun kopia fitxategi batetik.',
+        restore_confirm: '⚠️ Segurtasun kopia berreskuratu? HONEK ORAINGO DATU GUZTIAK ORDEZKATUKO DITU.',
+        excel_data_title: 'Excel Datuak',
+        excel_data_desc: 'Zure datuekin kanpoko kalkulu-orrietan lan egiteko tresnak.',
+        json_backup_title: 'Segurtasun Kopia (JSON)',
+        json_restore_success: '✅ Segurtasun kopia ondo berreskuratu da.',
+        json_restore_error: '❌ Errorea kopia berreskuratzean: ',
+
+        // Advanced Search
+        transaction_history: 'Historia Osoa',
+        search_placeholder: 'Bilatu kontzeptu, kategoria, oharrez...',
+        filters: 'Iragazkiak',
+        clear_filters: 'Garbitu',
+        filter_by: 'Iragazi honela',
+        type: 'Mota',
+        all: 'Guztiak',
+        date: 'Data',
+        see_all: 'Ikusi Guztia',
+        no_transactions_found: 'Ez da transakziorik aurkitu.',
+        try_adjusting_filters: 'Saiatu iragazkiak aldatzen.',
         confirm: 'Baieztatu',
         confirm_action: 'Baieztapena',
 
         // Settings Managers
-        my_accounts: 'Nire Kontuak',
-        create_account: 'Sortu Kontua',
-        account_name_placeholder: 'Izena (adib. Revolut)',
+        my_accounts: 'Nire Kontuak/Proiektuak',
+        create_account: 'Sortu Kontua/Proiektua',
+        account_name_placeholder: 'Izena (adib. Revolut, Proiektua X)',
         initial_balance: 'Hasierako Saldoa',
-        no_accounts: 'Ez daukazu konturik. Sortu bat hasteko.',
+        no_accounts: 'Ez daukazu konturik/proiekturik. Sortu bat hasteko.',
         confirm_delete_account: 'Ziur zaude? Transakzioak mantenduko dira baina umezurtz geratuko dira.',
 
         recurring_transactions: 'Errepikakorrak',
@@ -706,7 +916,7 @@ const dictionaries = {
         settings: 'Ezarpenak',
         profile: 'Profila',
         appearance: 'Itxura',
-        accounts: 'Kontuak',
+        accounts: 'Kontuak/Proiektuak',
         categories: 'Kategoriak',
         budgets: 'Aurrekontuak',
         recurring: 'Errepikakorrak',
@@ -866,7 +1076,7 @@ const dictionaries = {
         month: 'Mes',
         settings: 'Configuració',
         profile: 'Perfil',
-        accounts: 'Comptes',
+        accounts: 'Comptes/Projectes',
         categories: 'Categories',
         recurring: 'Recurrents',
         data: 'Dades',
@@ -896,11 +1106,11 @@ const dictionaries = {
         confirm_action: 'Confirmació',
 
         // Settings Managers
-        my_accounts: 'Els Meus Comptes',
-        create_account: 'Crear Compte',
-        account_name_placeholder: 'Nom (ex. Revolut)',
+        my_accounts: 'Els Meus Comptes/Projectes',
+        create_account: 'Crear Compte/Projecte',
+        account_name_placeholder: 'Nom (ex. Revolut, Projecte X)',
         initial_balance: 'Balanç Inicial',
-        no_accounts: 'No tens comptes. Crea\'n un per començar.',
+        no_accounts: 'No tens comptes/projectes. Crea\'n un per començar.',
         confirm_delete_account: 'Segur que vols esborrar? Les transaccions es mantindran però quedaran òrfenes.',
 
         recurring_transactions: 'Recurrents',
