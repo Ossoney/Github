@@ -94,3 +94,7 @@ Soporte completo multi-idioma:
 ### **Seguridad de Datos**
 
 * **Zona de Peligro**: Funcionalidad "Botón Nuclear" para reinicio de fábrica (borrado seguro de todos los datos locales).
+
+### **Modo Privacidad**
+
+* **Ocultación de saldos**: Botón en la cabecera (icono de ojo) que permite ofuscar todos los importes sensibles de la aplicación con un solo clic, ideal para usar la app en público.

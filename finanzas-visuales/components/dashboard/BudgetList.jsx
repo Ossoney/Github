@@ -9,11 +9,12 @@ import * as LucideIcons from 'lucide-react'
 import Link from 'next/link'
 import { useStore } from '@/hooks/useStore'
 import { useLanguage } from '@/lib/i18n'
+import { Money } from '@/components/ui/Money' // Import Money
 
 export function BudgetList() {
     const [expandedId, setExpandedId] = useState(null)
     const { currentDate } = useStore() // Use filtered date
-    const { t, formatMoney } = useLanguage()
+    const { t } = useLanguage()
 
     const data = useLiveQuery(async () => {
         const start = startOfMonth(currentDate)
@@ -129,8 +130,12 @@ export function BudgetList() {
                                 </p>
                             </div>
                             <div className="text-right">
-                                <p className="text-sm font-medium text-slate-300">{formatMoney(global.spent)}</p>
-                                <p className="text-xs text-slate-500">{t('of')} {formatMoney(global.limit)}</p>
+                                <p className="text-sm font-medium text-slate-300">
+                                    <Money amount={global.spent} />
+                                </p>
+                                <p className="text-xs text-slate-500 flex items-center justify-end gap-1">
+                                    {t('of')} <Money amount={global.limit} />
+                                </p>
                             </div>
                         </div>
                         <div className="h-3 w-full bg-slate-900 rounded-full overflow-hidden">
@@ -152,10 +157,6 @@ export function BudgetList() {
                         const Icon = LucideIcons[cat.icon] || LucideIcons.HelpCircle
                         const hasChildren = group.children && group.children.length > 0
 
-                        // If no limit set, just show spent bar relative to max logic? Or just grey bar?
-                        // For now, if no limit, show raw amount and no progress bar or full grey bar.
-                        // Let's stick to showing metadata.
-
                         return (
                             <div key={cat.id} className="space-y-2">
                                 <div
@@ -173,9 +174,9 @@ export function BudgetList() {
                                                     isExpanded ? <ChevronDown className="w-3 h-3 text-slate-500" /> : <ChevronRight className="w-3 h-3 text-slate-500" />
                                                 )}
                                             </div>
-                                            <div className="text-xs text-slate-400">
-                                                {formatMoney(group.spent)}
-                                                {hasLimit && <span className="text-slate-600"> / {formatMoney(group.limit)}</span>}
+                                            <div className="text-xs text-slate-400 flex items-center gap-1">
+                                                <Money amount={group.spent} />
+                                                {hasLimit && <span className="text-slate-600 flex items-center gap-1"> / <Money amount={group.limit} /></span>}
                                             </div>
                                         </div>
                                     </div>
@@ -218,9 +219,9 @@ export function BudgetList() {
                                                             {child.name}
                                                         </span>
                                                         <div className="flex items-center gap-2">
-                                                            <span className="text-slate-300">{formatMoney(child.spent)}</span>
+                                                            <span className="text-slate-300"><Money amount={child.spent} /></span>
                                                             {childLimit > 0 && (
-                                                                <span className="text-[10px] text-slate-500">/ {formatMoney(childLimit)}</span>
+                                                                <span className="text-[10px] text-slate-500 flex items-center gap-1">/ <Money amount={childLimit} /></span>
                                                             )}
                                                         </div>
                                                     </div>

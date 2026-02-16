@@ -6,6 +6,7 @@
 
 - **Local-First Architecture**: Adopted IndexedDB (via Dexie.js) for privacy and offline speed.
 - **Expenless-Inspired Features**: Wallet system, Visual budget alerts, Excel export.
+- **Privacy Mode**: Toggle to hide sensitive financial amounts.
 
 ### Changed
 

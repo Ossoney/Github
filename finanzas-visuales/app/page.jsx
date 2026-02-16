@@ -10,7 +10,7 @@ import { MonthSummary } from '@/components/dashboard/MonthSummary'
 
 import { Button } from '@/components/ui/UI'
 import { useStore } from '@/hooks/useStore'
-import { Plus, Download, User } from 'lucide-react'
+import { Plus, Download, User, Calendar } from 'lucide-react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '@/lib/db'
 import { formatCurrency } from '@/lib/utils'
@@ -18,6 +18,7 @@ import { useLanguage } from '@/lib/i18n'
 
 import Link from 'next/link'
 import { WalletSummary } from '@/components/dashboard/WalletSummary'
+import { PrivacyToggle } from '@/components/ui/PrivacyToggle'
 
 export default function Dashboard() {
     const { openTransactionModal } = useStore()
@@ -37,7 +38,10 @@ export default function Dashboard() {
             {/* Header */}
             <header className="flex justify-between items-center mb-6 pt-4">
                 <div>
-                    <h1 className="text-3xl font-bold text-slate-100 tracking-tight">{t('app_title')}</h1>
+                    <div className="flex items-center gap-3">
+                        <h1 className="text-3xl font-bold text-slate-100 tracking-tight">{t('app_title')}</h1>
+                        <PrivacyToggle />
+                    </div>
 
                     <p className="text-sm text-slate-500 font-medium -mt-1 ml-0.5">
                         {settings?.customizeHome && settings?.username
@@ -48,6 +52,12 @@ export default function Dashboard() {
                 </div>
 
                 <div className="flex items-center gap-3">
+                    <Link href="/calendar">
+                        <Button variant="ghost" size="icon" className="text-slate-400 hover:text-white">
+                            <Calendar className="w-6 h-6" />
+                        </Button>
+                    </Link>
+
                     <Link href="/settings">
                         <div className="w-12 h-12 rounded-full bg-slate-800 border-2 border-slate-700 overflow-hidden hover:border-sky-500 transition-colors cursor-pointer flex items-center justify-center relative shadow-lg shadow-black/50">
                             {settings?.avatar ? (

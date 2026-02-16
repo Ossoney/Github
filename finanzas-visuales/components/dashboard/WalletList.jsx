@@ -1,8 +1,8 @@
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '@/lib/db'
 import { Card, CardContent } from '@/components/ui/UI'
-import { formatCurrency } from '@/lib/utils'
 import { Wallet, CreditCard, PiggyBank } from 'lucide-react'
+import { Money } from '@/components/ui/Money' // Import Money
 
 const ICONS = {
     cash: Wallet,
@@ -37,7 +37,7 @@ export function WalletList() {
                             <div className="space-y-1">
                                 <p className="text-sm text-slate-400 font-medium">{wallet.name}</p>
                                 <p className="text-2xl font-bold tracking-tight">
-                                    {formatCurrency(wallet.balance, wallet.currency)}
+                                    <Money amount={wallet.balance} currency={wallet.currency} />
                                 </p>
                             </div>
                         </CardContent>

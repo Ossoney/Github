@@ -182,29 +182,6 @@ export function TransactionForm() {
     const handleDelete = async () => {
         if (!editingTransaction || !confirm(t('confirm_delete_transaction'))) return
 
-        try {
-            await db.transaction('rw', db.transactions, db.wallets, async () => {
-                // Revert balance if possible
-                if (editingTransaction.walletId) {
-                    const wallet = await db.wallets.get(editingTransaction.walletId)
-                    if (wallet) {
-                        const revertAmount = editingTransaction.type === 'income'
-                            ? -editingTransaction.amount
-                            : editingTransaction.amount
-                        await db.wallets.update(editingTransaction.walletId, {
-                            balance: wallet.balance + revertAmount
-                        })
-                    }
-                }
-
-                // Delete
-                await db.transactions.delete(editingTransaction.id)
-            })
-            closeTransactionModal()
-        } catch (error) {
-            console.error("Failed to delete transaction:", error)
-            addToast(`${t('error_deleting')}: ${error.message}`, 'error')
-        }
     }
 
     if (!isTransactionModalOpen) return null

@@ -6,10 +6,11 @@ import { ArrowUpCircle, ArrowDownCircle, ChevronDown, ChevronUp, BarChart3, PieC
 import { cn } from '@/lib/utils'
 import { useStore } from '@/hooks/useStore'
 import { useLanguage } from '@/lib/i18n'
+import { Money } from '@/components/ui/Money'
 
 export function MonthSummary() {
     const { currentDate } = useStore()
-    const { formatMoney, t, tCategory, locale } = useLanguage()
+    const { t, tCategory, locale } = useLanguage()
 
     // UI State
     const [expandedType, setExpandedType] = useState(null) // 'income', 'expense', 'result'
@@ -121,8 +122,8 @@ export function MonthSummary() {
                                 className="h-full border-r border-slate-900/50 last:border-0 hover:brightness-110 transition-all relative group first:rounded-l-full last:rounded-r-full"
                             >
                                 {/* Tooltip on hover */}
-                                <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 border border-slate-700 px-2 py-1 rounded text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 shadow-xl font-bold">
-                                    {tCategory(item.name)}: {formatMoney(item.amount)} ({Math.round(pct)}%)
+                                <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 border border-slate-700 px-2 py-1 rounded text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 shadow-xl font-bold flex items-center gap-1">
+                                    {tCategory(item.name)}: <Money amount={item.amount} /> ({Math.round(pct)}%)
                                 </div>
                             </div>
                         )
@@ -138,8 +139,8 @@ export function MonthSummary() {
                                 <span className="text-slate-300 font-medium truncate max-w-[120px]" title={tCategory(item.name)}>
                                     {tCategory(item.name)}
                                 </span>
-                                <span className="text-slate-500 text-xs">
-                                    {formatMoney(item.amount)} ({Math.round((item.amount / total) * 100)}%)
+                                <span className="text-slate-500 text-xs flex items-center gap-1">
+                                    <Money amount={item.amount} /> ({Math.round((item.amount / total) * 100)}%)
                                 </span>
                             </div>
                         </div>
@@ -174,7 +175,7 @@ export function MonthSummary() {
                         <div key={i} className="flex-1 flex flex-col items-center gap-1 group relative">
                             {/* Tooltip */}
                             <div className="absolute -top-8 bg-slate-800 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 border border-slate-700">
-                                {formatMoney(val)}
+                                <Money amount={val} />
                             </div>
 
                             <div className="w-full bg-slate-800/50 rounded-t-lg relative flex items-end h-full overflow-hidden">
@@ -210,7 +211,7 @@ export function MonthSummary() {
                         {expandedType === 'income' ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
                     </span>
                     <span className="text-2xl font-bold text-emerald-100">
-                        {formatMoney(stats?.income || 0)}
+                        <Money amount={stats?.income || 0} />
                     </span>
                 </button>
 
@@ -227,7 +228,7 @@ export function MonthSummary() {
                         {expandedType === 'expense' ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
                     </span>
                     <span className="text-2xl font-bold text-rose-100">
-                        {formatMoney(stats?.expense || 0)}
+                        <Money amount={stats?.expense || 0} />
                     </span>
                 </button>
 
@@ -249,10 +250,11 @@ export function MonthSummary() {
                         {expandedType === 'result' ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
                     </span>
                     <span className={cn(
-                        "text-2xl font-bold",
+                        "text-2xl font-bold flex items-center gap-1",
                         (stats?.result || 0) >= 0 ? "text-sky-100" : "text-orange-100"
                     )}>
-                        {(stats?.result || 0) > 0 ? '+' : ''}{formatMoney(stats?.result || 0)}
+                        {(stats?.result || 0) > 0 ? '+' : ''}
+                        <Money amount={stats?.result || 0} />
                     </span>
                 </button>
             </div>

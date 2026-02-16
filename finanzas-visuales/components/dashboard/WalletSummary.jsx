@@ -5,6 +5,7 @@ import { startOfMonth, endOfMonth } from 'date-fns'
 import { cn } from '@/lib/utils'
 import { Wallet, CreditCard, PiggyBank, TrendingUp, TrendingDown } from 'lucide-react'
 import { useLanguage } from '@/lib/i18n'
+import { Money } from '@/components/ui/Money' // Import Money
 
 const ICONS = {
     cash: Wallet,
@@ -14,7 +15,7 @@ const ICONS = {
 
 export function WalletSummary() {
     const { currentDate } = useStore()
-    const { t, formatMoney } = useLanguage()
+    const { t } = useLanguage()
 
     const data = useLiveQuery(async () => {
         const start = startOfMonth(currentDate)
@@ -63,14 +64,16 @@ export function WalletSummary() {
                 <div className="space-y-2">
                     <div>
                         <p className="text-[10px] text-indigo-300/70 uppercase font-bold tracking-wider">{t('net_worth')}</p>
-                        <p className="text-sm font-bold text-white tracking-tight">{formatMoney(grandTotalBalance)}</p>
+                        <p className="text-sm font-bold text-white tracking-tight">
+                            <Money amount={grandTotalBalance} />
+                        </p>
                     </div>
                     <div>
                         <p className="text-[10px] text-indigo-300/70 uppercase font-bold tracking-wider">{t('monthly_variation')}</p>
                         <div className={cn("flex items-center gap-1", isPositiveGrandTotal ? "text-emerald-400" : "text-rose-400")}>
                             {isPositiveGrandTotal ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
                             <p className="text-sm font-bold tracking-tight">
-                                {formatMoney(grandTotalMonthBalance)}
+                                <Money amount={grandTotalMonthBalance} />
                             </p>
                         </div>
                     </div>
@@ -103,7 +106,7 @@ export function WalletSummary() {
                             <div>
                                 <p className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">{t('total')}</p>
                                 <p className="text-sm font-bold text-white tracking-tight">
-                                    {formatMoney(wallet.balance)}
+                                    <Money amount={wallet.balance} />
                                 </p>
                             </div>
 
@@ -113,7 +116,7 @@ export function WalletSummary() {
                                 <div className={cn("flex items-center gap-1", isPositiveMonth ? "text-emerald-400" : "text-rose-400")}>
                                     {isPositiveMonth ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
                                     <p className="text-sm font-bold tracking-tight">
-                                        {formatMoney(wallet.monthBalance)}
+                                        <Money amount={wallet.monthBalance} />
                                     </p>
                                 </div>
                             </div>

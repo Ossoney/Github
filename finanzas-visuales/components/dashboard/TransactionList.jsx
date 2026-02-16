@@ -2,13 +2,14 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '@/lib/db'
 import { DynamicIcon } from '@/components/ui/UI'
 import { useLanguage } from '@/lib/i18n'
+import { Money } from '@/components/ui/Money' // Import Money
 
 import { useStore } from '@/hooks/useStore'
 import { startOfMonth, endOfMonth, isToday, isYesterday, format, formatDistanceToNow, differenceInCalendarDays } from 'date-fns'
 
 export function TransactionList() {
     const { openTransactionModal, currentDate } = useStore()
-    const { t, tCategory, locale, formatMoney, language } = useLanguage()
+    const { t, tCategory, locale, language } = useLanguage()
 
     const transactions = useLiveQuery(async () => {
         // ... (existing query logic)
@@ -96,7 +97,7 @@ export function TransactionList() {
                             </div>
                             <div className={`font-semibold ${isExpense ? 'text-slate-200' : 'text-emerald-400'}`}>
                                 {isExpense ? '- ' : '+ '}
-                                {formatMoney(tx.amount)}
+                                <Money amount={tx.amount} />
                             </div>
                         </div>
 

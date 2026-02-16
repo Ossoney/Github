@@ -6,6 +6,7 @@ import clsx from 'clsx'
 import { useEffect } from 'react'
 import { processRecurringTransactions } from '@/lib/recurring'
 import { LanguageProvider } from '@/lib/i18n'
+import { PrivacyProvider } from '@/lib/privacy'
 import { ToastProvider } from '@/components/ui/UI'
 
 const outfit = Outfit({
@@ -39,9 +40,11 @@ export default function RootLayout({ children }) {
             <body className="bg-slate-950 text-slate-50 min-h-screen font-sans antialiased selection:bg-sky-500/30">
                 <main className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
                     <LanguageProvider>
-                        <ToastProvider>
-                            {children}
-                        </ToastProvider>
+                        <PrivacyProvider>
+                            <ToastProvider>
+                                {children}
+                            </ToastProvider>
+                        </PrivacyProvider>
                     </LanguageProvider>
                 </main>
             </body>

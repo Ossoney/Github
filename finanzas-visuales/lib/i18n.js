@@ -115,7 +115,9 @@ const dictionaries = {
         tags: 'Etiquetas',
         data: 'Datos',
         language: 'Idioma',
+        language: 'Idioma',
         version_help: 'Versión/Ayuda',
+        version_date: 'Febrero 2026',
 
         // Profile Settings
         user_profile: 'Perfil de Usuario',
@@ -130,27 +132,32 @@ const dictionaries = {
         finances_of: 'las finanzas de {name}',
 
         // Help Guide
-        help_financial_title: '1. Gestión Financiera Principal',
-        help_dashboard_desc: 'Resumen global del patrimonio, selector temporal y actividad reciente.',
-        help_transactions_desc: 'Registro detallado de ingresos y gastos con buscador avanzado y filtros.',
+        help_financial_title: 'Gestión Financiera',
+        help_dashboard_desc: 'Visión global de tu patrimonio y actividad reciente.',
+        help_calendar_title: 'Vista de Calendario',
+        help_calendar_help_desc: 'Visualiza tus gastos e ingresos diarios y previsiones en un calendario mensual.',
+        help_transactions_desc: 'Registro detallado de ingresos y gastos con buscador avanzado.',
 
-        help_structure_title: '2. Estructura Organizativa',
-        help_accounts_desc: 'Gestión multi-cuenta (Banco, Efectivo, Ahorros) y proyectos específicos.',
-        help_categories_desc: 'Sistema jerárquico con iconos y colores personalizables.',
-        help_tags_desc: 'Clasificación transversal (tags) para agrupar gastos de distintas categorías.',
+        help_structure_title: 'Estructura',
+        help_accounts_desc: 'Gestiona múltiples cuentas (bancos, efectivo, tarjetas).',
+        help_categories_desc: 'Organiza tus movimientos en categorías y subcategorías.',
+        help_tags_desc: 'Etiqueta transacciones para agrupar conceptos transversales (#Viaje).',
 
-        help_planning_title: '3. Planificación y Automatización',
-        help_budgets_desc: 'Límites de gasto mensuales con barras de progreso visuales.',
-        help_recurring_desc: 'Automatización de ingresos y gastos fijos (Nómina, Suscripciones).',
+        help_planning_title: 'Planificación',
+        help_budgets_desc: 'Establece límites de gasto mensual por categoría.',
+        help_recurring_desc: 'Configura movimientos fijos automáticos (alquiler, nómina).',
 
-        help_customization_title: '4. Personalización y Experiencia',
-        help_themes_desc: '9 atmósferas únicas (Noche Estrellada, Cyberpunk, Minimalista...).',
-        help_profile_desc: 'Personalización de nombre, avatar y título de inicio.',
-        help_languages_desc: 'Soporte completo para Español, Inglés, Gallego y Euskera.',
+        help_customization_title: 'Personalización',
+        help_themes_desc: 'Elige entre múltiples temas visuales.',
+        help_profile_desc: 'Personaliza tu nombre y avatar.',
+        help_languages_desc: 'Cambia el idioma de la aplicación.',
 
-        help_data_title: '5. Datos y Privacidad',
-        help_privacy_desc: 'Todos los datos viven en tu navegador. Cero servidores externos.',
-        help_backups_desc: 'Exportación/Importación completa en formato JSON.',
+        help_data_title: 'Datos y Privacidad',
+        help_security_title: 'Seguridad',
+        help_privacy_desc: 'Tus datos nunca salen de tu dispositivo (Local First).',
+        help_privacy_mode_title: 'Modo Privacidad',
+        help_privacy_mode_desc: 'Oculta los saldos sensibles con un clic para mayor discreción.',
+        help_backups_desc: 'Exporta e importa tus datos en formato JSON.',
         help_excel_desc: 'Compatible con hojas de cálculo para análisis externos.',
         help_safe_zone_desc: 'Restablecimiento de fábrica disponible.',
 
@@ -228,6 +235,13 @@ const dictionaries = {
         no_transactions_found: 'No se encontraron transacciones.',
         try_adjusting_filters: 'Prueba a cambiar los filtros.',
 
+        // Calendar
+        calendar_view: 'Vista de Calendario',
+        calendar_desc: 'Visualiza tus ingresos y gastos mes a mes.',
+        go_to_today: 'Ir a Hoy',
+        projected: 'Proyecciones (Recurrentes)',
+        transactions: 'Movimientos Reales',
+
         // Category Translations (ES defaults - map to themselves or variations)
         category_names: {
             // Keeps original Spanish as fallback, but defined here for consistency if we wanted to rename
@@ -300,6 +314,13 @@ const dictionaries = {
         no_transactions_found: 'No transactions found.',
         try_adjusting_filters: 'Try adjusting filters.',
 
+        // Calendar
+        calendar_view: 'Calendar View',
+        calendar_desc: 'Visualize your income and expenses month by month.',
+        go_to_today: 'Go to Today',
+        projected: 'Projected (Recurring)',
+        transactions: 'Actual Transactions',
+
         // Wallet Summary
         global_total: 'GLOBAL TOTAL',
         net_worth: 'Net Worth',
@@ -368,7 +389,9 @@ const dictionaries = {
         tags: 'Tags',
         data: 'Data',
         language: 'Language',
+        language: 'Language',
         version_help: 'Version/Help',
+        version_date: 'February 2026',
 
         // Profile Settings
         user_profile: 'User Profile',
@@ -612,6 +635,13 @@ const dictionaries = {
         see_all: 'Ver Todo',
         no_transactions_found: 'Non se atoparon transaccións.',
         try_adjusting_filters: 'Proba a cambiar os filtros.',
+
+        // Calendar
+        calendar_view: 'Vista de Calendario',
+        calendar_desc: 'Visualiza os teus ingresos e gastos mes a mes.',
+        go_to_today: 'Ir a Hoxe',
+        projected: 'Proxeccións (Recorrentes)',
+        transactions: 'Movementos Reais',
         confirm: 'Confirmar',
         confirm_action: 'Confirmación',
 
@@ -647,7 +677,9 @@ const dictionaries = {
         tags: 'Etiquetas',
         data: 'Datos',
         language: 'Idioma',
+        language: 'Idioma',
         version_help: 'Versión/Axuda',
+        version_date: 'Febreiro 2026',
 
         // Profile Settings
         user_profile: 'Perfil de Usuario',
@@ -923,6 +955,8 @@ const dictionaries = {
         tags: 'Etiketak',
         data: 'Datuak',
         language: 'Hizkuntza',
+        version_help: 'Bertsioa/Laguntza',
+        version_date: '2026ko Otsaila',
 
         // Profile Settings
         user_profile: 'Erabiltzaile Profila',
@@ -1137,6 +1171,8 @@ const dictionaries = {
         tags: 'Etiquetes',
         data: 'Dades',
         language: 'Idioma',
+        version_help: 'Versió/Ajuda',
+        version_date: 'Febrer 2026',
 
         // Profile Settings
         user_profile: 'Perfil d\'Usuari',
@@ -1367,10 +1403,10 @@ export function LanguageProvider({ children }) {
     }
 
     // Helper to format currency dynamically
-    const formatMoney = (amount) => {
+    const formatMoney = (amount, currencyCode = null) => {
         return new Intl.NumberFormat(language === 'en' ? 'en-US' : 'es-ES', {
             style: 'currency',
-            currency: currency,
+            currency: currencyCode || currency,
         }).format(amount)
     }
 
