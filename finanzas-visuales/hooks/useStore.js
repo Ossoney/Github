@@ -18,7 +18,8 @@ export const useStore = create((set) => ({
     // UI State
     isTransactionModalOpen: false,
     editingTransaction: null,
-    openTransactionModal: (tx = null) => set({ isTransactionModalOpen: true, editingTransaction: tx }),
+    newTransactionType: 'expense', // Default new transaction type
+    openTransactionModal: (tx = null, type = 'expense') => set({ isTransactionModalOpen: true, editingTransaction: tx, newTransactionType: type }),
     closeTransactionModal: () => set({ isTransactionModalOpen: false, editingTransaction: null }),
 
     isTagModalOpen: false,

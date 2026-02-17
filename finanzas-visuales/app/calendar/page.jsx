@@ -13,8 +13,9 @@ export default function CalendarPage() {
         <div className="space-y-6 animate-in fade-in duration-500">
             <div className="flex items-center gap-4">
                 <Link href="/">
-                    <Button variant="ghost" size="icon">
+                    <Button variant="ghost" className="gap-2 pl-2 pr-4 text-slate-400 hover:text-white">
                         <ArrowLeft className="w-5 h-5" />
+                        <span className="font-medium">Volver</span>
                     </Button>
                 </Link>
                 <div>

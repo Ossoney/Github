@@ -3,13 +3,13 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '@/lib/db'
 import { useStore } from '@/hooks/useStore'
 import { Button, Card, useToast } from '@/components/ui/UI'
-import { X, ChevronLeft, ChevronDown, Calendar as CalendarIcon, Tag, MessageSquare, Wallet, Trash2 } from 'lucide-react'
+import { X, ChevronLeft, ChevronDown, Calendar as CalendarIcon, Tag, MessageSquare, Wallet, Trash2, Split, PlusCircle, MinusCircle } from 'lucide-react'
 import * as LucideIcons from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useLanguage } from '@/lib/i18n'
 
 export function TransactionForm() {
-    const { isTransactionModalOpen, closeTransactionModal, editingTransaction } = useStore()
+    const { isTransactionModalOpen, closeTransactionModal, editingTransaction, newTransactionType } = useStore()
     const { t, tCategory, symbol, language } = useLanguage()
     const { addToast } = useToast()
     const wallets = useLiveQuery(() => db.wallets.toArray())
@@ -23,6 +23,11 @@ export function TransactionForm() {
     // Category State
     const [categoryId, setCategoryId] = useState(null)
     const [selectedParentId, setSelectedParentId] = useState(null) // For category browsing
+
+    // Split State
+    const [isSplitMode, setIsSplitMode] = useState(false)
+    const [splits, setSplits] = useState([{ id: 1, categoryId: null, amount: '' }, { id: 2, categoryId: null, amount: '' }]) // Start with 2
+
 
     // Details
     const [description, setDescription] = useState('')
@@ -63,11 +68,14 @@ export function TransactionForm() {
 
             } else {
                 // RESET FOR NEW
+                setType(newTransactionType || 'expense') // Use context-aware default
                 setAmount('')
                 setCategoryId(null)
                 setSelectedParentId(null)
                 setDescription('')
                 setTagsInput('')
+                setIsSplitMode(false)
+                setSplits([{ id: 1, categoryId: null, amount: '' }, { id: 2, categoryId: null, amount: '' }])
 
                 const now = new Date()
                 now.setMinutes(now.getMinutes() - now.getTimezoneOffset())
@@ -78,7 +86,7 @@ export function TransactionForm() {
                 }
             }
         }
-    }, [isTransactionModalOpen, editingTransaction, wallets, allCategories])
+    }, [isTransactionModalOpen, editingTransaction, wallets, allCategories, newTransactionType])
 
     const existingTags = useLiveQuery(() => db.tags.toArray())
 
@@ -101,15 +109,29 @@ export function TransactionForm() {
             addToast(t('validation_wallet'), 'error')
             return
         }
-        if (!categoryId) {
-            addToast(t('validation_category'), 'error')
-            return
-        }
 
         const value = parseFloat(amount)
         if (isNaN(value)) {
             addToast(t('validation_amount_invalid'), 'error')
             return
+        }
+
+        // Validate Split Logic if active
+        if (isSplitMode) {
+            const totalSplits = splits.reduce((sum, s) => sum + (parseFloat(s.amount) || 0), 0)
+            if (Math.abs(totalSplits - value) > 0.01) {
+                addToast(`La suma del desglose (${totalSplits}) no coincide con el total (${value})`, 'error')
+                return
+            }
+            if (splits.some(s => !s.categoryId)) {
+                addToast(t('validation_category'), 'error')
+                return
+            }
+        } else {
+            if (!categoryId) {
+                addToast(t('validation_category'), 'error')
+                return
+            }
         }
 
         const tags = tagsInput.split(/[\s,]+/).filter(t => t).map(t => t.startsWith('#') ? t : `#${t}`)
@@ -136,7 +158,7 @@ export function TransactionForm() {
                         })
                     }
 
-                    // Update the transaction record
+                    // Update the transaction record (Standard Edit - No Split support for editing yet)
                     await db.transactions.update(editingTransaction.id, {
                         walletId,
                         categoryId,
@@ -147,28 +169,51 @@ export function TransactionForm() {
                         date: txDate,
                     })
 
+                    const targetWallet = await db.wallets.get(walletId)
+                    if (targetWallet) {
+                        const applyAmount = type === 'income' ? value : -value
+                        await db.wallets.update(walletId, {
+                            balance: targetWallet.balance + applyAmount
+                        })
+                    }
+
                 } else {
                     // NEW TRANSACTION
-                    await db.transactions.add({
-                        walletId,
-                        categoryId,
-                        amount: value,
-                        type,
-                        description,
-                        tags,
-                        date: txDate,
-                    })
-                }
+                    if (isSplitMode) {
+                        // Create multiple transactions
+                        for (const split of splits) {
+                            const splitValue = parseFloat(split.amount)
+                            await db.transactions.add({
+                                walletId,
+                                categoryId: split.categoryId,
+                                amount: splitValue,
+                                type,
+                                description: description ? `${description} (Split)` : '(Split)',
+                                tags,
+                                date: txDate,
+                            })
+                        }
+                    } else {
+                        // Standard Single Transaction
+                        await db.transactions.add({
+                            walletId,
+                            categoryId,
+                            amount: value,
+                            type,
+                            description,
+                            tags,
+                            date: txDate,
+                        })
+                    }
 
-                // Apply NEW transaction effect (always done for both New and Edit)
-                // Note: For edit, we reverted the old effect, so now we just apply the new one as if it's new.
-                // This handles cases where wallet, amount, or type changed seamlessly.
-                const targetWallet = await db.wallets.get(walletId)
-                if (targetWallet) {
-                    const applyAmount = type === 'income' ? value : -value
-                    await db.wallets.update(walletId, {
-                        balance: targetWallet.balance + applyAmount
-                    })
+                    // Apply NEW transaction total effect (Split or Single, total is the same for wallet)
+                    const targetWallet = await db.wallets.get(walletId)
+                    if (targetWallet) {
+                        const applyAmount = type === 'income' ? value : -value
+                        await db.wallets.update(walletId, {
+                            balance: targetWallet.balance + applyAmount
+                        })
+                    }
                 }
             })
 
@@ -217,16 +262,29 @@ export function TransactionForm() {
                         </button>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 p-1 bg-slate-800/50 rounded-xl">
+                    <div className="flex gap-2 p-1 bg-slate-800/50 rounded-xl">
                         <button
                             onClick={() => { setType('expense'); setCategoryId(null); setSelectedParentId(null); }}
-                            className={cn("py-2 px-4 rounded-lg text-sm font-medium transition-all", type === 'expense' ? "bg-rose-500 text-white shadow-lg shadow-rose-500/20" : "text-slate-400 hover:text-slate-200")}
+                            className={cn("flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all", type === 'expense' ? "bg-rose-500 text-white shadow-lg shadow-rose-500/20" : "text-slate-400 hover:text-slate-200")}
                         >{t('expense')}</button>
                         <button
                             onClick={() => { setType('income'); setCategoryId(null); setSelectedParentId(null); }}
-                            className={cn("py-2 px-4 rounded-lg text-sm font-medium transition-all", type === 'income' ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/20" : "text-slate-400 hover:text-slate-200")}
+                            className={cn("flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all", type === 'income' ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/20" : "text-slate-400 hover:text-slate-200")}
                         >{t('income')}</button>
                     </div>
+
+                    {!editingTransaction && (
+                        <div className="flex items-center justify-between px-2">
+                            <span className="text-xs text-slate-500 font-medium uppercase tracking-wider">Modo Desglose</span>
+                            <button
+                                onClick={() => setIsSplitMode(!isSplitMode)}
+                                className={cn("flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full border transition-all", isSplitMode ? "bg-sky-500/20 border-sky-500 text-sky-400" : "bg-slate-800 border-slate-700 text-slate-500 hover:border-slate-500")}
+                            >
+                                <Split className="w-3 h-3" />
+                                {isSplitMode ? 'Activado' : 'Dividir'}
+                            </button>
+                        </div>
+                    )}
                 </div>
 
                 {/* SCROLLABLE CONTENT */}
@@ -277,71 +335,148 @@ export function TransactionForm() {
                         </div>
                     </div>
 
-                    {/* 2. Category Selection (Integrated) */}
-                    <div className="space-y-2">
+                    {/* 2. Category Selection (Integrated or Split) */}
+                    <div className="space-y-3">
                         <label className="text-xs font-medium text-slate-500 uppercase tracking-wider block">{t('category')}</label>
 
-                        {/* Current Selection Display */}
-                        {selectedCategory ? (
-                            <div
-                                onClick={() => { setCategoryId(null); setSelectedParentId(null); }}
-                                className="flex items-center justify-between p-3 rounded-xl bg-sky-500/10 border border-sky-500/30 cursor-pointer hover:bg-sky-500/20 transition-colors"
-                            >
-                                <div className="flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded-full flex items-center justify-center bg-sky-500 text-white">
-                                        <SelectedIcon className="w-4 h-4" />
+                        {isSplitMode ? (
+                            <div className="space-y-3 animate-in fade-in slide-in-from-top-2 duration-300">
+                                {splits.map((split, index) => (
+                                    <div key={split.id} className="flex gap-2 items-center">
+                                        {/* Category Selector for Split Item */}
+                                        <div className="flex-1 relative">
+                                            <select
+                                                value={split.categoryId || ''}
+                                                onChange={(e) => {
+                                                    const newSplits = [...splits]
+                                                    newSplits[index].categoryId = e.target.value ? parseInt(e.target.value) : null
+                                                    setSplits(newSplits)
+                                                }}
+                                                className="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 pl-2 pr-8 text-xs text-slate-200 focus:outline-none focus:border-sky-500 appearance-none"
+                                            >
+                                                <option value="">Seleccionar Categoría...</option>
+                                                {allCategories?.filter(c => c.type === type).map(c => (
+                                                    <option key={c.id} value={c.id}>
+                                                        {tCategory(c.name)}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                            <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-3 h-3 text-slate-500 pointer-events-none" />
+                                        </div>
+
+                                        {/* Amount Input for Split Item */}
+                                        <div className="w-24 relative">
+                                            <span className="absolute left-2 top-1/2 -translate-y-1/2 text-xs text-slate-500">{symbol}</span>
+                                            <input
+                                                type="number"
+                                                value={split.amount}
+                                                onChange={(e) => {
+                                                    const newSplits = [...splits]
+                                                    newSplits[index].amount = e.target.value
+                                                    setSplits(newSplits)
+                                                }}
+                                                placeholder="0.00"
+                                                className="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 pl-6 pr-2 text-xs text-slate-200 focus:outline-none focus:border-sky-500 font-mono"
+                                            />
+                                        </div>
+
+                                        {/* Remove Button */}
+                                        <button
+                                            onClick={() => {
+                                                if (splits.length > 2) {
+                                                    const newSplits = splits.filter((_, i) => i !== index)
+                                                    setSplits(newSplits)
+                                                }
+                                            }}
+                                            disabled={splits.length <= 2}
+                                            className="text-slate-500 hover:text-rose-500 disabled:opacity-30 disabled:hover:text-slate-500"
+                                        >
+                                            <MinusCircle className="w-5 h-5" />
+                                        </button>
                                     </div>
-                                    <span className="font-medium text-sky-400">{tCategory(selectedCategory.name)}</span>
+                                ))}
+
+                                <div className="flex justify-between items-center pt-2">
+                                    <div className="text-xs text-slate-500">
+                                        Total: <span className={cn("font-bold", Math.abs(splits.reduce((acc, s) => acc + (parseFloat(s.amount) || 0), 0) - (parseFloat(amount) || 0)) < 0.01 ? "text-emerald-500" : "text-rose-500")}>
+                                            {symbol}{splits.reduce((acc, s) => acc + (parseFloat(s.amount) || 0), 0).toFixed(2)}
+                                        </span>
+                                        {' / '}{symbol}{parseFloat(amount || 0).toFixed(2)}
+                                    </div>
+                                    <button
+                                        onClick={() => setSplits([...splits, { id: Date.now(), categoryId: null, amount: '' }])}
+                                        className="flex items-center gap-1 text-xs text-sky-400 hover:text-sky-300 font-medium"
+                                    >
+                                        <PlusCircle className="w-4 h-4" /> Agregar línea
+                                    </button>
                                 </div>
-                                <span className="text-xs text-sky-400 font-medium">{t('change')}</span>
                             </div>
                         ) : (
-                            <div className="bg-slate-900 border border-slate-800 rounded-xl p-3">
-                                {/* Parent Categories List (Horizontal Scroll if needed, but grid for now) */}
-                                {!selectedParentId ? (
-                                    <div className="grid grid-cols-4 gap-2">
-                                        {rootCategories.map(cat => {
-                                            const Icon = LucideIcons[cat.icon] || LucideIcons.HelpCircle
-
-                                            // Check validity for drill-down vs select
-                                            const hasChildren = allCategories?.some(c => c.parentId === cat.id)
-
-                                            return (
-                                                <button
-                                                    key={cat.id}
-                                                    onClick={() => hasChildren ? setSelectedParentId(cat.id) : setCategoryId(cat.id)}
-                                                    className="flex flex-col items-center gap-1 p-2 rounded-lg hover:bg-slate-800 transition-colors"
-                                                >
-                                                    <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400" style={{ color: cat.color }}>
-                                                        <Icon className="w-5 h-5" />
-                                                    </div>
-                                                    <span className="text-[10px] text-slate-400 truncate w-full text-center">{tCategory(cat.name)}</span>
-                                                </button>
-                                            )
-                                        })}
+                            /* Classic Category Selection */ // Wrapped explicitly to separate branches
+                            <>
+                                {/* Current Selection Display */}
+                                {selectedCategory ? (
+                                    <div
+                                        onClick={() => { setCategoryId(null); setSelectedParentId(null); }}
+                                        className="flex items-center justify-between p-3 rounded-xl bg-sky-500/10 border border-sky-500/30 cursor-pointer hover:bg-sky-500/20 transition-colors"
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-8 h-8 rounded-full flex items-center justify-center bg-sky-500 text-white">
+                                                <SelectedIcon className="w-4 h-4" />
+                                            </div>
+                                            <span className="font-medium text-sky-400">{tCategory(selectedCategory.name)}</span>
+                                        </div>
+                                        <span className="text-xs text-sky-400 font-medium">{t('change')}</span>
                                     </div>
                                 ) : (
-                                    <div className="space-y-2 animate-in slide-in-from-right-4 fade-in duration-200">
-                                        <button
-                                            onClick={() => setSelectedParentId(null)}
-                                            className="flex items-center gap-1 text-xs text-slate-500 hover:text-slate-300 mb-2"
-                                        >
-                                            <ChevronLeft className="w-3 h-3" /> {t('back_to_categories')}
-                                        </button>
-                                        <div className="grid grid-cols-3 gap-2">
-                                            {subCategories.map(cat => (
+                                    <div className="bg-slate-900 border border-slate-800 rounded-xl p-3">
+                                        {/* Parent Categories List (Horizontal Scroll if needed, but grid for now) */}
+                                        {!selectedParentId ? (
+                                            <div className="grid grid-cols-4 gap-2">
+                                                {rootCategories.map(cat => {
+                                                    const Icon = LucideIcons[cat.icon] || LucideIcons.HelpCircle
+
+                                                    // Check validity for drill-down vs select
+                                                    const hasChildren = allCategories?.some(c => c.parentId === cat.id)
+
+                                                    return (
+                                                        <button
+                                                            key={cat.id}
+                                                            onClick={() => hasChildren ? setSelectedParentId(cat.id) : setCategoryId(cat.id)}
+                                                            className="flex flex-col items-center gap-1 p-2 rounded-lg hover:bg-slate-800 transition-colors"
+                                                        >
+                                                            <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400" style={{ color: cat.color }}>
+                                                                <Icon className="w-5 h-5" />
+                                                            </div>
+                                                            <span className="text-[10px] text-slate-400 truncate w-full text-center">{tCategory(cat.name)}</span>
+                                                        </button>
+                                                    )
+                                                })}
+                                            </div>
+                                        ) : (
+                                            <div className="space-y-2 animate-in slide-in-from-right-4 fade-in duration-200">
                                                 <button
-                                                    key={cat.id}
-                                                    onClick={() => setCategoryId(cat.id)}
-                                                    className="p-2 rounded-lg bg-slate-800/50 hover:bg-slate-800 text-xs text-slate-300 border border-slate-700/50 truncate"
+                                                    onClick={() => setSelectedParentId(null)}
+                                                    className="flex items-center gap-1 text-xs text-slate-500 hover:text-slate-300 mb-2"
                                                 >
-                                                    {tCategory(cat.name)}
+                                                    <ChevronLeft className="w-3 h-3" /> {t('back_to_categories')}
                                                 </button>
-                                            ))}
-                                        </div>
+                                                <div className="grid grid-cols-3 gap-2">
+                                                    {subCategories.map(cat => (
+                                                        <button
+                                                            key={cat.id}
+                                                            onClick={() => setCategoryId(cat.id)}
+                                                            className="p-2 rounded-lg bg-slate-800/50 hover:bg-slate-800 text-xs text-slate-300 border border-slate-700/50 truncate"
+                                                        >
+                                                            {tCategory(cat.name)}
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 )}
-                            </div>
+                            </>
                         )}
                     </div>
 
@@ -411,8 +546,8 @@ export function TransactionForm() {
                         onClick={handleSubmit}
                         className="w-full py-6 text-lg rounded-xl flex-1"
                         variant={type === 'expense' ? 'danger' : 'default'}
-                        // Allow saving if amount and category are present. Wallet should be defaulted or user selected.
-                        disabled={!amount || !categoryId}
+                        // Allow saving if amount is present. Category check happens inside handleSubmit depending on split mode
+                        disabled={!amount}
                     >
                         {editingTransaction ? t('update') : `${t('save')} ${type === 'expense' ? t('expense') : t('income')}`}
                     </Button>

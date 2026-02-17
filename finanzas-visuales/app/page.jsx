@@ -31,6 +31,8 @@ export default function Dashboard() {
     const wallets = useLiveQuery(() => db.wallets.toArray())
     const totalBalance = wallets?.reduce((acc, curr) => acc + curr.balance, 0) || 0
 
+    // Lifted State from MonthSummary for Contextual FAB
+    const [expandedType, setExpandedType] = useState(null)
 
 
     return (
@@ -87,7 +89,7 @@ export default function Dashboard() {
 
             {/* Month Summary (Income vs Expense vs Result) */}
             <section>
-                <MonthSummary />
+                <MonthSummary expandedType={expandedType} onExpand={setExpandedType} />
             </section>
 
             {/* Wallets Section (Hidden per user request, but kept in code) */}
@@ -120,7 +122,12 @@ export default function Dashboard() {
             {/* Floating Action Button (XL Size) */}
             <div className="fixed bottom-8 right-8 z-40">
                 <Button
-                    onClick={openTransactionModal}
+                    onClick={() => {
+                        // Contextual Default: If expanded is 'income', default to income. Else expense.
+                        // If expanded is 'result', we default to 'expense' (safest).
+                        const defaultType = expandedType === 'income' ? 'income' : 'expense'
+                        openTransactionModal(null, defaultType)
+                    }}
                     className="h-20 w-20 rounded-full shadow-2xl shadow-sky-500/30 p-0 hover:scale-105 transition-transform bg-gradient-to-br from-sky-500 to-indigo-600 border-2 border-white/10"
                 >
                     <Plus className="w-10 h-10 text-white" />

@@ -9,6 +9,6 @@
 - [ ] **Adjuntos y Recibos**: Adjuntar fotos/PDFs a las transacciones.
 - [x] **Modo Privacidad**: Botón para ocultar/difuminar importes sensibles.
 - [ ] **Gestión de Deudas**: Control de préstamos a/de amigos.
-- [ ] **Transacciones Divididas**: Asignar múltiples categorías a un solo movimiento.
+- [x] **Transacciones Divididas**: Asignar múltiples categorías a un solo movimiento (Wizard).
 - [ ] **Listas de Compra**: Checklist que convierte items en gastos.
 - [ ] **Atajos de Teclado**: Teclas rápidas para desktop.

@@ -8,14 +8,27 @@ import { useStore } from '@/hooks/useStore'
 import { useLanguage } from '@/lib/i18n'
 import { Money } from '@/components/ui/Money'
 
-export function MonthSummary() {
+export function MonthSummary({ expandedType, onExpand }) {
     const { currentDate } = useStore()
     const { t, tCategory, locale } = useLanguage()
 
     // UI State
-    const [expandedType, setExpandedType] = useState(null) // 'income', 'expense', 'result'
+    // expandedType is now controlled by parent
     const [viewMode, setViewMode] = useState('breakdown') // 'breakdown', 'history'
     const [historyLimit, setHistoryLimit] = useState(6) // 6, 12, 24
+
+    // 0. Check data availability for Smart Intervals
+    const availableMonths = useLiveQuery(async () => {
+        const firstTx = await db.transactions.orderBy('date').first()
+        if (!firstTx) return 0
+        const now = new Date()
+        const first = new Date(firstTx.date)
+        // Calculate months difference roughly
+        const months = (now.getFullYear() - first.getFullYear()) * 12 + (now.getMonth() - first.getMonth())
+        return Math.max(0, months) // Ensure non-negative
+    }, [])
+
+    const showHistoryOptions = availableMonths >= 6
 
     // 1. Current Month Stats
     const stats = useLiveQuery(async () => {
@@ -55,6 +68,8 @@ export function MonthSummary() {
 
     // 2. Historical Stats (Dynamic Limit)
     const history = useLiveQuery(async () => {
+        if (!showHistoryOptions && viewMode === 'history') return [] // Don't fetch if not viable
+
         const data = []
         for (let i = historyLimit - 1; i >= 0; i--) {
             const date = subMonths(currentDate, i)
@@ -74,15 +89,14 @@ export function MonthSummary() {
             })
         }
         return data
-    }, [currentDate, locale, historyLimit])
+    }, [currentDate, locale, historyLimit, viewMode, showHistoryOptions])
 
     const handleExpand = (type) => {
-        if (expandedType === type) {
-            setExpandedType(null)
-        } else {
-            setExpandedType(type)
-            setViewMode('breakdown')
+        if (onExpand) {
+            onExpand(expandedType === type ? null : type)
         }
+        // Reset view mode when closing or switching? Maybe keep it simple
+        if (expandedType !== type) setViewMode('breakdown')
     }
 
     const renderBreakdown = (type) => {
@@ -274,25 +288,60 @@ export function MonthSummary() {
                             >
                                 <PieChart className="w-3 h-3" /> Desglose
                             </button>
-                            <div className="flex gap-1 ml-2 border-l border-slate-800 pl-2">
-                                {[6, 12, 24].map(limit => (
+
+                            {/* SMART INTERVALS */}
+                            {(availableMonths >= 6) && (
+                                <div className="flex gap-1 ml-2 border-l border-slate-800 pl-2">
                                     <button
-                                        key={limit}
                                         onClick={() => {
                                             setViewMode('history')
-                                            setHistoryLimit(limit)
+                                            setHistoryLimit(6)
                                         }}
                                         className={cn(
                                             "px-2 py-1.5 rounded-md text-[10px] font-bold transition-all",
-                                            viewMode === 'history' && historyLimit === limit
+                                            viewMode === 'history' && historyLimit === 6
                                                 ? "bg-slate-700 text-white shadow"
                                                 : "text-slate-500 hover:text-slate-300 hover:bg-slate-800/50"
                                         )}
                                     >
-                                        {limit}M
+                                        6M
                                     </button>
-                                ))}
-                            </div>
+
+                                    {availableMonths >= 12 && (
+                                        <button
+                                            onClick={() => {
+                                                setViewMode('history')
+                                                setHistoryLimit(12)
+                                            }}
+                                            className={cn(
+                                                "px-2 py-1.5 rounded-md text-[10px] font-bold transition-all",
+                                                viewMode === 'history' && historyLimit === 12
+                                                    ? "bg-slate-700 text-white shadow"
+                                                    : "text-slate-500 hover:text-slate-300 hover:bg-slate-800/50"
+                                            )}
+                                        >
+                                            12M
+                                        </button>
+                                    )}
+
+                                    {availableMonths >= 24 && (
+                                        <button
+                                            onClick={() => {
+                                                setViewMode('history')
+                                                setHistoryLimit(24)
+                                            }}
+                                            className={cn(
+                                                "px-2 py-1.5 rounded-md text-[10px] font-bold transition-all",
+                                                viewMode === 'history' && historyLimit === 24
+                                                    ? "bg-slate-700 text-white shadow"
+                                                    : "text-slate-500 hover:text-slate-300 hover:bg-slate-800/50"
+                                            )}
+                                        >
+                                            24M
+                                        </button>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     </div>
 

@@ -1,12 +1,15 @@
 # Project Changelog
 
-## [Unreleased]
+## [1.1.0] - Unreleased
 
 ### Added
 
 - **Local-First Architecture**: Adopted IndexedDB (via Dexie.js) for privacy and offline speed.
 - **Expenless-Inspired Features**: Wallet system, Visual budget alerts, Excel export.
 - **Privacy Mode**: Toggle to hide sensitive financial amounts.
+- **Split Transactions**: Added wizard to split a single transaction into multiple categories.
+- **Smart Context**: "Add Transaction" button defaults to Income/Expense based on current view.
+- **Smart Intervals**: History breakdown options (6m/12m/24m) hidden when no data is available.
 
 ### Changed
 

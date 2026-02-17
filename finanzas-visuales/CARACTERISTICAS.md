@@ -7,7 +7,7 @@ Visualis es una aplicación de gestión financiera personal diseñada para ser p
 ### **Dashboard (Tablero de Control)**
 
 * **Resumen Global**: Visualización inmediata del Patrimonio Neto total y balance mensual.
-* **Selector Temporal**: Navegación fluida entre meses para ver el historial financiero.
+* **Selector Temporal Inteligente**: Navegación fluida entre meses. Las opciones de histórico (6m, 12m, 24m) aparecen automáticamente solo cuando existen datos suficientes.
 * **Actividad Reciente**: Listado rápido de las últimas operaciones realizadas.
 * **Resumen de Cuentas**: Estado actual de todas las cuentas/proyectos activos.
 
@@ -16,6 +16,8 @@ Visualis es una aplicación de gestión financiera personal diseñada para ser p
 * **Registro Detallado**: Permite registrar cantidad, fecha, cuenta origen/destino, categoría, descripción, notas y etiquetas.
 * **Edición y Borrado**: Control total para modificar o eliminar cualquier movimiento pasado.
 * **Buscador Avanzado**: Filtros potentes por texto, rango de fechas, tipo, categoría o cuenta.
+* **Transacciones Divididas**: Capacidad de dividir un gasto único en múltiples categorías (ej. compra en hipermercado dividida en Alimentación y Limpieza).
+* **Contexto Inteligente**: El botón de añadir transacción detecta automáticamente si estás viendo ingresos o gastos.
 
 ## 🗂️ 2. Estructura Organizativa
 

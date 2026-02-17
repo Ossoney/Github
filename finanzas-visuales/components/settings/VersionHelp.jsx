@@ -26,6 +26,8 @@ export function VersionHelp() {
                     <ul className="space-y-2 text-sm text-slate-400 pl-7 list-disc">
                         <li><strong className="text-slate-300">Dashboard:</strong> {t('help_dashboard_desc')}</li>
                         <li><strong className="text-slate-300">{t('transaction_history')}:</strong> {t('help_transactions_desc')}</li>
+                        <li><strong className="text-slate-300">{t('help_split_title')}:</strong> {t('help_split_desc')}</li>
+                        <li><strong className="text-slate-300">{t('help_context_title')}:</strong> {t('help_context_desc')}</li>
                     </ul>
                 </section>
 

@@ -137,6 +137,10 @@ const dictionaries = {
         help_calendar_title: 'Vista de Calendario',
         help_calendar_help_desc: 'Visualiza tus gastos e ingresos diarios y previsiones en un calendario mensual.',
         help_transactions_desc: 'Registro detallado de ingresos y gastos con buscador avanzado.',
+        help_split_title: 'Transacciones Divididas',
+        help_split_desc: 'Divide un ticket único en múltiples categorías (ej. Supermercado -> Alimentación + Limpieza).',
+        help_context_title: 'Contexto Inteligente',
+        help_context_desc: 'El botón "+" detecta si estás en Ingresos o Gastos y se adapta automáticamente.',
 
         help_structure_title: 'Estructura',
         help_accounts_desc: 'Gestiona múltiples cuentas (bancos, efectivo, tarjetas).',
@@ -411,6 +415,10 @@ const dictionaries = {
         help_financial_title: '1. Main Financial Management',
         help_dashboard_desc: 'Global wealth summary, time selector and recent activity.',
         help_transactions_desc: 'Detailed record of income and expenses with advanced search and filters.',
+        help_split_title: 'Split Transactions',
+        help_split_desc: 'Split a single receipt into multiple categories (e.g. Grocery -> Food + Cleaning).',
+        help_context_title: 'Smart Context',
+        help_context_desc: 'The "+" button detects if you are viewing Income or Expenses and adapts automatically.',
 
         help_structure_title: '2. Organizational Structure',
         help_accounts_desc: 'Multi-account management (Bank, Cash, Savings) and specific projects.',
@@ -699,6 +707,10 @@ const dictionaries = {
         help_financial_title: '1. Xestión Financeira Principal',
         help_dashboard_desc: 'Resumo global do patrimonio, selector temporal e actividade recente.',
         help_transactions_desc: 'Rexistro detallado de ingresos e gastos con buscador avanzado e filtros.',
+        help_split_title: 'Transaccións Divididas',
+        help_split_desc: 'Divide un ticket único en múltiples categorías (ex. Supermercado -> Alimentación + Limpeza).',
+        help_context_title: 'Contexto Intelixente',
+        help_context_desc: 'O botón "+" detecta se estás en Ingresos ou Gastos e adáptase automaticamente.',
 
         help_structure_title: '2. Estrutura Organizativa',
         help_accounts_desc: 'Xestión multi-conta (Banco, Efectivo, Aforros) e proxectos específicos.',
