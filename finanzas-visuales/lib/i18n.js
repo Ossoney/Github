@@ -227,6 +227,7 @@ const dictionaries = {
         import_error: '❌ Error al importar: ',
 
         // Advanced Search
+        advanced_search: 'Búsqueda avanzada',
         transaction_history: 'Historial Completo',
         search_placeholder: 'Buscar por concepto, categoría, nota...',
         filters: 'Filtros',
@@ -306,6 +307,7 @@ const dictionaries = {
         json_restore_error: '❌ Error restoring backup: ',
 
         // Advanced Search
+        advanced_search: 'Advanced Search',
         transaction_history: 'Full History',
         search_placeholder: 'Search by concept, category, note...',
         filters: 'Filters',
@@ -632,6 +634,7 @@ const dictionaries = {
         json_restore_error: '❌ Erro ao restaurar a copia: ',
 
         // Advanced Search
+        advanced_search: 'Busca Avanzada',
         transaction_history: 'Historial Completo',
         search_placeholder: 'Buscar por concepto, categoría, nota...',
         filters: 'Filtros',

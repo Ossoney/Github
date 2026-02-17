@@ -1,4 +1,4 @@
-# 🌟 VISUALIS v1.1.0 (Febrero 2026) - Guía de Funcionalidades
+# 🌟 VISUALIS v1.1.31 (Febrero 2026) - Guía de Funcionalidades
 
 Visualis es una aplicación de gestión financiera personal diseñada para ser privada, potente y visualmente atractiva. A continuación se detallan todas sus capacidades:
 

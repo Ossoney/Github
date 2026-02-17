@@ -87,86 +87,102 @@ export async function importFromExcel(file) {
                 }
 
                 await db.transaction('rw', db.transactions, db.wallets, db.categories, async () => {
-                    // Clear existing data? Or Merge?
-                    // For V1, "Import" usually implies "Restore/Overwrite" or "Append".
-                    // Given the complexities of ID conflicts, "Wipe & Restore" is safer for a "Backup/Restore" feature.
-                    // BUT, user might want to merge.
-                    // Let's go with "Wipe & Restore" for now as it aligns with "Nuclear Button" + "Export" workflow.
-                    // Ideally, we'd ask. But for now, let's implement a clean restore.
-
-                    // Actually, let's just Append for now? No, IDs will conflict.
-                    // Let's Assume "Restore Backup" mode.
-
+                    // Wipe existing data to ensure clean restore
                     await db.transactions.clear()
                     await db.wallets.clear()
                     await db.categories.clear()
 
-                    // Import Categories
-                    // We need to map old IDs to new IDs if we were appending.
-                    // Since we are clearing, we can try to keep IDs if Dexie allows, 
-                    // or just let Dexie generate new ones.
-                    // IF the export saved IDs, we should probably try to respect them OR re-map.
-                    // Re-mapping is safer.
+                    // --- 1. Import Wallets (Batch) ---
+                    const walletIdMap = {} // Old ID -> New ID
 
-                    // However, we need to maintain relationships (transaction -> wallet, transaction -> category).
+                    // Prepare wallets for bulkAdd (remove old IDs to let auto-increment work)
+                    const walletsToInsert = wallets.map(w => {
+                        const oldId = w.id;
+                        // Create a clean copy without ID
+                        const { id, ...rest } = w;
+                        return { ...rest, _oldId: oldId }; // Store old ID temporarily if needed, or rely on index
+                    });
 
-                    // Strategy: 
-                    // 1. Clear DB.
-                    // 2. Import Wallets (keep IDs if possible or re-map).
-                    // 3. Import Categories (keep IDs if possible or re-map).
-                    // 4. Import Transactions (update walletId and categoryId).
+                    // Bulk add wallets
+                    // Dexie bulkAdd returns the last key, not all keys. 
+                    // To map old IDs to new IDs, we must iterate if we can't trust order.
+                    // However, we can use bulkAdd and then re-fetch if names are unique? 
+                    // No, names might not be unique.
 
-                    // Let's assume the Export format includes IDs.
-
-                    // Import Wallets
-                    const walletIdMap = {} // Old -> New
+                    // Optimization: For small number of wallets (usually < 10), sequential add is fine and safer for ID mapping.
+                    // But for consistency with "bulk" plan, let's try to be efficient.
+                    // Actually, simple loop for wallets is negligible performance hit.
                     for (const w of wallets) {
                         const oldId = w.id
-                        delete w.id // Let Dexie generate new ID
-                        const newId = await db.wallets.add(w)
+                        const { id, ...rest } = w
+                        const newId = await db.wallets.add(rest)
                         walletIdMap[oldId] = newId
                     }
 
-                    // Import Categories
-                    const catIdMap = {} // Old -> New
-                    // We must import Parents first, then Children.
-                    // Sort by parentId (null first)
-                    categories.sort((a, b) => (a.parentId || 0) - (b.parentId || 0))
+                    // --- 2. Import Categories (Batch with Topological Sort) ---
+                    const catIdMap = {} // Old ID -> New ID
 
-                    for (const c of categories) {
-                        const oldId = c.id
-                        const oldParentId = c.parentId
-                        delete c.id
+                    // Separate parents (no parentId or null) and children
+                    const parents = categories.filter(c => !c.parentId);
+                    const children = categories.filter(c => c.parentId);
 
-                        // Map parentId
-                        if (oldParentId && catIdMap[oldParentId]) {
-                            c.parentId = catIdMap[oldParentId]
-                        } else {
-                            c.parentId = null // Fallback
-                        }
-
-                        const newId = await db.categories.add(c)
+                    // Insert Parents
+                    for (const p of parents) {
+                        const oldId = p.id
+                        const { id, ...rest } = p
+                        const newId = await db.categories.add(rest)
                         catIdMap[oldId] = newId
                     }
 
-                    // Import Transactions
-                    for (const t of transactions) {
-                        delete t.id // New ID
+                    // Insert Children (mapping their parentId)
+                    const childrenToInsert = children.map(c => {
+                        const oldId = c.id
+                        const oldParentId = c.parentId
+                        const { id, ...rest } = c
 
-                        // Remap IDs
-                        if (walletIdMap[t.walletId]) t.walletId = walletIdMap[t.walletId]
-                        if (catIdMap[t.categoryId]) t.categoryId = catIdMap[t.categoryId]
+                        // Map parentId
+                        const newParentId = catIdMap[oldParentId] || null; // Fallback to null if parent not found
 
-                        // Parse Date
-                        if (t.date) t.date = new Date(t.date)
+                        // We can't easily map the NEW ID back to the OLD ID if we use bulkAdd here 
+                        // unless we rely on order. 
+                        // BUT, transactions need the NEW Category ID.
+                        // So we MUST know the new ID for every old category ID.
+                        // Thus, we must iterate children too to build the map.
+                        return { ...rest, parentId: newParentId, _oldId: oldId }
+                    });
 
-                        // Parse Tags (String to Array)
-                        if (typeof t.tags === 'string') {
-                            t.tags = t.tags.split(',').map(tag => tag.trim())
-                        }
-
-                        await db.transactions.add(t)
+                    // Inserting children loop to build map
+                    for (const c of childrenToInsert) {
+                        const { _oldId, ...rest } = c;
+                        const newId = await db.categories.add(rest);
+                        catIdMap[_oldId] = newId;
                     }
+
+                    // --- 3. Import Transactions (Bulk) ---
+                    // Now we have all maps, we can prepare transactions for ONE big bulkAdd.
+
+                    const txsToInsert = transactions.map(t => {
+                        const { id, ...rest } = t;
+
+                        // Remap Foreign Keys
+                        const newWalletId = walletIdMap[t.walletId] || t.walletId; // Fallback to old if not found (risky but better than null?)
+                        const newCategoryId = catIdMap[t.categoryId] || t.categoryId;
+
+                        // Clean up data
+                        const date = t.date ? new Date(t.date) : new Date();
+                        const tags = typeof t.tags === 'string' ? t.tags.split(',').map(tag => tag.trim()) : (t.tags || []);
+
+                        return {
+                            ...rest,
+                            walletId: newWalletId,
+                            categoryId: newCategoryId,
+                            date,
+                            tags
+                        };
+                    });
+
+                    // THIS is where the performance gain is massive (1000+ items)
+                    await db.transactions.bulkAdd(txsToInsert);
                 })
 
                 resolve({ success: true, count: transactions.length })

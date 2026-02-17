@@ -5,10 +5,22 @@
 - [ ] Incorporar una línea de texto con un email de contacto para sugerencias/quejas en "Versión/Ayuda".
 - [x] Añadir sección de donaciones "Invítame a un café" con enlace a PayPal (<https://paypal.me/ossoney>) en "Versión/Ayuda", traducido a todos los idiomas.
 - [ ] **Metas de Ahorro**: Fijar objetivos (ej. "Coche") y ver progreso.
-- [x] **Vista de Calendario**: Ver gastos e ingresos diarios en un calendario mensual.
+- [x] **Vista de Calendario**: Ver gastos e ingresos diarios en un calendario mensual (con botón "Volver").
 - [ ] **Adjuntos y Recibos**: Adjuntar fotos/PDFs a las transacciones.
 - [x] **Modo Privacidad**: Botón para ocultar/difuminar importes sensibles.
 - [ ] **Gestión de Deudas**: Control de préstamos a/de amigos.
 - [x] **Transacciones Divididas**: Asignar múltiples categorías a un solo movimiento (Wizard).
 - [ ] **Listas de Compra**: Checklist que convierte items en gastos.
 - [ ] **Atajos de Teclado**: Teclas rápidas para desktop.
+- [ ] **Suscripciones Recurrentes**: Panel para cargos fijos (Netflix, Alquiler) y alertas.
+- [ ] **Presupuestos (Budgets)**: Límites de gasto por categoría con barras de progreso.
+- [x] **Backup Manual**: Exportación completa a JSON y Excel (ya funcional).
+- [ ] **Sincronización Automática**: Conexión directa con Google Drive/Dropbox para guardado automático.
+- [ ] **Importación Bancaria**: Carga de extractos CSV/Excel.
+- [ ] **Búsqueda Global**: Buscador rápido (Ctrl+K) de transacciones y ajustes.
+- [ ] **Modo Zen**: Vista simplificada solo con "Disponible hoy".
+- [ ] **Gasto Emocional**: Registrar cómo te sentiste al gastar (😍/😐/😰) y análisis mensual.
+- [ ] **Forecasting (Futuro)**: Proyección de saldo basada en gastos previos.
+- [ ] **Resumen Mensual Visual**: Estilo "Stories" con lo destacado del mes.
+- [ ] **Input por Voz (IA)**: Crear transacciones hablando.
+- [ ] **Gamificación de Metas**: Visuales que se colorean al ahorrar.

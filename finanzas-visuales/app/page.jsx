@@ -10,7 +10,7 @@ import { MonthSummary } from '@/components/dashboard/MonthSummary'
 
 import { Button } from '@/components/ui/UI'
 import { useStore } from '@/hooks/useStore'
-import { Plus, Download, User, Calendar } from 'lucide-react'
+import { Plus, Download, User, Calendar, Search } from 'lucide-react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '@/lib/db'
 import { formatCurrency } from '@/lib/utils'
@@ -103,8 +103,11 @@ export default function Dashboard() {
                 <section>
                     <div className="flex items-center justify-between mb-4">
                         <h2 className="text-lg font-semibold text-slate-200">{t('dashboard_recent_activity')}</h2>
-                        <Link href="/transactions" className="text-xs text-sky-400 font-medium hover:text-sky-300 transition-colors">
-                            {t('see_all') || 'See All'}
+                        <Link href="/transactions">
+                            <Button variant="ghost" className="hover:bg-slate-800/50 hover:text-sky-400 transition-colors flex items-center gap-3 h-auto py-2 px-3">
+                                <span className="text-xs font-medium text-slate-500 uppercase tracking-wider">{t('advanced_search')}</span>
+                                <Search className="w-8 h-8 text-slate-400" />
+                            </Button>
                         </Link>
                     </div>
                     <TransactionList />
