@@ -300,10 +300,9 @@ if (isBrowser) {
     // Seed data
     db.on('populate', async () => {
         // 1. Wallets
+        // 1. Wallets
         await db.wallets.bulkAdd([
-            { name: 'Efectivo', type: 'cash', balance: 0, currency: 'EUR', isDefault: true },
-            { name: 'Banco', type: 'bank', balance: 0, currency: 'EUR' },
-            { name: 'Ahorros', type: 'savings', balance: 0, currency: 'EUR' },
+            { name: 'Mi día a día', type: 'bank', balance: 0, currency: 'EUR', isDefault: true },
         ]);
 
         // 2. Income Categories

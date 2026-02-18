@@ -22,7 +22,15 @@ export const metadata = {
     icons: {
         icon: '/icon.svg',
         apple: '/icon.svg',
-    }
+    },
+    appleWebApp: {
+        capable: true,
+        statusBarStyle: 'black-translucent',
+        title: 'Visualis',
+    },
+    formatDetection: {
+        telephone: false,
+    },
 }
 
 export default function RootLayout({ children }) {

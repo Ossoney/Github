@@ -88,15 +88,15 @@ export function BudgetManager() {
                     <h3 className="text-slate-200 font-medium mb-4 flex items-center gap-2">
                         <span>🌍</span> Presupuesto Global Mensual
                     </h3>
-                    <div className="flex gap-4 items-center">
-                        <div className="relative flex-1 max-w-xs">
-                            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500">{symbol}</span>
+                    <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                        <div className="relative w-full sm:w-auto flex-1 max-w-sm">
+                            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-lg">{symbol}</span>
                             <Input
                                 type="number"
                                 value={globalBudget}
                                 onChange={(e) => handleGlobalChange(e.target.value)}
                                 placeholder="Sin límite"
-                                className="pl-8 text-lg font-semibold bg-slate-950 border-slate-700"
+                                className="pl-10 h-14 text-xl font-bold bg-slate-950 border-slate-700 shadow-inner"
                             />
                         </div>
                         <p className="text-sm text-slate-500">
