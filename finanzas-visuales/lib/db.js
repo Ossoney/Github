@@ -306,58 +306,56 @@ if (isBrowser) {
             { name: 'Ahorros', type: 'savings', balance: 0, currency: 'EUR' },
         ]);
 
-        // 2. Income Categories (Nested Structure from Image)
+        // 2. Income Categories
         const incomeParents = [
             { name: 'Alquiler', icon: 'Home', color: '#3b82f6' }, // Blue
-            { name: 'Devoluciones', icon: 'RotateCcw', color: '#6366f1' }, // Indigo
+            { name: 'Otros Ingresos', icon: 'Wallet', color: '#6366f1' }, // Indigo
             { name: 'Dividendos', icon: 'TrendingUp', color: '#8b5cf6' }, // Violet
             { name: 'Negocio', icon: 'Briefcase', color: '#a855f7' }, // Purple
-            { name: 'Regalos', icon: 'Gift', color: '#d946ef' }, // Fuchsia
             { name: 'Sueldo', icon: 'Banknote', color: '#10b981' }, // Emerald
-            { name: 'Wallapop-Vinted', icon: 'ShoppingBag', color: '#f59e0b' }, // Amber
         ];
 
         const incomeChildren = {
             'Alquiler': [
                 { name: 'Alquiler', icon: 'Home' },
-                { name: 'Recuperación', icon: 'RotateCcw' },
                 { name: 'Alquiler Vacacional', icon: 'Sun' }
             ],
-            'Devoluciones': [{ name: 'Devoluciones', icon: 'RotateCcw' }],
+            'Otros Ingresos': [
+                { name: 'Devoluciones', icon: 'RotateCcw' },
+                { name: 'Regalos', icon: 'Gift' },
+                { name: 'Ventas Segunda Mano', icon: 'ShoppingBag' }, // Was Wallapop-Vinted
+                { name: 'Herencias', icon: 'Scroll' }
+            ],
             'Dividendos': [
                 { name: 'Dividendos', icon: 'TrendingUp' },
                 { name: 'Intereses', icon: 'Percent' }
             ],
             'Negocio': [
                 { name: 'Negocio VUT', icon: 'Building' },
-                { name: 'Otro Negocio', icon: 'Briefcase' }
+                { name: 'Consultorias', icon: 'Briefcase' }
             ],
-            'Regalos': [{ name: 'Regalos', icon: 'Gift' }],
             'Sueldo': [
                 { name: 'Nómina', icon: 'Banknote' },
-                { name: 'Desempleo', icon: 'Umbrella' }
-            ],
-            'Wallapop-Vinted': [
-                { name: 'Ventas', icon: 'ShoppingBag' },
-                { name: 'Otros', icon: 'MoreHorizontal' }
+                { name: 'Desempleo', icon: 'Umbrella' },
+                { name: 'Extras', icon: 'Plus' }
             ]
         };
 
-        // Insert Parents & Children
+        // Insert Income Categories
         for (const parent of incomeParents) {
             const parentId = await db.categories.add({
                 name: parent.name,
                 icon: parent.icon,
                 color: parent.color,
                 type: 'income',
-                parentId: null // It's a root category
+                parentId: null
             });
 
             const childrenNames = incomeChildren[parent.name] || [];
             const children = childrenNames.map(child => ({
                 name: child.name,
-                icon: child.icon || parent.icon, // Use specific icon or inherit
-                color: parent.color, // Inherit color for consistency
+                icon: child.icon || parent.icon,
+                color: parent.color,
                 type: 'income',
                 parentId: parentId
             }));
@@ -367,12 +365,13 @@ if (isBrowser) {
             }
         }
 
-        // 3. Expense Categories (Parsed from Image)
+        // 3. Expense Categories
         const expenseParents = [
             { name: 'Automóvil', icon: 'Car', color: '#EF4444' }, // Red
             { name: 'Bancos', icon: 'Landmark', color: '#64748B' }, // Slate
-            { name: 'Compras', icon: 'ShoppingCart', color: '#10B981' }, // Emerald
-            { name: 'Deporte', icon: 'Dumbbell', color: '#F97316' }, // Orange
+            { name: 'Alimentación', icon: 'Utensils', color: '#10B981' }, // Emerald (New Parent)
+            { name: 'Compras', icon: 'ShoppingCart', color: '#F97316' }, // Orange
+            { name: 'Deporte', icon: 'Dumbbell', color: '#F59E0B' }, // Amber
             { name: 'Formación', icon: 'BookOpen', color: '#EAB308' }, // Yellow
             { name: 'Limpieza', icon: 'Sparkles', color: '#06B6D4' }, // Cyan
             { name: 'Moda', icon: 'Shirt', color: '#EC4899' }, // Pink
@@ -390,33 +389,35 @@ if (isBrowser) {
                 { name: 'Mantenimiento', icon: 'Wrench' },
                 { name: 'Multas', icon: 'AlertCircle' },
                 { name: 'Parking', icon: 'ParkingSquare' },
-                { name: 'Peajes', icon: 'Ticket' },
-                { name: 'Otros gastos automóvil', icon: 'Car' }
+                { name: 'Peajes', icon: 'Ticket' }
             ],
             'Bancos': [
                 { name: 'Hipoteca', icon: 'Home' },
                 { name: 'Préstamo', icon: 'Banknote' },
-                { name: 'Comisiones', icon: 'Percent' },
-                { name: 'Otras deudas', icon: 'CreditCard' }
+                { name: 'Comisiones', icon: 'Percent' }
+            ],
+            'Alimentación': [
+                { name: 'Supermercado', icon: 'ShoppingCart' },
+                { name: 'Restaurante', icon: 'Utensils' }, // Moved from Ocio
+                { name: 'Snacks', icon: 'Cookie' }
             ],
             'Compras': [
                 { name: 'Electrónica', icon: 'Smartphone' },
                 { name: 'Oficina', icon: 'Printer' },
-                { name: 'Otras', icon: 'ShoppingBag' },
+                { name: 'Varias', icon: 'ShoppingBag' }, // Renamed from Otras
                 { name: 'Regalos', icon: 'Gift' },
-                { name: 'Reparaciones', icon: 'Hammer' },
-                { name: 'Supermercado', icon: 'ShoppingCart' }
+                { name: 'Reparaciones', icon: 'Hammer' }
             ],
             'Deporte': [
-                { name: 'Carreras/Tr', icon: 'Trophy' },
+                { name: 'Carreras/Travesías', icon: 'Trophy' },
                 { name: 'Club', icon: 'UserPlus' },
-                { name: 'Deporte', icon: 'Dumbbell' },
-                { name: 'Gimnasio', icon: 'Dumbbell' }
+                { name: 'Gimnasio', icon: 'Dumbbell' } // Removed duplicate 'Deporte' child?
             ],
             'Formación': [
                 { name: 'Curso', icon: 'GraduationCap' },
-                { name: 'Libros/Comic', icon: 'Book' },
-                { name: 'Suscripcion', icon: 'CreditCard' }
+                { name: 'Libros/Comics', icon: 'Book' },
+                { name: 'Suscripcion', icon: 'CreditCard' },
+                { name: 'Material', icon: 'PenTool' }
             ],
             'Limpieza': [
                 { name: 'Lavandería', icon: 'Droplets' },
@@ -424,14 +425,14 @@ if (isBrowser) {
             ],
             'Moda': [
                 { name: 'Calzado', icon: 'Footprints' },
-                { name: 'Ropa Deportiva', icon: 'Activity' },
                 { name: 'Ropa Vestir', icon: 'Shirt' }
             ],
             'Ocio': [
                 { name: 'Bar', icon: 'Beer' },
                 { name: 'Cafés', icon: 'Coffee' },
-                { name: 'Ocio', icon: 'Smile' },
-                { name: 'Restaurante', icon: 'Utensils' }
+                { name: 'Ocio Diverso', icon: 'Smile' }, // Renamed from Ocio
+                { name: 'Cine', icon: 'Film' },
+                { name: 'Netflix-HBO', icon: 'Tv' }
             ],
             'Salud': [
                 { name: 'Farmacia', icon: 'Pill' },
@@ -443,7 +444,6 @@ if (isBrowser) {
                 { name: 'Agua', icon: 'Droplets' },
                 { name: 'Luz', icon: 'Zap' },
                 { name: 'Comunidad', icon: 'Users' },
-                { name: 'Electricidad', icon: 'Zap' },
                 { name: 'Gas', icon: 'Flame' },
                 { name: 'Impuestos', icon: 'FileText' },
                 { name: 'Internet', icon: 'Wifi' },
@@ -456,7 +456,8 @@ if (isBrowser) {
                 { name: 'Metro', icon: 'Train' },
                 { name: 'Taxi', icon: 'Car' },
                 { name: 'Tren', icon: 'Train' },
-                { name: 'Uber-Cabify', icon: 'Car' }
+                { name: 'Uber-Cabify', icon: 'Car' },
+                { name: 'Coche Compartido', icon: 'Car' }
             ],
             'Viajes': [
                 { name: 'Entradas', icon: 'Ticket' },
@@ -466,7 +467,7 @@ if (isBrowser) {
             'Mascotas': [
                 { name: 'Veterinario', icon: 'Stethoscope' },
                 { name: 'Mascota', icon: 'Dog' },
-                { name: 'Otros', icon: 'MoreHorizontal' }
+                { name: 'Juguetes', icon: 'Gamepad2' }
             ]
         };
 

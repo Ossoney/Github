@@ -83,7 +83,23 @@ export function VersionHelp() {
                     </ul>
                 </section>
 
-                {/* 6. Donaciones */}
+                {/* 6. Suggestions & Bugs */}
+                <section className="space-y-3 pt-4 border-t border-slate-800">
+                    <h3 className="text-lg font-semibold text-slate-100 flex items-center gap-2">
+                        <Heart className="w-5 h-5 text-pink-500" />
+                        {t('suggestions_title')}
+                    </h3>
+                    <p className="text-sm text-slate-400">
+                        {t('suggestions_desc')}
+                    </p>
+                    <div className="pt-2">
+                        <code className="px-3 py-1.5 bg-slate-800 text-pink-400 rounded-lg text-sm font-medium border border-slate-700 select-all">
+                            visualis@visualis.app
+                        </code>
+                    </div>
+                </section>
+
+                {/* 7. Donaciones */}
                 <section className="space-y-3 pt-4 border-t border-slate-800">
                     <h3 className="text-lg font-semibold text-amber-400 flex items-center gap-2">
                         <Coffee className="w-5 h-5" />
@@ -104,7 +120,7 @@ export function VersionHelp() {
                 </section>
 
                 <div className="pt-6 border-t border-slate-800 text-center">
-                    <p className="text-xs text-slate-500 font-mono">VISUALIS v1.1.31 • {t('version_date')}</p>
+                    <p className="text-xs text-slate-500 font-mono">VISUALIS v1.1.32 • {t('version_date')}</p>
                 </div>
             </CardContent>
         </Card>
