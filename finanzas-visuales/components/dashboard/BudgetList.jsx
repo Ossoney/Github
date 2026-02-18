@@ -112,7 +112,7 @@ export function BudgetList() {
     }
 
     return (
-        <Card className="border-slate-800 bg-slate-900/50">
+        <Card className="border-slate-800 bg-slate-900/50 h-full">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-slate-200 text-lg">{t('budgets')}</CardTitle>
 

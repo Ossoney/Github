@@ -11,6 +11,7 @@ const dictionaries = {
     es: {
         app_title: 'VISUALIS',
         app_subtitle: 'tus finanzas fáciles',
+        meta_title: 'Visualis | tus Finanzas',
         dashboard_recent_activity: 'Actividad Reciente',
         dashboard_monthly_budget: 'Presupuesto del Mes',
         total_balance: 'Balance Total',
@@ -261,6 +262,7 @@ const dictionaries = {
     en: {
         app_title: 'VISUALIS',
         app_subtitle: 'your finances',
+        meta_title: 'Visualis | Your Finances',
         dashboard_recent_activity: 'Recent Activity',
         dashboard_monthly_budget: 'Monthly Budget',
         total_balance: 'Total Balance',
@@ -596,6 +598,7 @@ const dictionaries = {
     gl: {
         app_title: 'VISUALIS',
         app_subtitle: 'as túas finanzas',
+        meta_title: 'Visualis | as túas Finanzas',
         dashboard_recent_activity: 'Actividade Recente',
         dashboard_monthly_budget: 'Orzamento do Mes',
         total_balance: 'Balance Total',
@@ -966,6 +969,7 @@ const dictionaries = {
     eu: {
         app_title: 'VISUALIS',
         app_subtitle: 'zure finantzak',
+        meta_title: 'Visualis | zure Finantzak',
         dashboard_recent_activity: 'Azken Jarduera',
         dashboard_monthly_budget: 'Hileko Aurrekontua',
         total_balance: 'Balantze Osoa',
@@ -1218,6 +1222,7 @@ const dictionaries = {
     ca: {
         app_title: 'VISUALIS',
         app_subtitle: 'les teves finances',
+        meta_title: 'Visualis | les teves Finances',
         dashboard_recent_activity: 'Activitat Recent',
         dashboard_monthly_budget: 'Pressupost del Mes',
         total_balance: 'Balanç Total',

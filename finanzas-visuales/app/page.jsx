@@ -98,10 +98,10 @@ export default function Dashboard() {
             </section>
 
             {/* Budgets & Transactions Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 {/* Recent Transactions (Left) */}
-                <section>
-                    <div className="flex items-center justify-between mb-4">
+                <section className="h-full flex flex-col">
+                    <div className="flex items-center justify-between mb-4 min-h-[3rem]">
                         <h2 className="text-lg font-semibold text-slate-200">{t('dashboard_recent_activity')}</h2>
                         <Link href="/transactions">
                             <Button variant="ghost" className="hover:bg-slate-800/50 hover:text-sky-400 transition-colors flex items-center gap-3 h-auto py-2 px-3">
@@ -110,15 +110,19 @@ export default function Dashboard() {
                             </Button>
                         </Link>
                     </div>
-                    <TransactionList />
+                    <div className="flex-1">
+                        <TransactionList />
+                    </div>
                 </section>
 
                 {/* Budgets Section (Right) */}
-                <section>
-                    <div className="flex items-center justify-between mb-4">
+                <section className="h-full flex flex-col">
+                    <div className="flex items-center justify-between mb-4 min-h-[3rem]">
                         <h2 className="text-lg font-semibold text-slate-200">{t('dashboard_monthly_budget')}</h2>
                     </div>
-                    <BudgetList />
+                    <div className="flex-1">
+                        <BudgetList />
+                    </div>
                 </section>
             </div>
 
