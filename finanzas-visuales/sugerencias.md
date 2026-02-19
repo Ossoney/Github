@@ -19,7 +19,7 @@
 - [ ] **Importación Bancaria**: Carga de extractos CSV/Excel.
 - [ ] **Búsqueda Global**: Buscador rápido (Ctrl+K) de transacciones y ajustes.
 - [ ] **Modo Zen**: Vista simplificada solo con "Disponible hoy".
-- [ ] **Gasto Emocional**: Registrar cómo te sentiste al gastar (😍/😐/😰) y análisis mensual.
+- [x] **Gasto Emocional**: Registrar cómo te sentiste al gastar (😍/😐/😰) y análisis mensual.
 - [ ] **Forecasting (Futuro)**: Proyección de saldo basada en gastos previos.
 - [ ] **Resumen Mensual Visual**: Estilo "Stories" con lo destacado del mes.
 - [ ] **Input por Voz (IA)**: Crear transacciones hablando.

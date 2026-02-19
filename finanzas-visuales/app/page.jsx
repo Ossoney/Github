@@ -7,6 +7,7 @@ import { MonthSelector } from '@/components/dashboard/MonthSelector'
 import { TransactionForm } from '@/components/dashboard/TransactionForm'
 import { BudgetList } from '@/components/dashboard/BudgetList'
 import { MonthSummary } from '@/components/dashboard/MonthSummary'
+import { EmotionSummary } from '@/components/dashboard/EmotionSummary'
 
 import { Button } from '@/components/ui/UI'
 import { useStore } from '@/hooks/useStore'
@@ -90,6 +91,9 @@ export default function Dashboard() {
             {/* Month Summary (Income vs Expense vs Result) */}
             <section>
                 <MonthSummary expandedType={expandedType} onExpand={setExpandedType} />
+                <div className="mt-4">
+                    <EmotionSummary />
+                </div>
             </section>
 
             {/* Wallets Section (Hidden per user request, but kept in code) */}

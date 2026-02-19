@@ -13,7 +13,8 @@ Visualis es una aplicación de gestión financiera personal diseñada para ser p
 
 ### **Transacciones (Ingresos y Gastos)**
 
-* **Registro Detallado**: Permite registrar cantidad, fecha, cuenta origen/destino, categoría, descripción, notas y etiquetas.
+* **Registro Detallado**: Permite registrar cantidad, fecha, cuenta origen/destino, categoría, descripción, notas, etiquetas y **Estado de Ánimo**.
+* **Gasto Emocional**: Registra cómo te sentiste al realizar un gasto (😍, 🙂, 😐, 😰, 😠) para entender tus patrones de comportamiento.
 * **Edición y Borrado**: Control total para modificar o eliminar cualquier movimiento pasado.
 * **Buscador Avanzado**: Filtros potentes por texto, rango de fechas, tipo, categoría o cuenta.
 * **Transacciones Divididas**: Capacidad de dividir un gasto único en múltiples categorías (ej. compra en hipermercado dividida en Alimentación y Limpieza).

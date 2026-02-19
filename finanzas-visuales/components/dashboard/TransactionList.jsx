@@ -95,7 +95,8 @@ export function TransactionList() {
                                     </div>
                                 </div>
                             </div>
-                            <div className={`font-semibold ${isExpense ? 'text-slate-200' : 'text-emerald-400'}`}>
+                            <div className={`font-semibold ${isExpense ? 'text-slate-200' : 'text-emerald-400'} flex items-center gap-2`}>
+                                {tx.emotion && <span className="text-sm grayscale opacity-70">{tx.emotion}</span>}
                                 {isExpense ? '- ' : '+ '}
                                 <Money amount={tx.amount} />
                             </div>

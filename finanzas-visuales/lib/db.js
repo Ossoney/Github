@@ -494,6 +494,17 @@ if (isBrowser) {
             }
         }
     });
+
+    // Version 8: Emotional Spending
+    db.version(8).stores({
+        wallets: '++id, name, type',
+        categories: '++id, name, type, parentId',
+        transactions: '++id, walletId, categoryId, date, type, emotion, *tags', // Added emotion
+        settings: 'id',
+        recurring: '++id, walletId, categoryId, dayOfMonth, type, active',
+        tags: '++id, name',
+        budgets: '++id, categoryId, amount, type',
+    });
 }
 
 /**

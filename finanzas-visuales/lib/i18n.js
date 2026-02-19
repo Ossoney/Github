@@ -101,6 +101,11 @@ const dictionaries = {
         no_recurring: 'No tienes transacciones recurrentes.',
         confirm_delete_recurring: '¿Eliminar recurrencia?',
 
+        make_recurring: 'Hacer recurrente',
+        make_recurring_desc_expense: 'Se creará un gasto fijo mensual.',
+        make_recurring_desc_income: 'Se creará un ingreso fijo mensual.',
+        recurring_added: 'Recurrencia creada correctamente',
+
         new_category_parent: 'Nueva Categoría Principal',
         new_category_child: 'Nueva Subcategoría',
         add_subcategory: 'Añadir Subcategoría',
@@ -142,6 +147,8 @@ const dictionaries = {
         help_split_desc: 'Divide un ticket único en múltiples categorías (ej. Supermercado -> Alimentación + Limpieza).',
         help_context_title: 'Contexto Inteligente',
         help_context_desc: 'El botón "+" detecta si estás en Ingresos o Gastos y se adapta automáticamente.',
+        help_emotional_title: 'Gasto Emocional',
+        help_emotional_desc: 'Registra cómo te sentiste (😍, 😐, 😠) para entender tus hábitos.',
 
         help_structure_title: 'Estructura',
         help_accounts_desc: 'Gestiona múltiples cuentas (bancos, efectivo, tarjetas).',
@@ -386,6 +393,11 @@ const dictionaries = {
         no_recurring: 'No recurring transactions.',
         confirm_delete_recurring: 'Delete recurring transaction?',
 
+        make_recurring: 'Make recurring',
+        make_recurring_desc_expense: 'Will create a fixed monthly expense.',
+        make_recurring_desc_income: 'Will create a fixed monthly income.',
+        recurring_added: 'Recurring transaction created successfully',
+
         new_category_parent: 'New Main Category',
         new_category_child: 'New Subcategory',
         add_subcategory: 'Add Subcategory',
@@ -427,6 +439,8 @@ const dictionaries = {
         help_split_desc: 'Split a single receipt into multiple categories (e.g. Grocery -> Food + Cleaning).',
         help_context_title: 'Smart Context',
         help_context_desc: 'The "+" button detects if you are viewing Income or Expenses and adapts automatically.',
+        help_emotional_title: 'Emotional Spending',
+        help_emotional_desc: 'Track how you felt (😍, 😐, 😠) to understand your habits.',
 
         help_structure_title: '2. Organizational Structure',
         help_accounts_desc: 'Multi-account management (Bank, Cash, Savings) and specific projects.',
@@ -688,6 +702,11 @@ const dictionaries = {
         no_recurring: 'Non tes transaccións recorrentes.',
         confirm_delete_recurring: 'Eliminar recorrente?',
 
+        make_recurring: 'Facer recorrente',
+        make_recurring_desc_expense: 'Crearase un gasto fixo mensual.',
+        make_recurring_desc_income: 'Crearase un ingreso fixo mensual.',
+        recurring_added: 'Recorrencia creada correctamente',
+
         new_category_parent: 'Nova Categoría Principal',
         new_category_child: 'Nova Subcategoría',
         add_subcategory: 'Engadir Subcategoría',
@@ -729,6 +748,8 @@ const dictionaries = {
         help_split_desc: 'Divide un ticket único en múltiples categorías (ex. Supermercado -> Alimentación + Limpeza).',
         help_context_title: 'Contexto Intelixente',
         help_context_desc: 'O botón "+" detecta se estás en Ingresos ou Gastos e adáptase automaticamente.',
+        help_emotional_title: 'Gasto Emocional',
+        help_emotional_desc: 'Rexistra como te sentiches (😍, 😐, 😠) para entender os teus hábitos.',
 
         help_structure_title: '2. Estrutura Organizativa',
         help_accounts_desc: 'Xestión multi-conta (Banco, Efectivo, Aforros) e proxectos específicos.',
@@ -990,6 +1011,10 @@ const dictionaries = {
         cancel: 'Utzi',
         delete: 'Ezabatu',
         edit: 'Editatu',
+        make_recurring: 'Errepikakor bihurtu',
+        make_recurring_desc_expense: 'Hileroko gastu finkoa sortuko da.',
+        make_recurring_desc_income: 'Hileroko sarrera finkoa sortuko da.',
+        recurring_added: 'Errepikakorra ondo sortu da',
         new_transaction: 'Transakzio Berria',
         edit_transaction: 'Editatu Transakzioa',
         amount: 'Zenbatekoa',
@@ -1243,6 +1268,10 @@ const dictionaries = {
         cancel: 'Cancel·lar',
         delete: 'Eliminar',
         edit: 'Editar',
+        make_recurring: 'Fer recurrent',
+        make_recurring_desc_expense: 'Es crearà una despesa fixa mensual.',
+        make_recurring_desc_income: 'Es crearà un ingrés fix mensual.',
+        recurring_added: 'Recurrència creada correctament',
         new_transaction: 'Nova Transacció',
         edit_transaction: 'Editar Transacció',
         amount: 'Quantitat',

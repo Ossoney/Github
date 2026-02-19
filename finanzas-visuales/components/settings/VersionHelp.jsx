@@ -28,6 +28,7 @@ export function VersionHelp() {
                         <li><strong className="text-slate-300">{t('transaction_history')}:</strong> {t('help_transactions_desc')}</li>
                         <li><strong className="text-slate-300">{t('help_split_title')}:</strong> {t('help_split_desc')}</li>
                         <li><strong className="text-slate-300">{t('help_context_title')}:</strong> {t('help_context_desc')}</li>
+                        <li><strong className="text-slate-300">{t('help_emotional_title')}:</strong> {t('help_emotional_desc')}</li>
                     </ul>
                 </section>
 

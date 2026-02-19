@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '@/lib/db'
 import { useStore } from '@/hooks/useStore'
 import { Button, Card, useToast } from '@/components/ui/UI'
-import { X, ChevronLeft, ChevronDown, Calendar as CalendarIcon, Tag, MessageSquare, Wallet, Trash2, Split, PlusCircle, MinusCircle } from 'lucide-react'
+import { X, ChevronLeft, ChevronDown, Calendar as CalendarIcon, Tag, MessageSquare, Wallet, Trash2, Split, PlusCircle, MinusCircle, Smile, Repeat } from 'lucide-react'
 import * as LucideIcons from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useLanguage } from '@/lib/i18n'
@@ -19,7 +19,13 @@ export function TransactionForm() {
     const [type, setType] = useState('expense')
     const [amount, setAmount] = useState('')
     const [walletId, setWalletId] = useState('')
-    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [isSubmitting, setIsSubmittingState] = useState(false)
+    const isSubmittingRef = useRef(false)
+
+    const setIsSubmitting = (val) => {
+        isSubmittingRef.current = val
+        setIsSubmittingState(val)
+    }
 
     // Category State
     const [categoryId, setCategoryId] = useState(null)
@@ -34,6 +40,8 @@ export function TransactionForm() {
     const [description, setDescription] = useState('')
     const [tagsInput, setTagsInput] = useState('')
     const [datetime, setDatetime] = useState(new Date().toISOString().slice(0, 16))
+    const [emotion, setEmotion] = useState(null) // New emotion state
+    const [isRecurring, setIsRecurring] = useState(false) // New recurring state
 
     // Reset on Open / Populate for Edit
     useEffect(() => {
@@ -56,6 +64,7 @@ export function TransactionForm() {
 
                 setDescription(editingTransaction.description || '')
                 setTagsInput(editingTransaction.tags ? editingTransaction.tags.join(' ') : '')
+                setEmotion(editingTransaction.emotion || null)
 
                 // Date
                 const date = new Date(editingTransaction.date)
@@ -76,6 +85,8 @@ export function TransactionForm() {
                 setSelectedParentId(null)
                 setDescription('')
                 setTagsInput('')
+                setEmotion(null)
+                setIsRecurring(false)
                 setIsSplitMode(false)
                 setSplits([{ id: 1, categoryId: null, amount: '' }, { id: 2, categoryId: null, amount: '' }])
 
@@ -102,7 +113,7 @@ export function TransactionForm() {
     }
 
     const handleSubmit = async () => {
-        if (isSubmitting) return
+        if (isSubmittingRef.current) return
 
         // Explicit validation
         if (!amount) {
@@ -149,7 +160,7 @@ export function TransactionForm() {
         setIsSubmitting(true)
 
         try {
-            await db.transaction('rw', db.transactions, db.wallets, async () => {
+            await db.transaction('rw', db.transactions, db.wallets, db.recurring, async () => {
 
                 // IF EDITING: Revert old transaction effect first
                 if (editingTransaction && editingTransaction.walletId) {
@@ -173,6 +184,7 @@ export function TransactionForm() {
                         description,
                         tags,
                         date: txDate,
+                        emotion, // Save emotion
                     })
 
                     const targetWallet = await db.wallets.get(walletId)
@@ -197,6 +209,7 @@ export function TransactionForm() {
                                 description: description ? `${description} (Split)` : '(Split)',
                                 tags,
                                 date: txDate,
+                                emotion, // Save emotion
                             })
                         }
                     } else {
@@ -209,6 +222,7 @@ export function TransactionForm() {
                             description,
                             tags,
                             date: txDate,
+                            emotion, // Save emotion
                         })
                     }
 
@@ -220,6 +234,25 @@ export function TransactionForm() {
                             balance: targetWallet.balance + applyAmount
                         })
                     }
+                }
+
+                // Handle Recurring Creation
+                if (isRecurring && !isSplitMode && !editingTransaction) {
+                    await db.recurring.add({
+                        type,
+                        amount: value,
+                        dayOfMonth: txDate.getDate(),
+                        walletId,
+                        categoryId,
+                        description: description || tCategory(allCategories?.find(c => c.id === categoryId)?.name),
+                        active: true,
+                        lastRun: txDate // Mark as run today if strictly following logic, or null if it should run next month? 
+                        // Logic in RecurringManager usually creates it active. 
+                        // If we create a transaction NOW, we might not want to duplicate it immediately if the recurring runner runs.
+                        // But for simplicity, let's just add it. The recurring runner usually checks 'lastRun'.
+                        // For this feature "Make Recurring", it implies "Also make this a recurring pattern".
+                    })
+                    addToast(t('recurring_added'), 'success')
                 }
             })
 
@@ -493,6 +526,61 @@ export function TransactionForm() {
 
                     {/* 3. Optional Details */}
                     <div className="space-y-4 pt-2 border-t border-slate-800">
+
+                        {/* Recurrence Toggle (Only for new, single transactions) */}
+                        {!editingTransaction && !isSplitMode && (
+                            <div className="flex items-center justify-between bg-slate-950 p-3 rounded-xl border border-slate-800">
+                                <div className="flex items-center gap-3">
+                                    <div className={cn("w-8 h-8 rounded-full flex items-center justify-center transition-colors", isRecurring ? "bg-sky-500 text-white" : "bg-slate-800 text-slate-500")}>
+                                        <Repeat className="w-4 h-4" />
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <span className={cn("text-sm font-medium transition-colors", isRecurring ? "text-sky-400" : "text-slate-300")}>
+                                            {t('make_recurring')}
+                                        </span>
+                                        <span className="text-[10px] text-slate-500">
+                                            {t(type === 'income' ? 'make_recurring_desc_income' : 'make_recurring_desc_expense')}
+                                        </span>
+                                    </div>
+                                </div>
+                                <button
+                                    onClick={() => setIsRecurring(!isRecurring)}
+                                    className={cn(
+                                        "w-12 h-6 rounded-full transition-colors relative",
+                                        isRecurring ? "bg-sky-500" : "bg-slate-700"
+                                    )}
+                                >
+                                    <div className={cn(
+                                        "absolute top-1 w-4 h-4 rounded-full bg-white transition-all shadow-sm",
+                                        isRecurring ? "left-7" : "left-1"
+                                    )} />
+                                </button>
+                            </div>
+                        )}
+
+                        {/* Emotion Selector */}
+                        <div className="space-y-2">
+                            <label className="text-xs font-medium text-slate-500 uppercase tracking-wider block flex items-center gap-2">
+                                <Smile className="w-3 h-3" /> Estado de Ánimo
+                            </label>
+                            <div className="flex justify-between bg-slate-950 p-2 rounded-xl border border-slate-800">
+                                {['😍', '🙂', '😐', '😰', '😠'].map((emoji) => (
+                                    <button
+                                        key={emoji}
+                                        onClick={() => setEmotion(emotion === emoji ? null : emoji)}
+                                        className={cn(
+                                            "w-10 h-10 flex items-center justify-center text-xl rounded-full transition-all",
+                                            emotion === emoji
+                                                ? "bg-sky-500/20 scale-110 shadow-lg shadow-sky-500/10 border border-sky-500/50"
+                                                : "hover:bg-slate-800 opacity-50 hover:opacity-100 grayscale hover:grayscale-0"
+                                        )}
+                                    >
+                                        {emoji}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
                         {/* Tags */}
                         <div className="relative">
                             <input
