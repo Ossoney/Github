@@ -19,6 +19,7 @@ export function TransactionForm() {
     const [type, setType] = useState('expense')
     const [amount, setAmount] = useState('')
     const [walletId, setWalletId] = useState('')
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
     // Category State
     const [categoryId, setCategoryId] = useState(null)
@@ -37,6 +38,7 @@ export function TransactionForm() {
     // Reset on Open / Populate for Edit
     useEffect(() => {
         if (isTransactionModalOpen) {
+            setIsSubmitting(false)
             if (editingTransaction) {
                 // POPULATE FOR EDIT
                 setType(editingTransaction.type)
@@ -100,6 +102,8 @@ export function TransactionForm() {
     }
 
     const handleSubmit = async () => {
+        if (isSubmitting) return
+
         // Explicit validation
         if (!amount) {
             addToast(t('validation_amount'), 'error')
@@ -141,6 +145,8 @@ export function TransactionForm() {
             addToast(t('validation_date_invalid'), 'error')
             return
         }
+
+        setIsSubmitting(true)
 
         try {
             await db.transaction('rw', db.transactions, db.wallets, async () => {
@@ -221,6 +227,7 @@ export function TransactionForm() {
         } catch (error) {
             console.error("Failed to save transaction:", error)
             addToast(`${t('error_saving')}: ${error.message}`, 'error')
+            setIsSubmitting(false)
         }
     }
 
@@ -398,7 +405,11 @@ export function TransactionForm() {
 
                                 <div className="flex justify-between items-center pt-2">
                                     <div className="text-xs text-slate-500">
-                                        Total: <span className={cn("font-bold", Math.abs(splits.reduce((acc, s) => acc + (parseFloat(s.amount) || 0), 0) - (parseFloat(amount) || 0)) < 0.01 ? "text-emerald-500" : "text-rose-500")}>
+                                        Total: <span className={cn("font-bold",
+                                            Math.abs(splits.reduce((acc, s) => acc + (parseFloat(s.amount) || 0), 0) - (parseFloat(amount) || 0)) < 0.01
+                                                ? (type === 'income' ? "text-emerald-500" : "text-rose-500")
+                                                : "text-amber-500"
+                                        )}>
                                             {symbol}{splits.reduce((acc, s) => acc + (parseFloat(s.amount) || 0), 0).toFixed(2)}
                                         </span>
                                         {' / '}{symbol}{parseFloat(amount || 0).toFixed(2)}
@@ -547,9 +558,9 @@ export function TransactionForm() {
                         className="w-full py-6 text-lg rounded-xl flex-1"
                         variant={type === 'expense' ? 'danger' : 'default'}
                         // Allow saving if amount is present. Category check happens inside handleSubmit depending on split mode
-                        disabled={!amount}
+                        disabled={!amount || isSubmitting}
                     >
-                        {editingTransaction ? t('update') : `${t('save')} ${type === 'expense' ? t('expense') : t('income')}`}
+                        {isSubmitting ? 'Guardando...' : (editingTransaction ? t('update') : `${t('save')} ${type === 'expense' ? t('expense') : t('income')}`)}
                     </Button>
                 </div>
 
