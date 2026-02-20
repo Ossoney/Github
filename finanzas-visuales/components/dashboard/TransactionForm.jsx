@@ -3,6 +3,7 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '@/lib/db'
 import { useStore } from '@/hooks/useStore'
 import { Button, Card, useToast } from '@/components/ui/UI'
+import { ConfirmDialog } from '@/components/ui/ConfirmDialog'
 import { X, ChevronLeft, ChevronDown, Calendar as CalendarIcon, Tag, MessageSquare, Wallet, Trash2, Split, PlusCircle, MinusCircle, Smile, Repeat } from 'lucide-react'
 import * as LucideIcons from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -51,10 +52,11 @@ export function TransactionForm() {
                 // POPULATE FOR EDIT
                 setType(editingTransaction.type)
                 setAmount(editingTransaction.amount !== undefined && editingTransaction.amount !== null ? editingTransaction.amount.toString() : '')
-                setWalletId(editingTransaction.walletId)
+                setWalletId(editingTransaction.walletId ? Number(editingTransaction.walletId) : '')
 
                 // Set Category (Parent or Child)
-                setCategoryId(editingTransaction.categoryId)
+                const currentCatId = editingTransaction.categoryId ? Number(editingTransaction.categoryId) : null
+                setCategoryId(currentCatId)
                 const category = allCategories?.find(c => c.id === editingTransaction.categoryId)
                 if (category?.parentId) {
                     setSelectedParentId(category.parentId)
@@ -163,34 +165,36 @@ export function TransactionForm() {
             await db.transaction('rw', db.transactions, db.wallets, db.recurring, async () => {
 
                 // IF EDITING: Revert old transaction effect first
-                if (editingTransaction && editingTransaction.walletId) {
-                    const oldWallet = await db.wallets.get(editingTransaction.walletId)
-                    if (oldWallet) {
-                        const revertAmount = editingTransaction.type === 'income'
-                            ? -editingTransaction.amount
-                            : editingTransaction.amount
+                if (editingTransaction) {
+                    if (editingTransaction.walletId) {
+                        const oldWallet = await db.wallets.get(Number(editingTransaction.walletId))
+                        if (oldWallet) {
+                            const revertAmount = editingTransaction.type === 'income'
+                                ? -editingTransaction.amount
+                                : editingTransaction.amount
 
-                        await db.wallets.update(editingTransaction.walletId, {
-                            balance: oldWallet.balance + revertAmount
-                        })
+                            await db.wallets.update(Number(editingTransaction.walletId), {
+                                balance: oldWallet.balance + revertAmount
+                            })
+                        }
                     }
 
-                    // Update the transaction record (Standard Edit - No Split support for editing yet)
-                    await db.transactions.update(editingTransaction.id, {
-                        walletId,
-                        categoryId,
+                    // Update the transaction record
+                    await db.transactions.update(Number(editingTransaction.id), {
+                        walletId: Number(walletId),
+                        categoryId: categoryId ? Number(categoryId) : null,
                         amount: value,
                         type,
-                        description,
+                        description: description || '',
                         tags,
                         date: txDate,
-                        emotion, // Save emotion
+                        emotion: emotion || null, // Ensure null if empty
                     })
 
-                    const targetWallet = await db.wallets.get(walletId)
+                    const targetWallet = await db.wallets.get(Number(walletId))
                     if (targetWallet) {
                         const applyAmount = type === 'income' ? value : -value
-                        await db.wallets.update(walletId, {
+                        await db.wallets.update(Number(walletId), {
                             balance: targetWallet.balance + applyAmount
                         })
                     }
@@ -202,35 +206,35 @@ export function TransactionForm() {
                         for (const split of splits) {
                             const splitValue = parseFloat(split.amount)
                             await db.transactions.add({
-                                walletId,
-                                categoryId: split.categoryId,
+                                walletId: Number(walletId),
+                                categoryId: split.categoryId ? Number(split.categoryId) : null,
                                 amount: splitValue,
                                 type,
                                 description: description ? `${description} (Split)` : '(Split)',
                                 tags,
                                 date: txDate,
-                                emotion, // Save emotion
+                                emotion: emotion || null,
                             })
                         }
                     } else {
                         // Standard Single Transaction
                         await db.transactions.add({
-                            walletId,
-                            categoryId,
+                            walletId: Number(walletId),
+                            categoryId: categoryId ? Number(categoryId) : null,
                             amount: value,
                             type,
-                            description,
+                            description: description || '',
                             tags,
                             date: txDate,
-                            emotion, // Save emotion
+                            emotion: emotion || null,
                         })
                     }
 
                     // Apply NEW transaction total effect (Split or Single, total is the same for wallet)
-                    const targetWallet = await db.wallets.get(walletId)
+                    const targetWallet = await db.wallets.get(Number(walletId))
                     if (targetWallet) {
                         const applyAmount = type === 'income' ? value : -value
-                        await db.wallets.update(walletId, {
+                        await db.wallets.update(Number(walletId), {
                             balance: targetWallet.balance + applyAmount
                         })
                     }
@@ -242,11 +246,11 @@ export function TransactionForm() {
                         type,
                         amount: value,
                         dayOfMonth: txDate.getDate(),
-                        walletId,
-                        categoryId,
-                        description: description || tCategory(allCategories?.find(c => c.id === categoryId)?.name),
+                        walletId: Number(walletId),
+                        categoryId: categoryId ? Number(categoryId) : null,
+                        description: description || tCategory(allCategories?.find(c => c.id === Number(categoryId))?.name),
                         active: true,
-                        lastRun: txDate // Mark as run today if strictly following logic, or null if it should run next month? 
+                        lastRun: txDate
                         // Logic in RecurringManager usually creates it active. 
                         // If we create a transaction NOW, we might not want to duplicate it immediately if the recurring runner runs.
                         // But for simplicity, let's just add it. The recurring runner usually checks 'lastRun'.
@@ -264,9 +268,45 @@ export function TransactionForm() {
         }
     }
 
-    const handleDelete = async () => {
-        if (!editingTransaction || !confirm(t('confirm_delete_transaction'))) return
+    // Delete Confirmation State
+    const [isDeleteConfirmOpen, setIsDeleteConfirmOpen] = useState(false)
 
+    const handleDelete = () => {
+        if (!editingTransaction) return
+        setIsDeleteConfirmOpen(true)
+    }
+
+    const confirmDelete = async () => {
+        if (!editingTransaction) return
+
+        try {
+            await db.transaction('rw', db.transactions, db.wallets, async () => {
+                // 1. Revert Wallet Balance
+                if (editingTransaction.walletId) {
+                    const wallet = await db.wallets.get(Number(editingTransaction.walletId))
+                    if (wallet) {
+                        const revertAmount = editingTransaction.type === 'income'
+                            ? -editingTransaction.amount
+                            : editingTransaction.amount
+
+                        await db.wallets.update(Number(editingTransaction.walletId), {
+                            balance: wallet.balance + revertAmount
+                        })
+                    }
+                }
+
+                // 2. Delete Transaction
+                await db.transactions.delete(Number(editingTransaction.id))
+            })
+
+            addToast(t('transaction_deleted'), 'success')
+            closeTransactionModal()
+        } catch (error) {
+            console.error("Failed to delete transaction:", error)
+            addToast(`${t('error_deleting')}: ${error.message}`, 'error')
+        } finally {
+            setIsDeleteConfirmOpen(false)
+        }
     }
 
     if (!isTransactionModalOpen) return null
@@ -653,6 +693,15 @@ export function TransactionForm() {
                 </div>
 
             </Card>
+
+            <ConfirmDialog
+                isOpen={isDeleteConfirmOpen}
+                onClose={() => setIsDeleteConfirmOpen(false)}
+                onConfirm={confirmDelete}
+                title={t('confirm_delete_transaction')}
+                message={t('confirm_delete_transaction_desc') || "¿Estás seguro de que quieres eliminar esta transacción? Esta acción no se puede deshacer y el saldo de la cuenta se actualizará."}
+                type="danger"
+            />
         </div>
     )
 }

@@ -83,6 +83,7 @@ const dictionaries = {
         error_deleting: 'Error al eliminar',
         confirm: 'Confirmar',
         confirm_action: 'Confirmación',
+        confirm_delete_transaction_desc: '¿Estás seguro de que quieres eliminar esta transacción? Esta acción no se puede deshacer y el saldo de la cuenta se actualizará.',
 
         // Settings Managers
         my_accounts: 'Mis Cuentas/Proyectos',
@@ -375,6 +376,7 @@ const dictionaries = {
         error_deleting: 'Error deleting',
         confirm: 'Confirm',
         confirm_action: 'Confirmation',
+        confirm_delete_transaction_desc: 'Are you sure you want to delete this transaction? This action cannot be undone and your account balance will be updated.',
 
         // Settings Managers
         my_accounts: 'My Accounts/Projects',
@@ -1058,6 +1060,7 @@ const dictionaries = {
         try_adjusting_filters: 'Saiatu iragazkiak aldatzen.',
         confirm: 'Baieztatu',
         confirm_action: 'Baieztapena',
+        confirm_delete_transaction_desc: 'Ziur zaude transakzio hau ezabatu nahi duzula? Ekintza hau ezin da desegin eta kontuaren saldoa eguneratuko da.',
 
         // Settings Managers
         my_accounts: 'Nire Kontuak/Proiektuak',
@@ -1289,6 +1292,7 @@ const dictionaries = {
         nuclear_button: 'Botó Nuclear',
         confirm: 'Confirmar',
         confirm_action: 'Confirmació',
+        confirm_delete_transaction_desc: 'Estàs segur que vols eliminar aquesta transacció? Aquesta acció no es pot desfer i el saldo del compte s\'actualitzarà.',
 
         // Settings Managers
         my_accounts: 'Els Meus Comptes/Projectes',

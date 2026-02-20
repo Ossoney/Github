@@ -9,16 +9,17 @@ const outfit = Outfit({
     display: 'swap',
 })
 
+export const viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    themeColor: '#0f172a',
+}
+
 export const metadata = {
     title: 'Visualis | tus Finanzas',
     description: 'Controla tus gastos e ingresos de forma visual, privada y sencilla. Tu gestor de finanzas personales local-first.',
     manifest: '/manifest.json',
-    themeColor: '#0f172a',
-    viewport: {
-        width: 'device-width',
-        initialScale: 1,
-        maximumScale: 1,
-    },
     icons: {
         icon: '/icon.svg',
         apple: '/icon.svg',

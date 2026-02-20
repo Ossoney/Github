@@ -1,22 +1,41 @@
 import { format } from 'date-fns'
+import { db } from './db'
 
 export const exportToExcel = async (transactions, wallets, categories) => {
     // Dynamic import to reduce initial bundle size
     const XLSX = await import('xlsx');
 
+    // Fetch global currency
+    const settings = await db.settings.get('global')
+    const currency = settings?.currency || 'EUR'
+
     // 1. Prepare Data
     const data = transactions.map(tx => {
-        const wallet = wallets.find(w => w.id === tx.walletId)
-        const category = categories.find(c => c.id === tx.categoryId)
+        const wallet = wallets.find(w => w.id === Number(tx.walletId))
+        const category = categories.find(c => c.id === Number(tx.categoryId))
+
+        let catName = 'Sin Categoría'
+        let subCatName = ''
+
+        if (category) {
+            if (category.parentId) {
+                const parent = categories.find(c => c.id === Number(category.parentId))
+                catName = parent?.name || 'Sin Categoría'
+                subCatName = category.name
+            } else {
+                catName = category.name
+            }
+        }
 
         return {
-            Fecha: format(new Date(tx.date), 'dd/MM/yyyy HH:mm'),
-            Tipo: tx.type === 'expense' ? 'Gasto' : 'Ingreso',
-            Categoría: category?.name || 'Sin Categoría',
-            Wallet: wallet?.name || 'Desconocido',
-            Descripción: tx.description || '',
-            Monto: tx.amount,
-            Moneda: 'EUR' // Harcoded for now based on wallet currency default
+            'fecha': format(new Date(tx.date), 'dd/MM/yyyy HH:mm'),
+            'cuenta': wallet?.name || 'Desconocido',
+            'tipo': tx.type === 'expense' ? 'gasto' : 'ingreso',
+            'categoría': catName,
+            'subcategoría': subCatName,
+            'importe': tx.amount,
+            'moneda': currency,
+            'descripción': tx.description || ''
         }
     })
 
