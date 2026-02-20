@@ -1,4 +1,50 @@
-import { db } from './db'
+import { db, recalculateBalances } from './db'
+
+// Maps common category name keywords to appropriate Lucide icons
+const ICON_MAP = [
+    // Food & Groceries
+    { keywords: ['aliment', 'comida', 'supermercado', 'restaur', 'food', 'grocer', 'cocina', 'cena', 'almuerzo', 'desayuno', 'cafe', 'café'], icon: 'ShoppingCart' },
+    // Transport
+    { keywords: ['transport', 'gasolina', 'combustible', 'coche', 'car', 'auto', 'moto', 'metro', 'bus', 'taxi', 'uber', 'tren', 'vuelo', 'avion', 'viaje', 'parking', 'peaje'], icon: 'Car' },
+    // Health
+    { keywords: ['salud', 'health', 'medic', 'farmacia', 'doctor', 'hospital', 'deporte', 'gym', 'sport', 'fitness', 'dental', 'optic'], icon: 'Heart' },
+    // Housing
+    { keywords: ['hogar', 'casa', 'alquiler', 'hipoteca', 'luz', 'agua', 'gas', 'internet', 'telefono', 'suministr', 'home', 'rent', 'mortgage', 'electricity', 'housing'], icon: 'Home' },
+    // Shopping / Clothing
+    { keywords: ['ropa', 'moda', 'calzado', 'fashion', 'compras', 'shopping', 'tienda'], icon: 'ShoppingBag' },
+    // Work / Salary
+    { keywords: ['trabajo', 'salario', 'sueldo', 'nomina', 'work', 'salary', 'income', 'ingreso', 'empresa', 'freelance', 'negocio'], icon: 'Briefcase' },
+    // Education
+    { keywords: ['educacion', 'cursos', 'libros', 'colegio', 'universidad', 'school', 'education', 'formacion'], icon: 'GraduationCap' },
+    // Entertainment / Leisure
+    { keywords: ['ocio', 'entretenimiento', 'cine', 'musica', 'netflix', 'spotify', 'juegos', 'games', 'leisure', 'recreation', 'suscripcion', 'subscri'], icon: 'Play' },
+    // Savings / Investments
+    { keywords: ['ahorro', 'inversion', 'saving', 'invest', 'bolsa', 'fondos', 'pension'], icon: 'PiggyBank' },
+    // Gifts / Social
+    { keywords: ['regalo', 'gift', 'cumpleaños', 'social', 'celebracion', 'fiesta'], icon: 'Gift' },
+    // Technology
+    { keywords: ['tecnologia', 'tech', 'ordenador', 'movil', 'phone', 'computer', 'electronico', 'electronic'], icon: 'Smartphone' },
+    // Travel
+    { keywords: ['viaje', 'hotel', 'travel', 'vacacion', 'vacation', 'turismo', 'alojamiento'], icon: 'Plane' },
+    // Pets
+    { keywords: ['mascota', 'perro', 'gato', 'pet', 'veterinario', 'vet'], icon: 'PawPrint' },
+    // Kids / Children
+    { keywords: ['hijo', 'niño', 'bebe', 'guarderia', 'child', 'kid', 'baby'], icon: 'Baby' },
+    // Beauty / Personal Care
+    { keywords: ['belleza', 'peluqueria', 'beauty', 'estetica', 'cosmetica', 'personal'], icon: 'Sparkles' },
+    // Bank / Finances
+    { keywords: ['banco', 'bank', 'comision', 'prestamo', 'credito', 'loan', 'finanza', 'finance'], icon: 'Landmark' },
+]
+
+function guessIcon(name, isParent = true) {
+    const normalized = name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    for (const entry of ICON_MAP) {
+        if (entry.keywords.some(kw => normalized.includes(kw))) {
+            return entry.icon
+        }
+    }
+    return isParent ? 'Folder' : 'Circle'
+}
 
 export async function importFromExcel(file) {
     const XLSX = await import('xlsx');
@@ -111,9 +157,29 @@ async function importFlatFormat(rows) {
                 walletMap.set(walletName.toString().toLowerCase(), walletId)
             }
 
-            // 2. Resolve Type
-            const rawType = colMap.type ? row[colMap.type]?.toString().toLowerCase() : ''
-            const type = (rawType.includes('ingreso') || rawType.includes('income')) ? 'income' : 'expense'
+            // 2. Resolve Type (multi-strategy)
+            const rawType = colMap.type ? row[colMap.type]?.toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') : ''
+            const rawAmount = colMap.amount ? row[colMap.amount] : null
+
+            // Strategy A: explicit income keywords in the type column
+            const INCOME_KEYWORDS = ['ingreso', 'ingresos', 'income', 'entrada', 'cobro', 'cobrar', 'abono', 'recibido', 'recibo', 'venta', 'salario', 'nomina', 'sueldo', 'in']
+            const EXPENSE_KEYWORDS = ['gasto', 'gastos', 'expense', 'salida', 'pago', 'pagar', 'cargo', 'debito', 'debit', 'out', 'compra']
+
+            let type = null
+            if (rawType) {
+                if (INCOME_KEYWORDS.some(kw => rawType.includes(kw))) type = 'income'
+                else if (EXPENSE_KEYWORDS.some(kw => rawType.includes(kw))) type = 'expense'
+            }
+
+            // Strategy B: sign of the amount (negative = expense, positive = income)
+            if (!type && rawAmount !== null) {
+                const numAmount = typeof rawAmount === 'number' ? rawAmount : parseFloat(rawAmount?.toString().replace(/[^0-9.,-]/g, '').replace(',', '.')) || 0
+                if (numAmount < 0) type = 'expense'
+                else if (numAmount > 0) type = 'income'
+            }
+
+            // Fallback
+            if (!type) type = 'expense'
 
             // 3. Resolve Category
             const catName = (colMap.category ? row[colMap.category] : 'Otros') || 'Otros'
@@ -123,7 +189,7 @@ async function importFlatFormat(rows) {
                 parentId = await db.categories.add({
                     name: catName.toString(),
                     type: type,
-                    icon: 'HelpCircle',
+                    icon: guessIcon(catName.toString(), true),
                     color: type === 'income' ? '#10b981' : '#f43f5e',
                     parentId: null
                 })
@@ -140,7 +206,7 @@ async function importFlatFormat(rows) {
                     subId = await db.categories.add({
                         name: subCatName.toString(),
                         type: type,
-                        icon: 'Circle',
+                        icon: guessIcon(subCatName.toString(), false),
                         color: '#64748b',
                         parentId: parentId
                     })
@@ -162,19 +228,17 @@ async function importFlatFormat(rows) {
                 }
             }
 
-            // 6. Normalize Amount
+            // 6. Normalize Amount  (rawAmount already declared in step 2)
             let amount = 0
-            const rawAmount = colMap.amount ? row[colMap.amount] : 0
-            if (typeof rawAmount === 'number') {
-                amount = rawAmount
-            } else if (typeof rawAmount === 'string') {
+            const rawAmountVal = rawAmount ?? 0
+            if (typeof rawAmountVal === 'number') {
+                amount = rawAmountVal
+            } else if (typeof rawAmountVal === 'string') {
                 // Handle "1.234,56" or "1234.56" and remove currency symbols
-                let cleanAmount = rawAmount.replace(/[^\d.,-]/g, '')
+                let cleanAmount = rawAmountVal.replace(/[^\d.,-]/g, '')
                 if (cleanAmount.includes(',') && cleanAmount.includes('.')) {
-                    // Format like 1.234,56 -> remove dot, replace comma with dot
                     cleanAmount = cleanAmount.replace(/\./g, '').replace(',', '.')
                 } else if (cleanAmount.includes(',')) {
-                    // Format like 1234,56 -> replace comma with dot
                     cleanAmount = cleanAmount.replace(',', '.')
                 }
                 amount = parseFloat(cleanAmount) || 0
@@ -202,6 +266,9 @@ async function importFlatFormat(rows) {
             }
         }
     })
+
+    // After transaction is finished, we do one final recalculation to be sure
+    await recalculateBalances()
 }
 
 /**
@@ -262,6 +329,9 @@ async function importLegacyFormat(workbook, transactions) {
         })
         await db.transactions.bulkAdd(txsToInsert)
     })
+
+    // Final sync for legacy format too
+    await recalculateBalances()
 }
 
 function parseDate(dateStr) {

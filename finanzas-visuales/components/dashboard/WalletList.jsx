@@ -11,7 +11,10 @@ const ICONS = {
 }
 
 export function WalletList() {
-    const wallets = useLiveQuery(() => db.wallets.toArray())
+    const wallets = useLiveQuery(async () => {
+        const all = await db.wallets.toArray()
+        return all.sort((a, b) => (a.order ?? a.id) - (b.order ?? b.id))
+    })
 
     if (!wallets) return null
 

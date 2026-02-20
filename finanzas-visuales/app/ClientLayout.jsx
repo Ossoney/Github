@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import { processRecurringTransactions } from '@/lib/recurring'
+import { processAutosave } from '@/lib/autosave'
 import { LanguageProvider, useLanguage } from '@/lib/i18n'
 import { PrivacyProvider } from '@/lib/privacy'
 import { ToastProvider } from '@/components/ui/UI'
@@ -11,6 +12,7 @@ export function ClientLayout({ children }) {
     // Check for recurring transactions & Theme on mount
     useEffect(() => {
         processRecurringTransactions()
+        processAutosave()
 
         // Load Theme
         const loadTheme = async () => {

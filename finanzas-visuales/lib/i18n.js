@@ -111,6 +111,10 @@ const dictionaries = {
         new_category_child: 'Nueva Subcategoría',
         add_subcategory: 'Añadir Subcategoría',
         confirm_delete_category: '¿Borrar categoría? Si es padre, se borrarán también sus hijos.',
+        move_transactions: 'Mover movimientos a…',
+        move_and_delete: 'Mover y eliminar',
+        category_to_delete: 'A eliminar',
+        subcategory_to_delete: 'Subcategoría a eliminar',
         // Settings Menu
         settings: 'Configuración',
         profile: 'Perfil',
@@ -253,6 +257,13 @@ const dictionaries = {
         no_transactions_found: 'No se encontraron transacciones.',
         try_adjusting_filters: 'Prueba a cambiar los filtros.',
 
+        // Maintenance & Tools
+        sync_success: 'Saldos sincronizados correctamente.',
+        autosave_title: 'Autoguardado Diario',
+        autosave_enabled: 'Activar Autoguardado',
+        autosave_desc: 'Guarda una copia de seguridad local en el navegador cada 24 horas (formato JSON).',
+        current_balance: 'Saldo Actual',
+
         // Calendar
         calendar_view: 'Vista de Calendario',
         calendar_desc: 'Visualiza tus ingresos y gastos mes a mes.',
@@ -334,6 +345,13 @@ const dictionaries = {
         no_transactions_found: 'No transactions found.',
         try_adjusting_filters: 'Try adjusting filters.',
 
+        // Maintenance & Tools
+        sync_success: 'Balances synchronized successfully.',
+        autosave_title: 'Daily Autosave',
+        autosave_enabled: 'Enable Autosave',
+        autosave_desc: 'Saves a local JSON backup in your browser every 24 hours.',
+        current_balance: 'Current Balance',
+
         // Calendar
         calendar_view: 'Calendar View',
         calendar_desc: 'Visualize your income and expenses month by month.',
@@ -404,6 +422,10 @@ const dictionaries = {
         new_category_child: 'New Subcategory',
         add_subcategory: 'Add Subcategory',
         confirm_delete_category: 'Delete category? If parent, children will be deleted too.',
+        move_transactions: 'Move transactions to…',
+        move_and_delete: 'Move and delete',
+        category_to_delete: 'To delete',
+        subcategory_to_delete: 'Subcategory to delete',
         // Settings Menu
         settings: 'Settings',
         profile: 'Profile',
@@ -712,7 +734,11 @@ const dictionaries = {
         new_category_parent: 'Nova Categoría Principal',
         new_category_child: 'Nova Subcategoría',
         add_subcategory: 'Engadir Subcategoría',
-        confirm_delete_category: 'Borrar categoría? Se é pai, borraranse tamén os fillos.',
+        confirm_delete_category: 'Borrar categoría? Se é pai, borraránse tamén os fillos.',
+        move_transactions: 'Mover movementos a…',
+        move_and_delete: 'Mover e eliminar',
+        category_to_delete: 'A eliminar',
+        subcategory_to_delete: 'Subcategoría a eliminar',
         // Settings Menu
         settings: 'Configuración',
         profile: 'Perfil',
@@ -824,6 +850,10 @@ const dictionaries = {
         import_confirm: '⚠️ Estás seguro de IMPORTAR este ficheiro?\n\n"{fileName}"\n\nELIMINARANSE todos os datos actuais e substituiranse polos do ficheiro.',
         import_success: '✅ Importación completada. Restauráronse {count} transaccións.',
         import_error: '❌ Erro ao importar: ',
+        autosave_title: 'Autogardar Diario',
+        autosave_enabled: 'Activar Autogardar',
+        autosave_desc: 'Garda unha copia de seguridade local no navegador cada 24 horas (formato JSON).',
+
 
         // Category Translations
         category_names: {
@@ -1083,6 +1113,10 @@ const dictionaries = {
         new_category_child: 'Azpikategoria Berria',
         add_subcategory: 'Gehitu Azpikategoria',
         confirm_delete_category: 'Kategoria ezabatu? Nagusia bada, semeak ere ezabatuko dira.',
+        move_transactions: 'Mugitu mugimenduak hona…',
+        move_and_delete: 'Mugitu eta ezabatu',
+        category_to_delete: 'Ezabatzekoa',
+        subcategory_to_delete: 'Azpikategoria ezabatu',
         // Settings Menu
         settings: 'Ezarpenak',
         profile: 'Profila',
@@ -1315,6 +1349,10 @@ const dictionaries = {
         new_category_child: 'Nova Subcategoria',
         add_subcategory: 'Afegir Subcategoria',
         confirm_delete_category: 'Esborrar categoria? Si és pare, s\'esborraran també els fills.',
+        move_transactions: 'Moure moviments a…',
+        move_and_delete: 'Moure i eliminar',
+        category_to_delete: 'A eliminar',
+        subcategory_to_delete: 'Subcategoria a eliminar',
         // Settings Menu
         settings: 'Configuració',
         profile: 'Perfil',

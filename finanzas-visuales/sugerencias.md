@@ -13,7 +13,9 @@
 - [ ] **Listas de Compra**: Checklist que convierte items en gastos.
 - [ ] **Atajos de Teclado**: Teclas rápidas para desktop.
 - [ ] **Suscripciones Recurrentes**: Panel para cargos fijos (Netflix, Alquiler) y alertas.
-- [ ] **Presupuestos (Budgets)**: Límites de gasto por categoría con barras de progreso.
+- [x] **Presupuestos (Budgets)**: Límites de gasto por categoría con barras de progreso.
+- [x] **Filtrado por Cuenta**: Capacidad de ver todo el dashboard filtrado por una cuenta/proyecto específico.
+- [x] **Histórico Total (∞)**: Opción para ver todo el historial de datos sin límites de meses.
 - [x] **Backup Manual**: Exportación completa a JSON y Excel (ya funcional).
 - [ ] **Sincronización Automática**: Conexión directa con Google Drive/Dropbox para guardado automático.
 - [ ] **Importación Bancaria**: Carga de extractos CSV/Excel.

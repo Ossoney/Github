@@ -495,8 +495,8 @@ if (isBrowser) {
         }
     });
 
-    // Version 8: Emotional Spending
-    db.version(8).stores({
+    // Version 7: Add emotion to transactions
+    db.version(7).stores({
         wallets: '++id, name, type',
         categories: '++id, name, type, parentId',
         transactions: '++id, walletId, categoryId, date, type, emotion, *tags', // Added emotion
@@ -504,6 +504,21 @@ if (isBrowser) {
         recurring: '++id, walletId, categoryId, dayOfMonth, type, active',
         tags: '++id, name',
         budgets: '++id, categoryId, amount, type',
+    });
+
+    // Version 8: Add order to wallets
+    db.version(8).stores({
+        wallets: '++id, name, type, order',
+        categories: '++id, name, type, parentId',
+        transactions: '++id, walletId, categoryId, date, type, emotion, *tags',
+        settings: 'id',
+        recurring: '++id, walletId, categoryId, dayOfMonth, type, active',
+        tags: '++id, name',
+        budgets: '++id, categoryId, amount, type',
+    }).upgrade(async tx => {
+        await tx.wallets.toCollection().modify((wallet, ref) => {
+            wallet.order = wallet.id;
+        });
     });
 }
 
@@ -554,5 +569,24 @@ export const importDB = async (data) => {
         }
     });
 
+    // 3. Recalculate balances after import to ensure consistency
+    await recalculateBalances();
+
     return true;
+};
+
+/**
+ * Recalculates wallet balances based on the transaction history.
+ */
+export const recalculateBalances = async () => {
+    return await db.transaction('rw', db.wallets, db.transactions, async () => {
+        const wallets = await db.wallets.toArray();
+        for (const wallet of wallets) {
+            const txs = await db.transactions.where('walletId').equals(wallet.id).toArray();
+            const newBalance = txs.reduce((acc, tx) => {
+                return acc + (tx.type === 'income' ? tx.amount : -tx.amount);
+            }, 0);
+            await db.wallets.update(wallet.id, { balance: newBalance });
+        }
+    });
 };

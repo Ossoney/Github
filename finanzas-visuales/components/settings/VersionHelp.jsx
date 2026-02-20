@@ -121,7 +121,7 @@ export function VersionHelp() {
                 </section>
 
                 <div className="pt-6 border-t border-slate-800 text-center">
-                    <p className="text-xs text-slate-500 font-mono">VISUALIS v1.1.33 • {t('version_date')}</p>
+                    <p className="text-xs text-slate-500 font-mono">VISUALIS v1.2.35 • {t('version_date')}</p>
                 </div>
             </CardContent>
         </Card>

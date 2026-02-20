@@ -13,7 +13,7 @@ import { useLanguage } from '@/lib/i18n'
 // ----------------------------------------------------------------------
 export const Button = forwardRef(({ className, variant = "default", size = "default", as: Component = "button", ...props }, ref) => {
     const variants = {
-        default: "bg-sky-500 text-slate-50 hover:bg-sky-600 shadow-lg shadow-sky-500/25",
+        default: "bg-sky-500 text-primary-foreground hover:bg-sky-600 shadow-lg shadow-sky-500/25",
         outline: "border border-slate-700 bg-transparent hover:bg-slate-800 text-slate-100",
         ghost: "hover:bg-slate-800 text-slate-300 hover:text-slate-100",
         danger: "bg-rose-500 text-rose-50 hover:bg-rose-600 shadow-lg shadow-rose-500/25",

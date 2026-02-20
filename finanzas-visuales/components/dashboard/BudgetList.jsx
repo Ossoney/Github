@@ -13,7 +13,7 @@ import { Money } from '@/components/ui/Money' // Import Money
 
 export function BudgetList() {
     const [expandedId, setExpandedId] = useState(null)
-    const { currentDate } = useStore() // Use filtered date
+    const { currentDate, selectedWalletId } = useStore() // Use filtered date & wallet
     const { t } = useLanguage()
 
     const data = useLiveQuery(async () => {
@@ -33,11 +33,15 @@ export function BudgetList() {
         const catMap = new Map(allCategories.map(c => [c.id, c]))
 
         // 3. Get Transactions
-        const transactions = await db.transactions
+        const rawTransactions = await db.transactions
             .where('date')
             .between(start, end, true, true) // Inclusive
             .filter(tx => tx.type === 'expense')
             .toArray()
+
+        const transactions = selectedWalletId
+            ? rawTransactions.filter(tx => tx.walletId === selectedWalletId)
+            : rawTransactions
 
         // 4. Aggregate by Parent
         const groups = {}
@@ -95,7 +99,7 @@ export function BudgetList() {
                 limit: globalBudget
             }
         }
-    }, [currentDate])
+    }, [currentDate, selectedWalletId])
 
     if (!data) return null
     const { groups, global } = data

@@ -13,7 +13,7 @@ module.exports = {
                 'card-foreground': 'var(--card-foreground)',
                 primary: {
                     DEFAULT: 'rgb(var(--primary-500))',
-                    foreground: '#0f172a',
+                    foreground: 'rgb(var(--primary-foreground))',
                 },
                 // ALIAS SKY TO PRIMARY for backward compatibility & theming
                 sky: {

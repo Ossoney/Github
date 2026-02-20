@@ -8,7 +8,7 @@ import { useStore } from '@/hooks/useStore'
 import { startOfMonth, endOfMonth, isToday, isYesterday, format, formatDistanceToNow, differenceInCalendarDays } from 'date-fns'
 
 export function TransactionList() {
-    const { openTransactionModal, currentDate } = useStore()
+    const { openTransactionModal, currentDate, selectedWalletId } = useStore()
     const { t, tCategory, locale, language } = useLanguage()
 
     const transactions = useLiveQuery(async () => {
@@ -16,11 +16,15 @@ export function TransactionList() {
         const start = startOfMonth(currentDate)
         const end = endOfMonth(currentDate)
 
-        const txs = await db.transactions
+        const rawTxs = await db.transactions
             .where('date')
             .between(start, end, true, true)
             .reverse()
             .toArray()
+
+        const txs = selectedWalletId
+            ? rawTxs.filter(t => t.walletId === selectedWalletId)
+            : rawTxs
 
         // Manual join since Dexie doesn't do SQL joins
         const categories = await db.categories.toArray();
@@ -33,7 +37,7 @@ export function TransactionList() {
             category: catMap.get(tx.categoryId),
             wallet: walletMap.get(tx.walletId)
         }));
-    }, [currentDate])
+    }, [currentDate, selectedWalletId])
 
     if (!transactions?.length) {
         return (

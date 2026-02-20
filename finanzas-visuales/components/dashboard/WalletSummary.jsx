@@ -14,14 +14,15 @@ const ICONS = {
 }
 
 export function WalletSummary() {
-    const { currentDate } = useStore()
+    const { currentDate, selectedWalletId, setSelectedWalletId } = useStore()
     const { t } = useLanguage()
 
     const data = useLiveQuery(async () => {
         const start = startOfMonth(currentDate)
         const end = endOfMonth(currentDate)
 
-        const wallets = await db.wallets.toArray()
+        const allWallets = await db.wallets.toArray()
+        const wallets = allWallets.sort((a, b) => (a.order ?? a.id) - (b.order ?? b.id))
         const monthTransactions = await db.transactions
             .where('date')
             .between(start, end, true, true)
@@ -51,7 +52,15 @@ export function WalletSummary() {
     return (
         <div className="flex gap-3 overflow-x-auto pb-2 custom-scrollbar">
             {/* TOTAL CARD (First Item) */}
-            <div className="min-w-[200px] bg-gradient-to-br from-indigo-900/20 to-slate-900/50 border border-indigo-500/30 rounded-lg p-3 shrink-0">
+            <div
+                onClick={() => setSelectedWalletId(null)}
+                className={cn(
+                    'min-w-[200px] bg-gradient-to-br from-indigo-900/20 to-slate-900/50 border rounded-lg p-3 shrink-0 cursor-pointer transition-all',
+                    selectedWalletId === null
+                        ? 'border-indigo-400 ring-2 ring-indigo-500/40'
+                        : 'border-indigo-500/30 hover:border-indigo-400/60'
+                )}
+            >
                 <div className="flex items-center gap-2 mb-2">
                     <div className="p-1.5 bg-indigo-500/20 rounded-md text-indigo-400">
                         <TrendingUp className="w-4 h-4" />
@@ -88,7 +97,13 @@ export function WalletSummary() {
                 return (
                     <div
                         key={wallet.id}
-                        className="min-w-[200px] bg-slate-900/30 border border-slate-800 rounded-lg p-3 hover:border-slate-700 transition-colors shrink-0"
+                        onClick={() => setSelectedWalletId(wallet.id)}
+                        className={cn(
+                            'min-w-[200px] bg-slate-900/30 border rounded-lg p-3 transition-all cursor-pointer shrink-0',
+                            selectedWalletId === wallet.id
+                                ? 'border-sky-400 ring-2 ring-sky-500/30'
+                                : 'border-slate-800 hover:border-slate-600'
+                        )}
                     >
                         {/* Header */}
                         <div className="flex items-center gap-2 mb-2">

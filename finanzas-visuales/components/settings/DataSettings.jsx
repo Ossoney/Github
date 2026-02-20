@@ -1,14 +1,23 @@
 'use client'
-
+import { useState, useEffect } from 'react'
+import { useLiveQuery } from 'dexie-react-hooks'
 import { db, exportDB, importDB } from '@/lib/db'
-import { Button, Card, CardHeader, CardTitle, CardContent, useToast } from '@/components/ui/UI'
-import { Trash2, AlertTriangle, Database, Download, FileSpreadsheet, Upload, Shield, Save, RefreshCw } from 'lucide-react'
+import { Button, Card, CardHeader, CardTitle, CardContent, useToast, Switch } from '@/components/ui/UI'
+import { Trash2, AlertTriangle, Database, Download, FileSpreadsheet, Upload, Shield, Save, RefreshCw, Clock } from 'lucide-react'
 import { exportToExcel, importFromExcel } from '@/lib/utils'
 import { useLanguage } from '@/lib/i18n'
 
 export function DataSettings() {
+    const globalSettings = useLiveQuery(() => db.settings.get('global'))
     const { addToast } = useToast()
     const { t } = useLanguage()
+    const [autosaveEnabled, setAutosaveEnabled] = useState(false)
+
+    useEffect(() => {
+        if (globalSettings) {
+            setAutosaveEnabled(globalSettings.autosaveEnabled || false)
+        }
+    }, [globalSettings])
 
     // --- NUCLEAR RESET ---
     const handleReset = async () => {
@@ -65,6 +74,18 @@ export function DataSettings() {
         e.target.value = ''
     }
 
+    // --- AUTOSAVE LOGIC ---
+    const handleToggleAutosave = async (enabled) => {
+        try {
+            await db.settings.update('global', { autosaveEnabled: enabled })
+            setAutosaveEnabled(enabled)
+            addToast(t('save'), 'success')
+        } catch (error) {
+            console.error("Error toggling autosave:", error)
+            addToast(t('error_toggling_autosave') || 'Error toggling autosave', 'error')
+        }
+    }
+
     // --- EXCEL DATA (Interoperability) ---
     const handleExcelExport = async () => {
         const transactions = await db.transactions.toArray()
@@ -90,7 +111,7 @@ export function DataSettings() {
     }
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 pb-20">
 
             {/* 1. SECURITY / BACKUPS */}
             <Card className="border-slate-800 bg-slate-900/50">
@@ -147,7 +168,31 @@ export function DataSettings() {
                 </CardContent>
             </Card>
 
-            {/* 2. EXCEL DATA */}
+            {/* 2. AUTOSAVE DIARIO */}
+            <Card className="border-slate-800 bg-slate-900/50">
+                <CardHeader>
+                    <CardTitle className="text-slate-200 flex items-center gap-2">
+                        <Clock className="w-5 h-5 text-amber-500" />
+                        {t('autosave_title')}
+                    </CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-slate-800/50 border border-slate-800">
+                        <div className="space-y-1">
+                            <h3 className="text-sm font-bold text-slate-200">{t('autosave_enabled')}</h3>
+                            <p className="text-xs text-slate-500 max-w-sm">
+                                {t('autosave_desc')}
+                            </p>
+                        </div>
+                        <Switch
+                            checked={autosaveEnabled}
+                            onCheckedChange={handleToggleAutosave}
+                        />
+                    </div>
+                </CardContent>
+            </Card>
+
+            {/* 3. EXCEL DATA */}
             <Card className="border-slate-800 bg-slate-900/50">
                 <CardHeader>
                     <CardTitle className="text-slate-200 flex items-center gap-2">
@@ -192,7 +237,7 @@ export function DataSettings() {
                 </CardContent>
             </Card>
 
-            {/* 3. DANGER ZONE */}
+            {/* 4. DANGER ZONE */}
             <Card className="border-red-900/50 bg-red-950/10">
                 <CardHeader>
                     <CardTitle className="text-red-500 flex items-center gap-2">
