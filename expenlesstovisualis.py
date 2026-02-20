@@ -4,10 +4,8 @@ from tkinter import filedialog
 import os
 
 def seleccionar_archivo():
-    # Crear una ventana oculta de Tkinter
     root = tk.Tk()
     root.withdraw()
-    # Abrir el selector de archivos
     ruta_archivo = filedialog.askopenfilename(
         title="Selecciona el reporte de ExpenLess (CSV)",
         filetypes=[("Archivos CSV", "*.csv"), ("Todos los archivos", "*.*")]
@@ -15,27 +13,25 @@ def seleccionar_archivo():
     return ruta_archivo
 
 def transformar_reporte():
-    # 1. Preguntar al usuario por el archivo
     archivo_origen = seleccionar_archivo()
     
     if not archivo_origen:
         print("No se seleccionó ningún archivo. Operación cancelada.")
         return
 
-    # Definir nombre de salida basado en el nombre original
     nombre_base = os.path.splitext(archivo_origen)[0]
     archivo_destino = f"{nombre_base}_formato_visualis.xlsx"
 
     print(f"\nProcesando: {os.path.basename(archivo_origen)}...")
 
     try:
-        # 2. Leer el archivo (manejando líneas corruptas típicas de reportes CSV)
+        # 1. Leer el archivo (manejando líneas corruptas)
         df = pd.read_csv(archivo_origen, on_bad_lines='skip')
 
-        # 3. Limpieza: quitar filas sin datos esenciales
+        # 2. Limpieza de datos nulos en campos críticos
         df = df.dropna(subset=['Account Description', 'Amount', 'Transaction Date'])
 
-        # 4. Crear estructura para Visualis
+        # 3. Crear estructura para Visualis con los nuevos campos
         new_df = pd.DataFrame()
 
         new_df['fecha'] = df['Transaction Date']
@@ -49,17 +45,29 @@ def transformar_reporte():
         new_df['importe o monto'] = df['Amount']
         new_df['moneda'] = df['Currency symbol']
         
-        # Combinar nombre y descripción para no perder info
+        # Combinar nombre y descripción original
         new_df['descripción'] = df['Transaction Name'].fillna(df['Transaction Description']).fillna('')
 
-        # 5. Reordenar columnas
+        # --- NUEVOS CAMPOS ---
+        # Intentamos obtener etiquetas y emoción (si no existen en el CSV, se dejan en blanco)
+        col_etiquetas = 'Tags Name' if 'Tags Name' in df.columns else None
+        col_emocion = 'Emotion' if 'Emotion' in df.columns else None
+
+        new_df['etiquetas'] = df[col_etiquetas].fillna('') if col_etiquetas else ''
+        new_df['estado emocional'] = df[col_emocion].fillna('') if col_emocion else ''
+        # ---------------------
+
+        # 4. Reordenar columnas incluyendo las nuevas especificaciones
         columnas_ordenadas = [
             'fecha', 'cuenta', 'tipo (ingreso o gasto)', 'categoría', 
-            'subcategoría', 'importe o monto', 'moneda', 'descripción'
+            'subcategoría', 'importe o monto', 'moneda', 'descripción',
+            'etiquetas', 'estado emocional'
         ]
+        
+        # Aseguramos que todas las columnas existan antes de reordenar
         new_df = new_df[columnas_ordenadas]
 
-        # 6. Guardar en Excel
+        # 5. Guardar en Excel
         new_df.to_excel(archivo_destino, index=False)
         print(f"---")
         print(f"✅ ¡Éxito! Archivo guardado como:")
@@ -70,4 +78,4 @@ def transformar_reporte():
 
 if __name__ == "__main__":
     transformar_reporte()
-    input("\nPresiona Enter para cerrar...") # Para que la ventana no se cierre de golpe
+    input("\nPresiona Enter para finalizar...")

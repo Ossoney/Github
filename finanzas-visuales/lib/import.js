@@ -140,7 +140,8 @@ async function importFlatFormat(rows) {
                 date: findColumn(row, ['fecha', 'date', 'dia']),
                 amount: findColumn(row, ['importe', 'amount', 'monto', 'cantidad', 'valor']),
                 desc: findColumn(row, ['descripcion', 'description', 'nota', 'concepto', 'comentario']),
-                emotion: findColumn(row, ['emocion', 'emotion', 'sentimiento', 'emoji'])
+                emotion: findColumn(row, ['emocion', 'emotion', 'sentimiento', 'emoji', 'estado_emocional']),
+                tags: findColumn(row, ['etiquetas', 'tags', 'labels', 'marcadores'])
             }
 
             // 1. Resolve Wallet
@@ -253,7 +254,7 @@ async function importFlatFormat(rows) {
                 description: colMap.desc ? row[colMap.desc]?.toString() : '',
                 emotion: colMap.emotion ? row[colMap.emotion]?.toString() : '',
                 date: date,
-                tags: []
+                tags: colMap.tags ? row[colMap.tags]?.toString().split(',').map(tag => tag.trim()).filter(Boolean) : []
             })
 
             // 8. Update Wallet Balance

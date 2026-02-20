@@ -10,7 +10,7 @@ import { es, enUS, gl, eu, ca } from 'date-fns/locale'
 const dictionaries = {
     es: {
         app_title: 'VISUALIS',
-        app_subtitle: 'tus finanzas fáciles',
+        app_subtitle: 'Tus finanzas fáciles',
         meta_title: 'Visualis | tus Finanzas',
         dashboard_recent_activity: 'Actividad Reciente',
         dashboard_monthly_budget: 'Presupuesto del Mes',
@@ -38,6 +38,9 @@ const dictionaries = {
         date: 'Fecha',
         wallet: 'Cuenta',
         category: 'Categoría',
+        category_name: 'Nombre de la Categoría',
+        color: 'Color',
+        icon: 'Icono',
         description: 'Descripción',
         tags: 'Etiquetas',
         export_excel: 'Descargar Excel',
@@ -125,7 +128,6 @@ const dictionaries = {
         recurring: 'Recurrentes',
         tags: 'Etiquetas',
         data: 'Datos',
-        language: 'Idioma',
         language: 'Idioma',
         version_help: 'Versión/Ayuda',
         version_date: 'Febrero 2026',
@@ -308,6 +310,9 @@ const dictionaries = {
         date: 'Date',
         wallet: 'Wallet',
         category: 'Category',
+        category_name: 'Category Name',
+        color: 'Color',
+        icon: 'Icon',
         description: 'Description',
         tags: 'Tags',
         export_excel: 'Download Excel',
@@ -437,7 +442,6 @@ const dictionaries = {
         tags: 'Tags',
         data: 'Data',
         language: 'Language',
-        language: 'Language',
         version_help: 'Version/Help',
         version_date: 'February 2026',
 
@@ -448,8 +452,6 @@ const dictionaries = {
         your_name: 'Your Name',
         save_profile: 'Save Profile',
         saving: 'Saving...',
-        profile_saved: 'Profile saved successfully',
-
         profile_saved: 'Profile saved successfully',
         customize_home: 'Customize Home',
         customize_home_desc: 'Shows "The finances of [Name]" instead of default text.',
@@ -627,10 +629,10 @@ const dictionaries = {
             'Mascota': 'Pet Care',
             'Varias': 'Various',
             'Ocio Diverso': 'Diverse Leisure',
-            'Varias': 'Varias',
-            'Ocio Diverso': 'Ocio Diverso',
-            'Ventas Segunda Mano': 'Ventas Segunda Mano',
-            'Otras Deudas': 'Otras Deudas'
+            'Varias': 'Various',
+            'Ocio Diverso': 'Diverse Leisure',
+            'Ventas Segunda Mano': 'Second Hand Sales',
+            'Otras Deudas': 'Other Debts'
         }
     },
     gl: {
@@ -663,6 +665,9 @@ const dictionaries = {
         date: 'Data',
         wallet: 'Conta',
         category: 'Categoría',
+        category_name: 'Nome da Categoría',
+        color: 'Cor',
+        icon: 'Icona',
         description: 'Descrición',
         tags: 'Etiquetas',
         export_excel: 'Descargar Excel',
@@ -750,7 +755,6 @@ const dictionaries = {
         tags: 'Etiquetas',
         data: 'Datos',
         language: 'Idioma',
-        language: 'Idioma',
         version_help: 'Versión/Axuda',
         version_date: 'Febreiro 2026',
 
@@ -761,8 +765,6 @@ const dictionaries = {
         your_name: 'O teu Nome',
         save_profile: 'Gardar Perfil',
         saving: 'Gardando...',
-        profile_saved: 'Perfil gardado correctamente',
-
         profile_saved: 'Perfil gardado correctamente',
         customize_home: 'Personalizar Inicio',
         customize_home_desc: 'Amosa "As finanzas de [Nome]" no lugar do texto por defecto.',
@@ -1053,6 +1055,9 @@ const dictionaries = {
         date: 'Data',
         wallet: 'Kontua',
         category: 'Kategoria',
+        category_name: 'Kategoriaren Izena',
+        color: 'Kolorea',
+        icon: 'Ikonoa',
         description: 'Deskribapena',
         tags: 'Etiketak',
         export_excel: 'Deskargatu Excel',
@@ -1138,16 +1143,10 @@ const dictionaries = {
         suggestions_title: 'Iradokizunak eta Akatsak',
         suggestions_desc: 'Iradokizunak edo akatsak badituzu, idatzi iezadazu helbide honetara:',
 
-        // Theme Settings
-        user_profile: 'Erabiltzaile Profila',
-        change_photo: 'Sakatu argazkia aldatzeko',
-        name: 'Izena',
-        your_name: 'Zure Izena',
-        save_profile: 'Gorde Profila',
-        saving: 'Gordetzen...',
         profile_saved: 'Profila ondo gorde da',
-
-        // Theme Settings
+        customize_home: 'Hasiera Pertsonalizatu',
+        customize_home_desc: 'Muestra "Las finanzas de [Nombre]" en lugar del texto por defecto.',
+        finances_of: '{name}-(r)en finantzak',
         choose_theme: 'Aukeratu aplikazioaren giroa:',
         theme_names: {
             sky: 'Gau Izartsua',
@@ -1207,74 +1206,6 @@ const dictionaries = {
             'Otro Negocio': 'Beste Negozio Bat',
             'Nómina': 'Nomina',
             'Desempleo': 'Langabezia',
-            'Ventas': 'Salmentak',
-            'Otros': 'Besteak',
-
-            // Expenses
-            'Automóvil': 'Automobila',
-            'Bancos': 'Bankuak',
-            'Compras': 'Erosketak',
-            'Deporte': 'Kirola',
-            'Formación': 'Prestakuntza',
-            'Limpieza': 'Garbiketa',
-            'Moda': 'Moda',
-            'Ocio': 'Aisia',
-            'Salud': 'Osasuna',
-            'Suministros': 'Hornidurak',
-            'Transporte': 'Garraioa',
-            'Viajes': 'Bidaiak',
-            'Mascotas': 'Maskotak',
-
-            'Combustible': 'Erregaia',
-            'Mantenimiento': 'Mantentzea',
-            'Multas': 'Isunak',
-            'Parking': 'Aparkalekua',
-            'Peajes': 'Bidesariak',
-            'Otros gastos automóvil': 'Beste gastu batzuk',
-            'Hipoteca': 'Hipoteka',
-            'Préstamo': 'Mailegua',
-            'Comisiones': 'Komisioak',
-            'Otras deudas': 'Beste zor batzuk',
-            'Electrónica': 'Elektronika',
-            'Oficina': 'Bulegoa',
-            'Otras': 'Besteak',
-            'Reparaciones': 'Konponketak',
-            'Supermercado': 'Supermerkatua',
-            'Carreras/Tr': 'Lasterketak',
-            'Club': 'Kluba',
-            'Gimnasio': 'Gimnasioa',
-            'Curso': 'Ikastaroa',
-            'Libros/Comic': 'Liburuak',
-            'Suscripcion': 'Harpidetza',
-            'Lavandería': 'Garbigailua',
-            'Calzado': 'Oinetakoak',
-            'Ropa Deportiva': 'Kirol Arropa',
-            'Ropa Vestir': 'Janzteko Arropa',
-            'Bar': 'Taberna',
-            'Cafés': 'Kafeak',
-            'Restaurante': 'Jatetxea',
-            'Farmacia': 'Farmazia',
-            'Peluquería': 'Ileapaindegia',
-            'Médico': 'Medikua',
-            'Salud y Belleza': 'Osasuna eta Edertasuna',
-            'Agua': 'Ura',
-            'Luz': 'Argia',
-            'Comunidad': 'Komunitatea',
-            'Electricidad': 'Elektrizitatea',
-            'Gas': 'Gasa',
-            'Impuestos': 'Zergak',
-            'Internet': 'Internet',
-            'Seguros': 'Aseguruak',
-            'Telefono': 'Telefonoa',
-            'Otros Suministros': 'Beste Hornidura Batzuk',
-            'Bus': 'Autobusa',
-            'Metro': 'Metroa',
-            'Taxi': 'Taxia',
-            'Tren': 'Trena',
-            'Uber-Cabify': 'VTC',
-            'Entradas': 'Sarrerak',
-            'Hoteles': 'Hotelak',
-            'Veterinario': 'Albaitaria',
             'Varias': 'Hainbat',
             'Ocio Diverso': 'Askotariko Aisia',
             'Ventas Segunda Mano': 'Bigarren Eskuko Salmentak',
@@ -1315,6 +1246,9 @@ const dictionaries = {
         date: 'Data',
         wallet: 'Compte',
         category: 'Categoria',
+        category_name: 'Nom de la Categoria',
+        color: 'Color',
+        icon: 'Icona',
         description: 'Descripció',
         tags: 'Etiquetes',
         export_excel: 'Descarregar Excel',
@@ -1357,7 +1291,7 @@ const dictionaries = {
         settings: 'Configuració',
         profile: 'Perfil',
         appearance: 'Aparença',
-        accounts: 'Comptes',
+        accounts: 'Comptes/Projectes',
         categories: 'Categories',
         budgets: 'Pressupostos',
         recurring: 'Recurrents',
@@ -1387,41 +1321,6 @@ const dictionaries = {
             wine: 'Vi Selecte',
             coffee: 'Gra Torrat',
             royal: 'Safir Reial',
-            // Donation
-            donation_title: 'Convida\'m a un cafè',
-            donation_desc: 'Si Visualis et sembla útil, pots donar suport al seu desenvolupament amb una petita donació.',
-            donate_button: 'Convidar (PayPal)',
-
-            // Suggestions
-            suggestions_title: 'Suggeriments i Errors',
-            suggestions_desc: 'Si tens suggeriments o errors per corregir, escriu-me a:',
-
-            // Theme Settings
-            main_currency: 'Moneda Principal',
-
-            // Tag Settings
-            manage_tags: 'Gestionar Etiquetes',
-            new_tag_placeholder: 'Nova etiqueta (ex. #vacances)',
-            no_tags: 'No hi ha etiquetes creades encara.',
-            confirm_delete_tag: 'Eliminar etiqueta?',
-
-            // Data Settings
-            backups: 'Còpies de Seguretat',
-            export_title: 'Exportar',
-            export_desc: 'Descarrega una còpia de seguretat dels teus moviments i comptes en format Excel.',
-            download_excel: 'Descarregar Excel (.xlsx)',
-            import_title: 'Importar',
-            import_desc: 'Restaura una còpia de seguretat.',
-            import_warning: 'Això esborrarà les dades actuals',
-            select_file: 'Seleccionar Fitxer (.xlsx)',
-            danger_zone: 'Zona de Perill',
-            danger_desc: 'Si necessites començar de zero, pots esborrar tota la base de dades local. Aquesta acció és irreversible.',
-            nuclear_button: 'Botó Nuclear',
-
-            // Data Alerts
-            nuclear_warning_1: '⚠️ ADVERTÈNCIA NUCLEAR! ⚠️\n\nEstàs SEGUR de voler esborrar TOTES les dades?\n\nAquesta acció eliminarà totes les teves transaccions, comptes i configuració.\n\nNO HI HA TORNADA ENRERE.',
-            nuclear_warning_2: 'De veritat? Confirma una última vegada que vols començar de zero.',
-            import_confirm: '⚠️ Estàs segur d\'IMPORTAR aquest fitxer?\n\n"{fileName}"\n\nS\'ELIMINARAN totes les dades actuals i es reemplaçaran per les del fitxer.',
             import_success: '✅ Importació completada. S\'han restaurat {count} transaccions.',
             import_error: '❌ Error en importar: ',
 
@@ -1606,10 +1505,11 @@ export function LanguageProvider({ children }) {
     }
 
     // Helper to format currency dynamically
-    const formatMoney = (amount, currencyCode = null) => {
+    const formatMoney = (amount, currencyCode = null, options = {}) => {
         return new Intl.NumberFormat(language === 'en' ? 'en-US' : 'es-ES', {
             style: 'currency',
             currency: currencyCode || currency,
+            ...options
         }).format(amount)
     }
 

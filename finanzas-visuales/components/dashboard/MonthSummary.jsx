@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '@/lib/db'
 import { startOfMonth, endOfMonth, subMonths, format } from 'date-fns'
-import { ArrowUpCircle, ArrowDownCircle, ChevronDown, ChevronUp, BarChart3, PieChart, TrendingUp, TrendingDown, Trophy, Flame, Target, Minus, Infinity as InfinityIcon } from 'lucide-react'
+import { ArrowUpCircle, ArrowDownCircle, ChevronDown, ChevronUp, BarChart3, PieChart, TrendingUp, TrendingDown, Trophy, Flame, Target, Minus, Zap, Infinity as InfinityIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useStore } from '@/hooks/useStore'
 import { useLanguage } from '@/lib/i18n'
@@ -138,8 +138,12 @@ export function MonthSummary({ expandedType, onExpand }) {
             const inc = txs.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0)
             const exp = txs.filter(t => t.type === 'expense').reduce((s, t) => s + t.amount, 0)
 
+            const monthLabel = (historyLimit === '∞' || historyLimit >= 12)
+                ? format(date, 'MMM yy', { locale })
+                : format(date, 'MMM', { locale })
+
             data.push({
-                month: format(date, 'MMM', { locale }),
+                month: monthLabel,
                 fullDate: date,
                 income: inc,
                 expense: exp,
@@ -269,14 +273,23 @@ export function MonthSummary({ expandedType, onExpand }) {
         const values = history.map(getValue)
 
         // Computed stats
-        const total = values.reduce((a, b) => a + b, 0)
+        const total = type === 'expense' ? -Math.abs(values.reduce((a, b) => a + b, 0)) : values.reduce((a, b) => a + b, 0)
         const avgIncome = history.reduce((s, h) => s + h.income, 0) / history.length
         const avgExpense = history.reduce((s, h) => s + h.expense, 0) / history.length
-        const bestIdx = values.indexOf(Math.max(...values))
-        const worstIdx = values.indexOf(Math.min(...values))
 
-        // Positive months count: always based on net result (income > expense)
-        const positiveMonths = history.filter(h => h.result >= 0).length
+        // Best/Worst Logic: for expenses, "best" is less spending (min), "worst" is more spending (max)
+        const bestIdx = type === 'expense'
+            ? values.indexOf(Math.min(...values))
+            : values.indexOf(Math.max(...values))
+        const worstIdx = type === 'expense'
+            ? values.indexOf(Math.max(...values))
+            : values.indexOf(Math.min(...values))
+
+        // Positive months count: based on net result (income > expense)
+        // BUT if viewing expenses, we count months where expense > income
+        const positiveMonths = type === 'expense'
+            ? history.filter(h => h.expense > h.income).length
+            : history.filter(h => h.result > 0).length
         const streakPositive = positiveMonths > 0
 
 
@@ -345,7 +358,7 @@ export function MonthSummary({ expandedType, onExpand }) {
                             </div>
                             <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider text-center leading-tight">Media<br />ingresos</span>
                             <span className="text-xs font-bold text-center text-emerald-300">
-                                <Money amount={avgIncome} />
+                                <Money amount={avgIncome} showPlus={true} />
                             </span>
                         </div>
                     )}
@@ -358,7 +371,7 @@ export function MonthSummary({ expandedType, onExpand }) {
                             </div>
                             <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider text-center leading-tight">Media<br />gastos</span>
                             <span className="text-xs font-bold text-center text-rose-300">
-                                <Money amount={avgExpense} />
+                                <Money amount={avgExpense} forceSign="-" />
                             </span>
                         </div>
                     )}
@@ -370,7 +383,9 @@ export function MonthSummary({ expandedType, onExpand }) {
                         </div>
                         <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider text-center leading-tight">Mejor<br />mes</span>
                         <span className="text-xs font-bold text-amber-300 capitalize">{history[bestIdx]?.month}</span>
-                        <span className="text-[9px] text-slate-400"><Money amount={values[bestIdx]} /></span>
+                        <span className="text-[9px] text-slate-400">
+                            <Money amount={values[bestIdx]} showPlus={type !== 'expense'} forceSign={type === 'expense' ? '-' : null} />
+                        </span>
                     </div>
 
                     {/* 4 - Peor Mes */}
@@ -380,35 +395,45 @@ export function MonthSummary({ expandedType, onExpand }) {
                         </div>
                         <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider text-center leading-tight">Peor<br />mes</span>
                         <span className="text-xs font-bold text-rose-300 capitalize">{history[worstIdx]?.month}</span>
-                        <span className="text-[9px] text-slate-400"><Money amount={values[worstIdx]} /></span>
+                        <span className="text-[9px] text-slate-400">
+                            <Money amount={values[worstIdx]} showPlus={type !== 'expense'} forceSign={type === 'expense' ? '-' : null} />
+                        </span>
                     </div>
 
                     {/* 5 - Total acumulado */}
                     <div className="flex flex-col items-center gap-1.5 p-2.5 rounded-xl bg-slate-800/60 border border-slate-700/50">
-                        <div className={cn('w-7 h-7 rounded-full flex items-center justify-center', total >= 0 ? 'bg-emerald-500/20' : 'bg-rose-500/20')}>
-                            {total >= 0
-                                ? <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
-                                : <TrendingDown className="w-3.5 h-3.5 text-rose-400" />}
+                        <div className={cn('w-7 h-7 rounded-full flex items-center justify-center', (type === 'expense' || total < 0) ? 'bg-rose-500/20' : 'bg-emerald-500/20')}>
+                            {(type === 'expense' || total < 0)
+                                ? <TrendingDown className="w-3.5 h-3.5 text-rose-400" />
+                                : <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />}
                         </div>
                         <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider text-center leading-tight">Total<br />{historyLimit === '∞' ? 'hist.' : `${historyLimit}m`}</span>
-                        <span className={cn('text-xs font-bold text-center', total >= 0 ? 'text-emerald-300' : 'text-rose-300')}>
-                            <Money amount={total} />
+                        <span className={cn('text-xs font-bold text-center', (type === 'expense' || total < 0) ? 'text-rose-300' : 'text-emerald-300')}>
+                            <Money amount={total} showPlus={type !== 'expense'} forceSign={type === 'expense' ? '-' : null} />
                         </span>
                     </div>
 
-                    {/* 6 - Racha positiva */}
+                    {/* 6 - Racha positiva/negativa */}
                     <div className="flex flex-col items-center gap-1.5 p-2.5 rounded-xl bg-slate-800/60 border border-slate-700/50">
-                        <div className={cn('w-7 h-7 rounded-full flex items-center justify-center', positiveMonths > 0 ? 'bg-sky-500/20' : 'bg-slate-700/50')}>
-                            {positiveMonths >= 3
-                                ? <Flame className={cn('w-3.5 h-3.5', positiveMonths > 0 ? 'text-sky-400' : 'text-slate-500')} />
-                                : <Minus className="w-3.5 h-3.5 text-slate-500" />}
+                        <div className={cn(
+                            "w-7 h-7 rounded-full flex items-center justify-center",
+                            type === 'expense' ? "bg-rose-500/20" : "bg-emerald-500/20"
+                        )}>
+                            <div className="relative">
+                                <Zap className={cn("w-3.5 h-3.5", type === 'expense' ? "text-rose-400" : "text-emerald-400")} />
+                                {streakPositive && (
+                                    <span className={cn(
+                                        "absolute -top-1 -right-1 w-2 h-2 rounded-full animate-pulse",
+                                        type === 'expense' ? "bg-rose-500" : "bg-emerald-500"
+                                    )} />
+                                )}
+                            </div>
                         </div>
-                        <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider text-center leading-tight">Racha<br />positiva</span>
-                        <span className={cn('text-xl font-black leading-none', positiveMonths > 0 ? 'text-sky-300' : 'text-slate-500')}>
-                            {positiveMonths}
+                        <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider text-center leading-tight">
+                            {type === 'expense' ? 'Racha\nnegativa' : 'Racha\npositiva'}
                         </span>
-                        <span className="text-[8px] text-slate-500 text-center leading-tight">
-                            {positiveMonths === 1 ? 'mes' : 'meses'}<br />positivos
+                        <span className={cn("text-xs font-bold", type === 'expense' ? "text-rose-300" : "text-emerald-300")}>
+                            {positiveMonths} {positiveMonths === 1 ? 'mes' : 'meses'}
                         </span>
                     </div>
 
@@ -435,7 +460,7 @@ export function MonthSummary({ expandedType, onExpand }) {
                         {expandedType === 'income' ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
                     </span>
                     <span className="text-2xl font-bold text-emerald-100">
-                        <Money amount={stats?.income || 0} />
+                        <Money amount={stats?.income || 0} showDecimals={false} showPlus={true} />
                     </span>
                 </button>
 
@@ -452,7 +477,7 @@ export function MonthSummary({ expandedType, onExpand }) {
                         {expandedType === 'expense' ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
                     </span>
                     <span className="text-2xl font-bold text-rose-100">
-                        <Money amount={stats?.expense || 0} />
+                        <Money amount={stats?.expense || 0} showDecimals={false} forceSign="-" />
                     </span>
                 </button>
 

@@ -35,6 +35,8 @@ export const exportToExcel = async (transactions, wallets, categories) => {
             'subcategoría': subCatName,
             'importe': tx.amount,
             'moneda': currency,
+            'etiquetas': tx.tags ? tx.tags.join(', ') : '',
+            'estado_emocional': tx.emotion || '',
             'descripción': tx.description || ''
         }
     })
