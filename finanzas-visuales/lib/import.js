@@ -11,23 +11,41 @@ export async function importFromExcel(file) {
                 const workbook = XLSX.read(data, { type: 'array' })
 
                 // 1. Determine Format
-                const transaccionesSheet = workbook.Sheets['Transacciones']
-                if (!transaccionesSheet) {
-                    throw new Error("No se encontró la hoja 'Transacciones'.")
+                const sheetNames = workbook.SheetNames
+                if (sheetNames.length === 0) {
+                    throw new Error("El archivo no tiene hojas.")
                 }
 
-                const rawRows = XLSX.utils.sheet_to_json(transaccionesSheet)
+                // IMPROVED: Sheet Agnostic Detection
+                const possibleNames = ['transacciones', 'transactions', 'movementos', 'transakzioak', 'transaccions', 'movimientos', 'gastos', 'ingresos']
+                let targetSheetName = sheetNames.find(name => possibleNames.includes(name.toLowerCase()))
+
+                if (!targetSheetName) {
+                    // Fallback: take the first sheet regardless of name
+                    targetSheetName = sheetNames[0]
+                }
+
+                const sheet = workbook.Sheets[targetSheetName]
+                const rawRows = XLSX.utils.sheet_to_json(sheet)
+
                 if (rawRows.length === 0) {
-                    throw new Error("El archivo está vacío.")
+                    throw new Error(`La hoja '${targetSheetName}' está vacía o no tiene datos válidos.`)
                 }
 
-                // Check if it's the NEW flat format (contains 'cuenta' or 'categoría' columns)
-                const isFlatFormat = 'cuenta' in rawRows[0] || 'categoría' in rawRows[0]
+                // IMPROVED: Format Detection
+                const firstRowKeys = Object.keys(rawRows[0]).map(k => k.toLowerCase())
+                const hasFlatColumns = firstRowKeys.some(k =>
+                    k.includes('cuenta') || k.includes('wallet') ||
+                    k.includes('categor') || k.includes('category') ||
+                    k.includes('importe') || k.includes('amount') || k.includes('monto')
+                )
 
-                if (isFlatFormat) {
-                    await importFlatFormat(rawRows)
-                } else {
+                const isLegacy = sheetNames.includes('Cuentas') && sheetNames.includes('Categorias') && !hasFlatColumns
+
+                if (isLegacy) {
                     await importLegacyFormat(workbook, rawRows)
+                } else {
+                    await importFlatFormat(rawRows)
                 }
 
                 resolve({ success: true, count: rawRows.length })
@@ -47,10 +65,8 @@ export async function importFromExcel(file) {
  * Creates missing wallets and categories/subcategories automatically.
  */
 async function importFlatFormat(rows) {
-    const XLSX = await import('xlsx');
-
     await db.transaction('rw', db.transactions, db.wallets, db.categories, async () => {
-        // Cache existing data to minimize DB lookups
+        // Cache existing data
         const existingWallets = await db.wallets.toArray()
         const existingCategories = await db.categories.toArray()
 
@@ -60,85 +76,126 @@ async function importFlatFormat(rows) {
             c.id
         ]))
 
+        // Key column mapping (normalized)
+        const findColumn = (row, keywords) => {
+            const keys = Object.keys(row)
+            return keys.find(k => {
+                const norm = k.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                return keywords.some(kw => norm.includes(kw))
+            })
+        }
+
         for (const row of rows) {
+            const colMap = {
+                wallet: findColumn(row, ['cuenta', 'wallet', 'banco', 'account']),
+                type: findColumn(row, ['tipo', 'type', 'movimiento']),
+                category: findColumn(row, ['categoria', 'category', 'clase']),
+                subcategory: findColumn(row, ['subcategoria', 'subcategory']),
+                date: findColumn(row, ['fecha', 'date', 'dia']),
+                amount: findColumn(row, ['importe', 'amount', 'monto', 'cantidad', 'valor']),
+                desc: findColumn(row, ['descripcion', 'description', 'nota', 'concepto', 'comentario']),
+                emotion: findColumn(row, ['emocion', 'emotion', 'sentimiento', 'emoji'])
+            }
+
             // 1. Resolve Wallet
-            const walletName = row['cuenta'] || 'Efectivo'
-            let walletId = walletMap.get(walletName.toLowerCase())
+            const walletName = (colMap.wallet ? row[colMap.wallet] : 'Efectivo') || 'Efectivo'
+            let walletId = walletMap.get(walletName.toString().toLowerCase())
 
             if (!walletId) {
                 walletId = await db.wallets.add({
-                    name: walletName,
+                    name: walletName.toString(),
                     type: 'cash',
                     balance: 0,
                     color: '#64748b'
                 })
-                walletMap.set(walletName.toLowerCase(), walletId)
+                walletMap.set(walletName.toString().toLowerCase(), walletId)
             }
 
-            // 2. Resolve Category
-            const type = (row['tipo'] || 'gasto').toLowerCase() === 'ingreso' ? 'income' : 'expense'
-            const catName = row['categoría'] || 'Otros'
-            let parentId = categoryMap.get(`${catName.toLowerCase()}|root|${type}`)
+            // 2. Resolve Type
+            const rawType = colMap.type ? row[colMap.type]?.toString().toLowerCase() : ''
+            const type = (rawType.includes('ingreso') || rawType.includes('income')) ? 'income' : 'expense'
+
+            // 3. Resolve Category
+            const catName = (colMap.category ? row[colMap.category] : 'Otros') || 'Otros'
+            let parentId = categoryMap.get(`${catName.toString().toLowerCase()}|root|${type}`)
 
             if (!parentId) {
                 parentId = await db.categories.add({
-                    name: catName,
+                    name: catName.toString(),
                     type: type,
                     icon: 'HelpCircle',
                     color: type === 'income' ? '#10b981' : '#f43f5e',
                     parentId: null
                 })
-                categoryMap.set(`${catName.toLowerCase()}|root|${type}`, parentId)
+                categoryMap.set(`${catName.toString().toLowerCase()}|root|${type}`, parentId)
             }
 
-            // 3. Resolve Subcategory
-            const subCatName = row['subcategoría']
+            // 4. Resolve Subcategory
+            const subCatName = colMap.subcategory ? row[colMap.subcategory] : null
             let categoryId = parentId
 
             if (subCatName) {
-                let subId = categoryMap.get(`${subCatName.toLowerCase()}|${parentId}|${type}`)
+                let subId = categoryMap.get(`${subCatName.toString().toLowerCase()}|${parentId}|${type}`)
                 if (!subId) {
                     subId = await db.categories.add({
-                        name: subCatName,
+                        name: subCatName.toString(),
                         type: type,
                         icon: 'Circle',
                         color: '#64748b',
                         parentId: parentId
                     })
-                    categoryMap.set(`${subCatName.toLowerCase()}|${parentId}|${type}`, subId)
+                    categoryMap.set(`${subCatName.toString().toLowerCase()}|${parentId}|${type}`, subId)
                 }
                 categoryId = subId
             }
 
-            // 4. Parse Date
+            // 5. Parse Date
             let date = new Date()
-            if (row['fecha']) {
-                // Handle Excel numeric dates if they come through
-                if (typeof row['fecha'] === 'number') {
-                    date = new Date((row['fecha'] - (25567 + 1)) * 86400 * 1000)
+            const rawDate = colMap.date ? row[colMap.date] : null
+            if (rawDate) {
+                if (typeof rawDate === 'number') {
+                    // Excel serial date
+                    date = new Date((rawDate - (25567 + 1)) * 86400 * 1000)
                 } else {
-                    const parsed = parseDate(row['fecha'])
+                    const parsed = parseDate(rawDate.toString())
                     if (!isNaN(parsed.getTime())) date = parsed
                 }
             }
 
-            // 5. Insert Transaction
-            const amount = parseFloat(row['importe'] || 0)
+            // 6. Normalize Amount
+            let amount = 0
+            const rawAmount = colMap.amount ? row[colMap.amount] : 0
+            if (typeof rawAmount === 'number') {
+                amount = rawAmount
+            } else if (typeof rawAmount === 'string') {
+                // Handle "1.234,56" or "1234.56" and remove currency symbols
+                let cleanAmount = rawAmount.replace(/[^\d.,-]/g, '')
+                if (cleanAmount.includes(',') && cleanAmount.includes('.')) {
+                    // Format like 1.234,56 -> remove dot, replace comma with dot
+                    cleanAmount = cleanAmount.replace(/\./g, '').replace(',', '.')
+                } else if (cleanAmount.includes(',')) {
+                    // Format like 1234,56 -> replace comma with dot
+                    cleanAmount = cleanAmount.replace(',', '.')
+                }
+                amount = parseFloat(cleanAmount) || 0
+            }
 
+            // 7. Insert Transaction
             await db.transactions.add({
                 walletId: Number(walletId),
                 categoryId: Number(categoryId),
-                amount: amount,
+                amount: Math.abs(amount),
                 type: type,
-                description: row['descripción'] || '',
+                description: colMap.desc ? row[colMap.desc]?.toString() : '',
+                emotion: colMap.emotion ? row[colMap.emotion]?.toString() : '',
                 date: date,
                 tags: []
             })
 
-            // 6. Update Wallet Balance (since we are importing transactions, we update the accounts)
+            // 8. Update Wallet Balance
             const wallet = await db.wallets.get(Number(walletId))
             if (wallet) {
-                const effect = type === 'income' ? amount : -amount
+                const effect = type === 'income' ? Math.abs(amount) : -Math.abs(amount)
                 await db.wallets.update(Number(walletId), {
                     balance: (wallet.balance || 0) + effect
                 })
@@ -208,15 +265,22 @@ async function importLegacyFormat(workbook, transactions) {
 }
 
 function parseDate(dateStr) {
-    // dd/mm/yyyy hh:mm
+    // Attempt standard formats
+    // dd/mm/yyyy hh:mm or yyyy-mm-dd
+    if (dateStr.includes('-')) return new Date(dateStr)
+
     const parts = dateStr.split(/[\s/:]+/)
     if (parts.length >= 3) {
-        const day = parseInt(parts[0], 10)
-        const month = parseInt(parts[1], 10) - 1
-        const year = parseInt(parts[2], 10)
+        let day = parseInt(parts[0], 10)
+        let month = parseInt(parts[1], 10) - 1
+        let year = parseInt(parts[2], 10)
         const hour = parseInt(parts[3] || 0, 10)
         const minute = parseInt(parts[4] || 0, 10)
-        return new Date(year, month, day, hour, minute)
+
+        // Handle 2-digit years
+        const fullYear = year < 50 ? 2000 + year : (year < 100 ? 1900 + year : year)
+
+        return new Date(fullYear, month, day, hour, minute)
     }
     return new Date(dateStr)
 }
