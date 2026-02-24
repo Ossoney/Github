@@ -28,5 +28,14 @@ export const useStore = create((set) => ({
 
     // Filters (Global)
     selectedWalletId: null, // null = All wallets
-    setSelectedWalletId: (id) => set({ selectedWalletId: id }),
+    setSelectedWalletId: async (id) => {
+        set({ selectedWalletId: id });
+        try {
+            const { db } = await import('@/lib/db');
+            const settings = await db.settings.get('global') || { id: 'global' };
+            await db.settings.put({ ...settings, lastSelectedWalletId: id });
+        } catch (e) {
+            console.error("Failed to persist selectedWalletId:", e);
+        }
+    },
 }));
