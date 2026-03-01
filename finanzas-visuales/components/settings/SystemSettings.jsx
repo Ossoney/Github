@@ -102,9 +102,9 @@ const themes = [
     { id: 'nebula', color: '#8b5cf6' },
     { id: 'cyber', color: '#06b6d4' },
     { id: 'wine', color: '#f43f5e' },
-    { id: 'coffee', color: '#f97316' },
-    { id: 'royal', color: '#3b82f6' },
-    { id: 'minimal', color: '#ffffff' },
+    { id: 'light-sky', color: '#e0f2fe' },
+    { id: 'light-mint', color: '#d1fae5' },
+    { id: 'light-warm', color: '#ffe4e6' },
 ]
 
 export function ThemeSettings() {

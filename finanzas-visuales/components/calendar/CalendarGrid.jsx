@@ -184,7 +184,7 @@ export function CalendarGrid() {
                                 <div className="space-y-1 mt-1">
                                     {day.balance !== 0 && (
                                         <div className={`text-xs text-right font-medium ${balanceColor}`}>
-                                            {day.balance > 0 ? '+' : ''}<Money amount={day.balance} />
+                                            {day.balance > 0 ? '+' : ''}<Money amount={day.balance} showDecimals={false} />
                                         </div>
                                     )}
 

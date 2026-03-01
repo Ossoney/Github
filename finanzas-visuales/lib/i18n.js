@@ -198,9 +198,9 @@ const dictionaries = {
             nebula: 'Nebulosa Púrpura',
             cyber: 'Futuro Neón',
             wine: 'Vino Selecto',
-            coffee: 'Grano Tostado',
-            royal: 'Zafiro Real',
-            minimal: 'Minimalismo Puro',
+            'light-sky': 'Cielo Ártico',
+            'light-mint': 'Oasis Esmeralda',
+            'light-warm': 'Horizonte Ámbar',
         },
 
         // Currency Settings
@@ -506,9 +506,9 @@ const dictionaries = {
             nebula: 'Purple Nebula',
             cyber: 'Neon Future',
             wine: 'Select Wine',
-            coffee: 'Roasted Bean',
-            royal: 'Royal Sapphire',
-            minimal: 'Pure Minimalism',
+            'light-sky': 'Arctic Sky',
+            'light-mint': 'Emerald Oasis',
+            'light-warm': 'Amber Horizon',
         },
 
         // Currency Settings
@@ -819,9 +819,9 @@ const dictionaries = {
             nebula: 'Nebulosa Púrpura',
             cyber: 'Futuro Neón',
             wine: 'Viño Selecto',
-            coffee: 'Gran Torrado',
-            royal: 'Zafiro Real',
-            minimal: 'Minimalismo Puro',
+            'light-sky': 'Ceo Ártico',
+            'light-mint': 'Oasis Esmeralda',
+            'light-warm': 'Horizonte Ámbar',
         },
 
         // Currency Settings
@@ -1155,9 +1155,9 @@ const dictionaries = {
             nebula: 'Nebulosa Morea',
             cyber: 'Etorkizun Neona',
             wine: 'Ardo Hautatua',
-            coffee: 'Ale Txigortua',
-            royal: 'Zafiro Erreala',
-            minimal: 'Minimalismo Hutsa',
+            'light-sky': 'Zeru Artikoa',
+            'light-mint': 'Esmeralda Oasia',
+            'light-warm': 'Anbar Ostertza',
         },
 
         // Currency Settings
@@ -1319,8 +1319,9 @@ const dictionaries = {
             nebula: 'Nebulosa Púrpura',
             cyber: 'Futur Neó',
             wine: 'Vi Selecte',
-            coffee: 'Gra Torrat',
-            royal: 'Safir Reial',
+            'light-sky': 'Cel Àrtic',
+            'light-mint': 'Oasi Maragda',
+            'light-warm': 'Horitzó Ambre',
             import_success: '✅ Importació completada. S\'han restaurat {count} transaccions.',
             import_error: '❌ Error en importar: ',
 

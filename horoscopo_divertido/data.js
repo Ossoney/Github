@@ -1,19 +1,72 @@
+// =====================
+// ZODIACO OCCIDENTAL
+// =====================
 const ZODIAC_SIGNS = [
-    { name: "Aries", icon: "♈", dates: "21 Mar - 19 Abr", apiName: "aries" },
-    { name: "Tauro", icon: "♉", dates: "20 Abr - 20 May", apiName: "taurus" },
-    { name: "Géminis", icon: "♊", dates: "21 May - 20 Jun", apiName: "gemini" },
-    { name: "Cáncer", icon: "♋", dates: "21 Jun - 22 Jul", apiName: "cancer" },
-    { name: "Leo", icon: "♌", dates: "23 Jul - 22 Ago", apiName: "leo" },
-    { name: "Virgo", icon: "♍", dates: "23 Ago - 22 Sep", apiName: "virgo" },
-    { name: "Libra", icon: "♎", dates: "23 Sep - 22 Oct", apiName: "libra" },
-    { name: "Escorpio", icon: "♏", dates: "23 Oct - 21 Nov", apiName: "scorpio" },
-    { name: "Sagitario", icon: "♐", dates: "22 Nov - 21 Dic", apiName: "sagittarius" },
-    { name: "Capricornio", icon: "♑", dates: "22 Dic - 19 Ene", apiName: "capricorn" },
-    { name: "Acuario", icon: "♒", dates: "20 Ene - 18 Feb", apiName: "aquarius" },
-    { name: "Piscis", icon: "♓", dates: "19 Feb - 20 Mar", apiName: "pisces" }
+    { name: "Aries", icon: "♈", dates: "21 Mar - 19 Abr" },
+    { name: "Tauro", icon: "♉", dates: "20 Abr - 20 May" },
+    { name: "Géminis", icon: "♊", dates: "21 May - 20 Jun" },
+    { name: "Cáncer", icon: "♋", dates: "21 Jun - 22 Jul" },
+    { name: "Leo", icon: "♌", dates: "23 Jul - 22 Ago" },
+    { name: "Virgo", icon: "♍", dates: "23 Ago - 22 Sep" },
+    { name: "Libra", icon: "♎", dates: "23 Sep - 22 Oct" },
+    { name: "Escorpio", icon: "♏", dates: "23 Oct - 21 Nov" },
+    { name: "Sagitario", icon: "♐", dates: "22 Nov - 21 Dic" },
+    { name: "Capricornio", icon: "♑", dates: "22 Dic - 19 Ene" },
+    { name: "Acuario", icon: "♒", dates: "20 Ene - 18 Feb" },
+    { name: "Piscis", icon: "♓", dates: "19 Feb - 20 Mar" }
 ];
 
-// Partes del texto para combinatoria
+// =====================
+// ZODIACO CHINO
+// =====================
+const CHINESE_ZODIAC = [
+    { name: "Rata", icon: "🐀", years: "2020, 2008, 1996, 1984, 1972" },
+    { name: "Buey", icon: "🐂", years: "2021, 2009, 1997, 1985, 1973" },
+    { name: "Tigre", icon: "🐅", years: "2022, 2010, 1998, 1986, 1974" },
+    { name: "Conejo", icon: "🐇", years: "2023, 2011, 1999, 1987, 1975" },
+    { name: "Dragón", icon: "🐉", years: "2024, 2012, 2000, 1988, 1976" },
+    { name: "Serpiente", icon: "🐍", years: "2025, 2013, 2001, 1989, 1977" },
+    { name: "Caballo", icon: "🐎", years: "2026, 2014, 2002, 1990, 1978" },
+    { name: "Cabra", icon: "🐐", years: "2027, 2015, 2003, 1991, 1979" },
+    { name: "Mono", icon: "🐒", years: "2028, 2016, 2004, 1992, 1980" },
+    { name: "Gallo", icon: "🐓", years: "2029, 2017, 2005, 1993, 1981" },
+    { name: "Perro", icon: "🐕", years: "2030, 2018, 2006, 1994, 1982" },
+    { name: "Cerdo", icon: "🐖", years: "2031, 2019, 2007, 1995, 1983" }
+];
+
+// =====================
+// HUMOR DEL DÍA
+// =====================
+const MOODS = [
+    "Optimista irracional",
+    "Caféfobo",
+    "Berserker silencioso",
+    "Filósofo existencial",
+    "Mono con typewriter",
+    "Globo a punto de explotar",
+    "Gato solariego",
+    "Pato en pánico",
+    "Paciente zero del drama",
+    "Peppa Pig en modo adulto"
+];
+
+// =====================
+// COLORES DE LA SUERTE
+// =====================
+const LUCKY_COLORS = [
+    { name: "Violeta oscuro", hex: "#4c1d95" },
+    { name: "Rosa neon", hex: "#f472b6" },
+    { name: "Verde veneno", hex: "#22c55e" },
+    { name: "Amarillo核电", hex: "#facc15" },
+    { name: "Rojo dramático", hex: "#ef4444" },
+    { name: "Azul triste", hex: "#3b82f6" },
+    { name: "Naranja warning", hex: "#f97316" },
+    { name: "Negro holes", hex: "#171717" }
+];
+
+// =====================
+// PARTES DEL TEXTO
+// =====================
 const INTROS = [
     "Los astros se han alineado de forma sospechosa y dicen que...",
     "Venus está en una posición incómoda, lo que significa que...",
@@ -64,15 +117,31 @@ const COMPATIBILITY_LEVELS = [
     "Explosivo 🧨"
 ];
 
-// Generador de semilla horaria: AAAA + MM + DD + HH
-function getHourlySeed() {
+// Generador de semilla según modo
+function getModeSeed(mode) {
     const now = new Date();
     const yyyy = now.getFullYear();
     const mm = (now.getMonth() + 1).toString().padStart(2, '0');
     const dd = now.getDate().toString().padStart(2, '0');
     const hh = now.getHours().toString().padStart(2, '0');
 
-    return parseInt(`${yyyy}${mm}${dd}${hh}`);
+    switch (mode) {
+        case 'hourly':
+            return parseInt(`${yyyy}${mm}${dd}${hh}`);
+        case 'daily':
+            return parseInt(`${yyyy}${mm}${dd}`);
+        case 'weekly':
+            // Semana del año
+            const week = Math.ceil((now - new Date(yyyy, 0, 1)) / (7 * 24 * 60 * 60 * 1000));
+            return parseInt(`${yyyy}${week}`);
+        default:
+            return parseInt(`${yyyy}${mm}${dd}${hh}`);
+    }
+}
+
+// Alias para compatibilidad
+function getHourlySeed() {
+    return getModeSeed('hourly');
 }
 
 function seededRandom(seed) {
@@ -80,13 +149,53 @@ function seededRandom(seed) {
     return x - Math.floor(x);
 }
 
-function getHoroscope(signIndex) {
-    const hourlySeed = getHourlySeed();
+// =====================
+// ZODIACO CHINO - AÑO DE NACIMIENTO
+// =====================
+function getChineseZodiacIndex(birthYear) {
+    // 1924 fue el año de la Rata en el ciclo chino
+    const cycleStart = 1924;
+    const offset = (birthYear - cycleStart) % 12;
+    return offset >= 0 ? offset : 12 + offset;
+}
+
+// =====================
+// HISTORIAL
+// =====================
+const HISTORY_KEY = 'horoscopo_history';
+
+function getHistory() {
+    try {
+        return JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+    } catch {
+        return [];
+    }
+}
+
+function addToHistory(entry) {
+    const history = getHistory();
+    history.unshift(entry);
+    // Mantener solo los últimos 50
+    if (history.length > 50) history.pop();
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+}
+
+function clearHistory() {
+    localStorage.removeItem(HISTORY_KEY);
+}
+
+// =====================
+// GENERADOR PRINCIPAL
+// =====================
+function getHoroscope(signIndex, mode = 'hourly', zodiacType = 'western') {
+    const modeSeed = getModeSeed(mode);
+    const zodiacArray = zodiacType === 'western' ? ZODIAC_SIGNS : CHINESE_ZODIAC;
+    const sign = zodiacArray[signIndex];
+    
     /*
-     Combinamos: Semilla Horaria + (Índice Signo * Constante)
-     Esto asegura resultados únicos por signo y por hora.
+     Combinamos: Semilla del modo + (Índice Signo * Constante)
     */
-    let uniqueSeed = hourlySeed + (signIndex * 1337);
+    let uniqueSeed = modeSeed + (signIndex * 1337);
 
     // Elegir partes del texto
     const introIndex = Math.floor(seededRandom(uniqueSeed++) * INTROS.length);
@@ -97,47 +206,37 @@ function getHoroscope(signIndex) {
     const luckyNum = Math.floor(seededRandom(uniqueSeed++) * 99) + 1;
 
     // Afinidad
-    let compSignIndex = Math.floor(seededRandom(uniqueSeed++) * 12);
-    // Evitar que sea el mismo signo (opcional, pero más divertido si es otro)
-    if (compSignIndex === signIndex) compSignIndex = (compSignIndex + 1) % 12;
+    let compSignIndex = Math.floor(seededRandom(uniqueSeed++) * zodiacArray.length);
+    if (compSignIndex === signIndex) compSignIndex = (compSignIndex + 1) % zodiacArray.length;
 
     const compLevelIndex = Math.floor(seededRandom(uniqueSeed++) * COMPATIBILITY_LEVELS.length);
+
+    // Humor del día
+    const moodIndex = Math.floor(seededRandom(uniqueSeed++) * MOODS.length);
+    
+    // Color de la suerte
+    const colorIndex = Math.floor(seededRandom(uniqueSeed++) * LUCKY_COLORS.length);
 
     // Construir texto
     const fullText = `${INTROS[introIndex]} ${BODIES[bodyIndex]} ${ADVICES[adviceIndex]}`;
 
-    return {
+    const result = {
         text: fullText,
         number: luckyNum,
+        mood: MOODS[moodIndex],
+        color: LUCKY_COLORS[colorIndex],
         compatibility: {
-            sign: ZODIAC_SIGNS[compSignIndex].name,
+            sign: zodiacArray[compSignIndex].name,
             level: COMPATIBILITY_LEVELS[compLevelIndex]
-        }
+        },
+        timestamp: Date.now(),
+        mode: mode,
+        zodiacType: zodiacType,
+        signName: sign.name
     };
-}
 
-async function translateText(text) {
-    try {
-        const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|es`);
-        const data = await response.json();
-        return data.responseData.translatedText;
-    } catch (e) {
-        console.warn("Translation failed", e);
-        return text; // Return original if translation fails
-    }
-}
-
-async function fetchDailyHoroscope(signApiName) {
-    try {
-        const response = await fetch(`https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${signApiName}&day=today`);
-        if (!response.ok) throw new Error('Network response was not ok');
-        const data = await response.json();
-        const englishText = data.data.horoscope_data;
-
-        // Translate to Spanish
-        return await translateText(englishText);
-    } catch (error) {
-        console.error("Error fetching/translating horoscope:", error);
-        return null; // Return null to trigger fallback
-    }
+    // Guardar en historial
+    addToHistory(result);
+    
+    return result;
 }

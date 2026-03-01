@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-    /* DEFAULT THEME: "Noche Estrellada" (Original Slate/Sky) */
-    --foreground-rgb: 255, 255, 255;
+    /* DEFAULT THEME: "Noche Estrellada" (Premium Midnight Blue) */
+    --foreground-rgb: 248, 250, 252;
 
-    /* Background Palette (Slate) */
+    /* Background Palette (Slate/Navy) */
     --bg-50: 248 250 252;
     --bg-100: 241 245 249;
     --bg-200: 226 232 240;
@@ -15,14 +15,14 @@
     --bg-500: 100 116 139;
     --bg-600: 71 85 105;
     --bg-700: 51 65 85;
-    --bg-800: 30 41 59;
-    /* Card Hover / Borders */
-    --bg-900: 15 23 42;
-    /* Card Background */
-    --bg-950: 2 6 23;
-    /* App Background */
+    --bg-800: 16 23 42;
+    /* Richer dark */
+    --bg-900: 9 14 23;
+    /* Deeper contrast for cards */
+    --bg-950: 2 6 13;
+    /* Very dark almost black app bg */
 
-    /* Primary Palette (Sky) */
+    /* Primary Palette (Vibrant Electric Sky) */
     --primary-300: 125 211 252;
     --primary-400: 56 189 248;
     --primary-500: 14 165 233;
@@ -30,30 +30,25 @@
     --primary-foreground: 255 255 255;
 }
 
-/* 1. ECLIPSE DORADO (Luxury: Black & Gold) */
+/* 1. ECLIPSE DORADO (Luxury: Deep Charcoal & Gold) */
 [data-theme='gold'] {
-    /* Pure Black / Neutral Greys */
-    --bg-800: 38 38 38;
-    --bg-900: 23 23 23;
-    --bg-950: 10 10 10;
-    /* Amber/Gold */
-    --primary-300: 252 211 77;
-    --primary-400: 251 191 36;
-    --primary-500: 245 158 11;
-    --primary-600: 217 119 6;
-    --primary-foreground: 10 10 10; /* Gold looks better with dark text */
+    --bg-800: 28 28 30;
+    --bg-900: 18 18 18;
+    --bg-950: 5 5 5;
+    /* Vibrant Gold */
+    --primary-300: 253 224 71;
+    --primary-400: 250 204 21;
+    --primary-500: 234 179 8;
+    --primary-600: 202 138 4;
+    --primary-foreground: 5 5 5;
 }
 
-/* 2. BOSQUE PROFUNDO (Nature: Dark Green) */
+/* 2. BOSQUE PROFUNDO (Nature: Dark Onyx Pine) */
 [data-theme='forest'] {
-    /* Deep Pine Greens */
-    --bg-800: 20 83 45;
-    /* Green-900 tint */
-    --bg-900: 6 78 59;
-    /* Green-950 tint shift */
-    --bg-950: 2 44 34;
-    /* Very dark green */
-    /* Emerald */
+    --bg-800: 12 36 25;
+    --bg-900: 6 22 14;
+    --bg-950: 2 10 6;
+    /* Bright Emerald/Mint */
     --primary-300: 110 231 183;
     --primary-400: 52 211 153;
     --primary-500: 16 185 129;
@@ -61,43 +56,38 @@
     --primary-foreground: 255 255 255;
 }
 
-/* 3. NEBULOSA PÚRPURA (Mystic: Deep Violet) */
+/* 3. NEBULOSA PÚRPURA (Mystic: Obsidian Violet) */
 [data-theme='nebula'] {
-    /* Deep Void Purples */
-    --bg-800: 46 16 101;
-    --bg-900: 19 7 46;
-    /* Custom deep purple */
-    --bg-950: 10 2 28;
-    /* Violet */
-    --primary-300: 196 181 253;
-    --primary-400: 167 139 250;
-    --primary-500: 139 92 246;
-    --primary-600: 124 58 237;
+    --bg-800: 26 11 46;
+    --bg-900: 13 4 23;
+    --bg-950: 5 1 10;
+    /* Electric Violet */
+    --primary-300: 192 132 252;
+    --primary-400: 168 85 247;
+    --primary-500: 147 51 234;
+    --primary-600: 126 34 206;
     --primary-foreground: 255 255 255;
 }
 
-/* 4. FUTURO NEÓN (Cyberpunk: Deep Navy & Cyan) */
+/* 4. FUTURO NEÓN (Cyberpunk: Abyss Navy & Neon Cyan) */
 [data-theme='cyber'] {
-    /* Cool Navy */
-    --bg-800: 22 78 99;
-    --bg-900: 8 51 68;
-    --bg-950: 8 47 73;
-    /* Sky-950ish */
-    /* Cyan */
+    --bg-800: 8 35 48;
+    --bg-900: 4 20 28;
+    --bg-950: 1 8 13;
+    /* Fluorescent Cyan */
     --primary-300: 103 232 249;
     --primary-400: 34 211 238;
     --primary-500: 6 182 212;
     --primary-600: 8 145 178;
-    --primary-foreground: 10 10 10; /* Cyan/Cyber looks often better with dark text for high contrast */
+    --primary-foreground: 1 8 13;
 }
 
-/* 5. VINO SELECTO (Elegant: Burgundy & Rose) */
+/* 5. VINO SELECTO (Elegant: Dark Plum & Rose) */
 [data-theme='wine'] {
-    /* Deep Red/Browns */
-    --bg-800: 60 5 20;
-    --bg-900: 38 2 10;
-    --bg-950: 20 1 5;
-    /* Rose */
+    --bg-800: 38 8 15;
+    --bg-900: 18 3 6;
+    --bg-950: 10 0 2;
+    /* Vibrant Rose */
     --primary-300: 253 164 175;
     --primary-400: 251 113 133;
     --primary-500: 244 63 94;
@@ -105,60 +95,69 @@
     --primary-foreground: 255 255 255;
 }
 
-/* 6. GRANO TOSTADO (Warm: Coffee & Orange) */
-[data-theme='coffee'] {
-    /* Dark Browns */
-    --bg-800: 42 22 12;
-    /* Warm brown */
-    --bg-900: 28 15 8;
-    --bg-950: 15 8 5;
-    /* Orange */
-    --primary-300: 253 186 116;
-    --primary-400: 251 146 60;
-    --primary-500: 249 115 22;
-    --primary-600: 234 88 12;
+/* 7. CLARO CIELO (Light Sky: Classic Light Mode) */
+[data-theme='light-sky'] {
+    --foreground-rgb: 15, 23, 42;
+    --bg-50: 2 6 23;
+    --bg-100: 15 23 42;
+    --bg-200: 51 65 85;
+    --bg-300: 71 85 105;
+    --bg-400: 100 116 139;
+    --bg-500: 148 163 184;
+    --bg-600: 203 213 225;
+    --bg-700: 226 232 240;
+    --bg-800: 241 245 249;
+    /* borders, hover menus */
+    --bg-900: 255 255 255;
+    /* Cards */
+    --bg-950: 248 250 252;
+    /* Main App bg */
+    --primary-300: 125 211 252;
+    --primary-400: 56 189 248;
+    --primary-500: 14 165 233;
+    --primary-600: 2 132 199;
     --primary-foreground: 255 255 255;
 }
 
-/* 7. ZAFIRO REAL (Royal: Deep Blue) */
-[data-theme='royal'] {
-    /* Royal Blues */
-    --bg-800: 30 58 138;
-    --bg-900: 23 37 84;
-    --bg-950: 10 15 35;
-    /* Blue */
-    --primary-300: 147 197 253;
-    --primary-400: 96 165 250;
-    --primary-500: 59 130 246;
-    --primary-600: 37 99 235;
+/* 8. CLARO MENTA (Light Mint: Emerald Tint) */
+[data-theme='light-mint'] {
+    --foreground-rgb: 2, 44, 34;
+    --bg-50: 2 44 34;
+    --bg-100: 6 78 59;
+    --bg-200: 4 120 87;
+    --bg-300: 5 150 105;
+    --bg-400: 16 185 129;
+    --bg-500: 52 211 153;
+    --bg-600: 110 231 183;
+    --bg-700: 167 243 208;
+    --bg-800: 209 250 229;
+    --bg-900: 255 255 255;
+    --bg-950: 240 253 244;
+    --primary-300: 110 231 183;
+    --primary-400: 52 211 153;
+    --primary-500: 16 185 129;
+    --primary-600: 5 150 105;
     --primary-foreground: 255 255 255;
 }
 
-/* 8. MINIMALISMO PURO (Clean: Grey & White) */
-[data-theme='minimal'] {
-    /* Neutral Greys */
-    --bg-800: 64 64 64;
-    --bg-900: 23 23 23;
-    --bg-950: 10 10 10;
-    /* White/Slate accent */
-    --primary-300: 209 213 219;
-    --primary-400: 156 163 175;
-    --primary-500: 255 255 255;
-    /* White accent */
-    --primary-600: 229 231 235;
-    --primary-foreground: 10 10 10; /* CRITICAL FIX: Pure black text on pure white button */
-}
-
-/* 9. AURORA BOREAL (Vibrant: Teal & Navy) */
-[data-theme='aurora'] {
-    --bg-800: 17 94 89;
-    --bg-900: 19 78 74;
-    --bg-950: 4 47 46;
-    /* Teal */
-    --primary-300: 94 234 212;
-    --primary-400: 45 212 191;
-    --primary-500: 20 184 166;
-    --primary-600: 13 148 136;
+/* 9. CLARO CÁLIDO (Light Warm: Rose/Orange Tint) */
+[data-theme='light-warm'] {
+    --foreground-rgb: 76, 5, 25;
+    --bg-50: 67 20 7;
+    --bg-100: 124 45 18;
+    --bg-200: 154 52 18;
+    --bg-300: 194 65 12;
+    --bg-400: 234 88 12;
+    --bg-500: 249 115 22;
+    --bg-600: 251 146 60;
+    --bg-700: 253 186 116;
+    --bg-800: 254 215 170;
+    --bg-900: 255 255 255;
+    --bg-950: 255 247 237;
+    --primary-300: 253 164 175;
+    --primary-400: 251 113 133;
+    --primary-500: 244 63 94;
+    --primary-600: 225 29 72;
     --primary-foreground: 255 255 255;
 }
 

@@ -168,7 +168,7 @@ export function AccountManager() {
                                             </div>
                                             <div>
                                                 <p className="font-medium text-slate-200">{wallet.name}</p>
-                                                <p className="text-xs text-slate-500 capitalize">{wallet.type} • {formatMoney(wallet.balance)}</p>
+                                                <p className="text-xs text-slate-500 capitalize">{formatMoney(wallet.balance)}</p>
                                             </div>
                                         </div>
                                     )}

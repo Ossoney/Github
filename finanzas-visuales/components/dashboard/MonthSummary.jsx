@@ -203,7 +203,7 @@ export function MonthSummary({ expandedType, onExpand }) {
                                 )}
                             >
                                 <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 border border-slate-700 px-2 py-1 rounded text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 shadow-xl font-bold flex items-center gap-1">
-                                    {tCategory(item.name)}: <Money amount={item.amount} /> ({Math.round(pct)}%)
+                                    {tCategory(item.name)}: <Money amount={item.amount} showDecimals={false} /> ({Math.round(pct)}%)
                                 </div>
                             </div>
                         )
@@ -233,7 +233,7 @@ export function MonthSummary({ expandedType, onExpand }) {
                                             {tCategory(item.name)}
                                         </span>
                                         <span className="text-slate-500 text-xs">
-                                            <Money amount={item.amount} /> ({pct}%)
+                                            <Money amount={item.amount} showDecimals={false} /> ({pct}%)
                                         </span>
                                     </div>
                                     {hasChildren && (
@@ -250,7 +250,7 @@ export function MonthSummary({ expandedType, onExpand }) {
                                                 <div key={sIdx} className="flex items-center gap-2 text-xs py-1 px-1.5 rounded hover:bg-slate-800/40 transition-colors">
                                                     <div className="w-2 h-2 rounded-full shrink-0 opacity-70" style={{ backgroundColor: item.color }} />
                                                     <span className="text-slate-400 truncate flex-1">{tCategory(sub.name)}</span>
-                                                    <span className="text-slate-500 shrink-0"><Money amount={sub.amount} /></span>
+                                                    <span className="text-slate-500 shrink-0"><Money amount={sub.amount} showDecimals={false} /></span>
                                                     <span className="text-slate-600 shrink-0 w-8 text-right">{subPct}%</span>
                                                 </div>
                                             )
@@ -326,7 +326,7 @@ export function MonthSummary({ expandedType, onExpand }) {
                                     className="h-full border-r border-slate-900/50 last:border-0 hover:brightness-110 transition-all relative group first:rounded-l-full last:rounded-r-full"
                                 >
                                     <div className="absolute -top-9 left-1/2 -translate-x-1/2 bg-slate-900 border border-slate-700 px-2 py-1 rounded text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 shadow-xl font-bold">
-                                        {seg.label}: <Money amount={seg.amount} /> ({Math.round(pct)}%)
+                                        {seg.label}: <Money amount={seg.amount} showDecimals={false} /> ({Math.round(pct)}%)
                                     </div>
                                 </div>
                             )
@@ -337,7 +337,7 @@ export function MonthSummary({ expandedType, onExpand }) {
                             <div key={idx} className="flex items-center gap-1.5 text-xs text-slate-400">
                                 <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: seg.color }} />
                                 <span>{seg.label}:</span>
-                                <span className="font-semibold text-slate-200"><Money amount={seg.amount} /></span>
+                                <span className="font-semibold text-slate-200"><Money amount={seg.amount} showDecimals={false} /></span>
                             </div>
                         ))}
                     </div>
@@ -347,7 +347,7 @@ export function MonthSummary({ expandedType, onExpand }) {
                 {/* Stats Grid - Adjust columns based on visible cards */}
                 <div className={cn(
                     "grid gap-2",
-                    type === 'result' ? "grid-cols-6" : "grid-cols-5"
+                    type === 'result' ? "grid-cols-4" : "grid-cols-3"
                 )}>
 
                     {/* 1 - Media mensual ingresos - Only for income or result */}
@@ -358,7 +358,7 @@ export function MonthSummary({ expandedType, onExpand }) {
                             </div>
                             <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider text-center leading-tight">Media<br />ingresos</span>
                             <span className="text-xs font-bold text-center text-emerald-300">
-                                <Money amount={avgIncome} showPlus={true} />
+                                <Money amount={avgIncome} showPlus={true} showDecimals={false} />
                             </span>
                         </div>
                     )}
@@ -371,34 +371,12 @@ export function MonthSummary({ expandedType, onExpand }) {
                             </div>
                             <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider text-center leading-tight">Media<br />gastos</span>
                             <span className="text-xs font-bold text-center text-rose-300">
-                                <Money amount={avgExpense} forceSign="-" />
+                                <Money amount={avgExpense} forceSign="-" showDecimals={false} />
                             </span>
                         </div>
                     )}
 
-                    {/* 3 - Mejor Mes */}
-                    <div className="flex flex-col items-center gap-1.5 p-2.5 rounded-xl bg-slate-800/60 border border-slate-700/50">
-                        <div className="w-7 h-7 rounded-full bg-amber-500/20 flex items-center justify-center">
-                            <Trophy className="w-3.5 h-3.5 text-amber-400" />
-                        </div>
-                        <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider text-center leading-tight">Mejor<br />mes</span>
-                        <span className="text-xs font-bold text-amber-300 capitalize">{history[bestIdx]?.month}</span>
-                        <span className="text-[9px] text-slate-400">
-                            <Money amount={values[bestIdx]} showPlus={type !== 'expense'} forceSign={type === 'expense' ? '-' : null} />
-                        </span>
-                    </div>
 
-                    {/* 4 - Peor Mes */}
-                    <div className="flex flex-col items-center gap-1.5 p-2.5 rounded-xl bg-slate-800/60 border border-slate-700/50">
-                        <div className="w-7 h-7 rounded-full bg-rose-500/20 flex items-center justify-center">
-                            <TrendingDown className="w-3.5 h-3.5 text-rose-400" />
-                        </div>
-                        <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider text-center leading-tight">Peor<br />mes</span>
-                        <span className="text-xs font-bold text-rose-300 capitalize">{history[worstIdx]?.month}</span>
-                        <span className="text-[9px] text-slate-400">
-                            <Money amount={values[worstIdx]} showPlus={type !== 'expense'} forceSign={type === 'expense' ? '-' : null} />
-                        </span>
-                    </div>
 
                     {/* 5 - Total acumulado */}
                     <div className="flex flex-col items-center gap-1.5 p-2.5 rounded-xl bg-slate-800/60 border border-slate-700/50">
@@ -409,7 +387,7 @@ export function MonthSummary({ expandedType, onExpand }) {
                         </div>
                         <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider text-center leading-tight">Total<br />{historyLimit === '∞' ? 'hist.' : `${historyLimit}m`}</span>
                         <span className={cn('text-xs font-bold text-center', (type === 'expense' || total < 0) ? 'text-rose-300' : 'text-emerald-300')}>
-                            <Money amount={total} showPlus={type !== 'expense'} forceSign={type === 'expense' ? '-' : null} />
+                            <Money amount={total} showPlus={type !== 'expense'} forceSign={type === 'expense' ? '-' : null} showDecimals={false} />
                         </span>
                     </div>
 
@@ -500,10 +478,10 @@ export function MonthSummary({ expandedType, onExpand }) {
                     </span>
                     <span className={cn(
                         "text-2xl font-bold flex items-center gap-1",
-                        (stats?.result || 0) >= 0 ? "text-sky-100" : "text-orange-100"
+                        (stats?.result || 0) >= 0 ? "text-emerald-500" : "text-rose-500"
                     )}>
                         {(stats?.result || 0) > 0 ? '+' : ''}
-                        <Money amount={stats?.result || 0} />
+                        <Money amount={stats?.result || 0} showDecimals={false} />
                     </span>
                 </button>
             </div>

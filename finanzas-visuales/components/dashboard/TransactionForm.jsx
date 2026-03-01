@@ -103,7 +103,10 @@ export function TransactionForm() {
         }
     }, [isTransactionModalOpen, editingTransaction, wallets, allCategories, newTransactionType])
 
-    const existingTags = useLiveQuery(() => db.tags.toArray())
+    const existingTags = useLiveQuery(async () => {
+        const all = await db.tags.toArray()
+        return all.sort((a, b) => a.name.localeCompare(b.name))
+    })
 
     const handleTagClick = (tagName) => {
         const current = tagsInput.split(' ').filter(t => t)
@@ -241,7 +244,7 @@ export function TransactionForm() {
                 }
 
                 // Handle Recurring Creation
-                if (isRecurring && !isSplitMode && !editingTransaction) {
+                if (isRecurring && !isSplitMode) {
                     await db.recurring.add({
                         type,
                         amount: value,
@@ -516,7 +519,7 @@ export function TransactionForm() {
                                     <div className="bg-slate-900 border border-slate-800 rounded-xl p-3">
                                         {/* Parent Categories List (Horizontal Scroll if needed, but grid for now) */}
                                         {!selectedParentId ? (
-                                            <div className="grid grid-cols-4 gap-2">
+                                            <div className="grid grid-cols-3 gap-3 sm:gap-4 sm:grid-cols-4">
                                                 {rootCategories.map(cat => {
                                                     const Icon = LucideIcons[cat.icon] || LucideIcons.HelpCircle
 
@@ -529,10 +532,10 @@ export function TransactionForm() {
                                                             onClick={() => hasChildren ? setSelectedParentId(cat.id) : setCategoryId(cat.id)}
                                                             className="flex flex-col items-center gap-1 p-2 rounded-lg hover:bg-slate-800 transition-colors"
                                                         >
-                                                            <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400" style={{ color: cat.color }}>
-                                                                <Icon className="w-5 h-5" />
+                                                            <div className="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center text-slate-400" style={{ color: cat.color }}>
+                                                                <Icon className="w-7 h-7" />
                                                             </div>
-                                                            <span className="text-[10px] text-slate-400 truncate w-full text-center">{tCategory(cat.name)}</span>
+                                                            <span className="text-xs text-slate-400 truncate w-full text-center">{tCategory(cat.name)}</span>
                                                         </button>
                                                     )
                                                 })}
@@ -567,8 +570,8 @@ export function TransactionForm() {
                     {/* 3. Optional Details */}
                     <div className="space-y-4 pt-2 border-t border-slate-800">
 
-                        {/* Recurrence Toggle (Only for new, single transactions) */}
-                        {!editingTransaction && !isSplitMode && (
+                        {/* Recurrence Toggle (Not available for split transactions) */}
+                        {!isSplitMode && (
                             <div className="flex items-center justify-between bg-slate-950 p-3 rounded-xl border border-slate-800">
                                 <div className="flex items-center gap-3">
                                     <div className={cn("w-8 h-8 rounded-full flex items-center justify-center transition-colors", isRecurring ? "bg-sky-500 text-white" : "bg-slate-800 text-slate-500")}>
@@ -642,7 +645,7 @@ export function TransactionForm() {
                                             key={tag.id}
                                             onClick={() => handleTagClick(tag.name)}
                                             className={cn(
-                                                "text-[10px] px-2 py-1.5 rounded-full border transition-all font-medium",
+                                                "text-sm px-3 py-2 rounded-full border transition-all font-bold",
                                                 isSelected
                                                     ? "bg-sky-500 text-white border-sky-500 shadow-lg shadow-sky-500/20"
                                                     : "bg-slate-900 border-slate-700 text-slate-400 hover:border-slate-500 hover:text-slate-200"

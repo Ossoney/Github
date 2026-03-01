@@ -194,8 +194,274 @@ h1 span {
     }
 }
 
+/* --- MODE SELECTOR --- */
+.mode-selector {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.mode-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.mode-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.mode-btn.active {
+    background: var(--accent);
+    color: #1e1b4b;
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(244, 114, 182, 0.5);
+}
+
+/* --- ZODIAC TOGGLE --- */
+.zodiac-toggle {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.toggle-btn {
+    background: transparent;
+    border: 2px solid var(--secondary);
+    color: var(--secondary);
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.toggle-btn:hover {
+    background: rgba(167, 139, 250, 0.2);
+}
+
+.toggle-btn.active {
+    background: var(--secondary);
+    color: #1e1b4b;
+    font-weight: 600;
+}
+
+/* --- MODE BADGE --- */
+.mode-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent), #a855f7);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* --- EXTRA INFO (Mood, Color) --- */
+.extra-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 1rem 0;
+}
+
+.mood,
+.lucky-color {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 15px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.mood strong,
+.lucky-color strong {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.color-swatch {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+/* --- SHARE BUTTON --- */
+.share-btn {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    width: 100%;
+    transition: all 0.3s ease;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(34, 197, 94, 0.4);
+}
+
+.share-btn:active {
+    transform: translateY(0);
+}
+
+/* --- LOADER --- */
+.loader {
+    padding: 2rem;
+}
+
+.crystal-ball {
+    font-size: 4rem;
+    animation: float 2s ease-in-out infinite;
+}
+
+.loader p {
+    margin-top: 1rem;
+    color: var(--secondary);
+    font-size: 1rem;
+}
+
+/* --- FOOTER --- */
 footer {
     opacity: 0.5;
     margin-top: 2rem;
     font-size: 0.8rem;
+    padding-bottom: 2rem;
+}
+
+.history-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.history-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* --- HISTORY MODAL --- */
+.history-list {
+    max-height: 60vh;
+    overflow-y: auto;
+    margin: 1rem 0;
+}
+
+.history-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.history-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.history-icon {
+    font-size: 1.5rem;
+}
+
+.history-date {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: var(--secondary);
+}
+
+.history-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.no-history {
+    color: var(--secondary);
+    font-style: italic;
+    padding: 2rem;
+}
+
+.clear-history-btn {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Fredoka', sans-serif;
+    width: 100%;
+}
+
+.clear-history-btn:hover {
+    background: #ef4444;
+    color: white;
+}
+
+/* --- SIGN DATES --- */
+.sign-dates {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--secondary);
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 400px) {
+    .zodiac-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .mode-btn,
+    .toggle-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
 }

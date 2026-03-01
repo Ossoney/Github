@@ -9,7 +9,10 @@ import { cn } from '@/lib/utils'
 import { useLanguage } from '@/lib/i18n'
 
 export function TagManager() {
-    const tags = useLiveQuery(() => db.tags.toArray())
+    const tags = useLiveQuery(async () => {
+        const all = await db.tags.toArray()
+        return all.sort((a, b) => a.name.localeCompare(b.name))
+    })
     const { t } = useLanguage()
     const [newTag, setNewTag] = useState('')
     const [deleteId, setDeleteId] = useState(null)
@@ -69,8 +72,8 @@ export function TagManager() {
                         <p className="col-span-full text-center text-xs text-slate-500 py-6 italic">{t('no_tags')}</p>
                     )}
                     {tags?.map(tag => (
-                        <div key={tag.id} className="flex items-center justify-between p-3 rounded-xl bg-slate-800/40 hover:bg-slate-800 transition-colors group border border-slate-800 hover:border-slate-700">
-                            <span className="font-medium text-slate-300">{tag.name}</span>
+                        <div key={tag.id} className="flex items-center justify-between p-4 rounded-xl bg-slate-800/40 hover:bg-slate-800 transition-colors group border border-slate-800 hover:border-slate-700">
+                            <span className="font-bold text-lg text-slate-200">{tag.name}</span>
                             <button
                                 onClick={() => setDeleteId(tag.id)}
                                 className="p-1.5 text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 rounded-lg transition-colors"

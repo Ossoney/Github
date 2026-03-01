@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>¿Quién es el Impostor?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- SCREEN 1: SETUP -->
+        <section id="screen-setup" class="screen active">
+            <header class="header-logo">
+                <div class="logo-icon">🕵️</div>
+                <h1>IMPOSTOR</h1>
+            </header>
+
+            <div class="setup-controls">
+                <div class="control-group">
+                    <label>Jugadores</label>
+                    <div class="counter-control">
+                        <button id="btn-dec-players" class="btn-icon">-</button>
+                        <span id="player-count">4</span>
+                        <button id="btn-inc-players" class="btn-icon">+</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Impostores</label>
+                    <div class="counter-control">
+                        <button id="btn-dec-impostors" class="btn-icon">-</button>
+                        <span id="impostor-count">1</span>
+                        <button id="btn-inc-impostors" class="btn-icon">+</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Categoría</label>
+                    <select id="category-select" class="premium-select">
+                        <option value="all">🎲 Aleatorio</option>
+                        <option value="lugares">🌍 Lugares</option>
+                        <option value="comida">🍔 Comida</option>
+                        <option value="animales">🦁 Animales</option>
+                        <option value="profesiones">💼 Profesiones</option>
+                    </select>
+                </div>
+            </div>
+
+            <button id="btn-start-game" class="btn-primary pulse-anim">EMPEZAR PARTIDA</button>
+            <p class="hint-text">Pasaréis el móvil de uno en uno</p>
+        </section>
+
+        <!-- SCREEN 2: PASS DEVICE -->
+        <section id="screen-pass" class="screen hidden">
+            <div class="card-container">
+                <div class="pass-card">
+                    <h2>Jugador <span id="current-player-num">1</span></h2>
+                    <p>Pasa el dispositivo a este jugador</p>
+                    <div class="icon-placeholder">📱</div>
+                    <button id="btn-reveal-role" class="btn-primary">VER MI ROL</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN 3: REVEAL ROLE -->
+        <section id="screen-reveal" class="screen hidden">
+            <div class="role-card">
+                <div class="card-inner">
+                    <h3 class="role-title">Tú eres...</h3>
+                    <div id="role-content" class="role-reveal-box">
+                        <!-- Content injected by JS -->
+                    </div>
+                    <p id="role-instruction" class="role-instruction">...</p>
+                </div>
+                <button id="btn-hide-role" class="btn-primary">ENTENDIDO</button>
+            </div>
+        </section>
+
+        <!-- SCREEN 4: GAMEPLAY / TIMER -->
+        <section id="screen-game" class="screen hidden">
+            <header>
+                <h2>¡A JUGAR!</h2>
+                <div class="category-badge" id="game-category-display">Categoría: ...</div>
+            </header>
+
+            <div class="timer-container">
+                <svg class="timer-svg" viewBox="0 0 100 100">
+                    <circle class="timer-bg" cx="50" cy="50" r="45"></circle>
+                    <circle class="timer-progress" id="timer-progress" cx="50" cy="50" r="45"></circle>
+                </svg>
+                <div class="timer-text" id="timer-display">05:00</div>
+            </div>
+
+            <div class="game-controls">
+                <button id="btn-end-game" class="btn-secondary">Terminar Partida</button>
+                <button id="btn-new-game" class="btn-primary">Nueva Partida</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

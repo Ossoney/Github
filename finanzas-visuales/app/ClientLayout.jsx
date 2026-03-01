@@ -6,8 +6,12 @@ import { processAutosave } from '@/lib/autosave'
 import { LanguageProvider, useLanguage } from '@/lib/i18n'
 import { PrivacyProvider } from '@/lib/privacy'
 import { ToastProvider } from '@/components/ui/UI'
+import { useStore } from '@/hooks/useStore'
+import { db } from '@/lib/db'
 
 export function ClientLayout({ children }) {
+    const { setSelectedWalletId } = useStore()
+
     // ... (keep existing useEffect)
     // Check for recurring transactions & Theme on mount
     useEffect(() => {
@@ -22,6 +26,19 @@ export function ClientLayout({ children }) {
             }
         }
         loadTheme()
+
+        // Load last selected account
+        const loadSettings = async () => {
+            try {
+                const settings = await db.settings.get('global')
+                if (settings?.lastSelectedWalletId !== undefined) {
+                    setSelectedWalletId(settings.lastSelectedWalletId)
+                }
+            } catch (err) {
+                console.error("Error loading initial settings:", err)
+            }
+        }
+        loadSettings()
     }, [])
 
     return (

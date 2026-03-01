@@ -1,0 +1,341 @@
+:root {
+    --bg-color: #0f0c15;
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --primary-color: #7b2cbf;
+    /* Purple */
+    --accent-color: #f72585;
+    /* Pink/Red for impostor */
+    --success-color: #4cc9f0;
+    /* Blue/Cyan for innocents */
+    --text-color: #ffffff;
+    --text-muted: #a0a0b0;
+    --font-family: 'Outfit', sans-serif;
+    --border-radius: 20px;
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(123, 44, 191, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(247, 37, 133, 0.2) 0%, transparent 40%);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: scale(0.95);
+}
+
+.screen.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: scale(1);
+}
+
+.hidden {
+    display: none;
+    /* Helper for logic, but transitions handle visuals */
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- TYPOGRAPHY & GENERAL --- */
+h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 2rem;
+    background: linear-gradient(to right, #f72585, #7209b7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+p,
+label {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+/* --- BUTTONS --- */
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-family: var(--font-family);
+    transition: transform 0.1s;
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), #560bad);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 16px 32px;
+    border-radius: 50px;
+    width: 100%;
+    box-shadow: 0 10px 20px rgba(123, 44, 191, 0.4);
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    font-size: 1rem;
+    padding: 12px 24px;
+    border-radius: 50px;
+    margin-top: 10px;
+    border: var(--glass-border);
+}
+
+.btn-icon {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--glass-border);
+}
+
+/* --- SETUP SCREEN --- */
+.header-logo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo-icon {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.setup-controls {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    width: 100%;
+    border: var(--glass-border);
+    margin-bottom: 20px;
+}
+
+.control-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.control-group:last-child {
+    margin-bottom: 0;
+}
+
+.counter-control {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.premium-select {
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: var(--glass-border);
+    padding: 10px 15px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    outline: none;
+    text-align: right;
+}
+
+.hint-text {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+/* --- REVEAL SCREENS --- */
+.card-container,
+.role-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 30px;
+    width: 100%;
+    text-align: center;
+    border: var(--glass-border);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.icon-placeholder {
+    font-size: 5rem;
+    margin: 30px 0;
+}
+
+.role-reveal-box {
+    margin: 30px 0;
+}
+
+.role-word {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--success-color);
+    text-transform: uppercase;
+}
+
+.role-impostor {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    animation: shake 0.5s;
+}
+
+/* --- TIMER --- */
+.timer-container {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 40px auto;
+}
+
+.timer-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.timer-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 5;
+}
+
+.timer-progress {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 5;
+    stroke-dasharray: 283;
+    /* 2 * PI * 45 */
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1s linear;
+}
+
+.timer-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.game-controls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(123, 44, 191, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(123, 44, 191, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(123, 44, 191, 0);
+    }
+}
+
+.pulse-anim {
+    animation: pulse 2s infinite;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
