@@ -2,68 +2,66 @@
 
 ## Biografía Sentimental
 
-Sayd Bahauddin Majrooh (1928-1988) fue un destacado poeta, filósofo sociólogo y líder moral indiscutido de los intelectuales de matriz afgana tanto en pasho como en dari a finales del siglo XX. Originario de Kunar. Tras la invasión comunista a su país fundó el *Centro de Información Afgano* exiliado en Pakistán. Su magnus opus es *Un mensajero de Zoroastro* o *El Ego-Monstruo*, un larguísimo poema filosófico de incalculable fuerza épica concebido parte en pashto, parte en persa-dari (y auto-traducido al francés). En sus textos medita con dolorosa compasión sobre el amor destrozado del exilio, la dictadura, el dogmatismo fratricida y los viejos mitos del fuego asolados. Pagó caro su firme apego por la razón, el intelecto y el laicismo democrático afgano: fue brutalmente asesinado en 1988 por extremistas violentos al dictaminar a favor de un regreso pacífico del ex-rey Zahir Shah. Hoy su canto perdura a modo del más sagrado evangelio moderno sobre las víctimas desgarradas por cualquier clase de terror.
+Sayd Bahauddin Majrooh (1928-1988) fue un destacado filósofo, poeta, periodista y voz de la resistencia afgana, que escribió mayoritariamente en pashtún (y también en persa y francés). Nacido en la provincia de Kunar y educado en la Universidad de Montpellier y la Sorbona (Francia), Majrooh introdujo el existencialismo y el pensamiento moderno en las letras afganas, fusionándolos con la rica herencia del misticismo islámico. Como director del Centro de Información Afgano en Peshawar durante la guerra afgano-soviética, fue una de las figuras más observadas y respetadas, hasta su asesinato en 1988 a manos de extremistas en la puerta de su casa en Peshawar. Su obra maestra es el largo poema épico "Viajero a medianoche" (Ego-Monstre), una metáfora de la destrucción de Afganistán y el exilio del alma. Su biografía sentimental, reflejada en sus versos, no canta al amor romántico trivial; su amor es trágico, intelectual y agónico. Ama desesperadamente a un país desmembrado ("su hermosa novia en harapos") y explora la alienación del individuo moderno exiliado, que busca en la noche la pureza perdida de un amor que la guerra ha vuelto monstruoso.
 
-*Nota: Por su fecha de fallecimiento (1988), el autor pertenece a derechos vigentes. Se marca (NO_DERECHOS).*
+## Poemas de Amor
 
-## Poemas de Amor (Al Pueblo y la Razón)
-
-### 1. El ego-monstruo del tirano contra el amor
-
-| Original (Transl. Concept.) | Traducción (Español) |
-|---|---|
-| ای غولِ بیابان، عشق را نمی‌فهمی<br>تو فقط تیغ داری اما قلب نه | ¡Bestia salvaje venida del peor pantano estéril, nunca entenderás en la vida del amor!;<br>Tú meramente acaparas una inmensa espada asquerosa, pero jamás has tenido corazón. |
-
-### 2. A los estudiantes del dolor
-
-| Original (Transl. Concept.) | Traducción (Español) |
-|---|---|
-| من به فرزندان افغان عشق می‌آموزم<br>تا جنگ از یادشان برود | Invariablemente estaré dictando las dulces sílabas del cariño a los huérfanos afganos,<br>todo con el sencillo fin de que erradiquen por fin el asfixiante eco oscuro de lo bélico. |
-
-### 3. Cenizas de un enamorado exilio
-
-| Original (Transl. Concept.) | Traducción (Español) |
-|---|---|
-| تبعیدِ من دوری از تو نیست<br>تبعید من، مرگِ روشنی در وطن است | Esto que ha sido mi exilio penoso, no se cifra a mi cruel desarraigo a lo opuesto de tu amor;<br>esto que en rigor es mi crudo exiliar ha sido la infame defunción de la claridad patricia allá. |
-
-### 4. La amada es la libertad
-
-| Original (Transl. Concept.) | Traducción (Español) |
-|---|---|
-| آزادی، ای معشوق در زنجیر من<br>خون من برای تو روی زمین می‌ریزد | ¡Libertad! ¡Solamente eres entonces mi amorosa pero esclavizada camarada uncida!<br>Nada menos que es y ha sido por tu sola gracia que al fango de la tierra entrego aquí mis venas cortadas. |
-
-### 5. Lloro por los senderos de Kunar
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| دردهایم مثل کوه‌های کنر بزرگ است<br>عشقم به آب‌های آن زلال | Mis profundas agonías se han de encontrar inmensas igualando a cada risco duro en Kunar;<br>en tanto mi tierno afán sigue límpido conservando todas aquellas cualidades de sus ríos. |
-
-### 6. Un viajero zoroastrista del cariño
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| مسافر زرتشت هستم تا نور بیاورم<br>عشق نور است برای ظلمت افغان | Caminante antiguo sigo yo, un fiel escudero del sabio de Zoroastro recabando luces;<br>pues solo afanes solidarios lograrían proveernos algo del fulgor redentor en el desgarro ciego nacional. |
-
-### 7. La pluma del intelecto ama (contra el dogmatismo)
+### 1. El Viajero a Medianoche
 
 | Original (Pashto) | Traducción (Español) |
 |---|---|
-| قلم مې مینه ده، فکر مې یار<br>جهالت زموږ دښمن دی | Al fin mi lapicero es la viva prueba material de querer; el puro raciocino ha sido acá mi amante;<br>el dogmatismo feroz sin luz y de afilada daga estulta, ese y ninguno otro fue jamás nuestro mortal verdugo. |
+| زه په تیارو کې مسافر یم یاره<br>نه مې څوک پیژني نه لاره شته ده<br>ستا د مینې رڼا مې زړه ته غواړم<br>چې په دی دښته کې چاره نشته ده | Soy un viajero a medianoche, oh amada;<br>nadie me conoce y no hay camino.<br>Deseo para mi corazón la luz de tu amor;<br>pues en este desierto no hay remedio. |
 
-### 8. Sangre en la esperanza (El martirio)
-
-| Original (Pashto) | Traducción (Español) |
-|---|---|
-| که زما وینه بهیږي، پریږده بهیږي<br>د مینې ګل ته به اوبه ورکړي | De modo pues que ha sido la sangre vertida toda para este lugar: permitámosle su torrente y el flujo postrer;<br>total acabará forzosa, piadosa y pacientemente irrigando el dulce pétalo brotado con su flor. |
-
-### 9. El afgano sin miedo
+### 2. Rostro del País Roto
 
 | Original (Pashto) | Traducción (Español) |
 |---|---|
-| څوک چې مینه کوي، له مرګه نه ډاریږي<br>پښتون تل د مینې لپاره ولاړ دی | Pues todo el que ha amado nunca guardará la menor vacilación de entregar cobardemente sus brazos fijos a ese pálido espectro de la trágica fosa;<br>los de estirpe pastún quedamos sin excepción dispuestos todos por la íntegra vigencia natural del sacrificio. |
+| ستا مخ مې وطن دی چې په وینو سره دی<br>ستا زلفې د شپې په شان خپرې دي<br>ما ته مینه او درد دواړه یو دي<br>چې زما اوښکې ستا په پښو کې تویې دي | Tu rostro es mi patria que está roja de sangre;<br>tus trenzas están esparcidas como la noche.<br>Para mí el amor y el dolor son uno solo;<br>mis lágrimas se han derramado a tus pies. |
 
-### 10. Despedida a la Nación y la Belleza
+### 3. Espejo Manchado
 
-| Original (Dari) | Traducción (Español) |
+| Original (Pashto) | Traducción (Español) |
 |---|---|
-| مجروح رفت، با قلبی پر از عشق به انسان<br>مرگ نتوانست صدایش را خفه کند | De suerte tal Majrooh terminó partiendo portando el gran pecho henchido desde la afición del prójimo;<br>el oscuro verdugo mortuorio fue inservible y un rotundo incapaz que pudiese enmudecernos a la silenciada pero eterna voz que grita aquí. |
+| کله چې زه درته ګورم، ځان نه وینم<br>یوازې درد او محبت زه وینم<br>ته زما د مات شوي زړه آئینه یې<br>چې په کې یوازې قیامت زه وینم | Cuando te miro, no me veo a mí mismo;<br>solo veo dolor y cariño.<br>Tú eres el espejo de mi corazón roto;<br>en el que solamente veo el Juicio Final. |
+
+### 4. Sed del Corazón
+
+| Original (Pashto) | Traducción (Español) |
+|---|---|
+| زړه مې ستا په مینه کې سوزلی دی<br>لکه د کنړ د سیند په غاړه ونه<br>چې اوبه یې په مخکې روانې دي<br>خو له تندې مري دا بې برخه دانه | Mi corazón se ha quemado en tu amor;<br>como el árbol a orillas del río de Kunar.<br>Cuyas aguas corren frente a él;<br>pero se muere de sed esta semilla desheredada. |
+
+### 5. Las Cadenas del Cabello (Sufí)
+
+| Original (Pashto) | Traducción (Español) |
+|---|---|
+| ستا د زلفو په ځنځیر مې زړه تړلی<br>خلاصون نه غواړم له دې ښکلي ځنځیره<br>ته مې نیولی په خپل دام کې ای ښکلا<br>زه خوشال یم په دې دام کې بې اسیره | En las cadenas de tus bucles he atado mi corazón;<br>no quiero liberación de esta hermosa cadena.<br>Tú me has atrapado en tu trampa, oh belleza;<br>yo estoy feliz en esta trampa, prendido sin ser cautivo. |
+
+### 6. Cadenas de Papel
+
+| Original (Pashto) | Traducción (Español) |
+|---|---|
+| زما شعرونه ستا د مینې زولنې دي<br>چې مې روح یې د تل لپاره تړلی<br>که وجود مې په اورونو کې وسوځي<br>زما مینه ستا په نامه ژوند کوي | Mis poemas son los grilletes de tu amor;<br>que han atado mi alma para siempre.<br>Si mi existencia se quema en los fuegos;<br>mi amor vivirá a cuenta de tu nombre. |
+
+### 7. Locura y Exilio
+
+| Original (Pashto) | Traducción (Español) |
+|---|---|
+| په پردیسۍ کې مې ستا یادونه ژوندي ساتي<br>لکه د دښتې ګل چې پرخې ژوندی ساتي<br>که ستا مینه زما په سینه کې نه وای<br>دا درانه واټنونه به مې خامخا وژلي وای | En el destierro tus recuerdos me mantienen vivo;<br>como la flor del desierto a la que el rocío mantiene viva.<br>Si tu amor no estuviera en mi pecho;<br>estas pesadas distancias sin duda me habrían matado. |
+
+### 8. Voto del Vagabundo
+
+| Original (Pashto) | Traducción (Español) |
+|---|---|
+| ای یاره، زه ستا د کوڅې خاوره یم<br>که مې باد یوسي هم ستا به یم<br>زما په وینو کې ستا د نامه توری دی<br>په ژوند او مرګ کې هم ستا به یم | Oh amada, soy la tierra de tu calle;<br>incluso si el viento me lleva, seguiré siendo tuyo.<br>En mi sangre está la letra de tu nombre;<br>en la vida y la muerte, también seguiré siendo tuyo. |
+
+### 9. Río de Dolor (Canto de Kunar)
+
+| Original (Pashto) | Traducción (Español) |
+|---|---|
+| د کنړ د څپو په شان زما مینه ده<br>چې په جوش سره ستاسې لور ته روانه ده<br>نه یې غرونه مخه نیولی شي، نه ډبرې<br>دا زما د زړه ژوره، مسته ترانه ده | Mi amor es como las olas del Kunar;<br>que con fervor corre hacia tu lado.<br>Ni montañas pueden bloquearle el paso, ni rocas;<br>esta es la profunda y embriagada canción de mi corazón. |
+
+### 10. Sonrisa del Monstruo
+
+| Original (Pashto) | Traducción (Español) |
+|---|---|
+| پېښور مې تن دی، خو زړه په کابل کې دی<br>مینه مې هم هلته د اورونو په اور کې دی<br>ته چې رايادېږې، د دې ښامار په خوله کې<br>یو خواږه خوب ته مې روح په بیړه کې دی | Peshawar es mi cuerpo, pero mi corazón está en Kabul;<br>mi amor también está allá en el fuego de los incendios.<br>Cuando te recuerdo, en la boca de este dragón;<br>mi alma, apresurada, se va hacia un dulce sueño. |

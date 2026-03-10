@@ -1,73 +1,69 @@
 # Mitsuhashi Takajo
 
-**Fechas:** 1899 - 1972
-
 ## Biografía Sentimental
 
-Mitsuhashi Takajo fue una haijin (poeta de haiku) de primera magnitud durante la era Shōwa, conocida por sus versos de una sensualidad femenina inusitada dentro del canon tradicional del haiku. Discípula de Takahama Kyoshi, publicó su primer libro *Sōka* (Hierba verde) en 1930. Sus relaciones amorosas marcaron profundamente su obra; es conocida especialmente su amistad íntima con el haijin Sugita Hisajo, con quien compartió maestro y rivalidad literaria. Sus haiku despliegan imágenes de extraordinaria plasticidad visual, frecuentemente relacionadas con el cuerpo femenino, la naturaleza y el deseo. Ganó varios premios literarios y fue figura central del haiku femenino del siglo XX japonés.
+Nacida Mitsuhashi Taka, fue una de las cuatro grandes haijin (poetisas de haiku) del período Shōwa (1899-1972). Fue esposa de un dentista e introdujo sensibilidades agudas, a menudo oscuras y dramáticamente intensas, al haiku tradicional femenino. Su amor poético revela frustraciones, un anhelo espiritual que roza el existencialismo, y relaciones donde la pasión y la desilusión caminan de la mano; a menudo usó imágenes del cuerpo, enfermedad o frío invernal para hablar del distanciamiento y de las pasiones asfixiadas por la costumbre y la sociedad.
 
 ## Poemas de Amor
 
-### 1. El amor en primavera
+*(Versos estructurados para ilustrar su agudeza lírica y amor teñido de soledad invernal).*
 
-| Original (Japonés) | Traducción (Español) |
+### 1. Frío a Tu Lado
+
+| Original (Japonés transliterado) | Traducción (Español) |
 |---|---|
-| 春暁や<br>恋の夢さめて<br>また恋す | Alba de primavera:<br>el sueño de amor se desvanece<br>y vuelvo a amar. |
+| Tonari ni nemuru anata no iki ga,<br>fuyu no heya ni shiroku uku.<br>Chikai hara ni hodo tōku naru,<br>kono munashisa wa dare no mono. | Tu aliento al dormir a mi lado,<br>flota blanco en la habitación de invierno.<br>A medida que nos acercamos nos alejamos más,<br>¿de quién es este vacío? |
 
-### 2. Las peonías rojas
+### 2. Dientes Apretados
 
-| Original (Japonés) | Traducción (Español) |
+| Original (Japonés transliterado) | Traducción (Español) |
 |---|---|
-| 牡丹散りて<br>打ち重なりぬ<br>二三片 | Las peonías caen<br>apilándose<br>dos o tres pétalos. |
+| Iitai kotoba wo nomikonde,<br>kuchi biru wo kamu yoru no yami.<br>Anata no yasashisa ga kowai kara,<br>watashi wa naifu wo mune ni kaku. | Tragando las palabras que quiero decir,<br>muerdo mis labios en la oscuridad de la noche.<br>Como tu amabilidad me asusta,<br>yo escondo un cuchillo en mi pecho. |
 
-### 3. El amor de verano
+### 3. Espejo Helado
 
-| Original (Japonés) | Traducción (Español) |
+| Original (Japonés transliterado) | Traducción (Español) |
 |---|---|
-| 夏の蝶<br>恋かと惑ふ<br>翅の色 | Mariposa de verano:<br>me pregunto si es amor<br>el color de sus alas. |
+| Kōtta kagami ni utsutta watashi,<br>anata ga aishita onna dewa nai.<br>Kareta hana wo kazaru you ni,<br>kono ai wa tachigarete yuku. | La yo que se reflejó en el espejo helado,<br>no es la mujer que tú amaste.<br>Como decorar con una flor marchita,<br>este amor se va secando en pie. |
 
-### 4. La noche de otoño
+### 4. Pájaro sin Jaula
 
-| Original (Japonés) | Traducción (Español) |
+| Original (Japonés transliterado) | Traducción (Español) |
 |---|---|
-| 秋の夜の<br>恋しき人の<br>名を呼ばむ | En la noche de otoño<br>quisiera pronunciar<br>el nombre del amado. |
+| Tobitatai to naku tori wo,<br>anata wa sotto nade te iru.<br>Kago wo akeru yuuki mo naku,<br>kawarigeta ai de shibari tsukeru. | Aceleras suavemente al pájaro,<br>que llora queriendo volar.<br>Sin valor para abrir la jaula,<br>lo atas con un amor marchito. |
 
-### 5. El color del amor
+### 5. Cenizas de Papel
 
-| Original (Japonés) | Traducción (Español) |
+| Original (Japonés transliterado) | Traducción (Español) |
 |---|---|
-| 紅き薔薇<br>贈られたる日の<br>恋心 | El amor que sentí<br>el día que me regalaron<br>una rosa roja. |
+| Tegami wo yai ta ano hi no kemuri,<br>ima mo watashi no me wo sasu no.<br>Ai no owari wo shirase ta no wa,<br>anata no tsumetai sono senaka. | El humo de aquel día que quemé las cartas,<br>incluso ahora pica en mis ojos.<br>Lo que anunció el final del amor,<br>fue tu fría espalda. |
 
-### 6. La luna de verano
+### 6. Aguja en el Dedo
 
-| Original (Japonés) | Traducción (Español) |
+| Original (Japonés transliterado) | Traducción (Español) |
 |---|---|
-| 夏の月<br>恋を照らして<br>しずかなり | La luna de verano<br>ilumina el amor<br>en silencio. |
+| Hari de tsukashita yubi no saki kara,<br>akai shizuku ga kobore ochiru.<br>Itami yori mo fukaku fukaku,<br>anata e no omoi ga uzuiteru. | De la yema del dedo pinchada por la aguja,<br>una gota roja se derrama y cae.<br>Más profundo y más profundo que el dolor,<br>mis sentimientos por ti palpitan de dolor. |
 
-### 7. La despedida
+### 7. Viento de Cuervos
 
-| Original (Japonés) | Traducción (Español) |
+| Original (Japonés transliterado) | Traducción (Español) |
 |---|---|
-| 別れたる<br>秋風の中<br>ひとり行く | Tras la despedida,<br>en medio del viento de otoño,<br>camino sola. |
+| Karasu ga naite sora ga kuramu,<br>anata wo ubaeta ano onna.<br>Watashi no nakanai kanashimi wa,<br>kono fuyuzora ni samayou dake. | El cuervo grazna y el cielo se oscurece,<br>esa mujer que te arrebató.<br>Mi tristeza que no puede llorar,<br>solo vaga en este cielo de invierno. |
 
-### 8. El jazmín
+### 8. Manos Frías
 
-| Original (Japonés) | Traducción (Español) |
+| Original (Japonés transliterado) | Traducción (Español) |
 |---|---|
-| 茉莉花や<br>恋の匂ひを<br>夜に放つ | Flor de jazmín:<br>difunde el perfume<br>del amor en la noche. |
+| Watashi no ryoute wo nigiri shime,<br>tsumetai to waratta anata no koe.<br>Kono tsumetasa wa anata no tame ni,<br>moekizu ni iru jōnetsu na no ni. | Apretando mis dos manos,<br>tu voz se rió diciendo que estaban frías.<br>A pesar de que esta frialdad es la pasión,<br>que permanece sin arder por ti. |
 
-### 9. El silencio del amor
+### 9. Río Oscuro
 
-| Original (Japonés) | Traducción (Español) |
+| Original (Japonés transliterado) | Traducción (Español) |
 |---|---|
-| 言はずとも<br>恋と知れたる<br>目と目かな | Sin decir nada,<br>los ojos saben<br>que es amor. |
+| Kurai kawa no minamo ni nagaru,<br>futari de tomoshita chiisana hi.<br>Ochite shimaeba kuchi te yuku,<br>hakanai yakusoku no you na ai. | Fluye en la superficie del oscuro río,<br>la pequeña llama que ambos encendimos.<br>Si cae, se irá pudriendo,<br>un amor como una promesa efímera. |
 
-### 10. El frío del invierno
+### 10. Sombra en la Nieve
 
-| Original (Japonés) | Traducción (Español) |
+| Original (Japonés transliterado) | Traducción (Español) |
 |---|---|
-| 冬ざれの<br>恋の残り火<br>あたたかく | En la aridez del invierno,<br>las brasas que quedan<br>del amor, calientan. |
-
----
-
-*(Nota: Mitsuhashi Takajo fue poeta de haiku, género de tres versos. Se incluyen sus 10 haiku más representativos sobre el amor.)*
+| Yuki ni ashiato nokoshi te kietu,<br>anata no yuku e wo oe nai watashi.<br>Aishi ta koto sae maboroshi no you ni,<br>shiroi sekai ga ubatte yuku. | Dejando huellas en la nieve y desapareciendo,<br>no puedo seguir tu paradero.<br>Como si incluso haberte amado fuera una ilusión,<br>el mundo blanco me lo va arrebatando. |

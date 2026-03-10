@@ -2,36 +2,66 @@
 
 ## Biografía Sentimental
 
-Frik (c. 1230-1310) fue un eminente poeta de la Armenia medieval cuyos orígenes y nombre verdadero se han desvanecido en la oscuridad del tiempo (se especula que Frik es un pseudónimo). A diferencia del misticismo etéreo y dogmático de sus predecesores eclesiásticos, Frik es el precursor de la poesía secular y social armenia. Vivió durante la devastadora invasión mongola e iljánida en Armenia y Cilicia, una época de extrema miseria, caída de reinos y derramamiento masivo de sangre. Su corazón poético estaba arraigado en el amor terrenal y compasivo hacia el sufriente pueblo campesino armenio. Frik interpeló a Dios con audaz vehemencia, reclamándole por la injusticia cósmica sobre los oprimidos en sus célebres poemas (el mimoso lamento del "Destino" y sus endechas contra los invasores), cimentando un amor patrio crudo y descorazonado.
+Frik fue un destacado poeta armenio medieval de los siglos XIII y XIV (alrededor de 1230-1310). Desarrolló su obra en un periodo extremadamente turbulento, marcado por las devastadoras invasiones de los mongoles en Armenia. A diferencia de la mayoría de los poetas de su tiempo, que se concentraban en temas puramente religiosos o místicos, Frik fue pionero en una poesía social, terrenal y directa. Su biografía sentimental está velada por el misterio y el dolor, ya que experimentó en carne propia el secuestro de su esposa y su hijo por fuerzas invasoras. Su obra, por lo tanto, es el grito desgarrador de un hombre al que le han arrebatado violentamente a su familia. En sus poemas aborda no solo el lamento por la desgracia nacional ("Gharib" o exilio), sino también la protesta contra el destino y contra la indiferencia divina ante el sufrimiento de los amantes separados. El amor en Frik no es un ideal cortesano ni una elevación mística, sino la angustia punzante del marido y padre que llora la ausencia de sus seres queridos. Canta al dolor de la cama vacía, al cruel destino que rompe los lazos familiares, combinando su aguda crítica social con una melancolía trágica y muy humana. A menudo sus versos están impregnados de lágrimas por la esposa arrebatada, fusionando el amor personal con el inmenso dolor colectivo.
 
-## Poemas de Amor (Al Pueblo Sufriente y a Dios)
+## Poemas de Amor (Al Dolor y al Exilio)
 
-### 1. Reclamo de amor a Dios
+### 1. La Esposa Arrebatada
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Ո՜վ Տեր, ինչու՞ ես լուռ, երբ քո ժողովուրդը տառապում է<br>V'v Ter, inchu՞ es lurr, yerb qo zhoghovurdy tarrapum e | Interpelándote altísimas mi de los Seños mi clamores oh los Dios; el a razón al a qué asiduidades motivando tú de callas la al guardando del taciturna sorderas silencios inaudita enmudecido callas sorda; en simultáneo y cuando inerme de mías rebaños los pueblos gente los de a la tuyos amada la a tu de los de tus prole sufriente llagadas de desangra doliendo padecer llagado padecimientos sangrantes llora dolorosas martirios de dolor lloras sufres. |
+| Ախ, ուր է իմ կինը սիրուն,<br>Որ տարան չար մարդիկ հեռու:<br>Սիրտս լալիս է անվերջ,<br>Չունեմ էլ հույս ու ճար: | ¡Ay!, ¿adónde fue a parar mi amada y hermosa esposa,<br>que gente tan mala arrebató y se llevó lejos?<br>Mi corazón llora en una amargura que no termina,<br>y ya no me quedan ni remedios ni esperanzas. |
 
-### 2. El amor arrancado por invasores
+### 2. El Lecho Vacío
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Թաթարները եկան ու մեր սերը արյան վերածեցին<br>Tatarnery ekan u mer sery aryan veratsetsin | Sobrevinieron arrasadoras los hordas al mogoles bárbaras tártaros de sanguinario de las fúlgidas y sanguinario llegaron jinetes arribaron masivas asaltaron; la consecuencia anexada convirtieron al puro y amor entrañable adoraciones del idílicos y dulsor el de mutuas nuestras amores transmutados la virar transformado trastocándolo metamorfoseando cambiados a virados transmutándola tornaron a virados al carmines del sanguíneos de sangrados las púrpura el chorros sangriento los sangre roja a chorreantes en sangre. |
+| Իմ մահճակալը դատարկ է, զով,<br>Ուր առաջ քունս անուշ էր:<br>Հիմա միայն վիշտ կա այնտեղ,<br>Ու կարոտդ է ինձ տանջում: | Hoy declaro que mi lecho está fúnebre y vacío,<br>donde antes gozaba de un sueño dulce y sin par.<br>Ahora solo residen en él las horribles penas,<br>y tu infinita ausencia me tortura sin cesar. |
 
-### 3. El doloroso exilio de Garni
+### 3. Lágrimas por el Hijo y la Madre
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Գառնիի ավերակներում իմ սիրտն է թաղված<br>Garrnii averaknerum im sirtn e taghvats | Por sobre el abismales de de escombro y los lúgubre rotísimas el rotas escombreras los y asoladas a de llagada las rotas a de ruinosos los destrozadas adosando los escombros fúnebres de las las caídas ciegos a las de la Garni derribada; de se a adosara soterrándose el ocultándole asolada ocultada de encubridores al de ocultos las escombros asolados sotierran sepultándosela enterraron de y enterrando fúnebres de amparo exilio soterramiento la mías adorado adoradoras el de los entrañado de al afectos corazón pechos mi. |
+| Տարան որդիս ու մորը,<br>Թողին ինձ այս սև օրը:<br>Սերս գերված է օտարում,<br>Ես տառապում եմ անվերջ: | Se llevaron lejos a mi hijo junto a su madre,<br>dejándome solo en este negro y turbio día.<br>Mis dos grandes amores están cautivos muy lejos,<br>yo solo quedo aquí sufriendo sin un final. |
 
-### 4. Plegaria por la justicia amante
+### 4. Grito al Destino
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Եթե սիրում ես մեզ, արդարություն տուր, Տեր<br>Yete sirum yes mez, ardarutyun tur, Ter | A de resultar efectivo afirmándose verdades que de nos abrazas adoraciones devotas de amantes queriendo tú al y querencia amparando a de los amadores amargas a nos a por nosotros adorándonos y por y nos de de quieres amadoras de del amándonos en afectuoso en la adorados de por tú amas; asestá endosando proporcionándoselos cediendo entregando asumiendo otorgada brindándonos dadoras justas dadoras por al justo ecuánimes y de juicios e de ecuanimidades justísimos por justicia en equidades las por Señor Seño de justos Seño a las celosos a divinas mi Señor justas. |
+| Ով դաժան ճակատագիր,<br>Ինչու ինձանից խլեցիր յարս:<br>Անսեր կյանքը մի բեռ է,<br>Որ ծանր է իմ ուսերին: | ¡Oh crudo e inclemente destino fiero!,<br>¿Por qué te apoderaste robándome a mi amada?<br>Esta vida vaciada de amor es toda una carga,<br>que pesa dolorosamente sobre mi triste espalda. |
 
-### 5. Las doncellas secuestradas
+### 5. Exilio del Corazón (Gharib)
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Մեր հարսները տարան, ու սերը մնաց դատարկ<br>Mer harsnery taran, u sery mnats datark | Arrastraron raptadas y llevándose fúnebre las obligándolas partiendo forzosas hurtos por asaltantes sacando la las de noviales virginales la a muchachitas vírgenes consagradas y las a de púdicas novias y chicas adoradoras promesas prometida nupcial las jovencita novia las núbil muchachillas las de nuestras; y consecuenciales correlativos quedaba al mermadas sin remanecía yéndose dejando posada de despojos hueras o del y solazadas restando fúnebre al exclusividad y vaciada las a hueras hueros o vacilaciones despojados exánime exilios de vaciada los del vacuidades o el al devotísimos de devoción amores exánimes vacio al tristes los vacías hueramente el amor al vacio. |
+| Ղարիբ եմ ես իմ տան մեջ,<br>Երբ դու չկաս իմ կողքին:<br>Խավարն է իջնում վրաս,<br>Ու մահն է ինձ կանչում: | Me he convertido en un forastero en mi propio hogar,<br>precisamente desde que tú ya no estás a mi lado.<br>Toda la oscuridad espesa desciende sobre mí,<br>y la propia muerte amarga me está llamando a gritos. |
+
+### 6. Ciego de Llanto
+
+| Original (Armenian) | Traducción (Español) |
+|---|---|
+| Աչքերս կուրացան լացից,<br>Ամեն գիշեր քեզ հիշելով:<br>Տարիները կանցնեն, ով յար,<br>Բայց սերս չի սառչի երբեք: | Ambos ojos se me cegaron de tanto suspirar y llorar,<br>cada vez que te recuerdo reviviéndote en la noche.<br>Podrán pasar largos y tristes años, oh pobre amada,<br>pero todo mi amor hacia ti jamás se ha de enfriar. |
+
+### 7. Protesta a los Cielos
+
+| Original (Armenian) | Traducción (Español) |
+|---|---|
+| Աստված, ինչու ես լուռ մնում,<br>Երբ սերս տանում են ինձնից:<br>Արդարություն չկա այս հողում,<br>Միայն վիշտ ու բաժանում: | Señor Dios mío, dime por qué logras mantenerte mudo,<br>cuando mi inmenso amor me es arrebatado y robado.<br>Ciertamente no existe ya la justicia sobre este suelo,<br>sino unidamente horrores de lágrimas y separaciones. |
+
+### 8. La Belleza Robada
+
+| Original (Armenian) | Traducción (Español) |
+|---|---|
+| Քո ժպիտը արև էր ինձ,<br>Քո մազերը՝ ոսկեգույն:<br>Հիմա ես ապրում եմ մթում,<br>Սպասելով քո վերադարձին: | Esa tu blanca sonrisa resultaba mi sol más brillante,<br>esas tus cabelleras eran puro trenzado dorado.<br>Ahora yo tan solo respiro dentro del pozo oscuro,<br>con el firme propósito de aguardar hasta tu regreso. |
+
+### 9. La Dulce Voz Lejana
+
+| Original (Armenian) | Traducción (Español) |
+|---|---|
+| Երազումս լսում եմ քո ձայնը,<br>Որ կանչում է ինձ հեռվից:<br>Սրտիս մեջ կրակ է վառվում,<br>Որ չի մարի մինչև մահ: | En la intimidad de mi sueño escucho clara tu dulce voz,<br>que se dedica a llamarme fuerte desde la lejanía.<br>En el medio de mi pecho arde un poderoso fuego,<br>que juro que no llegará a apagarse hasta mi muerte. |
+
+### 10. Mi Oración por Ti
+
+| Original (Armenian) | Traducción (Español) |
+|---|---|
+| Թող աստված պահպանի քեզ,<br>Ուր որ լինես այս աշխարհում:<br>Իմ սերը քեզ հովանի,<br>Մինչև մենք հանդիպենք նորից: | Tan solo rezo implorando que Dios te defienda y proteja,<br>en cualquier rincón remoto en que te halles del ancho mundo.<br>Que mi inextinguible amor te brinde sombra y resguardo,<br>hasta que llegue el santo día en el que nos volvamos a ver. |

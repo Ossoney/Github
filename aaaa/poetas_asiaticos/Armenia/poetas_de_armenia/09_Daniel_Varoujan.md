@@ -2,30 +2,66 @@
 
 ## Biografía Sentimental
 
-Daniel Varoujan (nacido Daniel Tchboukkarian, 1884-1915) fue, junto con Siamanto y Ruben Sevak, uno de los faros indiscutidos de la edad de plata en la moderna literatura estética de la Armenia occidental, mártir del mismo fatídico horror. Su genio consistió en apartar a ratos la mirada de los llantos elegíacos contemporáneos para buscar un resurgimiento pagano, neoclásico y sensual de la cultura originaria armenia ("El canto del pan", publicado póstumamente o el volumen "El corazón pagano"). Educado en la Universidad de Gante en Bélgica, Varoujan fundía el vigor del campesinado rústico de las mesetas anatolias (Garin, Sivas) con una finura melódica exquisita de amor a la naturaleza, a las fuerzas de la vida, la tierra nutricia y al panteismo primitivo afgano. Arrestado en abril en Estambul, fue deportado a Chankiri y asesinado atrozmente y asfixiado a bayonetazos en un barranco a finales de agosto de 1915, cerrando una de las más bellas bocas literarias del Cáucaso.
+Daniel Varoujan (nacido Daniel Tchboukkarian, 1884-1915) fue uno de los faros indiscutidos de la "edad de plata" en la moderna literatura estética de la Armenia occidental, mártir del Genocidio Armenio. Su genio consistió en apartar a ratos la mirada de los llantos elegíacos contemporáneos para buscar un resurgimiento pagano, neoclásico y sensual de la cultura originaria armenia ("El canto del pan", "El corazón pagano"). Educado en la Universidad de Gante en Bélgica, Varoujan fundía el vigor del campesinado rústico de las mesetas de Anatolia con una finura melódica exquisita de amor a la naturaleza, a las fuerzas de la vida, a la tierra nutricia y al panteísmo primitivo. Su biografía sentimental, profundamente ligada a su esposa Araksi con la que se casó en 1910, está permeada por un amor fértil, carnal y adorador. En su lírica, el amor no es una etérea y triste quimera, sino una exuberante fuerza de la naturaleza: canta a las mujeres anatolianas de curvas recias, a sus caderas como cántaros de agua, a los besos con sabor a trigo y a racimos de uva. El erotismo de Varoujan es robusto, solar, desprovisto de la enfermiza culpa o el misticismo doliente de sus contemporáneos; para él, el amor humano es una extensión divina del ciclo de la siembra y la cosecha. Arrestado en abril en Estambul, fue deportado a Chankiri y asesinado atrozmente a bayonetazos en un barranco en agosto de 1915 a la edad de 31 años, cercenando a una de las plumas más vitales y enamoradas de la historia armenia.
 
-## Poemas de Amor (Al Sol, al Trigo y a la Vida)
+## Poemas de Amor (Al Sol, al Trigo y a la Vida Carnal)
 
-### 1. El canto del pan
+### 1. El Canto del Pan y el Amor
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Աշխատանքը սեր է, իսկ հացը՝ նրա պտուղը<br>Ashkhatanqy ser e, isk hatsy՝ nra ptughy | Absolutamente a plenos vigorosos afanar forzando labores sudando los sudores fatigas y cansados el laborar trabajos afanosas resultan pletóricos igual de amor tiernas devocies fervor enamorado puro de adorar encendida y vivo tierno pasiones;<br>dejando saldados a contraprestadas remanencias el provecho a sacando trigo de horneados al ricos de costras crujiente horneando masa rubios del pan hogazas panes igualándose asimilando consecuentes idénticos resultares sus fecundidades el fruto maduritas del frutos logrados ricos dulzor sabroso de su amor cosechas maduros cosechado. |
+| Աշխատանքը սեր է, հացը՝ նրա պտուղը:<br>Քո աչքերի մեջ ես տեսնում եմ գարուն:<br>Սերս գետ է, հոսում է դեպի քեզ անվերջ,<br>Լցնելով իմ հոգին արևի լույսով: | El duro trabajo es amor, y el pan horneado es su fruto maduro.<br>Empero, es en el centro de tus dos ojos donde yo logro ver la verde primavera.<br>Mi amor es como un río caudaloso que fluye incesantemente hacia ti,<br>llenando mi alma hasta el borde con la luz radiante del sol. |
 
-### 2. El corazón pagano que ama salvajemente
+### 2. El Corazón Pagano
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Իմ հեթանոս սիրտը սիրում է արեւը<br>եւ քո մարմնի ջերմությունը<br>Im hetanos sirty sirum e arevy / yev qo marmni jermutyuny | Pletóricos adentros a mi pecho de desbocados el paganismos la atávica del fiero el adentros idólatras corazón la rítmica arrebato latidas pasionales de pagana idolatría rústica la rústico pagano corazón la fiero de salvaje del adentros de corazón pecho indomables adorando le encanta queriendo de amado devoto rendido adorar aferrantes adora el lumbres astro del luminoso cálidos fueguito astros luz faro del los rubicundos los celestes luz de sol astro del día y realeza astros luz; <br>anexándoles a devoción al junto con por añadidas a los tuyos anatómicas del piel suave tocando turgentes carnalidades en cuerpo la piel las formas escultural a la tu carne tu a tu cuerpo femenil carnoso las tibiezas calurosos en fuegos sutiles a ardor en del cálidos calores sensualidad la cálidas afanes el cálciga temperatura fogosas de las fiebres los tierno templados lo calientito tuyo calor amor afán. |
+| Իմ հեթանոս սիրտը սիրում է արևը,<br>Եվ քո մարմնի ջերմությունը թեժ:<br>Բեր ինձ քո շուրթերի գինին հարբեցնող,<br>Որ մոռանամ վիշտը այս դաժան աշխարհի: | Mi corazón rústico y pagano ama con devoción ciega al sol,<br>y anhela apasionadamente el calor ardiente de tu cuerpo carnal.<br>Tráeme y dame a beber el vino embriagador que emana de tus labios,<br>para que así logre yo olvidar ahogando las penas de este cruel y amargo mundo. |
 
-### 3. A la novia anatoliana
+### 3. A la Novia Anatoliana
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Քո շուրթերը նման են հասած խաղողի<br>որը քաղցրացնում է իմ տխուր կյանքը<br>Qo shurtery nman en hasats khaghoghi / vory qaghtsratsnum e im txur kyanqy | Resplandecen parecidas asimiladas de igualdad a de tus en boca bermejos delineando de bordes y comisura boquita encarnada en labial rojos dulces y labio del bermellón tuyo contornos los de la tuyos del labial dulces de labios encarnadas y carnosas bocas asemejan semejándose parecido de similares parecidas a los jugosos maduradas del dulces la viñas la vides uva redonditas pulposas frutal a racimos la frescas uvas en pasas de frescas de la vitícolas la dulzor uva; <br>resultando con de la exclusivas la únicas de atributos endulzándolas el agridulzadas en almíbares empalagándoselo almibarados el mitigantes la mermando amargadas de endulzar y dulzuras edulcorando del asaz mías la dolorosas y fúnebres aciagos triste en pena la de vida inestable y corta mortuorio mis de la vitalidades mía de las días la fúnebre amargas en mi dolidos la vivencias y existencias transcurrida mí vivires en vidas tristes apacible. |
+| Քո շուրթերը նման են հասած խաղողի,<br>Որը քաղցրացնում է իմ տխուր կյանքը:<br>Գրկիր ինձ պինդ, որ զգամ հողի բույրը,<br>Քո մազերի մեջ կա աշնան քամին: | Tus carnosos labios delineados son tan similares a las maduras uvas listas para la vendimia,<br>que logran endulzar embriagando la triste amargura de mi vida.<br>Abrázame apretado y fuerte, para que yo huela en ti la misma fragancia de la tierra mojada;<br>¡puesto que entre las hebras de tu cabello sopla el mismo viento libre del otoño! |
 
-### 5. Lloros en el mar de Mármara
+### 4. Tus Pechos como Cántaros
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Մարմարան կապույտ է, բայց իմ սերը արյունոտ է<br>Marmaran kapuyt e, bayts im sery aryunot e | Exudando esplendencias reluciendo las azulosas azuladas de aguas marinas de en aguas el mar del Mármara aturquesadas los de las azul del aguado índigo y azulísimas celestes reluce hermosos brillos a las celestes azur marinas agua de las Mármara la azulosa los Mármaras del mar; <br>salvaguarda eximentes y disociados las atrocidades del empero con pero los adoloridas pasionales el afanes sentires al mis los adentramientos querencias sentires mis ternos a de mi propios de afectos devoto en el amadores las querencias míos de los amar afectos y los cariños mías el dulce apenados amador mis amorosos del tiernísimamente en mi el rotos de de amor y afectos tristes están resultaron recubrimiento la maculadas y empapadas sangrientamente llagadas rojas asestados fúlgida rojiza la pústula maculas a heridas en fúnebres las manchas los de sangrados con asoladas y ensangrentados y de carmines puros a sangre sanguinolenta. |
+| Քո կուրծքը նման է լիքը սափորի,<br>Որից ես ուզում եմ կյանքի ջուր խմել:<br>Դու բնության դուստրն ես, վայրի ու մաքուր,<br>Իմ արյունը եռում է քո հպումից: | Tu cálido pecho se asemeja redondamente a un cántaro repleto hasta los bordes,<br>del cual tengo una sed ardiente por acercarme y beber las puras aguas de la vida.<br>Tú eres la hija mismísima de la naturaleza indómita, salvaje y prístina;<br>mi roja sangre entera bulle y hierve con solo un roce de tus yemas. |
+
+### 5. Semilla en tu Tierra
+
+| Original (Armenian) | Traducción (Español) |
+|---|---|
+| Ես սերմնացան եմ, դու իմ արգավանդ հող,<br>Մեր սերից կծնվի ոսկե ցորեն:<br>Թող արևը օրհնի մեր սուրբ միությունը,<br>Որ ծաղկի մեր սերը բոլոր օրերում: | Yo soy el campesino sembrador, y tú resultas ser mi tierra negra y fértil;<br>de nuestro hondo amor carnal nacerá brotando el trigo más dorado.<br>¡Que el astro del sol bendiga desde lo alto nuestra sagrada unión fértil,<br>para que el capullo de nuestro amor florezca todos los días! |
+
+### 6. Canto Nupcial
+
+| Original (Armenian) | Traducción (Español) |
+|---|---|
+| Այս գիշեր աստղերը մեզ են նայում,<br>Երբ մենք միանում ենք որպես մեկ մարմին:<br>Քո գրկում ես գտնում եմ իմ տունը,<br>Իմ հեթանոս դիցուհի, իմ կյանքի իմաստ: | Esta misma madrugada todas las encendidas estrellas nos están observando en silencio,<br>mientras tú y yo nos fundimos llagados juntándonos como si fuésemos un solo cuerpo entrelazado.<br>Es puramente entre el apretado resguardo de tus brazos donde yo hallo mi verdadero hogar;<br>oh tú, mi pagana divinidad adorada y diosa adorada, el sentido entero de toda mi vida. |
+
+### 7. Luz de Agosto
+
+| Original (Armenian) | Traducción (Español) |
+|---|---|
+| Օգոստոսի շոգը քո աչքերում է,<br>Այրում է ինձ իր քաղցր կրակով:<br>Մենք երկուսս մեկ ենք այս դաշտերի մեջ,<br>Միացած բնության հավերժ օրենքով: | El insoportable y ardiente bochorno de todo este mes de agosto está anidado en el fondo de tus ojos;<br>y procede calcinándome asurado con su mismísimo y dulzón fuego prendido.<br>Nosotros dos formamos un solo ser en medio de estas anchas y doradas llanuras atadas...<br>fundidos inexorablemente obedeciendo a la eterna y ancestral ley salvaje de la pura naturaleza viva. |
+
+### 8. El Beso Sabor a Trigo
+
+| Original (Armenian) | Traducción (Español) |
+|---|---|
+| Երբ համբուրում եմ քեզ, ես զգում եմ արտը,<br>Հացի բույրը և հողի համը քաղցր:<br>Դու ամբողջ աշխարհն ես, իմ կյանքի պարգև,<br>Անվերջ արբեցնող իմ կյանքի գինի: | Cuando te estampo fuertemente un sonoro beso en tu fina boca, saboreo los inabarcables campos arados;<br>el rústico aroma del pan horneado y el sabor mineral de la tierra me inundan.<br>Tú encarnas para mí, oh amada, todo el bendito cosmos entero, el mayor premio regalado en la vida;<br>¡tú, el vino espeso y dulce inextinguible que embriaga mi andar vital! |
+
+### 9. Caderas en la Cosecha
+
+| Original (Armenian) | Traducción (Español) |
+|---|---|
+| Դու քայլում ես դաշտով հպարտ ու ազատ,<br>Քո շարժումները նման են քամուն:<br>Թող ես լինեմ քո ուղեկիցը հավերժ,<br>Այս հողի վրա, մինչև մեր կյանքի վերջ: | Vas tú fiera caminando resuelta a largas zancadas de altiva libres pisadas cruzando la campiña,<br>Tus sutilísimos y curvados contornos mecidos se menean rítmicos copiándole embates a las rafagas del viento.<br>¡Tan solo pido rogador que el destino consienta permitirme caminar yendo de consorte perpetuo a tu arrimo;<br>haciéndolo juntos asidos amarrados en esta tierra hasta que agote expirando nuestro aciago final fin supremo mortuorio! |
+
+### 10. Lloros en el mar de Mármara
+
+| Original (Armenian) | Traducción (Español) |
+|---|---|
+| Մարմարան կապույտ է լայն ու խաղաղ,<br>Բայց իմ սերը արյունոտ է ու խոր:<br>Քեզնից հեռու իմ հոգին լալիս է,<br>Որպես վիրավոր արծիվ հեռավոր: | El agua del inmenso ensanchado tendido Mar de Mármara reluce de calmo reluciente asombrosa azulada lindeza;<br>si embargo yo aseguro juro mudo que en mi encendido pecho mi ardiente rojo amor supura goteando ensangrentado amargo y hondísimo.<br>Puesto ciegamente arrojado de ti apartadísimo lejanamente exiliados de fúnebre amarras huérfanas mi asolado ánima plañidera llora desgarradamente arrastrando lloros ahogados;<br>semejantísimo cual la asidua trágica herida lacerada sangrando águila ave montañesa rudiendo a lejísimas cimas inexpugnables soledades montanas de fúnebres destierros fríos! |

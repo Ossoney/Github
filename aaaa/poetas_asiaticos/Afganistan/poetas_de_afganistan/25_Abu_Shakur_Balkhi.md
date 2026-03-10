@@ -2,66 +2,66 @@
 
 ## Biografía Sentimental
 
-Abu Shakur Balkhi (c. 915-967 d. C.) fue uno de los más remotos, primordiales y venerables poetas líricos fundacionales del recién parido corpus neo-persa clásico (el "dari" formativo en la cuna afgano-persa), componiendo todo y laborando asiduamente el pilar intelectual central al lado del inmenso y también coetáneo suyo Rudaki. Originario (su epíteto lo canta con certeza) de Balkh (valuarte y provincia actual del norafgano), amparado gloriosamente en lo más dorado de toda efervescencia por los grandes emires sasánidas e iniciales samánidas en esos bastiones ancestrales ininteligibles del naciente corazón de las literaturas orientales del siglo diez. Gran parte de sus enormes volúmenes, la piedad trágica lo borró del universo del saber reduciendo tan magistrales líneas poéticas un puñado de gloriosos testimonios breves transcritos entre los antologados manuscritos del decurso literario islámico central como los rescoldos sobrevivientes (y en especial de la legendaria proeza épica pre-firdusiana de su "Afarinnama"). Posee reflexiones pletóricas cantándole vívidamente el ruego existencial puro a una esquiva musa etérea transida al albor del romanticismo cortesano originario persa-afgano.
+Abu Shakur Balkhi (nacido hacia el 915) es uno de los padres fundadores de la poesía persa clásica en el período de los samánidas, originario de la luminosa ciudad de Balkh (Afganistán). Contemporáneo del legendario Rudaki, Abu Shakur es célebre por haber inventado o popularizado la forma métrica del *masnavi*, la cual sería más tarde la forma elegida por Ferdowsi para el Shahnameh y por Rumi para su obra maestra mística. Su biografía sentimental se reconstruye a partir de los escasos y valiosos fragmentos que han sobrevivido de sus obras mayores, notablemente el "Afarin-Nama". El amor en los versos de Abu Shakur pertenece al alba del renacimiento persa: es un amor de corte fresco, terrenal y a menudo impregnado de la sabiduría amarga de quien sabe que la juventud y la belleza son transitorias. A diferencia del amor sufí posterior, que disuelve el cuerpo en la divinidad, el amor de Balkhi celebra los labios de rubí, el vino rubicundo y la mejilla parecida a la flor del granado, pero siempre con un tono didáctico, advirtiendo al corazón enamorado que el tiempo es un ladrón silencioso. Es el amor como disfrute trágico, donde el carmín de la amada y el polvo de la tumba están separados por un solo suspiro de otoño.
 
-## Poemas de Amor (Restos Clásicos Fundantes)
+## Poemas de Amor
 
-### 1. Desencuentros cortesanos inaugurales del dari
+### 1. El Fuego y la Flor
 
-| Original (Afarinnama - Fragmentos Dari) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| مرا به عشق تو ای دیده، روز و شب همه درد است<br>جز این غمِ عاشقی، جهان مرا همه سرد است | El afán por mi parte es sólo amarguras con que día tras noche agobian a estas pestañas que no me abandonan nunca las incesantes gotas dolosas mi amada;<br>y a salvo solo y eximido en este dolor, he comprendido con pena que todo en todo mi extenso y fútil espacio terreno no fue por ti ninguna otra circunstancia en mi existencia si no meramente desapego gélido y glacial en sí y absoluto para hoy. |
+| چو روی تو بینم، جهان پر گل است<br>چو موی تو بینم، دلم پر مل است<br>من از عشق رویت خزان را ندید<br>که مهرت در این سینه چون سنبل است | Cuando veo tu rostro, el mundo está lleno de rosas;<br>cuando veo tu cabello, mi corazón está lleno de vino.<br>Yo, por el amor a tu semblante, no vi el otoño;<br>pues tu afecto en este pecho es como el jacinto. |
 
-### 2. Aflicción de la primera luna amada
+### 2. Ojos de Saqueo
 
-| Original (Dari Antiguo) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| ز هجرانت ای ماهِ من، دلم خون است<br>ببین که روزگارم از غمت چون است | Al apartarme infelizmente cruel mi amadísima resplandeciente lunita que siempre amo, por mi alma gimen chorreantes caudales doloríos color grana sangrando el corazón en la llaga;<br>solo asienta atención sobre el amargo porvenir lastimoso e inconstante del infortunio donde el infeliz quejido lacera trágica pero tiernamente por los pesares sombríos tuyos cada lamento a solas. |
+| ز تیغ نگاهت دل من خسته شد<br>زبانم ز وصف تو پیوسته شد<br>تو ای آفتاب جوانی من<br>غم از سایه روی تو شسته شد | Por la espada de tu mirada mi corazón quedó herido;<br>mi lengua quedó atada describiéndote perpetuamente.<br>Oh tú, sol de mi juventud,<br>la pena se lavó con la sombra de tu rostro. |
 
-### 3. Las ruinas mudas del amor arisco
+### 3. Espejo del Tiempo
 
-| Original (Dari Antiguo) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| مکن جفا که جهان بی‌وفاست، ای دلبر<br>ز عشق تو شده‌ام بی‌نواست، ای دلبر | Jamás propines atrocidades despóticas mi anhelada muchacha, la vil e injuriosamente existencia material nos tilda insidia de felonías siempre e inminente y cobardemente hacia nosotros en todo tiempo sin duda infiel;<br>debido sencillamente de esta adoración hacia ti de manera terca se fue aniquilándome a paso de un infeliz desamparado e inofensivo pordiosero y vagabundo infortunado ante tú sin duda mi dulce tirana. |
+| جوانی چو بادی گذشت از برم<br>نماند جز خیال تو در خاطرم<br>اگر چرخ گردون کند پیرتم<br>هنوزم من از عشق تو نوبرم | La juventud pasó a mi lado como un viento;<br>no quedó más que tu recuerdo en mi mente.<br>Incluso si la rueda de los cielos me envejece,<br>yo sigo siendo un fruto precoz (fresco) del amor por ti. |
 
-### 4. Semblante efímero de Balkh
+### 4. Sed del Corazón
 
-| Original (Dari Antiguo) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| روی غنچه اگر بینی، یاد روی او کن<br>چون گل، شکفت و زود بر باد رفت | Si acaso repararas posar la tierna tu mira ocular en el apenas pucherito lozano asomándolo incipiente la rosada en miniatura diminuto caparazoncito al lado de rama, invócale imperiosamente al lindo recuerdo inolvidable tierno y dulce semblante aquel;<br>resultó de parecida usanza fugitiva esa en el cual capullo destello floreciendo en efímera beldad radiante mas presto irremediable hundiéndose se le extinguió volatilizado escurrido a girones desvanecido entre los fríos vientos idos de paso por los cielos a nadie. |
+| لبت لعل و دندان تو چون گهر<br>مرا سوخت این عشق تو تا جگر<br>طبیبان کجا چاره من کنند<br>که دردت نهان است در هر سحر | Tu labio es rubí y tus dientes como perla;<br>este amor tuyo me ha quemado hasta el hígado.<br>¿Dónde lograrán los médicos mi remedio?<br>Ya que tu dolor está oculto en cada amanecer. |
 
-### 5. Fidelidad de las piedras al olvido de Samánida
+### 5. Las Cadenas del Cabello
 
-| Original (Dari Antiguo) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| ز عشق هیچ کسی نیافت آرامش<br>مگر که عاشق بی‌تاب، بختِ خود رامش | Definitivamente es constatable un corolario sin ambigüedades demostrando de manera fidedigna la ausencia íntegra constatada en paz por amar alguien en locas ansias de idilio;<br>asumiendo claro a la salvedad escasa que de su amador inquieto desesperadísimo, asuma adiestrándolas a lo último resignarse de manera apacible a domesticarlo fiero en la aciaga e infausta amargura traedora de su predestinada infortunada suerte en sí ineludible. |
+| ز چین سر زلفت ای رشک ماه<br>شدم در شب هجر تو مبتلا<br>تو آن سرو نازی که در باغ جان<br>نشاندی مرا بر سر غصه ها | Por la curva de la punta de tus trenzas, oh envidia de la luna,<br>quedé atrapado en la noche de tu separación.<br>Tú eres aquel delicado ciprés que en el jardín del alma<br>me sentaste en lo más alto de los dolores. |
 
-### 6. Desprecio de la altiva Balkhi
+### 6. Cenizas de Papel
 
-| Original (Dari Antiguo) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| نازِ تو مرا کشت و، جان من ز کفم رفت<br>جز عشق توأم، نیست دیگر مقصودی | ¡Una infame coquetería tu tan de gélida desdeñosa altanería acosándome asestó al fin muerte infalible de modo mi espíritu lánguida zafada escabulliéndose evadió fatal para las llagadas manos perennes mías!<br>puesto de antemano el firme entendido absoluto al ser inexorable y que otro afán idílico a tus pasiones ardientes o devoción febril inaudita ni tengo abocado mi pobre horizonte a un exclusivo otro propuesto. |
+| کتاب محبت به نام تو خواند<br>دلم جز به درگاه تو کی رساند<br>اگر باد خاکم برد تا به قاف<br>همان جا به امید تو باز ماند | El libro del cariño se lee en tu nombre;<br>el corazón, ¿dónde llegará sino a tu puerta?<br>Si el viento lleva mi polvo hasta la cordillera de Qaf,<br>ahí mismo permanecerá esperando por ti. |
 
-### 7. Velo sobre los enamorados sabios
+### 7. Locura y Sabiduría
 
-| Original (Dari Antiguo) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| خرد ندانست راه عشق تو را<br>که عشق، کویی است پُر ز دام و بلا | Tristemente mi lúcida materia gris intelectual quedó incapacitándose inoperante, reacia al hallarle luz clarificante al sendero esparcido ocultándome y del tortuoso viaje abismal recabando posarse la ruta ardua del innegable amor al que atesoras insidiosa adentro;<br>en suma porque todo amar en sí y naturalidad misma es únicamente y no más que una encrucijada callejuela trampedada atiborradas hasta rebosar incalculablemente innumerables abyectadas y tristes fatalidades mortales tendiéndole a acecho su trampa vil a incautos con pesares infelices traicioneros de lo peor del averno. |
+| خردمند از عشق پرهیز کرد<br>ولی عشق تو خون من تیز کرد<br>چو نام تو در سینه ام جای یافت<br>شب تار من روز پاییز کرد | El hombre sabio procuró evadir el amor;<br>pero tu amor afiló mi sangre.<br>Como tu nombre halló sitio en mi pecho;<br>hizo de mi oscura noche un día de otoño. |
 
-### 8. Lamentos que llegan de la nada
+### 8. Voto de Juventud
 
-| Original (Dari Antiguo) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| بر باد رفت آن‌چه ز عشق اندوختم<br>مانند پروانه، در آتش او سوختم | El absoluto y cabal montante del compendio con devoción inmaculada acaudalaba ansioso mis esfuerzos abnegados a expensas puras al devorarte cariñosamente inaudito recuento lo vi evaporado espantosamente y dilapidándole esfumándose trágico todo aquello lo arrebató un golpe de huracán infortunado y soplo yéndose vacío a nadas;<br>precipitado ciego así mismísimamente un lepidóptero torpe encandilándose arrojome fúlgido crepitante entre el mortífero averno crepitando ardiendo yo asadito abrasantemente hasta las últimas y cenicientas consumiciones absolutas las hogueras avivadas puramente de sus fuegos ardiendo inextinguibles amatorias al destello abrasante la luz ígnea resplandor. |
+| مرا عهد و پیمان همان است و بس<br>که یاد تو در من نگیرد نفس<br>گر از دوریت جان به لب آورم<br>به یک خنده تو شوم باز کس | Mi pacto y alianza sigue siendo la misma y nada más;<br>que tu memoria en mí no pierda el aliento.<br>Si por tu lejanía llevo mi alma al borde del labio,<br>con una sonrisa tuya volveré a ser alguien. |
 
-### 9. Adoctrinamiento pasional
+### 9. La Queja Breve
 
-| Original (Dari Antiguo) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| عشق آموخت مرا، کز دلِ خود بگذرم<br>در کوی ملامت، ز پیِ تو روم | Ha transcurrido que el tierno enamorarse recabó como preceptos inculcándome forzosamente al duro corolario a un imperioso de no ver otro ineludible abandono claudicando la total entereza en abdicaciones dejando resignado omitiéndose atrás al adueñado a toda autoridad el núcleo profundo latiente de mis pechos ex propios íntimo desestimado cedidos y ya desatendido;<br>discurriendo fútilmente vagando cabizbajos con errantes pisoteaditos andares lastimero inefable vagabunte arrastrando reproches la difamadoramente insultante desprestigiada senda deshonrosa denigratorias persecución a la sombra tu yendo en las huellas espiantes al infeliz peregrinajes humillantes pasos míos siguiéndote mendigos infame ciegamente atrás mi. |
+| وفایت ندیدم ز آغاز کار<br>شدم از جفای تو من بی قرار<br>شکایت ندارم ز بخت سیاه<br>که روی تو دیدم در این روزگار | No vi tu lealtad desde el inicio del asunto;<br>me quedé inquieto por tu crueldad.<br>No tengo quejas de mi oscura suerte,<br>pues en esta época pude ver tu rostro. |
 
-### 10. Despedazar al tiempo preclásico
+### 10. Memoria en Balkh
 
-| Original (Dari Antiguo) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| بو شکور از غم عشق تو چنین پیر شد<br>چه حاصل از آن روز، که دیگر دیر شد | Del rotundo fracaso en tristísimo abatimiento doloroso lacerándole al fúnebre suplicio amatorio destrozando de un amor tu malográndolo postró insobornablemente decrepitud avejentándoselo la ancianita fisionómica ajada al triste infortunado e impotente Abu Shakur senescal agónico;<br>qué infeliz provecho fútilmente despropósito rendirían en fin vanidad a lo último sacar infructuoso provechos vacíos aquél póstumo y pálido día último postrero con futilidades demoradas tardías inexorable ya el impostergable atardeceres de su irremediablemente mortuoria extinción finiquitada tarde por remordimientos póstumo inalterables y caducos en nada fúnebres de adiós del anciano poeta fundador pionero clásico mudo a ti afgana inmemorial antigua lejana eterna tuya mi vida. |
+| به بلخ اندرون شهره نام تو<br>مرا کرده مست آن می جام تو<br>ابوشکور اگر خفته در خاک سرد<br>درین خاک روید گل بام تو | En lo más hondo de Balkh, tu nombre es afamado;<br>me ha embriagado ese vino de tu copa.<br>Si Abu Shakur está durmiendo en la fría tierra,<br>en esta tierra brotará la flor de tu tejado. |

@@ -1,69 +1,67 @@
-# Ustad Betab (Abdul Haq Betab)
+# Ustad Betab
 
 ## Biografía Sentimental
 
-Abdul Haq Betab (1888-1968) fue nombrado "Malek-ul Sho'ara" (Rey de los Poetas) de Afganistán, el rango máximo para un poeta dari/persa en el país. Nacido en Kabul, fue un maestro erudito de la poesía clásica persa y profesor de figuras de la talla de Khalilullah Khalili. Sus poemas son ejercicios de perfecta maestría escolástica y formal sobre el lenguaje, donde recuperó las métricas y los temas estéticos y devocionales de los grandes clásicos (Hafez, Sa'di, Bidel), infundiéndoles de nuevo vigor. Sus versos cantan al amor cósmico, a la efímera rosa del jardín, al vino espiritual y a la frágil belleza humana con una cadencia tradicional impecable.
-
-*Nota: Por su fecha de fallecimiento (1968), el autor pertenece a derechos vigentes. Se marca (NO_DERECHOS).*
+Sufi Abdul-Haqq Betab (1888-1968), honrado con el título de "Ustad" (Maestro) y galardonado como "Poeta Laureado" (Malek-ush-Sho'ara) de Afganistán, es uno de los mayores exponentes del estilo clásico persa en el siglo XX afgano. Pasó gran parte de su vida enseñando literatura en la Universidad de Kabul y en el liceo Habibia. Su seudónimo, "Betab" (el Inquieto, el que no tiene sosiego), refleja exactamente el núcleo de su obra. Su biografía sentimental está velada por el decoro académico y el misticismo, pero sus ghazales traicionan a un corazón perpetuamente abrasado. A diferencia de los poetas modernos que cantaron al amor en medio de la guerra, Betab cantó al amor en la tradición de Hafez y Bidel: un amor cósmico, elegante, donde la mujer amada es a menudo una metáfora de la Perfección y la Belleza divinas, pero descrita con tal inmediatez física que el dolor de su separación se siente real. Para Betab, el amor es una enfermedad incurable que él abraza gustoso porque es la única prueba de que el alma está viva; él es la mariposa (parwana) eternamente atraída por la vela ardiente de la amada, condenado al insomnio ("Betabi").
 
 ## Poemas de Amor
 
-### 1. El último rey de los poetas
+### 1. El Fuego del Inquieto
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| پادشاهی من در ملک غزل است<br>عشق تاج و تخت این دیار من است | Todo mi reino no es más que la nación de la lírica ghazal;<br>el afán amoroso forma de ella tanto su corona como el mismo trono. |
+| بیتاب شدم از غم عشقت، چه کنم؟<br>در سینه من آتش هجرت، چه کنم؟<br>چون شمع ز داغ تو همی سوزم تا صبح<br>با اشکِ دمادم و به حسرت، چه کنم؟ | Me volví inquieto (Betab) por la pena de tu amor, ¿qué puedo hacer?<br>En mi pecho está el fuego de tu ausencia, ¿qué puedo hacer?<br>Como una vela lloro por tu marca ardiente hasta el alba;<br>con lágrimas continuas y con añoranza, ¿qué puedo hacer? |
 
-### 2. El amor de las rosas de Kabul
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| بوی گل‌های کابل مرا مست ساخت<br>اما مستی عشق چیز دیگری است | La sola flagrancia que expelen los jardines kabulíes ha de ser capaz de emborracharme;<br>aunque el ardor frenético del amor en definitiva resulta una esencia otra. |
-
-### 3. La eternidad en un instante
+### 2. El Espejo y la Luna
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| یک لحظه نگاه تو، یک عمر زندگیست<br>من از نگاهت جاودانگی را خریدم | Acaso el efímero parpadeo con el que miras contiene en sí toda la vasta vida entera;<br>es viéndole los ojos a tu rostro que he terminado canjeando mi inmortalidad. |
+| چو در آیینه روی خویش می‌دیدی<br>گل خنده به روی جان من چیدی<br>تو خورشیدی و من سایه تاریکم<br>که در شامِ وجودِ من درخشیدی | Cuando en el espejo veías tu propio rostro,<br>cosechabas la flor de la sonrisa en el rostro de mi alma.<br>Tú eres el sol y yo soy una sombra oscura,<br>que en el atardecer de mi existencia resplandeciste. |
 
-### 4. El dolor de la separación (Firag)
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| فراق تو آتش است بر جان بیتاب<br>دردی که درمانش جز وصال نیست | Que tu amarga partida no hizo apenas que sembrar un cruel infierno en el propio Betab;<br>la gran llaga de tal dolor únicamente se remediaría reuniéndonos los dos. |
-
-### 5. Las lágrimas del erudito
+### 3. Voto de Ceniza
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| دانش نتوانست دل را آرام کند<br>تنها عشق است که دردم را می‌داند | El infinito tesoro de la ciencia jamás contuvo la fuerza para consolar mi alma;<br>es simple que nada más el apego profundo sabría aliviar mis lamentos. |
+| در طواف کوی تو خاکستر من باد شد<br>مرغِ دل در دام تو افتاد و خوش بنیاد شد<br>عشقِ تو ویرانه دلم را کرد آباد، ای حبیب<br>عقل من با یاد عشقِ روی تو برباد شد | En la circunvalación de tu calle, mis cenizas se hicieron viento;<br>el pájaro del corazón cayó en tu trampa y quedó alegremente fundado.<br>Tu amor hizo próspero mi corazón en ruinas, oh amada;<br>mi razón se arruinó con el recuerdo de amar tu rostro. |
 
-### 6. Belleza sin artificio
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| حسن تو به آرایش نیاز ندارد<br>عشق خالص تو، ذات زیبایی است | Tal beldad innata es reacia siempre a tener la penosa necesidad de lucir un aderezo;<br>el cariño sin mancha de tu pecho es la misma y genuina raíz de toda la lindeza. |
-
-### 7. En búsqueda de la amada
+### 4. Sed Infinita
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| هر جا که می‌روم، تویی در خیالم<br>جهان پر از توست، ای نگار دور من | Cualesquiera de mis pobres rumbos únicamente llevan mis ensoñaciones a tus pies;<br>puesto que todo este globo rebasa ya nomás contigo, mi inaccesible compañera. |
+| هرگز از آب وصالت تشنگی درمان نشد<br>درد پنهانِ دل من پیش تو عیان نشد<br>من که عمری در پیِ تو راه را گم کرده‌ام<br>در کویرِ سینه غیر از یاد تو مهمان نشد | Mi sed nunca encontró cura en el agua de tu unión;<br>el dolor oculto de mi corazón no se hizo evidente ante ti.<br>Yo, que hace una vida entera he perdido el camino yendo tras de ti;<br>en el desierto del pecho no se alojó más huésped que tu recuerdo. |
 
-### 8. Plegaria de amor a la medianoche
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| شب‌های کابل پر از راز ستاره‌هاست<br>و راز من، تنها ذکر نام توست | Todas y cada una de las calladas noches de mi Kabul atesoran los secretos siderales;<br>en tanto el absoluto misterio mío es sólo pronunciar tu nombre incontables veces. |
-
-### 9. La devoción de un estudiante
+### 5. Las Cadenas del Cabello
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| من شاگرد مکتب عشق توام<br>هرگز از این درس فارغ نشدم | No dejo acaso en momento alguno mi vocación como tu simple e ignorante discípulo;<br>que es inmensamente claro que ni por la vida misma podré nunca graduarme de eso. |
+| هر که در بندِ سر زلف تو افتاد، خلاص<br>نطلبد تا به ابد زانِ ستمکاره خلاص<br>مرغ روحم چون گرفتار خط و خال تو شد<br>دیگر از دانه و از آبِ فلک پاره، خلاص | Todo aquel que cayó en las ataduras de la punta de tu cabello<br>no pedirá salvación de aquel tirano hasta la eternidad.<br>Como el pájaro de mi espíritu fue atrapado por tu rasgo y tu lunar,<br>de nuevo, quedó liberado de la semilla y el agua del cielo. |
 
-### 10. La copa de vino (Jam)
+### 6. La Sonrisa Cortada
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| جام را پر کن ای ساقی مهربان<br>امروز که عشق هست، از فردا مپرس | Vierte a borbotones la bebida mística dentro de este cáliz, ay nuestro amable copero;<br>pudiendo libarse aquí tan radiante amor, nadie ya tendría el derecho de preocuparse por mañana. |
+| تو تبسم کردی و خون در دلِ مجنون شکفت<br>غنچه حیران شد ز این معجزه پنهان شکفت<br>تا نگاهت روی قلب پاره من خط کشید<br>گلشنِ داغِ دلم در سینه پر خون شکفت | Tú sonreíste y la sangre en el pecho del loco (Majnun) floreció;<br>el capullo se asombró y desnudamente brotó por este milagro oculto.<br>Cuando tu mirada dibujó una línea sobre mi corazón rasgado,<br>la rosaleda de la quemadura de mi pecho en un corazón ensangrentado brotó. |
+
+### 7. Sangre en la Rosa
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| خونابِ جگر می‌چکد از چشم ترِ من<br>تا بادِ صبا بوی تو آورد به سرِ من<br>در گلشنِ غم، مرغِ هم آواز ندارم<br>تنها تویی تنها تویی، ای تاجِ سر من | La sangre del hígado gotea de mis ojos húmedos<br>cuando la brisa del alba trae tu aroma a mi cabeza.<br>En la rosaleda de la tristeza, no tengo pájaro que cante a compás;<br>solo tú eres, solo tú eres, oh corona de mi cabeza. |
+
+### 8. Lamento Nocturno
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| شب بلند است و فراقت ز فراوان بگذشت<br>اشکِ چشمم ز حدِ جوی و ز طوفان بگذشت<br>ناله کردم به درِ خانه تو، نشنیدی<br>آهِ من باز ز نُه گنبدِ گردان بگذشت | La noche es larga y tu separación superó lo cuantioso;<br>el llanto de mis ojos sobrepasó el límite del arroyo y de la tormenta.<br>Me lamenté en la puerta de tu casa, no escuchaste;<br>mi suspiro de nuevo cruzó las nueve cúpulas giratorias (los cielos). |
+
+### 9. Río Hacia el Océano
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| قطره‌ای بودم که در دریای عشقت گم شدم<br>فارغ از نام و نشانِ خویش در انجم شدم<br>آنچنان مستم ز پیمانه لعلِ لبت<br>که در این مستی، گدای کویِ این مردم شدم | Yo era una gota que me perdí en el océano de tu amor;<br>libre de mi nombre y procedencia frente a las estrellas.<br>Estoy tan borracho con la copa de alabastro de tu labio<br>que en esta embriaguez, me hice mendigo de la gente de este barrio. |
+
+### 10. La Existencia Vacía
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| هستی من بی‌نگاهت جز حبابی هیچ نیست<br>آفتاب روی تو گر رو نتابد، هیچ نیست<br>ای گلِ گلشنِ جانم، من به بوی تو زنده‌ام<br>گر نه عطرت برسد، عالم کابی هیچ نیست | Mi existencia, sin tu mirada, no es más que una burbuja, no es nada;<br>si el sol de tu rostro no muestra su cara, no es nada.<br>Oh rosa del rosedal de mi alma, yo vivo del aroma de ti;<br>si tu perfume no llega, el azul inmenso del mundo no es nada. |

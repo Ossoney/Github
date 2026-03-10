@@ -2,66 +2,66 @@
 
 ## Biografía Sentimental
 
-Mahmud Tarzi (1865-1933) fue un prominente estadista, intelectual, poeta, diplomático y el indiscutible padre del periodismo y el modernismo en Afganistán con la dirección de su periódico *Siraj al-Akhbar*. Nacido en Ghazni en una familia culta que sufrió exilio en Siria bajo el emir Abdur Rahman Khan, Tarzi se nutrió de la cultura otomana y árabe y tradujo obras occidentales, incluido Julio Verne. A su vuelta formó a la joven élite, y su hija Soraya casaría con el rey reformista Amanullah Khan, volviéndose Reina. Tarzi escribió copiosos e influyentes tratados, pero su poesía (escrita en persa-dari) revela un lado profundamente humanista. Son versos marcados por un fervoroso amor patriótico y civilizador, mezclando las figuras clásicas del amanecer (la ciencia, la mujer emancipada, la nueva escuela) con los temas tradicionales de la devoción por la nación afgana.
+Mahmud Tarzi (1865-1933) es el padre del periodismo y del modernismo afgano, un políglota, traductor y reformador que desempeñó un papel crucial bajo el reinado de Habibullah Khan y fue suegro del rey modernizador Amanullah Khan. Sin embargo, su biografía sentimental está marcada por el exilio romántico de su juventud. Pasó décadas desterrado en el Imperio Otomano (Damasco y Estambul), donde absorbió las corrientes reformistas turcas y conoció a su gran amor y esposa, la dama siria Asma Rasmiya. En su vibrante poesía —escrita predominantemente en dari y a veces entrelazada con pashtún o turco otomano—, el amor se confunde con la "Saudade" del expatriado. Tarzi no canta al amor sufí aniquilador ni al ideal cortés, sino al romance intelectual, solidario y cómplice de la pareja moderna, y sobre todo, al dolor punzante por su patria perdida, Afganistán. Su musa es a menudo su esposa apoyándolo en el amargo exilio en Damasco, o su visión de un Kabul libre, educado y esplendoroso. La pluma de Tarzi sangra afecto cívico y pasión humana; para él, amar a una persona, amar la libertad y amar a la nación eran un mismo acto indivisible de la voluntad humana iluminada.
 
 ## Poemas de Amor
 
-### 1. La patria es la amada
+### 1. El Exiliado en Damasco
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| ای وطن، ای معشوق جان، بیدار شو<br>وقت آن است که با هم پیوند یابیم | Oh patria mía, amada del alma, despiértate;<br>estamos en la hora de enlazar nuestros destinos. |
+| در شام چه سودم که دلم سوی وطن شد<br>این گلشن غربت به نظرم همچو کفن شد<br>یاری به من اینجاست وفادار و پری‌رو<br>اما دل افغان من از غصه شکن شد | ¿De qué me sirve Damasco si mi corazón voló a la patria?<br>Esta rosaleda del exilio me parece como una mortaja.<br>Tengo aquí a mi lado un amor fiel y de rostro de hada;<br>pero mi corazón afgano se ha deshecho por la pena. |
 
-### 2. El amor de la razón
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| در مکتب عشق، خرد هم حاضر است<br>عشقِ بی‌علم، تاریک و ابتر است | En la escuela del amor, también asiste la razón;<br>pues el amor sin ciencia, queda estéril y a oscuras. |
-
-### 3. Luz del periodismo y del corazón
+### 2. Rostro Moderno
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| سراج الأخبار درخشش عشق به وطن است<br>من از قلم برای تو خیمه می‌زنم | Siraj al-Akhbar es el destello del amor patrio;<br>yo, mediante la pluma, te levanto un baldaquino. |
+| از چشم سیاه تو جهان نور گرفته<br>با علم و ادب خوی تو منشور گرفته<br>عشقی که مرا با تو به یک راه کشانده<br>در دفتر تاریخ، خطی دور گرفته | Del negro de tus ojos el mundo ha tomado luz;<br>con ciencia y modales tu carácter ha irradiado.<br>El amor que a ti y a mí nos ha llevado a un mismo camino;<br>en el libro de la historia, ha trazado una larga línea. |
 
-### 4. El retorno del destierro
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| از دمشق تا کابل، قلبم پر از تو بود<br>هیچ شهری وطن نمی‌شود، ای یار من | De Damasco hasta Kabul, mi corazón estaba lleno de ti;<br>ninguna otra ciudad se hace patria, oh compañera mía. |
-
-### 5. La amada vestida de futuro
+### 3. Espejo Roto del País
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| تو را در لباس فردا می‌خواهم<br>امروزِ ما در عشق تو خواهد گذشت | Yo te deseo ataviada con las prendas de mañana;<br>nuestro día de hoy pasará consumado en tu amor. |
+| عشق وطن ای جان، چو تب در رگ من سوخت<br>این غصه هجران، لب خندان مرا دوخت<br>بی یاد تو ای خاک وطن، هیچ ندارم<br>محمود، ز چشم تو وفاداری آموخت | El amor a la patria, oh alma, quemó como fiebre en mis venas;<br>esta pena del exilio, cosió mis labios sonrientes.<br>Sin tu recuerdo, oh tierra patria, no tengo nada;<br>Mahmud, de tus ojos, aprendió lo que es la lealtad. |
 
-### 6. Despertar afgano
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| چشم‌هایت را باز کن که جهان بیدار است<br>خوابِ عشق تو مرا نیز جوان کرد | Abre los ojos, amor, que el mundo entero ya está en vela;<br>soñar este afán por ti me ha devuelto también la juventud. |
-
-### 7. Amor a la cultura universal
+### 4. Pluma y Amor
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| همه جهان یک خانه است در چشم عاشق<br>اما افغانستان اتاق نور من است | El mundo entero es solo una gran casa a los ojos del amante;<br>pero mi Afganistán siempre será mi habitación de luz. |
+| قلم در دست من از عشق می‌لرزد<br>که مهر تو به جان و عالمی ارزد<br>در این اوراق، راز دل تو را گفتم<br>که در این شهر جز تو، کس نمی‌ارزد | La pluma en mi mano tiembla a causa del amor;<br>pues tu afecto, vale por un alma y un mundo entero.<br>En estos folios te he contado el secreto de mi pecho;<br>pues en esta ciudad, salvo a ti, nadie me importa un comino. |
 
-### 8. La mujer afgana libre
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| ای دختر وطن، تو نیمهٔ عشق ما هستی<br>بی تو، راه ترقی گم می‌شود | Oh hija de la patria, tú eres la otra mitad de nuestro amor;<br>sin ti, las avenidas del progreso se extravían. |
-
-### 9. El amor epistolar al mundo
+### 5. La Noche Cansada
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| نوشتن برای تو عاشقانه ترین کار است<br>من کلمات را به پای تو می‌ریزم | Escribir cartas para ti es mi oficio más tierno;<br>derramo yo mis palabras humilladas a tus pies. |
+| شب‌های فراق تو ز بس طولانیست<br>در چهره من نقش غمت پنهانیست<br>تو ای یار، چو پرتو به شبانم تابیدی<br>بی تابش تو هستی من طوفانیست | Las noches de separación de ti son tan largas;<br>en mi rostro la huella de tu pena oculta yace.<br>Tú, oh amor, brillaste como rayo en mi noche;<br>sin tu destello, mi existencia no sería más que tormentosa. |
 
-### 10. La tumba en el exilio (Estambul)
+### 6. Lágrimas del Expatriado
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| محمود در غربت خفت اما دلش<br>در خاک گرم افغان تپیده است | Mahmud está durmiendo en el exilio, pero su pecho<br>aún late de fervor bajo la tierra ardiente afgana. |
+| اشک من از چشم در این شهر روان است<br>عشق تو و یاد وطن، ورد زبان است<br>یک سو رخ پر مهر تو ای سرو روانم<br>یک سو غم کابل، که ز دل شعله کشان است | Mis lágrimas derraman de estos ojos por esta ciudad;<br>tu afecto y el recuerdo de la patria, son mis conjuros de boca.<br>A un lado tu rostro afable, mi ciprés que camina;<br>al otro la pena de Kabul, que en el corazón hace que sea llama. |
+
+### 7. Amor Iluminado
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| عشق است اگر راه به دانش بگشاید<br>نه آنکه به نادانی و وحشت بگراید<br>من نور خرد در رخ یار طَلبم<br>زان روی، که تاریکیِ این دل بزداید | Un amor digno es aquel que al saber abre camino;<br>no aquel que a la bestialidad y la ignorancia rinde mimos.<br>Yo busco la luz de la razón en el rostro de la amada;<br>por ello, disipa lo más negro de mi encrucijada. |
+
+### 8. Voto de Fidelidad a Asma
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| ای یار که در دشت بلا همسفرم بودی<br>در غربت تلخ الشام، سایه سرم بودی<br>پیمان من و تو زلیخایی و یوسف نیست<br>در مکتب دانایی و دل، تاج سرم بودی | Oh amor mío que en desierto de penas fuiste mi copiloto;<br>en el amargo exilio de Sham (Siria), fuiste a mi vera.<br>Tú y yo no seremos José y Zulaikha en nuestro rito;<br>mas en la escuela de mente y corazón, fuiste tú mi corona austera. |
+
+### 9. La Voz de Soraya
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| بر دختر من عشق به میهن چو روان است<br>او معنی آزادی و بیداری زنان است<br>من عشق به فردا در چشمان وی دیدم<br>این عشق، فروزنده تر از هر کهکشان است | En mi niña, el afecto patrio fluye y mana;<br>ella es la libertad consciente de la mente ciudadana.<br>Amor del mañana vi en sus hermosos ojos;<br>pasión desbordante más que la vía láctea y los despojos. |
+
+### 10. Despertar en Kabul
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| صبح آمد و کابل به رخ یار بخندید<br>آن یار که عمری ز فراقش دل من دید<br>عشق وطن و عشق تو پر کرد دلم را<br>تاریکی غم در قدم نور، فلک چید | Rompió el alba, y Kabul se rió del rostro del amado;<br>ese amor que sufrí de dolor tanto tiempo atormentado.<br>El país y tú, mi corazón llenaron ciegamente;<br>el dolor amargo, con la luz del paso, el cielo plegó firmemente. |

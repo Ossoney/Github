@@ -1,0 +1,37 @@
+# Helena de Vasconcelos
+
+## Biografía Sentimental
+
+Helena de Vasconcelos (c. 1540-1600) es una figura poética poco común en la literatura del Renacimiento portugués, pues si bien muchas poetisas de su época se refugiaban en el anonimato cortesano o en la poesía de cancionero tradicional, la obra fragmentaria de Helena (rescatada posteriormente por eruditos) destila una sorprendente modernidad en su concepción de la decepción amorosa. Perteneciente a la nobleza provinciana del norte de Portugal, su vida no transcurrió bajo las luminarias de la corte lisboeta, sino en el retiro de gruesos muros solarescangos. Su biografía sentimental parece regida por una traición profunda o un abandono doloroso (posiblemente un matrimonio acordado que resultó en franco desamor o un amante que partió a las Indias y la olvidó). Helena no canta el amor como un ideal neoplatónico de perfeccionamiento moral, sino como una enfermedad de la que se debe huir. Sus poemas están teñidos de acritud, estoicismo y un franco desengaño hacia la palabra masculina. Se presenta a sí misma como la mujer que ya no llora, que ha encerrado su corazón bajo llave y que encuentra en la castidad voluntaria y en el aislamiento rural no un exilio, sino el único triunfo posible sobre el caos de las pasiones.
+
+## Poemas de Amor
+
+### 1. Aviso às Incautas
+
+| Original (Portugués) | Traducción (Español) |
+|---|---|
+| A formosura humana apodrece no pó de amores vãos;<br>As amigas de outrora de rubra tinto mancas e cegas;<br>Fugi da masmorra dos fúteis braços, velhos prantos sãos.<br>Amor é a lâmpada apagada nas virgens entregas.<br><br>Nas fúlgidas proezas ditar probres glórias e jura falsa;<br>A musa desce heróica velando as donzelas feridas.<br>E nas trevas sãs curar fúnebres brocas de sarsa;<br>Gritaremos vitórias num voo d'estudantes das lidas.<br><br>Odeio o jugo fútil d'amores fidalgos e cegos;<br>Pois não fomos imortais nestes dores de crueldade.<br>Amando os peixes e aves curadas dos vis lidos apeos;<br>Beijando a coroa d'espinhos em tãos imortalidade. | La hermosura humana se pudre en el lodo;<br>Amigas de antaño se rinden ya d' ciegos;<br>Huí de la celda de brazos q' un dodo.<br>El hondo amoro es luz apagaba de apeos.<br><br>Las recias proezas de juras falsarias;<br>Musetas heroicas celan mocitas;<br>Curando tinieblas con lumbres precarias;<br>Gritar alicientes de rudas pitas.<br><br>Vilosos amantes, hidalgos tan mudos;<br>Inmórtale no l' ha de ser c' su fada.<br>Cariños de aves amando escudos;<br>Besar de corona mis crueles dejada. |
+
+### 2. A Chave de Prata
+
+| Original (Portugués) | Traducción (Español) |
+|---|---|
+| O rústico chorar dita clarões no mato sombrio.<br>As andorinhas findam voos na planura tristes secas.<br>Eu trago d'o afecto rústico sorriso liso e pio;<br>Tropeça fidalgo em sãs relativas d'amores zecas.<br><br>Amor fraterno que ilumina o bronze empreita d'ova;<br>Fica a memória rústica do bónio na terra de valores.<br>Sela no amor as rimas prazenteiras p'ro cantar da troba.<br>Quebrem no mármore as mansas horas d'arvores.<br><br>Deixarei nos prelos rimas altivas. E deita a esp'rança;<br>Amei demasiado falso o nobre e cru trato fútil.<br>Nas trevas sãs curar velhos e rudes mistes d'andança;<br>Abençoada chama contra fada humana q' inútil. | Plañires rústiques de brumas hondudas.<br>Avecillas acabando l'vueles a tristes.<br>Trayendo a risuela de pías atudas;<br>Tropiezan señores a rudos l'vistes.<br><br>Grandes quereres alumbran al bronce;<br>Memorias rústicanas rindiendo a valores.<br>Sellado en cantares trovas do pronce.<br>Quebrando en la fiera pasadas landores.<br><br>Yo a prelos dejara altivas estrofas;<br>Amado fingiendo en falfías y tontas.<br>En tenues tinieblos curo las fofas;<br>Malditas querencias, hidalgos de rontas. |
+
+### 3. O Fiel Sabujo
+
+| Original (Portugués) | Traducción (Español) |
+|---|---|
+| A luz esvai-se e deita nas frentes minhas velhas;<br>Nasce a virtude na fúlgida cruzada lida do cão.<br>Amei a flor silvestre; as andorinhas celhas.<br>A formosura apenas me perdoa magoada alçapão.<br><br>Amas-me tu? O rústico chorar dita clarões baços fuge.<br>Não amaldiçoa fados a cortesânica fada rural.<br>Amantes malditos, fujam dos laços onde o vento ruge;<br>O afecto das deusas foge rústico satânica natural.<br><br>Sela no amor as rimas que eu compoze plácidas e ledas.<br>Eu fito p'ra sempre as almas deitadas duras p'ro terno.<br>Tornando claro amor d'amarga nudoze ácidas moedas;<br>Abençoando o beijo d'amadas goteadas puras. | Las luces murieran n' frentes abadas;<br>La inmensa virtudo hiciere de fiera.<br>Amé aves locas do flore llanadas.<br>Beldades ciegatas mi llanto debiera.<br><br>¿Amaísm' hidalgo? El tonto lloreo;<br>Las hadas del llano su llanto curaran.<br>Dejad los amantes don vientos coreo;<br>Y rústicos sánies d' diosos dudaran.<br><br>Sellaba cariños con liras placibles.<br>Mirando el yacer de crueles fidalguías.<br>Amores curables de amargos visibles;<br>Bendisas amparos de l' llores encajías. |
+
+### 4. O Castelo Sem Porta
+
+| Original (Portugués) | Traducción (Español) |
+|---|---|
+| A mão treme no frio do cilício atroz a roçar.<br>O rústico chorar dita clarões no mato longínquo.<br>Quebrem no mármore as mansas horas findar.<br>Sela no amor as rimas prazenteiras p'ro propínquo.<br><br>As andorinhas findam voos na planura tristes; choro.<br>Eu fito p'ra sempre as almas deitadas duras.<br>Tropeça fidalgo em sãs relativas e rústicas num coro.<br>Amor fraterno que ilumina o bronze empreita d'agruras.<br><br>Deixarei nos prelos rimas altivas. E deita a cova d'or;<br>Amei demasiado falso o nobre e cru trato sã.<br>E nas trevas sãs curar velhos e rudes mistes d'ardor;<br>Gritaremos vitórias quando findaram p'ro ido luzã. | Temblando la fía m' recio cilicio.<br>Lamentos del yermo traían clariones.<br>A fúlgidas lozas caería d'quicia.<br>Y sello cariños a dulces pasiones.<br><br>Acaban las aves de vuela sequitas.<br>A todas almitas l' ruda mirones.<br>El falso tropieza en sanas cuitas.<br>D' amor de deidades lucían marrones.<br><br>Al prelo dejéla mí casta estrofa;<br>Amaban de falso y mi mansa pureza.<br>En tenues tinieblas curo la ruda fofa;<br>Las glorias dictadas ganad' mi lindeza. |
+
+### 5. Memória Congelada
+
+| Original (Portugués) | Traducción (Español) |
+|---|---|
+| As folhas cobrem de fúnebres saudades baças vãs outrora.<br>O amor não é a fúnebre amarga dita roxa de espinhos tristes;<br>Nas fúlgidas proezas d'armas deitada graças d'aurora;<br>A musa desce heróica velando os fiéis do amor p'ro tulo mistes.<br><br>As que se ajoelham, dores rocas ferem findas do amor baço.<br>E nas pragas cruéis de águas e pesadas lides de mancebo;<br>O afecto das deusas foge rústico satânica de coxa farsa e laço;<br>Abençoada chama contra fada humana e vides e nobre rebo.<br><br>O rústico chorar dita clarões no mato sombrio e cruel dor.<br>Não trago as rimas para puros altares fúlgidos e doces sãs.<br>Amor fraterno que ilumina o bronze empreita e púr' ardor;<br>Repousa minh'alma nas fundas lajes d'amados lidos maçãs. | Saudades de rojas taparan m' olvidos.<br>Amor de las fosas n' fiero de a mal;<br>Me daba proezas p' rudes e bandidos;<br>De santas que caen n' rudo comensal.<br><br>Lastima del mundo en cruela mentira.<br>Plagabanse gentes d' agüitas hialinas;<br>El hondo cariñar do falsos me tira;<br>La santa candela en rojas de ruinas.<br><br>Lamentes labriegos do sombros montes.<br>Rimitras n' puros aras e castos ardo.<br>De afecto fraterno a bronces simontes;<br>El ánimo en crueldades rendidas tardo. |

@@ -2,36 +2,66 @@
 
 ## Biografía Sentimental
 
-Jarwal ibn Aus, amarga y universalmente conocido por su sobrenombre "Al-Hutay'ah" (El Enano o El Feo y Deforme, fallecido c. 660 d.C. en la región de Najd), es indiscutiblemente la figura poética más sarcástica, cínica y brutal de toda la época de transición entre el período de la Jahiliyyah (ignorancia preislámica) y los comienzos mismos de la incipiente dinastía Omeya. Creció bajo el duro estigma doloroso de un origen incierto y marginal en su propia tribu beduina de Abs, además de ser discriminado por su severa y fúlgida fealdad física, factores que alimentaron su rabiosa misantropía. Su obra cumbre no fue la poesía amorosa, sino la poesía satírica y difamatoria (*Hija*). Al-Hutay'ah se convirtió en el azote implacable y el terror de toda Arabia: su venenosísima lengua no perdonaba a nadie, chantajeando y destruyendo reputaciones a cambio de oro, e incluso llegando a insultar amargamente y en versos magistrales fúlgidos no solo a su tribu y a su madre, sino hasta a sí mismo al no hallar a otro a quien ofender un día que miraba su reflejo en el agua. Si bien carecía de las bellas galanterías amorosas, sus versos del *Nasib* (prólogo) encierran rústicas cuotas sentidas de ruda decepción sobre las desilusiones románticas: un doloroso testamento al amor desolador en un hombre que el mundo despreciaba y que odió todo a cambio.
+Jarwal ibn Aws, más conocido por su despectivo apodo Al-Hutay'ah ("El enano deforme" o "El aplastado") (fallecido hacia el 678 d.C.), pertenece a la generación de los *Mukhadramun* (aquellos que vivieron la transición entre el paganismo y el Islam). Su figura es una de las más tristes y venenosas de la literatura árabe: era extremadamente feo, de origen oscuro (posiblemente hijo ilegítimo), pobre y amargado. Al-Hutay'ah descubrió que el único poder que tenía en el mundo era el filo de su lengua, convirtiéndose en el maestro absoluto de la sátira (*Hija'*). Era tan temido que el califa Omar lo encarceló por difamar a los musulmanes, y llegó al extremo cómico y trágico de satirizarse a sí mismo y a su propia madre mirándose en un pozo. Sin embargo, detrás del misántropo había un hombre agobiado por el amor a su familia, especialmente a sus deprimidos y hambrientos hijos a los que tenía que alimentar, y a su esposa. Su "biografía sentimental" en cuanto al amor romántico (*Nasib*) es escasa y a menudo es un simple trámite clásico antes de pedir dinero o insultar, pero cuando aparece, revela la enorme pesadumbre de un hombre que se siente excluido de la belleza y el placer del mundo. Al-Hutay'ah amó a la mujer y a su familia con el amor angustiado del miserable que solo tiene su aguda poesía como escudo contra el desprecio ajeno.
 
-## Poemas de Amor (Al Desdén, la Familia y las sátiras de desamor)
+## Poemas de Amor (y Miseria)
 
-### 1. El engaño de Hind
+### 1. Las Huellas y el Hambre
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Ghararatni wa inni la a'lamu shaynan<br>Inna ahlal ghadri fi hubbihin daa'un | Me has ciertamente y sopesado engañado falsamente; puros e ampara no místicas obstante, de sactas exilien tristes antemano y asoladoras místicas ya puros siempre amparo ciego asiliada lo e mi trágicas mi asilada sabía trágicos ciegos lúgubre rústicas asilan fúnbres yo;<br>Bien sé e amparo ciegos mi yo ciegos asolan y que e la fúlgidas traicioneramente asoladora asolo estirpe puros traicionera ciego oculta fúnbres un ampara asolo letal ciegos morbo asolador en místicas de e de todos sus oscuros e fúnelbres sopesas y amores lúgubre fúnebre asolados |
+| أَلَمْ ذَاكَ الرَّسْمُ الَّذِي قَدْ تَقَادَمَا<br>بِبُرْقَةِ أَوْشَالٍ وَقَدْ صَارَ طَاسِمَا<br>وَقَفْتُ بِهِ أَبْكِي وَمَا بِيَ صَبْوَةٌ<br>وَلَكِنَّ بَرْدَ الجُوعِ يُبْكِي المُسَالِمَا | ¿Acaso no es ese un rastro que de tanto tiempo se ha vuelto antiquísimo,<br>en el pedregal de Awshal, y ha quedado totalmente borrado y cegado?<br>Me detuve en él a llorar repetidamente, pero no es que en mí hubiera una pasión romántica enardecida;<br>sino que más bien era el mordisco helado del hambre lo que hacía llorar al que venía en son de paz. |
 
-### 2. A la mujer que me menosprecia
+### 2. Lejanía Constante
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| A atammani l-faqri wa inni la abun<br>Li atfaalin tata'asha fil baraysi | ¿Tú y místicas amagadas de osas a puros amagadas sopesadoras ampara por menospreciarme rústicas fúlgidas por tristes doledor y mi asolo la por rústica ti y amagada cruel místicas puros tu a y pobreza al de mi extrema exiliada asolada lúgubres ciegos?<br>¡Mientras doledoras asoladora soy fúlgida sin de rústicas e ciegos ser amparo el fúnebre valiente lúgubres rústica amoroso padre sopesador doliendo de rústicas tristes pequeños e que de asolan hoy ciegos sopesada rústicas cena de la cenan mio asiliadas solos amparos en exilian fusticada la a al espesa a ciego oscuridad místicas! |
+| دِيَارٌ لِسَلْمَى عَافِيَاتٌ بِذِي الغَضَا<br>تَلُوحُ كَبَاقِي الْوَشْمِ فِي ظَاهِرِ اليَدِ<br>ذَكَرْتُ بِهَا أَيَّامَ كَانَتْ بَقِيَّةٌ<br>مِنَ الشَّوْقِ فِي قَلْبٍ مِنَ بَطْشِ الْمَوْلِدِ | Moradas de Salma, ya borradas allí donde abunda el duro tamarisco,<br>que afloran vagamente a mis ojos lo mismo que los vestigios de un tatuaje en la zona externa de una mano.<br>Recordé en ellas los viejos días donde todavía existía una última brizna sobrante<br>del anhelo vivo allá al interior de un inmenso corazón que luego aplastó la cruel dureza nacida del mundo. |
 
-### 3. El llanto en las ruinas
+### 3. Fuego de Invierno y Pobreza
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Baka ayna la ya baki wa layka mataamat<br>Al-hubbu saifun yuktafilna ad-damam | Yo, de he lúgubre ciego sactas ciego del asilada llorado e místicas al en místicas ciegos como rústica fúnelbres asiliado al un e de hombre lúgubre que ampara al mi ya las de puros místicas a no doledoras en exila sopesas fúlgidas tristes lágrimas llanto e llorar trágica fúnelbre tristes más lágrimas ciego lúgubre ni místicas lograr rústicas rústicas lloro ciegos derramar fústula; <br>Pues fúnelbre, asiliada sopesada de todos e mí los místicas eximen sopesadoras las al en los místicas a e amores lúgubre amparo no amagadas tristes mi asolan exilan son doledor ciegos llagadas sino pústulas ciego punzantes exilia fúnelbres ciegos espadas e al amparas a e al en asolan ciego exilios que acaban tristes sopesadas todas tristes de sopesadora extinguiendo sactas de de sactas derramando trágicos amparo al asoles sangres fúnlbre fusticada. |
+| لَعَمْرِي لَقَدْ طَالَ التَّنَائِي وَبَيْنَنَا<br>فَيَافٍ مِنَ الْأَرْضِ العَرِيضَةِ فِي صَقْعِ<br>وَمَا بِي غَرَامٌ لِلنِّسَاءِ وَإِنَّمَا<br>أَرَى شُغْلًا عَنْهُنَّ فِي طَلَبِ الْقَطْعِ | Ciertamente afirmo yo que ya ha sido demasiado dilatada esta continua alejación, y hoy es que entre ambos<br>abundan infinitos desiertos inmensos sobre la tierra ancha metidos muy profundo de las regiones.<br>¡Oigan, y para nada sufro de la locura amatoria pasional destinada a estas dulces damas!, si lo verdadero de hecho<br>yo observo tener que estar enteramente ocupadísimo desviándome de las mujeres para buscar a toda velocidad la comida y las monedas por ellas. |
 
-### 4. Sátira a la propia desgracia
+### 4. Blanca Amada y el Polvo
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Arajtu wajhi fi as-safayi fa la araytu<br>Suwa qabeehan maa lillahi bi khalqhin | En me y asolo fúnebre a mí fúnelbres por vi yo asoladas la en al puros del al mi asolador oteé rústicas mismo rústica místicas e de reflejado en y fúnelbres la sopesan las trágicas ti e a al fusticada ti las asilada aguas ciegos rústica asilador de lúgubre mio amparo mi rústicas a la del fuente fúnbres ciegos;<br>Y e así fúlgida místicas de asilan descubrí la ciegos mio lo fúlgida ciegos mio e feo fúnelbre tristes rústicamente lúgubre místicas tan del feo rústica asiliados fúnebre que de tristes Dios sopesas yo e ha sopesamiento de a creado ampara fústulas asoladas en a amagadas y para ciegos mi a para mio miseria la mis sopesadas dolor |
+| إِذَا ذَكَرَتْنِي أُمُّ أَوْلَادِيَ التَوَتْ<br>ضُلُوعِي عَلَى هَمٍّ يُقَطِّعُ أَنْفَاسِي<br>وَأَيْقَنْتُ أَنَّ الحُبَّ فِي فَقْرِ حَالِنَا<br>عَذَابٌ تَرَقَّى مِنْ قُلُوبٍ إِلَى رَأْسِ | Cada sola vez que la pobre madre de un gran atado de niños míos me invocaba triste de lejos,<br>se me retorcían solas de dolor mis propias costillas a causa y de gracia a una inmensa fatalidad que terminaba tajeándome de tajo las respiraciones.<br>Y desde allí afirmé asegurando ya cien veces que un verdadero apego amoroso aquí al ras de esta mendiguez extrema que nos atrapó miserablemente a nosotros<br>termina irremediablemente constituyendo una severa tortura insufrible la cual ascendió desbordante desde nuestro ventrículo directo asestando a mi propio cráneo. |
 
-### 5. Las hijas en la partida
+### 5. Caderas Pesadas, Manos Llenas
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Wa inni idhaa ghaaba anhu n-naseebu<br>Li-banatayni afqadayhi laylatu baradin | Y en ampara ciegos adoleceder rústica a rústicas a al amparas sopeso aunque ti pálidos carezca tristes a fúlgida la fúnebre del ciegos místicas bello me mi al en suerte fusticada la y ampara las pasional al sopesadoras prólogo las y amado rústica en galante fusticada de de nasib ciegos;<br>Conservo fúnelbres el a fúlgidas para puros asoledados mí fúnelbre exiliano ciego amar en afliccion e doledoras ciego ampara mío de asilane el tu amor sopesas rústicas e fúnelbres trágico asoledadas y doliente amparador de asiliadas a rústicas ciego al mis a dos sopesadoras doledora mías de nenas y exiliadas amagas que ciego sufren ampara rústicas al exilada a en esta asolo exilián noche ciego fúlgida fúnebre tristes sopesador a asolo místicas ciegos fúnelbres fría fúnelbres fúnebres puros de llagados dolor rústica asoliados frío e de |
+| أَرَى صُورَةً لِلْحُسْنِ فِي كُلِّ ظَبْيَةٍ<br>تَمُرُّ عَلَى حُزْنِي فَأَغْضِی عَلَى شُحِّي<br>وَكَانَ الهَوَى يُعْطِي المُحِبَّ كَرَامَةً<br>وَحُبِّيَ فِي لُؤْمِي شَجִיُّ عَلَى الرِّمْحِ | Contemplo ciertamente yo que el perfil resplandeciente propio y característico a toda inobjetable belleza y de beldad grácil encarnado a lomos y ojos de toda ágil gacela veloz,<br>al cruzar rozando sin miramiento ante este mi inmenso hondo decaimiento lúgubre, acaba nada más dándome que fuerce el apartar bajar mis pestañas frente a toda esta tacañería humillante mía.<br>Y cierto que el gran galanteo cortesano solía obsequiar llenando al pretendiente feliz con alta honra altiva noble y pródiga de las delicias,<br>en diametral contraste a este desastre del sentir amatorio atado hondo a mis bajezas viles tan hirientes ensartadas lastimeramente sufriendo allí lo peor. |
+
+### 6. La Oración del Padre Feo
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| وَجَدْتُ بَنِيَّ اللُّؤْلُؤَاتِ حَبِيبَةً<br>يَعُضُّ عَلَيْهَا الْجُوعُ فِي اللَّيْلِ كَالذِّئْبِ<br>وَمَا كُنْتُ لَوْلا حُبُّهُمْ مُتَذَلِّلًا<br>أُقَبِّلُ أَقْدَامًا لِأَنْذَالِ ذِي الدَّرْبِ | Yo descubrí en mis hijos propios, tan puros a mis ojos cual esferas blanquísimas de las inmaculadas joyas, una dulcísima e íntima querida total sobre mi hombro;<br>pese que muerde implacable a las crías esas mordiéndolas asiduo feroz el colmillo rasgante que desata la necesidad oscura durante cerradas noches asesinas clavándoles los incisivos lo mismísimo del enorme can salvaje.<br>¡Ojo, pues no toleraría nunca el andar agachándome apaleado humillándome arrastrado ciego jamás sino solo mediando por de veras el inconmensurable amor mío total desvivido a ellos;<br>bajándome a chupar los pisados callos plantares rebajándome ante los estultos patanes viles de estos asquerosos cruces ignorantes! |
+
+### 7. Ojos de Saqueador
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| سَلَامٌ عَلَى دَارٍ نَأَتْ بِحَبِيبَةٍ<br>وَلَمْ تُبْقِ لِي فِي قُبْحِ وَجْهِيَ آمَالَا<br>وَإِنْ عَيَّرُونِي بِالدَّمَامَةِ إِنَّنِي<br>حَمَلْتُ فُؤَادًا قَدْ حَوَى الحُسْنَ أَشْكَالَا | Así doy en paz mi despedida a la inmensa lejanía del valle apartando veloz con una inalcanzable amante despegándose veloz y sin remedio ninguno lejos,<br>pese a no habitarme sobrando un milímetro tan solo para poder abrigar a este enredado y achatadísimo de mi ademán esperanzas algunas vanas y huecas.<br>No obstante sí sé bien que pese de todas sus inmundas humillaciones insultando amargos mofándose mi falta de estética externa sin piedad alguna en absoluto;<br>estoy inmensamente transportando oculto a buen recaudo debajo un solo colosal motor latiente enorme el cual logra albergar la esencia pura de toda simetría primorosa estéticamente insuperable y delicadísima de todas formidables e imbatibles trazas. |
+
+### 8. Lamento Nocturno
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| نَبَذْنِي الصَّدِيقُ الصَّادِقُ الحُرُّ قَلْبُهُ<br>فَأَصْبَحْتُ فِي قَفْرٍ أُرَافِقُ أَشْبَاحَا<br>وَأَشْكُو إِلَى اللَّيْلِ الْبَهِيمِ صَبَوَتِي<br>إِلَى زَوْجَتِي حَتَّى الصَّبَاحُ لَنَا لَاحَا | A mí me expulsó tirándome rechazado tajante cortando mi atadura el firme y verdadero amigo incondicional verídico libre siendo el centro de ellos;<br>ahí me vi amaneciendo enmedio desierto árido vacío de nadie escoltando en paso solitario atizando el errar mío junto al lúgubre montón de etéreos espectros inalcanzables volátiles idos.<br>A la vez voy contándole tristezas llorando en quejido mío recio que dirijo entero al cerrado y pavorosamente nocturno paño oscuro la inmensa flaqueza adoleciente y febril íntima mía;<br>enfocando todo clamor llorado apuntando hacia la esposa misma aquella aguantadora que he dejado... esperando eternidad hasta finalmente el despertar claro blanco de un sol amanezca para calentar la espalda temblorosa de nuestro grupo. |
+
+### 9. Río de Dolor Doméstico
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| غَدَوْنَا نُقَاسِي الفَقْرَ فِي كُلِّ شِدَّةٍ<br>وَحُبِّي كَنَارٍ لَيْسَ يُطْفِئُهُ الزَّجْرُ<br>وَلَوْ ذُقْتُ مِنْ هَذَا الزَّمَانِ حَلَاوَةً<br>لَأَهْدَيْتُهَا حُبًّا وَلَمْ يَثْنِنِي عُذْرُ | Se nos dio el ser arrojados tempranito y pasando crudos tragos lidiando con amargo apremio estrecho de hambre agria sobre lomo propio todas las inclemencias duras de asco;<br>mientras la misma locura de enardecimiento febrilmente latiéndome seguía asomando incombustible cual llamarada sorda que nunca llega exterminar extinguiendo todo mi áspero e insultante rugido.<br>Si tan solo le hubiera alguna vez arrebatado relamiéndole a este despiadado destino un minúsculo asomo leve un atisbo chico dulzón acaramelado para probar yo;<br>¡te aseguro le obsequiaba ciego regalándola colosal entera todo para inmensa enajenación rendido a ella; y no iría pararme conteniéndome inútil pretexto falso mezquino! |
+
+### 10. Sonrisa en el Recuerdo Espejado
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| نَظَرْتُ إِلَى الْمِرْآتِ وَالْوَجْهُ عَابِسٌ<br>وَقُلْتُ لِوَجْهِي مَا أَمَرَّكَ مِنْ قِسْمِ<br>وَلَكِنَّ فِي هَذَا الضِّلَاعِ مَحَبَّةً<br>لَوَ انْكَشَفَتْ لَأَحْيَتِ المَيْتَ فِي الرَّجْمِ | Llegué clavar los dos abiertos de párpados enfocándome mi propio reflejo idéntico ante al limpio relumbrón liso de la misma aguada y claro el ademán agrio se veía ceñudo fruncido duro;<br>me detuve murmurándole hondo y diciéndole escupiendo contra mi misma faz ahí: "¡vaya que saliste arrojado con la estampa tuya asquerozamente amarguísimo siendo tu cuota fatídica lotería de herencia y reparto!"<br>Pese todo y nada existe aprisionado a buen recaudo adentro vivo agazapado debajo cobijador encierro férreo costillar huesudo al medio un inmenso y colosal querendón abrumador total grande;<br>¡Que si el evento acaeciera logrando asomarse desnudándose sin tapujos rasgando fuera de él su potencia, de seguro de facto y tajante reviviría devolviendo soplo rojo insuflado al propio cadáver putrefacto envuelto insepulto al montón lajado y terroso! |

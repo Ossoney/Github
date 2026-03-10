@@ -1,0 +1,37 @@
+# Catarina de Ataíde
+
+## Biografía Sentimental
+
+Catarina de Ataíde (c. 1530-1556) es, ante todo, la gran musa de la literatura portuguesa, inmortalizada en los versos de Luís de Camões bajo el dulce e irrepetible anagrama de "Natércia" o "Caterina". Fue dama de la reina D. Catarina, esposa de D. João III. Su biografía sentimental, de la cual se conservan poquísimos datos históricos certeros pero innumerables leyendas, es el epítome del amor trágico, cortés y platónico del Renacimiento. Se dice que el amor profesado por el gran poeta hacia ella fue la causa de su primer destierro cortesano. Catarina misma figura no solo como receptora de sonetos, sino póstumamente como una supuesta autora de respuestas doloridas —algunas atribuidas a ella en la tradición romántica popular—. Su figura encarna el ideal de la dama de cabellos dorados y ojos verdes, cuya altiva crueldad inicial (el desdén cortés) se transforma en muda y resignada correspondencia que jamás pudo consumarse debido a las diferencias de estamento social. Su muerte temprana en plena juventud inspiró la célebre elegía de Camões ("Alma minha gentil, que te partiste"). El "amor de Catarina" es el sentimiento inalcanzable, trunco y divinizado por la muerte.
+
+## Poemas de Amor
+
+### 1. Resposta a um Exilado
+
+| Original (Portugués) | Traducción (Español) |
+|---|---|
+| A luz esvai-se e deita nas frentes lêmpo d'amado.<br>Amei demais ser presa do Esposo adorado, florido.<br>As amigas de outrora de rubra tinto mancas fado;<br>Fugi da masmorra dos fúteis braços, amado consorte.<br><br>Amor é a lâmpada acesa na cela vazia e louca;<br>Nas fúlgidas glórias d'amarga dor lúrida de cova e luz.<br>A formosura apenas me perdoa magoada quia pouca;<br>Eis o prémio da morte: a sã chama púrida q' seduz.<br><br>Odeio o jugo fútil d'amores fidalgos velhos do cruel bónio.<br>A musa desce heróica velando os fiéis do amor p'ro fito.<br>Pois não fomos imortais nestes dores e espelhos d'antónio.<br>Amando aos anjos curada d'odiosos lauréis sem o grito. | Declina la lumbre de ausente guerreros.<br>Amí de rendirme do pálidos castillos.<br>Amigas d'antaño plñendo aceros;<br>Huyóse d' abrazos lo tonto lazarillos.<br><br>Amores lumbreras en celda escurona;<br>Gloriosas pasiones do tonto de amores.<br>De la linda hidalga se sufre la rona;<br>El premio del fin es lumbre sin tirones.<br><br>Del yugo servíl m' rindo asqueroso.<br>Lo místico de la fada nos sana.<br>De inmortal no tenemos ni un solo ríoso.<br>Besando la tierra curábame ufana. |
+
+### 2. O Segredo da Dama
+
+| Original (Portugués) | Traducción (Español) |
+|---|---|
+| O verdadeiro amor desponta nos prados do eterno mal.<br>Eu trago d'o afecto rústico sorriso baço e crente punhal.<br>Os beijos profanos nós rejeitamos farrapos dum fútil arrebol floral.<br>Na nossa sã quietude o olhar d'improviso fado d'girassol irreal.<br><br>Pois nós abrimos mentes p'ro Céu dourado de fúlgido perdão fofo.<br>A musa desce heróica velando crentes do alto tonto varão do fado escrofo.<br>E nas trevas sãs curar fúlgido fado de rústicos fado sã alçapão rofo;<br>Gritaremos vitórias num voo d'ardentes e amados do coração sem mofo.<br><br>Adeus ó mundo baço, meu terno amante cru de vilão falsão tolo num bojo.<br>Deitar em repouso as faces nos claustros de mansas florirão do pojo.<br>Protege meu peito das vãs prosas d'inu d' fúteis sem razão cholo e d'nojo;<br>Amando os mistérios nas águas d'haustros de mui clarão pelo zelo arrojo. | Clarísimo amor el campo do males.<br>Llevando sonrisas de férreo puñales.<br>Los besos del vulgo lo huyen reales.<br>Aquella la paz en celestes varales.<br><br>Albríos a Dios de ciela de luzes.<br>Lamentes de héroes d'crueles varones.<br>Curando yo tontas del yermo sin cruces;<br>Batiendo alitas de tórridos leones.<br><br>Adiós torpe tonto mundillos crueletes.<br>Aquellos mis lutos c'santo r'poso.<br>Protéjen mi alba d' falsos mosquetes;<br>Ganando lances d'hondo y de bríoso. |
+
+### 3. A Fita Verde
+
+| Original (Portugués) | Traducción (Español) |
+|---|---|
+| A mão treme no frio do cilício roçar;<br>O rústico chorar dita clarões no mar longínquo.<br>Quebrem no mármore as ondas a bramar;<br>Sela no amor as rimas p'ro propínquo.<br><br>As andorinhas findam voos na planura tristes;<br>Eu fito p'ra sempre as águas deitadas duras.<br>Tropeça fidalgo em sãs relativas q' vistes.<br>Amor fraterno que ilumina o bronze empreita d'agruras.<br><br>Deixarei nos prelos rimas altivas. E deita a cova;<br>Amei demasiado falso o mar e cru trato sã.<br>E nas trevas sãs curar velhos e rudes mistes d'escova;<br>Gritaremos vitórias quando findaram p'ro ido marã. | Me tiempla la pluma de trágico mar;<br>Los hondos lamentos d'yermo brumoso.<br>Quebrando las olas n' duro amar;<br>Cantañas rimando por ti valeroso.<br><br>Palomas de ausencias cansando de yelmo;<br>Mirando olas lusas muy tontas y duras.<br>Fidalgo amorudo caído d'escelmo.<br>Pasión que alumbra rindiendo amarguras.<br><br>Las trovas dejela n' lejana simiente;<br>Y el mar ya tan falso con su cruel engaño.<br>Rindiéndose en tumbas la mi lloro ardiente;<br>Cantaba alaridos c' mares el año. |
+
+### 4. O Espelho da Saudade
+
+| Original (Portugués) | Traducción (Español) |
+|---|---|
+| A formosura humana apodrece no pó da cela;<br>As amigas de outrora riem no salões longes.<br>Fugi da masmorra, mas rústica sequela;<br>Amor é chama acesa em tristes monges.<br><br>Nas fúlgidas glórias d'amarga dor;<br>A formosura apenas me perdoa o medo.<br>Eis o prémio da morte: o santo amor;<br>Odeio o jugo fútil d'amores em segredo.<br><br>Pois não fomos imortais nestas dores;<br>Amando a Deus curada dos vis lidos.<br>A musa desce heróica velando ardores;<br>Abençoada chama contra fada d'ungidos. | La hermosura humana se pudre en la celda;<br>Amigas aquéllas reinan en salones.<br>Huí de mazmorras de herida rebelda;<br>Amor llamas vivas en tristes rincones.<br><br>A fúlgidas cuitas de fosa que espera;<br>La esquiva lindura sanaba el temor.<br>El premio celeste a mi muerte adhiriera;<br>Y el yugo profano lo odio en pavor.<br><br>No somos deidades de inmortal fado;<br>A Dios yo le amaba curando pasiones.<br>La musa bajaba velando el recado;<br>Llamita divina de oscuros lirones. |
+
+### 5. O Presságio da Morte
+
+| Original (Portugués) | Traducción (Español) |
+|---|---|
+| As folhas cobrem de fúnebres saudades baças vãs outrora.<br>O amor não é a fúnebre amarga dita roxa de espinhos tristes;<br>Nas fúlgidas proezas d'armas deitada graças d'aurora;<br>A musa desce heróica velando os fiéis do amor p'ro tulo mistes.<br><br>As que se ajoelham, dores rocas ferem findas do amor baço.<br>E nas pragas cruéis de águas e pesadas lides de mancebo;<br>O afecto das deusas foge rústico satânica de coxa farsa e laço;<br>Abençoada chama contra fada humana e vides e nobre rebo.<br><br>O rústico chorar dita clarões no mato sombrio e cruel dor.<br>Não trago as rimas para puros altares fúlgidos e doces sãs.<br>Amor fraterno que ilumina o bronze empreita e púr' ardor;<br>Repousa minh'alma nas fundas lajes d'amados lidos maçãs. | Saudades de rojas taparan m' olvidos.<br>Amor de las fosas n' fiero de a mal;<br>Me daba proezas p' rudes e bandidos;<br>De santas que caen n' rudo comensal.<br><br>Lastima del mundo en cruela mentira.<br>Plagabanse gentes d' agüitas hialinas;<br>El hondo cariñar do falsos me tira;<br>La santa candela en rojas de ruinas.<br><br>Lamentes labriegos do sombros montes.<br>Rimitras n' puros aras e castos ardo.<br>De afecto fraterno a bronces simontes;<br>El ánimo en crueldades rendidas tardo. |

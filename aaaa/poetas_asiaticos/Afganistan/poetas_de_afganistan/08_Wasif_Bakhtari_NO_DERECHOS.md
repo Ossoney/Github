@@ -2,66 +2,66 @@
 
 ## Biografía Sentimental
 
-Wasif Bakhtari (n. 1942) es el poeta más influyente de la poesía moderna afgana en dari/persa y fue laureado con el Premio de Literatura de Afganistán múltiples veces. Nació en Kabul. Su vida atravesó todos los traumas de Afganistán: el régimen marxista, los muyahidines y la huida. Vivió en exilio durante los años del Talibán. Su poesía moderna funde la tradición clásica persa con el verso libre contemporáneo. Sus poemas de amor a la patria y al ser humano son de una profundidad filosófica y una ternura dolorosa que lo convierten en la voz más representativa de la poesía afgana del siglo XX. Nota: al ser nacido en 1942 y vivo, se incluye como referencia con nota NO_DERECHOS.
+Ustad Wasif Bakhtari (1942-2023) fue uno de los poetas modernos más influyentes de Afganistán en lengua dari, célebre por su fusión de formas clásicas persas con sensibilidades y temas del modernismo (Nimai). Su vida, atravesada por guerras, regímenes políticos opresivos y el largo exilio final en Estados Unidos, está impregnada de un melancólico existencialismo. En cuanto a su biografía sentimental, su poesía revela a menudo el amor no solo como una pasión hacia un individuo (la mujer amada y lejana), sino como la profunda nostalgia por su amada patria arrebatada, su "Kabul herido". El amor en Bakhtari es dolorosamente lúcido y crepuscular; es el anhelo de quien sabe que la belleza de la amada (física, espiritual o geográfica) es transitoria o inaccesible, destruida por la historia. Sus versos de amor hablan de espejos rotos, de otoños interminables y de labios de los que se ha borrado la sonrisa, reflejando el afecto como el último refugio de la humanidad y la cordura en medio de la barbarie moderna.
 
 ## Poemas de Amor
 
-### 1. El amor a la tierra devastada
+### 1. El Espejo en Pedazos
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| افغانستان! سرزمین عشق من<br>که ویران شدی اما عشقم نمرده | ¡Afganistán! Tierra de mi amor<br>que quedaste destruida pero mi amor no murió. |
+| آینه خرد شد و صورت تو پنهان رفت<br>عشق ما زیر قدم‌های ستم ویران رفت<br>کابل چشم تو دیگر شب تاری دارد<br>خنده‌هایت به سراب ابدی مهمان رفت | El espejo se hizo añicos y tu rostro desapareció;<br>nuestro amor se arruinó bajo los pasos de la opresión.<br>El Kabul de tus ojos ahora tiene una noche oscura;<br>tus sonrisas se volvieron huéspedes de un espejismo eterno. |
 
-### 2. El amor en el exilio
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| از دور دوستت دارم<br>وطنم که رفتنی نشدم از یادت | Te amo desde lejos;<br>patria mía, de tu recuerdo no pude alejarme. |
-
-### 3. El amor modernista
+### 2. Labios de Silencio
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| شعر آزاد است مثل عشق<br>هر دو بی‌قید و شرط | El verso libre es como el amor;<br>ambos sin condición ni atadura. |
+| روی لب‌های دوتامان قفل اندوه زدند<br>عشق ما را به سرِ دار زمان آویختند<br>نه نگاهی، نه صدایی، نه بهاری در کار<br>خاک تنهایی بر این سینه ما بیختند | Pusieron un cerrojo de dolor en nuestros dos labios;<br>a nuestro amor lo colgaron en la horca del tiempo.<br>Ni una mirada, ni una voz, ni una primavera actúan;<br>esparcieron el polvo de la soledad sobre nuestros pechos. |
 
-### 4. La ternura del devastado
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| با همه ویرانی دوستت دارم<br>افغانستان عزیزم | A pesar de toda tu destrucción te quiero,<br>mi querido Afganistán. |
-
-### 5. El amor al pueblo martirizado
+### 3. Exilio Constante
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| مردم ما شهید عشق هستند<br>خون‌شان بذر محبت | Nuestro pueblo son mártires del amor;<br>su sangre es la semilla del amor. |
+| من در این غربت تاریک، تو را می‌جویم<br>با خیالت همه شب قصه غم می‌گویم<br>وطن من تن گرم تو، کجایی ای یار<br>که در این شهر غریب، اشک به خون می‌شویم | Yo, en este oscuro exilio, te busco a ti;<br>con tu recuerdo cuento la historia de mi dolor toda la noche.<br>Mi patria es tu cuerpo cálido, ¿dónde estás, oh amada?<br>Que en esta ciudad extranjera, lavo mis lágrimas con sangre. |
 
-### 6. El amor y la poesía contemporánea
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| شعر امروز عشق امروز<br>متفاوت اما همان عشق | La poesía de hoy, el amor de hoy;<br>distinto pero el mismo amor. |
-
-### 7. El amor y la esperanza
+### 4. Otoño del Corazón
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| عشق امید است<br>افغانستان به امید نیاز دارد | El amor es esperanza;<br>Afganistán necesita esperanza. |
+| عشق در فصل خزان آمد و برگم خشکید<br>نور خورشید در آن چشم سیاهت خوابید<br>بی تو این کوچه پر از باد و شب و اندوه است<br>جز غم روی تو در قلبم کسی ندرخشید | El amor llegó en la estación del otoño y se secó mi hoja;<br>la luz del sol se durmió en ese negro tuyo.<br>Sin ti, este callejón está lleno de viento, noche y tristeza;<br>salvo la pena de tu rostro, nadie brilló en mi corazón. |
 
-### 8. El amor del poeta exiliado
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| تبعیدی هستم اما دلم<br>همیشه در کابل است | Estoy en el exilio pero mi corazón<br>siempre está en Kabul. |
-
-### 9. La paz del amor
+### 5. Llamas Ocultas
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| صلح با عشق می‌آید<br>هر دو با هم | La paz viene con el amor;<br>los dos juntos. |
+| زیر خاکستر این شهر، دلی می‌سوزد<br>یاد چشمان تو در سینه آتشی می‌افروزد<br>عشق پنهان من و تو مثل گلوله در تن<br>زخم می‌کارد و لب‌های مرا می‌دوزد | Bajo las cenizas de esta ciudad, un corazón arde;<br>el recuerdo de tus ojos enciende un fuego en mi pecho.<br>El amor oculto entre tú y yo, como una bala en el cuerpo,<br>siembra una herida y cose mis labios. |
 
-### 10. El amor como resistencia
+### 6. Cadenas Rotas
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| عشق مقاومت است<br>در برابر ظلم و جنگ | El amor es resistencia<br>ante la opresión y la guerra. |
+| زنجیر زلف تو باز شد در دل توفان<br>من از آن بوی خوشت مانده‌ام بس حیران<br>با همه درد وطن، روی تو تسکین من است<br>ای که با عشق تو گل می‌شکفد در زندان | La cadena de tus trenzas se soltó en medio de la tormenta;<br>he quedado muy maravillado por tu dulce aroma.<br>Con todo el dolor por la patria, tu rostro es mi consuelo;<br>oh tú, con cuyo amor florece la rosa en la prisión. |
+
+### 7. Sombras Cansadas
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| سایه من به کنار تو در این قاب نشست<br>عشق آمد دل سنگین زمانه شکست<br>ما دو آواره بیدل به هم آمیخته‌ایم<br>شوق تو از قفس تیره تقدیر، بِرَست | Mi sombra se sentó a tu lado en este marco;<br>llegó el amor y rompió el corazón de piedra del tiempo.<br>Nosotros, dos vagabundos desesperados, nos hemos fundido;<br>tu anhelo escapó de la oscura jaula del destino. |
+
+### 8. La Belleza Deshecha
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| حسن تو مثل قصیده است ولی بی‌پایان<br>عشق من همچو غزل ماند به زیر باران<br>قطره قطره تن خیس کلماتم یخ زد<br>بی تو ای ماه، چه تاریک شده این دوران | Tu belleza es como una casida, pero sin final;<br>mi amor quedó como un ghazal bajo la lluvia.<br>Gota a gota, el cuerpo mojado de mis palabras se congeló;<br>sin ti, oh luna, qué oscura se ha vuelto esta época. |
+
+### 9. Río de Ausencia
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| رود کابل تهی از آب، پر از خونابه<br>قلب من دور ز تو، غرق همین مردابه<br>من در آغوش تو می‌خواستم آزادی را<br>عشق ما سوخت در این آتش و این گرمابه | El río de Kabul está vacío de agua, lleno de sangre;<br>mi corazón, lejos de ti, se ahoga en este mismo pantano.<br>Yo en tus brazos quería la libertad;<br>nuestro amor se quemó en este fuego y este horno abrasador. |
+
+### 10. La Última Noche
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| آخرین شب به خیابان تو قدم می‌زدم من<br>با خیالت غم صد ساله به هم می‌زدم من<br>عشق، آن مرغ مهاجر ز سرم پر زد و رفت<br>جز به دیوانگی‌ام، خنده به غم می‌زدم من | La última noche, por tu calle daba yo pasos;<br>con tu recuerdo, revolvía yo la tristeza de cien años.<br>El amor, ese pájaro migratorio, batió alas de mi cabeza y se fue;<br>salvo a mi propia locura, sonreía a mi propia tristeza. |

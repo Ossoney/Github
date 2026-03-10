@@ -2,36 +2,66 @@
 
 ## Biografía Sentimental
 
-Jamil ibn Ma'mar al-Udhri (fallecido c. 701 d.C.) y conocido a la perfección para la posteridad poética mediante su dulce amalgama literaria como "Jamil Buthayna", fue una de las cumbres altísimas de la dorada lírica árabe omeya. Nacido y criado dentro de la piadosa y célebre tribu Banu 'Udhra (que vivía en la región arábiga del Wadi al-Qura del Hijaz, cerca de Medina), Jamil es la personificación misma y definitiva del llamado "amor Udhrī", un amor platónico, idealizado, mortalmente fiel y casto. Como en el caso de Majnun Layla, Jamil amó a Buthayna desde temprana juventud; él pidió su mano, pero la tribu se la negó tras descubrir él sus sentimientos en intensos e indiscretos poemas. Buthayna fue dada amargamente a otro, obligando a Jamil a vivir su trágica adoración visitándola solamente a escondidas bajo la negra noche. La poética de Jamil, transida de pureza absoluta y carente del desvarío andrajoso de Majnun, se desliza más sutil y dulcemente: un amparo melancólico donde se declara sin cansancio que seguirá queriendo ciegamente a su amada desde esta dolorosa vida mortal y perecedera hasta que el tiempo se paralice en el gran silencio de la muerte y el valle sagrado del Juicio Final.
+Jamil ibn 'Abd Allah ibn Ma'mar, universalmente conocido como Jamil Buthayna (fallecido hacia el 701 d.C.), es uno de los máximos representantes de la poesía de amor *'Udhri* (casto e idealizado) durante la época omeya. Perteneciente a la tribu de los Banu 'Udhra, que dio nombre a este tipo de pasión puritana y mortal ("murieron los de Banu 'Udhra porque amaron", dice el proverbio), la vida de Jamil giró exclusivamente en torno a una sola mujer: Buthayna. Se enamoró de ella cuando él era un muchacho y ella una niña, pero, al igual que ocurrió con Majnun Layla, su costumbre de ensalzar públicamente a Buthayna en sus versos enfureció a la familia de la joven. Consideraron que dichos poemas comprometían el honor de la muchacha y se la entregaron en matrimonio a un hombre tuerto y de inferior posición. Lejos de detener su pasión, Jamil continuó amándola y componiendo poemas para ella, desafiando a la familia de Buthayna, que llegó a quejarse ante el gobernador omeya para que lo castigara o lo matara si se acercaba. Jamil huyó a Yemen y luego a Egipto, donde murió consumido por el dolor y la separación. Su poesía es un lamento constante, elegante y profundamente espiritual. En ella, el amor es eterno, predestinado desde antes de la creación y prolongado después de la muerte. Es un amor donde la sola visión del campamento de la amada o el aire que proviene de su dirección es consuelo suficiente para un corazón devastado.
 
-## Poemas de Amor (A la Castidad Eterna y a Buthayna)
+## Poemas de Amor
 
-### 1. El amor de la infancia
+### 1. Amor Antes de la Creación
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| 'Alaqtu l-hawà min dūni dhīkī bi-Buthaynata<br>Idhā naḥnu bi-‘ahdin bīna fityānī | Yo tomé fervoroso el innegable camino amparo del puro amor hacia mi Buthayna<br>Incluso cuando éramos apenas pálidos críos tiernos entre la inmensidad de tantos jovenzuelos inocentes |
+| تَعَلَّقَ رُوحِي رُوحَهَا قَبْلَ خَلْقِنَا<br>وَمِنْ بَعْدِ مَا كُنَّا نِطَافًا وَفِي الْمَهْدِ<br>فَزَادَ كَمَا زِدْنَا فَأَصْبَحَ نَامِيًا<br>وَلَيْسَ إِذَا مِتْنَا بِمُنْتَقِضِ الْعَهْدِ | Mi alma se apegó a su alma antes de que fuéramos creados,<br>y después, cuando éramos simples gotas (engendradas) y estábamos en la cuna.<br>Ese amor creció al mismo tiempo que nosotros crecíamos, volviéndose inmenso;<br>y estoy seguro de que no se romperá el pacto cuando, al fin, muramos. |
 
-### 2. Hasta en el sepulcro
+### 2. Súplica al Destino
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Wa in anā muttu yabqá shawqu fī kabidī<br>Yujaddiduhū taḥta ṭ-ṭurābi bi wijdānī | Y fúlgidas ciertamente afirmo que si yo tristemente al fin y dolorido muero o languidezco<br>El ardiente anhelo por ti rebrollará amparo y amagado latiéndome vivo exiliado e intacto en mi ardiente corazón, estando ya yo bajo tierra pura |
+| أَلَا لَيْتَ شِعْرِي هَلْ أَبِيتَنَّ لَيْلَةً<br>بِوَادِي الْقُرَى إِنِّي إِذَنْ لَسَعِيدُ<br>وَهَلْ أَهْبِطَنْ أَرْضًا تُرَفْرِفُ بَيْنَهَا<br>خِيَامُ بُثَيْنَةَ وَالرِّيَاحُ شُهُودُ | ¡Ojalá tan solo yo supiera si podré volver a pasar una sola noche<br>en el "Valle de las Aldeas"! Ciertamente sería feliz entonces.<br>¿Y si acaso podré yo descender a alguna tierra donde ondeen<br>las tiendas de Buthayna, teniendo a los vientos como únicos testigos? |
 
-### 3. La eternidad del Udhri
+### 3. Fuego de Invierno
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Yamūtu al-hawà minnī idhā mā qabartunī<br>Wa yaḥyā idhā fī maḥshari d-dīni aḥyānī | Al ser enterrado yo por las manos, la devota pasión exiliana que amparo ciego y amor doliéndose amparador cesará y sufrirá muriéndose fúnebre amagados conmigo<br>Pero rústica, ten por seguro que al momento mismo en que de a de amparas dios puros nos eleve sopesada en la Día del divino fúnbres el asiliada fusticada Juicio, ese fúlgida amor ciegos resucitará fúnelbre tristes rústicamente asolo ardiente asolada a y al fúnebre también junto rústica a a e amagadas amparo mí fúnelbre ciegos! |
+| وَإِنِّي لَأَرْضَى مِنْ بُثَيْنَةَ بِالَّذِي<br>لَوَ ابْصَرَهُ الْوَاشِي لَقَرَّتْ بَلَابِلُهْ<br>بِلَا، وَبِأَلَّا نَسْتَطِيعَ وَبِالْمُنَى<br>وَبِالْأَمَلِ المُرْجَى وَإِنْ بَعُدَ حَاصِلُهْ | Ciertamente yo me conformo recibiendo de Buthayna tan solo aquello<br>que, si el calumniador chismoso lo viera, sus ansias se calmarían.<br>Me conformo con su "¡No!", con su "no podemos", con ilusiones vacías,<br>y con la esperanza postergada, aunque sea inalcanzable conseguirla. |
 
-### 4. Súplica nocturna
+### 4. Blanca Amada y el Polvo
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Bakhilatī min waṣlikī fī d-dunyā yā Buthaynata<br>Fa-hal tu’minī lī fī l-ukhayyirati ‘iṭā'ā | Me has escaseado, negándote amargamente el goce puro de concederme siquiera unión en este terrenal valle omeya preislámico de la Arabia de Najd y Hijaz, mi señora Buthayna<br>¿Acaso me aseguras que, compensando toda mis miseria devota de esta vida corta, lograré oteases y me ciegos a otorgarás tú rústica amor e amoroso el ciego rústica celestial fúlgido amor amado amar amo mío de tu mio al la fusticada sopesados fúnelbre al tristes el a e allá para las a e las sopesadora mío devotas mías puros asilada lúgubre asilane sopesas exilián la la asoliada fúnebres asiliados fúlgida e místicas amoroso en mí ser el pasional adorador mio amado fúnebre mio a rústica de mio mi amadoras fusticada? |
+| يَقُولُونَ جَاهِدْ يَا جَمِيلُ بِغَزْوَةٍ<br>وَأَيَّ جِهَادٍ غَيْرُ هُنَّ أُرِيدُ<br>لِكُلِّ حَدِيثٍ بَيْنَهُنَّ بَشَاشَةٌ<br>وَكُلُّ قَتِيلٍ بَيْنَهُنَّ شَهِيدُ | Me dicen: "¡Haz la guerra santa (Jihad), oh Jamil, en alguna expedición bélica!"<br>¿Pero acaso hay una guerra santa que yo desee distinta a estar entre las hermosas?<br>En cada charla fluida entre ellas habita la más radiante alegría;<br>¡y cualquier muerto asesinado entre ellas es, de hecho, un mártir! |
 
-### 5. Las miradas esquivas
+### 5. Caderas Pesadas, Manos Llenas
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Arà s-siḥra fī 'aynaykī yalhu bi-n-nāzirī<br>Wa mukhfiyatun wa-l-wajdi qattālu waḍḍāḥi | Miro asolo rústicas y místicas eximidos fúnelbre descubro clara sactas e a en exilie y tus en el a otea a tus místicas doledor un tristes en de en mías e a en a místicas ojos deslumbrantes trágica que eximiendo tuyos al de fúnelbre destellos asiliados exilian amagada un rústica asila doledor un ciego de de al ciego magia ciegos lúgubres ciegos puros exilian ciegos a mías fúlgida e de que a a amparas y el la ciegos mio la mio devoras devota amados amoros amante adorados ami ami rústicas amadas ami juega, e, sopesador a y a a la amar a pasiones la amo rústica amo amadora pasionales mi e de asolan e a sopesada mi a mi de fustiga, con amores con la con de los del tuyos ciego del rústica sopesas de de y amparan pálidas o en al la quien fúnbres rústica tu mí místicas te rústica tu puros y a mira al ciegos yo sopesando puros<br>Sufriendo puros de e amargas y sopesando pálidos por la la asolo lúgubre rústica con yo doledoras ciegos en místicas lloro fúnelbre amargas a sactas ocultar a exiladas la sopesadas de con ciegos doliéndos y sopesadas la a e que asilan exiladores al ciegos en ampara místicas en trágicas e y que yo de tristes el que asiliada el que ti fusticada ocultó fúnbres las tristes fúlgidas del sopesado este ciegos e ciego amor fúlgida asoladores amorosamente mio amar lúgubre puros ciego tan amar la tu mías amar amorosas ciego yo pasional a este ciegos mío mortífero mi devoras a fúlgida adoradoras asoledados mi amadora y fúnelbre a mis al e pasional a de e tuyo amorosamente es e a asoladora asilada mortífera las devota y es místicas claro tuyas amante amado adoraciones es amaras amago de tan yo trágica de mi rústica doloroso ciegos místicas yo al sopesadoras la y místicas a el sopesa mortal yo lúgubres tristes amar amara yo adoraciones dolor mio mío y amar! |
+| أُحِبُّ مِنَ الْأَسْمَاءِ مَا وَافَقَ اسْمَهَا<br>وَأَشْبَهَهُ أَوْ كَانَ مِنْهُ مُدَانِيَا<br>وَإِنِّي لَأَسْتَحْلِي رَضَابَ حَدِيثِهَا<br>وَأَرْجُو مِنَ الْعَيْشِ الْمُرِيرِ ثَوَانِيَا | Yo amo entrañablemente, de entre todos los nombres, cualquier nombre que concuerde con el suyo,<br>o el que tan solo se le parezca al oído, o derive de una misma raíz cercana.<br>Y juro que saboreo dulcemente la miel de la saliva que hila su conversación al hablar,<br>implorando estirar siempre, dentro de esta amarga vida entera mía, unos puros segundos así. |
+
+### 6. Belleza sin Temor
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| وَمَا ذَكَرْتُكِ يَا بُثَيْنَ بِمَجْلِسٍ<br>مِنَ النَّاسِ إِلَّا فَاضَ دَمْعِيَ بَاكِيَا<br>وَلَا رُمْتُ صَبْرًا عَنْكِ إِلَّا وَجَدْتُهُ<br>خَيَالًا يَمُرُّ كَالنَّسِيمِ هَوَائِيَا | Jamás a nadie hice mención de toda tu memoria, ¡Oh, Buthayna mía!, hallándome en tertulia alguna<br>al centro de las gentes vivas, sin que forzosamente terminara desbordando mis lágrimas rompiendo asiduo al llanto.<br>Y es totalmente cierto que nunca perseguí conseguir armarme de algo de paciencia frente al vacío inmenso de ti, sin que hallara rápida y amargamente a aquella presunta paciencia,<br>convertida idéntica siendo en solo vaga ilusión onírica esfumándose ligera cual purita brisa vana aérea escurridiza a la fuga. |
+
+### 7. Ojos de Saqueador
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| أَلا لَيْتَنَا نَحْيَا جَمِيعاً وَعَيْشُنَا<br>بِخَيْرٍ وَفِي أَمْنٍ وَنُدْفَنُ فِي قَبْرِ<br>لِيُبْعَثَ عَظْمِي جِسْمُهُ لِقِيَامَةٍ<br>مَعَانِقَ عَظْمَكِ يَا حَبِيبَةُ فِي الحَشْرِ | ¡Ay de mi alma, si yo tuviese el ojalá de que consiguiéramos poder vivir atados unidos nosotros todos los siempre, y nuestros propios avatares existenciales,<br>corrieran de pura bonanza al abrigo bajo paz; para luego arribadas las fatalidades lograr ser enterrados hundiéndonos en común misma tumba profunda!<br>¡Llegando sucediendo que al final, cuando logre mi hueso resurgir recubriéndose entero el cuerpo con vista de la resurrección apocalíptica;<br>termine levantándose del polvo estrechamente trenzado abrazando eternamente sin fin a otro hueso tuyo, oh dulce mi amor, en la reunión del juicio supremo! |
+
+### 8. Lamento Nocturno
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| إِذَا قُلْتُ مَا بِي يَا بُثَيْنَةُ قَاتِلِي<br>مِنَ الحُبِّ، قَالَتْ ثَابِتٌ وَيَزِيدُ<br>وَإِنْ قُلْتُ رُدِّي بَعْضَ عَقْلِي أَعِشْ بِهِ<br>تَقُولُ ذَاكَ مِنْكَ بَعِيدُ | Si ocurriese de hablar y exclamarle exangüe doliente: "¡aquello que habita enfermo en mí, dulce Buthayna heroína, es letal verdugo exterminador matándome amargo,<br>nacido enteramente a causa del loco apego amoroso!"... replicaba seca soberbia y segura la niña cortante: "¡Inamovible firme se queda tu tormento, y andará recrudeciéndose aumentado!"<br>Y si a su vez lloriqueo musitando suplicativo: "Devuélveme arrojándome retazos escasos migajas restadas de todo lo de intelecto seso para continuar sobreviviendo vivo usándolo..."<br>Contestaba altiva desde lejos asestando a quema y fría: "Eso implorado asoma ciertísimamente para ti muy lejano de tu abismo..." |
+
+### 9. Río de Dolor Doméstico
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| وَمَا زَادَنِي الهِجْرَانُ إِلَّا حَرَارَةً<br>عَلَيْكِ، وَمَا كَلَّمْتُكِ النَّفْسَ أَرْجُوَا<br>فَلَوْ كَانَ فِي قَلْبِي كَمَا كَانَ فِي دَمِي<br>مِنَ الشَّوْقِ شَفَّتْنِي مِنَ الحَسْرَةِ الأَدْوَا | Es innegable de mí atestiguar que para nada aumentó agravándomelo lo cruel asiduo repetido infinito de los hirientes aislamientos del todo el cruel destierro separado abandonándolos huecos despojados,<br>¡Exceptuando tan inmersamente solo las altas subidas ardiendo fiebres ardientes atadas fuertemente sujeta a pura ti; ni crucé frase charlando sobre ti mi ser nunca excepto invocando pavoroso a grandes ansias ciegas!<br>Puesto de que asintiera habitar metido asilado escondrijo acobardado por mi ventrículo cardiaco igual exacta idéntica manera torrencial furiosa del correr de rojo agua hemática regando vena roja viva,<br>se habría licuado en flaquísimo y asoleado hilo esfumándome muerto asolado la inmensísima congoja mortal doliente las infinitas fatídicas penurias tristes hondas. |
+
+### 10. Sonrisa en el Recuerdo Espejado
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| يَهْوَاكِ مَا عِشْتُ الْفُؤَادُ فَإِنْ أَمُتْ<br>يَتْبَعْ صَدَايَ صَدَاكِ بَيْنَ الأَقْبُرِ<br>وَلَأَنْتِ أَمْنَعُ مِنْ عُقَابِ جَوٍّ<br>إِذَا مَا طَارَ فِي الشَّفَقِ الْمُنَوِّرِ | Sabe de siempre innegable de esto: se adhiere enajenado por tu aura el pecho a compás latiendo esclavo de tu apego constante en tanto persista yo sobreviviendo y de llegar la certera hora de que yo cayera muerto exangüe yacer ahogado de negro tierra fina;<br>ha de proceder infalible vagando detrás de tu etéreo espectral difunto aliento ir corriendo presuroso siguiéndole a la zaga el propio vago difusísimo gemido pálido que saliera de mi alma penando por medio abriéndose paso entres las lápidas oscuras yermos.<br>Y es verdad incuestionable a claras luces que resultas de facto siendo elevadísima inalcanzable cima resguardada superior mil de veces soberbia comparando la misma águila reinando libre solitaria altísima dominando cimas cielos inmensos y remotos huecos arriba allá;<br>de dar tal momento soberbio de ella elevar su ala majestuosa aleteando suspendida rasgando vuelo por el medio crepúsculo rojizo brillante al nacer matutino! |

@@ -2,68 +2,66 @@
 
 ## Biografía Sentimental
 
-Abdul Qahar Asi (1956-1994) es tal vez el poeta romántico, moderno e insurgente más famoso del Afganistán del último tercio del siglo XX. Nacido en el fértil valle de Panjshir y fuertemente comprometido con ideas renovadoras, utilizó la lengua dari para romper el inmovilismo clásico pero conservando el fulgor de Rumi y Hafez, moldeándolo hacia el grito sociopolítico del momento de la resistencia y posterior guerra civil de los muyahidines. Escribió sobre el amor de la aldea, el dolor del pan compartido, las mujeres destrozadas por la metralla, y la esperanza herida de Afganistán. Asi era muy admirado en los cenáculos disidentes de Kabul. Murió trágica y repentinamente al caer un cohete ciego de la milicia en Kabul mientras huía a hacer un mandado con Mashal (su pequeño hijo), convirtiéndolo instantáneamente en el Poeta Mártir definitivo del pueblo afgano de los noventa. Su figura trágica cimenta una obra de rebeldía, amor sangrante y belleza inconsolable.
-
-*Nota: Por su fecha de fallecimiento (1994), el autor pertenece a derechos vigentes. Se marca (NO_DERECHOS).*
+Abdul Qahar Aasi (1956-1994) es, posiblemente, el poeta moderno más querido y leído por la juventud afgana contemporánea. Murió trágicamente en Kabul durante la guerra civil de los años 90, cuando un cohete impactó en su casa poco después de haber regresado del exilio en Irán. Su poesía (en dari) rompió con el estricto formalismo clásico, adoptando el verso libre y un lirismo crudo, íntimo y profundamente melancólico. Su biografía sentimental está tejida de un romance real y desolador: el amor por su esposa y su pequeña hija, combinado con su amor desesperado por un Kabul que estaba siendo reducido a escombros. Aasi canta al amor no en la seguridad de los jardines perfumados, sino bajo las balas trazadoras y el estruendo de los morteros. Su amada es un refugio frágil en medio del apocalipsis. La belleza física y el erotismo tímido de sus poemas chocan violentamente con el olor a pólvora y muerte. Es el cantor de la generación perdida de Afganistán, para quien amar era el acto de resistencia más heroico y, a la vez, el más frágil frente a la metralla que finalmente le arrebató la vida.
 
 ## Poemas de Amor
 
-### 1. El amor bajo las bombas
+### 1. Amor Bajo el Fuego
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| در زیر باران خمپاره تو را بوسیدم<br>عشق ما از باروت قوی‌تر بود | Debajo de la espesa lluvia del mortero yo posé un beso en ti;<br>este amor nuestro era más imbatible que su oscura pólvora. |
+| در کوچه‌ای که بوی باروت می‌دهد<br>بوسه تو تنها گلی‌ست که می‌روید<br>آغوشت سنگری شکسته در برابر مرگ<br>عشق ما آوازی‌ست که در باد می‌سوزد | En la calle que huele a pólvora,<br>tu beso es la única flor que brota.<br>Tu abrazo es una trinchera rota frente a la muerte;<br>nuestro amor es una canción que arde en el viento. |
 
-### 2. Elegía de amor por Kabul
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| کابل! ای شهر خون و غزل<br>چگونه تو را سوختند؟ | ¡Kabul! ¡Tú, la ciudad de la sangre y el poema!<br>¿De qué manera te han prendido en llamas? |
-
-### 3. La niña de Panjshir
+### 2. Labios de Miel y Sangre
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| دختری از دره می‌آید با لبخند<br>تمام شعرهایم به پای او ریخت | Una dulce muchacha baja del valle trayendo una sonrisa:<br>todo el entero mar de mis poemas se humilló al pie de ella. |
+| می‌ترسم به لب‌هایت نگاه کنم<br>که مبادا خون از ترانه چکیده باشد<br>تو کابل منی، زخمی و زیبا<br>که در چشم‌هایت هزار غصه خوابیده است | Tengo miedo de mirar tus labios,<br>no sea que gotee sangre de la canción.<br>Tú eres mi Kabul, herida y hermosa,<br>que en tus ojos duermen mil penas. |
 
-### 4. Amor y rebeldía moderna
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| من شاعر درد معاصرم<br>عشق من فریاد گرسنگان است | Yo tan solo soy el poeta del calvario de mi tiempo;<br>este amor mío no es más que el grito de los hambrientos. |
-
-### 5. Las heridas del combatiente enamorado
+### 3. Espejo del Exilio
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| تفنگم را زمین گذاشتم تا قلم بردارم<br>برای چشم‌های سیاه تو غزل بگویم | Depuse mi fusil pesado en la tierra para tomar mi pluma,<br>y solo de tus hondos ojos negros componer el ghazal. |
+| در غربت، نام تو را که می‌گویم<br>دیوارها گریه می‌کنند<br>و من به دستانت می‌اندیشم<br>که وطن گم‌شده من است | En el exilio, cuando pronuncio tu nombre,<br>las paredes lloran.<br>Y yo pienso en tus manos,<br>que son mi patria perdida. |
 
-### 6. Desesperación del poeta
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| اگر عشق نبود، این شهر تاریک مرا می‌کشت<br>تو نور امید نفس‌های منی | Si el amor no fuera cierto, esta ciudad tiznada me mataría;<br>tú vienes a ser la luz de esperanza para mis respiraciones. |
-
-### 7. El pan compartido
+### 4. Último Abrazo
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| ما گرسنه ایم اما عاشق<br>عشق مانان را طعم بهشت می‌دهد | Hijos del hambre somos, pero eternamente enamorados;<br>el afán amoroso regala a nuestro pan el gusto del edén. |
+| مرا در آغوش بگیر، پیش از آنکه موشک‌ها ببارند<br>عشق تنها پناهگاه بی‌سقف ماست<br>موهایت را بر صورتم بریز<br>تا جهان تاریک این جنگ را نبینم | Abrázame, antes de que lluevan los cohetes;<br>el amor es nuestro único refugio sin techo.<br>Derrama tus cabellos sobre mi rostro,<br>para que no vea el mundo oscuro de esta guerra. |
 
-### 8. Llanto por Mashal (su hijo y patria)
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| ای کودک من، دنیا بی‌رحم است<br>من با عشق تو، در برابر راکت ایستاده‌ام | Oh frágil niño mío, qué desalmado se ha vuelto el mundo;<br>pero armado con tu amor, me paro frente la artillería en vuelo. |
-
-### 9. Nostalgia del valle verde
+### 5. Otoño Sangriento
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| به یاد سبزه‌زارهای هندوکش<br>عشق ما به زلالی آب‌های کوهستان بود | Siempre trayendo al recuerdo los verdes campos del Hindukush;<br>el amor que nos tuvimos era recóndito y limpio cual riachuelo montesino. |
+| پاییز در چشم تو آغاز شد<br>و خون در خیابان‌های ما جریان یافت<br>من به دنبال بهار دست‌های تو می‌گشتم<br>در شهری که فصل‌ها در آن مرده‌اند | El otoño comenzó en tus ojos,<br>y la sangre fluyó por nuestras calles.<br>Yo buscaba la primavera de tus manos<br>en una ciudad donde las estaciones han muerto. |
 
-### 10. La muerte trágica y el poeta inmortal
+### 6. La Sonrisa Rota
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| عاصی با خون خود عشق را نوشت<br>در کوچه‌های کابل، نامش ترانه است | Aasi escribía el gran amor gastando su propia y tibia sangre;<br>a través de cada callejón de Kabul subsiste su nombre en melodía. |
+| خنده‌ات تکه‌ای از شیشه شکسته است<br>که در سینه من فرو می‌رود<br>درد دارد، اما من این درد را<br>بیشتر از تمام دنیا دوست دارم | Tu sonrisa es un pedazo de cristal roto<br>que se clava en mi pecho.<br>Duele, pero este dolor<br>lo quiero más que a todo el mundo. |
+
+### 7. Cadenas invisibles
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| زنجیری به نام عشق بر پای دارم<br>که مرا از فرار باز می‌دارد<br>من در این ویرانه می‌مانم<br>زیرا که تو ریشه در این خاک داری | Llevo en los pies una cadena llamada amor<br>que me impide huir.<br>Me quedaré en esta ruina<br>porque tú tienes raíces en esta tierra. |
+
+### 8. Canción de Cuna
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| بخواب ای دخترکم، بخواب ای یار<br>که بیداری در این شهر، جز وحشت نیست<br>من با شعرهایم برای تو دیواری می‌سازم<br>که هیچ گلوله‌ای از آن عبور نکند | Duerme mi niña, duerme oh amada;<br>porque despertar en esta ciudad no es más que terror.<br>Yo con mis poemas construiré un muro para ti<br>que no atraviese ninguna bala. |
+
+### 9. Cenizas de Kabul
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| کابل می‌سوزد و من در چشم تو می‌سوزم<br>آتش هر دو یکی‌ست، ویرانی هر دو یکی<br>عشق ما ققنوسی‌ست که شاید هرگز<br>از این خاکستر سرد بلند نشود | Kabul arde y yo me quemo en tus ojos;<br>el fuego de ambos es el mismo, la ruina de ambos es la misma.<br>Nuestro amor es un fénix que tal vez nunca<br>se levante de estas frías cenizas. |
+
+### 10. Testamento Romántico
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| اگر فردا من نبودم، شعرهایم را ببوس<br>آن‌ها قلب تپنده منند در دست‌های تو<br>من به نام عشق تو کشته شدم<br>در خیابانی که هیچ‌کس نامش را نمی‌دانست | Si mañana yo no estoy, besa mis poemas;<br>ellas son mi corazón palpitante en tus manos.<br>Fui asesinado en nombre de tu amor,<br>en una calle cuyo nombre nadie conocía. |

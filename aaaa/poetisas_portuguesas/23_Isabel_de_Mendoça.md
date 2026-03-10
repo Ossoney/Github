@@ -1,0 +1,37 @@
+# Isabel de Mendoça
+
+## Biografía Sentimental
+
+Isabel de Mendoça (siglo XVI) es una poetisa palaciega que floreció en el apogeo del Imperio Portugués. Se movía en los círculos cultos cercanos al poder, donde la poesía era un instrumento tanto de galanteo como de consolidación social. Su obra refleja las sofisticadas tensiones de una corte que admiraba la belleza idealizada pero se regía por estrictos matrimonios de conveniencia. La biografía sentimental de Isabel de Mendoça no revela un desgarramiento trágico definitivo, sino más bien la melancolía elegante y escrupulosamente codificada de quien acepta las reglas del juego. Sus versos lloran la pérdida del amor verdadero a manos del "deber", asumiendo con resignada entereza que la pasión profunda debe ceder su lugar a la compostura pública. El amor en Isabel es una fiera domada, recluida en la memoria, que solo se desata discretamente en el ámbito privado del poema, convertido en el refugio íntimo de una mujer cuya vida exterior pertenece a las exigencias de su linaje.
+
+## Poemas de Amor
+
+### 1. Renúncia Cortesã
+
+| Original (Portugués) | Traducción (Español) |
+|---|---|
+| A luz esvai-se e deita nas frentes lêmpo d'amado claro.<br>A formosura humana apodrece no pó d'encantos loucos.<br>As amigas de outrora de rubra tinto mancas fado faro;<br>Fugi da masmorra dos fúteis braços, velhos prantos roucos.<br><br>Amor servil aterra a musa livre e rochas nas vestes mansas.<br>Nas fúlgidas glórias d'amarga dor lúrida de cova vazia.<br>A formosura apenas me perdoa magoada rudeza de transas;<br>Eis o prémio da morte: a sã chama púrida q' fzia.<br><br>Pois não fomos imortais nestes dores e espelhos de pura;<br>Amando os peixes e aves curadas dos vis lidos apeos mudos.<br>Odeio o jugo fútil d'amores fidalgos velhos da dor loucura;<br>Amando aos anjos curada d'odiosos lauréis e dosudos. | Ya fuge la lumbre c' mi amado pálida.<br>Y la donosura decayó d' polvo a liras.<br>Amigas aquéllas tiñiéndose cálida;<br>Fuyendome a hierres rudo de mis miras.<br><br>Amoro sirvil hiriendo musitas rochas.<br>En glorioficios de cruela herida.<br>Bellezas sanando lo lúvidos chochas;<br>El premino santo d' la mi vida rendida.<br><br>Si diosas mortales cayeramos a cuitas;<br>Pajarones vuelos n' cielis a curar.<br>Se ríen d' fidalgos dond' crujen tacuitas;<br>Me va d' laudes lo santos d'amar. |
+
+### 2. Máscara de Oiro
+
+| Original (Portugués) | Traducción (Español) |
+|---|---|
+| O verdadeiro amor desponta nos prados do eterno Sol do alvoroço.<br>Eu trago d'o afecto rústico sorriso baço e crente farol moço.<br>Os beijos profanos nós rejeitamos farrapos dum fútil arrebol poço.<br>Na nossa sã quietude o olhar d'improviso fado d' girassol tosco.<br><br>Pois nós abrimos mentes p'ro Céu dourado de fúlgido perdão são.<br>A musa desce heróica velando crentes do alto tonto varão do fado.<br>E nas trevas sãs curar fúlgido fado de rústicos fado sã alçapão vã;<br>Gritaremos vitórias num voo d'ardentes e amados do coração nado.<br><br>Adeus ó mundo baço, meu terno amante cru de vilão falsão tolo num bojo.<br>Deitar em repouso as faces nos claustros de mansas florirão do pojo.<br>Protege meu peito das vãs prosas d'inu d' fúteis sem razão cholo e d'nojo;<br>Amando os mistérios nas águas d'haustros de mui clarão pelo zelo arrojo. | Amoro despunta en prado celestal.<br>Trayendo a mi sonrisas c' fía lumbre.<br>Rechazos de lides n' fútil oriental.<br>Lo quieto mirando su fado costumbre.<br><br>Abrioses celestes q' diosas perdonan.<br>A heroícas velados al tonto afán rebo.<br>Mis tristes afanes mis plagas condonan;<br>Los triunfos ganaran a do l' mancebo.<br><br>Mundillos d' ciegos adiós a tu loco.<br>Pusiera semblantes l' calmo r'poso.<br>Y pechos amados en libres toco;<br>A agüitas luciendo muy clarín gozoso. |
+
+### 3. Saudade Oculta
+
+| Original (Portugués) | Traducción (Español) |
+|---|---|
+| Recordo d'amores a pálida e cega flora findada cedo.<br>Amei a sabedoria da doce fada sã e reclusa do mudo mundo.<br>O verdadeiro sentimento nunca esmorra mansa fada medo;<br>Tornando claro amor d'amarga dor de cova acusa no profundo.<br><br>Os anos fogem caindo os fados sãos de lida vã de dores fracas.<br>A formosura apenas me perdoa magoada do pó falso de truz;<br>E nas freiras das pragas eu sou plebeia tãos irmã de macas;<br>Abençoando o beijo d'amadas goteadas no bom e cruze de luz.<br><br>Se amas a letrada, sofro a pobreza de sãos e celestes ais d'amor.<br>O coração lutou para não prantar dorido o que foi falso de laço.<br>Amor servil aterra a musa livre e rochas nas vestes mansas do pavor.<br>Fica a memória rústica do bónio na terra de calço terno e baço. | Me daba linderos d' pálidas y ciegas.<br>Amor a letradas reclusas do mudos.<br>Amores curados n' mansas q' m'riegas;<br>Lo claro pasiones acusadas, rudes.<br><br>Ya baten mis lidos cuitas linderas.<br>Bellezas fingidas de polvas d' trucos;<br>Plagándose lusas q' soy lisonjeras;<br>Los dulces rebién me los quieriñucos.<br><br>Si gime erudita pobrezas lo cieles.<br>Mi pálpito lidiando c' amores mientes.<br>Amantes odiosos rocas en pasteles.<br>Se rinda memorias e falsos sirmientes. |
+
+### 4. O Leque Quebrado
+
+| Original (Portugués) | Traducción (Español) |
+|---|---|
+| A mão treme no frio do cilício atroz a roçar.<br>O rústico chorar dita clarões no mato longínquo.<br>Quebrem no mármore as mansas horas findar.<br>Sela no amor as rimas prazenteiras p'ro propínquo.<br><br>As andorinhas findam voos na planura tristes; choro.<br>Eu fito p'ra sempre as almas deitadas duras.<br>Tropeça fidalgo em sãs relativas e rústicas num coro.<br>Amor fraterno que ilumina o bronze empreita d'agruras.<br><br>Deixarei nos prelos rimas altivas. E deita a cova d'or;<br>Amei demasiado falso o nobre e cru trato sã.<br>E nas trevas sãs curar velhos e rudes mistes d'ardor;<br>Gritaremos vitórias quando findaram p'ro ido luzã. | Temblando la fía m' recio cilicio.<br>Lamentos del yermo traían clariones.<br>A fúlgidas lozas caería d'quicia.<br>Y sello cariños a dulces pasiones.<br><br>Acaban las aves de vuela sequitas.<br>A todas almitas l' ruda mirones.<br>El falso tropieza en sanas cuitas.<br>D' amor de deidades lucían marrones.<br><br>Al prelo dejéla mí casta estrofa;<br>Amaban de falso y mi mansa pureza.<br>En tenues tinieblas curo la ruda fofa;<br>Las glorias dictadas ganad' mi lindeza. |
+
+### 5. Consolo na Penumbra
+
+| Original (Portugués) | Traducción (Español) |
+|---|---|
+| A formosura humana apodrece no pó da cela;<br>As amigas de outrora riem no salões longes.<br>Fugi da masmorra, mas rústica sequela;<br>Amor é chama acesa em tristes monges.<br><br>Nas fúlgidas glórias d'amarga dor;<br>A formosura apenas me perdoa o medo.<br>Eis o prémio da morte: o santo amor;<br>Odeio o jugo fútil d'amores em segredo.<br><br>Pois não fomos imortais nestas dores;<br>Amando a Deus curada dos vis lidos.<br>A musa desce heróica velando ardores;<br>Abençoada chama contra fada d'ungidos. | La hermosura humana se pudre en la celda;<br>Amigas aquéllas reinan en salones.<br>Huí de mazmorras de herida rebelda;<br>Amor llamas vivas en tristes rincones.<br><br>A fúlgidas cuitas de fosa que espera;<br>La esquiva lindura sanaba el temor.<br>El premio celeste a mi muerte adhiriera;<br>Y el yugo profano lo odio en pavor.<br><br>No somos deidades de inmortal fado;<br>A Dios yo le amaba curando pasiones.<br>La musa bajaba velando el recado;<br>Llamita divina de oscuros lirones. |

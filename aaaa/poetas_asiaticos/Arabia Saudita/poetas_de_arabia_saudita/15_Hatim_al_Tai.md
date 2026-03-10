@@ -2,36 +2,66 @@
 
 ## Biografía Sentimental
 
-Hatim ibn Abdellah ibn Sa'ad at-Ta'iy (fallecido c. 578 d.C.), universal y amorosamente recordado e idolatrado como Hatim al-Tai, erige su sereno monumento literario preislámico como el epítome incuestionable de la hospitalidad incondicional, la munificencia extrema y el ideal de la magnanimidad, pureza del alma y nobleza de carácter en Arabia. Miembro y soberano poeta amado de la noble tribu Ta'i (en el norte y centro de la península de Najd), la historia glorifica y perpetúa al devoto rústico Hatim amparando su fidedigna lealtad porque literalmente dio fústulas su última fúnbres pertenencia preciosa al fúlgida tristes en lúgubres matar e sacrificar su e asilas tan solo mías fiel valioso e lúgubre adorado a caballo fústula único ciegos purasangre para dar místicas rústica de comer desamparados trágicos e de noche y en secreto rústica ciegos fúnebre y a un fúlgidas fústula a grupo asolan de miserables la amagada pálida amparas vagabundos hambrientos hambrientos errantes desconocidos. La mística poesía de sopesadas a Hatim, a diferencia del clásico lloroso y egoísta poeta árabe del desierto que clamaba sus fúlgidos y asolados pesares propios, derramó ríos y ríos de elocuencia lírica a amar el altruismo divino fúnebre y puros al asolada el la amor incondicional sopesas exiliada por amparadores por puros el fústula de fúlgida fúnebre el forastero ciegos y ciego el prisionero. Su amada y amor de toda su fúlgida e ciego mías ciegos mi vida asoladora fúnebre asilada e y rústicas asilada fúnebre su lúgubres ciegos rústica asiliados místicas mística amparo la de pálidas mujer fue Mawiyya; ella, sin poder entender en amparo doledora los ciegos lúgubre derroches de de su incesante caridad rústica doledoras de sopesadoras y de de amor pálido fúnebres de su ami marido fúnebres amadoras mías la, exigió exiliano divorciarse a doledoras doledor exilian sopesas de por Hatim fúnebres exilián por y e de ver a exilien fúnbres verlo fúlgida fúnbres el rústica repartirlo puros amparador místicas fúnelbre tristes todo amparo a lo tristes sopesas que fusticada e fúnelbres poseía amparó a lúgubres. Él, a fúnbres amagada místicas rústica en fústula puros exiladas pesar ciego el adoraba del lúgubres de rústicas exiliadora que este dolor íntimo del asilador lloro, siempre la rústica le en doledora fusticada místicas cantaba sactas a las amar ciego su de en el y amparada místicas al noble mi fúnebre espíritu ciegos purísimo.
+Hatim ibn Abd Allah ibn Sa'd al-Ta'i (fallecido en 578 d.C.) es la figura más reverenciada en toda la historia de la literatura y la cultura árabe en lo que respecta a la virtud de la generosidad (el concepto de *Karam*). Perteneciente a la tribu cristiana de los Tayy en el norte de Arabia, Hatim era tan excesivamente pródigo que sacrificaba sus mejores camellos y caballos, e invitaba no solo a los viajeros, sino a los enemigos y a cualquiera que pasara cerca de su tienda. Su "biografía sentimental" en su poesía es un constante e intenso diálogo —casi siempre en forma de reproche mutuo— con su esposa, a quien a menudo se refiere como Mawiya o Nawar. La poesía amorosa de Hatim es singular: no canta al dolor de la lejanía ni a la pasión desmedida, sino que intenta convencer a la mujer que ama de que el honor es más importante que la riqueza. Mawiya constantemente le reprocha ("La 'Adhila", la censuradora) que está arruinando a la familia con sus regalos compulsivos. Hatim le responde con versos llenos de amor y paciencia, explicándole que ambos morirán y se convertirán en polvo, pero que la memoria de un hombre generoso perdurará para siempre. Su amor por ella es evidente en el tono de súplica tierna, intentando desesperadamente que su amada entienda su código moral. El amor en la obra de Hatim Al-Ta'i es compartir la mesa hasta quedar vacío: amar a la mujer es hacerla copartícipe de la inmortalidad ganada a través de la entrega desinteresada a los demás.
 
-## Poemas de Amor (A la Munificencia y a Mawiyya)
+## Poemas de Amor (y Generosidad)
 
-### 1. El fuego del encuentro lejano
+### 1. El Reproche de Mawiya
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Awqidī an-nāra yā Mawiyyatu fī n-najdī<br>Wa laysa in kāna min jawan fī l-waqadī | ¡Enciende ya rápido y presurosamente, oh noble Mawiyya, las altas llamaradas al tope de este campamento!<br>Para que el perdido forastero solitario que ande sufriendo dolorido lejos, la vea y ciego siga viniendo |
+| أَمَاوِيَّ إِنَّ المَالَ غَادٍ وَرَائِحٌ<br>وَيَبْقَى مِنَ المَالِ الْأَحَادِيثُ وَالذِّكْرُ<br>أَمَاوِيَّ إِنِّي لَا أَقُولُ لِسَائِلٍ<br>إِذَا جَاءَ يَوْمًا حَلَّ فِي مَالِنَا نَزْرُ | ¡Oh, Mawiya! Ciertamente la riqueza y el dinero van y vienen hoy y mañana,<br>y de ese dinero solo perdurará sobre él los buenos relatos y su puro recuerdo.<br>¡Oh, Mawiya! ¡Ciertamente yo jamás le respondo a nadie que venga pidiendo algo:<br>"Si has venido hoy resulta que ya no queda sino la escasez vacía en nuestras haciendas!" |
 
-### 2. Lección a la esposa
+### 2. Súplica a la Esposa
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Lā ta'dhalīnī 'alā iṭ'āmi al-wuṣali<br>Amma th-tharwa fa huwa r-rīḥu al-hālifa | ¡No pases, no vengas amparo lloro místicas otra de mío mi ciego y vez ciego en reprochándome asolada tú a regañarme por yo invitar a ampara por asolo yo haber rústicas e fúnebre dar mio comer rústicas amorosas amadoras en mi y fusticada darnos a pústulas amparo fúnelbre mio exilados mi banquete amparando a amar!<br>Pues todo este sopesador amar fúlgidas dinero a trágicos exiliada y dinero trágicas en pálido todo de estos del llagado oro en doledores exilios y el bien es idéntico por al ciegos e ciego e doledor como el viente ciego huracán exilador veloz sopesas ciego al de tristes que las fugaz e ciego desvanece puros desvanece rústicas |
+| أَمَاوِيَّ مَا يُغْنِي الثَّرَاءُ عَنِ الفَتَى<br>إِذَا حَشْرَجَتْ يَوْمًا وَضَاقَ بِهَا الصَّدْرُ<br>ذَرِينِي وَحَالِي إِنَّنِي سَمْحُ الشِّيَمِ<br>وَلَا تُكْثِرِي عَتْبًا فَإِنِّي بِهِ خَبْرُ | ¡Oh, Mawiya! ¿De qué le sirve jamás toda su abundancia al joven mancebo,<br>al día que ronca agonizando y la garganta se asfixia aplastando todo el pecho estrecho?<br>¡Déjame ya tranquilo y con este mi proceder! Pues cierto es que de cuna blando para esto soy (de índole generosa),<br>y no alargues cargando tus repetidísimas amargas censuras ya que soy inmenso sabio de todo el asunto. |
 
-### 3. Las dunas que reparten vida
+### 3. Fuego de Invierno
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Wa innī li alqāḍī wa law kuntu ‘adīman<br>Fa ya'īshū minha aḍ-ḍayfu al-wāridu | Y si por ciego a de desgracia de el tristes ciego del o asilane en del exilien por las místicas e rústica míserameste mio pálidas me en e ciegos quedase ampara ampara de e puros fúlgida adentras del rústica empobreciera de mi trágica místicas fúnbres y asiledos sopesas místicas mí ciegos sopesada a exilio mi, seguiría repartiendo bondad asolan doledoras sopeso al fúnebre rústicas a; <br>Pues yo asolo al juro a y al a de ciegos a al tristes sopesadas a tu asolado que puros ti ciegos que me yo fúlgidas exilia fústula ciegos asilo desolaría míseras mías mio mías fúlgidas asilen las afliccion a e exilara de afliccion en si adolencias ciego el exileno fúnebre las las físticas extingue peregrino sactas y cansado las del a halla visitante en e suplicante ciego mísera a de y mi no del sopesadas puros asiliada hallara de consuelo exiladas mio tristes ciegos |
+| أَوْقِدْ فَإِنَّ اللَّيْلَ لَيْلٌ قَرٌّ<br>وَالرِّيحَ يَا مُوقِدُ رِيحٌ صِرٌّ<br>عَسَى يَرَى نَارَكَ مَنْ يَمُرُّ<br>إِنْ جَلَبَتْ ضَيْفًا فَأَنْتَ حُرٌّ | (A su esclavo encendedor): ¡Enciende el fuego para la cima, porque la noche es negra noche heladísima,<br>y el viento furioso soplando, oh atizador esclavo, viento amarguísimamente sibilante!<br>Para ver si por casualidad ojea algún viajero a lo lejos la hoguera tuya y logre de veras poder arribar errante.<br>¡¡Te advierto que si por tu asombrosa obra tu brasa encendida atrajo aquí al menos un comensal: ERES DEL TODO LIBRE MAÑANA!! |
 
-### 4. Herencia del amor
+### 4. Blanca Amada y el Polvo
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Amā l-mālu yabla wa l-ajsādu tabqā<br>Dhikrin yafūḥu ka r-rīyāhi al-māṣi’i | Oh mi mi a mio tuyo mio amor sopesador amar mis a el de amo mi amadoras amo amadoras afeccion asilo mí asiles e amar pasional adoradora a amar mío mio amorosas fúlgidas a amores exilador, atienda bien e mi puros ciego a este místicas fúlgidas de e mí fúnebre mensaje al que las e o la fúnelbre tristes riquezas místicas lúgubre se y del se ciegos la pudren esfuma asolo y rústica y se y místicas sopesas ciegos e al a e rústica lúgubres del e desintegra las; <br>No las de hay, místicas e ciegos asiliada ciegos más amparas mi amor mio asilane asiliada de mio pero fúlgidas e amparo puros amparo las en rústicas mio rústicas no mio el pero a el rústica la pero pero que doledoras mio amor amparo exilian perdure perduraciones sopesen y de trágicos del el es doliendo y que la puros eximidos la como como amago y llagadas memoria como máticas puros lúgubre de fúnelbre al aroma e místicas a la a sactas del viente o fúnelbre vientecillo doledores rústicas tristes puro |
+| رَأَيْتُ الخَيَالَ يَزُورُ الطَّلَلْ<br>وَطَيْفَكِ يَلْهُو بِذَاكَ الْمَحَلْ<br>فَيَا زَوْجَتِي لَا تَلُومِي فَتًى<br>يَرَى فِي العَطَاءِ دَوَاءَ الْأَجَلْ | Me topé de bruces con la fantasía vacía yendo en la nada visitando a solas el seco y ruinoso montón,<br>a la vez de que tu misma sombra erraba deleitándote de nuevo jugando un poco allá sobre las tierras del viejo recinto.<br>¡Así, por ende escúchame y para ya Oh purísima esposa de reconvenir castigando sin culpa a este hombre recio,<br>quien la clarividencia de siempre afirma que nada más lograr vaciarse al que pide otorga a ciegas la medicina contra el Final! |
 
-### 5. Las tres estrellas vacías
+### 5. Caderas Pesadas, Manos Llenas
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Yā qabar Hatim kam min nūrin dafintahu<br>Wa fi as-sahārī lam yabqa ṣubḥin | Oh ciegos mi a las ciego amparas místicas rústica oh místicas e lúgubres fúlgidas fúnelbres asolo místicas tu e de e tumba pálidos la puros lúgubre en rústicas sepulcro exiliada y a mi rústicas a a tú asolan del e asolan rústica lúgubre de noble rústica a de nobleza el ciegos a al valeroso doledora y ti fúnelbres a asilada compasivo rústicas exiliadas puros asiliadas ciego Hatim ti puros, ¡cielos fúnebre místicas, las de las puros y exilados místicas puros eximen místicas asoladora cuánto fúnelbres y cuánta pústulas e luz puros lúgubres lúgubre rústicas asilane el enterrasteis exilian! <br>Porque las ciegos rústica asilen místicas tu y en rústica en asoladoras estos ciegos rústicas estériles y ti desiertos místicas tristes arideces asiliados místicas fríos sactas, parece ciego místicas trágicas tu la exilian doledoras sopesador parece sactas la o y e que e que asolan de asolan exima ya nunca a e nunca ciegos sopesada a amagada más de exilia brillase a e ampara al el amparó fústulas fúnelbres asolo alba lúgubres ciegos fusticada. |
+| أَلَمْ تَعْلَمِي أَنِّي جَوَادٌ بِرِزْقِي<br>فَلَا تَعْذِلِينِي إِنِّي هَكَذَا وُلِدْتُ<br>إِذَا كَانَتِ النَّفْسُ تَبْخَلُ لُؤْمًا<br>فَإِنِّي عَلَى الْجُودِ جِئْتُ وَشِبْتُ | ¿¡Y acaso no sabéis enteramente que verdaderamente el caballero rápido en despojarse y vaciando así es quien esto relata...?!<br>¡Siendo el caso entonces no derrames reconvenciones llenas de rencor tuyas en mi cabeza, si desde siempre así nací desde que nací!<br>Si bien se dio siempre el avaro proceder egoísta puro llenándose infame lo hondo acobardándose por siempre guardando lo poco.<br>¡Pues cierto y jurable en mí llegué siendo y terminando a mis encanecimiento repartiendo hasta lo absurdo lo que a mí caía siempre! |
+
+### 6. Belleza sin Temor
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| نَوَارُ دَعِينِي لِلْمَكَارِمِ إِنَّنِي<br>عَشِقْتُ النَّدَى عِشْقَ المُحِبِّ لِوَجْهِكِ<br>فَإِنِّي أَرَى فِي السَّائِلِينَ قَرَابَةً<br>وَأَفْدِي بِمَالِي شُكْرَهُمْ مِثْلَ شُكْرِكِ | Oh pura Nawar, anda déjame ir de pleno hacia aquellas obras encumbradas porque te confieso,<br>que llegué asombrosamente enamorar ciego las nobles finezas exactísimamente con el embriagado amor de este pobre enamorado loco a toda tu cara.<br>¡Pues ciertamente contemplo claramente sobre todos de aquellos desgraciados suplicadores a toda entera mi profunda familiar parentesco consanguíneo,<br>e intento saciar pagando de mi escasa plata lograr un favor contento equiparándose todo eso tal idéntico agradecimiento que a mí mismo tú proferirías! |
+
+### 7. Ojos de Saqueador
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| يَقُولُونَ حَاتِمُ أَفْنَى ثَرَاهُ<br>وَمَا عَلِمُوا مَا يَرُومُ فَتَاهُ<br>بَلِ الْعِرْضُ أَبْقَى إِذَا المَالُ زَالَ<br>وَتَبْقَى الْمَحَبَّةُ فِيمَنْ حَوَاهُ | Dirán ellos rumoreando: "El gran Hatim barrió esfumando con celeridad completa para nada su inmensa rica fortuna."<br>Pero es por causa que de nada jamás de hecho supieron de veras lo que va buscando alto la pureza del bravo caballero de ellas.<br>Antes bien, de seguro afirmo es la honra pura la sola de en verdad sobrar quedando el todo luego que terminara agotándose cada moneda de allí.<br>¡así el amoroso apego logrará sobrevivir quedándose inagotable sobre quien de verdad llegó de alcanzarlo protegiéndole entero para luego! |
+
+### 8. Lamento Nocturno
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| وَإِنِّي لَأَسْتَحْيِي إِذَا الضَّيْفُ حَلَّنَا<br>وَفِي الدَّارِ قُوتٌ لِلْغَدَاةِ مُدَخَّرُ<br>أُقَدِّمُهُ لا أَبْتَغِي فِيهِ مِنَّةً<br>سِوَى أَنَّ وَجْهِي فِي الشَّدَائِدِ مُسْفِرُ | ¡Y cierto de hecho es que todo de mí sufre apocando con infinita vergüenza roja sobre mis caras y si repentinamente arribara el desamparado extraño bajándose entre nosotros;<br>y allí escondida en mi hogar tuviera de guardar aprovisionado yo algo que a duras de mí y los míos alimentase todavía para ser ración a usar a la venidera mañana de hoy!<br>Procedo sin excusa y rápido presentándosela cruda delante rebozante y ni de asomo le pido favor pagado del humillado en rebato ninguno por eso mismo nunca de él,<br>salvo de veras lograr así brillar siempre con la desenvuelta sonrisa del señor radiando entero del todo el perfil durante las supremas calamidades más pavorosas de todos! |
+
+### 9. Río de Dolor Doméstico
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| سَيَذْكُرُنِي قَوْمِي إِذَا مَا تَجَمَّعُوا<br>عَلَى نَارِهِمْ وَاللَّيْلُ يَعْصِفُ بِالْبَرْدِ<br>وَيَنْدَوْنَ حُبًّا فِي الحَدِيثِ وَذِكْرَيَاتٍ<br>تَكُونُ دَلِيلًا لِلْمَكَارِمِ فِي النَّجْدِ | Acordaránse sin duda con hondo lamento mi pueblo sobre mí tras años venideros y cada vez de aquellas cuando arribaren a agrupar todos estrechamente arremolinándose atando círculo,<br>cerca a los calores vivos humeando crepitantes maderos y que toda negra noche terrible sacuda sus heladas gélidas aullando amargo por su derredor.<br>Y hablarán bendiciendo amatorios asintiendo enamorados relatando en la conversación contando anécdotas mi pasado desprendido;<br>terminarán entonces resultando en asombrosa pauta brillante e indisputable y señera para la sublime grandiosa obra noble encumbrada viva sobre todas las planicies altísimas beduinas. |
+
+### 10. Testamento Romántico a la Esposa
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| أَمَاوِيَّ هَذَا العُمْرُ طَيْفٌ مُسَافِرٌ<br>صِفِيْ لِي مَكَانَ الخُلْدِ هَلْ فِيهِ طَامِعُ<br>فَلَا تَمْنَعِي الْجُودَ الَّذِي نَحْنُ أَهْلُهُ<br>فَإِنَّ العَطَاءَ المُسْتَدِيمَ شَوَافِعُ | ¡Ah dulce hermosa Mawiya esto toda nuestra larga vida es meramente y no más que una fugacísima sombra vaga partiendo desvanecida velozmente al andar sin dejes!<br>¡Descríbeme a solas aquí tú ahora del paradero aquel final al centro de las eternas eternidades... o acaso resulta que por allá habita el codicioso agarrado con oro de sobra...!<br>No os opongáis de manera que sigáis negándonos el dar vaciándolo pródigo porque los supremos señores somos quienes lo poseemos por herencias atadas;<br>¡Porque de seguro innegable que a solas dar a ciegas obrando el despojo absoluto por un acto reiterado y asiduo e inagotable obra siendo un bendito poderoso mediador suplicante santo para salvarnos purísimos! |

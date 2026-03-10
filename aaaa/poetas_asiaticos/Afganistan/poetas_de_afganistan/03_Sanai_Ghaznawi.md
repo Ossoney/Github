@@ -1,67 +1,67 @@
-# Sanai Ghaznawi (Hakim Mujdud ibn Adam Sana'i)
+# Sanai Ghaznawi
 
 ## Biografía Sentimental
 
-Hakim Abul-Majd Majdūd ibn Ādam Sanā'ī Ghaznawī (c. 1080-1131) fue el primer gran poeta épico místico de la literatura persa, nacido en Ghazni (actual Afganistán). Fue el poeta de la corte del Sultan Mahmud de Ghazni, pero una experiencia espiritual (según la leyenda, un encuentro con el sabio Lai-khur el borracho) lo convirtió en el primer poeta sufí de la lengua persa en usar la poesía épica para la filosofía mística. Su obra *Hadiqat al-Haqiqat* («El jardín de la Verdad», 1131) fue el modelo de todos los poemas épicos sufíes posteriores, incluidos los de Attar y Rumi. El amor en Sanai es el amor divino expresado con audacia filosófica y pasión ardiente.
+Abul-Majd Majdud ibn Adam Sanai (1080-1131), conocido sencillamente como Sanai de Ghazni, es el primer gran maestro de la poesía mística sufí en lengua persa, de cuya fuente bebió el propio Rumi. Nacido en la antigua y resplandeciente Ghazni (hoy en Afganistán), la leyenda cuenta que en su juventud fue un brillante pero mundano poeta cortesano, dedicado a escribir panegíricos para los reyes gaznévidas y cantos a los placeres terrenales. Sin embargo, su biografía sentimental dio un giro absoluto hacia la iluminación mística. Tras un profundo despertar espiritual, Sanai renunció a la corte, a la riqueza y al amor profano. Su poesía amorosa ("Ilahi-Nama" y "Hadiqat al-Haqiqah") se volcó entonces en un fervoroso y desgarrador anhelo por el Amado Divino, utilizando el vocabulario del romance humano —el vino, las trenzas oscuras, la taberna de la embriaguez, el rostro que quema— para describir los estados del alma en su camino hacia la aniquilación en Dios. Fue él quien introdujo sistemáticamente el ghazal (poema lírico de amor) como vehículo principal de la expresión mística, transformando el dolor de la separación carnal en un exilio existencial del alma.
 
 ## Poemas de Amor
 
-### 1. El jardín de la Verdad (fragmento)
+### 1. El Fuego Revelado
 
-| Original (Persa/Dari) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| عشق آمد عقل را در دست گرفت<br>عقل گفتا چیستی؟ گفتا که هست | El amor vino y tomó la razón de la mano;<br>la razón preguntó: «¿qué eres?» Y él respondió: «soy». |
+| دلا، تا کی در این سودا بمانی؟<br>مگر در کوی عشق او بخوانی<br>زبان عشق خاموشی است، اما<br>مرا دیوانه کرد این بی‌نشانی | Oh corazón, ¿hasta cuándo permanecerás en este comercio?<br>A no ser que cantes en la calle de Su amor.<br>El lenguaje del amor es el silencio, pero<br>esta falta de señales Suyas me ha vuelto loco. |
 
-### 2. El amor que supera la razón
+### 2. Súplica de la Noche
 
-| Original (Persa/Dari) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| عشق بی‌عقل است<br>عقل بی‌عشق کور است | El amor está más allá de la razón;<br>la razón sin amor está ciega. |
+| شبانگاهان که یادت در دل آید<br>دو چشمم اشک خونین می‌گشاید<br>ندارم جز خیال روی تو، هیچ<br>خوشا آندم که روی تو نماید | Por las noches, cuando Tu recuerdo llega a mi corazón,<br>mis dos ojos derraman lágrimas de sangre.<br>No tengo nada más que la imaginación de Tu rostro,<br>feliz el instante en que Tu rostro se muestre. |
 
-### 3. El poeta de Ghazni
+### 3. La Taberna de la Ausencia
 
-| Original (Persa/Dari) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| غزنی شهر من است<br>شعر من عطر غزنی است | Ghazni es mi ciudad;<br>mi poesía es el perfume de Ghazni. |
+| مرا در میخانه عشق، جایم دهید<br>به یک پیاله زان می، شفایم دهید<br>شدم بیمار از هجران آن یار<br>وصال او بیارید، بهایم دهید | Dadme un lugar en la taberna del amor;<br>con una sola copa de ese vino, dadme curación.<br>Me he enfermado por la separación de aquel Amado;<br>traed Su unión, estableced mi precio. |
 
-### 4. El amor como intoxicación divina
+### 4. El Velo del Mundo
 
-| Original (Persa/Dari) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| مست عشق هستم<br>ساقی عشق دادم جام | Estoy ebrio de amor;<br>el copero del amor me dio la copa. |
+| حجاب روی تو، این جان من است<br>اگر جان برود، تویی کآنِ من است<br>نگنجم در دو عالم از غمت، یار<br>که عشق تو مقام و شأن من است | El velo de Tu rostro es esta misma alma mía;<br>si el alma se va, eres Tú lo que es mío.<br>Por Tu pena de amor no quepo en los dos mundos, Amado,<br>pues Tu amor es mi propio rango y dignidad. |
 
-### 5. El amor y la búsqueda
+### 5. Espejo del Corazón
 
-| Original (Persa/Dari) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| طالب عشق هستم<br>عشق طالب من | Busco el amor;<br>el amor me busca a mí. |
+| چو آیینه است دل، چون پاک گردد<br>رخ جانان در او تابناک گردد<br>من از خود شستم این گرد هوس را<br>که تا خاک درش روی و پاک گردد | El corazón es como un espejo; cuando se purifica,<br>el rostro del Amado brilla radiantemente en él.<br>Yo he lavado de mí este polvo del deseo;<br>para que ante el polvo de Su puerta sea rostro puro. |
 
-### 6. El maestro de Attar y Rumi
+### 6. Deseo Inalcanzable
 
-| Original (Persa/Dari) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| سنایی گفت، عطار شنید<br>رومی از هر دو آموخت | Sanai dijo, Attar escuchó;<br>Rumi aprendió de ambos. |
+| هزاران جان فدای تار مویت<br>همیشه دل رود پویان به سویت<br>اگر عالم شود پر از گل و مشک<br>هنوزم آرزوی رنگ و بویت | Mil vidas sean sacrificadas por un hilo de Tu cabello;<br>mi corazón va siempre corriendo hacia Ti.<br>Si el universo entero se llenara de rosas y almizcle,<br>todavía anhelaría Tu color y Tu fragancia. |
 
-### 7. El amor que transforma al poeta de la corte
+### 7. En las Cadenas del Cabello
 
-| Original (Persa/Dari) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| شاعر دربار بودم<br>عشق مرا دراویش کرد | Era poeta de la corte;<br>el amor me hizo derviche. |
+| در حلقه گیسوی تو دل گم شد و رفت<br>جز یاد تو از سینه ما پنهان خفت<br>کس از اسیران تو نپرسید حال<br>عشق آمد و اسرار جهان هیچ نگفت | En el rizo de Tu cabello el corazón se perdió y se fue;<br>fuera de Tu recuerdo, todo se durmió escondido en mi pecho.<br>Nadie preguntó por el estado de Tus prisioneros;<br>el amor llegó y no dijo nada sobre los secretos del mundo. |
 
-### 8. La copa del amor divino
+### 8. Petición del Anhelo
 
-| Original (Persa/Dari) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| جام عشق نوشیدم<br>دیگر هوشیار نشدم | Bebí la copa del amor;<br>ya nunca más estuve sobrio. |
+| بیا ای جان، که بی تو زار و پیرم<br>به دام عشق تو، محبوس و اسیرم<br>اگر صد بار از عشقت بمیرم<br>به بوی وصل تو باز جان بگیرم | Ven, oh mi alma, que sin Ti soy miserable y viejo;<br>en la trampa de Tu amor, soy prisionero y cautivo.<br>Si muero cien veces por Tu amor,<br>con el aroma de Tu unión volveré a tomar vida. |
 
-### 9. El amor en el jardín de la verdad
+### 9. El Vino del Amador
 
-| Original (Persa/Dari) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| حدیقة الحقیقة باغ عشق است<br>هر گل در باغ یک راز | El jardín de la Verdad es el jardín del amor;<br>cada flor en el jardín es un secreto. |
+| باده عشق تو، هر کس که چشید<br>دیگر از مهر دو عالم ببرید<br>دردیست عشق، که درمان طلبد<br>هر که درمان طلبید، درد خرید | Todo aquel que probó el vino de Tu amor<br>cortó sus lazos con el afecto de los dos mundos.<br>El amor es un dolor que busca remedio;<br>pero el que buscó el remedio, no hizo más que comprar dolor. |
 
-### 10. La herencia del maestro de los poetas sufíes
+### 10. Destierro Romántico
 
-| Original (Persa/Dari) | Traducción (Español) |
+| Original (Persian) | Traducción (Español) |
 |---|---|
-| سنایی رفت اما<br>میراثش عشق است | Sanai se fue pero<br>su herencia es el amor. |
+| سنایی در غم عشق تو خون خورد<br>ز هر دردی که دید، نام تو آورد<br>مرا جز درد عشق تو دوا نیست<br>جهان بی‌نور تو سرد است و پر درد | Sanai bebió sangre en la pena de Tu amor;<br>en cualquier dolor que experimentó, pronunció Tu nombre.<br>Yo no tengo más medicina que Tu dolor de amor;<br>el mundo sin Tu luz es frío y está lleno de pena. |

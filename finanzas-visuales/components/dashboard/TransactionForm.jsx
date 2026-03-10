@@ -4,6 +4,7 @@ import { db } from '@/lib/db'
 import { useStore } from '@/hooks/useStore'
 import { Button, Card, useToast } from '@/components/ui/UI'
 import { ConfirmDialog } from '@/components/ui/ConfirmDialog'
+import { CalculatorModal } from '@/components/ui/CalculatorModal'
 import { X, ChevronLeft, ChevronDown, Calendar as CalendarIcon, Tag, MessageSquare, Wallet, Trash2, Split, PlusCircle, MinusCircle, Smile, Repeat } from 'lucide-react'
 import * as LucideIcons from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -43,6 +44,8 @@ export function TransactionForm() {
     const [datetime, setDatetime] = useState(new Date().toISOString().slice(0, 16))
     const [emotion, setEmotion] = useState(null) // New emotion state
     const [isRecurring, setIsRecurring] = useState(false) // New recurring state
+    const [isCalculatorOpen, setIsCalculatorOpen] = useState(false)
+    const [calculatorTarget, setCalculatorTarget] = useState(null) // 'main' or split.id
 
     // Reset on Open / Populate for Edit
     useEffect(() => {
@@ -384,8 +387,15 @@ export function TransactionForm() {
                                 onChange={(e) => setAmount(e.target.value)}
                                 placeholder="0.00"
                                 autoFocus={!editingTransaction} // Don't autofocus on edit to prevent keyboard pop-up
-                                className="w-full bg-slate-950 border border-slate-800 rounded-2xl py-4 pl-12 pr-4 text-3xl font-bold text-slate-100 placeholder:text-slate-700 focus:outline-none focus:border-sky-500 transition-all"
+                                className="w-full bg-slate-950 border border-slate-800 rounded-2xl py-4 pl-12 pr-16 text-3xl font-bold text-slate-100 placeholder:text-slate-700 focus:outline-none focus:border-sky-500 transition-all"
                             />
+                            <button
+                                type="button"
+                                onClick={() => { setCalculatorTarget('main'); setIsCalculatorOpen(true); }}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 text-slate-500 hover:text-sky-400 bg-slate-900 rounded-xl hover:bg-slate-800 transition-colors shadow-sm"
+                            >
+                                <LucideIcons.Calculator className="w-6 h-6" />
+                            </button>
                         </div>
 
                         <div className="grid grid-cols-2 gap-3">
@@ -448,7 +458,7 @@ export function TransactionForm() {
                                         </div>
 
                                         {/* Amount Input for Split Item */}
-                                        <div className="w-24 relative">
+                                        <div className="w-[120px] relative">
                                             <span className="absolute left-2 top-1/2 -translate-y-1/2 text-xs text-slate-500">{symbol}</span>
                                             <input
                                                 type="number"
@@ -459,8 +469,15 @@ export function TransactionForm() {
                                                     setSplits(newSplits)
                                                 }}
                                                 placeholder="0.00"
-                                                className="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 pl-6 pr-2 text-xs text-slate-200 focus:outline-none focus:border-sky-500 font-mono"
+                                                className="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 pl-6 pr-8 text-xs text-slate-200 focus:outline-none focus:border-sky-500 font-mono"
                                             />
+                                            <button
+                                                type="button"
+                                                onClick={() => { setCalculatorTarget('split-' + split.id); setIsCalculatorOpen(true); }}
+                                                className="absolute right-1.5 top-1/2 -translate-y-1/2 p-1 text-slate-500 hover:text-sky-400 hover:bg-slate-800 rounded-md transition-colors"
+                                            >
+                                                <LucideIcons.Calculator className="w-3.5 h-3.5" />
+                                            </button>
                                         </div>
 
                                         {/* Remove Button */}
@@ -704,6 +721,21 @@ export function TransactionForm() {
                 title={t('confirm_delete_transaction')}
                 message={t('confirm_delete_transaction_desc') || "¿Estás seguro de que quieres eliminar esta transacción? Esta acción no se puede deshacer y el saldo de la cuenta se actualizará."}
                 type="danger"
+            />
+
+            <CalculatorModal
+                isOpen={isCalculatorOpen}
+                onClose={() => setIsCalculatorOpen(false)}
+                initialValue={calculatorTarget === 'main' ? amount : (calculatorTarget?.startsWith('split-') ? splits.find(s => s.id === Number(calculatorTarget.replace('split-', '')))?.amount : '0')}
+                onConfirm={(val) => {
+                    if (calculatorTarget === 'main') {
+                        setAmount(val)
+                    } else if (calculatorTarget?.startsWith('split-')) {
+                        const id = Number(calculatorTarget.replace('split-', ''))
+                        setSplits(splits.map(s => s.id === id ? { ...s, amount: val } : s))
+                    }
+                    setIsCalculatorOpen(false)
+                }}
             />
         </div>
     )

@@ -8,7 +8,7 @@
 > 2. `guia_acceso.md` (Para procesos de instalación y acceso)
 > 3. `estado_proyecto.md` (Este documento, para el estado actual, UX y Changelog)
 
-El proyecto **Finanzas Visuales** (v1.2.45) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas (como Supabase) para garantizar la máxima privacidad y velocidad.
+El proyecto **Finanzas Visuales** (v1.3.02) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas (como Supabase) para garantizar la máxima privacidad y velocidad.
 
 ## Tecnologías Principales
 

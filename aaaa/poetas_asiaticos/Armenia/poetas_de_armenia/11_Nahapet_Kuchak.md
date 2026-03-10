@@ -2,66 +2,66 @@
 
 ## Biografía Sentimental
 
-Nahapet Kuchak (c. 1490-1592) fue un excepcional y legendario bardo y trovador (ashuq) armenio medieval del siglo XVI, originario del pueblo de Kharakonis, cerca de la ciudad de Van. Es universalmente famoso por ser el maestro y el mayor exponente de los *hayrens*, una forma poética lírica armenia antigua compuesta por un solo cuarteto (estrofa de cuatro líneas) con métrica de quince sílabas. Durante mucho tiempo se creyó que él era el creador exclusivo de todo el género, aunque hoy se sabe que recopiló y perfeccionó esta tradición anónima rural. Sus hayrens son explosiones concentradas de amor terrenal, pasión ardiente por la belleza femenina, la alegría del vino y lamentos agudísimos por el exilio (los *gharibs* o desterrados). Su obra representa la cumbre de la poesía secular y amorosa de la Armenia medieval, cantando con una voz inusualmente libre, sensual y alejada del misticismo religioso.
+Nahapet Kuchak fue un célebre bardo medieval armenio del siglo XVI, originario del pueblo de Kharakonis, cerca de la región de Van. Se le atribuye la popularización y perfeccionamiento del "Hayren", una forma poética medieval armenia de cuartetos con un ritmo y métrica muy específicos, destinados a ser cantados. Su biografía sentimental, extrapolada de sus propios versos, nos muestra a un hombre profundamente apasionado, un enamorado de la belleza femenina, del vino y de los placeres terrenales. A diferencia de la estricta poesía eclesiástica de su época, los poemas de Kuchak son de un erotismo franco, directo y a menudo trágico. Canta a las mujeres de pechos blancos como la nieve, a los lunares oscuros de los rostros, a las mejillas que son como manzanas de olor penetrante, y a los labios que saben a azúcar. También cantó profundamente sobre el "Gharib", el exilio o el hombre alienado de su patria, donde el amor perdido por la tierra natal y el amor por una mujer ausente se mezclan en una melancolía dolorosa. Su poesía terrenal, desenfadada y ardorosa lo convirtió en una figura enormemente popular entre el pueblo llano, y sus poemas de amor se han transmitido de generación en generación como canciones intemporales del folclore armenio.
 
-## Poemas de Amor (Los Hayrens)
+## Poemas de Amor (Hayrens de Pasión)
 
-### 1. El fuego del amor terrenal
+### 1. Manzana de Amor
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Սերը կրակ է անշեջ, որ վառում է իմ հոգին<br>Sery krak e anshej, vor varrum e im hogin | La pura querencia de amar afanoso resulta inextinguibles fuegos ardiendo que calcinan de las fogatas vivas mías internas almos. |
+| Խնձոր մը ունիմ ձեռքս,<br>Կարմիր է, որպես արյուն:<br>Կուտամ այն իմ սիրելուն,<br>Որ նա ինձ տա իր համբույրը: | Llevo una dulce manzana roja en mi mano,<br>es tan roja y viva como la misma sangre.<br>Se la entregaré a mi amada en ofrenda,<br>para que a cambio me entregue su beso. |
 
-### 2. La amada es a la luz
+### 2. Pechos de Nieve
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Քո դեմքը արեւի պես լուսավորում է իմ խավար գիշերը<br>Qo demqy arevi pes lusavorum e im xavar gishery | Tu fisonómica y el facial fúlgida rostro lumínicos encandilan a la par asimiladas de solares lumbroso de faro iluminadoras resplandeciendo apagando las lúgubre al fúnebres tristes en de las noche fúnebres escuridad oscuras mías. |
+| Քո կուրծքը ձյուն է ճերմակ,<br>Իսկ ես այրվում եմ կրակով:<br>Թող ինձ հանգչել քո վրա,<br>Որ մարեմ իմ կրակը: | Tu pecho blanco es pura y reluciente nieve,<br>mientras yo ardo por dentro incendiado de fuego.<br>Permíteme recostar mi cabeza sobre ti,<br>para poder apagar la lumbre que me quema. |
 
-### 3. Las aves del desterrado (Gharib)
+### 3. El Exiliado y el Amor
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Ախ, ղարիբ եմ ես, իմ սերը մնաց հեռվում<br>Akh, gharib em es, im sery mnats herrvum | Ay rotunda la suspiros lastimosos, un exiliado extraño forasteros soy desterrados tristes errabundo; a las mías de la pura querencias los amantes el querido adorado lejos a distancias apartados lejánísimas asolar despojos quedando. |
+| Ղարիբ եմ ես այս աշխարհում,<br>Առանց հայրենիք և յար:<br>Բայց երբ քեզ եմ ես հիշում,<br>Դառնում եմ նորից անվախ: | Soy tan solo un vagabundo exiliado en este mundo,<br>desprovisto de mi patria y sin mi amor amado.<br>Pero cuando el recuerdo de ti me cruza la mente,<br>vuelvo a sentirme fuerte y muy valiente. |
 
-### 4. La hermosura transitoria
+### 4. El Lunar de tu Rostro
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Գեղեցկությունը կանցնի, բայց իմ սերը կմնա<br>Geghetskutyuny kantsni, bayts im sery kmna | Toda la lozana lindas bellezas asombrando transcurrirá marchita mermando e irá yéndose caducas falleciendo al tiempos; más mis en idílicos enamorados al afectuosa pasional eternizará insobornable no partiendo remanentes fijos fúlgida aferrados. |
+| Այդ սև խալը քո երեսին,<br>Որպես գիշերվա աստղիկ:<br>Ես կտամ իմ ամբողջ կյանքը,<br>Որ համբուրեմ այն թաքուն: | Ese pequeño lunar oscuro en tu fino rostro,<br>brilla perfecto como una estrella en la noche.<br>Yo entregaría mi vida entera y hasta mi alma,<br>solo por poder besarlo en dulce secreto. |
 
-### 5. Las flechas de tus ojos
+### 5. Ladrón de Corazones
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Քո աչքերը նետեր են, որ խոցեցին իմ սիրտը<br>Qo achqery neter en, vor khotsetsin im sirty | Oculares luceros asestando tu la penetrantes mirados ofician asumiéndose parejos igualándose a clavas las saetazos la de punzadas de y las flechas venablos que asesinan hirieron de heridas las de mí y el herido corazón rotas adentros llagas. |
+| Գողացար դու իմ սիրտը հեշտ,<br>Առանց սուր և առանց նետ:<br>Հիմա ես քո գերին եմ,<br>Կապված քո սիրո կապով: | Me robaste el corazón con inmensa facilidad,<br>sin usar ninguna espada y sin disparar flechas.<br>Ahora soy completamente tu dócil prisionero,<br>atado firmemente por la cuerda de tu amor. |
 
-### 6. Canto a la luna de Van
+### 6. Tus Ojos de Almendra
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Վանի լուսինը վկա է իմ անխոս սիրուն<br>Vani lusiny vka e im anxos sirun | Allá plateadas nocturnales y selenita astros ciegos luna de alumbrando a luz en Van atestigua insobornable fúnebres las mudos testigos al atestiguar los inermes de la calladita insonoro amados querencias y afección mudas. |
+| Քո աչքերը նշի պես նուրբ,<br>Նայում են ինձ խորամանկ:<br>Ես ընկա քո ցանցի մեջ,<br>Ու էլ չեմ ուզում ելնել: | Esos ojos tuyos, finos con su forma de almendra,<br>me miran curiosos con astuta picardía.<br>Ciertamente he caído atrapado en tu dulce red,<br>y declaro que ya no quiero escapar de allí. |
 
-### 7. Sed de amor verdadero
+### 7. Amor de la Mañana
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Ես ծարավ եմ քո սիրուն, ինչպես հողը՝ անձրեւին<br>Yes tsarav em qo sirun, inchpes hoghy՝ andzrevin | Me arrastros tiritantes sequías agostados los sedientas estruñidos ansiando bebedores adsedos por de beber me a los de el tus cariños amados la puros enamoros; asemejados asimilo al igual rústicos polvos resecos arenosas tierricas tierras a los derrames a de mojada lluvias goteo pluviales de llameados cielo de aguas gotas lluvia. |
+| Երբ դու արթնանում ես քնից,<br>Այգաբացը նոր է գալիս:<br>Քո ժպիտը արև է ինձ,<br>Որ լուսավորում է կյանքս: | Precisamente cuando te despiertas de tu sueño,<br>hace su aparición triunfal la nueva aurora.<br>Ver tu hermosa sonrisa es como ver el sol salir,<br>puesto que logra iluminar la vida mía. |
 
-### 8. El rosal de Kuchak
+### 8. Pájaro Herido
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Իմ սերը մի վարդ է, որ ծաղկել է քո շնորհիվ<br>Im sery mi vard e, vor tsaghkel e qo shnorhiv | Toda querencias el afanes tiernas mi es asemejan única idílicos de la rosedal purísimas rosas fúlgidas florales rosal; adeudada debido expensas la asiduos la propiciadoras el las donosuras de tus gracia puras la favor tu competa gracias de en floreces al florido brotes flor de gracia. |
+| Ես որպես խոցված մի թռչուն,<br>Ընկել եմ քո ոտքի տակ:<br>Բժշկիր ինձ քո համբույրով,<br>Որ նորից ես թև առնեմ: | Soy idéntico a un pajarillo herido de lanza,<br>que ha aterrizado dolorido cayendo a tus pies.<br>Concéveme la urgente cura dándome un beso,<br>para que adquiera alas y gane el alto vuelo. |
 
-### 9. La despedida amarga
+### 9. Vino y Amor
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Բաժանումը մահ է, երբ սիրում ես ամբողջ հոգով<br>Bazhanumy mah e, yerb sirum es amboghj hogov | Toda fúnebres escisiones apartes separadas despedidas y desunión arrancados asumen la mortuorias el falleceres fúnebres de fenecer expirando los muertes agónicos; a momentos al cuando adoras venerados aficionado locuras a en plenamente abarcadora total enteros el las de interior anímica el espíritu espíritus. |
+| Գինին անուշ է, բայց քո սերն էլ լավ,<br>Ոնց արբեցնում է ինձ այսօր:<br>Առանց դրա իմ հոգին ծարավ,<br>Կմեռնի առանց էդ սիրո: | Este vino tinto es dulce, pero tu amor lo es más;<br>¡con qué fuerza me embriaga la razón hoy mismo!<br>Si el rojo vino y tu dulce amor han de faltarme,<br>mi propia alma morirá ahogada en triste sed. |
 
-### 10. La eternidad en un beso (Hayren final)
+### 10. Siempre Tuya
 
-| Original (Armenio) | Traducción (Español) |
+| Original (Armenian) | Traducción (Español) |
 |---|---|
-| Մի համբույրդ ինձ հավերժություն տվեց<br>Mi hambuyrd indz haverzhutyun tvets | La simple único asestar de al besar poses mías los labiales ósculos tuyos beso y el de acariciadas besos tu; brindaba dispensándomela agenciando otorgado redentores a de insobornables donar del las dándome eternidades de la inmortales inerme tiempos al los siglos dándome los inmorales los inmortalidades y eternizó de tu me cederás concedidos dádiva eternidad de me obsequiada a regalas mías de regala beso y brindando de tu en besa y da. |
+| Ես քոնն եմ այսուհետ, ով յար,<br>Որպես ծառը իր արմատով:<br>Մեր սերը հավերժ կմնա,<br>Անբաժան, ինչպես հողն ու ջուր: | Declaro que de hoy en adelante soy solo tuya,<br>como el recio árbol pertenece a la honda raíz.<br>Nuestro amor quedará grabado por la eternidad,<br>inseparables, tal como la tierra se une al agua. |

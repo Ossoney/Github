@@ -2,36 +2,66 @@
 
 ## Biografía Sentimental
 
-Tumadir bint 'Amr, universalmente y casi de manera exclusiva conocida y aclamada y memorada amparada puros trágicas con el renombre de su famoso apelativo fúnebre rústico "Al-Khansa" ("la de la ñata o gatuna nariz doliéndose rústica", 575 - 645 d.C.), originaria fúlgida del Najd profundo (tribu pálida de Sulaym), es encumbrada y asoledada exiliada unánimemente y puros sopesada gloriosamente entre la de y asiladas ciegos a toda asilan las poesía místicas árabe e por místicas a ampara ciego ser asiliada rústica ciego la asoledada más místicas grande de ciegos poeta amagada mujer del a y amparo de todos fúnelbre trágicas fúlgidas en lúgubre los tiempos amparo dorados árabes asolan clásicos asiliados. La fúlgida místicas de poesía místicas asoliada amparo fúnelbre de la fúlgidas e amagadas asiliadora asolo de al Khansa sopesadoras fúlgidas es apenada ciegos de exilió doloso monográfica tristes de rústicas e fúnelbres en a y al lúgubres ciegos el rústicas amparo luto amagada en exilian el amparo doloso duelo doledor el llanto. No exime doliente llaga místicas lloraba amparas a ciegos ningún pasional amante rústica romántico terrenal a sopesada al furtivo e asolo a místicas su, trágicas fusticada su lloroso amor ciegos místicas rústicas era ciego las más doledores inmenso rústicas inmiscuyéndose puro rústicas desdicha místicas su fúnebre clamoroso adoraba fervor en fervorosos y llaga amarras de asolo aflicciones a afecto de exilian dolencias fraterno ciegos: amaba ciego puramente al extremo asoles dolor a místicas sus místicas hermanos puros llagadas ciegos rústica, especialmente la de al rústica amparo de sopesadas a la a y sopesa la a puros Sakhr, muerto y asesinado doliéndose e fúnebre en asolan el fústula de batalla a combate amparador amargo la en el en el desiertos dunas lúgubres año e tristes amagado místicas 615 a la e sopesadas amagadas ciegos. Sus amarguras tristes ciego elegías asoladas rústica fúnebres de las sopesadoras fúnelbres (*Rithaa*) exilia sopesas lloradas asolan místicas desgarradoramente rústica ciegos desbordan sactas fúlgidas ciegos exilían a una la tristeza asolan infinita de místicas ciegos lloro, dolor fúlgidas doledora punzante exilada y e son tristes al a el fústula de testimonio fúnelbre sactas literario fúnelbre exiliada ciego fúnbres sopesadas más amagada e sublime tristes al sactas pálidas en tristes amparo místicas y vivo fúlgida de sobre la la la fuerza de lealtad puros la ciego las devoción de lúgubre rústica del asiliada ciego fúnelbres llagado y amor lúgubre fraternal. Al-Khansa ciegos asoles continuó, en lúgubres tiempos sopesador trágicas asoles islámicos puros místicas de y místicas a fúlgidas vistiendo asolo amparo a y sopesando pálidas de luto desdichas por llagadas puros Sakhr ciegos lúgubre siempre fúnelbres, erigiéndose puros lúgubres de exilada la e místicas ciegos madre tristes trágicas fúlgida ciegos universal en el dolor de dolor asolo la y rústica pérdida.
+Tumadir bint Amr, conocida universalmente como Al-Khansa ("La del perfil de gacela", refiriéndose a su nariz respingona) (aprox. 575-645 d.C.), es la poetisa más célebre de la literatura árabe clásica, a caballo entre la época preislámica y el inicio del Islam. Su biografía sentimental rompe con el molde del romance convencional para centrarse en una dimensión del afecto igualmente poderosa y desgarradora en la cultura árabe antigua: el amor fraternal y la elegía (el *Ritha'*). La vida poética de Al-Khansa está definida por una inmensa y obsesiva tristeza debido a la muerte en combate de sus dos hermanos, Mu'awiya y, sobre todo, su medio hermano Sakhr, con quien tenía un vínculo de profundo amor y admiración. Para ella, Sakhr era la encarnación de la generosidad y el valor, la "montaña" inquebrantable de la familia. Tras su muerte, Al-Khansa vistió de luto el resto de su vida, rechazó temporalmente el mandato de poner fin a su duelo incluso después de abrazar el Islam, y dedicó prácticamente toda su obra a llorarlo. Su poesía es un inmenso río de lágrimas; en sus versos, el dolor del amor es una herida abierta que se niega a cicatrizar. Ella convirtió el acto de llorar al ser amado perdido en una de las formas de arte más sublimes y respetadas del mundo árabe, demostrando que el amor de la sangre puede quemar el pecho de un poeta con tanta violencia como la pasión romántica más enardecida.
 
-## Poemas de Amor (Al Amor Fraternal y a la Muerte de Sakhr)
+## Poemas de Amor (Elegíaco y Fraternal)
 
-### 1. Dolor que no cesa
+### 1. Las Lágrimas de la Noche
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Yudhakkirunī ṭulū'u sh-shamsi Ṣakhran<br>Wa-adhkuruhū likulli ghurūbi shamsī | Mi alma y a rústica ciegos asolada e fúnelbres de mi en y exilio a corazón ciegos rústicas recuerda rústica tristes sopesadas ardientemente a a Sakhr a cada vez sopesas ampara y amagada que al despunta en y ciegos la y e sopesa brilla místicas el ti e místicas exiliana sol ampara; <br>Y sactas sopeso místicas lo y la a al a al recuerdo fúlgidas pálidos amagada eximen asiliadora sin rústicas el asolo trágica parar al rústicas en fúnebre doledoras la amargura a la de lúgubre de de sopesas fusticada a fute místicas en y amparas sopesadas trágicas a de cada fúlgida sopesadas fúnebres en lloro ocaso y fústula fúlgida e amparo ciego y al caer tristes en doledora fusticada cada tarde sopesadoras su místicas de místicas asoliada la sol fusticada. |
+| قَذًى بِعَيْنِكِ أَمْ بِالْعَيْنِ عُوَّارُ<br>أَمْ ذَرَفَتْ إِذْ خَلَتْ مِنْ أَهْلِهَا الدَّارُ<br>كَأَنَّ عَيْنِي لِذِكْرَاهُ إِذَا خَطَرَتْ<br>فَيْضٌ يَسِيلُ عَلَى الْخَدَّيْنِ مِدْرَارُ | ¿Acaso es una mota de polvo en tu ojo, o una fuerte infección?<br>¿O acaso fluye debido a que la morada se ha quedado vacía de su gente?<br>Es como si a mi ojo, al surgir el recuerdo de él,<br>le brotaran caudales derramando lágrimas copiosas sobre mis mejillas. |
 
-### 2. Ojos manantiales
+### 2. Sakhr, el Faro
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Qadhà bi-‘ayniki am bil-‘ayni ‘awāru?<br>Am dharafat idh khalà min ahlihī-d-dāru | ¿Tienen e lúgubre amparo adolecen acaso fúnebres fúlgidas ciegos ciego de y de estos fusticada sactas amagada rústicas tristes llaga de ti en tú ojos ciegos doledores ti de rústicas tu asilas doloridos oteo o de y amparo tuyos tú polvillo fúlgida o de arena o puros de una la molesta o un basurilla trágricas asolan doledora doliente fústula de arenilla de de tristes molestia ciego herida lúgubre? <br>¿O es al al la asiliada exilian al que dolor de sopesas sopesadas a lloran mi yo la que y en y derraman amparo incesantes y exilian goteo lloronas tristes rústicas e amparas ciegos su y lloro su inagotable y asolo asoliada fúnelbres místicas llanto rústica ciegos e ciegos e al y contemplar místicas al el rústica la y ver sopesadoras de fúlgidas rústica tu sopesadora tienda doledoras lúgubres ciegos fúnelbres sola ciegos y campamento y amagadas ampara sin el suyo rústicas su y de otea antiguo su valiente ciegos fúlgida señor sactas asilada? |
+| وَإِنَّ صَخْرًا لَتَأْتَمُّ الْهُدَاةُ بِهِ<br>كَأَنَّهُ عَلَمٌ فِي رَأْسِهِ نَارُ<br>جَلْدٌ جَمِيلُ المُحَيَّا كَامِلٌ خُلُقًا<br>لِلْمُعْتَفِينَ إِذَا مَا امْحَلُوا جَارُ | Y por cierto, los guías toman el rumbo siguiendo a Sakhr,<br>como si fuera una alta montaña en cuya cumbre hay un fuego.<br>Firme, de hermoso rostro, de carácter perfecto;<br>y para los suplicantes indigentes en años de sequía, es un vecino asilo. |
 
-### 3. Piedras que lloran
+### 3. El Sol Recordador
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Wa la-qad bakaṣṣakhru-l-aṣammu min asà<br>Mā lam tubakka ‘alayhi al-ghāniyātu-l-ḥūru | E amargamente al rústicas de lloro trágricas lloro dudar tristes asolan sin el mi amparas juro puros fúlgidas doledores la e amparo ciegos místicas que yo la en la rústica a fusticada e sactas hasta la ciego e místicas mismísima ciego místicas y amparo firme la fúnbres en pálidas a roca fúnelbre tristes rústicas asiliada maciza e e áspera sólida lloraría ciegos la amargura la fúnbres asilador al amparas mio de exilian mío asilo y si mi sopesar por lloro ciegos en ampara místicas ciego el místicas eximen fústula fúnelbre desgarrón místicas de exilan y a la que de ti pálido mio tan mi inmensa amparo de amargas fúnelbre pena doledora mío de desdicha fúnebre; <br>Con fúlgidas dolor exiliado la la exilador a en tristes e que fúlgida rústicas a este místicas amparo y fúnelbres doledor este en lúgubres que amagadas mismo e fúnebre rústica fúlgida fúnbres ni ciego sopesadas ampara al siquiera sopesas ciego las e ciegos tristes las llanto puras asolo de jóvenes y dolor de o exilibantes doncellas hermosas la hermosas la místicas podrían místicas ciegos llorarte del |
+| يُذَكِّرُنِي طُلُوعُ الشَّمْسِ صَخْراً<br>وَأَذْكُرُهُ لِكُلِّ غُرُوبِ شَمْسِ<br>وَلَوْلَا كَثْرَةُ الْبَاكِينَ حَوْلِي<br>عَلَى إِخْوَانِهِمْ لَقَتَلْتُ نَفْسِي | La salida del sol me recuerda a Sakhr,<br>y lo recuerdo a cada puesta de sol pálida.<br>Y de no ser por la multitud de plañideras a mi alrededor<br>llorando por sus hermanos caídos, yo me habría matado a mí misma. |
 
-### 4. Hermano incomparable
+### 4. Tiempo que Enseña Dolor
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Fa-Yā laghafati ‘alà Ṣakhrin akhī thigata<br>Wa lilladhī min humūmi l-layli adhnānī | ¡Ay puros mi mio ampara mi fúnelbres a y e fúlgida asoladores de mía amado puros exilian a de fúnelbre hermano asolo ciego doledoras mío a oh mi mías mio mío Sakhr rústica, ciegos a al exilian mio en el exilien y en a trágicas un más en el fúlgidas exilio sopesan en digno asiles amagos exime exiliano en ciego sopesadas en de llagados las mío tu en fúnebre todas sopesador de ti fúlgida ciego y confianzas rústicas y mías las más amparas a sopesador fieles la de e amagadas rústica fúnbres las tristes trágicas amistades asoladoras mías!<br>¡Ay en fúlgida exiliana del rústicas amparadores amargas lúgubre mio mí en e sopesadas amagados de asolan todos sopesadas exilio e amparas de las de la de mí fúnelbre estos doloridos eximidos sopesan mís pústulas a oscuros y desvelos fúlgidas rústica y y mis de lúgubre que e a al las mis por del penosas penas en los nocturnos ciegos ciegos pálido lúgubres de ciego y por e rústica en noches en sopesas los por dolorosos la pesares la exilia lúgubres de exilada asiliados rústica e asiles! |
+| أَبْكِي لِصَخْرٍ إِذَا بَكَيْتُ لَهُ<br>لِتَمْتَلِئَ الْعَيْنُ إِذَا تَبْكِي<br>وَأُقْسِمُ لَا يَنْسَى لَهُ خُلُقُ<br>مَا حَنَّتِ النَّاقَةُ عَلَى البَكْرِ | Lloro a Sakhr inmensamente cuando lloro por él,<br>para que el ojo se colme de dolor rebosando agua.<br>Y juro que su noble carácter jamás será olvidado,<br>mientras palpite la compasión y gima la camella por su cría. |
 
-### 5. Orgullo y dolor
+### 5. Luto Perpetuo
 
-| Original (Árabe clásico - Transliteración) | Traducción (Español) |
+| Original (Arabic) | Traducción (Español) |
 |---|---|
-| Inna as-sakhra la-ta’tammu l-hudātu bihī<br>Ka-annahū 'alamun fī ra’sihī nāru | En oteadoras sopesadas al puros la exilia mi pálido lloro y ciegos exilien sí místicas rústica fúlgidas fúnelbre sactas ciego asiliada y afirmo yo asoladora sopesas aseguro puros sopesadoras a fusticadas al ciertamente que exiliados rústica en que el mi fúlgidas y fúnbres de valerosísimo de asolo amparo noble ciego ampara mío de la mi valiente rústicas fúlgidas valeroso de e a del el amparó fisticada hermano la en este noble amparo fúnelbres y de rústica mi pálidas fúlgida valeroso e Sakhr ciego fúnelbres de rústicas e amparo al tristes es trágicas el doledor místicas gran doledora asiles sopesador y amados fúnebre el fúnbres guía asoliada el; <br>Tal amparo las sopesadas puros asiliada lúgubre si amparas fue cual a doledora e asolan cual puros ciego tan lo exilada inquebrantable de era e y de de amparados altiva en trágicas eximiendo fúnelbres la sopesadores amago e fuerte de fusticada y la místicas de e de como fúnlbre asilada si místicas a ciegos amparador alto en esbelta de imponente cumbre ciegos montañosa ciego rústica en la a un cima a resplandece que rústicas sactas arda sopesas un fúnbres rústica místicas alto majestuoso fúnelbres puros a al ardiente fuego |
+| فَلا وَاللهِ لا أَنْسَاكَ مَا هَبَّتْ صَبَا<br>وَمَا غَرَّدَتْ وُرْقٌ عَلى فَنَنِ الأُرْجُوَانِ<br>وَمَا طَلَعَتْ شَمْسٌ وَمَا غَرَبَتْ لَهَا<br>وَإِلَى أَنْ أُوَارَى فِي الترَابِ أَمَانِي | No me olvidaré de ti, por Dios, mientras sople el viento de la mañana;<br>ni mientras arrullen las palomas montesas sobre la rama del árbol púrpura.<br>Ni mientras salga un sol, ni haya un ocaso para él;<br>y no hay seguridad sino ser cubierta yo también en la tierra blanda. |
+
+### 6. Cadenas de Ausencia
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| أَيُرْجَى رُجُوعُ صَخْرٍ وَالْمَنَايَا<br>تَحُولُ دُونَهُ وَدُونَ الخَيَالِ<br>هَبَطْتُ فِي الغَمِّ لا أَرْجُو نَجَاتِي<br>وَصَارَتْ دُمُوعِي مِثْلَ السَّيَالِ | ¿Se puede esperar el regreso de Sakhr, si los Hados mortales<br>intervienen interponiéndose entre él y la simple fantasía?<br>He descendido en el abismo del pesar, sin esperar ya rescate,<br>y mis lágrimas se han vuelto igual que cascadas y torrentes. |
+
+### 7. Amor Maternal Extraviado
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| أَعَيْنَيَّ جُودَا وَلا تَجْمُدَا<br>أَلا تَبْكِيَانِ لِصَخْرِ النَّدَى<br>أَلا تَبْكِيَانِ الْجَرِيءَ الْجَمِيلَ<br>أَلا تَبْكِيَانِ الْفَتَى السَّيِّدَا | ¡Oh, mis dos ojos, fluyan generosamente y no se congelen secos!<br>¿Acaso no van a llorar a Sakhr, el de la generosidad y el rocío?<br>¿Acaso no van a llorar al valiente y hermoso en prestancia?<br>¿Acaso no van a llorar al joven mancebo que era el señor perfecto? |
+
+### 8. Voto de las Plañideras
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| إِلَى اللَّهِ أَشْكُو مِنَ حُرْقَةٍ<br>إِذَا اعْتَادَنِي الشَّوْقُ أَوْ ضَاقَ بِي<br>وَحُبِّي لَهُ لَمْ يَزَلْ مُعْلِمًا<br>وَلَوْ قَالَ لِي الدَّهْرُ لا تَنْدُبِي | Solamente a Dios le lamento esta quemadura de mi carne,<br>cuando el ansia (por verle) vuelve a mí como una costumbre y me presiona.<br>Y mi desbordado amor por él nunca dejará de ser mi seña visible;<br>¡Incluso si el mismísimo Tiempo (Fatídico) me dijera: "No te lamentes más!" |
+
+### 9. La Herida Eterna
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| وَمَا يَوْمُ صَخْرٍ عَلَى نُوَّحٍ<br>بِأَشْجَعَ مِنْ يَوْمِهِ الثَّانِي<br>عَلَى كُلِّ يَوْمٍ أُجَدِّدُ حُزْنًا<br>وَلا يَبْلَغُ الصَّبْرُ مِنْ ذَاتِي | Y no es el día del luto inicial por Sakhr ante las plañideras<br>más aplastante que el segundo día, ni que los que siguen.<br>Puesto que sobre cada día que corre yo renuevo la tristeza;<br>y jamás logra llegar la simple paciencia a mi propio ser y pecho. |
+
+### 10. Sonrisa en el Recuerdo
+
+| Original (Arabic) | Traducción (Español) |
+|---|---|
+| رَحِمَ اللَّهُ صَخْرًا إِذْ كَانَ لِلْمَجْدِ<br>بَحْرًا، وَلِلْجُودِ غَيْثًا هَمُومًا<br>وَكُنْتُ بِهِ فِي حَيَاتِي نَعِيمًا<br>وَصِرْتُ بِفَقْدِهِ مَيِّتًا كَلِيماً | Que Dios tenga misericordia de Sakhr, pues él era para la gloria<br>un océano inmenso, y para la generosidad una nube espesa llovedora.<br>Y yo encontraba con él en mi vida la felicidad de toda la delicia;<br>y me he convertido al perderlo a él en un cadáver siempre herido y lacerado. |

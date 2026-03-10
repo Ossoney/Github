@@ -2,68 +2,66 @@
 
 ## Biografía Sentimental
 
-Abdul Rahman Pazhwak (1919-1995) fue de las personalidades afganas del siglo XX más celebradas en los foros de la diplomacia mundial. Destacó como estadista, presidiendo la histórica Asamblea General de las Naciones Unidas en 1966. Originario de una gran tribu pastún y nacido en la región de Ghazni, sus letras nunca renunciaron a hermanar a su pueblo bajo un amor civilizador e identitario y se caracterizó por su férrea promoción tanto de los valores modernos como de las raíces indígenas orientales. Pazhwak destacó brillantemente a cada instante forjando profundos y bellos versos poéticos escritos en sus idiomas maternos, el pashto y el persa (dari). Su exilio tras los graves asaltos bélicos contra su patria se refleja como el hito postrero de dolor frente a la destrucción cruel y abyecta.
+Abdul Rahman Pazhwak (1919-1995) fue uno de los diplomáticos más distinguidos de Afganistán (sirvió como Presidente de la Asamblea General de la ONU en 1966) y, al mismo tiempo, un eximio poeta, narrador y humanista que escribió prolíficamente en dari y pashtún. Nacido en la histórica provincia de Ghazni, su seudónimo "Pazhwak" significa "Eco". Su biografía sentimental, profundamente plasmada en sus ghazales y versos libres (tanto en la colección "Gul-e-Kohan" como en otras), es el reflejo de una vida dividida entre el deber público internacional y el exilio interior. A pesar de frecuentar los salones más altos de la diplomacia mundial en Nueva York, París y Nueva Delhi, Pazhwak era un romántico melancólico, profundamente arraigado a las montañas de su tierra. Su poesía amorosa no está dirigida a abstractos ídolos sufíes, sino a un amor humano, real y a menudo distante; un amor que funciona como el ancla emocional del viajero solitario. Cuando canta al amor, canta a la mujer que, con un solo nudo de su cabello, contiene todas las respuestas a las vanidades del mundo moderno, recordando que el afecto sincero es más poderoso que cualquier imperio.
 
-*Nota: Por su fecha de fallecimiento (1995), el autor pertenece a derechos vigentes. Se marca (NO_DERECHOS).*
+## Poemas de Amor
 
-## Poemas de Amor (Dualidad Pashto-Dari)
-
-### 1. Dos lenguas para el mismo cariño
+### 1. El Eco del Corazón
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| پښتو زبان قلب است، دری زبان روح<br>عشقم به افغانستان به هر دو زبان می‌تپد | De todas el pashto se antoja lenguaje del puro sentimiento y el dari el acento del espíritu místico;<br>la devoción inmensa al suelo mío palpita ruidosamente exigiéndome por completo las dos. |
+| پژواکِ نامِ توست، در کوهسار دل من<br>ای عشق، ای یگانه امیدِ بهار دل من<br>من در دیار غربت و تو در خیال من<br>کی می‌رسی به دادِ شبِ بی‌قرار دل من؟ | Es el eco de tu nombre, en la cordillera de mi corazón;<br>oh amor, oh única esperanza de la primavera de mi corazón.<br>Yo en la tierra del destierro y tú en mi pensamiento;<br>¿cuándo vendrás al rescate de la noche inquieta de mi corazón? |
 
-### 2. El diplomático suspira por su hogar
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| از صندلی‌های بلند تا کوه‌های بی‌پایان<br>عشق من تنها در غزنی آرام می‌گیرد | Pasando de todo escaño egregio ante vastas montañas ajenas a toda frontera;<br>la simple querencia mía tiene una cita inexcusable únicamente regresando a Ghazni y sus confines. |
-
-### 3. Paz unida y libre en Oriente
+### 2. Ojos de Saqueo Mudo
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| صلح بی‌عشق دوامی ندارد<br>جهان باید عاشق شود تا آرام گیرد | La entera concordia carente de sentimiento íntimo termina sin poseer duración alguna en nosotros;<br>pues toda la anchurosa y redonda civilidad debiese arder unánime abrazando al amor forzando la remisión del odio. |
+| یک نگاهِ تو کافیست برای دل بردن<br>برای در غم عشق تو جان سپردن<br>چه غنچه‌ای که لبت از تبسمی نشگفت<br>چه حسرتی که مرا می‌کشد به یاد تو مُردن | Una sola mirada tuya basta para robar el corazón,<br>para entregar el alma en la pena de tu amor.<br>Qué capullo que tus labios no abrieron con una sonrisa;<br>qué nostalgia que mi recuerdo muriendo por ti me mata. |
 
-### 4. Melancólicos recuerdos de tierra amada
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| در سازمان ملل، دلم در کابل بود<br>من نمایندهٔ عشقِ یک ملت مجروح بودم | Durante sesiones de unidas naciones discurría errabunda toda mi pobre alma siempre anclada hasta en la de Kabul;<br>era inevitable para mí ser más que un dolido enviado exangüe representante por cuenta y obra del gran querer de mi devastada y herida propia nación. |
-
-### 5. Hermandad de fronteras sin dolor
-
-| Original (Pashto) | Traducción (Español) |
-|---|---|
-| وروڼه یو، په مینه کې<br>نفرت زموږ لپاره ځای نلري | Como una familia y todos siempre entrelazados como hermanos dentro al calor vivo del amor;<br>puesto que todo odio ponzoñoso ha sido y sigue al momento actual excluido completamente para el nuestro particular e indisoluble recinto. |
-
-### 6. Desesperanza al no volver
-
-| Original (Pashto) | Traducción (Español) |
-|---|---|
-| طبعید زما زړه مات کړ<br>خو د وطن مینه یې نوره پیاوړې کړه | El castigo infame en lejanías remotas molió todo mi espíritu a palos;<br>y en contraprestación hizo incalculablemente y cada minuto más de duro e indivisible la devoción pasional nuestra a todos estos los de patriótico afán perenne. |
-
-### 7. Elegancia y belleza
+### 3. Noche de Nueva York, Alma en Ghazni
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| نگاه تو زبان صلح است<br>عشقت قطعنامه‌ای است برای توقف جنگ | Es claro que la mirada tan dócil ha sido también todo afán de hermandad y de pacificantes designios;<br>todo aprecio fiel tu a los afligidos acaba convirtiéndose a secas en un edicto universal decretante de urgencias para interrumpir al plomo de toda contienda civil. |
+| در شهر نور و شیشه، دلم در هوای توست<br>اینجا غریبم و وطنِ من نگاهِ توست<br>صد تاج و تخت، فدای یک تارِ موی تو<br>پژواکِ خسته‌ام که اسیرِ صدای توست | En la ciudad de luz y cristal, mi corazón respira tu aire;<br>aquí soy extranjero y mi patria es tu mirada.<br>Cien coronas y tronos sacrifico por un hilo de tu cabello;<br>soy el eco cansado que está prisionero de tu voz. |
 
-### 8. Lamento en la noche del poeta
-
-| Original (Dari) | Traducción (Español) |
-|---|---|
-| شب‌های نیویورک کابل نمی‌شود<br>یار من در شرق تنهاست | Al ver transcurrir estas frías madrugadas forasteras de los rascacielos ni soñando van jamás a parecerse siquiera un poquito a nuestras glorias Kabulíes;<br>allá distanciada y muy huérfana aguarda entre el poniente afín toda mi enlutada patria mía en orfandad. |
-
-### 9. La devoción persistente al pueblo sabio
-
-| Original (Pashto) | Traducción (Español) |
-|---|---|
-| زما قلم د وطن لپاره ژاړي<br>مینه د پردیسۍ سخت درد دی | Acaso la tinta entera saliendo de esta vieja pluma gime sin freno llorando sola nuestra patria;<br>y todo el afán de amoroso rescoldo no deja otra estela más que esa aflicción enorme agobiando durísimamente en mis postreras etapas remotas de aflicciones. |
-
-### 10. Testamento final e inmortal de un civilista
+### 4. La Sombra de la Noche
 
 | Original (Dari) | Traducción (Español) |
 |---|---|
-| پژواک همیشه طنین عشق است<br>من رفتم اما عشقم در تاریخ زنده ماند | Resultando un vocablo inequívoco con afables alocuciones retumbando siempre repletitas de enamorado cariño universal y cauto;<br>parto aquí ahora exangüe yo, por un ineludible designio fatal; dejando la memoria en mis leales líneas escriturales vivas imperecederas hasta toda época en Afganistán venidera. |
+| شب می‌شود و سایه عشقت بلندتر<br>می‌پیچد این خیالِ تو در جانم ای قمر<br>گفتی که می‌روی و مرا می‌بری ز یاد<br>رفتی، ولی غمت ز دلم، نه ای ستمگر | Se hace de noche y la sombra de tu amor es más alta;<br>este recuerdo tuyo se enreda en mi alma, oh luna.<br>Dijiste que te irías y me borrarías del recuerdo;<br>te fuiste, pero no tu pena de mi corazón, oh tirana. |
+
+### 5. Cenizas del Romance
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| آتش زدی ز چشم سیاهت به جان من<br>بنگر به دودِ آه که خیزد ز زبان من<br>عشق تو در کتاب دلم جاودانه شد<br>ای قصه تو، مظهر نام و نشانِ من | Prendiste fuego con tus ojos negros a mi alma;<br>mira el humo del suspiro que se levanta de mi boca.<br>Tu amor en el libro de mi corazón se hizo eterno;<br>oh historia tuya, emblema de mi nombre y mi seña. |
+
+### 6. Cadenas de Papel y Tinta
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| با هر قلم که می‌کشم از خطِ عشق تو<br>خون می‌چکد ز دفترم از خطِ عشق تو<br>دیوانه‌ام مخوان که من از عاقلان شهرم<br>زنجیر پاره کرده‌ام در خطِ عشق تو | Con cada pluma que trazo la línea de tu amor,<br>sangre gotea de mi cuaderno por la línea de tu amor.<br>No me llames loco, pues soy de los cuerdos de la ciudad;<br>las cadenas he roto trazando la línea de tu amor. |
+
+### 7. Voto del Diplomático
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| صلح جهان فدای یک لبخندِ مست تو<br>دنیا به باد می‌دهم از شوق یک دست تو<br>پژواک اگر تمام زمین را سفر کند<br>باز آید و بیفتد به دامِ شکستِ تو | La paz del mundo la sacrifico por una sonrisa tuya embriagadora;<br>doy el mundo al viento por el anhelo de tomar tu mano una vez.<br>Si el Eco ("Pazhwak") llegara a viajar por toda la tierra,<br>volverá y caerá derrotado en tu trampa. |
+
+### 8. Lamento en la Niebla
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| در مه‌های تنهایی تو را قدم زدم<br>با اشک‌های خونین کلام تو رقم زدم<br>از من مپرس که چرا خاموش و خسته‌ام<br>دردیست کز عشق تو بر سینه هم زدم | En las nieblas de la soledad he dado pasos hacia ti;<br>con lágrimas ensangrentadas tu palabra escribí.<br>No me preguntes por qué estoy silencioso y cansado;<br>es un dolor que por tu amor a mi pecho atesté. |
+
+### 9. La Espina y la Rosa
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| تو گلشن بهاری و من خار راه تو<br>عمرم گذشت در طلب یک نگاه تو<br>بیمارِ غربتم، طبیب من بیا ببین<br>داروی درد من بشود خاک پای تو | Tú eres rosaleda de primavera y yo espina en tu camino;<br>mi vida pasó buscando una mirada tuya.<br>Enfermo del destierro soy, médico mío, ven a ver;<br>el polvo de tus pies sería la medicina de mi dolor. |
+
+### 10. La Existencia Eterna
+
+| Original (Dari) | Traducción (Español) |
+|---|---|
+| من با خیال تو ز عدم پا نهاده‌ام<br>در راه عشق تو سرِ دانا نهاده‌ام<br>گر روزگار دفتر عمر مرا بسوخت<br>نام تو را به سطر تماشا نهاده‌ام | Yo he puesto el pie desde la nada con tu recuerdo;<br>en el camino de tu amor he puesto una cabeza sabia.<br>Si la época ha quemado el cuaderno de mi vida,<br>el nombre tuyo lo he puesto en el renglón del espectáculo. |

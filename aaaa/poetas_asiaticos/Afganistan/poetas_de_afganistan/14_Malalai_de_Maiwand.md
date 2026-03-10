@@ -2,66 +2,66 @@
 
 ## Biografía Sentimental
 
-Malalai "Ana" (la abuela) de Maiwand (1861-1880) es la heroína nacional de Afganistán y el símbolo supremo del patriotismo y el honor de la mujer pastún. Durante la Batalla de Maiwand en la Segunda Guerra Anglo-Afgana contra las tropas británicas, al ver que la moral del ejército afgano colapsaba y el abanderado era abatido, la joven Malalai alzó su velo para tomar la bandera, marchó al frente y cantó ardientes *landays* (cortos versos épicos y amorosos en pashto) que enardecieron a los hombres e invirtieron el curso de la batalla. Aunque la propia Malalai fue martirizada y cayó frente al fuego británico, su intervención logró una de las pocas y legendarias victorias militares contra el imperio occidental. Ella es la "Juana de Arco" afgana, y aunque no dejó poemarios formales, sus breves cantos populares (*landays*) transmiten un amor feroz y sagrado por la Patria y por la muerte digna de sus enamorados mártires. Sus versos son la encarnación más virulenta del amor patrio pashto.
+Malalai de Maiwand (1861-1880) más que una poetisa formal en el sentido clásico, es la suprema heroína popular de Afganistán (la "Juana de Arco afgana"). Como hija de un pastor pashtún en el pueblo de Khig, su destino estaba trazado por la rutina de las montañas. Sin embargo, su biografía sentimental está ligada a un joven combatiente del que estaba enamorada o comprometida. Durante la Batalla de Maiwand (1880), durante la Segunda Guerra Anglo-Afgana, cuando las tropas afganas de Ayub Khan flaqueaban frente a los británicos, Malalai vio que el portador del estandarte a quien se creía que era su prometido (o padre, según otras versiones) cayó herido. Desgarrando su velo para usarlo como estandarte improvisado, cantó encendidos *landays* (poemas cortos populares pashtunes compuestos sobre todo por mujeres) en los que unía el honor marcial con el amor más extremado: "Si no mueres en Maiwand como un mártir, mi amor, es que estás destinado a una vida de vergüenza". El fervor de sus cantos revirtió la batalla, pero ella murió en el fuego cruzado. Su amor no fue domesticado; ofreció literalmente su sangre y la de su amado en el altar del honor patriótico y pasional.
 
-## Poemas de Amor (Landays)
+## Poemas de Amor
 
-### 1. El amor al mártir (El landay de Maiwand)
-
-| Original (Pashto) | Traducción (Español) |
-|---|---|
-| که په ميوند کې شهيد نه شوې<br>خدايګو لালিয়া بې ننګۍ ته دې ساتينه | ¡Señor, sálvalo de la vergüenza,<br>si en la batalla de Maiwand mi amado no cae mártir! |
-
-### 2. El amor de las gotas de sangre
+### 1. El Voto en Maiwand
 
 | Original (Pashto) | Traducción (Español) |
 |---|---|
-| خال به د يار له وینو کښێږدم<br>چې شینکي باغ کې ګل ګلاب و شرموینه | Me pondré un lunar con la sangre de mi amado<br>para avergonzar a las rosas del jardín verde. |
+| که په میوند کې شهید نشوې<br>خدايږو لالیه بې ننګۍ ته دې ساتینه | Si no caes mártir en Maiwand,<br>por Dios, amado mío, te guardan para la vergüenza. |
 
-### 3. La mujer que canta a su héroe
-
-| Original (Pashto) | Traducción (Español) |
-|---|---|
-| مینه به ستا د جنګ وي<br>که راغلې په شا نه | El amor será tu lucha;<br>jamás regreses dando la espalda. |
-
-### 4. El dolor de la espada afgana
+### 2. El Velo como Estandarte
 
 | Original (Pashto) | Traducción (Español) |
 |---|---|
-| د افغانانو مینه توره ده<br>توره وهی د وطن لپاره | El amor de los afganos es la espada;<br>golpean la espada por la patria. |
+| زما پړونی د تورې نښه کړه<br>چې مینه مې په وینو کې ژوندۍ پاتې شي | Haz de mi velo el estandarte de tu espada,<br>para que mi amor permanezca vivo en la sangre. |
 
-### 5. La amada exige valor
-
-| Original (Pashto) | Traducción (Español) |
-|---|---|
-| که توره نه کړي، مینه مه کړه<br>پښتون خاوره بې غیرته نه خوښوي | Si no alzas la espada, no ames;<br>la tierra pastún no tolera al deshonrado. |
-
-### 6. El amor juvenil que ofrenda su vida
+### 3. Vergüenza y Pasión
 
 | Original (Pashto) | Traducción (Español) |
 |---|---|
-| پیغله یم او ځواني مې ورکړه<br>د خپل وطن د عشق په لاره | Soy doncella y ofrezco mi juventud<br>en el camino del amor a mi patria. |
+| له تېښتې مرګ په توره ښه دی<br>چې یار مې تور مخی ونه وینم | La muerte por la espada es mejor que huir,<br>pues no quiero ver el rostro oscurecido (deshonrado) de mi amado. |
 
-### 7. El novio caído en combate
-
-| Original (Pashto) | Traducción (Español) |
-|---|---|
-| شهید ځوان یار مې دی<br>جنت کې به ورسره واده کوم | Mi amado caído mártir en su juventud;<br>en el paraíso me desposaré con él. |
-
-### 8. El amor que infunde coraje
+### 4. Sangre en la Rosa
 
 | Original (Pashto) | Traducción (Español) |
 |---|---|
-| ما لیدلی دی د یار زړه<br>چې له ویرې پاک دی | He visto el corazón de mi amado,<br>que está purgado del miedo. |
+| ستا پرهارونه د سرو ګلو دي<br>ما پرې د مینې اوښکې توی کړې دي | Tus heridas son como rosas rojas;<br>he derramado sobre ellas mis lágrimas de amor. |
 
-### 9. La patria y el amor pashto
-
-| Original (Pashto) | Traducción (Español) |
-|---|---|
-| مینه او وطن یو شی دی<br>ملالۍ د مینې غږ دی | El amor y la patria son una sola cosa;<br>Malalai es la voz de ese amor. |
-
-### 10. La abuela eterna del honor
+### 5. Orgullo del Amante
 
 | Original (Pashto) | Traducción (Español) |
 |---|---|
-| ملالۍ تل ژوندۍ ده<br>د پښتنو په زړونو کې | Malalai vive por siempre;<br>en los corazones de los pastunes. |
+| هغه زلمی زما د زړه دی<br>چې په جګړه کې ېې شاته نه ګوري | Ese joven es [el dueño] de mi corazón,<br>aquel que en el fragor de la batalla nunca mira atrás. |
+
+### 6. Despedida a la Muerte
+
+| Original (Pashto) | Traducción (Español) |
+|---|---|
+| مینه او مرګ دواړه ګډون لري<br>زه درځم پکې ستا پلو پسې | El amor y la muerte van de la mano;<br>yo sigo en medio de ellos tras el borde de tu manto. |
+
+### 7. Amor Sellado con Pólvora
+
+| Original (Pashto) | Traducción (Español) |
+|---|---|
+| خوله مې پر توره باندې ږده<br>چې د میوند د جنګ کیسه شي | Pon mi beso sobre el filo de tu espada,<br>para que se convierta en la leyenda de la guerra de Maiwand. |
+
+### 8. Lamento Breve
+
+| Original (Pashto) | Traducción (Español) |
+|---|---|
+| ته رښتیا د جګړې زمری یې<br>خو زما په مینه کې زخمي یې | Tú eres, de verdad, el león de la batalla,<br>pero en mi amor has quedado herido de muerte. |
+
+### 9. El Silencio de los Héroes
+
+| Original (Pashto) | Traducción (Español) |
+|---|---|
+| د خاورو لاندې شول هغه ځوانان<br>چې زما د سترګو لپاره یې تورې وهلې | Quedaron bajo tierra aquellos jóvenes<br>que blandían sus espadas en nombre de mis ojos. |
+
+### 10. La Sangre Compartida
+
+| Original (Pashto) | Traducción (Español) |
+|---|---|
+| زما او ستا وینې یوه شوې<br>په دې دښته کې چې د مینې ډګر دی | Tu sangre y la mía se hicieron una sola<br>en este desierto que hoy es el campo del amor. |

@@ -2,68 +2,66 @@
 
 ## Biografía Sentimental
 
-Rahmat Shah Sail (Dargai Pukhtoonkhwa, b.1943) —muy amado en todo el espectro pastún transfronterizo del este de Afganistán y Pakistán norte. Su vida y pluma son una síntesis completa del drama de los refugiados afganos, un puente poético viviente donde resuelan de dolorosa rebeldía los éxodos de sus pares hacia los polvorientos campamentos de Pakistán huyendo del horror comunista, los fanatismos en su tierra madre o los dictados postcoloniales, para encontrar en su lírica desgarrada el estandarte que canta incansable al gran y melancólico río del Amor entre los montes pastunes perdidos en fronteras de guerra. Al continuar con vida e inmensamente venerado hasta el presente, sus rimas las escucha cada joven insurgente o refugiado o aldeano a las madrugadas en radio portátiles. Son versos puros forjados a través del sufrimiento de amor y desamor civil moderno.
+Rahmat Shah Sail (nacido en 1943) es uno de los poetas pashtunes más vibrantes y reconocidos contemporáneos, oriundo de la provincia de Nowshera en la región fronteriza (Khyber Pakhtunkhwa), aunque su poesía resuena profundamente en todo el mundo afgano y pashtún. Es coloquialmente llamado el "Poeta de la Revolución" y el "Cantor de la Montaña". A diferencia de los eruditos cortesanos, Sail es un poeta del pueblo; su formación es casi autodidacta y su pluma bebe del dolor del refugiado, de la pobreza y de la violencia endémica que asola a su pueblo en ambos lados de la Línea Durand. Su biografía sentimental se refleja en una poesía amorosa que es, a la vez, de una ternura exquisita y de una cruda denuncia sociopolítica. El amor en la obra de Sail ("Sail" significa inundación o torrente) es un acto de rebeldía vital. Su musa es la joven pashtuna, a menudo retratada con sus vestiduras tradicionales, que espera al amante en medio del tiroteo, o cuyas lágrimas se confunden con el rocío de la montaña. Sus ghazales entrelazan el color rojo de los labios de la amada con el color de la sangre de los mártires, haciendo del amor romántico la única trinchera posible contra el odio y la destrucción.
 
-*Nota: Por ser un autor vivo (nacido en 1943), pertenece a derechos vigentes. Se marca (NO_DERECHOS).*
+## Poemas de Amor
 
-## Poemas de Amor (En la Frontera del Pukhtoonkhwa)
-
-### 1. Dos mitades de un mismo afán
+### 1. Amor en las Trincheras
 
 | Original (Pashto) | Traducción (Español) |
 |---|---|
-| کرښه مو منځ کې ده، خو زړونه یو دي<br>مینه هیڅ سرحد نه پیژنی | En efecto hay allí clavado con alambre un desolado confín fronterizo en nosotros dos, mas latimos juntos solo y siendo el mutuo e insuperable reflejo idéntico el uno en el otro;<br>típico para este afán al que tildan amatorio que con el puro respiro arrollando desprecie, en rigor atroz, sin reparar nunca un momento si acaso una sola estúpida cerca los separara. |
+| زه په جبهه کې ستا یادونه کوم<br>د ټوپک تر مخه ستا تصویر ته ګورم<br>ستا د سترګو په یاد مې زړه ته سکون راځي<br>په دی لمبو کې زه مینه لټوم | En el frente de batalla hago recuento de tus recuerdos;<br>ante el fusil, miro tu fotografía.<br>Al recordar tus ojos, a mi corazón llega la paz;<br>en medio de estas llamas yo busco el amor. |
 
-### 2. Nostalgias sobre la línea Durand
-
-| Original (Pashto) | Traducción (Español) |
-|---|---|
-| دیورند کرښه زما د مینې قاتل ده<br>خو مرګ به هم موږ بېل نه کړي | Al trazar con escuadras fríamente infames estas horcas limítrofes, la línea mortuoria de las alambradas solo degolló nuestros amores mutuos;<br>pero en desquite es que hemos asimilado no dudar más y en vez de doblegarnos, admitimos no habernos roto y que la negra fosa ni un átimo en absoluto va disiparnos nunca esta indomable pasión pura nuestra. |
-
-### 3. Cante pastún bajo aullido bélico
+### 2. Rostro Sangriento
 
 | Original (Pashto) | Traducción (Español) |
 |---|---|
-| ټوپکونه غږیږي، خو زه شعر وایم<br>مینه د جنګ تر غږ جګه ده | Truenan, ahúllan atronadas mil metralletas sobre asfalto, mi garganta en obstinado empeño solo tararea en calma sus pasajes métricos;<br>en suma resultando el milagroso poder del querer lo único de valor sin falla subiéndolo a mayores niveles que aquellos aporreos atronadores del miedo. |
+| ستا د شونډو رنګ مې د شهید وینه ده<br>ستا خندا مې د ازادۍ نښه ده<br>ای پیغلې، ستا مینه مې په زړه کې ده<br>چې د هر دښمن پر وړاندې زما وسله ده | El color de tus labios es la sangre de mi mártir;<br>tu risa es para mí la señal de la libertad.<br>Oh doncella, tu amor está en mi pecho;<br>y ante cada enemigo es él mismo mi arma. |
 
-### 4. A las ruinas del amor de juventud
-
-| Original (Pashto) | Traducción (Español) |
-|---|---|
-| پخوانی یار مې په کابل کې دی<br>زه په پیښور کې ژاړم | Lejísimos en el destrozado Kabul la devoción inmensurable de este afecto mío sigue anclado amarrado fijo como la dura tierra al lecho ciego de antaño;<br>todo a resultas forzosas de tenerme exánime gimiendo por la desazón desde los confines dolorosos del cruel destierro al lado inhóspito en Peshawar aciagos sin asilo y arrabalados. |
-
-### 5. Hermandad sobre las piedras polvosas
+### 3. Fuego en el Pueblo
 
 | Original (Pashto) | Traducción (Español) |
 |---|---|
-| پښتون ته مینه په سر ده<br>د وینې او خاورې په بیه | Lo inherente sobre cada pastún recae indisoluble hacia aquel arrollador e imperativo honor entregado al sentimiento y fuego por puro amar indisolublemente y noblemente en plenitud absoluta y fiel;<br>quedando invariables no menos sin escatimar costo final vertiendo el saldo último entero con que abonan la roja propia sangre fresca hasta empañar al terruño pedregoso reseco aquí de muerte. |
+| کلي سوځي، خو ستا یادونه ژوندي دي<br>په دی اورونو کې مو مینه پخه شوه<br>زه که مړ هم شم، زما روح به ستا وي<br>چې زما د زړه ژورتیا ستا په مینه شوه | Los pueblos arden, pero tus recuerdos están vivos;<br>en estos fuegos nuestro amor ha madurado.<br>Incluso si muero, mi alma seguirá siendo tuya;<br>ya que la profundidad de mi corazón se hizo con tu amor. |
 
-### 6. Deseos mudos al cielo
-
-| Original (Pashto) | Traducción (Español) |
-|---|---|
-| یا خدایه! مینه په افغانستان کې واچوه<br>چې خلک له جنګ نه ستړي دي | Oh gran clamor compasivo del cielo, rocía bondadosamente copiosísimos chaparrones henchidos por compasiones entrañadas colmando los baldíos tristes para los afganos dolosos;<br>ha de resultar tan acuciante porque en la humanidad asolada allí no resta vigor remanente de no estar hasta los puros tuétanos ahogados estruñidos del crujiente martirio por odio e infinitas de batallas viles y pavor que trajeron los malos y su miseria impune. |
-
-### 7. Amigo traicionado del pashto
+### 4. Sed del Refugiado
 
 | Original (Pashto) | Traducción (Español) |
 |---|---|
-| ژبه مې پښتو ده، زړه مې د مینې<br>ما ته د جنګ کیسې مه کوه | Ha resultado pashto, con gran empeño, invariablemente en cada resquicio de voz esta amoldada y sufrida nuestra modesta elocución del dolor vivo y del corazón destripado del inmenso gran caudal pasional puro y verdadero al lado más fúlgido de aquí;<br>de todo rigor eludiéndolo te insisto que ceses todo vil parloteo recitándome con embustes necios oscuridades frívolas, falaces de rencores en sangre y asquerosas violencias del mal perenne oscuro. |
+| د هجران په دښته کې زه تږی یم<br>ستا د وصال اوبه مې زړه ته غواړم<br>په دی کیمپونو کې مې ژوند خاکستر دی<br>یوازې ستا د خندا بوی ته ژوندی یم | En el desierto de la separación estoy sediento;<br>deseo para mi corazón el agua de tu unión.<br>En estos campos (de refugiados) mi vida es ceniza;<br>solo por el aroma de tu risa sigo estando vivo. |
 
-### 8. Lágrimas con el te que apaga angustias
-
-| Original (Pashto) | Traducción (Español) |
-|---|---|
-| په چایو کې مې اوښکې لویدلي<br>ستا د یاد په مینه | Llovieron raudales llorosos chorreaditas desde todos los cristales nublados en nuestro cansancio amargo para disipar al fondo acuático turbiando a la taza amarga del aromático bebestible del tónico caliente;<br>típica la aciaga ofrenda que se dispensa nostálgico embargadas por el melancólico y dulce embate inquebrantable desde el íntimo recuerdo entrañable extrañándote, amor mío añorado del ayer. |
-
-### 9. La bandera de mi lírica de paz
+### 5. Las Cadenas del Destino
 
 | Original (Pashto) | Traducción (Español) |
 |---|---|
-| ستاسو بیرغونه سره دي<br>زما بیرغ سپین دی، د مینې بیرغ | En contra de las rojizas enseñas atiborradas y repulsivas por tanta carnicería abyecta que tremolan los crueles invasores que amargan lo bello;<br>hay yo levanté tan limpia purísima al inmenso alba estival con sus astas flameante una única bandera desinteresada y albear blanquísimamente encrespada forjada a puro afanes sin claudicar nunca de mi corazón tierno universal que clama en paz. |
+| ستا د زلفو تارونه مې پړی د غاړې دي<br>زه په کې بندي، خو ډیر خوشحاله یم<br>دا ځنځیرونه مې د ازادۍ نه خوښ دي<br>چې ستا په مینه کې زه تل آباد یم | Los hilos de tu cabello son la soga de mi cuello;<br>estoy preso en ellos, pero sumamente feliz.<br>Me gustan estas cadenas más que la propia libertad;<br>puesto que en tu amor, yo siempre estaré a salvo y sereno. |
 
-### 10. Siempre vivo, Rahmat Shah de amor
+### 6. Cadenas de Papel y Tierra
 
 | Original (Pashto) | Traducción (Español) |
 |---|---|
-| رحمت شاه سایل به مینه وایي<br>تر هغو چې دا جهان شته | Un rotundo aserto sin dudas profetizando claro resultará sin miedos que en el afán Rahmat Shah y su incansable canto componga amatoria la sílaba postrer insobornablemente eterna y tierna por encima con las estrellas;<br>dándole todo la seguridad rotunda el inagotable rumor resonando inmarcesible en los milenios de los mundos girando por y para esa gloria suprema eternizada y dulce hacia nuestra existencia en armoniosa verdad. |
+| پر خاوره مې ستا نوم ولیکه په وینو<br>چې هر پسرلی ستا د نامه ګل راوټوکي<br>ما خپله ځواني ستا پر لاره ورکړه<br>چې زما زړه ستا د سترګو لپاره وټوکي | En la tierra escribí tu nombre con sangre;<br>para que cada primavera brote la flor de tu nombre.<br>Yo he dado mi juventud en tu camino;<br>para que mi corazón florezca para el bien de tus ojos. |
+
+### 7. Lamento en Pashtún
+
+| Original (Pashto) | Traducción (Español) |
+|---|---|
+| سیل دی درپسې ژاړي ای ښکلې<br>د غرونو په شان مې اوښکې روانې دي<br>ستا د درد نه پرته مې سینه کې څه نشته<br>په دی زړه کې مې ستا د مینې ترانې دي | Sail ("El Torrente") llora por estar tras de ti, oh hermosa;<br>mis lágrimas corren igual que las montañas.<br>Fuera del dolor por ti no hay nada en mi pecho;<br>en este corazón están las canciones de tu amor. |
+
+### 8. Voto del Vagabundo Rebelde
+
+| Original (Pashto) | Traducción (Español) |
+|---|---|
+| که مې سر په دار هم شي ستا نوم به اخلم<br>ستا مینه مې د ژوند لویه سرمايه ده<br>هر څوک چې زما زړه ته ګوري پوه به شي<br>چې ستا عشق زما په وجود کې یوه سایه ده | Incluso si mi cabeza va a la horca repetiré tu nombre;<br>tu amor es el capital más grande de mi vida.<br>Quienquiera que mire mi corazón sabrá y entenderá;<br>que tu amor es una sombra dentro de mi existencia. |
+
+### 9. La Tormenta y la Flor
+
+| Original (Pashto) | Traducción (Español) |
+|---|---|
+| په طوفان کې مې ستا لمن نیولې ده<br>ته زما لپاره یوازینۍ پناه یې<br>که ټوله نړۍ مې مخې ته ودرېږي<br>زما سترګو ته یوازې ته رڼا یې | En la tormenta me he aferrado a tu faldón;<br>tú eres mi único y exclusivo refugio seguro.<br>Incluso si el mundo entero se levanta frente a mí;<br>para mis ojos solo tú eres la brillante luz. |
+
+### 10. Sonrisa que Resiste
+
+| Original (Pashto) | Traducción (Español) |
+|---|---|
+| ستا یوه مسکا مې د سلو زخمونو درمل ده<br>د غرونو په څوکو کې مې ستا یادونه دي<br>ای پیغلې، ته چې کله راته موسکۍ شې<br>زما په زړه کې بیا د پسرلي ګلونه دي | Una sonrisa tuya es la medicina para mis cien heridas;<br>en las cumbres de las montañas están tus recuerdos.<br>Oh mi doncella, cuando tú me sonríes una vez;<br>en mi corazón hay de nuevo flores de la primavera. |

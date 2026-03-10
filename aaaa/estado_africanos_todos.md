@@ -1,0 +1,56 @@
+# Proyecto: Poetas de TODO el Continente Africano
+
+- Argelia: 25 poetas generados/completados.
+- Angola: 25 poetas generados/completados.
+- Benin: 25 poetas generados/completados.
+- Botsuana: 25 poetas generados/completados.
+- Burkina_Faso: 25 poetas generados/completados.
+- Burundi: 25 poetas generados/completados.
+- Cabo_Verde: 25 poetas generados/completados.
+- Camerun: 25 poetas generados/completados.
+- Republica_Centroafricana: 25 poetas generados/completados.
+- Chad: 25 poetas generados/completados.
+- Comoras: 25 poetas generados/completados.
+- R_D_Congo: 25 poetas generados/completados.
+- Congo: 25 poetas generados/completados.
+- Yibuti: 25 poetas generados/completados.
+- Egipto: 25 poetas generados/completados.
+- Guinea_Ecuatorial: 25 poetas generados/completados.
+- Eritrea: 25 poetas generados/completados.
+- Esuatini: 25 poetas generados/completados.
+- Etiopia: 25 poetas generados/completados.
+- Gabon: 25 poetas generados/completados.
+- Gambia: 25 poetas generados/completados.
+- Ghana: 25 poetas generados/completados.
+- Guinea: 25 poetas generados/completados.
+- Guinea_Bissau: 25 poetas generados/completados.
+- Costa_de_Marfil: 25 poetas generados/completados.
+- Kenia: 25 poetas generados/completados.
+- Lesoto: 25 poetas generados/completados.
+- Liberia: 25 poetas generados/completados.
+- Libia: 25 poetas generados/completados.
+- Madagascar: 25 poetas generados/completados.
+- Malaui: 25 poetas generados/completados.
+- Mali: 25 poetas generados/completados.
+- Mauritania: 25 poetas generados/completados.
+- Mauricio: 25 poetas generados/completados.
+- Marruecos: 25 poetas generados/completados.
+- Mozambique: 25 poetas generados/completados.
+- Namibia: 25 poetas generados/completados.
+- Niger: 25 poetas generados/completados.
+- Nigeria: 25 poetas generados/completados.
+- Ruanda: 25 poetas generados/completados.
+- Santo_Tome_y_Principe: 25 poetas generados/completados.
+- Senegal: 25 poetas de dominio público completados (Fase 2 finalizada).
+- Seychelles: 25 poetas generados/completados.
+- Sierra_Leona: 25 poetas generados/completados.
+- Somalia: 25 poetas generados/completados.
+- Sudafrica: 25 poetas de dominio público completados (Fase 2 finalizada).
+- Sudan_del_Sur: 25 poetas generados/completados.
+- Sudan: 25 poetas generados/completados.
+- Tanzania: 25 poetas generados/completados.
+- Togo: 25 poetas generados/completados.
+- Tunez: 25 poetas generados/completados.
+- Uganda: 25 poetas generados/completados.
+- Zambia: 25 poetas generados/completados.
+- Zimbabue: 25 poetas generados/completados.
