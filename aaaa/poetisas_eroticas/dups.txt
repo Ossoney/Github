@@ -1,0 +1,12 @@
+DUPLICATE_NUMBERS:
+131 ['131_Karolina_Pavlova.md', '131_Teffi_Nadezhda_Lokhvitskaya.md']
+132 ['132_Cherubina_de_Gabriak.md', '132_Karolina_Pavlova.md']
+133 ['133_Annette_von_Droste-Hülshoff.md', '133_Evdokia_Rostopchina.md']
+134 ['134_Anna_Akhmatova.md', '134_Sophie_Mereau.md']
+135 ['135_Karoline_von_Günderrode.md', '135_Marina_Tsvetaeva.md']
+DUPLICATE_NAMES:
+Alejandra_Pizarnik ['064_Alejandra_Pizarnik_NO_DERECHOS.md', '081_Alejandra_Pizarnik_NO_DERECHOS.md']
+Karolina_Pavlova ['131_Karolina_Pavlova.md', '132_Karolina_Pavlova.md']
+Maria_Eugenia_Vaz_Ferreira ['047_Maria_Eugenia_Vaz_Ferreira.md', '096_Maria_Eugenia_Vaz_Ferreira.md']
+Marina_Tsvetaeva ['055_Marina_Tsvetaeva.md', '135_Marina_Tsvetaeva.md']
+Safo_de_Lesbos ['001_Safo_de_Lesbos.md', '100_Safo_de_Lesbos__Cierre.md']
