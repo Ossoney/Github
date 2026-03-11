@@ -20,7 +20,8 @@ Visualis es una aplicación de gestión financiera personal diseñada para ser p
 * **Gasto Emocional**: Registra cómo te sentiste al realizar un gasto (😍, 🙂, 😐, 😰, 😠) para entender tus patrones de comportamiento.
 * **Edición y Borrado**: Control total para modificar o eliminar cualquier movimiento pasado.
 * **Buscador Avanzado**: Filtros potentes por texto, rango de fechas, tipo, categoría o cuenta.
-* **Transacciones Divididas**: Capacidad de dividir un gasto único en múltiples categorías (ej. compra en hipermercado dividida en Alimentación y Limpieza).
+* **Calculadora Integrada**: Posibilidad de realizar operaciones matemáticas (sumas, restas, multiplicación, división) directamente desde el campo de importe, ideal para calcular tickets desglosados sin salir de la app.
+* **Transacciones Divididas**: Capacidad de dividir un gasto único en múltiples categorías (ej. compra en hipermercado dividida en Alimentación y Limpieza). Cada línea dividida también incluye soporte de calculadora integrada.
 * **Contexto Inteligente**: El botón de añadir transacción detecta automáticamente si estás viendo ingresos o gastos.
 
 ## 🗂️ 2. Estructura Organizativa
@@ -67,9 +68,9 @@ Sistema de temas completo que cambia toda la paleta de colores de la aplicación
 * 🔮 **Nebulosa Púrpura** (Violeta/Deep)
 * 🦾 **Futuro Neón** (Cyberpunk)
 * 🍷 **Vino Selecto** (Burdeos)
-* ☕ **Grano Tostado** (Café/Crema)
-* 💎 **Zafiro Real** (Azul Intenso)
-* ⚪ **Minimalismo Puro** (Blanco/Gris)
+* 🌤️ **Claro Cielo** (Clásico y Brillante)
+* 🌱 **Claro Menta** (Tonos Zinc y Verde Esmeralda)
+* 🌅 **Claro Cálido** (Tonos Marfil y Pálidos Rojos)
 
 ### **Perfil de Usuario**
 

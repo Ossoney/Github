@@ -8,7 +8,7 @@
 > 2. `guia_acceso.md` (Para procesos de instalación y acceso)
 > 3. `estado_proyecto.md` (Este documento, para el estado actual, UX y Changelog)
 
-El proyecto **Finanzas Visuales** (v1.3.02) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas (como Supabase) para garantizar la máxima privacidad y velocidad.
+El proyecto **Finanzas Visuales** (v1.3.05) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas (como Supabase) para garantizar la máxima privacidad y velocidad.
 
 ## Tecnologías Principales
 
@@ -60,9 +60,10 @@ Los últimos commits de la rama `main` enfocan la mejora en la manipulación de 
 - **Resumen y Balances**:
   - Se retiraron los decimales de la pantalla inicial en las variables de Ingresos, Gastos y Balance Total, así como en los desgloses por categoría.
   - En el historial (6m, 12m, 24m, ∞) se eliminaron las estadísticas de "Mejor mes" y "Peor mes" y se retiraron los decimales en todos los reportes de saldo.
+- **Calculadora Integrada**: Se incorporó un componente en el propio flujo de transacciones (tanto en monto global como dividido) para hacer cálculos ágiles de recibos de forma rápida sin cambiar de app.
 - **Temas Visuales**:
   - Se han rediseñado por completo las 9 paletas de colores en `globals.css` priorizando el contraste premium estilo SaaS/OLED.
-  - Se sustituyeron 3 temas menos usados por **versiones claras (Light Mode)**: *Cielo Ártico, Oasis Esmeralda y Horizonte Ámbar*, invirtiendo las variables de CSS para que usuarios que prefieren fondos luminosos puedan utilizar la app cómodamente.
+  - Se sustituyeron 3 temas menos usados por **versiones claras (Light Mode)**: *Claro Cielo, Claro Menta y Claro Cálido*, ajustando correctamente las paletas Zinc y Stone invertidas para su total legibilidad.
 
 ## Próximos Posibles Pasos
 

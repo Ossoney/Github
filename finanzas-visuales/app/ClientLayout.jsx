@@ -8,6 +8,7 @@ import { PrivacyProvider } from '@/lib/privacy'
 import { ToastProvider } from '@/components/ui/UI'
 import { useStore } from '@/hooks/useStore'
 import { db } from '@/lib/db'
+import { WhatsNewModal } from '@/components/ui/WhatsNewModal'
 
 export function ClientLayout({ children }) {
     const { setSelectedWalletId } = useStore()
@@ -46,6 +47,7 @@ export function ClientLayout({ children }) {
             <PrivacyProvider>
                 <ToastProvider>
                     <DynamicTitle />
+                    <WhatsNewModal />
                     {children}
                 </ToastProvider>
             </PrivacyProvider>
