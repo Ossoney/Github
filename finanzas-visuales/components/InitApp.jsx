@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import { processRecurringTransactions } from '@/lib/recurring'
+import { checkHabitReminders } from '@/lib/notifications'
 import { db } from '@/lib/db'
 import { useStore } from '@/hooks/useStore'
 
@@ -11,6 +12,12 @@ export function InitApp() {
     useEffect(() => {
         // Check for recurring transactions on app mount
         processRecurringTransactions()
+        
+        // Habit Reminders
+        checkHabitReminders(db)
+        const reminderInterval = setInterval(() => checkHabitReminders(db), 60000) // Check every minute
+
+        return () => clearInterval(reminderInterval)
 
         // Load last selected account
         const loadSettings = async () => {

@@ -1,4 +1,4 @@
-# 🌟 VISUALIS v1.3.02 (Marzo 2026) - Guía de Funcionalidades
+# 🌟 VISUALIS v1.3.05 (Marzo 2026) - Guía de Funcionalidades
 
 Visualis es una aplicación de gestión financiera personal diseñada para ser privada, potente y visualmente atractiva. A continuación se detallan todas sus capacidades:
 
@@ -56,7 +56,17 @@ Visualis es una aplicación de gestión financiera personal diseñada para ser p
 * **Frecuencia Estándar**: Generación automática mensual el día elegido.
 * **Gestión**: Panel para activar/desactivar recurrencias sin borrarlas.
 
-## 🎨 4. Personalización y Experiencia (UX)
+## 📈 4. Seguimiento de Hábitos (Habit Tracker)
+
+* **Construcción de Rutinas**: Permite definir metas semanales para nuevos hábitos (ej. Ejercicio 3 veces/semana).
+* **Vista de 7 Días**: Cuadrícula interactiva que muestra la semana completa para marcar el cumplimiento con un solo clic y feedback visual inmediato.
+* **Efectos Premium**: Animaciones de partículas tipo "explosión" al completar una tarea diaria para reforzar el hábito positivamente.
+* **Reordenación Dinámica**: Capacidad de organizar tus hábitos por importancia mediante arrastre directo (Drag & Drop).
+* **Progreso Dinámico**: Anillos de progreso que muestran el avance real vs la meta establecida para la semana.
+* **Historial de Consistencia**: Mini-mapas de calor integrados que muestran los últimos 21 días de actividad de un vistazo.
+* **Personalización**: Cada hábito puede tener su propio color identificativo.
+
+## 🎨 5. Personalización y Experiencia (UX)
 
 ### **Identidad Visual y Temas**
 
@@ -86,7 +96,7 @@ Soporte completo multi-idioma:
 * 🏳️ Gallego
 * 🏳️ Euskera
 
-## 🔒 5. Datos y Privacidad
+## 🔒 6. Datos y Privacidad
 
 ### **Privacidad Local (Local First)**
 

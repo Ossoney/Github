@@ -11,7 +11,7 @@ import { EmotionSummary } from '@/components/dashboard/EmotionSummary'
 
 import { Button } from '@/components/ui/UI'
 import { useStore } from '@/hooks/useStore'
-import { Plus, Download, User, Calendar, Search } from 'lucide-react'
+import { Plus, Download, User, Calendar, Search, CheckCircle2 } from 'lucide-react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '@/lib/db'
 import { formatCurrency } from '@/lib/utils'
@@ -55,6 +55,12 @@ export default function Dashboard() {
                 </div>
 
                 <div className="flex items-center gap-3">
+                    <Link href="/habits">
+                        <Button variant="ghost" size="icon" className="text-slate-400 hover:text-white">
+                            <CheckCircle2 className="w-6 h-6" />
+                        </Button>
+                    </Link>
+
                     <Link href="/calendar">
                         <Button variant="ghost" size="icon" className="text-slate-400 hover:text-white">
                             <Calendar className="w-6 h-6" />

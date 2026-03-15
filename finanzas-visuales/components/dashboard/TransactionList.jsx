@@ -23,7 +23,7 @@ export function TransactionList() {
             .toArray()
 
         const txs = selectedWalletId
-            ? rawTxs.filter(t => t.walletId === selectedWalletId)
+            ? rawTxs.filter(t => t.walletId === selectedWalletId || t.toWalletId === selectedWalletId)
             : rawTxs
 
         // Manual join since Dexie doesn't do SQL joins
@@ -35,7 +35,8 @@ export function TransactionList() {
         return txs.map(tx => ({
             ...tx,
             category: catMap.get(tx.categoryId),
-            wallet: walletMap.get(tx.walletId)
+            wallet: walletMap.get(tx.walletId),
+            toWallet: tx.toWalletId ? walletMap.get(tx.toWalletId) : null
         }));
     }, [currentDate, selectedWalletId])
 
@@ -51,6 +52,7 @@ export function TransactionList() {
         <div className="space-y-3">
             {transactions.map((tx) => {
                 const isExpense = tx.type === 'expense'
+                const isTransfer = tx.type === 'transfer'
 
                 return (
                     <div
@@ -60,18 +62,24 @@ export function TransactionList() {
                     >
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-4">
-                                <div
-                                    className="w-10 h-10 rounded-full flex items-center justify-center transition-colors"
-                                    style={{
-                                        backgroundColor: `${tx.category?.color}20`,
-                                        color: tx.category?.color
-                                    }}
-                                >
-                                    <DynamicIcon name={tx.category?.icon} className="w-5 h-5" />
-                                </div>
+                                {isTransfer ? (
+                                    <div className="w-10 h-10 rounded-full flex items-center justify-center bg-sky-500/20 text-sky-400">
+                                        <DynamicIcon name="ArrowRightLeft" className="w-5 h-5" />
+                                    </div>
+                                ) : (
+                                    <div
+                                        className="w-10 h-10 rounded-full flex items-center justify-center transition-colors"
+                                        style={{
+                                            backgroundColor: `${tx.category?.color}20`,
+                                            color: tx.category?.color
+                                        }}
+                                    >
+                                        <DynamicIcon name={tx.category?.icon} className="w-5 h-5" />
+                                    </div>
+                                )}
                                 <div>
                                     <div className="font-medium text-slate-200">
-                                        {tCategory(tx.category?.name) || t('uncategorized')}
+                                        {isTransfer ? t('transfer') : (tCategory(tx.category?.name) || t('uncategorized'))}
                                     </div>
                                     <div className="flex items-center gap-2 text-xs text-slate-500">
                                         <span>
@@ -90,18 +98,27 @@ export function TransactionList() {
                                                 }
                                             })()}
                                         </span>
-                                        {tx.wallet && (
-                                            <>
+                                        {isTransfer ? (
+                                            <div className="flex items-center gap-1">
                                                 <span>•</span>
-                                                <span className="text-sky-400 font-medium">{tx.wallet.name}</span>
-                                            </>
+                                                <span className="text-sky-400 font-medium">{tx.wallet?.name}</span>
+                                                <DynamicIcon name="ArrowRight" className="w-3 h-3 text-slate-600" />
+                                                <span className="text-sky-400 font-medium">{tx.toWallet?.name}</span>
+                                            </div>
+                                        ) : (
+                                            tx.wallet && (
+                                                <>
+                                                    <span>•</span>
+                                                    <span className="text-sky-400 font-medium">{tx.wallet.name}</span>
+                                                </>
+                                            )
                                         )}
                                     </div>
                                 </div>
                             </div>
-                            <div className={`font-semibold ${isExpense ? 'text-slate-200' : 'text-emerald-400'} flex items-center gap-2`}>
+                            <div className={`font-semibold ${isExpense ? 'text-slate-200' : (isTransfer ? 'text-sky-400' : 'text-emerald-400')} flex items-center gap-2`}>
                                 {tx.emotion && <span className="text-sm grayscale opacity-70">{tx.emotion}</span>}
-                                <Money amount={tx.amount} showPlus={!isExpense} forceSign={isExpense ? '-' : '+'} />
+                                <Money amount={tx.amount} showPlus={!isExpense && !isTransfer} forceSign={isExpense ? '-' : (isTransfer ? '' : '+')} />
                             </div>
                         </div>
 

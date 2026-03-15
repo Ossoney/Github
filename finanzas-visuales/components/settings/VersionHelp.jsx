@@ -162,7 +162,7 @@ export function VersionHelp() {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                         </span>
-                        <p className="text-xs text-slate-300 font-mono tracking-wider font-semibold">VISUALIS v1.3.05</p>
+                        <p className="text-xs text-slate-300 font-mono tracking-wider font-semibold">VISUALIS v1.4.10</p>
                     </div>
                     <p className="text-[10px] text-slate-500 uppercase tracking-widest mt-2">{t('version_date') || 'Marzo 2026'}</p>
                 </div>

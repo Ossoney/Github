@@ -41,12 +41,38 @@ export const exportToExcel = async (transactions, wallets, categories) => {
         }
     })
 
-    // 2. Create Sheet
-    const worksheet = XLSX.utils.json_to_sheet(data)
+    // 2. Prepare Habits Data
+    const habitsList = await db.habits.toArray()
+    const habitLogsList = await db.habitLogs.toArray()
 
-    // 3. Create Workbook
+    const habitsData = habitsList.map(h => ({
+        'id': h.id,
+        'nombre': h.name,
+        'meta_semanal': h.goal,
+        'frecuencia': h.frequency,
+        'color': h.color,
+        'recordatorio_hora': h.reminderTime || '-',
+        'recordatorio_activo': h.reminderEnabled ? 'Sí' : 'No'
+    }))
+
+    const logsData = habitLogsList.map(log => {
+        const habit = habitsList.find(h => h.id === log.habitId)
+        return {
+            'fecha': format(new Date(log.date), 'dd/MM/yyyy'),
+            'hábito': habit?.name || 'Hábito eliminado'
+        }
+    })
+
+    // 3. Create Sheets
+    const transactionsSheet = XLSX.utils.json_to_sheet(data)
+    const habitsSheet = XLSX.utils.json_to_sheet(habitsData)
+    const logsSheet = XLSX.utils.json_to_sheet(logsData)
+
+    // 4. Create Workbook
     const workbook = XLSX.utils.book_new()
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Transacciones")
+    XLSX.utils.book_append_sheet(workbook, transactionsSheet, "Transacciones")
+    XLSX.utils.book_append_sheet(workbook, habitsSheet, "Mis Hábitos")
+    XLSX.utils.book_append_sheet(workbook, logsSheet, "Progreso de Hábitos")
 
     // 4. Generate File Name
     const fileName = `visualis_${format(new Date(), 'yyyyMMdd_HHmmss')}.xlsx`

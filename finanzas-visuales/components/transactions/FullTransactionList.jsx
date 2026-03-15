@@ -56,25 +56,41 @@ export function FullTransactionList({ transactions }) {
                                     >
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-4">
-                                                <div
-                                                    className="w-10 h-10 min-w-[2.5rem] rounded-full flex items-center justify-center transition-colors"
-                                                    style={{
-                                                        backgroundColor: `${tx.category?.color}20`,
-                                                        color: tx.category?.color
-                                                    }}
-                                                >
-                                                    <DynamicIcon name={tx.category?.icon} className="w-5 h-5" />
-                                                </div>
+                                                {tx.type === 'transfer' ? (
+                                                    <div className="w-10 h-10 min-w-[2.5rem] rounded-full flex items-center justify-center bg-sky-500/20 text-sky-400">
+                                                        <DynamicIcon name="ArrowRightLeft" className="w-5 h-5" />
+                                                    </div>
+                                                ) : (
+                                                    <div
+                                                        className="w-10 h-10 min-w-[2.5rem] rounded-full flex items-center justify-center transition-colors"
+                                                        style={{
+                                                            backgroundColor: `${tx.category?.color}20`,
+                                                            color: tx.category?.color
+                                                        }}
+                                                    >
+                                                        <DynamicIcon name={tx.category?.icon} className="w-5 h-5" />
+                                                    </div>
+                                                )}
                                                 <div className="min-w-0">
                                                     <div className="font-medium text-slate-200 truncate pr-2">
-                                                        {tx.description || tCategory(tx.category?.name) || t('uncategorized')}
+                                                        {tx.type === 'transfer' ? t('transfer') : (tx.description || tCategory(tx.category?.name) || t('uncategorized'))}
                                                     </div>
                                                     <div className="flex items-center gap-2 text-xs text-slate-500 flex-wrap">
-                                                        {tx.category?.name && tx.description && (
-                                                            <span className="text-slate-400 bg-slate-800/50 px-1.5 rounded">{tCategory(tx.category?.name)}</span>
-                                                        )}
-                                                        {tx.wallet && (
-                                                            <span className="text-sky-400 font-medium">{tx.wallet.name}</span>
+                                                        {tx.type === 'transfer' ? (
+                                                            <div className="flex items-center gap-1">
+                                                                <span className="text-sky-400 font-medium">{tx.wallet?.name}</span>
+                                                                <DynamicIcon name="ArrowRight" className="w-3 h-3 text-slate-600" />
+                                                                <span className="text-sky-400 font-medium">{tx.toWallet?.name}</span>
+                                                            </div>
+                                                        ) : (
+                                                            <>
+                                                                {tx.category?.name && tx.description && (
+                                                                    <span className="text-slate-400 bg-slate-800/50 px-1.5 rounded">{tCategory(tx.category?.name)}</span>
+                                                                )}
+                                                                {tx.wallet && (
+                                                                    <span className="text-sky-400 font-medium">{tx.wallet.name}</span>
+                                                                )}
+                                                            </>
                                                         )}
                                                         {/* Tags */}
                                                         {tx.tags && tx.tags.length > 0 && (
@@ -87,8 +103,8 @@ export function FullTransactionList({ transactions }) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className={`font-semibold whitespace-nowrap pl-2 ${isExpense ? 'text-slate-200' : 'text-emerald-400'}`}>
-                                                {isExpense ? '- ' : '+ '}
+                                            <div className={`font-semibold whitespace-nowrap pl-2 ${tx.type === 'expense' ? 'text-slate-200' : (tx.type === 'transfer' ? 'text-sky-400' : 'text-emerald-400')}`}>
+                                                {tx.type === 'expense' ? '- ' : (tx.type === 'transfer' ? '' : '+ ')}
                                                 {formatMoney(tx.amount)}
                                             </div>
                                         </div>

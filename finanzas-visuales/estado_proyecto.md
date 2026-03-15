@@ -8,7 +8,7 @@
 > 2. `guia_acceso.md` (Para procesos de instalación y acceso)
 > 3. `estado_proyecto.md` (Este documento, para el estado actual, UX y Changelog)
 
-El proyecto **Finanzas Visuales** (v1.3.05) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas (como Supabase) para garantizar la máxima privacidad y velocidad.
+El proyecto **Finanzas Visuales** (v1.4.10) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas (como Supabase) para garantizar la máxima privacidad y velocidad.
 
 ## Tecnologías Principales
 
@@ -36,7 +36,8 @@ Según la documentación (`CARACTERISTICAS.md` y `CHANGELOG.md`), la aplicación
   - Almacenamiento exclusivamente local.
   - Modo "Privacidad" (ocultar importes momentáneamente).
   - Zona de peligro (reinicio completo) y copias de seguridad (JSON y `.xlsx`).
-- **Aspectos Visuales:** Adaptabilidad total en temas (9 paletas distintas), avatar propio y adaptación multilingüe.
+- **Hábitos (Novedad):** Rastreador de rutinas con metas semanales, progreso visual, reordenación mediante arrastre (drag & drop), vista de 7 días completa y registro diario con efectos visuales tipo "explosión" de confeti.
+- **Aspectos Visuales:** Adaptabilidad total en temas (10 paletas distintas incluyendo Mondrian), avatar propio y adaptación multilingüe.
 
 ## Cambios Recientes (Git)
 
@@ -57,6 +58,19 @@ Los últimos commits de la rama `main` enfocan la mejora en la manipulación de 
 - **Transacciones**: Se habilitó la opción de marcar una transacción como "Recurrente" también al momento de editarla, no solo al crearla.
 - **Cuentas y Proyectos**: Se simplificó la vista al eliminar el literal del tipo de cuenta, dejando visible únicamente el nombre y el saldo.
 - **Calendario**: Se implementó el redondeo sin decimales en todos los saldos diarios mostrados en la cuadrícula.
+- **Transacciones de Traspaso (v1.4.10)**:
+  - Se añadió el tipo de transacción "Traspaso" para movimientos de fondos entre cuentas propias.
+  - Interfaz dedicada que oculta categorías y permite elegir cuenta de origen y destino.
+  - Lógica de balance balanceada (resta en origen, suma en destino).
+  - Visualización distintiva en las listas con icono de doble flecha y color azul.
+- **Refinamiento de Hábitos y Notificaciones (v1.4.10)**:
+  - **Recordatorios Inteligentes**: Sistema de notificaciones PWA con interruptor On/Off personalizado.
+  - **Modal de Permisos**: Ventana elegante de pre-autorización para solicitar permisos de notificación con estética acorde a la app.
+  - **Internacionalización**: Traducción completa de estadísticas (Rachas, Mejores marcas) y días de la semana en todos los idiomas (ES, EN, GL, EU, CA).
+  - **Persistencia en Excel/JSON**: Los hábitos y sus logs ahora se incluyen en todos los sistemas de copia de seguridad y exportación.
+  - **Reordenación**: Capacidad de reordenar hábitos mediante *Drag & Drop*.
+  - **Vista de 7 Días**: El registro rápido ahora muestra los últimos 7 días completos.
+  - **Micro-interacciones**: Efecto de "explosión" de confeti al completar hábitos.
 - **Resumen y Balances**:
   - Se retiraron los decimales de la pantalla inicial en las variables de Ingresos, Gastos y Balance Total, así como en los desgloses por categoría.
   - En el historial (6m, 12m, 24m, ∞) se eliminaron las estadísticas de "Mejor mes" y "Peor mes" y se retiraron los decimales en todos los reportes de saldo.
@@ -64,6 +78,9 @@ Los últimos commits de la rama `main` enfocan la mejora en la manipulación de 
 - **Temas Visuales**:
   - Se han rediseñado por completo las 9 paletas de colores en `globals.css` priorizando el contraste premium estilo SaaS/OLED.
   - Se sustituyeron 3 temas menos usados por **versiones claras (Light Mode)**: *Claro Cielo, Claro Menta y Claro Cálido*, ajustando correctamente las paletas Zinc y Stone invertidas para su total legibilidad.
+  - Se incorporó el nuevo tema **"Estilo Mondrian"**, con un contraste máximo tipo *De Stijl*, esquinas ortogonales, fondos negros puros y colores primarios saturados.
+- **Novedades Dinámicas**: Se implementó un sistema (`WhatsNewModal`) para mostrar un popup atractivo e interactivo con "Lo Nuevo" únicamente cuando el usuario actualiza a una nueva versión, con opción de aplicar cambios (como el tema) directamente desde ahí.
+- **Centro de Ayuda y Prestaciones**: Rediseño completo de la vista de ayuda interna de la aplicación (ahora "Conoce Visualis"), abandonando las listas de texto plano por un un layout de tarjetas con brillos *glassmorphism*, estructurado, muy atractivo visualmente.
 
 ## Próximos Posibles Pasos
 
@@ -72,6 +89,26 @@ La arquitectura inicial parece estar completa y robusta en cuanto a gestión de 
 ---
 
 ## Historial de Versiones (Changelog Recopilado)
+
+### [1.4.10] - Recordatorios y Traspasos
+
+- **Añadido**: Sistema de **Recordatorios de Hábitos** con notificaciones PWA y modal de permisos premium.
+- **Añadido**: Nueva funcionalidad de **Traspasos entre cuentas**, permitiendo mover dinero sin afectar al flujo de ingresos/gastos globales.
+- **Añadido**: Los hábitos ahora se guardan en los archivos JSON y Excel de copia de seguridad.
+- **Mejora**: Traducción completa de todas las etiquetas de hábitos y días de la semana en todos los idiomas.
+- **Mejora**: Integración de avisos de versión (`WhatsNewModal`) automáticos para destacar novedades.
+
+### [1.3.05] - Mondrian y UI Premium
+
+- **Añadido**: Tema *Estilo Mondrian* con un agresivo contraste basado en negro, líneas blancas y colores primarios puros.
+- **Añadido**: Nuevo módulo de **Seguimiento de Hábitos** (Habit Tracker) con:
+  - Metas semanales y anillos de progreso reactivos.
+  - Vista completa de los últimos 7 días.
+  - Sistema de reordenación por arrastre.
+  - Efectos visuales de confeti/explosión al completar tareas.
+  - Mini heatmap de consistencia de 21 días optimizado para móvil.
+- **Añadido**: Nuevo componente de aviso automarzido de actualizaciones (`WhatsNewModal`).
+- **Mejora**: Rediseño estético y de estructura del panel de ayuda y prestaciones (`VersionHelp.jsx`).
 
 ### [1.1.31] - Base del Local-First
 

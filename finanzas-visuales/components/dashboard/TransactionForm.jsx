@@ -5,7 +5,7 @@ import { useStore } from '@/hooks/useStore'
 import { Button, Card, useToast } from '@/components/ui/UI'
 import { ConfirmDialog } from '@/components/ui/ConfirmDialog'
 import { CalculatorModal } from '@/components/ui/CalculatorModal'
-import { X, ChevronLeft, ChevronDown, Calendar as CalendarIcon, Tag, MessageSquare, Wallet, Trash2, Split, PlusCircle, MinusCircle, Smile, Repeat } from 'lucide-react'
+import { X, ChevronLeft, ChevronDown, Calendar as CalendarIcon, Tag, MessageSquare, Wallet, Trash2, Split, PlusCircle, MinusCircle, Smile, Repeat, ArrowRightLeft } from 'lucide-react'
 import * as LucideIcons from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useLanguage } from '@/lib/i18n'
@@ -21,6 +21,7 @@ export function TransactionForm() {
     const [type, setType] = useState('expense')
     const [amount, setAmount] = useState('')
     const [walletId, setWalletId] = useState('')
+    const [toWalletId, setToWalletId] = useState('')
     const [isSubmitting, setIsSubmittingState] = useState(false)
     const isSubmittingRef = useRef(false)
 
@@ -56,6 +57,7 @@ export function TransactionForm() {
                 setType(editingTransaction.type)
                 setAmount(editingTransaction.amount !== undefined && editingTransaction.amount !== null ? editingTransaction.amount.toString() : '')
                 setWalletId(editingTransaction.walletId ? Number(editingTransaction.walletId) : '')
+                setToWalletId(editingTransaction.toWalletId ? Number(editingTransaction.toWalletId) : '')
 
                 // Set Category (Parent or Child)
                 const currentCatId = editingTransaction.categoryId ? Number(editingTransaction.categoryId) : null
@@ -88,6 +90,7 @@ export function TransactionForm() {
                 setAmount('')
                 setCategoryId(null)
                 setSelectedParentId(null)
+                setToWalletId('')
                 setDescription('')
                 setTagsInput('')
                 setEmotion(null)
@@ -132,6 +135,10 @@ export function TransactionForm() {
             addToast(t('validation_wallet'), 'error')
             return
         }
+        if (type === 'transfer' && !toWalletId) {
+            addToast(t('select_destination'), 'error')
+            return
+        }
 
         const value = parseFloat(amount)
         if (isNaN(value)) {
@@ -170,49 +177,44 @@ export function TransactionForm() {
         try {
             await db.transaction('rw', db.transactions, db.wallets, db.recurring, async () => {
 
-                // IF EDITING: Revert old transaction effect first
+                // IF EDITING: Revert old transaction effects first
                 if (editingTransaction) {
+                    // Revert Source Wallet
                     if (editingTransaction.walletId) {
-                        const oldWallet = await db.wallets.get(Number(editingTransaction.walletId))
-                        if (oldWallet) {
-                            const revertAmount = editingTransaction.type === 'income'
-                                ? -editingTransaction.amount
-                                : editingTransaction.amount
-
-                            await db.wallets.update(Number(editingTransaction.walletId), {
-                                balance: oldWallet.balance + revertAmount
-                            })
+                        const wallet = await db.wallets.get(Number(editingTransaction.walletId))
+                        if (wallet) {
+                            const revertAmount = editingTransaction.type === 'income' ? -editingTransaction.amount : editingTransaction.amount
+                            await db.wallets.update(wallet.id, { balance: wallet.balance + revertAmount })
+                        }
+                    }
+                    // Revert Destination Wallet (if it was a transfer)
+                    if (editingTransaction.type === 'transfer' && editingTransaction.toWalletId) {
+                        const toWallet = await db.wallets.get(Number(editingTransaction.toWalletId))
+                        if (toWallet) {
+                            await db.wallets.update(toWallet.id, { balance: toWallet.balance - editingTransaction.amount })
                         }
                     }
 
                     // Update the transaction record
                     await db.transactions.update(Number(editingTransaction.id), {
                         walletId: Number(walletId),
+                        toWalletId: type === 'transfer' ? Number(toWalletId) : null,
                         categoryId: categoryId ? Number(categoryId) : null,
                         amount: value,
                         type,
                         description: description || '',
                         tags,
                         date: txDate,
-                        emotion: emotion || null, // Ensure null if empty
+                        emotion: emotion || null,
                     })
-
-                    const targetWallet = await db.wallets.get(Number(walletId))
-                    if (targetWallet) {
-                        const applyAmount = type === 'income' ? value : -value
-                        await db.wallets.update(Number(walletId), {
-                            balance: targetWallet.balance + applyAmount
-                        })
-                    }
-
                 } else {
                     // NEW TRANSACTION
                     if (isSplitMode) {
-                        // Create multiple transactions
                         for (const split of splits) {
                             const splitValue = parseFloat(split.amount)
                             await db.transactions.add({
                                 walletId: Number(walletId),
+                                toWalletId: null, // Splits are usually expenses/income
                                 categoryId: split.categoryId ? Number(split.categoryId) : null,
                                 amount: splitValue,
                                 type,
@@ -223,9 +225,9 @@ export function TransactionForm() {
                             })
                         }
                     } else {
-                        // Standard Single Transaction
                         await db.transactions.add({
                             walletId: Number(walletId),
+                            toWalletId: type === 'transfer' ? Number(toWalletId) : null,
                             categoryId: categoryId ? Number(categoryId) : null,
                             amount: value,
                             type,
@@ -235,14 +237,19 @@ export function TransactionForm() {
                             emotion: emotion || null,
                         })
                     }
+                }
 
-                    // Apply NEW transaction total effect (Split or Single, total is the same for wallet)
+                // Apply NEW effects
+                if (type === 'transfer') {
+                    const src = await db.wallets.get(Number(walletId))
+                    if (src) await db.wallets.update(src.id, { balance: src.balance - value })
+                    const dest = await db.wallets.get(Number(toWalletId))
+                    if (dest) await db.wallets.update(dest.id, { balance: dest.balance + value })
+                } else {
                     const targetWallet = await db.wallets.get(Number(walletId))
                     if (targetWallet) {
                         const applyAmount = type === 'income' ? value : -value
-                        await db.wallets.update(Number(walletId), {
-                            balance: targetWallet.balance + applyAmount
-                        })
+                        await db.wallets.update(targetWallet.id, { balance: targetWallet.balance + applyAmount })
                     }
                 }
 
@@ -287,17 +294,19 @@ export function TransactionForm() {
 
         try {
             await db.transaction('rw', db.transactions, db.wallets, async () => {
-                // 1. Revert Wallet Balance
+                // 1. Revert Wallet Balances
                 if (editingTransaction.walletId) {
                     const wallet = await db.wallets.get(Number(editingTransaction.walletId))
                     if (wallet) {
-                        const revertAmount = editingTransaction.type === 'income'
-                            ? -editingTransaction.amount
-                            : editingTransaction.amount
-
-                        await db.wallets.update(Number(editingTransaction.walletId), {
-                            balance: wallet.balance + revertAmount
-                        })
+                        const revertAmount = editingTransaction.type === 'income' ? -editingTransaction.amount : editingTransaction.amount
+                        await db.wallets.update(wallet.id, { balance: wallet.balance + revertAmount })
+                    }
+                }
+                // Revert Destination Wallet if it was a transfer
+                if (editingTransaction.type === 'transfer' && editingTransaction.toWalletId) {
+                    const toWallet = await db.wallets.get(Number(editingTransaction.toWalletId))
+                    if (toWallet) {
+                        await db.wallets.update(toWallet.id, { balance: toWallet.balance - editingTransaction.amount })
                     }
                 }
 
@@ -357,9 +366,13 @@ export function TransactionForm() {
                             onClick={() => { setType('income'); setCategoryId(null); setSelectedParentId(null); }}
                             className={cn("flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all", type === 'income' ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/20" : "text-slate-400 hover:text-slate-200")}
                         >{t('income')}</button>
+                        <button
+                            onClick={() => { setType('transfer'); setCategoryId(null); setSelectedParentId(null); setIsSplitMode(false); }}
+                            className={cn("flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all", type === 'transfer' ? "bg-sky-500 text-white shadow-lg shadow-sky-500/20" : "text-slate-400 hover:text-slate-200")}
+                        >{t('transfer')}</button>
                     </div>
 
-                    {!editingTransaction && (
+                    {!editingTransaction && type !== 'transfer' && (
                         <div className="flex items-center justify-between px-2">
                             <span className="text-xs text-slate-500 font-medium uppercase tracking-wider">Modo Desglose</span>
                             <button
@@ -398,7 +411,7 @@ export function TransactionForm() {
                             </button>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-3">
+                        <div className={cn("grid gap-3", type === 'transfer' ? "grid-cols-1" : "grid-cols-2")}>
                             {/* Date */}
                             <div className="relative">
                                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"><CalendarIcon className="w-4 h-4" /></span>
@@ -410,27 +423,62 @@ export function TransactionForm() {
                                 />
                             </div>
 
-                            {/* Wallet */}
-                            <div className="relative">
-                                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"><Wallet className="w-4 h-4" /></span>
-                                <select
-                                    value={walletId}
-                                    onChange={(e) => setWalletId(parseInt(e.target.value))}
-                                    className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 pl-9 pr-8 text-sm text-slate-200 focus:outline-none focus:border-sky-500 appearance-none"
-                                >
-                                    <option value="" disabled>{t('select_wallet')}</option>
-                                    {wallets?.map(w => (
-                                        <option key={w.id} value={w.id}>{w.name}</option>
-                                    ))}
-                                </select>
-                                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" />
-                            </div>
+                            {/* Wallet Selection */}
+                            {type !== 'transfer' ? (
+                                <div className="relative">
+                                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"><Wallet className="w-4 h-4" /></span>
+                                    <select
+                                        value={walletId}
+                                        onChange={(e) => setWalletId(parseInt(e.target.value))}
+                                        className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 pl-9 pr-8 text-sm text-slate-200 focus:outline-none focus:border-sky-500 appearance-none"
+                                    >
+                                        <option value="" disabled>{t('select_wallet')}</option>
+                                        {wallets?.map(w => (
+                                            <option key={w.id} value={w.id}>{w.name}</option>
+                                        ))}
+                                    </select>
+                                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" />
+                                </div>
+                            ) : (
+                                <div className="space-y-3 animate-in fade-in slide-in-from-top-2 duration-300">
+                                    <div className="grid grid-cols-[1fr,auto,1fr] items-center gap-2">
+                                        <div className="relative">
+                                            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"><Wallet className="w-4 h-4" /></span>
+                                            <select
+                                                value={walletId}
+                                                onChange={(e) => setWalletId(parseInt(e.target.value))}
+                                                className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 pl-9 pr-8 text-xs text-slate-200 focus:outline-none focus:border-sky-500 appearance-none"
+                                            >
+                                                <option value="" disabled>{t('wallet_source')}</option>
+                                                {wallets?.map(w => (
+                                                    <option key={w.id} value={w.id}>{w.name}</option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                        <ArrowRightLeft className="w-4 h-4 text-sky-500" />
+                                        <div className="relative">
+                                            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"><Wallet className="w-4 h-4" /></span>
+                                            <select
+                                                value={toWalletId}
+                                                onChange={(e) => setToWalletId(parseInt(e.target.value))}
+                                                className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 pl-9 pr-8 text-xs text-slate-200 focus:outline-none focus:border-sky-500 appearance-none"
+                                            >
+                                                <option value="" disabled>{t('wallet_destination')}</option>
+                                                {wallets?.filter(w => w.id !== walletId).map(w => (
+                                                    <option key={w.id} value={w.id}>{w.name}</option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
 
-                    {/* 2. Category Selection (Integrated or Split) */}
-                    <div className="space-y-3">
-                        <label className="text-xs font-medium text-slate-500 uppercase tracking-wider block">{t('category')}</label>
+                    {/* 2. Category Selection (Integrated or Split or Hidden for Transfer) */}
+                    {type !== 'transfer' && (
+                        <div className="space-y-3">
+                            <label className="text-xs font-medium text-slate-500 uppercase tracking-wider block">{t('category')}</label>
 
                         {isSplitMode ? (
                             <div className="space-y-3 animate-in fade-in slide-in-from-top-2 duration-300">
@@ -582,7 +630,8 @@ export function TransactionForm() {
                                 )}
                             </>
                         )}
-                    </div>
+                        </div>
+                    )}
 
                     {/* 3. Optional Details */}
                     <div className="space-y-4 pt-2 border-t border-slate-800">
@@ -704,11 +753,11 @@ export function TransactionForm() {
                     <Button
                         onClick={handleSubmit}
                         className="w-full py-6 text-lg rounded-xl flex-1"
-                        variant={type === 'expense' ? 'danger' : 'default'}
+                        variant={type === 'expense' ? 'danger' : (type === 'transfer' ? 'sky' : 'default')}
                         // Allow saving if amount is present. Category check happens inside handleSubmit depending on split mode
                         disabled={!amount || isSubmitting}
                     >
-                        {isSubmitting ? 'Guardando...' : (editingTransaction ? t('update') : `${t('save')} ${type === 'expense' ? t('expense') : t('income')}`)}
+                        {isSubmitting ? 'Guardando...' : (editingTransaction ? t('update') : `${t('save')} ${type === 'expense' ? t('expense') : (type === 'income' ? t('income') : t('transfer'))}`)}
                     </Button>
                 </div>
 

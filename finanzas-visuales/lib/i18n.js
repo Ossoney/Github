@@ -18,7 +18,9 @@ const dictionaries = {
         income: 'Ingresos',
         expense: 'Gastos',
         result: 'Resultado',
-        month: 'Mes',
+        transfer: 'Traspaso',
+        month: 'mes',
+        week: 'semana',
         settings: 'Configuración',
         profile: 'Perfil',
         accounts: 'Cuentas/Proyectos',
@@ -70,6 +72,9 @@ const dictionaries = {
 
         // Transaction Form
         select_wallet: 'Selecciona cuenta',
+        select_destination: 'Selecciona destino',
+        wallet_source: 'Cuenta Origen',
+        wallet_destination: 'Cuenta Destino',
         change: 'Cambiar',
         back_to_categories: 'Volver a Categorías',
         optional_note: 'Nota opcional...',
@@ -97,6 +102,12 @@ const dictionaries = {
         confirm_delete_account: '¿Seguro que quieres borrar esta cuenta? Se mantendrán las transacciones pero quedarán huérfanas.',
 
         recurring_transactions: 'Recurrentes',
+        notifications_title: 'Activar Notificaciones',
+        notifications_desc: 'Para que podamos recordarte tus hábitos y transacciones recurrentes, necesitamos tu permiso para mostrar notificaciones en este dispositivo.',
+        notifications_btn: 'Permitir Notificaciones',
+        notifications_cancel: 'Más tarde',
+        notifications_granted: '¡Listo! Las notificaciones están activas.',
+        notifications_denied: 'Las notificaciones están bloqueadas. Puedes cambiarlas en los ajustes de tu navegador.',
         new_recurring: 'Nueva Recurrente',
         edit_recurring: 'Editar Recurrente',
         select_account: 'Selecciona Cuenta',
@@ -130,7 +141,7 @@ const dictionaries = {
         data: 'Datos',
         language: 'Idioma',
         version_help: 'Versión/Ayuda',
-        version_date: 'Febrero 2026',
+        version_date: 'Marzo 2026',
 
         // Profile Settings
         user_profile: 'Perfil de Usuario',
@@ -273,6 +284,34 @@ const dictionaries = {
         projected: 'Proyecciones (Recurrentes)',
         transactions: 'Movimientos Reales',
 
+        // Habits
+        habits: 'Hábitos',
+        habit_tracker: 'Seguimiento de Hábitos',
+        new_habit: 'Nuevo Hábito',
+        edit_habit: 'Editar Hábito',
+        habit_name: 'Nombre del hábito',
+        habit_goal: 'Meta',
+        goal_per_week: '{n} a la semana',
+        habit_frequency: 'Frecuencia',
+        no_habits: 'Todavía no tienes hábitos.',
+        confirm_delete_habit: '¿Eliminar hábito?',
+        weekly_progress: 'Progreso Semanal',
+        current_streak: 'Racha Actual',
+        best_streak: 'Mejor Racha',
+        consistency_last_30_days: 'Consistencia (30 días)',
+        days_streak: '{n} días',
+        day_m: 'L', day_t: 'M', day_w: 'X', day_th: 'J', day_f: 'V', day_s: 'S', day_su: 'D',
+        score: 'Puntuación',
+        streak: 'Racha',
+        best: 'Mejor',
+        monthly_consistency: 'Consistencia Mensual',
+        close: 'Cerrar',
+        reminder: 'Recordatorio',
+        activated: 'Activado',
+        not_set: 'Sin configurar',
+        daily_reminder: 'Recordatorio diario',
+        notification_info: 'Puedes configurar la hora del recordatorio editando el hábito. Las notificaciones dependen de los permisos de tu navegador.',
+
         // Category Translations (ES defaults - map to themselves or variations)
         category_names: {
             // Keeps original Spanish as fallback, but defined here for consistency if we wanted to rename
@@ -290,7 +329,9 @@ const dictionaries = {
         income: 'Income',
         expense: 'Expenses',
         result: 'Result',
-        month: 'Month',
+        transfer: 'Transfer',
+        month: 'month',
+        week: 'week',
         settings: 'Settings',
         profile: 'Profile',
         accounts: 'Accounts/Projects',
@@ -364,6 +405,34 @@ const dictionaries = {
         projected: 'Projected (Recurring)',
         transactions: 'Actual Transactions',
 
+        // Habits
+        habits: 'Habits',
+        habit_tracker: 'Habit Tracker',
+        new_habit: 'New Habit',
+        edit_habit: 'Edit Habit',
+        habit_name: 'Habit name',
+        habit_goal: 'Goal',
+        goal_per_week: '{n} per week',
+        habit_frequency: 'Frequency',
+        no_habits: 'No habits yet.',
+        confirm_delete_habit: 'Delete habit?',
+        weekly_progress: 'Weekly Progress',
+        current_streak: 'Current Streak',
+        best_streak: 'Best Streak',
+        consistency_last_30_days: 'Consistency (30 days)',
+        days_streak: '{n} days',
+        score: 'Score',
+        close: 'Close',
+        reminder: 'Reminder',
+        activated: 'Enabled',
+        not_set: 'Not set',
+        daily_reminder: 'Daily reminder',
+        notification_info: 'You can set the reminder time by editing the habit. Notifications depend on your browser permissions.',
+        streak: 'Streak',
+        best: 'Best',
+        monthly_consistency: 'Monthly Consistency',
+        day_m: 'M', day_t: 'T', day_w: 'W', day_th: 'T', day_f: 'F', day_s: 'S', day_su: 'S',
+
         // Wallet Summary
         global_total: 'GLOBAL TOTAL',
         net_worth: 'Net Worth',
@@ -383,6 +452,9 @@ const dictionaries = {
 
         // Transaction Form
         select_wallet: 'Select Wallet',
+        select_destination: 'Select Destination',
+        wallet_source: 'Source Account',
+        wallet_destination: 'Destination Account',
         change: 'Change',
         back_to_categories: 'Back to Categories',
         optional_note: 'Optional note...',
@@ -410,6 +482,12 @@ const dictionaries = {
         confirm_delete_account: 'Are you sure? Transactions will remain but become orphaned.',
 
         recurring_transactions: 'Recurring',
+        notifications_title: 'Enable Notifications',
+        notifications_desc: 'To remind you of your habits and recurring transactions, we need your permission to show notifications on this device.',
+        notifications_btn: 'Allow Notifications',
+        notifications_cancel: 'Later',
+        notifications_granted: 'Ready! Notifications are active.',
+        notifications_denied: 'Notifications are blocked. You can change them in your browser settings.',
         new_recurring: 'New Recurring',
         edit_recurring: 'Edit Recurring',
         select_account: 'Select Wallet',
@@ -443,7 +521,7 @@ const dictionaries = {
         data: 'Data',
         language: 'Language',
         version_help: 'Version/Help',
-        version_date: 'February 2026',
+        version_date: 'March 2026',
 
         // Profile Settings
         user_profile: 'User Profile',
@@ -756,7 +834,7 @@ const dictionaries = {
         data: 'Datos',
         language: 'Idioma',
         version_help: 'Versión/Axuda',
-        version_date: 'Febreiro 2026',
+        version_date: 'Marzo 2026',
 
         // Profile Settings
         user_profile: 'Perfil de Usuario',
@@ -856,6 +934,33 @@ const dictionaries = {
         autosave_enabled: 'Activar Autogardar',
         autosave_desc: 'Garda unha copia de seguridade local no navegador cada 24 horas (formato JSON).',
 
+        // Habits
+        habits: 'Hábitos',
+        habit_tracker: 'Seguimento de Hábitos',
+        new_habit: 'Novo Hábito',
+        edit_habit: 'Editar Hábito',
+        habit_name: 'Nome do hábito',
+        habit_goal: 'Meta',
+        goal_per_week: '{n} á semana',
+        habit_frequency: 'Frecuencia',
+        no_habits: 'Aínda non tes hábitos.',
+        confirm_delete_habit: '¿Eliminar hábito?',
+        weekly_progress: 'Progreso Semanal',
+        current_streak: 'Racha Actual',
+        best_streak: 'Mellor Racha',
+        consistency_last_30_days: 'Consistencia (30 días)',
+        days_streak: '{n} días',
+        day_m: 'L', day_t: 'M', day_w: 'M', day_th: 'X', day_f: 'V', day_s: 'S', day_su: 'D',
+        score: 'Puntuación',
+        streak: 'Racha',
+        best: 'Mellor',
+        monthly_consistency: 'Consistencia Mensual',
+        close: 'Pechar',
+        reminder: 'Lembrete',
+        activated: 'Activado',
+        not_set: 'Sen configurar',
+        daily_reminder: 'Lembrete diario',
+        notification_info: 'Podes configurar a hora do lembrete editando o hábito. As notificacións dependen dos permisos do teu navegador.',
 
         // Category Translations
         category_names: {
@@ -1134,6 +1239,7 @@ const dictionaries = {
         data: 'Datuak',
         language: 'Hizkuntza',
         version_help: 'Bertsioa/Laguntza',
+        version_date: '2026ko Martxoa',
         // Donation
         donation_title: 'Gonbidatu kafe bat hartzera',
         donation_desc: 'Visualis baliagarria bazaizu, garapena babestu dezakezu dohaintza txiki batekin.',
@@ -1143,6 +1249,10 @@ const dictionaries = {
         suggestions_title: 'Iradokizunak eta Akatsak',
         suggestions_desc: 'Iradokizunak edo akatsak badituzu, idatzi iezadazu helbide honetara:',
 
+        streak: 'Segida',
+        best: 'Onena',
+        monthly_consistency: 'Hileroko Koherentzia',
+        day_m: 'Al', day_t: 'As', day_w: 'Az', day_th: 'Og', day_f: 'Or', day_s: 'Lr', day_su: 'Ig',
         profile_saved: 'Profila ondo gorde da',
         customize_home: 'Hasiera Pertsonalizatu',
         customize_home_desc: 'Muestra "Las finanzas de [Nombre]" en lugar del texto por defecto.',
@@ -1299,7 +1409,7 @@ const dictionaries = {
         data: 'Dades',
         language: 'Idioma',
         version_help: 'Versió/Ajuda',
-        version_date: 'Febrer 2026',
+        version_date: 'Març 2026',
 
         // Profile Settings
         user_profile: 'Perfil d\'Usuari',
@@ -1321,9 +1431,13 @@ const dictionaries = {
             wine: 'Vi Selecte',
             'light-sky': 'Cel Àrtic',
             'light-mint': 'Oasi Maragda',
-            'light-warm': 'Horitzó Ambre',
-            import_success: '✅ Importació completada. S\'han restaurat {count} transaccions.',
-            import_error: '❌ Error en importar: ',
+        },
+        streak: 'Ratxa',
+        best: 'Millor',
+        monthly_consistency: 'Consistència Mensual',
+        day_m: 'Dl', day_t: 'Dm', day_w: 'Dx', day_th: 'Dj', day_f: 'Dv', day_s: 'Ds', day_su: 'Dg',
+        import_success: '✅ Importació completada. S\'han restaurat {count} transaccions.',
+        import_error: '❌ Error en importar: ',
 
             // Category Translations
             category_names: {
@@ -1414,8 +1528,7 @@ const dictionaries = {
                 'Ocio Diverso': 'Oci Divers',
                 'Ventas Segunda Mano': 'Vendes Segona Mà',
                 'Otras Deudas': 'Altres Deutes'
-            }
-        },
+        }
     }
 }
 

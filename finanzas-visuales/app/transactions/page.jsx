@@ -61,7 +61,8 @@ export default function TransactionsPage() {
         const enriched = results.map(tx => ({
             ...tx,
             category: catMap.get(tx.categoryId),
-            wallet: walletMap.get(tx.walletId)
+            wallet: walletMap.get(tx.walletId),
+            toWallet: tx.toWalletId ? walletMap.get(tx.toWalletId) : null
         }))
 
         return enriched.filter(tx => {
@@ -69,7 +70,7 @@ export default function TransactionsPage() {
             if (filters.type !== 'all' && tx.type !== filters.type) return false
 
             // Wallet
-            if (filters.walletId !== 'all' && Number(tx.walletId) !== Number(filters.walletId)) return false
+            if (filters.walletId !== 'all' && Number(tx.walletId) !== Number(filters.walletId) && Number(tx.toWalletId) !== Number(filters.walletId)) return false
 
             // Category
             if (filters.categoryId !== 'all' && Number(tx.categoryId) !== Number(filters.categoryId)) return false

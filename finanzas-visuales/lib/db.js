@@ -297,12 +297,58 @@ if (isBrowser) {
         }
     });
 
-    // Seed data
+    // Version 10: Habits Tracker with Order
+    db.version(10).stores({
+        wallets: '++id, name, type, order',
+        categories: '++id, name, type, parentId',
+        transactions: '++id, walletId, categoryId, date, type, emotion, *tags',
+        settings: 'id',
+        recurring: '++id, walletId, categoryId, dayOfMonth, type, active',
+        tags: '++id, name',
+        budgets: '++id, categoryId, amount, type',
+        habits: '++id, name, goal, frequency, order',
+        habitLogs: '++id, habitId, date',
+    }).upgrade(async tx => {
+        await tx.habits.toCollection().modify((habit) => {
+            if (habit.order === undefined) {
+                habit.order = habit.id;
+            }
+        });
+    });
+
+    // Version 13: Habits with enabled reminders toggle
+    db.version(13).stores({
+        wallets: '++id, name, type, order',
+        categories: '++id, name, type, parentId',
+        transactions: '++id, walletId, toWalletId, categoryId, date, type, emotion, *tags',
+        settings: 'id',
+        recurring: '++id, walletId, categoryId, dayOfMonth, type, active',
+        tags: '++id, name',
+        budgets: '++id, categoryId, amount, type',
+        habits: '++id, name, goal, frequency, order, reminderTime, reminderEnabled',
+        habitLogs: '++id, habitId, date',
+    }).upgrade(async tx => {
+        await tx.habits.toCollection().modify(habit => {
+            if (habit.reminderEnabled === undefined) {
+                habit.reminderEnabled = !!habit.reminderTime;
+            }
+        });
+    });
+}
+
+// Seed data
+if (isBrowser) {
     db.on('populate', async () => {
-        // 1. Wallets
         // 1. Wallets
         await db.wallets.bulkAdd([
             { name: 'Mi día a día', type: 'bank', balance: 0, currency: 'EUR', isDefault: true },
+        ]);
+
+        // 2. Habits Seed Data
+        await db.habits.bulkAdd([
+            { name: 'Leer un libro', goal: 1, frequency: 'week', color: '#3b82f6', icon: 'Book', order: 1 },
+            { name: 'Hacer ejercicio', goal: 3, frequency: 'week', color: '#ef4444', icon: 'Activity', order: 2 },
+            { name: 'Estudiar', goal: 3, frequency: 'week', color: '#10b981', icon: 'BookOpen', order: 3 }
         ]);
 
         // 2. Income Categories
@@ -535,7 +581,7 @@ export const exportDB = async () => {
         tables: {}
     };
 
-    const tables = ['wallets', 'categories', 'transactions', 'settings', 'recurring', 'tags', 'budgets'];
+    const tables = ['wallets', 'categories', 'transactions', 'settings', 'recurring', 'tags', 'budgets', 'habits', 'habitLogs'];
 
     for (const tableName of tables) {
         data.tables[tableName] = await db.table(tableName).toArray();
@@ -553,7 +599,7 @@ export const importDB = async (data) => {
         throw new Error('Invalid backup format');
     }
 
-    const tables = ['wallets', 'categories', 'transactions', 'settings', 'recurring', 'tags', 'budgets'];
+    const tables = ['wallets', 'categories', 'transactions', 'settings', 'recurring', 'tags', 'budgets', 'habits', 'habitLogs'];
 
     await db.transaction('rw', tables.map(t => db.table(t)), async () => {
         // 1. Clear all existing data
@@ -582,11 +628,23 @@ export const recalculateBalances = async () => {
     return await db.transaction('rw', db.wallets, db.transactions, async () => {
         const wallets = await db.wallets.toArray();
         for (const wallet of wallets) {
-            const txs = await db.transactions.where('walletId').equals(wallet.id).toArray();
-            const newBalance = txs.reduce((acc, tx) => {
-                return acc + (tx.type === 'income' ? tx.amount : -tx.amount);
+            // Outflow: Income (+) / Expense (-) / Transfer (Out) (-)
+            const txsAsSource = await db.transactions.where('walletId').equals(wallet.id).toArray();
+            const sourceBalance = txsAsSource.reduce((acc, tx) => {
+                if (tx.type === 'income') return acc + tx.amount;
+                if (tx.type === 'expense') return acc - tx.amount;
+                if (tx.type === 'transfer') return acc - tx.amount;
+                return acc;
             }, 0);
-            await db.wallets.update(wallet.id, { balance: newBalance });
+
+            // Inflow: Transfer (In) (+)
+            const txsAsDestination = await db.transactions.where('toWalletId').equals(wallet.id).toArray();
+            const destinationBalance = txsAsDestination.reduce((acc, tx) => {
+                if (tx.type === 'transfer') return acc + tx.amount;
+                return acc;
+            }, 0);
+
+            await db.wallets.update(wallet.id, { balance: sourceBalance + destinationBalance });
         }
     });
 };

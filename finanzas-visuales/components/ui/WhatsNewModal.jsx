@@ -5,7 +5,7 @@ import { Modal, Button } from '@/components/ui/UI'
 import { Sparkles, Palette, Zap } from 'lucide-react'
 import { db } from '@/lib/db'
 
-const CURRENT_VERSION = '1.3.05'
+const CURRENT_VERSION = '1.4.10'
 
 export function WhatsNewModal() {
     const [isOpen, setIsOpen] = useState(false)
@@ -49,20 +49,32 @@ export function WhatsNewModal() {
                     <div className="relative z-10 px-6 py-3 bg-black border-4 border-white shadow-[8px_8px_0px_rgba(37,99,235,1)]">
                         <h2 className="text-lg sm:text-2xl font-black text-white tracking-widest uppercase flex items-center gap-2">
                             <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-500" />
-                            Visualis 1.3.05
+                            Visualis 1.4.10
                         </h2>
                     </div>
                 </div>
 
                 <div className="p-6 space-y-6">
-                    <div>
-                        <h3 className="text-lg font-bold text-slate-100 flex items-center gap-2 mb-2">
-                            <Palette className="w-5 h-5 text-sky-500" />
-                            Nuevo Estilo Mondrian
-                        </h3>
-                        <p className="text-slate-400 text-sm leading-relaxed">
-                            Hemos rediseñado la interfaz con un nuevo y vibrante tema inspirado en el arte de De Stijl. Contraste puro, colores primarios y geometría afilada. Además, ahora cuentas con un completo rediseño de las características de la aplicación en los ajustes.
-                        </p>
+                    <div className="space-y-4">
+                        <div>
+                            <h3 className="text-lg font-bold text-slate-100 flex items-center gap-2 mb-1">
+                                <Palette className="w-5 h-5 text-sky-500" />
+                                Estilo Mondrian y Más
+                            </h3>
+                            <p className="text-slate-400 text-sm leading-relaxed">
+                                ¡El nuevo tema **Mondrian** ya está aquí! Contraste puro inspirado en el arte de De Stijl. Además, hemos rediseñado los paneles de ayuda con una estética premium.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 className="text-lg font-bold text-slate-100 flex items-center gap-2 mb-1">
+                                <Zap className="w-5 h-5 text-amber-500" />
+                                Hábitos con Recordatorios
+                            </h3>
+                            <p className="text-slate-400 text-sm leading-relaxed">
+                                Ahora puedes activar **recordatorios diarios** en tus hábitos con un nuevo sistema de notificaciones elegante y integrado. ¡No pierdas ni un solo día de tu racha!
+                            </p>
+                        </div>
                     </div>
 
                     <div className="flex gap-3 pt-2">

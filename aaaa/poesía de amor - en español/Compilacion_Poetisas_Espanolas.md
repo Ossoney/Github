@@ -1,0 +1,766 @@
+# Compilaci√≥n de las 10 Mejores Poetisas Espa√±olas de Todos los Tiempos
+
+Esta compilaci√≥n re√∫ne la vida y obra de diez mujeres fundamentales en la historia de la literatura espa√±ola.
+
+---
+
+## 1. Santa Teresa de Jes√∫s (1515 - 1582)
+
+### Biograf√≠a
+
+Teresa de Cepeda y Ahumada, m√°s conocida como Santa Teresa de Jes√∫s o Teresa de √Åvila, naci√≥ en Gotarrendura (√Åvila) en 1515. Fue una religiosa, doctora de la Iglesia Cat√≥lica, m√≠stica y escritora espa√±ola, fundadora de la Orden de las Carmelitas Descalzas. Su obra es una de las cumbres de la literatura m√≠stica universal. Combin√≥ una intensa actividad de reforma religiosa con una profunda producci√≥n literaria en la que destaca la sencillez del lenguaje y la intensidad de su experiencia espiritual. Muri√≥ en Alba de Tormes en 1582.
+
+### 10 Poemas Seleccionados
+
+#### I. Vivo sin vivir en m√≠
+
+Vivo sin vivir en m√≠,
+y tan alta vida espero,
+que muero porque no muero.
+
+Vivo ya fuera de m√≠,
+despu√©s que muero de amor;
+porque vivo en el Se√±or,
+que me quiso para s√≠:
+cuando el coraz√≥n le di
+puso en √©l este letrero,
+que muero porque no muero.
+
+#### II. Nada te turbe
+
+Nada te turbe,
+nada te espante,
+todo se pasa,
+Dios no se muda;
+
+la paciencia
+todo lo alcanza;
+quien a Dios tiene
+nada le falta:
+Solo Dios basta.
+
+#### III. Aceptaci√≥n de la voluntad divina (Vuestra soy)
+
+Vuestra soy, para vos nac√≠,
+¬øqu√© mand√°is hacer de m√≠?
+Soberana Majestad,
+eterna sabidur√≠a,
+bondad buena al alma m√≠a;
+Dios, alteza, un ser, bondad,
+la gran vileza mirad
+que hoy os canta amor ans√≠:
+¬øqu√© mand√°is hacer de m√≠?
+
+#### IV. Hermosura divina
+
+¬°Oh Hermosura que exced√©is
+a todas las hermosuras!
+Sin herir dolor hac√©is,
+y sin dolor deshac√©is
+el amor de las criaturas.
+¬°Oh nudo que as√≠ junt√°is
+dos cosas tan desiguales!,
+no s√© por qu√© os desat√°is,
+pues atado fuerza dais
+que ten√©is por bienes males.
+
+#### V. Sobre el amor de Dios
+
+Si el amor que me ten√©is,
+Dios m√≠o, es como el que os tengo,
+decidme: ¬øen qu√© me detengo?
+O Vos, ¬øen qu√© os deten√©is?
+‚ÄîAlma, ¬øqu√© quieres de m√≠?
+‚ÄîDios m√≠o, no m√°s que verte.
+‚ÄîY ¬øqu√© temes m√°s de ti?
+‚ÄîLo que m√°s temo es perderte.
+
+#### VI. Coloqui de amor (Si el amor es ley)
+
+Si el amor es ley,
+¬øpor qu√© me haces la guerra?
+Si el amor es rey,
+¬øpor qu√© me tienes en tierra?
+Si el amor es luz,
+¬øpor qu√© me tienes en cruz?
+¬°Oh amor, amor!,
+que el alma que te ama
+no tiene m√°s clamor
+que tu dulce flama.
+
+#### VII. ¬°Dichoso el coraz√≥n enamorado
+
+¬°Dichoso el coraz√≥n enamorado
+que en solo Dios tiene puesta su esperanza!
+Todo el mundo por √©l ser√° dejado,
+en solo Dios tendr√° su confianza.
+
+#### VIII. En las manos de Dios
+
+En las manos de Dios me he puesto,
+y en su voluntad divina,
+que es la que mejor camina
+por el camino m√°s puesto.
+
+#### IX. Sobre la brevedad de la vida
+
+¬°Ay, qu√© larga es esta vida!
+¬°Qu√© duros estos destierros!
+Esta c√°rcel, estos hierros
+en que el alma est√° metida.
+
+#### X. El alma a Dios
+
+¬°Oh Dios m√≠o, cuando os veo
+y os miro con fe y amor,
+no tiene m√°s el deseo
+que amaros con m√°s fervor!
+
+---
+
+## 2. Rosal√≠a de Castro (1837 - 1885)
+
+### Biograf√≠a
+
+Rosal√≠a de Castro naci√≥ en Santiago de Compostela en 1837. Es la figura central del *Rexurdimento* gallego y una de las precursoras de la poes√≠a moderna en Espa√±a junto a B√©cquer. Aunque escribi√≥ gran parte de su obra en gallego (*Cantares Gallegos*, *Follas Novas*), su √∫ltimo gran libro, *En las orillas del Sar*, escrito en castellano, es una de las obras maestras del siglo XIX por su profundidad metaf√≠sica y su libertad r√≠tmica. Su voz es melanc√≥lica, socialmente comprometida y profundamente introspectiva. Falleci√≥ en Padr√≥n en 1885.
+
+### 10 Poemas Seleccionados
+
+#### I. Dicen que no hablan las plantas
+
+Dicen que no hablan las plantas, ni las fuentes, ni los p√°jaros,
+ni la onda con sus rumores, ni con su brillo los astros;
+lo dicen, pero no es cierto, pues siempre que yo paso,
+de m√≠ murmuran y exclaman:
+‚ÄîAh√≠ va la loca so√±ando
+con la eterna primavera de la vida y de los campos,
+y ya bien pronto, ¬°bien pronto!, tendr√° los cabellos canos,
+y ve temblando, aterida, que cubre la escarcha el prado.
+
+#### II. Negra sombra (Traducido del gallego)
+
+Cuando pienso que te has ido,
+negra sombra que me asombras,
+al pie de mis cabezales
+tornas haci√©ndome mofa.
+Si imagino que te has ido,
+en el mismo sol te asomas,
+y eres la estrella que brilla,
+y eres el viento que sopla.
+
+#### III. A orillas del Sar (Fragmento)
+
+A trav√©s del follaje perenne
+que o√≠r deja rumores extra√±os,
+y entre un mar de ondulante verdura,
+del Sar a la orilla,
+va el camino que conduce al molino...
+
+#### IV. En su alborada
+
+En su alborada es la mujer un √°ngel,
+en su edad plena es una mujer sola,
+y en su vejez es una pobre sombra
+que se pierde en la noche de la historia.
+
+#### V. Castilla (Fragmento de Cantares Gallegos)
+
+¬°Castellanos de Castilla,
+tratad bien a los gallegos;
+cuando van, van como rosas;
+cuando vienen, como negros!
+
+#### VI. Yo no s√© qu√© busco eternamente
+
+Yo no s√© qu√© busco eternamente
+en la tierra, en el aire y en el cielo;
+yo no s√© qu√© busco, pero es algo
+que perd√≠ no s√© cu√°ndo y que no encuentro.
+
+#### VII. ¬°Paz para los vivos
+
+¬°Paz para los vivos, que el muerto ya la tiene!
+¬°Paz para el alma cansada de luchar!
+Que el reposo del sepulcro no le llegue
+a quien no supo en vida caminar.
+
+#### VIII. Las campanas
+
+Yo las amo, yo las oigo,
+cual oigo el rumor del viento,
+el murmullo de la fuente
+o el balido del cordero.
+Como los p√°jaros, ellas,
+tan pronto aparece el d√≠a,
+con sus notas de alegr√≠a
+despiertan a la aldea.
+
+#### IX. Hora tras hora, d√≠a tras d√≠a
+
+Hora tras hora, d√≠a tras d√≠a,
+entre el cielo y la tierra que miramos,
+eterna corre la sombra,
+eterna corre la vida del hombre.
+
+#### X. Era apacible el d√≠a
+
+Era apacible el d√≠a
+y alegre el escenario;
+un grupo de palomas,
+muy lejos, volaba en el espacio.
+Yo sola, en la ribera,
+pensaba en mis tristezas de otros a√±os...
+
+---
+
+## 3. Gertrudis GÛmez de Avellaneda (1814 - 1873)
+
+### BiografÌa
+Aunque nacida en Puerto PrÌncipe (Cuba), Gertrudis GÛmez de Avellaneda, apodada "La Tula", desarrollÛ la mayor parte de su carrera literaria en EspaÒa y es considerada una de las grandes figuras del Romanticismo hispano. Fue una mujer adelantada a su tiempo, cuya vida estuvo marcada por la independencia y la pasiÛn. Su poesÌa se caracteriza por un tono vigoroso, casi varonil seg˙n la crÌtica de su Època, y por una profunda espiritualidad combinada con el ansia de libertad personal. Fue la primera mujer en ser propuesta para la RAE, aunque fue rechazada por su sexo.
+
+### 10 Poemas Seleccionados
+
+#### I. Al partir
+°Perla del mar! °Estrella de Occidente!
+°Hermosa Cuba! Tu brillante cielo
+la noche cubre con su opaco velo,
+como cubre el dolor mi triste frente.
+
+#### II. A la poesÌa
+°Hija del cielo, mÌstica armonÌa,
+que en ecos vagos y en diversos tonos,
+del alma humana los recÛnditos tronos
+pueblas de luz, de vida y de alegrÌa!
+
+#### III. El deseo de venganza
+°Ved cual la herida serpiente
+que en el polvo se revuelve,
+y a la mano que la hiere
+el veneno le devuelve!
+
+#### IV. A Èl
+Ya para siempre terminÛ el destino
+tu suerte y la mÌa, °infiel!
+Ya no hay entre los dos otro camino
+que el de un recuerdo amargo y cruel.
+
+#### V. La noche de insomnio y el alba
+°Ven, dulce aurora, con tu luz radiante,
+a disipar las sombras de mi mente!
+Que el corazÛn, de angustia vacilante,
+busca en tu seno el b·lsamo de Oriente.
+
+#### VI. Al sol
+°Rey de los astros! °Fuente de la vida!
+°Ojo del mundo! °Orgullo del espacio!
+°Tu luz, del cielo en la extensiÛn vertida,
+es del Creador el f˙lgido palacio!
+
+#### VII. La pesca en el mar
+Sobre las olas azules
+va la barquilla ligera,
+y entre los blancos sutiles
+de la blanca espuma fiera...
+
+#### VIII. Amor y orgullo
+Yo te amÈ con delirio, °bien lo sabes!
+Mas mi orgullo fue siempre superior;
+y si hoy mi pecho de amargura llene,
+no ha de humillarse nunca ante tu amor.
+
+#### IX. A la muerte
+°Oh t˙, que pones fin a los dolores,
+y de la vida el ·spero camino
+cubres al fin con p·lidas flores,
+ven a cambiar mi negro destino!
+
+#### X. El genio de la melancolÌa
+Hay un ·ngel de sombras y de duelo
+que habita en los rincones de mi alma,
+y que nubla de gris mi claro cielo,
+rob·ndole a mi pecho toda calma.
+
+---
+
+## 4. Carolina Coronado (1820 - 1911)
+
+### BiografÌa
+Carolina Coronado naciÛ en Almendralejo (Badajoz) y fue la gran poeta rom·ntica de la Extremadura del siglo XIX. Amiga de RosalÌa de Castro y de Gertrudis GÛmez de Avellaneda, Carolina destacÛ por su sensibilidad y por el uso de la naturaleza como espejo de sus sentimientos. Su obra PoesÌas (1843) la consagrÛ como una "BÈcquer femenina". SufriÛ de catalepsia, lo que obsesionÛ parte de su vida y obra. Fue una defensora de los derechos de la mujer y su salÛn literario en Madrid fue uno de los m·s influyentes de la Època.
+
+### 10 Poemas Seleccionados
+
+#### I. El amor de los amores
+Si es amor que el alma siente,
+cuando en sueÒos se imagina
+una sombra que adivina,
+y una luz que no se ve...
+
+#### II. A la palma
+°Sola, en medio de la estepa solitaria,
+tiendes al aire tu penacho de oro,
+y elevas al Creador una plegaria
+en el silencio del desierto moro!
+
+#### III. °Oh!, cu·l te adoro
+°Oh!, cu·l te adoro. Con la fe del alma,
+con el delirio del que no te ha visto,
+con la esperanza de la blanca palma,
+con el amor puro que tuvo Cristo.
+
+#### IV. El p·jaro perdido
+°Dime, p·jaro triste y peregrino,
+dÛnde vas a posar tu vuelo incierto?
+øBuscas del nido antiguo el fiel camino,
+o vas a morir en el desierto?
+
+#### V. Los cantos de la noche
+La noche tiende su manto de luto,
+y en el silencio del campo sombrÌo,
+se escucha el aire, que en paso enjuto,
+besa las aguas del profundo rÌo.
+
+#### VI. A una gota de rocÌo
+°Pura perla de la aurora,
+en el c·liz de la flor
+viertes tu llanto de amor
+cuando el sol el monte dora!
+
+#### VII. La flor del agua
+Hay una flor que nace en la corriente,
+tan blanca y pura como el pensamiento,
+que dobla el talle ante el rigor del viento,
+y oculta el brillo de su clara frente.
+
+#### VIII. El llanto de la mujer
+No es debilidad lo que mi mejilla baÒa,
+ni es el temor de la tormenta fiera;
+es una angustia que el orgullo engaÒa,
+y una tristeza que mi vida altera.
+
+#### IX. Las golondrinas
+Ya vuelven por el aire las ligeras
+aves que al invierno tanto temen,
+y traen en sus alas primaveras,
+y dulces cantos que en el alma gimen.
+
+#### X. Sombra y luz
+Hay un abismo entre mi alma y la tuya,
+como lo hay entre la sombra y el dÌa;
+pero el amor hace que el mundo huya,
+y que se unan tu pena y la mÌa.
+
+---
+
+## 5. Carmen Conde (1907 - 1996)
+
+### BiografÌa
+Carmen Conde naciÛ en Cartagena y fue una de las intelectuales m·s brillantes de la GeneraciÛn del 27. En 1978 se convirtiÛ en la primera mujer elegida acadÈmica de n˙mero de la Real Academia EspaÒola (RAE), ocupando el sillÛn "K". Su obra abarca la poesÌa, la novela, el ensayo y la literatura infantil. Su poesÌa es apasionada, vitalista y profundamente humana, destacando su capacidad para expresar el deseo femenino y la comuniÛn con el mundo. Durante la posguerra, mantuvo viva la llama cultural a travÈs de m˙ltiples iniciativas docentes y literarias.
+
+### 10 Poemas Seleccionados
+
+#### I. En la tierra de nadie
+En la tierra de nadie me he quedado,
+y en el cielo de nadie me detengo.
+Soy la nube que el viento ha desgarrado,
+y el agua que en la fuente yo mantengo.
+
+#### II. Primer amor
+øCÛmo ser· el amor? øSer· de fuego?
+øSer· de luz, de m˙sica, de aroma?
+øSer· un gigante que nos rinde luego,
+o ser· una paloma?
+
+#### III. La noche
+°Oh noche, madre mÌa de los sueÒos,
+que nos traes la paz con tu llegada!
+°Tus secretos son grandes y pequeÒos,
+y en tu sombra descansa mi mirada!
+
+#### IV. Mujer sin EdÈn (Fragmento)
+Yo soy Eva, la madre de los hombres,
+la que pecÛ por ansia de saber.
+No me busques, SeÒor, por otros nombres,
+que solo soy una triste mujer.
+
+#### V. Ansia
+°Quiero vivir! °Vivir con toda el alma!
+°Quiero sentir la vida en cada poro!
+°Que no me den la soledad ni la calma,
+sino el fragor de este inmenso tesoro!
+
+#### VI. Claridad del camino
+Cada paso que doy es una huella
+en la arena del tiempo que se escapa;
+pero sigo la luz de una estrella
+que mi negro destino desempapa.
+
+#### VII. Presencia
+Est·s en todo lo que miro y toco,
+en el aire que bebo y en mi acento;
+y este amor que me tiene casi loco,
+es la raÌz de todo pensamiento.
+
+#### VIII. El cuerpo del deseo
+Tu cuerpo es una geografÌa abierta
+donde mis manos hallan su camino;
+un puerto de entrada por la puerta
+de mi m·s alto y claro destino.
+
+#### IX. La palabra
+La palabra es la luz que nos alumbra,
+el puente de cristal sobre el abismo;
+la que disipa siempre la penumbra
+y nos devuelve al fin a nuestro mismo.
+
+#### X. Despedida
+Si me voy, no me llores todavÌa,
+que me quedo en la voz de mis versos;
+y en la luz de este sol, que cada dÌa
+ilumina mundos tan diversos.
+
+---
+
+## 6. Ernestina de ChampourcÌn (1905 - 1999)
+
+### BiografÌa
+Ernestina de ChampourcÌn naciÛ en Vitoria en una familia aristocr·tica. Fue una de las pocas mujeres incluidas en la famosa antologÌa de Gerardo Diego (1934), lo que la sit˙a plenamente en la GeneraciÛn del 27. Su primera etapa poÈtica estuvo influenciada por Juan RamÛn JimÈnez y la estÈtica de la "poesÌa pura", evolucionando hacia una tem·tica m·s espiritual y religiosa tras su exilio en MÈxico y su posterior regreso a EspaÒa. Su voz es moderna, elegante y de una gran precisiÛn verbal.
+
+### 10 Poemas Seleccionados
+
+#### I. La casa de enfrente
+Aquella casa gris de la mirada
+pobla mis sueÒos de melancolÌa;
+y en su ventana, siempre cerrada,
+guarda el secreto de la pena mÌa.
+
+#### II. Fugaz
+Como el vuelo de un p·jaro en el cielo,
+como el brillo del agua en la corriente,
+tan r·pido se va nuestro anhelo,
+y nos deja la sombra en la frente.
+
+#### III. El hueco
+Hay un vacÌo en mi pecho vacÌo,
+un espacio de luz que no se llena;
+y en el silencio del corazÛn mÌo,
+se escucha el eco de una antigua pena.
+
+#### IV. Paisaje de exilio
+Estas tierras no tienen mis colores,
+ni este aire tiene el olor de mi huerto;
+pero en mi alma florecen los dolores
+que traigo del paÌs que dejÈ muerto.
+
+#### V. OraciÛn
+SeÒor, pon un silencio en mi camino
+y una luz de verdad en mi esperanza;
+que se cumpla en mi pecho tu destino,
+y que encuentre mi alma tu templanza.
+
+#### VI. La espera
+Te espero cada tarde en la ventana,
+viendo cÛmo se apaga el sol poniente;
+y espero que la luz de la maÒana
+te traiga de nuevo ante mi frente.
+
+#### VII. Pureza
+Quiero la voz desnuda de la idea,
+la palabra sin adornos ni velos;
+que mi alma pura y libre se vea,
+volando siempre hacia tus altos cielos.
+
+#### VIII. La sombra amada
+Tu sombra me persigue por la estancia,
+y es m·s real que todo lo que toco;
+guardo de ti la flor de tu fragancia,
+y este amor que me vuelve casi loco.
+
+#### IX. Regreso
+He vuelto a los lugares del pasado,
+y ya no reconozco mi alegrÌa;
+todo parece un sueÒo clausurado,
+en la penumbra de la vida mÌa.
+
+#### X. Final
+Al final del camino no hay nada,
+solo el silencio y la luz que se apaga;
+y el alma, de tanto amor cansada,
+que en el misterio del adiÛs se amaga.
+
+---
+
+## 7. Concha MÈndez (1898 - 1986)
+
+### BiografÌa
+Concha MÈndez naciÛ en Madrid y fue la cara m·s din·mica y "moderna" de la GeneraciÛn del 27. Fue campeona de nataciÛn, viajera incansable y una destacada impresora (fundÛ con su marido Manuel Altolaguirre la imprenta "La VerÛnica"). Su poesÌa inicial es vitalista, centrada en el deporte, el cine y la velocidad, para luego volverse m·s melancÛlica y reflexiva en el exilio (Inglaterra, Francia, Cuba y MÈxico). Representa el espÌritu de liberaciÛn de la mujer espaÒola de los aÒos 30.
+
+### 10 Poemas Seleccionados
+
+#### I. Nadadora
+Mis brazos son dos alas en el agua,
+y mi cuerpo un pez de plata fugitivo;
+no hay fuego que mi espÌritu no fragua,
+ni mar que no me sienta yo su vivo.
+
+#### II. El motor
+Ritmo de hierro y pulsaciÛn de fuego,
+la m·quina devora la distancia;
+y en este af·n de movimiento ciego,
+pierdo el sentido de mi propia estancia.
+
+#### III. CanciÛn de libertad
+He roto las cadenas del pasado
+y he lanzado mis sueÒos al azar;
+que mi pecho, de sombra liberado,
+solo quiera la luz y el ancho mar.
+
+#### IV. Paisaje de Olivar
+Olivos grises bajo el sol ardiente,
+tierra de seda y polvo por el suelo;
+y un aire azul que besa nuestra frente,
+en la extensiÛn infinita del cielo.
+
+#### V. Memoria del exilio
+Llevo mi casa siempre en mi equipaje,
+un puÒado de tierra en el recuerdo;
+y en este largo y triste peregrinaje,
+lo que m·s amÈ es lo que m·s pierdo.
+
+#### VI. Nocturno
+La noche tiene un brillo de acero,
+y el silencio es un muro de cristal;
+mi pensamiento, libre y prisionero,
+busca la orilla de lo universal.
+
+#### VII. Presencia del mar
+El mar me llama con su voz de abismo,
+y con su espuma escribe mi destino;
+es el espejo de mi propio mismo,
+en la luz de este claro camino.
+
+#### VIII. Soledad
+No es estar sola, es estar conmigo,
+en este di·logo mudo de la idea;
+y no querer de nadie m·s abrigo
+que la luz que en mi pecho se vea.
+
+#### IX. La imprenta
+Letras de plomo, m˙sica de tinta,
+la palabra se queda en el papel;
+y la vida, de forma tan distinta,
+nos da su amargo y su dulce miel.
+
+#### X. AdiÛs a EspaÒa
+Te dejo, tierra mÌa, en la distancia,
+pero te llevo viva en mi acento;
+y guardo para siempre la fragancia
+de tu luz y de tu pensamiento.
+
+---
+
+## 8. Gloria Fuertes (1917 - 1998)
+
+### BiografÌa
+Gloria Fuertes naciÛ en el barrio de LavapiÈs, Madrid. Aunque es muy conocida por su labor en la literatura infantil y su presencia televisiva, es una de las grandes poetas de la posguerra espaÒola (perteneciente a la GeneraciÛn del 50 o al Postismo). Su poesÌa para adultos es directa, irÛnica, surrealista y profundamente emp·tica con los marginados y los desprotegidos. Su voz es ˙nica por su sencillez engaÒosa, su humor agridulce y su compromiso con la paz y la justicia social.
+
+### 10 Poemas Seleccionados
+
+#### I. Nota biogr·fica
+Gloria Fuertes naciÛ en Madrid
+a los dos dÌas de edad,
+porque su madre estaba de parto en otra parte.
+Su padre era un seÒor que no sabÌa
+que Gloria serÌa poeta alg˙n dÌa.
+
+#### II. Sale caro ser poeta
+Sale caro ser poeta
+y no tener otro oficio;
+es como un eterno vicio
+que te deja la maleta
+de esperanza y sacrificio.
+
+#### III. El camello (Auto de los Reyes Magos)
+El camello se pinchÛ
+con un cardo del camino
+y el cuarto Rey Mago se quedÛ
+sin saber cu·l era su destino.
+
+#### IV. Povero hombre
+…rase un hombre a un dolor pegado,
+que no encontraba consuelo en la luz;
+y de tanto caminar cansado,
+se quedÛ dormido bajo su cruz.
+
+#### V. Poema al NO
+No a la guerra, no a la muerte,
+no a la envidia y al rencor;
+digamos sÌ a la buena suerte
+y a la fuerza del amor.
+
+#### VI. La gata Chundarata
+La gata Chundarata tiene un lÌo,
+porque se ha enamorado del viento;
+y el viento, que es muy pillo y muy frÌo,
+no le hace caso ni un momento.
+
+#### VII. Or·culo
+No sÈ por quÈ me gusta la gente,
+si la gente no sabe quÈ prefiere;
+pero yo sigo aquÌ, sencillamente,
+amando todo lo que vive y muere.
+
+#### VIII. AutobiografÌa
+Mi madre fue una santa y mi padre un borracho,
+y yo nacÌ en el medio del camino;
+y de tanto jugar al escondite,
+me encontrÈ con mi propio destino.
+
+#### IX. La paz
+La paz es una paloma de trapo
+que los niÒos tienen que remendar;
+y si no la cuidamos, el sapo
+de la guerra se la va a tragar.
+
+#### X. Final con Gloria
+Cuando me muera, no me traig·is flores,
+traedme un bocadillo de tortilla;
+y recordad mis cantos de colores,
+en esta vida tan gris y sencilla.
+
+---
+
+## 9. ¡ngela Figuera Aymerich (1902 - 1984)
+
+### BiografÌa
+¡ngela Figuera naciÛ en Bilbao y es una de las voces m·s potentes de la poesÌa social de los aÒos 50. Su poesÌa evolucionÛ desde una primera etapa intimista y femenina hacia una denuncia desgarrada de las injusticias de la EspaÒa de posguerra. En obras como "Belleza cruel", expresÛ el dolor de un pueblo amordazado y la necesidad de una palabra solidaria y comprometida. Fue una poeta valiente que supo combinar la maternidad y el hogar con una conciencia civil inquebrantable.
+
+### 10 Poemas Seleccionados
+
+#### I. Mujer de barro
+Soy una mujer de barro y de silencio,
+hecha de tierra roja y de esperanza;
+y en este mundo que me dicta el precio,
+solo el amor me da su confianza.
+
+#### II. Belleza cruel
+°QuÈ hermosa eres, tierra de EspaÒa,
+y quÈ duro es el pan que nos ofreces!
+°Hay una luz que el alma nos engaÒa,
+y un dolor que nos muerde por las veces!
+
+#### III. Libre para cantar
+No me pid·is que calle mi lamento,
+ni que cierre los ojos ante el duelo;
+que mi voz es la voz del pensamiento,
+volando libre bajo este oscuro cielo.
+
+#### IV. Maternidad
+He sentido la vida en mi cintura,
+y el peso de un futuro en mi regazo;
+y esta dulce y sagrada desventura,
+es el nudo m·s fuerte de mi lazo.
+
+#### V. Los hijos de los otros
+Veo a los niÒos que no tienen nada,
+y el corazÛn se me llena de espinas;
+que su triste y oscura mirada
+es la mancha de nuestras ruinas.
+
+#### VI. Silencio
+Hay un silencio que grita en las plazas,
+y una palabra que no se pronuncia;
+pero el tiempo, que todo lo abraza,
+es el juez de esta larga denuncia.
+
+#### VII. Tierra amada
+Te quiero por lo que tienes de herida,
+y por la luz de tu sol en enero;
+porque eres el principio de mi vida,
+y el lugar donde morir espero.
+
+#### VIII. El pan y la palabra
+No solo de pan vive la criatura,
+sino de luz y de verdad desnuda;
+y esta palabra, clara y segura,
+es la que vence a la muerte muda.
+
+#### IX. La espera social
+Estamos todos esperando el dÌa
+en que la luz se reparta por igual;
+y se acabe esta negra agonÌa
+de sentirnos en un mundo desigual.
+
+#### X. Canto final
+Si mi verso se queda en el camino,
+que sirva al menos de luz al viajero;
+que este es mi m·s alto destino,
+amar al mundo hasta el ˙ltimo enero.
+
+---
+
+## 10. MarÌa Victoria Atencia (1931 - Actualidad)
+
+### BiografÌa
+MarÌa Victoria Atencia naciÛ en M·laga y es una de las voces m·s aristocr·ticas y depuradas de la GeneraciÛn del 50. Su poesÌa se caracteriza por la serenidad, el equilibrio cl·sico y una mirada atenta a los objetos cotidianos, que eleva a una dimensiÛn metafÌsica y sagrada. Ha recibido numerosos reconocimientos, como el Premio Reina SofÌa de PoesÌa Iberoamericana. Su obra es un ejemplo de perfecciÛn formal y profundidad espiritual, donde el silencio y la luz juegan un papel fundamental.
+
+### 10 Poemas Seleccionados
+
+#### I. El mundo de Casandra
+Veo lo que los otros no sospechan,
+el futuro en el vuelo de un ave;
+y aunque mis ojos nunca aprovechan,
+guardo el secreto que nadie sabe.
+
+#### II. La luz de M·laga
+Este azul no es azul, es una idea
+del mar que baÒa mi clara orilla;
+y en este sol que mi alma recrea,
+la vida parece m·s sencilla.
+
+#### III. El cristal
+Mirar el mundo a travÈs del cristal,
+es darle al objeto su propia paz;
+y sentir que la belleza formal
+es el reflejo de una luz tenaz.
+
+#### IV. La siesta
+El tiempo se detiene en la penumbra,
+y el aire tiene un peso de algodÛn;
+hay una luz que el sueÒo vislumbra,
+en el latido de mi corazÛn.
+
+#### V. Los objetos
+Esta jarra, este libro, esta silla,
+tienen una vida que no vemos;
+y en su presencia, clara y sencilla,
+es donde al fin nosotros nos leemos.
+
+#### VI. El silencio del piano
+Las teclas callan bajo el polvo leve,
+y la m˙sica duerme en la madera;
+hay un recuerdo que el alma conmueve,
+en esta larga y dulce espera.
+
+#### VII. JardÌn de invierno
+Las flores de hielo en la ventana
+y el verde oscuro del seto sombrÌo;
+y esta esperanza, tan lejana,
+de ver el sol sobre el campo frÌo.
+
+#### VIII. Venecia
+Canales de agua y de sueÒo profundo,
+donde la piedra se vuelve caricia;
+es el lugar m·s bello del mundo,
+y de la historia la m·s alta delicia.
+
+#### IX. La palabra justa
+Busco la voz que no sobre ni falte,
+el equilibrio de la luz y el tono;
+que mi verso la vida resalte,
+y me devuelva al fin a mi trono.
+
+#### X. EpÌlogo
+Al final se queda la mirada,
+y la paz de haber dicho lo que siento;
+un alma libre y sosegada,
+en la luz de este claro pensamiento.
