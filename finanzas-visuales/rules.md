@@ -23,3 +23,4 @@
 # Más
 
 - Todas las mejoras que se hagan deben quedar recogidas en CARACTERISTICAS.MD y los cambios en CHANGELOG.md. También deben recogerse en la ayuda del apartado configuración, las nuevas funcionalidades.
+- **Integridad i18n**: Mantener siempre el balance de corchetes en `lib/i18n.js` y verificar traducciones en todos los idiomas (ES, EN, GL, EU, CA) al añadir nuevas llaves.

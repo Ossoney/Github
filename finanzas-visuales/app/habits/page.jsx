@@ -4,8 +4,8 @@ import { HabitTracker } from '@/components/habits/HabitTracker'
 
 export default function HabitsPage() {
     return (
-        <main className="max-w-4xl mx-auto py-8">
+        <div className="max-w-4xl mx-auto py-8 pb-24">
             <HabitTracker />
-        </main>
+        </div>
     )
 }

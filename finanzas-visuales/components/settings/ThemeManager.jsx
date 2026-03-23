@@ -13,6 +13,8 @@ const themes = [
     { id: 'forest', color: '#10b981' },
     { id: 'nebula', color: '#8b5cf6' },
     { id: 'mondrian', color: '#2563eb' },
+    { id: 'art-deco', color: '#b48232' },
+    { id: 'pop-art', color: '#ffff00' },
     { id: 'wine', color: '#f43f5e' },
     { id: 'light-sky', color: '#e0f2fe' },
     { id: 'light-mint', color: '#d1fae5' },

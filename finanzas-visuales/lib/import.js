@@ -1,50 +1,6 @@
 import { db, recalculateBalances } from './db'
 
-// Maps common category name keywords to appropriate Lucide icons
-const ICON_MAP = [
-    // Food & Groceries
-    { keywords: ['aliment', 'comida', 'supermercado', 'restaur', 'food', 'grocer', 'cocina', 'cena', 'almuerzo', 'desayuno', 'cafe', 'café'], icon: 'ShoppingCart' },
-    // Transport
-    { keywords: ['transport', 'gasolina', 'combustible', 'coche', 'car', 'auto', 'moto', 'metro', 'bus', 'taxi', 'uber', 'tren', 'vuelo', 'avion', 'viaje', 'parking', 'peaje'], icon: 'Car' },
-    // Health
-    { keywords: ['salud', 'health', 'medic', 'farmacia', 'doctor', 'hospital', 'deporte', 'gym', 'sport', 'fitness', 'dental', 'optic'], icon: 'Heart' },
-    // Housing
-    { keywords: ['hogar', 'casa', 'alquiler', 'hipoteca', 'luz', 'agua', 'gas', 'internet', 'telefono', 'suministr', 'home', 'rent', 'mortgage', 'electricity', 'housing'], icon: 'Home' },
-    // Shopping / Clothing
-    { keywords: ['ropa', 'moda', 'calzado', 'fashion', 'compras', 'shopping', 'tienda'], icon: 'ShoppingBag' },
-    // Work / Salary
-    { keywords: ['trabajo', 'salario', 'sueldo', 'nomina', 'work', 'salary', 'income', 'ingreso', 'empresa', 'freelance', 'negocio'], icon: 'Briefcase' },
-    // Education
-    { keywords: ['educacion', 'cursos', 'libros', 'colegio', 'universidad', 'school', 'education', 'formacion'], icon: 'GraduationCap' },
-    // Entertainment / Leisure
-    { keywords: ['ocio', 'entretenimiento', 'cine', 'musica', 'netflix', 'spotify', 'juegos', 'games', 'leisure', 'recreation', 'suscripcion', 'subscri'], icon: 'Play' },
-    // Savings / Investments
-    { keywords: ['ahorro', 'inversion', 'saving', 'invest', 'bolsa', 'fondos', 'pension'], icon: 'PiggyBank' },
-    // Gifts / Social
-    { keywords: ['regalo', 'gift', 'cumpleaños', 'social', 'celebracion', 'fiesta'], icon: 'Gift' },
-    // Technology
-    { keywords: ['tecnologia', 'tech', 'ordenador', 'movil', 'phone', 'computer', 'electronico', 'electronic'], icon: 'Smartphone' },
-    // Travel
-    { keywords: ['viaje', 'hotel', 'travel', 'vacacion', 'vacation', 'turismo', 'alojamiento'], icon: 'Plane' },
-    // Pets
-    { keywords: ['mascota', 'perro', 'gato', 'pet', 'veterinario', 'vet'], icon: 'PawPrint' },
-    // Kids / Children
-    { keywords: ['hijo', 'niño', 'bebe', 'guarderia', 'child', 'kid', 'baby'], icon: 'Baby' },
-    // Beauty / Personal Care
-    { keywords: ['belleza', 'peluqueria', 'beauty', 'estetica', 'cosmetica', 'personal'], icon: 'Sparkles' },
-    // Bank / Finances
-    { keywords: ['banco', 'bank', 'comision', 'prestamo', 'credito', 'loan', 'finanza', 'finance'], icon: 'Landmark' },
-]
-
-function guessIcon(name, isParent = true) {
-    const normalized = name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    for (const entry of ICON_MAP) {
-        if (entry.keywords.some(kw => normalized.includes(kw))) {
-            return entry.icon
-        }
-    }
-    return isParent ? 'Folder' : 'Circle'
-}
+import { guessIcon } from './category-utils'
 
 export async function importFromExcel(file) {
     const XLSX = await import('xlsx');
@@ -305,6 +261,10 @@ async function importLegacyFormat(workbook, transactions) {
         for (const p of parents) {
             const oldId = p.id
             const { id, ...rest } = p
+            // If no icon, guess it
+            if (!rest.icon || rest.icon === 'Circle') {
+                rest.icon = guessIcon(rest.name, true)
+            }
             const newId = await db.categories.add(rest)
             catIdMap[oldId] = newId
         }
@@ -313,6 +273,10 @@ async function importLegacyFormat(workbook, transactions) {
             const oldId = c.id
             const oldParentId = c.parentId
             const { id, ...rest } = c
+            // If no icon, guess it
+            if (!rest.icon || rest.icon === 'Circle') {
+                rest.icon = guessIcon(rest.name, false)
+            }
             const newParentId = catIdMap[oldParentId] || null
             const newId = await db.categories.add({ ...rest, parentId: newParentId })
             catIdMap[oldId] = newId

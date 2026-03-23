@@ -1,4 +1,4 @@
-# 🌟 VISUALIS v1.3.05 (Marzo 2026) - Guía de Funcionalidades
+# 🌟 VISUALIS v1.4.25 (Marzo 2026) - Guía de Funcionalidades
 
 Visualis es una aplicación de gestión financiera personal diseñada para ser privada, potente y visualmente atractiva. A continuación se detallan todas sus capacidades:
 
@@ -76,11 +76,14 @@ Sistema de temas completo que cambia toda la paleta de colores de la aplicación
 * 🌕 **Eclipse Dorado** (Negro/Oro)
 * 🌲 **Bosque Profundo** (Verde/Pizarra)
 * 🔮 **Nebulosa Púrpura** (Violeta/Deep)
-* 🦾 **Futuro Neón** (Cyberpunk)
+* 🦾 **Futuro Neón** (Cyberpunk/Mondrian)
 * 🍷 **Vino Selecto** (Burdeos)
 * 🌤️ **Claro Cielo** (Clásico y Brillante)
 * 🌱 **Claro Menta** (Tonos Zinc y Verde Esmeralda)
 * 🌅 **Claro Cálido** (Tonos Marfil y Pálidos Rojos)
+* 🎨 **Mondrian Style** (Arte Neoplástico)
+* 🎞️ **Art Déco** (Geometría y Elegancia)
+* 🍿 **Pop Art** (Colores Saturados y Gráficos)
 
 ### **Perfil de Usuario**
 

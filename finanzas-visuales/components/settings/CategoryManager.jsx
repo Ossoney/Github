@@ -6,6 +6,7 @@ import { LayoutGrid, Plus, Trash2, Edit2, ChevronDown, ChevronRight, FolderPlus,
 import * as LucideIcons from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useLanguage } from '@/lib/i18n'
+import { guessIcon } from '@/lib/category-utils'
 
 // Tailwind Colors for presets
 const COLOR_PRESETS = [
@@ -174,6 +175,32 @@ export function CategoryManager() {
         }
     }
 
+    const handleHealIcons = async () => {
+        const categories = await db.categories.toArray()
+        let count = 0
+        try {
+            await db.transaction('rw', db.categories, async () => {
+                for (const cat of categories) {
+                    if (!cat.icon || cat.icon === 'Circle' || cat.icon === 'Folder') {
+                        const guessed = guessIcon(cat.name, !cat.parentId)
+                        if (guessed !== cat.icon) {
+                            await db.categories.update(cat.id, { icon: guessed })
+                            count++
+                        }
+                    }
+                }
+            })
+            if (count > 0) {
+                addToast(`${count} iconos recuperados`, 'success')
+            } else {
+                addToast('No se encontraron iconos que mejorar', 'info')
+            }
+        } catch (err) {
+            console.error("Error healing icons:", err)
+            addToast('Error al recuperar iconos', 'error')
+        }
+    }
+
     // Modal Title Helper
     const getModalTitle = () => {
         if (modalMode === 'edit') return t('edit')
@@ -200,13 +227,24 @@ export function CategoryManager() {
                 </CardHeader>
                 <CardContent className="space-y-4">
 
-                    <Button
-                        variant="outline"
-                        className="w-full border-dashed border-slate-700 hover:bg-slate-800"
-                        onClick={openCreateParent}
-                    >
-                        <Plus className="w-4 h-4 mr-2" /> {t('new_category_parent')}
-                    </Button>
+                    <div className="flex gap-2">
+                        <Button
+                            variant="outline"
+                            className="flex-1 border-dashed border-slate-700 hover:bg-slate-800"
+                            onClick={openCreateParent}
+                        >
+                            <Plus className="w-4 h-4 mr-2" /> {t('new_category_parent')}
+                        </Button>
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            className="text-slate-500 hover:text-sky-400 border border-slate-800 h-10 w-10 shrink-0"
+                            onClick={handleHealIcons}
+                            title="Recuperar iconos automáticos"
+                        >
+                            <LucideIcons.Sparkles className="w-4 h-4" />
+                        </Button>
+                    </div>
 
                     <div className="space-y-2">
                         {parents.map(parent => {
@@ -328,7 +366,15 @@ export function CategoryManager() {
                         <Input
                             placeholder={t('category_name')}
                             value={newName}
-                            onChange={(e) => setNewName(e.target.value)}
+                            onChange={(e) => {
+                                const val = e.target.value
+                                setNewName(val)
+                                // Auto-guess icon if it's currently a generic one
+                                if (newIcon === 'Circle' || newIcon === 'Folder') {
+                                    const guessed = guessIcon(val, categoryType === 'parent')
+                                    setNewIcon(guessed)
+                                }
+                            }}
                             className="bg-slate-950"
                         />
                     </div>

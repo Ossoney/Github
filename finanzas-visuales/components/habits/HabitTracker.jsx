@@ -179,9 +179,9 @@ function HabitItem({ habit, days, habitLogs, t, locale, weeklyProgress, onToggle
     const controls = useDragControls()
     const [explosions, setExplosions] = useState([])
 
-    // Calculate mini heatmap (21 days)
-    const miniHeatmap = [...Array(21)].map((_, i) => {
-        const d = subDays(startOfDay(new Date()), 20 - i).getTime()
+    // Calculate mini heatmap (14 days / 2 weeks)
+    const miniHeatmap = [...Array(14)].map((_, i) => {
+        const d = subDays(startOfDay(new Date()), 13 - i).getTime()
         return habitLogs?.some(l => l.habitId === habit.id && l.date === d)
     })
 
@@ -201,7 +201,7 @@ function HabitItem({ habit, days, habitLogs, t, locale, weeklyProgress, onToggle
             value={habit} 
             dragListener={false} 
             dragControls={controls}
-            className="touch-none"
+            className=""
         >
             <Card className="bg-slate-900/50 border-slate-800 group hover:border-slate-700 transition-all overflow-hidden relative">
                 <div className="p-3 sm:p-4 flex flex-col xl:flex-row xl:items-center justify-between gap-4">
@@ -210,7 +210,7 @@ function HabitItem({ habit, days, habitLogs, t, locale, weeklyProgress, onToggle
                     <div className="flex items-start gap-3 sm:gap-4">
                         {/* Drag Handle */}
                         <div 
-                            className="cursor-grab active:cursor-grabbing p-1 text-slate-600 hover:text-slate-400 mt-2 shrink-0"
+                            className="cursor-grab active:cursor-grabbing p-1 text-slate-600 hover:text-slate-400 mt-2 shrink-0 touch-none select-none"
                             onPointerDown={(e) => controls.start(e)}
                         >
                             <GripVertical className="w-5 h-5" />
