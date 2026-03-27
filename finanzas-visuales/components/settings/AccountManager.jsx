@@ -83,11 +83,11 @@ export function AccountManager() {
     return (
         <>
             <Card className="border-slate-800 bg-slate-900/50">
-                <CardHeader className="flex flex-row items-center justify-between">
+                <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <CardTitle className="text-lg text-slate-200 flex items-center gap-2">
-                        <Wallet className="w-5 h-5 text-sky-500" /> {t('my_accounts')}
+                        <Wallet className="w-5 h-5 text-sky-500 shrink-0" /> {t('my_accounts')}
                     </CardTitle>
-                    <Button size="sm" onClick={() => setIsCreating(true)} disabled={isCreating}>
+                    <Button size="sm" onClick={() => setIsCreating(true)} disabled={isCreating} className="w-full sm:w-auto">
                         <Plus className="w-4 h-4 mr-2" /> {t('create_account')}
                     </Button>
                 </CardHeader>

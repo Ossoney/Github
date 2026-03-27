@@ -34,7 +34,7 @@ Puedes tomar Mondrian como referencia de “sistema de diseño” (bloques, colo
 ### Estilos muy geométricos / gráficos
 
 - **Bauhaus**: geometría pura, tipografía sans, paleta primaria+negro/gris; encaja muy bien con grids, layouts modulares y botones claros.
-- [x] **Art déco**: formas escalonadas, diagonales, dorados, contrastes fuertes; perfecto para “premium”, tarjetas, cabeceras con ornamento controlado.
+- [ ] **Art déco**: formas escalonadas, diagonales, dorados, contrastes fuertes; perfecto para “premium”, tarjetas, cabeceras con ornamento controlado.
 - **Op art**: patrones ópticos y repetitivos, blanco y negro o bicolor; ideal para fondos o loaders, mejor usarlo con moderación para no marear.
 - **Constructivismo ruso**: diagonales, bloques rojos/negros, tipografía fuerte; buenísimo para pantallas tipo “dashboard” o mensajes de acción.
 

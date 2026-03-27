@@ -29,7 +29,7 @@ El proyecto **Finanzas Visuales** (v1.4.25) es una aplicación web de contabilid
 - **Gestor de Wallets/Proyectos:** Soporte multi-cuenta y traspasos entre cuentas propias.
 - **Seguridad y Privacidad:** Almacenamiento exclusivamente local, modo privacidad y copias de seguridad (JSON/Excel).
 - **Hábitos:** Rastreador de rutinas con metas semanales, efectos visuales y recordatorios inteligentes.
-- **Personalización Visual:** 13 temas artísticos (incluyendo **Mondrian**, **Art Déco** y **Pop Art**) y perfiles personalizados.
+- **Personalización Visual:** 11 temas artísticos (incluyendo **Mondrian** y **Pop Art**) y perfiles personalizados.
 
 ## Modificaciones Recientes (v1.4.25)
 
@@ -39,7 +39,6 @@ Se ha reconstruido el sistema de internacionalización tras una corrupción de a
 
 ### 2. Nuevas Apariencias Artísticas
 
-- **Art Déco**: Basado en geometría elegante y contrastes dorados/negros.
 - **Pop Art**: Estética vibrante con colores saturados y estilo cómic.
 
 ### 3. Optimización de Mensajes de Inicio
@@ -56,7 +55,7 @@ Se ha reconstruido el sistema de internacionalización tras una corrupción de a
 
 ### [1.4.25] - 2026-03-23 - Estilo Artístico y Estabilidad
 
-- **Añadido**: Temas **Art Déco** y **Pop Art** con sus correspondientes paletas de colores y traducciones.
+- **Añadido**: Tema **Pop Art** con su correspondiente paleta de colores y traducciones.
 - **Añadido**: Mensaje de bienvenida de versión 1.4.25 destacando el neoplasticismo y estilos geométricos.
 - **Mejora**: Restauración completa de `lib/i18n.js` y corrección de errores tipográficos en español.
 - **Mejora**: Ajuste de scroll en móvil para el Habit Tracker.

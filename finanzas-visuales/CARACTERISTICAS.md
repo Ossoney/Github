@@ -73,7 +73,6 @@ Visualis es una aplicación de gestión financiera personal diseñada para ser p
 Sistema de temas completo que cambia toda la paleta de colores de la aplicación:
 
 * 🌌 **Noche Estrellada** (Azul Oscuro/Plata)
-* 🌕 **Eclipse Dorado** (Negro/Oro)
 * 🌲 **Bosque Profundo** (Verde/Pizarra)
 * 🔮 **Nebulosa Púrpura** (Violeta/Deep)
 * 🦾 **Futuro Neón** (Cyberpunk/Mondrian)
@@ -82,7 +81,6 @@ Sistema de temas completo que cambia toda la paleta de colores de la aplicación
 * 🌱 **Claro Menta** (Tonos Zinc y Verde Esmeralda)
 * 🌅 **Claro Cálido** (Tonos Marfil y Pálidos Rojos)
 * 🎨 **Mondrian Style** (Arte Neoplástico)
-* 🎞️ **Art Déco** (Geometría y Elegancia)
 * 🍿 **Pop Art** (Colores Saturados y Gráficos)
 
 ### **Perfil de Usuario**

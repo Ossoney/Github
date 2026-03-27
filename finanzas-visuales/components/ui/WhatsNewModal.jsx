@@ -68,11 +68,7 @@ export function WhatsNewModal() {
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="p-4 bg-slate-800/50 border-2 border-slate-700 hover:border-amber-500/50 transition-colors">
-                                <h4 className="font-bold text-amber-500 text-xs uppercase tracking-widest mb-1">🎞️ ART DÉCO</h4>
-                                <p className="text-[11px] text-slate-500 leading-tight">Elegancia geométrica, simetría y contrastes dorados para un toque premium.</p>
-                            </div>
+                        <div className="grid grid-cols-1 gap-4">
                             <div className="p-4 bg-slate-800/50 border-2 border-slate-700 hover:border-fuchsia-500/50 transition-colors">
                                 <h4 className="font-bold text-fuchsia-500 text-xs uppercase tracking-widest mb-1">🍿 POP ART</h4>
                                 <p className="text-[11px] text-slate-500 leading-tight">Colores planos saturados y estética de cómic para un look divertido y vibrante.</p>

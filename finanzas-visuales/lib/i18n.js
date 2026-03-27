@@ -162,7 +162,6 @@ const dictionaries = {
         "choose_theme": "Elige el ambiente para tu aplicación:",
         "theme_names": {
             "sky": "Noche Estrellada",
-            "gold": "Eclipse Dorado",
             "forest": "Bosque Profundo",
             "nebula": "Nebulosa Púrpura",
             "mondrian": "Estilo Mondrian",
@@ -170,7 +169,6 @@ const dictionaries = {
             "light-sky": "Cielo Ártico",
             "light-mint": "Oasis Esmeralda",
             "light-warm": "Horizonte Ámbar",
-            "art-deco": "Art Déco",
             "pop-art": "Pop Art"
         },
         "main_currency": "Moneda Principal",
@@ -350,7 +348,6 @@ const dictionaries = {
         "day_su": "S",
         "theme_names": {
             "sky": "Starry Night",
-            "gold": "Golden Eclipse",
             "forest": "Deep Forest",
             "nebula": "Purple Nebula",
             "mondrian": "Mondrian Style",
@@ -358,7 +355,6 @@ const dictionaries = {
             "light-sky": "Arctic Sky",
             "light-mint": "Emerald Oasis",
             "light-warm": "Amber Horizon",
-            "art-deco": "Art Deco",
             "pop-art": "Pop Art"
         },
         "category_names": {
@@ -378,7 +374,6 @@ const dictionaries = {
         "result": "Resultado",
         "theme_names": {
             "sky": "Noite Estrelada",
-            "gold": "Eclipse Dourado",
             "forest": "Bosque Profundo",
             "nebula": "Nebulosa Púrpura",
             "mondrian": "Estilo Mondrian",
@@ -386,7 +381,6 @@ const dictionaries = {
             "light-sky": "Ceo Ártico",
             "light-mint": "Oasis Esmeralda",
             "light-warm": "Horizonte Ámbar",
-            "art-deco": "Art Déco",
             "pop-art": "Pop Art"
         },
         "category_names": {
@@ -405,7 +399,6 @@ const dictionaries = {
         "expense": "Gastuak",
         "theme_names": {
             "sky": "Gau Izartsua",
-            "gold": "Eklipse Urreztatua",
             "forest": "Baso Sakona",
             "nebula": "Nebulosa Morea",
             "mondrian": "Mondrian Estiloa",
@@ -413,7 +406,6 @@ const dictionaries = {
             "light-sky": "Zeru Artikoa",
             "light-mint": "Esmeralda Oasia",
             "light-warm": "Anbar Ostertza",
-            "art-deco": "Art Déco",
             "pop-art": "Pop Art"
         }
     },
@@ -428,7 +420,6 @@ const dictionaries = {
         "expense": "Despeses",
         "theme_names": {
             "sky": "Nit Estrellada",
-            "gold": "Eclipsi Daurat",
             "forest": "Bosc Profund",
             "nebula": "Nebulosa Púrpura",
             "mondrian": "Estilo Mondrian",
@@ -436,7 +427,6 @@ const dictionaries = {
             "light-sky": "Cel Àrtic",
             "light-mint": "Oasi Maragda",
             "light-warm": "Horitzó Àmbar",
-            "art-deco": "Art Déco",
             "pop-art": "Pop Art"
         }
     }
