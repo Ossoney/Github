@@ -1,0 +1,9 @@
+# EPUB Master Suite — Dependencias
+# Instalar con: pip install -r requirements.txt
+# Requiere Python 3.8 o superior
+
+# Lectura y escritura de archivos EPUB (metadatos Dublin Core, estructura interna)
+ebooklib>=0.18
+
+# Procesamiento y optimización de imágenes dentro de los EPUBs
+Pillow>=10.0.0

@@ -8,7 +8,7 @@
 > 2. `guia_acceso.md` (Para procesos de instalación y acceso)
 > 3. `estado_proyecto.md` (Este documento, para el estado actual, UX y Changelog)
 
-El proyecto **Finanzas Visuales** (v1.4.25) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
+El proyecto **Finanzas Visuales** (v1.4.26) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
 
 ## Tecnologías Principales
 
@@ -31,10 +31,15 @@ El proyecto **Finanzas Visuales** (v1.4.25) es una aplicación web de contabilid
 - **Hábitos:** Rastreador de rutinas con metas semanales, efectos visuales y recordatorios inteligentes.
 - **Personalización Visual:** 11 temas artísticos (incluyendo **Mondrian** y **Pop Art**) y perfiles personalizados.
 
-## Modificaciones Recientes (v1.4.25)
+## Modificaciones Recientes (v1.4.26)
 
-### 1. Restauración del Núcleo i18n
+### 1. Lectura y Accesibilidad UX
+Se ha incrementado el tamaño de la fuente (`text-xs` a `text-sm`) en el selector de categorías, carteras y modo desglose del formulario de transacciones, haciendo la lectura mucho más cómoda durante el uso continuado de la app.
 
+### 2. Corrección del Tema Pop Art
+Se solucionó un problema de "cajas negras" en el tema **Pop Art** reajustando por completo `globals.css`. Los fondos ahora mapean correctamente a tonos vibrantes (blanco, cian, amarillo) y se fuerza un color de viñeta negra u oscura en previsualizadores (placeholders) asegurando contraste.
+
+### 3. Restauración del Núcleo i18n
 Se ha reconstruido el sistema de internacionalización tras una corrupción de archivos, corrigiendo errores de sintaxis y typos en el diccionario español (ej. "Botón Nuclear", "Importación").
 
 ### 2. Nuevas Apariencias Artísticas
@@ -52,6 +57,10 @@ Se ha reconstruido el sistema de internacionalización tras una corrupción de a
 - Sincronización de cierres de brackets en el motor de carga de traducciones.
 
 ## Historial de Versiones (Changelog Recopilado)
+
+### [1.4.26] - 2026-04-06 - Mejoras Visuales (UX)
+- **Mejora**: Aumento del tamaño de fuente en categorización y wallets dentro del formulario de transacción para mejorar legibilidad.
+- **Fix**: Reparación de los colores base (`bg-slate-800`, `900`, `950`) en el tema **Pop Art** para eliminar cajas oscuras que ocultaban el texto.
 
 ### [1.4.25] - 2026-03-23 - Estilo Artístico y Estabilidad
 

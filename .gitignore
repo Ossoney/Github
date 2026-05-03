@@ -1,4 +1,4 @@
-﻿node_modules/
+node_modules/
 finanzas-visuales/node_modules/
 **/node_modules/
 .~lock.*
@@ -7,3 +7,6 @@ finanzas-visuales/node_modules/
 dist/
 build/
 .next/
+*.db
+*.exe
+*.log

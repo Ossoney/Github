@@ -29,7 +29,10 @@ class DupeFinderModule:
         return "Unknown", filename
 
     def _compare_titles(self, t1, t2):
-        return SequenceMatcher(None, t1.lower(), t2.lower()).ratio() >= UMBRAL_SIMILITUD
+        # Eliminar texto entre ( ) y [ ] 
+        t1_clean = re.sub(r'[\(\[].*?[\)\]]', '', t1).strip()
+        t2_clean = re.sub(r'[\(\[].*?[\)\]]', '', t2).strip()
+        return SequenceMatcher(None, t1_clean.lower(), t2_clean.lower()).ratio() >= UMBRAL_SIMILITUD
 
     def analyze(self, folder_path, limit=300):
         """
@@ -124,8 +127,9 @@ class DupeFinderModule:
         dupes_dir = folder / CARPETA_DUPLICADOS
         dupes_dir.mkdir(exist_ok=True)
 
+        total_groups = len(dupe_groups)
         for idx, group in enumerate(dupe_groups):
-            print(f"\nGrupo {idx+1}. Autor: {group[0]['author_display']}")
+            print(f"\nGrupo {idx+1} de {total_groups}. Autor: {group[0]['author_display']}")
             for i, item in enumerate(group):
                 print(f"   {chr(65+i)}) {item['file'].name}")
             

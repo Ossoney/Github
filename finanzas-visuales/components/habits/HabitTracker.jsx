@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { Card, Button } from '@/components/ui/UI'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import { Card, Button, ConfirmDialog } from '@/components/ui/UI'
 import { 
     Plus, Check, X, ChevronLeft, Trash2, Edit2, Target, 
     Book, Activity, BookOpen, Dumbbell, GlassWater, 
@@ -29,12 +29,17 @@ const IconMap = {
     Target
 }
 
+
 export function HabitTracker() {
     const { t, locale } = useLanguage()
     const [isFormOpen, setIsFormOpen] = useState(false)
     const [editingHabit, setEditingHabit] = useState(null)
     const [statsHabit, setStatsHabit] = useState(null)
     const [localHabits, setLocalHabits] = useState([])
+    // BUG FIX: pending deletes state for ConfirmDialog
+    const [confirmDelete, setConfirmDelete] = useState(null) // { id, name }
+    // BUG FIX: track in-flight toggle ops to prevent race condition on rapid clicks
+    const pendingToggles = useRef(new Set())
 
     const habits = useLiveQuery(() => db.habits.orderBy('order').toArray())
     const habitLogs = useLiveQuery(() => db.habitLogs.toArray())
@@ -50,26 +55,39 @@ export function HabitTracker() {
     const days = [...Array(7)].map((_, i) => subDays(startOfDay(new Date()), i))
 
     const toggleHabit = async (habitId, date) => {
-        const existing = await db.habitLogs
-            .where({ habitId, date: date.getTime() })
-            .first()
+        // BUG FIX: guard against rapid double-click race condition
+        const key = `${habitId}-${date.getTime()}`
+        if (pendingToggles.current.has(key)) return
+        pendingToggles.current.add(key)
+        try {
+            const existing = await db.habitLogs
+                .where({ habitId, date: date.getTime() })
+                .first()
 
-        const isCompleting = !existing
+            const isCompleting = !existing
 
-        if (existing) {
-            await db.habitLogs.delete(existing.id)
-        } else {
-            await db.habitLogs.add({ habitId, date: date.getTime() })
+            if (existing) {
+                await db.habitLogs.delete(existing.id)
+            } else {
+                await db.habitLogs.add({ habitId, date: date.getTime() })
+            }
+
+            return isCompleting
+        } finally {
+            pendingToggles.current.delete(key)
         }
-
-        return isCompleting
     }
 
     const deleteHabit = async (id) => {
-        if (confirm(t('confirm_delete_habit'))) {
-            await db.habits.delete(id)
-            await db.habitLogs.where('habitId').equals(id).delete()
-        }
+        // BUG FIX: use custom ConfirmDialog instead of native confirm()
+        setConfirmDelete(id)
+    }
+
+    const handleConfirmDelete = async () => {
+        if (confirmDelete == null) return
+        await db.habits.delete(confirmDelete)
+        await db.habitLogs.where('habitId').equals(confirmDelete).delete()
+        setConfirmDelete(null)
     }
 
     const getWeeklyProgress = (habitId) => {
@@ -170,6 +188,16 @@ export function HabitTracker() {
                 habit={statsHabit}
                 logs={habitLogs}
             />
+
+            {/* BUG FIX: Custom confirm dialog replacing native confirm() */}
+            <ConfirmDialog
+                isOpen={confirmDelete != null}
+                onClose={() => setConfirmDelete(null)}
+                onConfirm={handleConfirmDelete}
+                title={t('confirm_action')}
+                message={t('confirm_delete_habit')}
+                type="danger"
+            />
         </div>
     )
 }
@@ -178,6 +206,16 @@ function HabitItem({ habit, days, habitLogs, t, locale, weeklyProgress, onToggle
     const progressPercent = Math.min(100, (weeklyProgress / habit.goal) * 100)
     const controls = useDragControls()
     const [explosions, setExplosions] = useState([])
+
+    // BUG FIX: memoize particle vectors so they don't regenerate on every re-render
+    // (inline Math.random() in JSX caused framer-motion to animate to wrong targets)
+    const particleVectors = useRef(
+        [...Array(8)].map(() => ({
+            x: (Math.random() - 0.5) * 60,
+            y: (Math.random() - 0.5) * 60,
+            rotate: Math.random() * 360,
+        }))
+    )
 
     // Calculate mini heatmap (14 days / 2 weeks)
     const miniHeatmap = [...Array(14)].map((_, i) => {
@@ -311,16 +349,16 @@ function HabitItem({ habit, days, habitLogs, t, locale, weeklyProgress, onToggle
                                         <AnimatePresence>
                                             {isExploding && (
                                                 <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-                                                    {[...Array(8)].map((_, i) => (
+                                                    {particleVectors.current.map((vec, i) => (
                                                         <motion.div
                                                             key={i}
                                                             initial={{ x: 0, y: 0, scale: 1, opacity: 1 }}
                                                             animate={{ 
-                                                                x: (Math.random() - 0.5) * 60, 
-                                                                y: (Math.random() - 0.5) * 60, 
+                                                                x: vec.x,
+                                                                y: vec.y,
                                                                 scale: 0,
                                                                 opacity: 0,
-                                                                rotate: Math.random() * 360
+                                                                rotate: vec.rotate
                                                             }}
                                                             transition={{ duration: 0.6, ease: "easeOut" }}
                                                             className="absolute w-2 h-2 rounded-full"

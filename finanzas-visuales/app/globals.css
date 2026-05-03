@@ -279,9 +279,10 @@ body {
 
 /* 11. POP ART (Vibrant: Comic Style) */
 [data-theme='pop-art'] {
-    --bg-800: 20 20 20;
-    --bg-900: 10 10 10;
-    --bg-950: 0 0 0;
+    --foreground-rgb: 0, 0, 0;
+    --bg-800: 255 255 255;
+    --bg-900: 255 255 0;
+    --bg-950: 0 204 255;
     /* Electric Yellow */
     --primary-300: 253 224 71;
     --primary-400: 250 204 21;
@@ -304,12 +305,32 @@ body {
     color: #000000 !important;
 }
 
-[data-theme='pop-art'] .text-slate-400, [data-theme='pop-art'] .text-slate-300, [data-theme='pop-art'] .text-slate-200, [data-theme='pop-art'] .text-slate-100 {
+[data-theme='pop-art'] .bg-slate-800 {
+    background-color: #ffffff !important; /* White */
+    border: 2px solid #000000 !important;
+    box-shadow: 3px 3px 0px 0px #000000 !important;
     color: #000000 !important;
+}
+
+[data-theme='pop-art'] .text-slate-800,
+[data-theme='pop-art'] .text-slate-700,
+[data-theme='pop-art'] .text-slate-600,
+[data-theme='pop-art'] .text-slate-500,
+[data-theme='pop-art'] .text-slate-400, 
+[data-theme='pop-art'] .text-slate-300, 
+[data-theme='pop-art'] .text-slate-200, 
+[data-theme='pop-art'] .text-slate-100 {
+    color: #000000 !important;
+}
+
+[data-theme='pop-art'] ::placeholder {
+    color: rgba(0,0,0,0.6) !important;
 }
 
 [data-theme='pop-art'] .bg-slate-950 {
     background-color: #00ccff !important; /* Cyan BG */
+    border: 3px solid #000000 !important;
+    color: #000000 !important;
 }
 
 [data-theme='pop-art'] .text-emerald-400, [data-theme='pop-art'] .text-emerald-500 {

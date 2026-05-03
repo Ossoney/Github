@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+ebooklib
+beautifulsoup4
+sqlalchemy
+watchdog

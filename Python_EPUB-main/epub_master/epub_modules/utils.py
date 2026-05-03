@@ -33,45 +33,87 @@ def get_system_language():
 # LOGGING UNIFICADO
 # =========================================================
 
+class _TeeStream:
+    """Duplica la salida: escribe en la consola original Y en el fichero de log."""
+    def __init__(self, original_stream, file_handle):
+        self._original = original_stream
+        self._file = file_handle
+
+    def write(self, data):
+        self._original.write(data)
+        if self._file and not self._file.closed:
+            try:
+                self._file.write(data)
+            except Exception:
+                pass
+
+    def flush(self):
+        self._original.flush()
+        if self._file and not self._file.closed:
+            try:
+                self._file.flush()
+            except Exception:
+                pass
+
+    def fileno(self):
+        """Necesario para que os.system() y similares no fallen."""
+        return self._original.fileno()
+
+    def isatty(self):
+        return self._original.isatty()
+
+
 class Logger:
-    def __init__(self, folder_path=None):
-        # Usamos el directorio padre de epub_modules como base
-        self.base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        self.log_file_path = os.path.join(self.base_dir, LOG_FILENAME)
+    def __init__(self):
+        # Directorio externo para evitar bloat en Git
+        self.doc_dir = os.path.join(os.path.expanduser("~"), "Documents", "Epubbiblio")
+        if not os.path.exists(self.doc_dir):
+            os.makedirs(self.doc_dir, exist_ok=True)
+            
+        self.log_file_path = os.path.join(self.doc_dir, LOG_FILENAME)
         self.file_handle = None
-        # Iniciamos el log inmediatamente
+        self._original_stdout = sys.stdout  # guardamos el stdout real
+
         try:
             self.file_handle = open(self.log_file_path, 'a', encoding='utf-8')
-            self.log("--- SESIÓN INICIADA ---")
+            # Redirigimos stdout para que todo print() vaya también al log
+            sys.stdout = _TeeStream(self._original_stdout, self.file_handle)
+            # Primera entrada con separador de sesión
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            self.file_handle.write(f"\n{'='*60}\n")
+            self.file_handle.write(f"  SESIÓN INICIADA: {timestamp}\n")
+            self.file_handle.write(f"{'='*60}\n")
+            self.file_handle.flush()
         except Exception as e:
-            print(f"[ERROR] No se pudo crear archivo de log: {e}")
+            # Si no podemos abrir el log, al menos no rompemos la app
+            sys.stderr.write(f"[LOG ERROR] No se pudo crear archivo de log: {e}\n")
 
     def set_folder(self, folder_path):
-        """Registra el cambio de la carpeta de trabajo y lo notifica en el log."""
-        self.log(f"Carpeta de trabajo establecida en: {folder_path}")
+        """Registra el cambio de carpeta de trabajo en el log."""
+        print(f"[LOG] Carpeta de trabajo: {folder_path}")
 
-    def log(self, message, print_to_console=False):
-        """Escribe en el log y opcionalmente en consola."""
-        timestamp = datetime.datetime.now().strftime("[%Y-%m-%d %H:%M:%S]")
-        formatted_message = f"{timestamp} {message}"
-        
-        if self.file_handle:
-            try:
-                self.file_handle.write(formatted_message + "\n")
-                self.file_handle.flush()
-            except:
-                pass
-        
-        if print_to_console:
-            print(message)
+    def log(self, message):
+        """Log a message directly."""
+        print(message)
 
     def close(self):
-        if self.file_handle:
-            self.log("--- SESIÓN FINALIZADA ---")
+        """Restaura stdout original y cierra el fichero de log."""
+        if self.file_handle and not self.file_handle.closed:
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            try:
+                self.file_handle.write(f"{'='*60}\n")
+                self.file_handle.write(f"  SESIÓN FINALIZADA: {timestamp}\n")
+                self.file_handle.write(f"{'='*60}\n")
+                self.file_handle.flush()
+            except Exception:
+                pass
+            # Restauramos stdout antes de cerrar el fichero
+            sys.stdout = self._original_stdout
             self.file_handle.close()
             self.file_handle = None
 
-# Instancia global para ser usada por todos los módulos
+
+# Instancia global — al instanciarse ya redirige sys.stdout
 logger = Logger()
 
 # =========================================================

@@ -541,19 +541,24 @@ if (isBrowser) {
         }
     });
 
-    // Version 7: Add emotion to transactions
-    db.version(7).stores({
+    // Version 9: Add emotion field index to transactions
+    // NOTE: This was previously incorrectly labeled version(7), which duplicated
+    // the category-migration version(7) above and caused that upgrade to be silently
+    // overwritten by Dexie. Renaming to version(9) restores the correct upgrade chain.
+    db.version(9).stores({
         wallets: '++id, name, type',
         categories: '++id, name, type, parentId',
-        transactions: '++id, walletId, categoryId, date, type, emotion, *tags', // Added emotion
+        transactions: '++id, walletId, categoryId, date, type, emotion, *tags',
         settings: 'id',
         recurring: '++id, walletId, categoryId, dayOfMonth, type, active',
         tags: '++id, name',
         budgets: '++id, categoryId, amount, type',
     });
 
-    // Version 8: Add order to wallets
-    db.version(8).stores({
+    // Version 11: Add order index to wallets
+    // NOTE: Previously version(8). Renumbered to maintain a strictly increasing
+    // sequence after fixing the duplicate version(7) → version(9) above.
+    db.version(11).stores({
         wallets: '++id, name, type, order',
         categories: '++id, name, type, parentId',
         transactions: '++id, walletId, categoryId, date, type, emotion, *tags',
@@ -562,7 +567,7 @@ if (isBrowser) {
         tags: '++id, name',
         budgets: '++id, categoryId, amount, type',
     }).upgrade(async tx => {
-        await tx.wallets.toCollection().modify((wallet, ref) => {
+        await tx.wallets.toCollection().modify((wallet) => {
             wallet.order = wallet.id;
         });
     });

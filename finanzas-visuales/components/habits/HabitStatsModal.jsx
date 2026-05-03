@@ -7,7 +7,7 @@ import {
     TrendingUp, Activity, Clock, ChevronDown,
     CheckCircle2, XCircle, Star
 } from 'lucide-react'
-import { format, subMonths, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, startOfWeek, endOfWeek, differenceInDays, isAfter, subDays, startOfDay } from 'date-fns'
+import { format, subMonths, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, startOfWeek, endOfWeek, differenceInDays, isAfter, subDays, startOfDay, subWeeks, addDays } from 'date-fns'
 import { useLanguage } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 
@@ -65,18 +65,26 @@ export function HabitStatsModal({ isOpen, onClose, habit, logs = [] }) {
             bestStreak = Math.max(bestStreak, tempStreak)
         }
 
-        // Frequency by Day of Week
-        const weekdayFreq = [0, 0, 0, 0, 0, 0, 0] // Sun-Sat
-        habitLogs.forEach(d => {
-            weekdayFreq[new Date(d).getDay()]++
-        })
+        // Last 8 weeks evolution (completions per week)
+        const weeklyEvolution = []
+        for (let w = 7; w >= 0; w--) {
+            const weekStart = startOfWeek(subWeeks(startOfDay(new Date()), w), { weekStartsOn: 1 })
+            const weekEnd = addDays(weekStart, 6)
+            const count = eachDayOfInterval({ start: weekStart, end: weekEnd })
+                .filter(d => habitLogs.includes(startOfDay(d).getTime())).length
+            weeklyEvolution.push({
+                label: format(weekStart, 'd/M'),
+                count,
+                isCurrentWeek: w === 0
+            })
+        }
 
         return {
             total,
             score,
             currentStreak,
             bestStreak,
-            weekdayFreq,
+            weeklyEvolution,
             habitLogs
         }
     }, [habit, logs])
@@ -179,37 +187,47 @@ export function HabitStatsModal({ isOpen, onClose, habit, logs = [] }) {
                     </div>
                 </Card>
 
-                {/* 3. Distribution & Streaks */}
+                {/* 3. Weekly Evolution & Reminder */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Weekday Distribution */}
-                    <Card className="p-4 bg-slate-900 border-slate-800 space-y-4">
+                    {/* 8-Week Evolution Chart */}
+                    <Card className="p-4 bg-slate-900 border-slate-800 space-y-3">
                         <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
                             <Activity className="w-4 h-4 text-emerald-500" />
-                        {t('weekly_progress')}
+                            {t('weekly_evolution')}
                         </h3>
-                        <div className="flex items-end justify-between h-32 pt-2">
-                            {[
-                                t('day_su'), t('day_m'), t('day_t'), t('day_w'), t('day_th'), t('day_f'), t('day_s')
-                            ].map((day, i) => {
-                                const max = Math.max(...stats.weekdayFreq, 1)
-                                const height = (stats.weekdayFreq[i] / max) * 100
+                        <div className="flex items-end justify-between gap-1 h-28">
+                            {stats.weeklyEvolution.map((week, i) => {
+                                const max = Math.max(...stats.weeklyEvolution.map(w => w.count), 1)
+                                const height = Math.max((week.count / max) * 100, week.count > 0 ? 8 : 0)
                                 return (
-                                    <div key={day} className="flex flex-col items-center gap-2 flex-1 group">
-                                        <div className="w-full px-1.5 h-full flex items-end">
-                                            <div 
-                                                className="w-full rounded-t-md transition-all duration-500 group-hover:brightness-125"
-                                                style={{ 
-                                                    height: `${height}%`, 
-                                                    backgroundColor: `${habit.color}cc`,
-                                                    boxShadow: stats.weekdayFreq[i] > 0 ? `0 0 10px ${habit.color}33` : 'none'
+                                    <div key={i} className="flex flex-col items-center gap-1.5 flex-1 group">
+                                        {week.count > 0 && (
+                                            <span className="text-[9px] font-black text-slate-400">{week.count}</span>
+                                        )}
+                                        <div className="w-full flex-1 flex items-end">
+                                            <div
+                                                className="w-full rounded-t-sm transition-all duration-700"
+                                                style={{
+                                                    height: week.count === 0 ? '3px' : `${height}%`,
+                                                    backgroundColor: week.isCurrentWeek
+                                                        ? habit.color
+                                                        : `${habit.color}70`,
+                                                    boxShadow: week.isCurrentWeek && week.count > 0
+                                                        ? `0 0 12px ${habit.color}55`
+                                                        : 'none',
+                                                    opacity: week.count === 0 ? 0.2 : 1,
                                                 }}
                                             />
                                         </div>
-                                        <span className="text-[10px] font-black text-slate-600 uppercase">{day}</span>
+                                        <span className={cn(
+                                            "text-[8px] font-black uppercase leading-none",
+                                            week.isCurrentWeek ? "text-slate-300" : "text-slate-700"
+                                        )}>{week.label}</span>
                                     </div>
                                 )
                             })}
                         </div>
+                        <p className="text-[9px] text-slate-600 italic">{t('completions_per_week')}</p>
                     </Card>
 
                     {/* Notification/Reminder Settings Placeholder Info */}

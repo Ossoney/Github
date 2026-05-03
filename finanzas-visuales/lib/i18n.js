@@ -113,7 +113,7 @@ const dictionaries = {
         "subcategory_to_delete": "Subcategoría a eliminar",
         "appearance": "Apariencia",
         "version_help": "Versión/Ayuda",
-        "version_date": "Marzo 2026 (v1.4.25)",
+        "version_date": "Abril 2025",
         "user_profile": "Perfil de Usuario",
         "change_photo": "Pulsa para cambiar la foto",
         "name": "Nombre",
@@ -254,6 +254,8 @@ const dictionaries = {
         "not_set": "Sin configurar",
         "daily_reminder": "Recordatorio diario",
         "notification_info": "Puedes configurar la hora del recordatorio editando el hábito. Las notificaciones dependen de los permisos de tu navegador.",
+        "weekly_evolution": "Evolución por Semanas",
+        "completions_per_week": "Completaciones por semana — semana actual resaltada",
         "category_names": {
             "Wallapop-Vinted": "Segunda Mano",
             "Uber-Cabify": "Uber-Cabify"
@@ -336,6 +338,8 @@ const dictionaries = {
         "not_set": "Not set",
         "daily_reminder": "Daily reminder",
         "notification_info": "You can set the reminder time by editing the habit. Notifications depend on your browser permissions.",
+        "weekly_evolution": "Weekly Evolution",
+        "completions_per_week": "Completions per week — current week highlighted",
         "streak": "Streak",
         "best": "Best",
         "monthly_consistency": "Monthly Consistency",

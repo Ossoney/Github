@@ -1,0 +1,81 @@
+# =====================================================================
+# EPUBtoXTEINK - Optimizador de E-Books para E-Readers Antiguos
+# =====================================================================
+#
+# ¿EN QUÉ CONSISTE EL PROGRAMA?
+# ---------------------------------------------------------------------
+# EPUBtoXteink es una herramienta especializada para depurar, adelgazar
+# y adaptar archivos EPUB modernos a lectores de tinta electrónica con
+# especificaciones humildes o antiguas (como los Xteink X3/X4).
+# Previene desbordes de RAM y cuelgues causados por CSS pesado, imágenes
+# enormes y capítulos de longitud kilométrica.
+#
+# Funciones principales:
+# - Procesamiento de Imágenes (Multihilo):
+#     Pasa cada imagen a escala de grises de 8 bits. Previo al paso a
+#     grises, aplana correctamente el canal Alpha (transparencia) de los
+#     PNGs sobre fondo blanco para evitar el artefacto de "fondo negro"
+#     en e-readers. Usa ThreadPoolExecutor (8 workers) para procesarlas
+#     en paralelo. Elimina imágenes decorativas de tamaño mínimo (<15px).
+#     Límite de seguridad: 200 millones de píxeles (protección contra
+#     Decompression Bombs).
+#
+# - Limpieza Web (lxml / html.parser):
+#     Purga iframes, scripts, canvas, video, audio, fuentes externas
+#     (.ttf, .otf, .woff) y atributos CSS en línea. Detecta lxml
+#     automáticamente y lo usa si está disponible (10x más rápido).
+#
+# - Splitting Dinámico de Capítulos:
+#     Si un archivo .xhtml/.html interno supera los 300 KB (umbral
+#     de crash de RAM en e-readers básicos), lo corta por la mitad
+#     usando extract() para mover nodos de forma segura. El nuevo
+#     archivo _part2 se registra automáticamente en el manifiesto OPF
+#     (con búsqueda correcta por nombre relativo de archivo).
+#
+# - Logger Persistente:
+#     Toda la salida de consola se guarda en EPUBtoXteink.log junto al
+#     script (no en el directorio de trabajo variable).
+#
+# ESTADO Y SITUACIÓN DEL PROYECTO
+# ---------------------------------------------------------------------
+# [ESTADO: ESTABLE V1.1 - AUDITADA Y BUGFIXED]
+#
+# Historial de cambios:
+#   v1.0 - Implementación inicial con Multihilo, lxml y Splitting.
+#   v1.1 - Auditoría completa. Corregidos 7 bugs:
+#           · PNG con Alpha ya no genera fondo negro en e-readers.
+#           · Split HTML usa extract() seguro (antes usaba clonado
+#             de sopa que borraba nodos del documento equivocado).
+#           · OPF Patching ahora busca por Path(href).name para
+#             funcionar con hrefs de subdirectorios (ej: Text/cap.xhtml).
+#           · Image.MAX_IMAGE_PIXELS fijado a 200M (antes era None,
+#             lo que desactivaba la protección contra bombas de memoria).
+#           · Log ya no se guarda en CWD variable sino junto al script.
+#           · Eliminado import time (no se usaba).
+#           · Corregido typo "SPLLITING" → "SPLITTING".
+#
+# Pendiente / Futuras mejoras:
+#   - Dithering Floyd-Steinberg para mejor contraste en pantallas E-Ink.
+#   - Re-enlazado del toc.ncx tras el splitting de capítulos.
+#   - Preservación de namespaces XML en el OPF con lxml.etree nativo.
+#
+# ¿CÓMO INSTALAR LAS DEPENDENCIAS?
+# ---------------------------------------------------------------------
+# Abre tu consola (CMD o PowerShell) en esta carpeta y ejecuta:
+#
+#     pip install -r EPUBtoXteink_requirements.txt
+#
+# Esto instalará:
+#   · beautifulsoup4  → Parseo y manipulación de HTML/XML.
+#   · Pillow          → Procesamiento de imágenes (redimensionado, grises).
+#   · lxml            → Motor de parseo HTML ultra-rápido (hiper-recomendado).
+#
+# Sin lxml el programa funciona igualmente usando el parser nativo de
+# Python, pero será considerablemente más lento con libros grandes.
+#
+# =====================================================================
+# LIBRERÍAS (NO BORRAR):
+
+beautifulsoup4>=4.12.0
+Pillow>=10.0.0
+lxml>=4.9.0

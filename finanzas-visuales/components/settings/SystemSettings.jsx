@@ -8,6 +8,7 @@ import { useLanguage, CURRENCIES } from '@/lib/i18n'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '@/lib/db'
 import { exportToExcel, importFromExcel } from '@/lib/utils'
+import { THEMES } from '@/lib/themes'
 
 // ----------------------------------------------------------------------
 // LANGUAGE SETTINGS
@@ -95,19 +96,7 @@ export function CurrencySettings() {
 // ----------------------------------------------------------------------
 // THEME SETTINGS (Renamed from ThemeManager)
 // ----------------------------------------------------------------------
-const themes = [
-    { id: 'sky', color: '#0ea5e9' },
-    { id: 'gold', color: '#f59e0b' },
-    { id: 'forest', color: '#10b981' },
-    { id: 'nebula', color: '#8b5cf6' },
-    { id: 'mondrian', color: '#2563eb' },
-    { id: 'art-deco', color: '#b48232' },
-    { id: 'pop-art', color: '#ffff00' },
-    { id: 'wine', color: '#f43f5e' },
-    { id: 'light-sky', color: '#e0f2fe' },
-    { id: 'light-mint', color: '#d1fae5' },
-    { id: 'light-warm', color: '#ffe4e6' },
-]
+// Themes imported from lib/themes.js — single source of truth
 
 export function ThemeSettings() {
     const settings = useLiveQuery(() => db.settings.get('global'))
@@ -140,7 +129,7 @@ export function ThemeSettings() {
             <div className="p-6">
                 <p className="text-slate-400 mb-6 text-sm">{t('choose_theme')}</p>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4">
-                    {themes.map(theme => (
+                    {THEMES.map(theme => (
                         <button
                             key={theme.id}
                             onClick={() => handleThemeChange(theme.id)}

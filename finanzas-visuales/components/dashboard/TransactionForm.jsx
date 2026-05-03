@@ -447,7 +447,7 @@ export function TransactionForm() {
                                             <select
                                                 value={walletId}
                                                 onChange={(e) => setWalletId(parseInt(e.target.value))}
-                                                className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 pl-9 pr-8 text-xs text-slate-200 focus:outline-none focus:border-sky-500 appearance-none"
+                                                className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 pl-9 pr-8 text-sm text-slate-200 focus:outline-none focus:border-sky-500 appearance-none"
                                             >
                                                 <option value="" disabled>{t('wallet_source')}</option>
                                                 {wallets?.map(w => (
@@ -461,7 +461,7 @@ export function TransactionForm() {
                                             <select
                                                 value={toWalletId}
                                                 onChange={(e) => setToWalletId(parseInt(e.target.value))}
-                                                className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 pl-9 pr-8 text-xs text-slate-200 focus:outline-none focus:border-sky-500 appearance-none"
+                                                className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 pl-9 pr-8 text-sm text-slate-200 focus:outline-none focus:border-sky-500 appearance-none"
                                             >
                                                 <option value="" disabled>{t('wallet_destination')}</option>
                                                 {wallets?.filter(w => w.id !== walletId).map(w => (
@@ -493,7 +493,7 @@ export function TransactionForm() {
                                                     newSplits[index].categoryId = e.target.value ? parseInt(e.target.value) : null
                                                     setSplits(newSplits)
                                                 }}
-                                                className="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 pl-2 pr-8 text-xs text-slate-200 focus:outline-none focus:border-sky-500 appearance-none"
+                                                className="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 pl-2 pr-8 text-sm text-slate-200 focus:outline-none focus:border-sky-500 appearance-none"
                                             >
                                                 <option value="">Seleccionar Categoría...</option>
                                                 {allCategories?.filter(c => c.type === type).map(c => (
@@ -507,7 +507,7 @@ export function TransactionForm() {
 
                                         {/* Amount Input for Split Item */}
                                         <div className="w-[120px] relative">
-                                            <span className="absolute left-2 top-1/2 -translate-y-1/2 text-xs text-slate-500">{symbol}</span>
+                                            <span className="absolute left-2 top-1/2 -translate-y-1/2 text-sm text-slate-500">{symbol}</span>
                                             <input
                                                 type="number"
                                                 value={split.amount}
@@ -517,7 +517,7 @@ export function TransactionForm() {
                                                     setSplits(newSplits)
                                                 }}
                                                 placeholder="0.00"
-                                                className="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 pl-6 pr-8 text-xs text-slate-200 focus:outline-none focus:border-sky-500 font-mono"
+                                                className="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 pl-6 pr-8 text-sm text-slate-200 focus:outline-none focus:border-sky-500 font-mono"
                                             />
                                             <button
                                                 type="button"
@@ -600,7 +600,7 @@ export function TransactionForm() {
                                                             <div className="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center text-slate-400" style={{ color: cat.color }}>
                                                                 <Icon className="w-7 h-7" />
                                                             </div>
-                                                            <span className="text-xs text-slate-400 truncate w-full text-center">{tCategory(cat.name)}</span>
+                                                            <span className="text-sm text-slate-400 truncate w-full text-center">{tCategory(cat.name)}</span>
                                                         </button>
                                                     )
                                                 })}
@@ -618,7 +618,7 @@ export function TransactionForm() {
                                                         <button
                                                             key={cat.id}
                                                             onClick={() => setCategoryId(cat.id)}
-                                                            className="p-2 rounded-lg bg-slate-800/50 hover:bg-slate-800 text-xs text-slate-300 border border-slate-700/50 truncate"
+                                                            className="p-2 rounded-lg bg-slate-800/50 hover:bg-slate-800 text-sm text-slate-300 border border-slate-700/50 truncate"
                                                         >
                                                             {tCategory(cat.name)}
                                                         </button>

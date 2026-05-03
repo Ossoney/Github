@@ -1,5 +1,15 @@
 # 📜 Changelog - VISUALIS
 
+## [1.4.26] - 2026-04-06
+
+### Changed
+
+- **UX/Accesibilidad**: Aumentado el tamaño de la fuente base (`text-xs` a `text-sm`) en el selector de categorías, carteras y modo desglose dentro del formulario de transacciones para mejorar la lectura rápida y usabilidad continuada.
+
+### Fixed
+
+- **Modo Pop Art**: Solucionado un problema visual ("cajas negras") donde fondos muy oscuros ocultaban los textos negros en el formulario de transacciones. Se ha ajustado la paleta para este tema utilizando fondos vibrantes (cyan, amarillo, blanco) con alto contraste según la estética arte pop.
+
 ## [1.4.25] - 2026-03-23
 
 ### Added
