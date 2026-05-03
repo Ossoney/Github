@@ -164,7 +164,7 @@ export function VersionHelp() {
                         </span>
                         <p className="text-xs text-slate-300 font-mono tracking-wider font-semibold">VISUALIS v1.4.15</p>
                     </div>
-                    <p className="text-[10px] text-slate-500 uppercase tracking-widest mt-2">{t('version_date') || 'Abril 2025'}</p>
+                    <p className="text-[10px] text-slate-500 uppercase tracking-widest mt-2">{t('version_date') || 'Mayo 2026'}</p>
                 </div>
             </CardContent>
         </Card>

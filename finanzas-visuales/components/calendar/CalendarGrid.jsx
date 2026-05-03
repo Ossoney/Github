@@ -156,14 +156,29 @@ export function CalendarGrid() {
                     const isNegative = day.balance < 0
                     const balanceColor = isPositive ? 'text-emerald-400' : isNegative ? 'text-rose-400' : 'text-slate-500'
 
+                    const getPopClass = (index, day) => {
+                        // Only "pop" empty cells or specific patterns for aesthetic
+                        if (day.hasActivity) return ''
+                        
+                        // Pseudo-random but deterministic pattern based on index
+                        const pattern = [
+                            '', '', 'calendar-pop-red', '', 
+                            '', 'calendar-pop-blue', '', '', 
+                            'calendar-pop-yellow', '', '', '', 
+                            '', '', 'calendar-pop-white'
+                        ]
+                        return pattern[index % pattern.length]
+                    }
+
                     return (
                         <div
                             key={idx}
                             onClick={() => handleDayClick(day)}
                             className={`
-                                min-h-[100px] p-2 flex flex-col justify-between transition-colors cursor-pointer group
+                                min-h-[100px] p-2 flex flex-col justify-between transition-all cursor-pointer group
                                 ${day.isCurrentMonth ? 'bg-slate-900' : 'bg-slate-950/50'}
                                 ${day.isToday ? 'bg-slate-800/80 ring-1 ring-inset ring-sky-500/50' : 'hover:bg-slate-800'}
+                                ${getPopClass(idx, day)}
                             `}
                         >
                             <div className="flex justify-between items-start">

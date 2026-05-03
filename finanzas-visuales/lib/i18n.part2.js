@@ -28,7 +28,7 @@
         data: 'Datos',
         language: 'Idioma',
         version_help: 'Versión/Axuda',
-        version_date: 'Abril 2025',
+        version_date: 'Maio 2026',
 
         // Profile Settings
         user_profile: 'Perfil de Usuario',
@@ -435,7 +435,7 @@
         data: 'Datuak',
         language: 'Hizkuntza',
         version_help: 'Bertsioa/Laguntza',
-        version_date: '2025eko Apirila',
+        version_date: '2026ko Maiatza',
         // Donation
         donation_title: 'Gonbidatu kafe bat hartzera',
         donation_desc: 'Visualis baliagarria bazaizu, garapena babestu dezakezu dohaintza txiki batekin.',
@@ -607,7 +607,7 @@
         data: 'Dades',
         language: 'Idioma',
         version_help: 'Versió/Ajuda',
-        version_date: 'Abril 2025',
+        version_date: 'Maig 2026',
 
         // Profile Settings
         user_profile: 'Perfil d\'Usuari',
