@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="isi-isi — App sencilla y visual para gestionar gastos compartidos en grupo. Sin cálculos manuales.">
+  <meta name="theme-color" content="#12141a">
+  <title>isi-isi — Gastos Compartidos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ===== ONBOARDING ===== -->
+    <div id="onboarding" class="hidden">
+      <div class="onboard-card">
+        <div class="onboard-logo">💸</div>
+        <div class="onboard-title">isi-isi</div>
+        <div class="onboard-subtitle" data-i18n="onboard_subtitle">Gastos compartidos, sin líos.<br>Configura tu grupo para empezar.</div>
+
+        <div class="onboard-steps-indicator">
+          <div class="step-dot active" id="dot-0"></div>
+          <div class="step-dot" id="dot-1"></div>
+          <div class="step-dot" id="dot-2"></div>
+        </div>
+
+        <!-- Step 0: Group name -->
+        <div class="onboard-step active" id="onboard-step-0">
+          <div class="onboard-step-title" data-i18n="onboard_step0_title">¿Cómo se llama el grupo?</div>
+          <div class="form-group">
+            <input type="text" id="onboard-group-name" class="input" placeholder="Ej: Viaje Asturias, Piso centro..." data-i18n-placeholder="onboard_step0_placeholder" maxlength="40" autofocus>
+          </div>
+          <div class="onboard-step-hint" data-i18n="onboard_step0_hint">Dale un nombre para identificarlo fácilmente.</div>
+          <div class="onboard-actions">
+            <button class="btn-primary" id="onboard-next-0" data-i18n="next">Siguiente →</button>
+          </div>
+        </div>
+
+        <!-- Step 1: Your name -->
+        <div class="onboard-step" id="onboard-step-1">
+          <div class="onboard-step-title" data-i18n="onboard_step1_title">¿Cómo te llamas?</div>
+          <div class="form-group">
+            <input type="text" id="onboard-your-name" class="input" placeholder="Tu nombre..." data-i18n-placeholder="onboard_step1_placeholder" maxlength="30">
+          </div>
+          <div class="onboard-step-hint" data-i18n="onboard_step1_hint">Para saber quién eres dentro del grupo.</div>
+          <div class="onboard-actions">
+            <button class="btn-secondary" id="onboard-back-1" data-i18n="back">← Atrás</button>
+            <button class="btn-primary" id="onboard-next-1" data-i18n="next">Siguiente →</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Add members -->
+        <div class="onboard-step" id="onboard-step-2">
+          <div class="onboard-step-title" data-i18n="onboard_step2_title">Añade a los demás miembros</div>
+          <div class="add-member-row">
+            <input type="text" id="onboard-member-input" class="input" placeholder="Nombre del miembro..." data-i18n-placeholder="onboard_step2_placeholder" maxlength="30">
+            <button type="button" class="btn-add" id="onboard-add-member">+</button>
+          </div>
+          <div id="onboard-members-list" class="onboard-members"></div>
+          <div class="onboard-counter" id="onboard-counter"></div>
+          <div class="onboard-actions">
+            <button class="btn-secondary" id="onboard-back-2" data-i18n="back">← Atrás</button>
+            <button class="btn-primary" id="onboard-finish" data-i18n="start" disabled>¡Empezar!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header id="app-header">
+      <div class="header-left" style="display:flex;gap:8px">
+        <button class="icon-btn btn-header-main btn-header-groups" id="btn-groups-list" title="Mis Grupos" data-i18n-title="groups_title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="9"/>
+            <rect x="14" y="3" width="7" height="5"/>
+            <rect x="14" y="12" width="7" height="9"/>
+            <rect x="3" y="16" width="7" height="5"/>
+          </svg>
+        </button>
+        <button class="icon-btn btn-header-main btn-header-members" id="btn-group" title="Miembros del Grupo" data-i18n-title="members_title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </button>
+      </div>
+      <div class="header-center">
+        <h1 id="header-title" style="cursor:pointer" title="Cambiar grupo" data-i18n-title="switch_group" class="lang-switch-trigger">isi-isi</h1>
+        <div class="subtitle" id="header-subtitle">Total: 0 €</div>
+      </div>
+      <div class="header-right" style="display:flex;gap:8px">
+        <button class="icon-btn btn-header-main btn-header-share" id="btn-share" title="Compartir" data-i18n-title="share">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+            <polyline points="16 6 12 2 8 6"/>
+            <line x1="12" y1="2" x2="12" y2="15"/>
+          </svg>
+        </button>
+        <button class="icon-btn btn-header-danger" id="btn-reset" title="Resetear datos" data-i18n-title="reset">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main id="app-main">
+
+      <!-- Dashboard View -->
+      <section id="view-dashboard" class="view active">
+        <div id="dashboard-content"></div>
+      </section>
+
+      <!-- Expenses View -->
+      <section id="view-expenses" class="view">
+        <div id="expenses-content"></div>
+      </section>
+
+      <!-- Saldos View (individual balances per member) -->
+      <section id="view-saldos" class="view">
+        <div id="saldos-content"></div>
+      </section>
+
+      <!-- Balance View (simplified transfers) -->
+      <section id="view-balance" class="view">
+        <div id="balance-content"></div>
+      </section>
+
+      <!-- Stats View -->
+      <section id="view-stats" class="view">
+        <div id="stats-content"></div>
+      </section>
+
+    </main>
+
+    <!-- ===== FAB ===== -->
+    <button id="fab" title="Añadir gasto" data-i18n-title="add_expense">+</button>
+
+    <!-- ===== BOTTOM NAVBAR (5 tabs) ===== -->
+    <nav id="navbar">
+      <button class="nav-btn active" data-view="dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span data-i18n="nav_inicio">Inicio</span>
+      </button>
+      <button class="nav-btn" data-view="expenses">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+        <span data-i18n="nav_gastos">Gastos</span>
+      </button>
+      <button class="nav-btn" data-view="saldos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="M2 10h20"/>
+          <path d="M6 16h4"/>
+        </svg>
+        <span data-i18n="nav_saldos">Saldos</span>
+      </button>
+      <button class="nav-btn" data-view="balance">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="17 1 21 5 17 9"/>
+          <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+          <polyline points="7 23 3 19 7 15"/>
+          <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+        </svg>
+        <span data-i18n="nav_balance">Balance</span>
+      </button>
+      <button class="nav-btn" data-view="stats">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="20" x2="18" y2="10"/>
+          <line x1="12" y1="20" x2="12" y2="4"/>
+          <line x1="6" y1="20" x2="6" y2="14"/>
+        </svg>
+        <span data-i18n="nav_stats">Stats</span>
+      </button>
+    </nav>
+
+    <!-- ===== MODAL: ADD/EDIT EXPENSE ===== -->
+    <div id="modal-expense" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modal-expense-title" data-i18n="new_expense">Nuevo gasto</h2>
+          <button class="modal-close" data-close="modal-expense">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="expense-form" autocomplete="off">
+            <input type="hidden" id="expense-id">
+
+            <div class="form-group">
+              <label for="expense-title-input" data-i18n="expense_title_label">¿En qué se gastó?</label>
+              <input type="text" id="expense-title-input" class="input" placeholder="Ej: Cena, Supermercado..." data-i18n-placeholder="expense_title_placeholder" required>
+            </div>
+
+            <div class="form-group">
+              <label for="expense-amount-input" data-i18n="amount">Importe</label>
+              <div class="amount-wrapper">
+                <input type="number" id="expense-amount-input" class="input" step="0.01" min="0.01" placeholder="0,00" required>
+                <span class="currency" id="currency-symbol">€</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label data-i18n="who_paid">¿Quién pagó?</label>
+              <div id="payer-selector" class="chips"></div>
+            </div>
+
+            <div class="form-group">
+              <label data-i18n="category">Categoría</label>
+              <div id="category-selector" class="category-grid"></div>
+            </div>
+
+            <div class="form-group">
+              <label data-i18n="split_among">Dividir entre</label>
+              <div class="split-tabs" id="split-tabs">
+                <button type="button" class="split-tab active" data-mode="equal" data-i18n="split_equal">Equitativo</button>
+                <button type="button" class="split-tab" data-mode="percentage">%</button>
+                <button type="button" class="split-tab" data-mode="shares" data-i18n="split_shares">Partes</button>
+                <button type="button" class="split-tab" data-mode="exact" data-i18n="split_exact">Exacto</button>
+              </div>
+              <div id="split-config"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="expense-date-input" data-i18n="date">Fecha</label>
+              <input type="date" id="expense-date-input" class="input">
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn-secondary" data-close="modal-expense" data-i18n="cancel">Cancelar</button>
+              <button type="submit" class="btn-primary" id="btn-save-expense" data-i18n="save">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== MODAL: GROUP MANAGEMENT ===== -->
+    <div id="modal-group" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 data-i18n="group">Grupo</h2>
+          <button class="modal-close" data-close="modal-group">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="group-name-edit">
+            <div class="form-group" style="margin-bottom:0">
+              <label for="group-name-input" data-i18n="group_name_label">Nombre del grupo</label>
+              <input type="text" id="group-name-input" class="input" placeholder="Nombre del grupo" data-i18n-placeholder="group_name_placeholder">
+            </div>
+          </div>
+
+          <div class="section-title" style="margin-top:var(--space-md)" data-i18n="members">Miembros</div>
+          <div id="members-list"></div>
+
+          <div class="add-member-row">
+            <input type="text" id="new-member-input" class="input" placeholder="Añadir miembro..." data-i18n-placeholder="add_member_placeholder" maxlength="30">
+            <button type="button" class="btn-add" id="btn-add-member">+</button>
+          </div>
+
+          <div class="section-title" style="margin-top:var(--space-lg)" data-i18n="you_are">Tú eres...</div>
+          <div id="current-user-selector" class="chips" style="margin-bottom:var(--space-lg)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== MODAL: GROUPS LIST MANAGER ===== -->
+    <div id="modal-groups-list" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modal-groups-title" data-i18n="my_groups">Mis Grupos</h2>
+          <button class="modal-close" data-close="modal-groups-list">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div id="groups-list-container" class="groups-list-container"></div>
+          <div class="add-group-row" style="display:flex;gap:var(--space-sm);margin-top:var(--space-lg)">
+            <input type="text" id="new-group-name-input" class="input" placeholder="Nombre del nuevo grupo..." data-i18n-placeholder="new_group_placeholder" maxlength="40">
+            <button type="button" class="btn-primary" id="btn-create-new-group" style="padding:0 var(--space-md)" data-i18n="create">Crear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== MODAL: EXPENSE DETAIL ===== -->
+    <div id="modal-detail" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 data-i18n="detail">Detalle</h2>
+          <button class="modal-close" data-close="modal-detail">&times;</button>
+        </div>
+        <div class="modal-body" id="detail-content"></div>
+      </div>
+    </div>
+
+    <!-- ===== CONFIRM DIALOG ===== -->
+    <div id="confirm-dialog" class="confirm-overlay">
+      <div class="confirm-box">
+        <div class="confirm-text" id="confirm-text"></div>
+        <div class="confirm-actions">
+          <button class="btn-secondary" id="confirm-cancel" data-i18n="cancel">Cancelar</button>
+          <button class="btn-danger" id="confirm-ok" data-i18n="delete">Eliminar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TOAST ===== -->
+    <div id="toast" class="toast"></div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
