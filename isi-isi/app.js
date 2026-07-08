@@ -1,11 +1,11 @@
 /* ============================================
    isi-isi — App de Gastos Compartidos
-   Lógica completa: estado, i18n, multi-grupo,
-   renderizado, algoritmos, persistencia, onboarding
+   Firebase Firestore Edition
    ============================================ */
 
 // ---- Constants & Keys ----
-const STORAGE_KEY = 'isi-isi-multidata'; // New key for multi-group support
+const LOCAL_PREF_KEY = 'isi-isi-prefs';       // per-device: activeGroupId, currentUser per group
+const LOCAL_GROUPS_KEY = 'isi-isi-local-groups'; // local-only groups (no firebase)
 
 const CATEGORIES = [
   { id: 'food',      icon: '🍔' },
@@ -101,15 +101,15 @@ const DICS = {
     toast_pct_sum: 'Los porcentajes deben sumar 100%',
     toast_shares_sum: 'Asigna al menos una parte',
     toast_exact_sum: 'Las cantidades deben sumar el total',
-    toast_saved: 'Gasto añadido',
-    toast_updated: 'Gasto actualizado',
+    toast_saved: 'Gasto añadido ✓',
+    toast_updated: 'Gasto actualizado ✓',
     toast_deleted: 'Gasto eliminado',
-    toast_settled: 'Deuda liquidada',
+    toast_settled: 'Deuda liquidada ✓',
     toast_removed_member: 'Miembro eliminado',
     toast_cannot_remove: 'No se puede eliminar: tiene gastos asociados',
-    toast_group_created: '¡Grupo "{{name}}" creado!',
-    toast_import_ok: 'Grupo importado con éxito',
-    toast_import_err: 'Error al importar el enlace',
+    toast_group_created: '¡Grupo "{{name}}" creado! 🎉',
+    toast_import_ok: 'Grupo cargado con éxito ✓',
+    toast_import_err: 'Error al cargar el grupo',
     toast_confirm_settle: '¿Confirmar que {{from}} pagó {{amount}} a {{to}}?',
     toast_confirm_reset: '¿Borrar TODOS los datos de todos los grupos y empezar de cero?',
     toast_confirm_delete_group: '¿Eliminar el grupo "{{name}}"? Todos sus gastos se perderán.',
@@ -124,8 +124,10 @@ const DICS = {
     deudas_simplificadas: 'Deudas simplificadas',
     actividad_reciente: 'Actividad reciente',
     first_expense_prompt: '¡Añade tu primer gasto!<br>Pulsa el botón <strong>+</strong> para empezar.',
-    share_interactive_link: 'Ver grupo interactivo:',
+    share_interactive_link: 'Únete al grupo:',
     sent_from_app: 'Enviado desde isi-isi',
+    firebase_not_configured: '⚙️ Firebase no configurado. Edita firebase-config.js',
+    loading: 'Cargando...',
   },
   en: {
     months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
@@ -185,7 +187,7 @@ const DICS = {
     paid_by: 'Paid by',
     divided_among: 'Split among ({{count}} people)',
     edit: 'Edit',
-    state_settled: 'Settle Up',
+    state_settled: 'All settled up',
     state_settled_subtitle: 'No pending debts between members.',
     transfers_needed: 'Suggested transfers',
     transfers_subtitle: 'payments to settle all debts',
@@ -208,15 +210,15 @@ const DICS = {
     toast_pct_sum: 'Percentages must sum to 100%',
     toast_shares_sum: 'Assign at least one share',
     toast_exact_sum: 'Amounts must sum to total',
-    toast_saved: 'Expense added',
-    toast_updated: 'Expense updated',
+    toast_saved: 'Expense added ✓',
+    toast_updated: 'Expense updated ✓',
     toast_deleted: 'Expense deleted',
-    toast_settled: 'Debt settled',
+    toast_settled: 'Debt settled ✓',
     toast_removed_member: 'Member removed',
     toast_cannot_remove: 'Cannot remove: associated expenses exist',
-    toast_group_created: 'Group "{{name}}" created!',
-    toast_import_ok: 'Group imported successfully',
-    toast_import_err: 'Error importing link',
+    toast_group_created: 'Group "{{name}}" created! 🎉',
+    toast_import_ok: 'Group loaded successfully ✓',
+    toast_import_err: 'Error loading group',
     toast_confirm_settle: 'Confirm that {{from}} paid {{amount}} to {{to}}?',
     toast_confirm_reset: 'Erase ALL data of all groups and start fresh?',
     toast_confirm_delete_group: 'Delete group "{{name}}"? All its expenses will be lost.',
@@ -231,8 +233,10 @@ const DICS = {
     deudas_simplificadas: 'Simplified debts',
     actividad_reciente: 'Recent activity',
     first_expense_prompt: 'Add your first expense!<br>Press the <strong>+</strong> button to start.',
-    share_interactive_link: 'View interactive group:',
+    share_interactive_link: 'Join the group:',
     sent_from_app: 'Sent from isi-isi',
+    firebase_not_configured: '⚙️ Firebase not configured. Edit firebase-config.js',
+    loading: 'Loading...',
   }
 };
 
@@ -266,18 +270,129 @@ function localizeDOM() {
     const key = el.getAttribute('data-i18n-title');
     el.setAttribute('title', t(key));
   });
-  // Localize category labels
   CATEGORIES.forEach(c => {
     c.label = t('categories')[c.id] || c.id;
   });
 }
 
-// ---- Global State ----
-// Multi-group schema: { activeGroupId: String, groups: { [id]: { group: {...}, expenses: [], payments: [] } } }
-let db = {
-  activeGroupId: '',
-  groups: {}
-};
+// ============================================
+//   FIREBASE
+// ============================================
+
+let db_firestore = null;
+let firestoreAvailable = false;
+let unsubscribeListener = null;
+
+function initFirebase() {
+  try {
+    if (typeof firebaseConfig === 'undefined' || firebaseConfig.apiKey === 'TU-API-KEY') {
+      console.warn('Firebase not configured. Running in offline mode.');
+      firestoreAvailable = false;
+      setSyncStatus('offline');
+      return false;
+    }
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+    db_firestore = firebase.firestore();
+    firestoreAvailable = true;
+    setSyncStatus('synced');
+    return true;
+  } catch (e) {
+    console.error('Firebase init error:', e);
+    firestoreAvailable = false;
+    setSyncStatus('error');
+    return false;
+  }
+}
+
+function setSyncStatus(status) {
+  const indicator = document.getElementById('sync-indicator');
+  if (!indicator) return;
+  indicator.className = 'sync-indicator ' + status;
+}
+
+// Subscribe to real-time updates for a group
+function subscribeToGroup(groupId) {
+  if (unsubscribeListener) {
+    unsubscribeListener();
+    unsubscribeListener = null;
+  }
+  if (!firestoreAvailable || !groupId) return;
+
+  setSyncStatus('syncing');
+  const docRef = db_firestore.collection('groups').doc(groupId);
+  unsubscribeListener = docRef.onSnapshot(
+    (doc) => {
+      if (doc.exists) {
+        const data = doc.data();
+        // Update state from Firestore, but preserve currentUser (it's per-device)
+        const currentUser = state.group.currentUser;
+        state.group = { ...data.group, currentUser };
+        state.expenses = data.expenses || [];
+        state.payments = data.payments || [];
+        // Update local prefs cache
+        saveLocalPrefs();
+        setSyncStatus('synced');
+        render();
+      }
+    },
+    (error) => {
+      console.error('Firestore listener error:', error);
+      setSyncStatus('error');
+    }
+  );
+}
+
+async function saveToFirestore() {
+  if (!firestoreAvailable || !activeGroupId) return;
+  setSyncStatus('syncing');
+  try {
+    const docRef = db_firestore.collection('groups').doc(activeGroupId);
+    // Don't store currentUser in Firestore (it's per-device)
+    const groupData = { ...state.group };
+    delete groupData.currentUser;
+    await docRef.set({
+      group: groupData,
+      expenses: state.expenses,
+      payments: state.payments,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    setSyncStatus('synced');
+  } catch (e) {
+    console.error('Firestore save error:', e);
+    setSyncStatus('error');
+    toast('Error al guardar 🔴');
+  }
+}
+
+async function loadGroupFromFirestore(groupId) {
+  if (!firestoreAvailable) return null;
+  try {
+    const doc = await db_firestore.collection('groups').doc(groupId).get();
+    if (doc.exists) return doc.data();
+    return null;
+  } catch (e) {
+    console.error('Firestore load error:', e);
+    return null;
+  }
+}
+
+async function deleteGroupFromFirestore(groupId) {
+  if (!firestoreAvailable) return;
+  try {
+    await db_firestore.collection('groups').doc(groupId).delete();
+  } catch (e) {
+    console.error('Firestore delete error:', e);
+  }
+}
+
+// ============================================
+//   STATE
+// ============================================
+
+let activeGroupId = null;  // Firestore document ID of active group
+let knownGroupIds = [];    // list of group IDs the user has joined/created
 
 let state = {
   group: { name: 'isi-isi', currency: '€', members: [], currentUser: null },
@@ -302,56 +417,81 @@ let confirmCallback = null;
 let onboardStep = 0;
 let onboardMembers = [];
 
-// ---- Persistence ----
-function save() {
+// ============================================
+//   LOCAL PREFS (per-device state)
+// ============================================
+
+function saveLocalPrefs() {
   try {
-    if (db.activeGroupId) {
-      db.groups[db.activeGroupId] = {
-        group: state.group,
-        expenses: state.expenses,
-        payments: state.payments
-      };
-    }
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
-  } catch (e) { /* quota exceeded */ }
+    const prefs = {
+      activeGroupId,
+      knownGroupIds,
+      // currentUser is stored per group
+      currentUsers: {}
+    };
+    knownGroupIds.forEach(id => {
+      if (id === activeGroupId) {
+        prefs.currentUsers[id] = state.group.currentUser;
+      }
+    });
+    localStorage.setItem(LOCAL_PREF_KEY, JSON.stringify(prefs));
+  } catch (e) {}
 }
 
-function load() {
+function loadLocalPrefs() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(LOCAL_PREF_KEY);
     if (raw) {
-      db = JSON.parse(raw);
-      if (!db.groups) db.groups = {};
-      
-      // Fallback for legacy format
-      const legacyRaw = localStorage.getItem('isi-isi-data');
-      if (legacyRaw && Object.keys(db.groups).length === 0) {
-        const legacyData = JSON.parse(legacyRaw);
-        const legacyId = uid();
-        db.groups[legacyId] = {
-          group: legacyData.group || { name: 'isi-isi', currency: '€', members: [], currentUser: null },
-          expenses: legacyData.expenses || [],
-          payments: legacyData.payments || []
-        };
-        db.activeGroupId = legacyId;
-        localStorage.removeItem('isi-isi-data');
-      }
-
-      if (db.activeGroupId && db.groups[db.activeGroupId]) {
-        const active = db.groups[db.activeGroupId];
-        state.group = active.group;
-        state.expenses = active.expenses || [];
-        state.payments = active.payments || [];
-        return true;
-      }
+      return JSON.parse(raw);
     }
-  } catch (e) { /* corrupted */ }
-  return false;
+  } catch (e) {}
+  return null;
 }
 
-// ---- Utilities ----
+// ============================================
+//   SAVE (main entry point)
+// ============================================
+
+function save() {
+  saveLocalPrefs();
+  saveToFirestore(); // async, non-blocking
+}
+
+// ============================================
+//   UTILITIES
+// ============================================
+
 function uid() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+}
+
+// Compress an image File to a base64 thumbnail (fits inside Firestore 1MB limit)
+function compressImage(file, maxW = 200, maxH = 200, quality = 0.75) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = reject;
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onerror = reject;
+      img.onload = () => {
+        // Calculate dimensions preserving aspect ratio
+        let { width, height } = img;
+        if (width > height) {
+          if (width > maxW) { height = Math.round(height * maxW / width); width = maxW; }
+        } else {
+          if (height > maxH) { width = Math.round(width * maxH / height); height = maxH; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
 }
 
 function hashColor(name) {
@@ -360,7 +500,7 @@ function hashColor(name) {
     hash = name.charCodeAt(i) + ((hash << 5) - hash);
   }
   const hue = ((hash % 360) + 360) % 360;
-  return `hsl(${hue}, 55%, 50%)`;
+  return `hsl(${hue}, 60%, 50%)`;
 }
 
 function getInitials(name) {
@@ -411,7 +551,10 @@ function escapeHTML(str) {
   return div.innerHTML;
 }
 
-// ---- Core Algorithms ----
+// ============================================
+//   ALGORITHMS
+// ============================================
+
 function calcBalances() {
   const balances = {};
   state.group.members.forEach(m => { balances[m.id] = 0; });
@@ -488,7 +631,10 @@ function spendingByCategory() {
   return cats;
 }
 
-// ---- Navigation ----
+// ============================================
+//   NAVIGATION
+// ============================================
+
 function nav(viewId) {
   state.currentView = viewId;
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
@@ -500,7 +646,10 @@ function nav(viewId) {
   renderView(viewId);
 }
 
-// ---- Rendering ----
+// ============================================
+//   RENDERING
+// ============================================
+
 function render() {
   renderHeader();
   renderView(state.currentView);
@@ -509,6 +658,18 @@ function render() {
 function renderHeader() {
   document.getElementById('header-title').textContent = state.group.name;
   document.getElementById('header-subtitle').textContent = `Total: ${fmt(totalSpent())}`;
+  const imgEl = document.getElementById('header-group-image');
+  if (imgEl) {
+    if (state.group.image) {
+      imgEl.innerHTML = `<img src="${state.group.image}" alt="${escapeHTML(state.group.name)}">`;
+    } else {
+      // Generate a colored circle with initials
+      const name = state.group.name || 'G';
+      const initial = name.charAt(0).toUpperCase();
+      const color = hashColor(name);
+      imgEl.innerHTML = `<div class="header-group-initial" style="background:${color}">${initial}</div>`;
+    }
+  }
 }
 
 function renderView(viewId) {
@@ -516,8 +677,6 @@ function renderView(viewId) {
     case 'dashboard': renderDashboard(); break;
     case 'expenses':  renderExpenses(); break;
     case 'saldos':    renderSaldos(); break;
-    case 'balance':   renderBalance(); break;
-    case 'stats':     renderStats(); break;
   }
 }
 
@@ -525,7 +684,6 @@ function renderView(viewId) {
 function renderDashboard() {
   const container = document.getElementById('dashboard-content');
   const balances = calcBalances();
-  const transfers = simplifyDebts();
   const currentUser = state.group.currentUser;
 
   let summaryHTML = '';
@@ -549,25 +707,27 @@ function renderDashboard() {
       </div>`;
   }
 
-  let debtsHTML = '';
-  if (transfers.length > 0) {
-    debtsHTML = `<div class="section-title">${t('deudas_simplificadas')}</div><div class="glass-card" style="padding:var(--space-sm)">`;
-    transfers.forEach(tCode => {
-      const from = getMember(tCode.from), to = getMember(tCode.to);
-      if (!from || !to) return;
-      debtsHTML += `
-        <div class="debt-item">
-          ${avatarHTML(from, 'sm')}
-          <div class="debt-info"><div class="debt-names">${escapeHTML(from.name)}<span class="arrow">→</span>${escapeHTML(to.name)}</div></div>
-          <div class="debt-amount">${fmt(tCode.amount)}</div>
-          <button class="btn-settle" onclick="settleDebt('${tCode.from}','${tCode.to}',${tCode.amount})">${t('settle')}</button>
-        </div>`;
-    });
-    debtsHTML += '</div>';
-  } else if (state.expenses.length > 0) {
-    debtsHTML = `<div class="section-title">${t('nav_balance')}</div>
-      <div class="empty-state"><div class="empty-icon">🎉</div><div class="empty-text">${t('state_settled_subtitle')}</div></div>`;
+  if (state.expenses.length === 0) {
+    container.innerHTML = summaryHTML + `
+      <div class="empty-state"><div class="empty-icon">💸</div><div class="empty-text">${t('first_expense_prompt')}</div></div>`;
+    return;
   }
+
+  const catSpend = spendingByCategory();
+  const catEntries = Object.entries(catSpend).sort((a, b) => b[1] - a[1]);
+  const maxCat = catEntries.length > 0 ? catEntries[0][1] : 1;
+  let categoryHTML = `<div class="section-title">${t('by_category')}</div><div class="glass-card">`;
+  catEntries.forEach(([catId, amount]) => {
+    const cat = getCategoryInfo(catId);
+    const catLabel = t('categories')[catId] || catId;
+    categoryHTML += `
+      <div class="stat-bar-row">
+        <div class="stat-bar-label">${cat.icon} ${catLabel}</div>
+        <div class="stat-bar-track"><div class="stat-bar-fill cat-${catId}" style="width:${(amount / maxCat) * 100}%"></div></div>
+        <div class="stat-bar-value">${fmt(amount)}</div>
+      </div>`;
+  });
+  categoryHTML += '</div>';
 
   let recentHTML = '';
   const recent = [...state.expenses].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 5);
@@ -585,13 +745,7 @@ function renderDashboard() {
     });
   }
 
-  if (state.expenses.length === 0) {
-    container.innerHTML = summaryHTML + `
-      <div class="empty-state"><div class="empty-icon">💸</div><div class="empty-text">${t('first_expense_prompt')}</div></div>`;
-    return;
-  }
-
-  container.innerHTML = summaryHTML + debtsHTML + recentHTML;
+  container.innerHTML = summaryHTML + categoryHTML + recentHTML;
 }
 
 // ---- Expenses ----
@@ -656,6 +810,7 @@ function renderExpenses() {
 function renderSaldos() {
   const container = document.getElementById('saldos-content');
   const balances = calcBalances();
+  const transfers = simplifyDebts();
 
   if (state.group.members.length === 0) {
     container.innerHTML = `<div class="empty-state"><div class="empty-icon">👥</div><div class="empty-text">${t('empty_no_members')}</div></div>`;
@@ -684,15 +839,34 @@ function renderSaldos() {
     });
   html += '</div>';
 
-  // Per-person paid totals
+  let transfersHTML = '';
+  if (transfers.length > 0) {
+    transfersHTML = `<div class="section-title">${t('deudas_simplificadas')}</div><div class="glass-card" style="padding:var(--space-sm)">`;
+    transfers.forEach(tCode => {
+      const from = getMember(tCode.from), to = getMember(tCode.to);
+      if (!from || !to) return;
+      transfersHTML += `
+        <div class="debt-item">
+          ${avatarHTML(from, 'sm')}
+          <div class="debt-info"><div class="debt-names">${escapeHTML(from.name)}<span class="arrow">→</span>${escapeHTML(to.name)}</div></div>
+          <div class="debt-amount">${fmt(tCode.amount)}</div>
+          <button class="btn-settle" onclick="settleDebt('${tCode.from}','${tCode.to}',${tCode.amount})">${t('settle')}</button>
+        </div>`;
+    });
+    transfersHTML += '</div>';
+  } else if (state.expenses.length > 0) {
+    transfersHTML = `<div class="section-title">${t('nav_balance')}</div>
+      <div class="empty-state"><div class="empty-icon">🎉</div><div class="empty-text">${t('state_settled_subtitle')}</div></div>`;
+  }
+
   const maxPaid = Math.max(...state.group.members.map(m => totalPaidBy(m.id)), 1);
-  html += `<div class="section-title">${t('spent_total_paid')}</div><div class="glass-card" style="padding:var(--space-sm)">`;
+  let paidHTML = `<div class="section-title">${t('spent_total_paid')}</div><div class="glass-card" style="padding:var(--space-sm)">`;
   state.group.members
     .map(m => ({ m, paid: totalPaidBy(m.id) }))
     .sort((a, b) => b.paid - a.paid)
     .forEach(({ m, paid }) => {
       const pct = (paid / maxPaid) * 100;
-      html += `
+      paidHTML += `
         <div class="balance-item">
           ${avatarHTML(m)}
           <div class="balance-info">
@@ -702,98 +876,9 @@ function renderSaldos() {
           <div class="balance-amount" style="color:var(--text-primary)">${fmt(paid)}</div>
         </div>`;
     });
-  html += '</div>';
+  paidHTML += '</div>';
 
-  container.innerHTML = html;
-}
-
-// ---- Balance (simplified transfers) ----
-function renderBalance() {
-  const container = document.getElementById('balance-content');
-  const transfers = simplifyDebts();
-
-  if (state.group.members.length === 0) {
-    container.innerHTML = `<div class="empty-state"><div class="empty-icon">👥</div><div class="empty-text">${t('empty_no_members')}</div></div>`;
-    return;
-  }
-
-  if (transfers.length === 0) {
-    container.innerHTML = `
-      <div class="summary-card" style="margin-bottom:var(--space-lg)">
-        <div class="label">${t('group')}</div>
-        <div class="amount positive" style="font-size:1.5rem">✅ ${t('state_settled')}</div>
-        <div class="sub-label">${t('state_settled_subtitle')}</div>
-      </div>`;
-    return;
-  }
-
-  let html = `
-    <div class="summary-card" style="margin-bottom:var(--space-lg)">
-      <div class="label">${t('transfers_needed')}</div>
-      <div class="amount zero" style="font-size:1.8rem">${transfers.length}</div>
-      <div class="sub-label">${t('transfers_subtitle')}</div>
-    </div>
-    <div class="section-title">${t('who_pays_whom')}</div>
-    <div class="glass-card" style="padding:var(--space-sm)">`;
-
-  transfers.forEach(tCode => {
-    const from = getMember(tCode.from), to = getMember(tCode.to);
-    if (!from || !to) return;
-    html += `
-      <div class="debt-item">
-        ${avatarHTML(from, 'sm')}
-        <div class="debt-info"><div class="debt-names">${escapeHTML(from.name)}<span class="arrow">→</span>${escapeHTML(to.name)}</div></div>
-        <div class="debt-amount">${fmt(tCode.amount)}</div>
-        <button class="btn-settle" onclick="settleDebt('${tCode.from}','${tCode.to}',${tCode.amount})">${t('settle')}</button>
-      </div>`;
-  });
-
-  html += '</div>';
-  container.innerHTML = html;
-}
-
-// ---- Stats ----
-function renderStats() {
-  const container = document.getElementById('stats-content');
-
-  if (state.expenses.length === 0) {
-    container.innerHTML = `<div class="empty-state"><div class="empty-icon">📊</div><div class="empty-text">${t('empty_no_stats')}</div></div>`;
-    return;
-  }
-
-  const total = totalSpent();
-
-  let html = `<div class="stat-card"><div class="stat-title">${t('total_group_spend')}</div><div class="stat-value">${fmt(total)}</div></div>`;
-
-  // By category
-  const catSpend = spendingByCategory();
-  const catEntries = Object.entries(catSpend).sort((a, b) => b[1] - a[1]);
-  const maxCat = catEntries.length > 0 ? catEntries[0][1] : 1;
-  html += `<div class="stat-card"><div class="stat-title">${t('by_category')}</div>`;
-  catEntries.forEach(([catId, amount]) => {
-    const cat = getCategoryInfo(catId);
-    const catLabel = t('categories')[catId] || catId;
-    html += `
-      <div class="stat-bar-row">
-        <div class="stat-bar-label">${cat.icon} ${catLabel}</div>
-        <div class="stat-bar-track"><div class="stat-bar-fill cat-${catId}" style="width:${(amount / maxCat) * 100}%"></div></div>
-        <div class="stat-bar-value">${fmt(amount)}</div>
-      </div>`;
-  });
-  html += '</div>';
-
-  // Summary numbers
-  html += `
-    <div class="stat-card">
-      <div class="stat-title">${t('summary')}</div>
-      <div style="display:flex;gap:var(--space-lg);flex-wrap:wrap">
-        <div><div style="font-size:1.8rem;font-weight:700">${state.expenses.length}</div><div style="font-size:0.75rem;color:var(--text-secondary)">${t('nav_gastos')}</div></div>
-        <div><div style="font-size:1.8rem;font-weight:700">${state.group.members.length}</div><div style="font-size:0.75rem;color:var(--text-secondary)">${t('members')}</div></div>
-        <div><div style="font-size:1.8rem;font-weight:700">${fmt(total / Math.max(state.group.members.length, 1))}</div><div style="font-size:0.75rem;color:var(--text-secondary)">${t('average_per_person')}</div></div>
-      </div>
-    </div>`;
-
-  container.innerHTML = html;
+  container.innerHTML = html + transfersHTML + paidHTML;
 }
 
 // ---- Filter ----
@@ -802,7 +887,10 @@ function setFilter(cat) {
   renderExpenses();
 }
 
-// ---- Modals ----
+// ============================================
+//   MODALS
+// ============================================
+
 function openModal(id) {
   const el = document.getElementById(id);
   if (el) { el.classList.add('open'); document.body.style.overflow = 'hidden'; }
@@ -998,7 +1086,7 @@ function showExpenseDetail(expId) {
     </div>
     <div class="detail-section"><div class="detail-label">${t('paid_by')}</div>
       <div style="display:flex;align-items:center;gap:var(--space-sm)">
-        ${payer ? avatarHTML(payer) : ''}<span style="font-weight:500">${payer ? escapeHTML(payer.name) : 'Desconocido'}</span>
+        ${payer ? avatarHTML(payer) : ''}<span style="font-weight:600">${payer ? escapeHTML(payer.name) : 'Desconocido'}</span>
       </div></div>
     <div class="detail-section"><div class="detail-label">${t('divided_among', {count: Object.keys(exp.splits).length})}</div>`;
   Object.entries(exp.splits).forEach(([mid, amount]) => {
@@ -1045,6 +1133,20 @@ function openGroupModal() { renderGroupModal(); openModal('modal-group'); }
 
 function renderGroupModal() {
   document.getElementById('group-name-input').value = state.group.name;
+
+  // Render image preview
+  const preview = document.getElementById('group-image-preview');
+  if (preview) {
+    if (state.group.image) {
+      preview.innerHTML = `<img src="${state.group.image}" alt="foto del grupo">`;
+    } else {
+      const name = state.group.name || 'G';
+      const initial = name.charAt(0).toUpperCase();
+      const color = hashColor(name);
+      preview.innerHTML = `<div class="group-image-initial" style="background:${color}">${initial}</div>`;
+    }
+  }
+
   document.getElementById('members-list').innerHTML = state.group.members.map(m => {
     const isYou = m.id === state.group.currentUser;
     return `<div class="member-item">${avatarHTML(m)}<div class="name">${escapeHTML(m.name)}</div>
@@ -1075,7 +1177,11 @@ function removeMember(id) {
   save(); renderGroupModal(); render(); toast(t('toast_removed_member'));
 }
 
-function setCurrentUser(id) { state.group.currentUser = id; save(); renderGroupModal(); render(); }
+function setCurrentUser(id) {
+  state.group.currentUser = id;
+  saveLocalPrefs(); // currentUser is only saved locally, not in Firestore
+  renderGroupModal(); render();
+}
 
 function updateGroupName() {
   const name = document.getElementById('group-name-input').value.trim();
@@ -1087,39 +1193,61 @@ function openGroupsListModal() { renderGroupsList(); openModal('modal-groups-lis
 
 function renderGroupsList() {
   const container = document.getElementById('groups-list-container');
-  const groupIds = Object.keys(db.groups);
-  
-  if (groupIds.length === 0) {
-    container.innerHTML = `<div class="empty-state"><div class="empty-text">No hay grupos creados.</div></div>`;
+
+  if (knownGroupIds.length === 0) {
+    container.innerHTML = `<div class="empty-state"><div class="empty-text">No hay grupos. Crea uno abajo.</div></div>`;
     return;
   }
 
-  container.innerHTML = groupIds.map(id => {
-    const data = db.groups[id];
-    const isActive = id === db.activeGroupId;
-    const expenseCount = data.expenses ? data.expenses.length : 0;
-    const memberCount = data.group?.members ? data.group.members.length : 0;
-
+  container.innerHTML = knownGroupIds.map(id => {
+    const isActive = id === activeGroupId;
+    let name = 'Grupo';
+    let expenseCount = 0;
+    let memberCount = 0;
+    let image = null;
+    if (id === activeGroupId) {
+      name = state.group.name;
+      expenseCount = state.expenses.length;
+      memberCount = state.group.members.length;
+      image = state.group.image || null;
+    }
+    const initial = name.charAt(0).toUpperCase();
+    const color = hashColor(name);
+    const thumbHTML = image
+      ? `<img src="${image}" class="group-list-thumb" alt="${escapeHTML(name)}">`
+      : `<div class="group-list-thumb group-list-thumb-initial" style="background:${color}">${initial}</div>`;
     return `
       <div class="group-list-item ${isActive ? 'active' : ''}" onclick="switchActiveGroup('${id}')">
+        ${thumbHTML}
         <div class="group-info">
-          <div class="group-name">${escapeHTML(data.group?.name || 'Grupo')}</div>
-          <div class="group-meta">${memberCount} ${t('members').toLowerCase()} · ${expenseCount} ${t('nav_gastos').toLowerCase()}</div>
+          <div class="group-name">${escapeHTML(name)}${isActive ? '' : ' <span style="font-size:0.7rem;color:var(--accent2)">↗</span>'}</div>
+          <div class="group-meta">${isActive ? `${memberCount} ${t('members').toLowerCase()} · ${expenseCount} ${t('nav_gastos').toLowerCase()}` : id}</div>
         </div>
         <button class="btn-delete-group" onclick="event.stopPropagation(); deleteGroup('${id}')" title="${t('delete')}">×</button>
       </div>`;
   }).join('');
 }
 
-function switchActiveGroup(id) {
-  if (db.groups[id]) {
-    db.activeGroupId = id;
-    state.group = db.groups[id].group;
-    state.expenses = db.groups[id].expenses || [];
-    state.payments = db.groups[id].payments || [];
-    save();
+async function switchActiveGroup(id) {
+  if (id === activeGroupId) { closeModal('modal-groups-list'); return; }
+  setSyncStatus('syncing');
+  const data = await loadGroupFromFirestore(id);
+  if (data) {
+    // Unsubscribe from old group
+    if (unsubscribeListener) { unsubscribeListener(); unsubscribeListener = null; }
+    activeGroupId = id;
+    const prefs = loadLocalPrefs();
+    const savedCurrentUser = prefs?.currentUsers?.[id] || null;
+    state.group = { ...data.group, currentUser: savedCurrentUser };
+    state.expenses = data.expenses || [];
+    state.payments = data.payments || [];
+    saveLocalPrefs();
+    subscribeToGroup(id);
     closeModal('modal-groups-list');
     render();
+  } else {
+    toast(t('toast_import_err'));
+    setSyncStatus('error');
   }
 }
 
@@ -1127,67 +1255,53 @@ function createNewGroup() {
   const input = document.getElementById('new-group-name-input');
   const name = input.value.trim();
   if (!name) return;
-  
-  // Close group list modal and show onboarding steps configured for this new group
+
   closeModal('modal-groups-list');
   input.value = '';
-  
-  // Set up onboarding fields for a fresh group
+
   document.getElementById('onboard-group-name').value = name;
   document.getElementById('onboard-your-name').value = '';
   onboardMembers = [];
   showOnboarding();
-  onboardStep = 1; // skip group name step since we just typed it
+  onboardStep = 1;
   renderOnboardStep();
 }
 
 function deleteGroup(id) {
-  const groupName = db.groups[id]?.group?.name || 'Grupo';
-  showConfirm(t('toast_confirm_delete_group', {name: groupName}), () => {
-    delete db.groups[id];
-    
-    const remainingIds = Object.keys(db.groups);
-    if (remainingIds.length > 0) {
-      if (db.activeGroupId === id) {
-        db.activeGroupId = remainingIds[0];
-        state.group = db.groups[db.activeGroupId].group;
-        state.expenses = db.groups[db.activeGroupId].expenses || [];
-        state.payments = db.groups[db.activeGroupId].payments || [];
+  const groupName = id === activeGroupId ? state.group.name : id;
+  showConfirm(t('toast_confirm_delete_group', {name: groupName}), async () => {
+    await deleteGroupFromFirestore(id);
+    knownGroupIds = knownGroupIds.filter(gid => gid !== id);
+
+    if (id === activeGroupId) {
+      if (unsubscribeListener) { unsubscribeListener(); unsubscribeListener = null; }
+      if (knownGroupIds.length > 0) {
+        await switchActiveGroup(knownGroupIds[0]);
+      } else {
+        activeGroupId = null;
+        state.group = { name: 'isi-isi', currency: '€', members: [], currentUser: null };
+        state.expenses = [];
+        state.payments = [];
+        saveLocalPrefs();
+        closeModal('modal-groups-list');
+        showOnboarding();
       }
-      save();
-      renderGroupsList();
-      render();
     } else {
-      // No groups left
-      db.activeGroupId = '';
-      state.group = { name: 'isi-isi', currency: '€', members: [], currentUser: null };
-      state.expenses = [];
-      state.payments = [];
-      save();
-      closeModal('modal-groups-list');
-      showOnboarding();
+      saveLocalPrefs();
+      renderGroupsList();
     }
   });
 }
 
 // ---- Share ----
 function shareGroup() {
+  if (!activeGroupId) { toast('No hay grupo activo'); return; }
+
+  const baseUrl = window.location.href.split('?')[0];
+  const groupUrl = `${baseUrl}?group=${activeGroupId}`;
+
   const transfers = simplifyDebts();
   const total = totalSpent();
-
-  // Create a shareable URL containing the entire state serialized and encoded
-  let shareUrl = window.location.href.split('?')[0];
-  try {
-    const dataStr = JSON.stringify({
-      group: state.group,
-      expenses: state.expenses,
-      payments: state.payments
-    });
-    const encoded = btoa(unescape(encodeURIComponent(dataStr)));
-    shareUrl += `?data=${encoded}`;
-  } catch (e) {
-    console.error('Error generating share URL:', e);
-  }
 
   let text = `💸 *${state.group.name}*\n`;
   text += `${t('total_group_spend')}: ${fmt(total)}\n`;
@@ -1203,21 +1317,31 @@ function shareGroup() {
     text += `✅ ${t('state_settled_subtitle')}\n`;
   }
 
-  text += `\n🔗 *${t('share_interactive_link')}*\n${shareUrl}\n\n`;
+  text += `\n🔗 *${t('share_interactive_link')}*\n${groupUrl}\n\n`;
   text += `_${t('sent_from_app')}_`;
 
   if (navigator.share) {
     navigator.share({
       title: state.group.name + ' — Gastos',
-      text: text
+      text: text,
+      url: groupUrl
     }).catch(() => {
-      const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
-      window.open(url, '_blank');
+      copyAndOpenWhatsApp(text, groupUrl);
     });
   } else {
-    const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
-    window.open(url, '_blank');
+    copyAndOpenWhatsApp(text, groupUrl);
   }
+}
+
+function copyAndOpenWhatsApp(text, url) {
+  // Try to copy the link
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(() => {
+      toast('🔗 Link copiado al portapapeles');
+    }).catch(() => {});
+  }
+  const waUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
+  window.open(waUrl, '_blank');
 }
 
 // ---- Confirm Dialog ----
@@ -1236,21 +1360,24 @@ function toast(msg) {
   const el = document.getElementById('toast');
   el.textContent = msg;
   el.classList.add('show');
-  setTimeout(() => el.classList.remove('show'), 2500);
+  setTimeout(() => el.classList.remove('show'), 2800);
 }
 
 // ---- Reset ----
 function resetData() {
-  showConfirm(t('toast_confirm_reset'), () => {
-    localStorage.removeItem(STORAGE_KEY);
-    db = { activeGroupId: '', groups: {} };
+  showConfirm(t('toast_confirm_reset'), async () => {
+    // Delete all known groups from Firestore
+    for (const id of knownGroupIds) {
+      await deleteGroupFromFirestore(id);
+    }
+    if (unsubscribeListener) { unsubscribeListener(); unsubscribeListener = null; }
+    localStorage.removeItem(LOCAL_PREF_KEY);
+    activeGroupId = null;
+    knownGroupIds = [];
     state.group = { name: 'isi-isi', currency: '€', members: [], currentUser: null };
     state.expenses = [];
     state.payments = [];
-    save();
-    render();
     showOnboarding();
-    toast(t('reset'));
   });
 }
 
@@ -1288,7 +1415,6 @@ function renderOnboardStep() {
       dot.classList.toggle('done', i < onboardStep);
     }
   }
-
   if (onboardStep === 2) {
     renderOnboardMembers();
   }
@@ -1298,7 +1424,7 @@ function renderOnboardMembers() {
   const list = document.getElementById('onboard-members-list');
   list.innerHTML = onboardMembers.map((name, i) => `
     <div class="onboard-member-chip">
-      <div class="avatar" style="background:${hashColor(name)};width:24px;height:24px;font-size:0.6rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600">${getInitials(name)}</div>
+      <div class="avatar" style="background:${hashColor(name)};width:24px;height:24px;font-size:0.6rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">${getInitials(name)}</div>
       <span>${escapeHTML(name)}</span>
       <div class="remove-chip" onclick="removeOnboardMember(${i})">×</div>
     </div>`).join('');
@@ -1329,7 +1455,7 @@ function removeOnboardMember(index) {
   renderOnboardMembers();
 }
 
-function finishOnboarding() {
+async function finishOnboarding() {
   const groupName = document.getElementById('onboard-group-name').value.trim() || 'Group';
   const yourName = document.getElementById('onboard-your-name').value.trim();
 
@@ -1339,23 +1465,44 @@ function finishOnboarding() {
   const otherMembers = onboardMembers.map(name => ({ id: uid(), name }));
 
   const newGroupId = uid();
-  db.groups[newGroupId] = {
-    group: {
-      name: groupName,
-      currency: '€',
-      members: [youMember, ...otherMembers],
-      currentUser: youMember.id,
-    },
-    expenses: [],
-    payments: []
+  const newGroup = {
+    name: groupName,
+    currency: '€',
+    members: [youMember, ...otherMembers],
   };
-  db.activeGroupId = newGroupId;
-  
-  state.group = db.groups[newGroupId].group;
+
+  // Unsubscribe from old group
+  if (unsubscribeListener) { unsubscribeListener(); unsubscribeListener = null; }
+
+  activeGroupId = newGroupId;
+  if (!knownGroupIds.includes(newGroupId)) knownGroupIds.push(newGroupId);
+
+  state.group = { ...newGroup, currentUser: youMember.id };
   state.expenses = [];
   state.payments = [];
 
-  save();
+  saveLocalPrefs();
+
+  // Save to Firestore
+  if (firestoreAvailable) {
+    setSyncStatus('syncing');
+    try {
+      await db_firestore.collection('groups').doc(newGroupId).set({
+        group: newGroup,
+        expenses: [],
+        payments: [],
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+      setSyncStatus('synced');
+    } catch (e) {
+      console.error('Error creating group in Firestore:', e);
+      setSyncStatus('error');
+    }
+  }
+
+  // Subscribe to real-time updates
+  subscribeToGroup(newGroupId);
+
   hideOnboarding();
   render();
   toast(t('toast_group_created', {name: groupName}));
@@ -1417,9 +1564,27 @@ function initEvents() {
   document.getElementById('new-group-name-input').addEventListener('keydown', (e) => {
     if (e.key === 'Enter') { e.preventDefault(); createNewGroup(); }
   });
-  
+
   document.getElementById('btn-reset').addEventListener('click', resetData);
   document.getElementById('btn-share').addEventListener('click', shareGroup);
+
+  // Group image file upload
+  document.getElementById('group-image-file').addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const base64 = await compressImage(file, 200, 200, 0.75);
+      state.group.image = base64;
+      save();
+      renderGroupModal();
+      renderHeader();
+      toast('📷 Foto actualizada');
+    } catch (err) {
+      console.error('Image compress error:', err);
+      toast('Error al procesar la imagen');
+    }
+    e.target.value = ''; // reset so same file can be re-selected
+  });
 
   document.querySelectorAll('[data-close]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1459,57 +1624,81 @@ function initEvents() {
 //   INITIALIZATION
 // ============================================
 
-function init() {
+async function init() {
   localizeDOM();
+  initFirebase();
 
-  // Check for shared URL data first
-  let loaded = false;
+  // Check URL for ?group=<id> param (shared link)
   const urlParams = new URLSearchParams(window.location.search);
-  const sharedData = urlParams.get('data');
+  const sharedGroupId = urlParams.get('group');
 
-  if (sharedData) {
-    try {
-      const decodedData = decodeURIComponent(escape(atob(sharedData)));
-      const parsed = JSON.parse(decodedData);
-      if (parsed && parsed.group) {
-        const importId = uid();
-        db.groups[importId] = {
-          group: parsed.group,
-          expenses: parsed.expenses || [],
-          payments: parsed.payments || []
-        };
-        db.activeGroupId = importId;
-        
-        state.group = parsed.group;
-        state.expenses = parsed.expenses || [];
-        state.payments = parsed.payments || [];
-        
-        save();
-        loaded = true;
+  if (sharedGroupId) {
+    // Clean the URL
+    const cleanUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
+    window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
+
+    // Load from Firestore
+    if (firestoreAvailable) {
+      setSyncStatus('syncing');
+      const data = await loadGroupFromFirestore(sharedGroupId);
+      if (data) {
+        activeGroupId = sharedGroupId;
+        if (!knownGroupIds.includes(sharedGroupId)) knownGroupIds.push(sharedGroupId);
+
+        // Restore currentUser from local prefs if we've visited before
+        const prefs = loadLocalPrefs();
+        const savedCurrentUser = prefs?.currentUsers?.[sharedGroupId] || null;
+
+        state.group = { ...data.group, currentUser: savedCurrentUser };
+        state.expenses = data.expenses || [];
+        state.payments = data.payments || [];
+
+        saveLocalPrefs();
+        subscribeToGroup(sharedGroupId);
+        initEvents();
+        initOnboardingEvents();
+        hideOnboarding();
+        render();
         toast(t('toast_import_ok'));
-        
-        const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-        window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
+        return;
+      } else {
+        toast(t('toast_import_err'));
       }
-    } catch (e) {
-      console.error('Error importing shared group:', e);
-      toast(t('toast_import_err'));
     }
   }
 
-  if (!loaded) {
-    loaded = load();
+  // Load from local prefs
+  const prefs = loadLocalPrefs();
+  if (prefs && prefs.activeGroupId && prefs.knownGroupIds && prefs.knownGroupIds.length > 0) {
+    activeGroupId = prefs.activeGroupId;
+    knownGroupIds = prefs.knownGroupIds;
+
+    if (firestoreAvailable) {
+      setSyncStatus('syncing');
+      const data = await loadGroupFromFirestore(activeGroupId);
+      if (data) {
+        const savedCurrentUser = prefs?.currentUsers?.[activeGroupId] || null;
+        state.group = { ...data.group, currentUser: savedCurrentUser };
+        state.expenses = data.expenses || [];
+        state.payments = data.payments || [];
+
+        initEvents();
+        initOnboardingEvents();
+        subscribeToGroup(activeGroupId);
+        hideOnboarding();
+        render();
+        return;
+      }
+    }
   }
 
+  // No data → show onboarding
   initEvents();
   initOnboardingEvents();
-
-  if (!loaded) {
-    showOnboarding();
-  } else {
-    hideOnboarding();
-    render();
+  if (!firestoreAvailable) {
+    toast(t('firebase_not_configured'));
   }
+  showOnboarding();
 }
 
 document.addEventListener('DOMContentLoaded', init);

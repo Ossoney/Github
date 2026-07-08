@@ -4,11 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="description" content="isi-isi — App sencilla y visual para gestionar gastos compartidos en grupo. Sin cálculos manuales.">
-  <meta name="theme-color" content="#12141a">
+  <meta name="theme-color" content="#0d0f18">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="isi-isi">
   <title>isi-isi — Gastos Compartidos</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="icon-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -90,10 +97,19 @@
         </button>
       </div>
       <div class="header-center">
-        <h1 id="header-title" style="cursor:pointer" title="Cambiar grupo" data-i18n-title="switch_group" class="lang-switch-trigger">isi-isi</h1>
-        <div class="subtitle" id="header-subtitle">Total: 0 €</div>
+        <div class="header-group-info" onclick="openGroupsListModal()" title="Cambiar grupo">
+          <div id="header-group-image" class="header-group-img">💸</div>
+          <div>
+            <h1 id="header-title">isi-isi</h1>
+            <div class="subtitle" id="header-subtitle">Total: 0 €</div>
+          </div>
+        </div>
       </div>
-      <div class="header-right" style="display:flex;gap:8px">
+      <div class="header-right" style="display:flex;gap:8px;align-items:center">
+        <!-- Sync status indicator -->
+        <div id="sync-indicator" class="sync-indicator" title="Estado de sincronización">
+          <span class="sync-dot"></span>
+        </div>
         <button class="icon-btn btn-header-main btn-header-share" id="btn-share" title="Compartir" data-i18n-title="share">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
@@ -124,19 +140,9 @@
         <div id="expenses-content"></div>
       </section>
 
-      <!-- Saldos View (individual balances per member) -->
+      <!-- Saldos / Cuentas View -->
       <section id="view-saldos" class="view">
         <div id="saldos-content"></div>
-      </section>
-
-      <!-- Balance View (simplified transfers) -->
-      <section id="view-balance" class="view">
-        <div id="balance-content"></div>
-      </section>
-
-      <!-- Stats View -->
-      <section id="view-stats" class="view">
-        <div id="stats-content"></div>
       </section>
 
     </main>
@@ -144,7 +150,7 @@
     <!-- ===== FAB ===== -->
     <button id="fab" title="Añadir gasto" data-i18n-title="add_expense">+</button>
 
-    <!-- ===== BOTTOM NAVBAR (5 tabs) ===== -->
+    <!-- ===== BOTTOM NAVBAR (3 tabs) ===== -->
     <nav id="navbar">
       <button class="nav-btn active" data-view="dashboard">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -169,23 +175,6 @@
           <path d="M6 16h4"/>
         </svg>
         <span data-i18n="nav_saldos">Saldos</span>
-      </button>
-      <button class="nav-btn" data-view="balance">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="17 1 21 5 17 9"/>
-          <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
-          <polyline points="7 23 3 19 7 15"/>
-          <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
-        </svg>
-        <span data-i18n="nav_balance">Balance</span>
-      </button>
-      <button class="nav-btn" data-view="stats">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="20" x2="18" y2="10"/>
-          <line x1="12" y1="20" x2="12" y2="4"/>
-          <line x1="6" y1="20" x2="6" y2="14"/>
-        </svg>
-        <span data-i18n="nav_stats">Stats</span>
       </button>
     </nav>
 
@@ -248,6 +237,9 @@
       </div>
     </div>
 
+    <!-- Hidden file input for group image -->
+    <input type="file" id="group-image-file" accept="image/*" style="display:none">
+
     <!-- ===== MODAL: GROUP MANAGEMENT ===== -->
     <div id="modal-group" class="modal-overlay">
       <div class="modal-content">
@@ -256,6 +248,18 @@
           <button class="modal-close" data-close="modal-group">&times;</button>
         </div>
         <div class="modal-body">
+
+          <!-- Group image upload -->
+          <div class="group-image-section">
+            <div class="group-image-upload" id="group-image-upload" onclick="document.getElementById('group-image-file').click()" title="Cambiar foto del grupo">
+              <div id="group-image-preview" class="group-image-preview">📷</div>
+              <div class="group-image-overlay">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+            </div>
+            <div class="group-image-hint">Toca para cambiar la foto del grupo</div>
+          </div>
+
           <div class="group-name-edit">
             <div class="form-group" style="margin-bottom:0">
               <label for="group-name-input" data-i18n="group_name_label">Nombre del grupo</label>
@@ -321,6 +325,18 @@
 
   </div>
 
+  <!-- Firebase SDK (compat mode for simplicity) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
   <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .catch(err => console.warn('SW registration failed:', err));
+      });
+    }
+  </script>
 </body>
 </html>
