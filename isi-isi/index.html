@@ -16,7 +16,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=8">
+  <script>
+    // Force clear old service workers and caches once to fix visual state
+    if (!localStorage.getItem('sw-reset-v12')) {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(regs => {
+          for (let reg of regs) reg.unregister();
+        });
+      }
+      if ('caches' in window) {
+        caches.keys().then(names => {
+          for (let name of names) caches.delete(name);
+        });
+      }
+      localStorage.setItem('sw-reset-v12', 'true');
+      setTimeout(() => window.location.reload(), 200);
+    }
+  </script>
 </head>
 <body>
   <div id="app">
@@ -52,6 +69,10 @@
           <div class="form-group">
             <input type="text" id="onboard-your-name" class="input" placeholder="Tu nombre..." data-i18n-placeholder="onboard_step1_placeholder" maxlength="30">
           </div>
+          <div class="form-group">
+            <label style="display:block;font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:var(--space-sm)">Elige tu color (opcional)</label>
+            <div class="color-picker" id="onboard-your-color-picker"></div>
+          </div>
           <div class="onboard-step-hint" data-i18n="onboard_step1_hint">Para saber quién eres dentro del grupo.</div>
           <div class="onboard-actions">
             <button class="btn-secondary" id="onboard-back-1" data-i18n="back">← Atrás</button>
@@ -66,6 +87,9 @@
             <input type="text" id="onboard-member-input" class="input" placeholder="Nombre del miembro..." data-i18n-placeholder="onboard_step2_placeholder" maxlength="30">
             <button type="button" class="btn-add" id="onboard-add-member">+</button>
           </div>
+          <div class="form-group" style="margin-top:-8px;margin-bottom:var(--space-md)">
+            <div class="color-picker" id="onboard-member-color-picker"></div>
+          </div>
           <div id="onboard-members-list" class="onboard-members"></div>
           <div class="onboard-counter" id="onboard-counter"></div>
           <div class="onboard-actions">
@@ -79,14 +103,6 @@
     <!-- ===== HEADER ===== -->
     <header id="app-header">
       <div class="header-left" style="display:flex;gap:8px">
-        <button class="icon-btn btn-header-main btn-header-groups" id="btn-groups-list" title="Mis Grupos" data-i18n-title="groups_title">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="7" height="9"/>
-            <rect x="14" y="3" width="7" height="5"/>
-            <rect x="14" y="12" width="7" height="9"/>
-            <rect x="3" y="16" width="7" height="5"/>
-          </svg>
-        </button>
         <button class="icon-btn btn-header-main btn-header-members" id="btn-group" title="Miembros del Grupo" data-i18n-title="members_title">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -115,13 +131,6 @@
             <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
             <polyline points="16 6 12 2 8 6"/>
             <line x1="12" y1="2" x2="12" y2="15"/>
-          </svg>
-        </button>
-        <button class="icon-btn btn-header-danger" id="btn-reset" title="Resetear datos" data-i18n-title="reset">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-            <line x1="12" y1="9" x2="12" y2="13"/>
-            <line x1="12" y1="17" x2="12.01" y2="17"/>
           </svg>
         </button>
       </div>
@@ -274,6 +283,9 @@
             <input type="text" id="new-member-input" class="input" placeholder="Añadir miembro..." data-i18n-placeholder="add_member_placeholder" maxlength="30">
             <button type="button" class="btn-add" id="btn-add-member">+</button>
           </div>
+          <div class="form-group" style="margin-top:-8px;margin-bottom:var(--space-lg)">
+            <div class="color-picker" id="new-member-color-picker"></div>
+          </div>
 
           <div class="section-title" style="margin-top:var(--space-lg)" data-i18n="you_are">Tú eres...</div>
           <div id="current-user-selector" class="chips" style="margin-bottom:var(--space-lg)"></div>
@@ -309,6 +321,21 @@
       </div>
     </div>
 
+    <!-- ===== MODAL: WELCOME IDENTIFY ===== -->
+    <div id="modal-welcome-identify" class="modal-overlay">
+      <div class="modal-content" style="max-width: 400px; text-align: center;">
+        <div class="modal-header" style="justify-content: center; border-bottom: none; padding-bottom: 0;">
+          <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--accent); margin-top: var(--space-md)">👋 ¡Te has unido!</h2>
+        </div>
+        <div class="modal-body" style="padding: var(--space-md) var(--space-lg) var(--space-lg)">
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: var(--space-lg); line-height: 1.5">
+            Para empezar a gestionar los gastos de <strong><span id="welcome-group-name"></span></strong>, selecciona <strong>quién eres tú</strong> en este grupo:
+          </p>
+          <div id="welcome-members-grid" class="chips" style="justify-content: center; gap: 12px; margin-bottom: var(--space-md)"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- ===== CONFIRM DIALOG ===== -->
     <div id="confirm-dialog" class="confirm-overlay">
       <div class="confirm-box">
@@ -323,17 +350,35 @@
     <!-- ===== TOAST ===== -->
     <div id="toast" class="toast"></div>
 
+    <!-- ===== FOOTER VERSION ===== -->
+    <footer class="app-version-footer">
+      isi-isi, tu aplicación de gastos compartidos - versión 2026
+    </footer>
+
   </div>
 
   <!-- Firebase SDK (compat mode for simplicity) -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
   <script src="firebase-config.js"></script>
-  <script src="app.js"></script>
+  <script src="app.js?v=8"></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')
+          .then(reg => {
+            reg.onupdatefound = () => {
+              const installingWorker = reg.installing;
+              installingWorker.onstatechange = () => {
+                if (installingWorker.state === 'installed') {
+                  if (navigator.serviceWorker.controller) {
+                    console.log('New content is available; please refresh.');
+                    window.location.reload();
+                  }
+                }
+              };
+            };
+          })
           .catch(err => console.warn('SW registration failed:', err));
       });
     }
