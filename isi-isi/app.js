@@ -415,7 +415,49 @@ let confirmCallback = null;
 
 // ---- Onboarding State ----
 let onboardStep = 0;
-let onboardMembers = [];
+let onboardMembers = []; // array of { name, color }
+
+const MEMBER_COLORS = [
+  '#ff5e62', // coral
+  '#ff9966', // orange
+  '#2ecc71', // green
+  '#00b4db', // blue
+  '#8e2de2', // purple
+  '#f857a6', // pink
+  '#f1c40f'  // yellow
+];
+
+let selectedOnboardYourColor = '';
+let selectedOnboardMemberColor = '';
+let selectedNewMemberColor = '';
+
+function setupColorPicker(containerId, onSelect) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = MEMBER_COLORS.map(color => 
+    `<div class="color-dot" style="background:${color}" data-color="${color}"></div>`
+  ).join('');
+  
+  const dots = container.querySelectorAll('.color-dot');
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const isAlreadyActive = dot.classList.contains('active');
+      dots.forEach(d => d.classList.remove('active'));
+      if (isAlreadyActive) {
+        onSelect('');
+      } else {
+        dot.classList.add('active');
+        onSelect(dot.dataset.color);
+      }
+    });
+  });
+}
+
+function initColorPickers() {
+  setupColorPicker('onboard-your-color-picker', (c) => selectedOnboardYourColor = c);
+  setupColorPicker('onboard-member-color-picker', (c) => selectedOnboardMemberColor = c);
+  setupColorPicker('new-member-color-picker', (c) => selectedNewMemberColor = c);
+}
 
 // ============================================
 //   LOCAL PREFS (per-device state)
@@ -452,9 +494,13 @@ function loadLocalPrefs() {
 //   SAVE (main entry point)
 // ============================================
 
+// Debounce Firestore writes: batch rapid sequential saves into one network call
+let _saveTimer = null;
 function save() {
   saveLocalPrefs();
-  saveToFirestore(); // async, non-blocking
+  _balanceCache = null; // Invalidate calculation cache on any data change
+  clearTimeout(_saveTimer);
+  _saveTimer = setTimeout(() => saveToFirestore(), 600);
 }
 
 // ============================================
@@ -494,13 +540,18 @@ function compressImage(file, maxW = 200, maxH = 200, quality = 0.75) {
   });
 }
 
+// Memoize hashColor — it's a pure function called on every avatar render
+const _hashColorCache = new Map();
 function hashColor(name) {
+  if (_hashColorCache.has(name)) return _hashColorCache.get(name);
   let hash = 0;
   for (let i = 0; i < name.length; i++) {
     hash = name.charCodeAt(i) + ((hash << 5) - hash);
   }
   const hue = ((hash % 360) + 360) % 360;
-  return `hsl(${hue}, 60%, 50%)`;
+  const color = `hsl(${hue}, 60%, 50%)`;
+  _hashColorCache.set(name, color);
+  return color;
 }
 
 function getInitials(name) {
@@ -514,48 +565,61 @@ function getInitials(name) {
 function avatarHTML(member, sizeClass = '') {
   const initials = getInitials(member.name);
   const cls = sizeClass ? `avatar ${sizeClass}` : 'avatar';
-  return `<div class="${cls}" style="background:${hashColor(member.name)}">${initials}</div>`;
+  const color = member.color || hashColor(member.name);
+  return `<div class="${cls}" style="background:${color}">${initials}</div>`;
 }
 
 function fmt(amount) {
   return amount.toFixed(2).replace('.', ',') + ' ' + state.group.currency;
 }
 
+// Memoize months array for formatting — avoids dictionary lookup every call
+const _months = () => t('months');
 function fmtDate(isoStr) {
   const d = new Date(isoStr);
-  const months = t('months');
+  const months = _months();
   return d.getDate() + ' ' + months[d.getMonth()].toLowerCase().slice(0, 3) + ' ' + d.getFullYear();
 }
 
 function fmtDateTime(isoStr) {
   const d = new Date(isoStr);
-  const day = d.getDate();
-  const months = t('months');
+  const months = _months();
   const mon = months[d.getMonth()].toLowerCase().slice(0, 3);
   const h = String(d.getHours()).padStart(2, '0');
   const m = String(d.getMinutes()).padStart(2, '0');
-  return `${day} ${mon} ${h}:${m}`;
+  return `${d.getDate()} ${mon} ${h}:${m}`;
 }
 
+// Member lookup map — O(1) instead of O(n) find on every render
+let _memberMap = null;
 function getMember(id) {
-  return state.group.members.find(m => m.id === id);
+  if (!_memberMap || _memberMap.size !== state.group.members.length) {
+    _memberMap = new Map(state.group.members.map(m => [m.id, m]));
+  }
+  return _memberMap.get(id);
 }
 
+// Category lookup map — O(1) instead of O(n) find
+const _categoryMap = new Map(CATEGORIES.map(c => [c.id, c]));
 function getCategoryInfo(catId) {
-  return CATEGORIES.find(c => c.id === catId) || CATEGORIES[CATEGORIES.length - 1];
+  return _categoryMap.get(catId) || CATEGORIES[CATEGORIES.length - 1];
 }
 
+// Fast escapeHTML without creating DOM nodes
+const _escapeMap = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 function escapeHTML(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
+  return String(str).replace(/[&<>"']/g, c => _escapeMap[c]);
 }
 
 // ============================================
 //   ALGORITHMS
 // ============================================
 
+// Cache for expensive balance calculations — invalidated on save()
+let _balanceCache = null;
+
 function calcBalances() {
+  if (_balanceCache) return _balanceCache;
   const balances = {};
   state.group.members.forEach(m => { balances[m.id] = 0; });
 
@@ -563,11 +627,12 @@ function calcBalances() {
     if (balances[exp.paidBy] !== undefined) {
       balances[exp.paidBy] += exp.amount;
     }
-    Object.keys(exp.splits).forEach(mid => {
+    const splits = exp.splits;
+    for (const mid in splits) {
       if (balances[mid] !== undefined) {
-        balances[mid] -= exp.splits[mid];
+        balances[mid] -= splits[mid];
       }
-    });
+    }
   });
 
   state.payments.forEach(p => {
@@ -575,6 +640,7 @@ function calcBalances() {
     if (balances[p.to] !== undefined) balances[p.to] -= p.amount;
   });
 
+  _balanceCache = balances;
   return balances;
 }
 
@@ -583,11 +649,11 @@ function simplifyDebts() {
   const debtors = [];
   const creditors = [];
 
-  Object.keys(balances).forEach(id => {
+  for (const id in balances) {
     const bal = Math.round(balances[id] * 100) / 100;
     if (bal < -0.01) debtors.push({ id, amount: -bal });
     else if (bal > 0.01) creditors.push({ id, amount: bal });
-  });
+  }
 
   debtors.sort((a, b) => b.amount - a.amount);
   creditors.sort((a, b) => b.amount - a.amount);
@@ -618,16 +684,18 @@ function totalSpent() {
 }
 
 function totalPaidBy(memberId) {
-  return state.expenses
-    .filter(e => e.paidBy === memberId)
-    .reduce((sum, e) => sum + e.amount, 0);
+  let sum = 0;
+  for (const e of state.expenses) {
+    if (e.paidBy === memberId) sum += e.amount;
+  }
+  return sum;
 }
 
 function spendingByCategory() {
   const cats = {};
-  state.expenses.forEach(e => {
+  for (const e of state.expenses) {
     cats[e.category] = (cats[e.category] || 0) + e.amount;
-  });
+  }
   return cats;
 }
 
@@ -650,9 +718,17 @@ function nav(viewId) {
 //   RENDERING
 // ============================================
 
+// Batch DOM updates using requestAnimationFrame to avoid layout thrashing
+let _renderScheduled = false;
 function render() {
-  renderHeader();
-  renderView(state.currentView);
+  if (_renderScheduled) return;
+  _renderScheduled = true;
+  requestAnimationFrame(() => {
+    _renderScheduled = false;
+    _memberMap = null; // Reset member map so it rebuilds with latest members
+    renderHeader();
+    renderView(state.currentView);
+  });
 }
 
 function renderHeader() {
@@ -1129,7 +1205,12 @@ function settleDebt(fromId, toId, amount) {
 }
 
 // ---- Group Modal ----
-function openGroupModal() { renderGroupModal(); openModal('modal-group'); }
+function openGroupModal() {
+  selectedNewMemberColor = '';
+  document.querySelectorAll('#new-member-color-picker .color-dot').forEach(d => d.classList.remove('active'));
+  renderGroupModal();
+  openModal('modal-group');
+}
 
 function renderGroupModal() {
   document.getElementById('group-name-input').value = state.group.name;
@@ -1149,7 +1230,8 @@ function renderGroupModal() {
 
   document.getElementById('members-list').innerHTML = state.group.members.map(m => {
     const isYou = m.id === state.group.currentUser;
-    return `<div class="member-item">${avatarHTML(m)}<div class="name">${escapeHTML(m.name)}</div>
+    return `<div class="member-item">${avatarHTML(m)}
+      <input type="text" class="member-name-input" value="${escapeHTML(m.name)}" onchange="updateMemberName('${m.id}', this.value)" style="background:transparent;border:none;font-weight:700;font-size:1.05rem;flex:1;min-width:0;color:inherit;outline:none;padding:4px 0">
       ${isYou ? `<span class="you-badge">${t('active_you')}</span>` : ''}
       <button class="btn-remove" onclick="removeMember('${m.id}')" title="${t('delete')}">×</button></div>`;
   }).join('');
@@ -1163,9 +1245,11 @@ function addMember() {
   const name = input.value.trim();
   if (!name) return;
   if (state.group.members.some(m => m.name.toLowerCase() === name.toLowerCase())) { toast(t('toast_exists')); return; }
-  const nm = { id: uid(), name };
+  const nm = { id: uid(), name, color: selectedNewMemberColor };
   state.group.members.push(nm);
   if (state.group.members.length === 1 && !state.group.currentUser) state.group.currentUser = nm.id;
+  selectedNewMemberColor = '';
+  document.querySelectorAll('#new-member-color-picker .color-dot').forEach(d => d.classList.remove('active'));
   input.value = '';
   save(); renderGroupModal(); render();
 }
@@ -1175,6 +1259,19 @@ function removeMember(id) {
   state.group.members = state.group.members.filter(m => m.id !== id);
   if (state.group.currentUser === id) state.group.currentUser = null;
   save(); renderGroupModal(); render(); toast(t('toast_removed_member'));
+}
+
+function updateMemberName(id, newName) {
+  newName = newName.trim();
+  if (!newName) return;
+  const m = getMember(id);
+  if (m) {
+    m.name = newName;
+    save();
+    renderGroupModal();
+    render();
+    toast('👤 Nombre actualizado');
+  }
 }
 
 function setCurrentUser(id) {
@@ -1293,9 +1390,35 @@ function deleteGroup(id) {
   });
 }
 
+// ---- Welcome Identify Modal (for shared links) ----
+function openWelcomeIdentifyModal() {
+  const nameEl = document.getElementById('welcome-group-name');
+  if (nameEl) nameEl.textContent = state.group.name;
+  
+  const container = document.getElementById('welcome-members-grid');
+  if (!container) return;
+  
+  container.innerHTML = state.group.members.map(m => `
+    <div class="chip" onclick="selectWelcomeUser('${m.id}')" style="padding: 12px 18px; font-size: 1.15rem; height: auto; border-radius: var(--radius-xl); background: var(--bg-elevated); margin: 6px;">
+      ${avatarHTML(m)}<span>${escapeHTML(m.name)}</span></div>`).join('');
+      
+  openModal('modal-welcome-identify');
+}
+
+function selectWelcomeUser(id) {
+  state.group.currentUser = id;
+  saveLocalPrefs();
+  closeModal('modal-welcome-identify');
+  render();
+  const name = getMember(id)?.name || '';
+  toast(`👋 ¡Hola ${name}! Te has identificado correctamente.`);
+}
+
 // ---- Share ----
 function shareGroup() {
   if (!activeGroupId) { toast('No hay grupo activo'); return; }
+
+  toast(`📤 Compartiendo únicamente el grupo "${state.group.name}"`);
 
   const baseUrl = window.location.href.split('?')[0];
   const groupUrl = `${baseUrl}?group=${activeGroupId}`;
@@ -1422,10 +1545,10 @@ function renderOnboardStep() {
 
 function renderOnboardMembers() {
   const list = document.getElementById('onboard-members-list');
-  list.innerHTML = onboardMembers.map((name, i) => `
+  list.innerHTML = onboardMembers.map((m, i) => `
     <div class="onboard-member-chip">
-      <div class="avatar" style="background:${hashColor(name)};width:24px;height:24px;font-size:0.6rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">${getInitials(name)}</div>
-      <span>${escapeHTML(name)}</span>
+      <div class="avatar" style="background:${m.color || hashColor(m.name)};width:24px;height:24px;font-size:0.6rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">${getInitials(m.name)}</div>
+      <span>${escapeHTML(m.name)}</span>
       <div class="remove-chip" onclick="removeOnboardMember(${i})">×</div>
     </div>`).join('');
 
@@ -1441,10 +1564,14 @@ function addOnboardMember() {
   const input = document.getElementById('onboard-member-input');
   const name = input.value.trim();
   if (!name) return;
-  if (onboardMembers.some(n => n.toLowerCase() === name.toLowerCase())) { toast(t('toast_exists')); return; }
+  if (onboardMembers.some(m => m.name.toLowerCase() === name.toLowerCase())) { toast(t('toast_exists')); return; }
   const yourName = document.getElementById('onboard-your-name').value.trim();
   if (yourName && name.toLowerCase() === yourName.toLowerCase()) { toast(t('toast_exists')); return; }
-  onboardMembers.push(name);
+  onboardMembers.push({ name, color: selectedOnboardMemberColor });
+  
+  selectedOnboardMemberColor = '';
+  document.querySelectorAll('#onboard-member-color-picker .color-dot').forEach(d => d.classList.remove('active'));
+  
   input.value = '';
   renderOnboardMembers();
   input.focus();
@@ -1461,8 +1588,8 @@ async function finishOnboarding() {
 
   if (!yourName) { toast(t('onboard_step1_placeholder')); onboardStep = 1; renderOnboardStep(); return; }
 
-  const youMember = { id: uid(), name: yourName };
-  const otherMembers = onboardMembers.map(name => ({ id: uid(), name }));
+  const youMember = { id: uid(), name: yourName, color: selectedOnboardYourColor };
+  const otherMembers = onboardMembers.map(m => ({ id: uid(), name: m.name, color: m.color }));
 
   const newGroupId = uid();
   const newGroup = {
@@ -1558,14 +1685,16 @@ function initEvents() {
   });
 
   document.getElementById('btn-group').addEventListener('click', openGroupModal);
-  document.getElementById('btn-groups-list').addEventListener('click', openGroupsListModal);
+  const btnGroupsList = document.getElementById('btn-groups-list');
+  if (btnGroupsList) btnGroupsList.addEventListener('click', openGroupsListModal);
   document.getElementById('header-title').addEventListener('click', openGroupsListModal);
   document.getElementById('btn-create-new-group').addEventListener('click', createNewGroup);
   document.getElementById('new-group-name-input').addEventListener('keydown', (e) => {
     if (e.key === 'Enter') { e.preventDefault(); createNewGroup(); }
   });
 
-  document.getElementById('btn-reset').addEventListener('click', resetData);
+  const btnReset = document.getElementById('btn-reset');
+  if (btnReset) btnReset.addEventListener('click', resetData);
   document.getElementById('btn-share').addEventListener('click', shareGroup);
 
   // Group image file upload
@@ -1627,6 +1756,7 @@ function initEvents() {
 async function init() {
   localizeDOM();
   initFirebase();
+  initColorPickers();
 
   // Check URL for ?group=<id> param (shared link)
   const urlParams = new URLSearchParams(window.location.search);
@@ -1660,6 +1790,9 @@ async function init() {
         hideOnboarding();
         render();
         toast(t('toast_import_ok'));
+        if (!state.group.currentUser) {
+          setTimeout(() => openWelcomeIdentifyModal(), 500);
+        }
         return;
       } else {
         toast(t('toast_import_err'));
