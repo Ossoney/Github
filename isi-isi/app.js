@@ -1421,7 +1421,7 @@ function shareGroup() {
   toast(`📤 Compartiendo únicamente el grupo "${state.group.name}"`);
 
   // Always share the production URL so links work on any device
-  const PROD_URL = 'https://ossoney.github.io/Github/isi-isi/';
+  const PROD_URL = 'https://ossoney.github.io/Github/';
   const baseUrl = window.location.hostname.includes('github.io')
     ? window.location.href.split('?')[0]
     : PROD_URL;
