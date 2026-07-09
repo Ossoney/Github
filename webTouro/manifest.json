@@ -1,0 +1,17 @@
+{
+  "name": "12fogar - Guía Digital de Huéspedes",
+  "short_name": "12fogar Guía",
+  "description": "Toda la información relevante de tu estancia en Ribeira a tu alcance, incluso sin conexión.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b1d3a",
+  "theme_color": "#0b1d3a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#0b1d3a">
+  <title>Guía de Huéspedes | 12fogar</title>
+  
+  <!-- SEO & Social Media Open Graph -->
+  <meta property="og:title" content="Guía del Huésped | 12fogar">
+  <meta property="og:description" content="Toda la información relevante de tu estancia en Ribeira a tu alcance.">
+  <meta property="og:image" content="assets/logo.jpg">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="noindex">
+  <link rel="shortcut icon" href="assets/logo.jpg">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/logo.jpg">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header Section with Greeting -->
+  <header class="header-container">
+    <div class="brand-wrapper">
+      <h1 class="brand-title">12fogar</h1>
+      <img src="assets/logo.jpg" alt="12fogar Logo" class="brand-logo">
+    </div>
+    
+    <div class="welcome-box">
+      <h2 class="welcome-name" id="welcome-name">¡Hola!</h2>
+      <div class="stay-dates">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span id="stay-dates-range">Cargando fechas de estancia...</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+    
+    <!-- Dynamic Check-In Countdown Card -->
+    <div class="countdown-card" id="countdown-card" style="display: none;">
+      <div class="countdown-info">
+        <span class="countdown-title">Tu Estancia</span>
+        <span class="countdown-text" id="countdown-text">¡Tu viaje comienza pronto!</span>
+      </div>
+      <div class="countdown-icon" id="countdown-icon">🌊</div>
+    </div>
+
+    <!-- ==================== TAB: INICIO ==================== -->
+    <section id="tab-inicio" class="tab-content active">
+      
+      <!-- Welcome Intro Card -->
+      <div class="premium-card">
+        <div class="card-title-wrapper">
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          </div>
+          <h3 class="card-title" id="title-welcome">Bienvenido a Ribeira</h3>
+        </div>
+        <p id="desc-welcome-1">Te damos la bienvenida al <strong>Apartamento romántico con el mar a tus pies</strong> en Ribeira. Queremos que tu estancia sea mágica, relajante y absolutamente inolvidable.</p>
+        <p style="margin-top: 10px;" id="desc-welcome-2">En esta guía digital tienes todo lo necesario para tu llegada y estancia. Desplázate por las pestañas inferiores para ver los detalles de acceso, normas y recomendaciones locales.</p>
+      </div>
+
+      <!-- Quick Actions Grid -->
+      <div class="premium-card">
+        <div class="card-title-wrapper">
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <h3 class="card-title" id="title-actions">Acciones Rápidas</h3>
+        </div>
+        <div class="actions-grid">
+          <div class="action-btn" onclick="scrollToSection('tab-llegada')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span id="btn-action-llegar">Cómo Llegar</span>
+          </div>
+          <div class="action-btn" onclick="window.open('https://goo.gl/maps/LBf5qg3hrHA2', '_blank')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+            <span id="btn-action-maps">Google Maps</span>
+          </div>
+          <div class="action-btn" onclick="scrollToSection('title-tours')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+            <span id="btn-action-tours">Tours y Visitas</span>
+          </div>
+          <div class="action-btn" onclick="scrollToSection('tab-casa')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <span id="btn-action-norms">Normas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real-time Weather Widget -->
+      <div class="premium-card">
+        <div class="card-title-wrapper">
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path><circle cx="12" cy="12" r="4"></circle></svg>
+          </div>
+          <h3 class="card-title" id="title-weather">El tiempo en Ribeira</h3>
+        </div>
+        <div class="weather-forecast-grid" id="weather-widget">
+          <div id="weather-loading" style="text-align: center; width: 100%; color: var(--text-muted); padding: 10px;">
+            Cargando previsión de 3 días...
+          </div>
+        </div>
+      </div>
+    <!-- ==================== TAB: LLEGADA ==================== -->
+    <section id="tab-llegada" class="tab-content active">
+      
+      <!-- Detailed Check-In Instructions Card -->
+      <div class="premium-card">
+        <div class="card-title-wrapper">
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <h3 class="card-title" id="title-access">Instrucciones de Acceso</h3>
+        </div>
+        
+        <p id="desc-access-1">El apartamento se encuentra en la <strong>calle Manzanares 126, Ribeira</strong>. Tiene garaje privado con acceso directo al piso mediante ascensor.</p>
+        
+        <div class="timeline">
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <h4 class="timeline-title" id="step1-title">Paso 1: Abrir el Portal Exterior</h4>
+            <p class="timeline-desc" id="step1-desc">
+              Sitúate frente al portal 126 del edificio (justo detrás del edificio principal). 
+              Pulsa el botón <strong>2C</strong> en el telefonillo y, de inmediato, realiza una llamada al teléfono 
+              <a href="tel:634322002" class="phone-call-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                634 32 20 02
+              </a>.
+              <br><small style="color: var(--accent); font-weight: 600;">* He autorizado tu número de teléfono móvil para que el portal se abra de forma automática.</small>
+            </p>
+          </div>
+          
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <h4 class="timeline-title" id="step2-title">Paso 2: Retirar las Llaves</h4>
+            <p class="timeline-desc" id="step2-desc">
+              Entra en el portal y abre el <strong>buzón 2C</strong>. Encontrarás una caja de seguridad negra. 
+              Introduce el código de apertura: 
+              <span class="code-highlight" id="key-pin">1262</span>.
+              Baja la palanca negra de la izquierda para abrirla. Dentro están las llaves y el mando del garaje.
+              <br><small>Por favor, vuelve a cerrar la caja, desordena las ruedas y cierra el buzón al terminar. :)</small>
+            </p>
+            
+            <div class="action-btn" id="btn-video-box-link" style="margin-top: 12px; padding: 10px;" onclick="window.open('https://youtube.com/shorts/SaX6-iLThBs?feature=share', '_blank')">
+              <span id="btn-video-box">🎥 Ver vídeo corto de cómo abrir la caja</span>
+            </div>
+          </div>
+          
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <h4 class="timeline-title" id="step3-title">Paso 3: Garaje y Ascensor</h4>
+            <p class="timeline-desc" id="step3-desc">
+              Tu plaza de garaje es la número <strong id="parking-spot-number">41</strong>. Al entrar al garaje, gira a la derecha y de nuevo a la derecha. 
+              Puedes subir directamente al apartamento en ascensor. 
+              <br><strong>Atención:</strong> La misma llave abre el portal, la puerta interna del garaje y el apartamento. Te recomendamos primero subir al piso y luego bajar al garaje con calma para ver la plaza.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Street view & Map images -->
+      <div class="premium-card">
+        <div class="card-title-wrapper">
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          </div>
+          <h3 class="card-title" id="title-visual">Ayuda Visual</h3>
+        </div>
+        <p id="desc-visual">A continuación tienes fotos de la ubicación y el edificio para que te sitúes sin perderte:</p>
+        
+        <h4 style="margin-top:16px; font-size:14px;" id="label-portal">El portal 126 del edificio:</h4>
+        <div class="media-container">
+          <img src="assets/maps-street.jpg" alt="Edificio Portal 126">
+        </div>
+
+        <h4 style="margin-top:20px; font-size:14px; display: flex; align-items: center; gap: 6px;">
+          <span id="label-maps">Ubicación en Google Maps:</span>
+          <span style="font-size: 11px; font-weight: 500; color: var(--accent);" id="label-maps-help">(Toca para abrir la navegación)</span>
+        </h4>
+        <div class="media-container clickable-map-container" onclick="window.open('https://goo.gl/maps/LBf5qg3hrHA2', '_blank')">
+          <img src="assets/maps-details.jpg" alt="Mapa de Google Maps">
+          <div class="map-overlay">
+            <div class="map-overlay-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span id="btn-open-maps">Abrir en Google Maps</span>
+            </div>
+          </div>
+        </div>
+        
+        <h4 style="margin-top:20px; font-size:14px;" id="label-mailbox">Entrada al portal y al garaje:</h4>
+        <div class="media-container">
+          <img src="assets/mailbox-box.jpg" alt="Foto buzón y caja de seguridad">
+        </div>
+      </div>
+
+    </section>
+
+    <!-- No Wi-Fi Concept Card -->
+    <div id="card-wifi" class="premium-card no-wifi-card">
+      <div class="no-wifi-icon">📵</div>
+      <h3 class="card-title" style="color: var(--primary); margin-bottom: 8px;" id="wifi-card-title">Aquí No Hay Wi-Fi</h3>
+      <p id="wifi-card-desc-1"><strong>Queremos que desconectes, descanses y mires al mar.</strong></p>
+      <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;" id="wifi-card-desc-2">Aprovecha esta estancia para relajarte con el sonido de las olas, dar un paseo por la playa de Ribeira y desconectar de las notificaciones.</p>
+    </div>
+
+    <!-- Checkout Rules Card -->
+    <div id="card-checkout" class="premium-card">
+      <div class="card-title-wrapper">
+        <div class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </div>
+        <h3 class="card-title" id="title-checkout">Instrucciones de Salida (Check-out)</h3>
+      </div>
+      <p id="desc-checkout-1">La hora límite de salida es a las <strong>12:00h</strong>.</p>
+      <p style="margin-top: 8px;" id="desc-checkout-2">Al marcharte, te rogamos hacer lo siguiente:</p>
+      <ul style="padding-left: 20px; margin-top: 8px; font-size: 14px; display: flex; flex-direction: column; gap: 6px;">
+        <li id="checkout-li-1">Apaga todas las luces y calefacción.</li>
+        <li id="checkout-li-2">Deja las llaves y el mando del garaje en la misma caja de seguridad dentro del buzón 2C.</li>
+        <li id="checkout-li-3">Desordena el código numérico al cerrar la cajita metálica.</li>
+        <li id="checkout-li-4">Avísame con un WhatsApp rápido para confirmarme que todo ha ido genial y ya habéis salido.</li>
+      </ul>
+    </div>
+
+    <!-- House Rules Card (tab-casa) -->
+    <section id="tab-casa" class="premium-card tab-content active" style="padding: 24px; margin-bottom: 24px;">
+      <div class="card-title-wrapper">
+        <div class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        </div>
+        <h3 class="card-title" id="title-rules">Normas de Convivencia</h3>
+      </div>
+      <p id="desc-rules">Para garantizar una estancia agradable y el perfecto estado del apartamento, te recordamos las siguientes pautas:</p>
+      
+      <div class="rules-list">
+        <div class="rule-item">
+          <span class="rule-icon">🚭</span>
+          <div class="rule-details">
+            <h4 id="rule1-title">Prohibido Fumar</h4>
+            <p id="rule1-desc">El apartamento es un espacio 100% libre de humo.</p>
+          </div>
+        </div>
+        
+        <div class="rule-item">
+          <span class="rule-icon">🔇</span>
+          <div class="rule-details">
+            <h4 id="rule2-title">No se permiten fiestas</h4>
+            <p id="rule2-desc">Respetemos el descanso de los vecinos del edificio.</p>
+          </div>
+        </div>
+        
+        <div class="rule-item">
+          <span class="rule-icon">🐾</span>
+          <div class="rule-details">
+            <h4 id="rule3-title">No se admiten mascotas</h4>
+            <p id="rule3-desc">Nos encantan los animales, pero por cuestiones de alergias y experiencias pasadas, no están permitidos.</p>
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <span class="rule-icon">👥</span>
+          <div class="rule-details">
+            <h4 id="rule4-title">Solo huéspedes registrados</h4>
+            <p id="rule4-desc">La reserva está hecha exclusivamente para el número de personas indicadas en el contrato.</p>
+          </div>
+        </div>
+      </div>
+      
+      <p style="margin-top: 16px; font-weight: 600; text-align: center; color: var(--accent);" id="rule-footer">¡La regla más importante es disfrutar al máximo de tu estancia!</p>
+    </section>
+
+    <!-- ==================== TAB: RECOMENDACIONES ==================== -->
+    <section id="tab-recoms" class="tab-content active">
+
+      <!-- Civitatis Tours Widget link -->
+      <div class="premium-card" style="text-align: center;">
+        <div class="card-title-wrapper">
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+          </div>
+          <h3 class="card-title" id="title-tours">Tours y Visitas Turísticas</h3>
+        </div>
+        <p id="desc-tours">¿Quieres reservar excursiones oficiales o visitas guiadas en Ribeira y el resto de Galicia?</p>
+        
+        <div class="tours-buttons-container" style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
+          <a href="https://www.civitatis.com/es/riveira/?aid=11475" target="_blank" class="btn-primary" style="display: block;" id="btn-tours-ribeira">
+            Explorar Tours en Ribeira
+          </a>
+          <a href="https://www.civitatis.com/es/galicia/?aid=11475" target="_blank" class="btn-primary" style="display: block; background-color: var(--accent);" id="btn-tours-galicia">
+            Explorar Tours en Galicia
+          </a>
+        </div>
+      </div>
+      
+      <!-- Ribeira and Surrounding Food & Visits -->
+      <div class="premium-card">
+        <div class="card-title-wrapper">
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8l-4 4h8z"></path></svg>
+          </div>
+          <h3 class="card-title" id="title-recoms">Qué Hacer en Ribeira y Alrededores</h3>
+        </div>
+        <p id="desc-recoms">Te dejamos nuestras sugerencias locales favoritas para comer bien y visitar la zona de Barbanza:</p>
+        
+        <div class="recs-tabs">
+          <button class="recs-tab-btn active" id="btn-tab-comer" onclick="switchRecsTab('comer')">🍽️ Dónde Comer</button>
+          <button class="recs-tab-btn" id="btn-tab-playas" onclick="switchRecsTab('playas')">🏖️ Playas</button>
+          <button class="recs-tab-btn" id="btn-tab-visitas" onclick="switchRecsTab('visitas')">⛰️ Qué Ver</button>
+        </div>
+        
+        <!-- Recs: Comer -->
+        <div id="rec-comer" class="recs-content">
+          <div class="rec-item">
+            <div class="rec-header" id="rec-comer-title-1">Pobra do Caramiñal - El Sisal</div>
+            <div class="rec-body" id="rec-comer-desc-1">Excelente para tomar o picar algo en su terraza justo encima del mercado de abastos, con vistas fantásticas a la ría.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="rec-comer-title-2">Aguiño - Restaurante Faro de Sálvora</div>
+            <div class="rec-body" id="rec-comer-desc-2">Súper famoso por su increíble <span class="rec-highlight">bocadillo de pulpo</span>. Sus menús de mediodía son muy recomendables y caseros.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="rec-comer-title-3">Ribeira - Restaurante Xardín o Botter</div>
+            <div class="rec-body" id="rec-comer-desc-3">El Xardín es fantástico para comer marisco y pescado de la ría. El Botter (cerca de la iglesia) tiene un ambiente genial para ir de cañas o vinos y tapear.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="rec-comer-title-4">Corrubedo - Benboa</div>
+            <div class="rec-body" id="rec-comer-desc-4">Un concepto súper curioso que es restaurante, tienda de pescado, mercado y taberna al mismo tiempo, con decoración espectacular.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="rec-comer-title-5">Boiro - Restaurante Arume</div>
+            <div class="rec-body" id="rec-comer-desc-5">Especialistas en un espectacular <span class="rec-highlight">arroz con bogavante</span>, pulpo y pescados frescos. Conviene reservar.</div>
+          </div>
+        </div>
+        
+        <!-- Recs: Playas -->
+        <div id="rec-playas" class="recs-content" style="display: none;">
+          <div class="rec-item">
+            <div class="rec-header" id="rec-playas-title-1">Playa del Vilar (Ribeira)</div>
+            <div class="rec-body" id="rec-playas-desc-1">Playa de mar abierto espectacular. Con marea baja es una maravilla dar un paseo kilométrico sobre su arena fina en cualquier época del año.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="rec-playas-title-2">Playa de Furnas (Porto do Son)</div>
+            <div class="rec-body" id="rec-playas-desc-2">Impresionante playa de mar abierto rodeada de rocas y pasarelas de madera. Es famosa por grabarse la película <i>Mar Adentro</i> y la serie <i>Fariña</i>.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="rec-playas-title-3">Playa de Espiñeirido (Porto do Son)</div>
+            <div class="rec-body" id="rec-playas-desc-3">Mar abierto. Un lugar espectacular donde con un poco de suerte es habitual ver <span class="rec-highlight">delfines</span> jugando cerca de la costa.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="rec-playas-title-4">Playa de Cabío (Pobra do Caramiñal)</div>
+            <div class="rec-body" id="rec-playas-desc-4">Playa más resguardada dentro de la ría, ideal para días de mucho viento o para estar tranquilo. Tiene un pinar precioso detrás.</div>
+          </div>
+        </div>
+        
+        <!-- Recs: Visitas -->
+        <div id="rec-visitas" class="recs-content" style="display: none;">
+          <div class="rec-item">
+            <div class="rec-header" id="rec-visitas-title-1">Mirador de La Curota</div>
+            <div class="rec-body" id="rec-visitas-desc-1">El punto más alto de la sierra. En un día despejado se divisa a la perfección toda la ría de Arousa y la ría de Muros y Noia. Vistas de infarto.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="rec-visitas-title-2">Castro de Baroña (Porto do Son)</div>
+            <div class="rec-body" id="rec-visitas-desc-2">Asentamiento celta fortificado de la Edad del Hierro situado en una península rocosa junto al mar. Visita obligada, preferiblemente antes del anochecer.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="rec-visitas-title-3">Dolmen de Axeitos</div>
+            <div class="rec-body" id="rec-visitas-desc-3">Monumento megalítico funerario espectacular, conocido como el "Partenón del megalitismo gallego" por su excelente estado de conservación.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="rec-visitas-title-4">Isla de Sálvora</div>
+            <div class="rec-body" id="rec-visitas-desc-4">Tiene una historia mágica y de leyenda. Se pueden hacer visitas guiadas saliendo en barco desde el puerto de Aguiño.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Santiago and Surrounds Card -->
+      <div class="premium-card">
+        <div class="card-title-wrapper">
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h20L12 2z"></path></svg>
+          </div>
+          <h3 class="card-title" id="title-santiago">Qué Hacer en Santiago y Alrededores</h3>
+        </div>
+        <p id="desc-santiago">Nuestras recomendaciones favoritas en la capital de Galicia, Santiago de Compostela:</p>
+        
+        <div class="recs-tabs">
+          <button class="recs-tab-btn santiago-tab-btn active" id="btn-santiago-tab-resto" onclick="switchSantiagoTab('resto')">🍽️ Dónde Comer</button>
+          <button class="recs-tab-btn santiago-tab-btn" id="btn-santiago-tab-copas" onclick="switchSantiagoTab('copas')">🍷 Copas y Vinos</button>
+          <button class="recs-tab-btn santiago-tab-btn" id="btn-santiago-tab-gastro" onclick="switchSantiagoTab('gastro')">✨ Experiencias</button>
+        </div>
+        
+        <!-- Santiago Tab: Dónde Comer -->
+        <div id="santiago-resto" class="santiago-content">
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-sp-title-2">Restaurante A Moa</div>
+            <div class="rec-body" id="stgo-sp-desc-2">Buena comida con jardín y terraza muy recomendables.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-sp-title-5">Restaurante O 16</div>
+            <div class="rec-body" id="stgo-sp-desc-5">Comida tradicional gallega.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-resto-title-1">Restaurante A Curtiduría</div>
+            <div class="rec-body" id="stgo-resto-desc-1">Especialidad en arroces muy sabrosos.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-resto-title-2">Restaurante El Romero</div>
+            <div class="rec-body" id="stgo-resto-desc-2">Conviene reservar antes. Muy recomendable en pareja. El menú no se puede escoger y tiene muy buenos postres.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-resto-title-3">Restaurante A Taboa de Picar</div>
+            <div class="rec-body" id="stgo-resto-desc-3">Con terraza con vistas a la Catedral. Muy interesante para picar algo.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-resto-title-4">Restaurante A Gamela</div>
+            <div class="rec-body" id="stgo-resto-desc-4">Local muy pequeñito con especialidad en setas.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-resto-title-5">Hotel Costa Vella</div>
+            <div class="rec-body" id="stgo-resto-desc-5">Probablemente el jardín más visitado en Santiago para tomar algo.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-resto-title-6">Hotel San Miguel</div>
+            <div class="rec-body" id="stgo-resto-desc-6">Terraza muy tranquila para tomar algo o cenar.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-resto-title-7">Mesón Do Pulpo</div>
+            <div class="rec-body" id="stgo-resto-desc-7">Taberna anticuada y clásica para tomar el pulpo.</div>
+          </div>
+        </div>
+        
+        <!-- Santiago Tab: Copas y Vinos -->
+        <div id="santiago-copas" class="santiago-content" style="display: none;">
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-copas-title-1">Sitios Clásicos de Vinos</div>
+            <div class="rec-body" id="stgo-copas-desc-1">Para tomar unos vinos en sitios clásicos de toda la vida recomendados: <span class="rec-highlight">O Gato Negro</span> y <span class="rec-highlight">El Fonda Club</span>.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-copas-title-2">Mercado de Abastos</div>
+            <div class="rec-body" id="stgo-copas-desc-2">Muy recomendado para tomar algo o simplemente pasear y respirar la vida local gallega.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-copas-title-3">Música en Directo</div>
+            <div class="rec-body" id="stgo-copas-desc-3"><span class="rec-highlight">Casa das Crechas</span> y <span class="rec-highlight">Borriquita de Belén</span> suelen organizar maravillosos conciertos en directo.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-copas-title-4">Pub Atlántico</div>
+            <div class="rec-body" id="stgo-copas-desc-4">Local con buena música de fondo y excelentes cócteles y copas.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-copas-title-5">Pub Momo</div>
+            <div class="rec-body" id="stgo-copas-desc-5">Vale muchísimo la pena por su espectacular terraza y sus jardines.</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-copas-title-6">Bar Moha y Bar La Tita</div>
+            <div class="rec-body" id="stgo-copas-desc-6">Parada obligatoria para tomar una caña con la mejor tapa de tortilla tradicional gallega de Santiago.</div>
+          </div>
+        </div>
+        
+        <!-- Santiago Tab: Experiencias -->
+        <div id="santiago-gastro" class="santiago-content" style="display: none;">
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-gastro-title-1">Cocina Sofisticada Creativa (A Viaxe, Lume)</div>
+            <div class="rec-body" id="stgo-gastro-desc-1">Restaurantes recomendados por todas las guías de viaje prestigiosas, de segundos cocineros con Estrella Michelin o muy cerca de conseguirla. Ofrecen menús degustación exquisitos a precios muy razonables (entre 35 y 50 euros por persona).</div>
+          </div>
+          <div class="rec-item">
+            <div class="rec-header" id="stgo-gastro-title-2">Estrella Michelin (A Tafona, Casa Marcelo)</div>
+            <div class="rec-body" id="stgo-gastro-desc-2">Restaurantes que <strong>sí</strong> disponen de la prestigiosa Estrella Michelin. Sus propuestas son sublimes por un precio estimado de 60-70 euros por persona. Ambos son muy recomendables.</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px; font-weight: 600; text-align: center; color: var(--accent);" id="santiago-footer">
+          Si quieres alguna otra recomendación o algo más específico, pregúntanos.
+        </div>
+
+        <div class="tours-buttons-container" style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
+          <a href="https://www.santiagoturismo.com/" target="_blank" class="btn-primary" style="display: block;" id="btn-santiago-web">
+            Web Turismo Santiago
+          </a>
+        </div>
+      </div>
+
+      <!-- Galicia Itinerary Card -->
+      <div class="premium-card">
+        <div class="card-title-wrapper">
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 3 20 9 16 15 20 21 16 21 2 15 6 9 2 3 6"></polygon><line x1="9" y1="2" x2="9" y2="16"></line><line x1="15" y1="6" x2="15" y2="20"></line></svg>
+          </div>
+          <h3 class="card-title" id="title-itinerary">Ruta de Galicia en 6 Días</h3>
+        </div>
+        <p id="desc-itinerary">Si quieres explorar el resto de nuestra maravillosa comunidad, te proponemos este itinerario optimizado día a día:</p>
+        
+        <div class="timeline" style="margin-top:16px;">
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <h4 class="timeline-title" id="day1-title">Día 1: Santiago de Compostela</h4>
+            <p class="timeline-desc" id="day1-desc">Visita obligada a la Catedral de Santiago, el casco histórico de piedra y sus calles de soportales, y el Mercado de Abastos.</p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <h4 class="timeline-title" id="day2-title">Día 2: Rías Baixas (Pontevedra y Combarro)</h4>
+            <p class="timeline-desc" id="day2-desc">Visita el casco viejo peatonal de Pontevedra, los hórreos a orillas del mar en Combarro y el Parque Natural de Illa de Arousa.</p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <h4 class="timeline-title" id="day3-title">Día 3: A Coruña y Betanzos</h4>
+            <p class="timeline-desc" id="day3-desc">Recorre el paseo marítimo de A Coruña hasta la Torre de Hércules (único faro romano en funcionamiento). Cerca queda Betanzos, cuna de las mejores tortillas poco hechas.</p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <h4 class="timeline-title" id="day4-title">Día 4: Ría de Arousa y Barbanza</h4>
+            <p class="timeline-desc" id="day4-desc">Explora los Castros de Baroña, come el bocadillo de pulpo en Aguiño, sube a La Curota y relájate en la inmensa playa del Vilar.</p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <h4 class="timeline-title" id="day5-title">Día 5: Ourense y Termas</h4>
+            <p class="timeline-desc" id="day5-desc">Disfruta de las termas romanas al aire libre en Outariz a orillas del río Miño, el centro histórico de Ourense y el bonito pueblo medieval de Allariz.</p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <h4 class="timeline-title" id="day6-title">Día 6: Lugo y su Muralla Romana</h4>
+            <p class="timeline-desc" id="day6-desc">Lugo alberga la única muralla romana del mundo conservada íntegra, por la que puedes pasear por encima. Además, es famosa por sus abundantes tapas gratis con la bebida.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Galicia Video Clips Card -->
+      <div class="premium-card">
+        <div class="card-title-wrapper">
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+          </div>
+          <h3 class="card-title" id="title-videos">Vídeos Inspiradores</h3>
+        </div>
+        <p id="desc-videos">Descubre los paisajes que te esperan en Galicia:</p>
+        
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/oWoeoRT8DRk" title="Galicia Increíble" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+        </div>
+        
+        <div class="video-container" style="margin-top: 12px;">
+          <iframe src="https://www.youtube.com/embed/bUrRHraJx-w" title="Descubre Ribeira" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Floating WhatsApp Contact Button -->
+  <a href="https://api.whatsapp.com/send?phone=34656998500&text=Hola%20Óscar!%20Soy%20un%20huesped" target="_blank" class="whatsapp-floating" id="whatsapp-float">
+    <svg viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.45 5.556 0 10.076-4.52 10.079-10.082.002-2.695-1.047-5.228-2.951-7.136C16.597 1.477 14.06 1.42 11.36 1.42c-5.562 0-10.082 4.52-10.085 10.084-.001 1.793.486 3.535 1.412 5.068L1.65 21.057l4.997-1.903zm12.39-7.185c-.3-.15-1.776-.876-2.046-.975-.27-.1-.466-.15-.662.15-.196.3-.758.956-.93 1.15-.17.197-.345.222-.646.073-.301-.15-1.27-.468-2.42-1.493-.896-.798-1.5-1.785-1.677-2.084-.176-.3-.02-.462.13-.61.137-.133.3-.35.45-.526.15-.176.2-.3.3-.5.1-.2.05-.375-.025-.526-.075-.15-.662-1.597-.907-2.185-.24-.575-.48-.497-.66-.506-.17-.008-.364-.01-.56-.01-.195 0-.514.074-.783.374-.268.3-.1.575.1.875.2.3.896 1.787.973 1.937a.348.348 0 0 0 .227.15c.33.05.6.15.93.3.3.15.6.3.82.47a2.532 2.532 0 0 0 .52.33c.3.15.54.27.75.33.24.08.465.07.615.05.3-.038.9-.368 1.03-.728.13-.36.13-.67.09-.73-.04-.06-.15-.1-.45-.25z"/>
+    </svg>
+  </a>
+
+  <!-- Navigation Tab Bar (Glassmorphic) -->
+  <nav class="nav-bar">
+    <button class="nav-item active" id="nav-inicio" onclick="scrollToSection('tab-inicio')">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+      Inicio
+    </button>
+    <button class="nav-item" id="nav-llegada" onclick="scrollToSection('tab-llegada')">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      Llegada
+    </button>
+    <button class="nav-item" id="nav-casa" onclick="scrollToSection('tab-casa')">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+      Guía Casa
+    </button>
+    <button class="nav-item" id="nav-recoms" onclick="scrollToSection('tab-recoms')">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+      Qué Hacer
+    </button>
+  </nav>
+
+  <!-- JavaScript Bundle -->
+  <script src="app.js"></script>
+</body>
+</html>

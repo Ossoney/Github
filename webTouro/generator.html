@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#0b1d3a">
+  <title>Administrador | Generador de Enlaces 12fogar</title>
+  <link rel="shortcut icon" href="assets/logo.jpg">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* Custom modifications just for the Admin Panel layout */
+    body {
+      padding-bottom: 40px; /* No bottom navigation bar needed here */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Admin Panel Header -->
+  <header class="header-container" style="padding-bottom: 30px;">
+    <div class="brand-wrapper">
+      <h1 class="brand-title">12fogar Admin</h1>
+      <img src="assets/logo.jpg" alt="12fogar Logo" class="brand-logo">
+    </div>
+    <div class="welcome-box" style="text-align: center;">
+      <h2 style="font-size: 22px; font-weight: 800;">Generador de Enlaces para Huéspedes</h2>
+      <p style="font-size: 13px; opacity: 0.85; margin-top: 4px;">Configura la estancia del cliente y genera su guía personalizada.</p>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="admin-container">
+    
+    <div class="premium-card">
+      <div class="card-title-wrapper">
+        <div class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+        </div>
+        <h3 class="card-title">Datos de la Reserva</h3>
+      </div>
+      
+      <!-- Generator Form -->
+      <form id="generator-form" onsubmit="event.preventDefault();">
+        
+        <!-- Guest Name -->
+        <div class="form-group">
+          <label for="guest-name-input">Nombre del Huésped</label>
+          <input type="text" id="guest-name-input" class="form-control" placeholder="Ej. Manuel Mella" required>
+        </div>
+        
+        <!-- Stay Dates -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="checkin-input">Fecha de Entrada</label>
+            <input type="date" id="checkin-input" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="checkout-input">Fecha de Salida</label>
+            <input type="date" id="checkout-input" class="form-control" required>
+          </div>
+        </div>
+        
+        <!-- Apartment & Language -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="apartment-input">Apartamento</label>
+            <select id="apartment-input" class="form-control" style="appearance: auto; padding-right: 12px;">
+              <option value="touro" selected>Touro (Por defecto) 🌊</option>
+              <option value="peru">Perú 🚪</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="lang-input">Idioma de la Guía</label>
+            <select id="lang-input" class="form-control" style="appearance: auto; padding-right: 12px;">
+              <option value="es" selected>Español 🇪🇸</option>
+              <option value="en">Inglés 🇬🇧</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Keybox PIN -->
+        <div class="form-group">
+          <label for="pin-input" id="pin-label">PIN Caja Llaves (Buzón 2C)</label>
+          <input type="text" id="pin-input" class="form-control" value="1262" placeholder="Ej. 1262" required>
+        </div>
+        
+      </form>
+    </div>
+
+    <!-- Generated Results Card (Dynamic) -->
+    <div class="premium-card" id="results-card" style="display: none;">
+      <div class="card-title-wrapper">
+        <div class="card-icon" style="background-color: rgba(46, 196, 182, 0.1); color: #2ec4b6;">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="card-title">Enlace y Mensaje Generados</h3>
+      </div>
+      
+      <!-- Generated URL Portal link -->
+      <div class="result-area">
+        <div class="result-title">Enlace de la Guía Digital</div>
+        <div class="result-link" id="generated-url">https://tusitio.web.app/?huesped=...</div>
+      </div>
+      
+      <!-- Pre-written WhatsApp Message -->
+      <div class="result-area" style="margin-top: 16px;">
+        <div class="result-title">Mensaje de WhatsApp para el Huésped</div>
+        <p id="generated-message" style="font-size: 14px; white-space: pre-wrap; line-height: 1.5; color: var(--text-dark); background-color: var(--card-bg); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color);"></p>
+      </div>
+
+      <!-- Action Buttons to Copy -->
+      <button class="btn-primary" style="margin-top: 20px; background-color: #25D366; border-color: #25D366;" id="share-btn" onclick="shareWhatsAppNative()">
+        📲 Compartir por WhatsApp / Enviar
+      </button>
+
+      <button class="btn-primary" style="margin-top: 10px;" onclick="copyLink()">
+        📋 Copiar Enlace del Portal
+      </button>
+      
+      <button class="btn-secondary" onclick="copyWhatsAppMessage()">
+        💬 Copiar Mensaje de WhatsApp
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Copy Toast Notification -->
+  <div id="copy-toast" class="copy-toast">¡Copiado con éxito!</div>
+
+  <!-- Admin JavaScript Logic -->
+  <script src="generator.js"></script>
+</body>
+</html>
