@@ -1420,7 +1420,11 @@ function shareGroup() {
 
   toast(`📤 Compartiendo únicamente el grupo "${state.group.name}"`);
 
-  const baseUrl = window.location.href.split('?')[0];
+  // Always share the production URL so links work on any device
+  const PROD_URL = 'https://ossoney.github.io/Github/isi-isi/';
+  const baseUrl = window.location.hostname.includes('github.io')
+    ? window.location.href.split('?')[0]
+    : PROD_URL;
   const groupUrl = `${baseUrl}?group=${activeGroupId}`;
 
   const transfers = simplifyDebts();
