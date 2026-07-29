@@ -41,8 +41,8 @@ El proyecto **Finanzas Visuales** (v1.4.27) es una aplicación web de contabilid
 
 ### 🔀 Estado Git Actual
 - Rama activa: `main`
-- Último commit: pendiente de push (fix gráfico hábitos v1.4.27)
-- Archivos modificados: `HabitStatsModal.jsx`, `lib/i18n.js`, `WhatsNewModal.jsx`, `package.json`, `estado_proyecto.md`
+- Último commit: `16cb68a` — *fix(habits): redesino del grafico de evolucion semanal v1.4.27*
+- Árbol de trabajo limpio (cambios subidos a `origin/main`).
 
 ### ⏭️ Pendiente para Próxima Sesión
 - Verificar que el deployment en Vercel está activo y accesible.
