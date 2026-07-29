@@ -29,6 +29,33 @@
 
 - [ ] **Gamificación de Metas**: Visuales que se colorean al ahorrar.
 
+## 🔐 Autenticación y Sincronización Multi-Dispositivo (Posible Futuro)
+
+> **Estado**: Idea evaluada — No iniciada. Requiere decisión arquitectónica previa.
+
+Se ha analizado la viabilidad de añadir login (usuario + contraseña) para poder acceder a los datos desde cualquier dispositivo. Actualmente la app es **Local-First** (IndexedDB), por lo que cada dispositivo tiene sus propios datos.
+
+### Opción A — Supabase Completo ⭐⭐⭐ (Media-Alta complejidad)
+- Migrar toda la lógica de datos de Dexie.js → Supabase (PostgreSQL en la nube).
+- Autenticación real con email/contraseña mediante `@supabase/supabase-js`.
+- Sincronización en tiempo real entre dispositivos.
+- **Nota**: Ya existe `supabase_schema.sql` en el proyecto como base de partida.
+- **Esfuerzo estimado**: ~2-3 sesiones largas. Mayor riesgo de regresiones.
+- **Resultado**: Login real, datos en la nube, acceso total desde cualquier dispositivo.
+
+### Opción B — Solución Híbrida ⭐⭐ (Media complejidad)
+- Mantener Local-First pero añadir sincronización manual contra un backend ligero (Supabase Storage, GitHub Gist, etc.).
+- Al abrir la app, se descarga el último backup de la nube y se fusiona.
+- **Esfuerzo estimado**: ~1 sesión. Bajo riesgo de romper lo existente.
+- **Limitación**: No es tiempo real; funciona como backup automático en la nube.
+
+### Consideraciones antes de implementar
+- [ ] Decidir si los datos pasan a ser "del servidor" o se mantiene la filosofía local.
+- [ ] Evaluar el plan gratuito de Supabase (500 MB, 50.000 filas — más que suficiente).
+- [ ] Definir política de privacidad si los datos salen del dispositivo.
+
+---
+
 ## Ideas de Sistemas de Diseño y Apariencias Futuras
 
 Puedes tomar Mondrian como referencia de “sistema de diseño” (bloques, color plano, líneas negras) y luego elegir otros estilos igual de icónicos y legibles para UI.
