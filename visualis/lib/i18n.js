@@ -256,6 +256,9 @@ const dictionaries = {
         "notification_info": "Puedes configurar la hora del recordatorio editando el hábito. Las notificaciones dependen de los permisos de tu navegador.",
         "weekly_evolution": "Evolución por Semanas",
         "completions_per_week": "Completaciones por semana — semana actual resaltada",
+        "goal": "Meta",
+        "goal_met": "meta cumplida",
+        "goal_not_met": "sin cumplir",
         "category_names": {
             "Wallapop-Vinted": "Segunda Mano",
             "Uber-Cabify": "Uber-Cabify"
@@ -341,6 +344,9 @@ const dictionaries = {
         "notification_info": "You can set the reminder time by editing the habit. Notifications depend on your browser permissions.",
         "weekly_evolution": "Weekly Evolution",
         "completions_per_week": "Completions per week — current week highlighted",
+        "goal": "Goal",
+        "goal_met": "goal met",
+        "goal_not_met": "not met",
         "streak": "Streak",
         "best": "Best",
         "monthly_consistency": "Monthly Consistency",

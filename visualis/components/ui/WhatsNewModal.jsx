@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { Modal, Button } from '@/components/ui/UI'
 import { Sparkles, BarChart3, Filter, Calendar } from 'lucide-react'
 
-const CURRENT_VERSION = '1.4.25'
+const CURRENT_VERSION = '1.4.27'
 
 export function WhatsNewModal() {
     const [isOpen, setIsOpen] = useState(false)
@@ -42,24 +42,23 @@ export function WhatsNewModal() {
                         </div>
                         <h2 className="text-4xl font-black text-white tracking-wider flex items-center gap-3">
                             <Sparkles className="w-7 h-7 text-yellow-400" />
-                            v1.4.25
+                            v1.4.27
                         </h2>
-                        <p className="text-xs text-slate-500 mt-1 uppercase tracking-widest">Agosto 2026</p>
+                        <p className="text-xs text-slate-500 mt-1 uppercase tracking-widest">Julio 2026</p>
                     </div>
                 </div>
 
                 <div className="p-6 space-y-5 max-h-[60vh] overflow-y-auto">
 
-                    {/* Feature 1: Habit Stats */}
-                    <div className="flex gap-4 p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 hover:border-orange-500/30 transition-colors">
-                        <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0">
-                            <BarChart3 className="w-5 h-5 text-orange-400" />
+                    {/* Feature 1: Weekly evolution chart fix */}
+                    <div className="flex gap-4 p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 hover:border-emerald-500/30 transition-colors">
+                        <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
+                            <BarChart3 className="w-5 h-5 text-emerald-400" />
                         </div>
                         <div>
-                            <h3 className="font-bold text-slate-100 text-sm">Estadísticas de hábitos mejoradas</h3>
+                            <h3 className="font-bold text-slate-100 text-sm">Gráfico de evolución semanal corregido</h3>
                             <p className="text-[12px] text-slate-400 mt-1 leading-relaxed">
-                                La racha ahora distingue entre hábitos diarios (días) y semanales (semanas). 
-                                El gráfico de evolución muestra una <span className="text-rose-400 font-semibold">línea de objetivo</span> para saber de un vistazo si cumpliste la meta cada semana.
+                                El gráfico de hábitos <span className="text-emerald-400 font-semibold">evolución por semanas</span> ahora renderiza correctamente. Las barras crecen desde la base y la <span className="text-rose-400 font-semibold">línea de meta</span> se posiciona con precisión.
                             </p>
                         </div>
                     </div>
@@ -72,20 +71,20 @@ export function WhatsNewModal() {
                         <div>
                             <h3 className="font-bold text-slate-100 text-sm">Historial mensual de hábitos</h3>
                             <p className="text-[12px] text-slate-400 mt-1 leading-relaxed">
-                                El calendario de consistencia ahora tiene <span className="text-sky-400 font-semibold">navegación mes a mes</span>. Consulta cualquier mes pasado para ver tu progreso histórico.
+                                El calendario de consistencia tiene <span className="text-sky-400 font-semibold">navegación mes a mes</span>. Consulta cualquier mes pasado para ver tu progreso histórico.
                             </p>
                         </div>
                     </div>
 
                     {/* Feature 3: Amount filter */}
-                    <div className="flex gap-4 p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 hover:border-emerald-500/30 transition-colors">
-                        <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
-                            <Filter className="w-5 h-5 text-emerald-400" />
+                    <div className="flex gap-4 p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 hover:border-orange-500/30 transition-colors">
+                        <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0">
+                            <Filter className="w-5 h-5 text-orange-400" />
                         </div>
                         <div>
                             <h3 className="font-bold text-slate-100 text-sm">Filtro por importe en búsqueda avanzada</h3>
                             <p className="text-[12px] text-slate-400 mt-1 leading-relaxed">
-                                Ahora puedes filtrar transacciones por <span className="text-emerald-400 font-semibold">rango de importe</span> (mínimo y máximo) directamente desde el panel de filtros avanzados.
+                                Filtra transacciones por <span className="text-orange-400 font-semibold">rango de importe</span> (mínimo y máximo) directamente desde los filtros avanzados.
                             </p>
                         </div>
                     </div>

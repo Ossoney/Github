@@ -262,57 +262,82 @@ export function HabitStatsModal({ isOpen, onClose, habit, logs = [] }) {
                                 <Activity className="w-4 h-4 text-emerald-500" />
                                 {t('weekly_evolution')}
                             </h3>
-                            {/* Goal indicator legend */}
                             <div className="flex items-center gap-1.5">
                                 <div className="w-4 border-t-2 border-dashed border-rose-500/70" />
-                                <span className="text-[9px] font-black text-rose-400/80 uppercase">meta {habit.goal}d</span>
+                                <span className="text-[9px] font-black text-rose-400/80 uppercase">
+                                    {t('goal')} {habit.goal}d
+                                </span>
                             </div>
                         </div>
-                        <div className="relative flex items-end justify-between gap-1 h-28">
-                            {/* Goal line overlay */}
-                            <div 
-                                className="absolute left-0 right-0 border-t-2 border-dashed border-rose-500/50 pointer-events-none z-10"
+
+                        {/* Chart area: fixed height, bars + goal line all absolutely positioned */}
+                        <div className="relative w-full" style={{ height: '96px' }}>
+                            {/* Goal line: positioned from bottom as % of chart height */}
+                            <div
+                                className="absolute left-0 right-0 border-t-2 border-dashed border-rose-500/60 pointer-events-none z-10"
                                 style={{ bottom: `${(habit.goal / maxWeekly) * 100}%` }}
                             />
-                            {stats.weeklyEvolution.map((week, i) => {
-                                const height = Math.max((week.count / maxWeekly) * 100, week.count > 0 ? 8 : 0)
-                                const metGoal = week.count >= habit.goal
-                                return (
-                                    <div key={i} className="flex flex-col items-center gap-1.5 flex-1 group">
-                                        {week.count > 0 && (
-                                            <span className={cn(
-                                                "text-[9px] font-black",
-                                                metGoal ? "text-emerald-400" : "text-slate-400"
-                                            )}>{week.count}</span>
-                                        )}
-                                        <div className="w-full flex-1 flex items-end">
+
+                            {/* Bars container: fills full height, flex row */}
+                            <div className="absolute inset-0 flex items-end gap-1">
+                                {stats.weeklyEvolution.map((week, i) => {
+                                    const pct = maxWeekly > 0 ? (week.count / maxWeekly) * 100 : 0
+                                    const barHeight = week.count === 0 ? 3 : Math.max(pct, 6)
+                                    const metGoal = week.count >= habit.goal
+                                    const barColor = week.isCurrentWeek
+                                        ? habit.color
+                                        : metGoal
+                                            ? `${habit.color}99`
+                                            : `${habit.color}38`
+
+                                    return (
+                                        <div key={i} className="flex flex-col items-center flex-1 gap-0.5" style={{ height: '100%' }}>
+                                            {/* number label — stays at top of column area */}
+                                            <div className="flex-1 flex items-end justify-center pb-0.5">
+                                                {week.count > 0 && (
+                                                    <span className={cn(
+                                                        'text-[9px] font-black leading-none',
+                                                        metGoal ? 'text-emerald-400' : 'text-slate-500'
+                                                    )}>
+                                                        {week.count}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            {/* bar */}
                                             <div
                                                 className="w-full rounded-t-sm transition-all duration-700"
                                                 style={{
-                                                    height: week.count === 0 ? '3px' : `${height}%`,
-                                                    backgroundColor: week.isCurrentWeek
-                                                        ? habit.color
-                                                        : metGoal
-                                                            ? `${habit.color}90`
-                                                            : `${habit.color}40`,
+                                                    height: `${barHeight}%`,
+                                                    backgroundColor: barColor,
+                                                    opacity: week.count === 0 ? 0.25 : 1,
                                                     boxShadow: week.isCurrentWeek && week.count > 0
-                                                        ? `0 0 12px ${habit.color}55`
+                                                        ? `0 0 10px ${habit.color}55`
                                                         : 'none',
-                                                    opacity: week.count === 0 ? 0.2 : 1,
                                                 }}
                                             />
                                         </div>
-                                        <span className={cn(
-                                            "text-[8px] font-black uppercase leading-none",
-                                            week.isCurrentWeek ? "text-slate-300" : "text-slate-700"
-                                        )}>{week.label}</span>
-                                    </div>
-                                )
-                            })}
+                                    )
+                                })}
+                            </div>
                         </div>
+
+                        {/* Week labels row */}
+                        <div className="flex gap-1">
+                            {stats.weeklyEvolution.map((week, i) => (
+                                <div key={i} className="flex-1 text-center">
+                                    <span className={cn(
+                                        'text-[8px] font-black uppercase leading-none',
+                                        week.isCurrentWeek ? 'text-slate-300' : 'text-slate-700'
+                                    )}>
+                                        {week.label}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+
                         <p className="text-[9px] text-slate-600 italic">
-                            <span className="text-emerald-500">■</span> meta cumplida &nbsp;
-                            <span style={{ color: `${habit.color}40` }}>■</span> sin cumplir
+                            <span className="text-emerald-500">■</span> {t('goal_met')} &nbsp;
+                            <span style={{ color: `${habit.color}38` }}>■</span> {t('goal_not_met')}
                         </p>
                     </Card>
 

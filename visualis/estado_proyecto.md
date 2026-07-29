@@ -8,7 +8,7 @@
 > 2. `guia_acceso.md` (Para procesos de instalación y acceso)
 > 3. `estado_proyecto.md` (Este documento, para el estado actual, UX y Changelog)
 
-El proyecto **Finanzas Visuales** (v1.4.26) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
+El proyecto **Finanzas Visuales** (v1.4.27) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
 
 ## Tecnologías Principales
 
@@ -34,19 +34,33 @@ El proyecto **Finanzas Visuales** (v1.4.26) es una aplicación web de contabilid
 ## 🗓️ Sesión 2026-07-29 — Estado al Cierre
 
 ### ✅ Completado Hoy
-- **Build de producción** exitoso (`npm run build`) — 8 páginas compiladas sin errores.
-- **Deployment a Vercel** disparado vía push a `origin/main` (commit `7902f7f`).
-- **Browserslist actualizado**: `caniuse-lite` `1.0.30001769` → `1.0.30001806` (commit `470a2b6`).
+- **Fix**: Gráfico "Evolución por Semanas" en `HabitStatsModal` rediseñado con `position: absolute` y altura fija. Las barras ahora crecen desde la base correctamente y la línea de meta se posiciona con precisión.
+- **i18n**: Añadidas claves `goal`, `goal_met`, `goal_not_met` a los diccionarios ES y EN.
+- **WhatsNewModal**: Actualizado a v1.4.27 con descripción del fix del gráfico.
+- **Build de producción** exitoso (`npm run build`) — deployment disparado a Vercel vía push a `origin/main`.
 
 ### 🔀 Estado Git Actual
 - Rama activa: `main`
-- Último commit: `470a2b6` — *chore: update caniuse-lite browserslist db*
-- Sin cambios pendientes en el área de staging de `visualis/`.
+- Último commit: pendiente de push (fix gráfico hábitos v1.4.27)
+- Archivos modificados: `HabitStatsModal.jsx`, `lib/i18n.js`, `WhatsNewModal.jsx`, `package.json`, `estado_proyecto.md`
 
 ### ⏭️ Pendiente para Próxima Sesión
 - Verificar que el deployment en Vercel está activo y accesible.
 - Revisar si hay nuevas sugerencias en `sugerencias.md`.
-- Posibles mejoras identificadas: módulo de hábitos (`HabitStatsModal.jsx`) y formulario de transacciones (`TransactionForm.jsx`).
+
+---
+
+## Modificaciones Recientes (v1.4.27)
+
+### 1. Fix: Gráfico de Evolución Semanal de Hábitos
+El bar chart de "Evolución por Semanas" en `HabitStatsModal` tenía un problema de layout: usaba `flex items-end` con `height: X%` en hijos flex, lo que no funciona porque el flex container no tiene altura explícita. Se rediseñó con:
+- Contenedor con `position: relative; height: 96px` (altura fija en píxeles).
+- Barras en capa `absolute inset-0 flex items-end` — crecen correctamente desde el bottom.
+- Línea de meta en capa `absolute` con `bottom: X%` sobre la altura real.
+- Labels de fecha en fila separada, alineados por `flex-1`.
+
+### 2. i18n: Claves nuevas
+Añadidas `goal`, `goal_met`, `goal_not_met` en diccionarios ES y EN. Eliminado texto hardcodeado en español en el componente.
 
 ---
 
