@@ -23,7 +23,9 @@ export default function TransactionsPage() {
         categoryId: 'all',
         type: 'all',
         startDate: '', // YYYY-MM-DD
-        endDate: ''   // YYYY-MM-DD
+        endDate: '',   // YYYY-MM-DD
+        minAmount: '', // numeric string
+        maxAmount: ''  // numeric string
     })
 
     // Fetch Lists for Dropdowns
@@ -74,6 +76,10 @@ export default function TransactionsPage() {
 
             // Category
             if (filters.categoryId !== 'all' && Number(tx.categoryId) !== Number(filters.categoryId)) return false
+
+            // Amount Range
+            if (filters.minAmount !== '' && tx.amount < Number(filters.minAmount)) return false
+            if (filters.maxAmount !== '' && tx.amount > Number(filters.maxAmount)) return false
 
             // Search (Text)
             if (filters.search) {

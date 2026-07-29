@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useLanguage } from '@/lib/i18n'
-import { Search, Filter, Calendar, X } from 'lucide-react'
-import { Button, Input, Select, Popover, PopoverContent, PopoverTrigger } from '@/components/ui/UI'
+import { Search, Filter, X, DollarSign } from 'lucide-react'
+import { Button } from '@/components/ui/UI'
 import { format } from 'date-fns'
 import { es, enUS, gl, eu } from 'date-fns/locale'
 
@@ -19,7 +19,9 @@ export function TransactionFilters({ filters, onFilterChange, wallets, categorie
             categoryId: 'all',
             type: 'all',
             startDate: '',
-            endDate: ''
+            endDate: '',
+            minAmount: '',
+            maxAmount: ''
         })
     }
 
@@ -28,7 +30,9 @@ export function TransactionFilters({ filters, onFilterChange, wallets, categorie
         filters.categoryId !== 'all',
         filters.type !== 'all',
         filters.startDate,
-        filters.endDate
+        filters.endDate,
+        filters.minAmount,
+        filters.maxAmount
     ].filter(Boolean).length
 
     return (
@@ -127,6 +131,41 @@ export function TransactionFilters({ filters, onFilterChange, wallets, categorie
                                     value={filters.endDate}
                                     onChange={(e) => onFilterChange({ ...filters, endDate: e.target.value })}
                                     className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-sky-500"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Amount Range */}
+                    <div className="space-y-1">
+                        <label className="text-xs font-medium text-slate-500 uppercase flex items-center gap-1">
+                            <DollarSign className="w-3 h-3" />
+                            {t('amount') || 'Amount'}
+                        </label>
+                        <div className="flex items-center gap-2">
+                            <div className="relative flex-1">
+                                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs">min</span>
+                                <input
+                                    type="number"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="0"
+                                    value={filters.minAmount}
+                                    onChange={(e) => onFilterChange({ ...filters, minAmount: e.target.value })}
+                                    className="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-sm focus:outline-none focus:border-sky-500 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                                />
+                            </div>
+                            <span className="text-slate-500 shrink-0">—</span>
+                            <div className="relative flex-1">
+                                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs">max</span>
+                                <input
+                                    type="number"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="∞"
+                                    value={filters.maxAmount}
+                                    onChange={(e) => onFilterChange({ ...filters, maxAmount: e.target.value })}
+                                    className="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-sm focus:outline-none focus:border-sky-500 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                                 />
                             </div>
                         </div>

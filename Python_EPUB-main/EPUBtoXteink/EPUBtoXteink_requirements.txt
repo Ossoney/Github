@@ -38,7 +38,7 @@
 #
 # ESTADO Y SITUACIÓN DEL PROYECTO
 # ---------------------------------------------------------------------
-# [ESTADO: ESTABLE V1.3 - COMPLETO]
+# [ESTADO: ESTABLE V1.4 - COMPLETO]
 #
 # Historial de cambios:
 #   v1.0 - Implementación inicial con Multihilo, lxml y Splitting.
@@ -54,6 +54,18 @@
 #             un navPoint "(cont.)" por cada capítulo dividido y renumera
 #             los playOrder de forma secuencial. Funciona con lxml.etree
 #             (preferente) o BeautifulSoup como fallback.
+#   v1.4 - Soporte por modelo de dispositivo (X3 vs X4):
+#           · Nuevo dict DEVICE_PROFILES con las resoluciones reales:
+#               X3: 480x640 px (pantalla 3.7" — ~250 PPI)
+#               X4: 480x800 px (pantalla 4.3" — ~220 PPI)
+#           · Nuevo método select_device() que pregunta el modelo al
+#             arranque; también accesible desde la opción [4] del menú.
+#           · _optimize_image usa la resolución real de cada dispositivo
+#             en lugar del valor genérico previo (758x1024).
+#           · El menú muestra el dispositivo activo y su resolución.
+#           · El archivo de salida se nombra _XteinkX3.epub o _XteinkX4.epub
+#             para evitar confusiones entre versiones.
+#           · El filtro de EPUBs ya procesados excluye ambos sufijos.
 #
 # Pendiente / Futuras mejoras:
 #   - (ninguna conocida)

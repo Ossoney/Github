@@ -67,6 +67,31 @@ except ImportError:
     _LXML_AVAILABLE = False
 
 # =========================================================
+# PERFILES DE DISPOSITIVO
+# =========================================================
+# Ambos dispositivos usan el mismo procesador ESP32 y tienen 128 MB de RAM,
+# por lo que el umbral de splitting de capítulos es idéntico (300 KB).
+# La diferencia relevante para la optimización de imágenes es la resolución
+# de pantalla nativa de cada modelo.
+#
+# Xteink X3: pantalla 3.7" — resolución ~480 × 640 px (≈250 PPI)
+# Xteink X4: pantalla 4.3" — resolución ~480 × 800 px (≈220 PPI)
+#
+# Las imágenes que superen estas dimensiones se redimensionarán para ajustarse
+# al límite del dispositivo, ahorrando memoria y tiempo de renderizado.
+
+DEVICE_PROFILES = {
+    'X3': {
+        'max_width':  480,
+        'max_height': 640,
+    },
+    'X4': {
+        'max_width':  480,
+        'max_height': 800,
+    },
+}
+
+# =========================================================
 # LOCALIZACIÓN
 # =========================================================
 
@@ -108,23 +133,46 @@ TEXTS = {
         'BANNER_CONFIG': "EPUB TO XTEINK - CONFIGURACIÓN",
         'BANNER_MENU':   "EPUB TO XTEINK - MENÚ PRINCIPAL",
 
+        # Selección de dispositivo
+        'DEVICE_INTRO':  (
+            "Selecciona el modelo de tu lector Xteink.\n"
+            "  [1] Xteink X3  (3.7\" — 480×640 px — ≈250 PPI)\n"
+            "  [2] Xteink X4  (4.3\" — 480×800 px — ≈220 PPI)"
+        ),
+        'DEVICE_PROMPT': "Modelo (1 o 2): ",
+        'DEVICE_INVALID':"Opción inválida. Selecciona 1 (X3) o 2 (X4): ",
+        'DEVICE_SET':    "[INFO] Perfil activo: Xteink {} — máx. {}×{} px",
+
         # Selección de carpeta
         'FOLDER_INTRO':  "Selecciona la carpeta donde guardas tus EPUB.",
         'FOLDER_PROMPT': "Ruta de la carpeta (Enter para usar la actual): ",
 
         # Menú
         'ACTIVE_FOLDER':  "Carpeta activa: {}",
+        'ACTIVE_DEVICE':  "Dispositivo:    Xteink {} ({}×{} px)",
         'SIM_LABEL':      " [ESTADO DE SIMULACIÓN]",
         'ACTIONS_HEADER': "\nACCIONES DISPONIBLES{}:",
         'MENU_1':         " [1] Iniciar Optimización Híper-acelerada (Multihilo + Splitting de RAM)",
         'MENU_2_ON':      " [2] Desactivar Modo Simulación (Dry-Run)",
         'MENU_2_OFF':     " [2] Activar Modo Simulación (Dry-Run)",
         'MENU_3':         " [3] Cambiar Carpeta de Biblioteca",
+        'MENU_4':         " [4] Cambiar Modelo de Dispositivo",
+        'MENU_5':         " [5] Optimizar Imágenes para Fondos de Pantalla (X3/X4)",
         'MENU_0':         " [0] Salir",
         'SELECT_OPTION':  "\nSelecciona una opción: ",
         'PRESS_ENTER':    "\nPresiona ENTER para volver al menú...",
         'UNKNOWN_CMD':    "Comando no reconocido. Presiona ENTER para continuar...",
         'EXIT_MSG':       "\n¡Desconectando sistemas! Hasta luego.",
+
+        # Optimizador de fondos de pantalla
+        'IMG_FOLDER_INTRO':  "Selecciona la carpeta con las imágenes a optimizar.",
+        'IMG_FOLDER_PROMPT': "Ruta de la carpeta (Enter para usar la actual): ",
+        'NO_IMAGES':         "\nNo se encontraron imágenes (.jpg/.png/.bmp) en esta carpeta.",
+        'FOUND_IMAGES':      "\n[INFO] Se encontraron {} imágenes. Procesando...",
+        'IMG_SAVED_OK':      " -> [OK] Guardado: {}",
+        'IMG_SKIPPED':       " -> [OMITIDA] Imagen demasiado pequeña: {}",
+        'IMG_ERROR':         " -> [ERROR] Falló {}: {}",
+        'IMG_SUCCESS':       "\n -> [ÉXITO] Imágenes optimizadas correctamente.",
 
         # Procesamiento
         'INVALID_PATH':  "\nError: La ruta seleccionada no es válida.",
@@ -164,23 +212,46 @@ TEXTS = {
         'BANNER_CONFIG': "EPUB TO XTEINK - SETUP",
         'BANNER_MENU':   "EPUB TO XTEINK - MAIN MENU",
 
+        # Device selection
+        'DEVICE_INTRO':  (
+            "Select your Xteink reader model.\n"
+            "  [1] Xteink X3  (3.7\" — 480×640 px — ≈250 PPI)\n"
+            "  [2] Xteink X4  (4.3\" — 480×800 px — ≈220 PPI)"
+        ),
+        'DEVICE_PROMPT': "Model (1 or 2): ",
+        'DEVICE_INVALID':"Invalid option. Select 1 (X3) or 2 (X4): ",
+        'DEVICE_SET':    "[INFO] Active profile: Xteink {} — max {}×{} px",
+
         # Folder selection
         'FOLDER_INTRO':  "Select the folder where your EPUBs are stored.",
         'FOLDER_PROMPT': "Folder path (press Enter to use current): ",
 
         # Menu
         'ACTIVE_FOLDER':  "Active folder: {}",
+        'ACTIVE_DEVICE':  "Device:        Xteink {} ({}×{} px)",
         'SIM_LABEL':      " [SIMULATION MODE]",
         'ACTIONS_HEADER': "\nAVAILABLE ACTIONS{}:",
         'MENU_1':         " [1] Start Hyper-Accelerated Optimization (Multithreading + RAM Splitting)",
         'MENU_2_ON':      " [2] Disable Simulation Mode (Dry-Run)",
         'MENU_2_OFF':     " [2] Enable Simulation Mode (Dry-Run)",
         'MENU_3':         " [3] Change Library Folder",
+        'MENU_4':         " [4] Change Device Model",
+        'MENU_5':         " [5] Optimize Images for Wallpapers (X3/X4)",
         'MENU_0':         " [0] Exit",
         'SELECT_OPTION':  "\nSelect an option: ",
         'PRESS_ENTER':    "\nPress ENTER to return to the menu...",
         'UNKNOWN_CMD':    "Unknown command. Press ENTER to continue...",
         'EXIT_MSG':       "\nShutting down! Goodbye.",
+
+        # Wallpaper optimizer
+        'IMG_FOLDER_INTRO':  "Select the folder containing the images to optimize.",
+        'IMG_FOLDER_PROMPT': "Folder path (press Enter to use current): ",
+        'NO_IMAGES':         "\nNo images (.jpg/.png/.bmp) found in this folder.",
+        'FOUND_IMAGES':      "\n[INFO] Found {} images. Processing...",
+        'IMG_SAVED_OK':      " -> [OK] Saved: {}",
+        'IMG_SKIPPED':       " -> [SKIPPED] Image too small (decorative): {}",
+        'IMG_ERROR':         " -> [ERROR] Failed {}: {}",
+        'IMG_SUCCESS':       "\n -> [DONE] Images optimized successfully.",
 
         # Processing
         'INVALID_PATH':  "\nError: The selected path is not valid.",
@@ -221,11 +292,39 @@ class XteinkOptimizerApp:
         self.folder_path = None
         self.dry_run = False
 
-        self.max_width  = 758
-        self.max_height = 1024
+        # Perfil de dispositivo por defecto: X3
+        # Se actualiza en select_device() según la elección del usuario.
+        self.device_name = 'X3'
+        self.max_width   = DEVICE_PROFILES['X3']['max_width']
+        self.max_height  = DEVICE_PROFILES['X3']['max_height']
 
-        # Tamaño crítico a partir del cual el lector crashea (~300 KB)
+        # Tamaño crítico a partir del cual el lector crashea (~300 KB).
+        # Idéntico en X3 y X4 ya que ambos montan 128 MB de RAM con ESP32.
         self.max_html_size = 300 * 1024
+
+    # ----------------------------------------------------------
+    # UI: selección de dispositivo
+    # ----------------------------------------------------------
+    def select_device(self):
+        """Muestra el selector de modelo (X3 / X4) y actualiza el perfil activo."""
+        T = self.T
+        print()
+        print(T['DEVICE_INTRO'])
+        while True:
+            choice = input(T['DEVICE_PROMPT']).strip()
+            if choice == '1':
+                self.device_name = 'X3'
+                break
+            elif choice == '2':
+                self.device_name = 'X4'
+                break
+            else:
+                print(T['DEVICE_INVALID'], end='')
+
+        profile = DEVICE_PROFILES[self.device_name]
+        self.max_width  = profile['max_width']
+        self.max_height = profile['max_height']
+        print(T['DEVICE_SET'].format(self.device_name, self.max_width, self.max_height))
 
     # ----------------------------------------------------------
     # IMAGEN: Grises + Alpha flatten + Resize + Floyd-Steinberg
@@ -234,7 +333,9 @@ class XteinkOptimizerApp:
         """
         Pipeline completo de imagen para e-readers:
           1. Elimina miniaturas decorativas (<= 15 px).
-          2. Reduce resolución al máximo del dispositivo.
+          2. Reduce resolución al máximo del dispositivo seleccionado:
+               · X3: 480×640 px  (pantalla 3.7" — ≈250 PPI)
+               · X4: 480×800 px  (pantalla 4.3" — ≈220 PPI)
           3. Aplana canal Alpha sobre fondo blanco (evita fondo negro).
           4. Convierte a escala de grises de 8 bits.
           5. Aplica dithering Floyd-Steinberg a 16 niveles de gris
@@ -601,7 +702,7 @@ class XteinkOptimizerApp:
                 self._patch_ncx(temp_dir, opf_modifier_queue)
 
                 # 5. Empaquetar respetando el estándar EPUB (mimetype primero y sin compresión)
-                out_name = f"{epub.stem}_Xteink.epub"
+                out_name = f"{epub.stem}_{self.device_name}.epub"
                 out_path = epub.parent / out_name
 
                 with zipfile.ZipFile(out_path, 'w', zipfile.ZIP_DEFLATED) as zf:
@@ -623,6 +724,93 @@ class XteinkOptimizerApp:
                 print(T['PROC_ERROR'].format(epub.name, e))
 
     # ----------------------------------------------------------
+    # IMÁGENES: optimizador de fondos de pantalla
+    # ----------------------------------------------------------
+    def optimize_wallpapers(self, folder_path):
+        """
+        Optimiza imágenes sueltas (.jpg/.png/.bmp) como fondos de pantalla
+        para el dispositivo activo (X3 o X4).
+          1. Descarta imágenes decorativas (<= 15 px).
+          2. Reduce resolución al perfil del dispositivo (thumbnail LANCZOS).
+          3. Aplana canal Alpha sobre fondo blanco.
+          4. Convierte a escala de grises de 8 bits.
+          5. Aplica dithering Floyd-Steinberg a 16 niveles.
+          6. Guarda como nuevo archivo _X3.jpg / _X4.jpg sin tocar el original.
+        """
+        T = self.T
+        path = Path(folder_path)
+        suffix = f"_{self.device_name}"
+
+        image_exts = ('.jpg', '.jpeg', '.png', '.bmp')
+        images = [
+            f for f in path.iterdir()
+            if f.is_file()
+            and f.suffix.lower() in image_exts
+            and not f.stem.endswith(('_X3', '_X4'))
+        ]
+
+        if not images:
+            print(T['NO_IMAGES'])
+            return
+
+        print(T['FOUND_IMAGES'].format(len(images)))
+
+        for img_path in sorted(images):
+            try:
+                img = Image.open(img_path)
+
+                # 1. Descartar miniaturas decorativas
+                if img.width <= 15 or img.height <= 15:
+                    img.close()
+                    print(T['IMG_SKIPPED'].format(img_path.name))
+                    continue
+
+                # 2. Reducir al límite de pantalla del dispositivo
+                img.thumbnail((self.max_width, self.max_height), Image.Resampling.LANCZOS)
+
+                # 3. Aplanar canal Alpha sobre fondo blanco
+                if img.mode in ('RGBA', 'LA') or (img.mode == 'P' and 'transparency' in img.info):
+                    background = Image.new('RGB', img.size, (255, 255, 255))
+                    if img.mode == 'P':
+                        img = img.convert('RGBA')
+                    background.paste(img, mask=img.split()[-1])
+                    img = background
+
+                # 4. Escala de grises 8 bit
+                img = img.convert('L')
+
+                # 5. Dithering Floyd-Steinberg a 16 niveles
+                img = img.quantize(colors=16, dither=Image.Dither.FLOYDSTEINBERG).convert('L')
+
+                # 6. Guardar como JPG con sufijo _X3 / _X4 (no sobrescribe el original)
+                out_name = f"{img_path.stem}{suffix}.jpg"
+                out_path = img_path.parent / out_name
+                img.save(out_path, optimize=True, quality=85)
+                img.close()
+
+                print(T['IMG_SAVED_OK'].format(out_name))
+
+            except Exception as e:
+                logging.warning("[WALLPAPER SKIP] %s: %s", img_path.name, e)
+                print(T['IMG_ERROR'].format(img_path.name, e))
+
+        print(T['IMG_SUCCESS'])
+
+    def run_wallpaper_optimization(self):
+        """Flujo UI para optimizar imágenes sueltas como fondos de pantalla."""
+        T = self.T
+        clear_screen()
+        print_banner(T['BANNER_CONFIG'])
+        print(T['IMG_FOLDER_INTRO'])
+        folder = input_path(T['IMG_FOLDER_PROMPT']).strip()
+        if not folder:
+            folder = self.folder_path or os.getcwd()
+        if not Path(folder).is_dir():
+            print(T['INVALID_PATH'])
+            return
+        self.optimize_wallpapers(folder)
+
+    # ----------------------------------------------------------
     # OPTIMIZACIÓN: lote de EPUBs
     # ----------------------------------------------------------
     def run_optimization(self):
@@ -632,7 +820,7 @@ class XteinkOptimizerApp:
             print(T['INVALID_PATH'])
             return
 
-        epubs = [e for e in path.glob('*.epub') if not e.stem.endswith('_Xteink')]
+        epubs = [e for e in path.glob('*.epub') if not e.stem.endswith(('_X3', '_X4'))]
 
         if not epubs:
             print(T['NO_EPUBS'])
@@ -666,12 +854,15 @@ class XteinkOptimizerApp:
             clear_screen()
             print_banner(T['BANNER_MENU'])
             print(T['ACTIVE_FOLDER'].format(self.folder_path))
+            print(T['ACTIVE_DEVICE'].format(self.device_name, self.max_width, self.max_height))
 
             sim_label = T['SIM_LABEL'] if self.dry_run else ""
             print(T['ACTIONS_HEADER'].format(sim_label))
             print(T['MENU_1'])
             print(T['MENU_2_ON'] if self.dry_run else T['MENU_2_OFF'])
             print(T['MENU_3'])
+            print(T['MENU_4'])
+            print(T['MENU_5'])
             print(T['MENU_0'])
 
             choice = input(T['SELECT_OPTION']).strip()
@@ -683,6 +874,12 @@ class XteinkOptimizerApp:
                 self.dry_run = not self.dry_run
             elif choice == '3':
                 self.select_folder()
+            elif choice == '4':
+                self.select_device()
+                input(T['PRESS_ENTER'])
+            elif choice == '5':
+                self.run_wallpaper_optimization()
+                input(T['PRESS_ENTER'])
             elif choice == '0':
                 print(T['EXIT_MSG'])
                 sys.exit(0)
@@ -709,6 +906,7 @@ class XteinkOptimizerApp:
                 print(T['GOODBYE'])
                 sys.exit(0)
 
+            self.select_device()
             self.select_folder()
             self.show_menu()
         except KeyboardInterrupt:

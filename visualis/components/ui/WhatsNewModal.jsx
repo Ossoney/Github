@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Modal, Button } from '@/components/ui/UI'
-import { Sparkles, Palette, Zap } from 'lucide-react'
-import { db } from '@/lib/db'
+import { Sparkles, BarChart3, Filter, Calendar } from 'lucide-react'
 
 const CURRENT_VERSION = '1.4.25'
 
@@ -23,83 +22,80 @@ export function WhatsNewModal() {
         checkVersion()
     }, [])
 
-    const handleApplyTheme = async (themeName = 'mondrian') => {
-        document.documentElement.setAttribute('data-theme', themeName)
-        const currentSettings = await db.settings.get('global') || { id: 'global' }
-        await db.settings.put({ ...currentSettings, theme: themeName })
-        setIsOpen(false)
-    }
-
     if (!isOpen) return null
 
     return (
         <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4">
-            <div className="absolute inset-0 bg-black/90 backdrop-blur-md animate-in fade-in duration-300" onClick={() => setIsOpen(false)}></div>
+            <div className="absolute inset-0 bg-black/90 backdrop-blur-md animate-in fade-in duration-300" onClick={() => setIsOpen(false)} />
             
-            <div className="relative w-full max-w-lg bg-slate-900 border-4 border-white shadow-[20px_20px_0px_rgba(37,99,235,0.4)] animate-in zoom-in-95 slide-in-from-bottom-20 duration-500 rounded-none flex flex-col overflow-hidden ring-4 ring-blue-600/50">
+            <div className="relative w-full max-w-lg bg-slate-900 border border-slate-700 shadow-2xl animate-in zoom-in-95 slide-in-from-bottom-20 duration-500 rounded-2xl flex flex-col overflow-hidden ring-1 ring-sky-500/20">
                 
-                {/* Header Area with Dynamic Mondrian background */}
-                <div className="relative h-48 bg-black flex items-center justify-center border-b-4 border-white overflow-hidden">
-                    <div className="absolute top-0 w-1/3 h-full bg-blue-600 border-r-4 border-white left-0 transition-all hover:w-1/2 duration-700" />
-                    <div className="absolute bottom-0 right-0 w-1/4 h-1/2 bg-yellow-400 border-t-4 border-l-4 border-white animate-pulse" />
-                    <div className="absolute top-0 right-1/4 w-1/6 h-1/3 bg-red-600 border-b-4 border-l-4 border-white" />
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white border-2 border-black rotate-45" />
-
-                    <div className="relative z-10 px-8 py-4 bg-black/80 backdrop-blur-sm border-2 border-white/30 shadow-[10px_10px_0px_rgba(239,68,68,1)]">
-                        <h2 className="text-xl sm:text-3xl font-black text-white tracking-[0.2em] uppercase flex flex-col items-center gap-1">
-                            <span className="text-xs font-bold text-sky-400 tracking-[0.5em] -mb-1">VERSION</span>
-                            <span className="flex items-center gap-3">
-                                <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-400" />
-                                1.4.25
-                            </span>
+                {/* Header */}
+                <div className="relative h-40 bg-gradient-to-br from-slate-950 via-slate-900 to-sky-950 flex items-center justify-center border-b border-slate-800 overflow-hidden">
+                    {/* Background glow */}
+                    <div className="absolute inset-0 opacity-30">
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-32 bg-sky-500 rounded-full blur-3xl" />
+                    </div>
+                    <div className="relative z-10 text-center px-6">
+                        <div className="flex items-center justify-center gap-2 mb-1">
+                            <span className="text-[10px] font-black text-sky-400 tracking-[0.5em] uppercase">Novedades en</span>
+                        </div>
+                        <h2 className="text-4xl font-black text-white tracking-wider flex items-center gap-3">
+                            <Sparkles className="w-7 h-7 text-yellow-400" />
+                            v1.4.25
                         </h2>
+                        <p className="text-xs text-slate-500 mt-1 uppercase tracking-widest">Agosto 2026</p>
                     </div>
                 </div>
 
-                <div className="p-8 space-y-8 max-h-[60vh] overflow-y-auto custom-scrollbar">
-                    <div className="space-y-6">
-                        <div className="group">
-                            <h3 className="text-xl font-black text-white flex items-center gap-3 mb-2 group-hover:text-sky-400 transition-colors">
-                                <Palette className="w-6 h-6 text-sky-500" />
-                                <span className="uppercase tracking-widest">Apariencia Neoplástica</span>
-                            </h3>
-                            <p className="text-slate-400 text-sm leading-relaxed border-l-2 border-slate-800 pl-4 py-1">
-                                El nuevo tema **Mondrian** transforma tu app en una obra maestra de De Stijl. Líneas negras puras y colores primarios para una gestión financiera artística.
-                            </p>
-                        </div>
+                <div className="p-6 space-y-5 max-h-[60vh] overflow-y-auto">
 
-                        <div className="grid grid-cols-1 gap-4">
-                            <div className="p-4 bg-slate-800/50 border-2 border-slate-700 hover:border-fuchsia-500/50 transition-colors">
-                                <h4 className="font-bold text-fuchsia-500 text-xs uppercase tracking-widest mb-1">🍿 POP ART</h4>
-                                <p className="text-[11px] text-slate-500 leading-tight">Colores planos saturados y estética de cómic para un look divertido y vibrante.</p>
-                            </div>
+                    {/* Feature 1: Habit Stats */}
+                    <div className="flex gap-4 p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 hover:border-orange-500/30 transition-colors">
+                        <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0">
+                            <BarChart3 className="w-5 h-5 text-orange-400" />
                         </div>
-
                         <div>
-                            <h3 className="text-xl font-black text-white flex items-center gap-3 mb-2">
-                                <Zap className="w-6 h-6 text-amber-500" />
-                                <span className="uppercase tracking-widest">Smart Core v1.4</span>
-                            </h3>
-                            <p className="text-slate-400 text-sm leading-relaxed border-l-2 border-slate-800 pl-4 py-1">
-                                Hemos reconstruido el motor de idiomas **(i18n)** para mayor fluidez y corregido errores de inconsistencia en el diccionario.
+                            <h3 className="font-bold text-slate-100 text-sm">Estadísticas de hábitos mejoradas</h3>
+                            <p className="text-[12px] text-slate-400 mt-1 leading-relaxed">
+                                La racha ahora distingue entre hábitos diarios (días) y semanales (semanas). 
+                                El gráfico de evolución muestra una <span className="text-rose-400 font-semibold">línea de objetivo</span> para saber de un vistazo si cumpliste la meta cada semana.
                             </p>
                         </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                        <button 
-                            onClick={() => setIsOpen(false)} 
-                            className="flex-1 py-3 px-6 text-sm font-bold border-2 border-slate-700 hover:bg-slate-800 text-slate-400 transition-all active:scale-95 uppercase tracking-widest"
-                        >
-                            Saltar aviso
-                        </button>
-                        <button 
-                            onClick={() => handleApplyTheme('mondrian')} 
-                            className="flex-1 py-3 px-6 text-sm font-black bg-blue-600 hover:bg-blue-700 text-white shadow-[6px_6px_0px_rgba(255,255,255,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all active:scale-90 uppercase tracking-[0.2em]"
-                        >
-                            ¡ESTRENAR TEMA!
-                        </button>
+                    {/* Feature 2: Calendar history */}
+                    <div className="flex gap-4 p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 hover:border-sky-500/30 transition-colors">
+                        <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center shrink-0">
+                            <Calendar className="w-5 h-5 text-sky-400" />
+                        </div>
+                        <div>
+                            <h3 className="font-bold text-slate-100 text-sm">Historial mensual de hábitos</h3>
+                            <p className="text-[12px] text-slate-400 mt-1 leading-relaxed">
+                                El calendario de consistencia ahora tiene <span className="text-sky-400 font-semibold">navegación mes a mes</span>. Consulta cualquier mes pasado para ver tu progreso histórico.
+                            </p>
+                        </div>
                     </div>
+
+                    {/* Feature 3: Amount filter */}
+                    <div className="flex gap-4 p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 hover:border-emerald-500/30 transition-colors">
+                        <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
+                            <Filter className="w-5 h-5 text-emerald-400" />
+                        </div>
+                        <div>
+                            <h3 className="font-bold text-slate-100 text-sm">Filtro por importe en búsqueda avanzada</h3>
+                            <p className="text-[12px] text-slate-400 mt-1 leading-relaxed">
+                                Ahora puedes filtrar transacciones por <span className="text-emerald-400 font-semibold">rango de importe</span> (mínimo y máximo) directamente desde el panel de filtros avanzados.
+                            </p>
+                        </div>
+                    </div>
+
+                    <button 
+                        onClick={() => setIsOpen(false)} 
+                        className="w-full py-3 px-6 text-sm font-bold bg-sky-500 hover:bg-sky-600 text-white rounded-xl transition-all active:scale-95 uppercase tracking-widest shadow-lg shadow-sky-500/20"
+                    >
+                        ¡Entendido!
+                    </button>
                 </div>
             </div>
         </div>
