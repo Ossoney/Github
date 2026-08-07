@@ -31,21 +31,30 @@ El proyecto **Finanzas Visuales** (v1.4.27) es una aplicación web de contabilid
 - **Hábitos:** Rastreador de rutinas con metas semanales, efectos visuales y recordatorios inteligentes.
 - **Personalización Visual:** 11 temas artísticos (incluyendo **Mondrian** y **Pop Art**) y perfiles personalizados.
 
-## 🗓️ Sesión 2026-07-29 — Estado al Cierre
+## 🗓️ Sesión 2026-08-07 — Estado al Cierre
 
 ### ✅ Completado Hoy
-- **Fix**: Gráfico "Evolución por Semanas" en `HabitStatsModal` rediseñado con `position: absolute` y altura fija. Las barras ahora crecen desde la base correctamente y la línea de meta se posiciona con precisión.
-- **i18n**: Añadidas claves `goal`, `goal_met`, `goal_not_met` a los diccionarios ES y EN.
-- **WhatsNewModal**: Actualizado a v1.4.27 con descripción del fix del gráfico.
-- **Build de producción** exitoso (`npm run build`) — deployment disparado a Vercel vía push a `origin/main`.
+- **Fix Drag & Drop cuentas**: El reordenamiento de cuentas en `AccountManager` estaba roto porque `Reorder.Group` de framer-motion necesita estado local controlado. Se implementó un `items` local que se sincroniza con DB al soltar (`onDragEnd`), logrando fluidez real.
+- **Toggle de visibilidad por cuenta**: Nuevo botón ojo (👁/🚫) junto a cada cuenta en Configuración > Cuentas. Las cuentas ocultas aparecen semitransparentes en la lista y desaparecen del dashboard, del resumen de balances y del selector de cuentas en formularios.
+- **DB versión 12**: Añadido índice `hidden` a la tabla `wallets`. La migración inicializa `hidden: false` en cuentas existentes.
+- **i18n**: Añadidas claves `show_account` / `hide_account` en ES y EN.
+- **Archivos modificados**:
+  - `components/settings/AccountManager.jsx` (drag fix + visibility toggle)
+  - `lib/db.js` (version 12)
+  - `lib/i18n.js` (traducciones)
+  - `components/dashboard/WalletList.jsx` (filtra hidden)
+  - `components/dashboard/WalletSummary.jsx` (filtra hidden del total)
+  - `components/dashboard/TransactionForm.jsx` (filtra hidden del selector)
+- **Git push** exitoso a `origin/main` — commit `6fcf019`.
 
 ### 🔀 Estado Git Actual
 - Rama activa: `main`
-- Último commit: `16cb68a` — *fix(habits): redesino del grafico de evolucion semanal v1.4.27*
+- Último commit: `6fcf019` — *feat: fix account drag reorder + add visibility toggle per account*
 - Árbol de trabajo limpio (cambios subidos a `origin/main`).
 
 ### ⏭️ Pendiente para Próxima Sesión
-- Verificar que el deployment en Vercel está activo y accesible.
+- Verificar que el deployment en Vercel (auto-deploy desde GitHub) está activo.
+  - Si no se auto-desplegó: ejecutar `npx vercel login` y luego `npx vercel --prod` en terminal.
 - Revisar si hay nuevas sugerencias en `sugerencias.md`.
 
 ---
