@@ -75,7 +75,7 @@ except ImportError:
 # de pantalla nativa de cada modelo.
 #
 # Xteink X3: pantalla 3.7" — resolución ~480 × 640 px (≈250 PPI)
-# Xteink X4: pantalla 4.3" — resolución ~480 × 800 px (≈220 PPI)
+# Xteink X4 / X4 Pro: pantalla 4.3" — resolución ~480 × 800 px (≈220 PPI)
 #
 # Las imágenes que superen estas dimensiones se redimensionarán para ajustarse
 # al límite del dispositivo, ahorrando memoria y tiempo de renderizado.
@@ -136,11 +136,11 @@ TEXTS = {
         # Selección de dispositivo
         'DEVICE_INTRO':  (
             "Selecciona el modelo de tu lector Xteink.\n"
-            "  [1] Xteink X3  (3.7\" — 480×640 px — ≈250 PPI)\n"
-            "  [2] Xteink X4  (4.3\" — 480×800 px — ≈220 PPI)"
+            "  [1] Xteink X3      (3.7\" — 480×640 px — ≈250 PPI)\n"
+            "  [2] Xteink X4 / X4 Pro  (4.3\" — 480×800 px — ≈220 PPI)"
         ),
         'DEVICE_PROMPT': "Modelo (1 o 2): ",
-        'DEVICE_INVALID':"Opción inválida. Selecciona 1 (X3) o 2 (X4): ",
+        'DEVICE_INVALID':"Opción inválida. Selecciona 1 (X3) o 2 (X4 / X4 Pro): ",
         'DEVICE_SET':    "[INFO] Perfil activo: Xteink {} — máx. {}×{} px",
 
         # Selección de carpeta
@@ -215,11 +215,11 @@ TEXTS = {
         # Device selection
         'DEVICE_INTRO':  (
             "Select your Xteink reader model.\n"
-            "  [1] Xteink X3  (3.7\" — 480×640 px — ≈250 PPI)\n"
-            "  [2] Xteink X4  (4.3\" — 480×800 px — ≈220 PPI)"
+            "  [1] Xteink X3      (3.7\" — 480×640 px — ≈250 PPI)\n"
+            "  [2] Xteink X4 / X4 Pro  (4.3\" — 480×800 px — ≈220 PPI)"
         ),
         'DEVICE_PROMPT': "Model (1 or 2): ",
-        'DEVICE_INVALID':"Invalid option. Select 1 (X3) or 2 (X4): ",
+        'DEVICE_INVALID':"Invalid option. Select 1 (X3) or 2 (X4 / X4 Pro): ",
         'DEVICE_SET':    "[INFO] Active profile: Xteink {} — max {}×{} px",
 
         # Folder selection

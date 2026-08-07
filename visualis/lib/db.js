@@ -571,6 +571,21 @@ if (isBrowser) {
             wallet.order = wallet.id;
         });
     });
+
+    // Version 12: Add hidden field index to wallets (visibility toggle)
+    db.version(12).stores({
+        wallets: '++id, name, type, order, hidden',
+        categories: '++id, name, type, parentId',
+        transactions: '++id, walletId, categoryId, date, type, emotion, *tags',
+        settings: 'id',
+        recurring: '++id, walletId, categoryId, dayOfMonth, type, active',
+        tags: '++id, name',
+        budgets: '++id, categoryId, amount, type',
+    }).upgrade(async tx => {
+        await tx.wallets.toCollection().modify((wallet) => {
+            if (wallet.hidden === undefined) wallet.hidden = false;
+        });
+    });
 }
 
 /**

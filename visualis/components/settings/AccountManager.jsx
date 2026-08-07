@@ -1,19 +1,30 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '@/lib/db'
 import { Button, Card, CardContent, CardHeader, CardTitle, Input, ConfirmDialog } from '@/components/ui/UI'
-import { Wallet, Plus, Trash2, Edit2, Save, X, GripVertical } from 'lucide-react'
+import { Wallet, Plus, Trash2, Edit2, Save, X, GripVertical, Eye, EyeOff } from 'lucide-react'
 import { useLanguage } from '@/lib/i18n'
 import { Reorder } from 'framer-motion'
 
 export function AccountManager() {
-    const wallets = useLiveQuery(async () => {
+    const walletsFromDB = useLiveQuery(async () => {
         const all = await db.wallets.toArray()
         return all.sort((a, b) => (a.order ?? a.id) - (b.order ?? b.id))
     })
     const { t, formatMoney } = useLanguage()
+
+    // Local ordered list — needed so Reorder.Group has a stable, controlled array
+    const [items, setItems] = useState([])
+
+    // Sync local state when DB changes (but only if not currently dragging)
+    const [isDragging, setIsDragging] = useState(false)
+    useEffect(() => {
+        if (!isDragging && walletsFromDB) {
+            setItems(walletsFromDB)
+        }
+    }, [walletsFromDB, isDragging])
 
     const [isEditing, setIsEditing] = useState(null)
     const [newAccountName, setNewAccountName] = useState('')
@@ -31,11 +42,14 @@ export function AccountManager() {
     const handleCreate = async () => {
         if (!newAccountName) return
         try {
+            const maxOrder = items.length > 0 ? Math.max(...items.map(w => w.order ?? w.id)) : 0
             await db.wallets.add({
                 name: newAccountName,
                 type: newAccountType,
                 balance: parseFloat(initialBalance) || 0,
-                currency: 'EUR'
+                currency: 'EUR',
+                order: maxOrder + 1,
+                hidden: false,
             })
             setNewAccountName('')
             setInitialBalance('')
@@ -66,13 +80,22 @@ export function AccountManager() {
         setIsEditing(null)
     }
 
-    const handleReorder = async (newOrder) => {
-        // newOrder is the array of items in their new positions
-        // We update the 'order' property for each based on its index
+    const handleToggleVisibility = async (wallet) => {
+        await db.wallets.update(wallet.id, { hidden: !wallet.hidden })
+    }
+
+    // Called continuously while dragging — just update local state for smooth UI
+    const handleReorderLocal = (newOrder) => {
+        setItems(newOrder)
+    }
+
+    // Called when drag ends — persist new order to DB
+    const handleDragEnd = async () => {
+        setIsDragging(false)
         try {
             await db.transaction('rw', db.wallets, async () => {
-                for (let i = 0; i < newOrder.length; i++) {
-                    await db.wallets.update(newOrder[i].id, { order: i })
+                for (let i = 0; i < items.length; i++) {
+                    await db.wallets.update(items[i].id, { order: i })
                 }
             })
         } catch (err) {
@@ -121,15 +144,22 @@ export function AccountManager() {
                     {/* List */}
                     <Reorder.Group
                         axis="y"
-                        values={wallets || []}
-                        onReorder={handleReorder}
+                        values={items}
+                        onReorder={handleReorderLocal}
                         className="space-y-2"
                     >
-                        {wallets?.map(wallet => (
+                        {items.map(wallet => (
                             <Reorder.Item
                                 key={wallet.id}
                                 value={wallet}
-                                className="flex items-center justify-between p-3 bg-slate-800/30 rounded-xl border border-slate-800/50 hover:border-slate-700 transition-colors cursor-grab active:cursor-grabbing"
+                                onDragStart={() => setIsDragging(true)}
+                                onDragEnd={handleDragEnd}
+                                dragListener={isEditing !== wallet.id}
+                                className={`flex items-center justify-between p-3 rounded-xl border transition-colors ${
+                                    wallet.hidden
+                                        ? 'bg-slate-800/10 border-slate-800/30 opacity-50'
+                                        : 'bg-slate-800/30 border-slate-800/50 hover:border-slate-700'
+                                } ${isEditing !== wallet.id ? 'cursor-grab active:cursor-grabbing' : 'cursor-default'}`}
                             >
                                 <div className="flex items-center gap-3 flex-1">
                                     <GripVertical className="w-4 h-4 text-slate-600 shrink-0" />
@@ -163,11 +193,11 @@ export function AccountManager() {
                                         </div>
                                     ) : (
                                         <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400">
+                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${wallet.hidden ? 'bg-slate-800/50 text-slate-600' : 'bg-slate-800 text-slate-400'}`}>
                                                 <Wallet className="w-5 h-5" />
                                             </div>
                                             <div>
-                                                <p className="font-medium text-slate-200">{wallet.name}</p>
+                                                <p className={`font-medium transition-colors ${wallet.hidden ? 'text-slate-500' : 'text-slate-200'}`}>{wallet.name}</p>
                                                 <p className="text-xs text-slate-500 capitalize">{formatMoney(wallet.balance)}</p>
                                             </div>
                                         </div>
@@ -176,6 +206,16 @@ export function AccountManager() {
 
                                 {isEditing !== wallet.id && (
                                     <div className="flex items-center gap-1">
+                                        {/* Visibility toggle */}
+                                        <Button
+                                            size="icon"
+                                            variant="ghost"
+                                            onClick={() => handleToggleVisibility(wallet)}
+                                            className={wallet.hidden ? 'text-slate-600 hover:text-slate-300' : 'text-sky-400 hover:text-sky-300'}
+                                            title={wallet.hidden ? t('show_account') : t('hide_account')}
+                                        >
+                                            {wallet.hidden ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                                        </Button>
                                         <Button size="icon" variant="ghost" onClick={() => startEdit(wallet)} className="text-slate-400 hover:text-sky-400">
                                             <Edit2 className="w-4 h-4" />
                                         </Button>
@@ -187,7 +227,7 @@ export function AccountManager() {
                             </Reorder.Item>
                         ))}
                     </Reorder.Group>
-                    {wallets?.length === 0 && (
+                    {items.length === 0 && (
                         <p className="text-center text-slate-500 py-4">{t('no_accounts')}</p>
                     )}
 

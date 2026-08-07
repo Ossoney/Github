@@ -22,7 +22,9 @@ export function WalletSummary() {
         const end = endOfMonth(currentDate)
 
         const allWallets = await db.wallets.toArray()
-        const wallets = allWallets.sort((a, b) => (a.order ?? a.id) - (b.order ?? b.id))
+        const wallets = allWallets
+            .filter(w => !w.hidden)
+            .sort((a, b) => (a.order ?? a.id) - (b.order ?? b.id))
         const monthTransactions = await db.transactions
             .where('date')
             .between(start, end, true, true)

@@ -14,7 +14,12 @@ export function TransactionForm() {
     const { isTransactionModalOpen, closeTransactionModal, editingTransaction, newTransactionType } = useStore()
     const { t, tCategory, symbol, language } = useLanguage()
     const { addToast } = useToast()
-    const wallets = useLiveQuery(() => db.wallets.toArray())
+    const wallets = useLiveQuery(async () => {
+        const all = await db.wallets.toArray()
+        return all
+            .filter(w => !w.hidden)
+            .sort((a, b) => (a.order ?? a.id) - (b.order ?? b.id))
+    })
     const allCategories = useLiveQuery(() => db.categories.toArray())
 
     // Form State
