@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { Modal, Button } from '@/components/ui/UI'
-import { Sparkles, BarChart3, Filter, Calendar } from 'lucide-react'
+import { Sparkles, Tag, Calendar, Wallet } from 'lucide-react'
 
-const CURRENT_VERSION = '1.4.27'
+const CURRENT_VERSION = '1.4.28'
 
 export function WhatsNewModal() {
     const [isOpen, setIsOpen] = useState(false)
@@ -42,49 +42,49 @@ export function WhatsNewModal() {
                         </div>
                         <h2 className="text-4xl font-black text-white tracking-wider flex items-center gap-3">
                             <Sparkles className="w-7 h-7 text-yellow-400" />
-                            v1.4.27
+                            v1.4.28
                         </h2>
-                        <p className="text-xs text-slate-500 mt-1 uppercase tracking-widest">Julio 2026</p>
+                        <p className="text-xs text-slate-500 mt-1 uppercase tracking-widest">Agosto 2026</p>
                     </div>
                 </div>
 
                 <div className="p-6 space-y-5 max-h-[60vh] overflow-y-auto">
 
-                    {/* Feature 1: Weekly evolution chart fix */}
+                    {/* Feature 1: Tag toggle */}
                     <div className="flex gap-4 p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 hover:border-emerald-500/30 transition-colors">
                         <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
-                            <BarChart3 className="w-5 h-5 text-emerald-400" />
+                            <Tag className="w-5 h-5 text-emerald-400" />
                         </div>
                         <div>
-                            <h3 className="font-bold text-slate-100 text-sm">Gráfico de evolución semanal corregido</h3>
+                            <h3 className="font-bold text-slate-100 text-sm">Etiquetas con toggle</h3>
                             <p className="text-[12px] text-slate-400 mt-1 leading-relaxed">
-                                El gráfico de hábitos <span className="text-emerald-400 font-semibold">evolución por semanas</span> ahora renderiza correctamente. Las barras crecen desde la base y la <span className="text-rose-400 font-semibold">línea de meta</span> se posiciona con precisión.
+                                Pulsa una etiqueta para <span className="text-emerald-400 font-semibold">añadirla</span> a la transacción. Vuelve a pulsarla para <span className="text-rose-400 font-semibold">quitarla</span>. Ya no se añaden duplicadas.
                             </p>
                         </div>
                     </div>
 
-                    {/* Feature 2: Calendar history */}
+                    {/* Feature 2: Calendar redesign */}
                     <div className="flex gap-4 p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 hover:border-sky-500/30 transition-colors">
                         <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center shrink-0">
                             <Calendar className="w-5 h-5 text-sky-400" />
                         </div>
                         <div>
-                            <h3 className="font-bold text-slate-100 text-sm">Historial mensual de hábitos</h3>
+                            <h3 className="font-bold text-slate-100 text-sm">Calendario rediseñado</h3>
                             <p className="text-[12px] text-slate-400 mt-1 leading-relaxed">
-                                El calendario de consistencia tiene <span className="text-sky-400 font-semibold">navegación mes a mes</span>. Consulta cualquier mes pasado para ver tu progreso histórico.
+                                Celdas más compactas, importes <span className="text-sky-400 font-semibold">sin decimales</span> y formato abreviado (<span className="text-emerald-400 font-semibold">10,3m</span> en vez de 10.300 €). El balance nunca se parte en dos líneas.
                             </p>
                         </div>
                     </div>
 
-                    {/* Feature 3: Amount filter */}
-                    <div className="flex gap-4 p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 hover:border-orange-500/30 transition-colors">
-                        <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0">
-                            <Filter className="w-5 h-5 text-orange-400" />
+                    {/* Feature 3: Calendar wallet filter */}
+                    <div className="flex gap-4 p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 hover:border-violet-500/30 transition-colors">
+                        <div className="w-10 h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center shrink-0">
+                            <Wallet className="w-5 h-5 text-violet-400" />
                         </div>
                         <div>
-                            <h3 className="font-bold text-slate-100 text-sm">Filtro por importe en búsqueda avanzada</h3>
+                            <h3 className="font-bold text-slate-100 text-sm">Calendario por cuenta</h3>
                             <p className="text-[12px] text-slate-400 mt-1 leading-relaxed">
-                                Filtra transacciones por <span className="text-orange-400 font-semibold">rango de importe</span> (mínimo y máximo) directamente desde los filtros avanzados.
+                                El calendario respeta la <span className="text-violet-400 font-semibold">cuenta seleccionada</span>. Si tienes una cuenta activa, solo verás sus transacciones. Sin cuenta seleccionada, muestra el total.
                             </p>
                         </div>
                     </div>
