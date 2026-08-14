@@ -1,14 +1,10 @@
 import { useState, useMemo } from 'react'
-import { startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameMonth, isSameDay, addMonths, subMonths, format, startOfDay, isBefore } from 'date-fns'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { useState, useMemo } from 'react'
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameMonth, isSameDay, addMonths, subMonths, format } from 'date-fns'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '@/lib/db'
 import { useLanguage } from '@/lib/i18n'
 import { useStore } from '@/hooks/useStore'
-import { Money } from '@/components/ui/Money'
 import { DayDetailsModal } from './DayDetailsModal'
 import { cn } from '@/lib/utils'
 
@@ -164,6 +160,7 @@ export function CalendarGrid() {
                         </div>
                     ))}
                 </div>
+
                 {/* Days Grid */}
                 <div className="grid grid-cols-7 gap-px bg-slate-800/40">
                     {calendarDays.map((day, idx) => {
