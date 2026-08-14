@@ -120,11 +120,12 @@ export function TransactionForm() {
     })
 
     const handleTagClick = (tagName) => {
-        const current = tagsInput.split(' ').filter(t => t)
-        if (current.includes(tagName)) {
-            setTagsInput(current.filter(t => t !== tagName).join(' '))
+        const name = tagName.trim()
+        const current = tagsInput.split(' ').filter(t => t.trim())
+        if (current.includes(name)) {
+            setTagsInput(current.filter(t => t !== name).join(' '))
         } else {
-            setTagsInput([...current, tagName].join(' '))
+            setTagsInput([...current, name].join(' '))
         }
     }
 
@@ -710,11 +711,19 @@ export function TransactionForm() {
                         {existingTags?.length > 0 && (
                             <div className="flex flex-wrap gap-2">
                                 {existingTags.map(tag => {
-                                    const isSelected = tagsInput.includes(tag.name)
+                                    const isSelected = tagsInput.split(' ').filter(t => t.trim()).includes(tag.name.trim())
                                     return (
                                         <button
                                             key={tag.id}
-                                            onClick={() => handleTagClick(tag.name)}
+                                            onClick={() => {
+                                                const currentTags = tagsInput.split(' ').filter(t => t.trim());
+                                                const tagName = tag.name.trim();
+                                                if (currentTags.includes(tagName)) {
+                                                    setTagsInput(currentTags.filter(t => t !== tagName).join(' '));
+                                                } else {
+                                                    setTagsInput([...currentTags, tagName].join(' '));
+                                                }
+                                            }}
                                             className={cn(
                                                 "text-sm px-3 py-2 rounded-full border transition-all font-bold",
                                                 isSelected

@@ -87,8 +87,8 @@ function TransactionItem({ tx, tCategory, isProjected = false }) {
                 ? 'text-slate-400'
                 : isExpense ? 'text-slate-200' : 'text-emerald-400'
                 }`}>
-                {isExpense ? '- ' : '+ '}
-                <Money amount={tx.amount} />
+            {isExpense ? '- ' : '+ '}
+                <Money amount={tx.amount} showDecimals={false} />
             </div>
         </div>
     )

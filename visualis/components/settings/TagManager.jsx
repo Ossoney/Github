@@ -19,7 +19,7 @@ export function TagManager() {
 
     const handleCreate = async () => {
         if (!newTag.trim()) return
-        const tagName = newTag.startsWith('#') ? newTag.trim() : `#${newTag.trim()} `
+        const tagName = newTag.startsWith('#') ? newTag.trim() : `#${newTag.trim()}`
 
         // Prevent duplicates
         if (tags?.some(t => t.name.toLowerCase() === tagName.toLowerCase())) {
