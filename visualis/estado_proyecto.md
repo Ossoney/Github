@@ -31,6 +31,26 @@ El proyecto **Finanzas Visuales** (v1.4.27) es una aplicación web de contabilid
 - **Hábitos:** Rastreador de rutinas con metas semanales, efectos visuales y recordatorios inteligentes.
 - **Personalización Visual:** 11 temas artísticos (incluyendo **Mondrian** y **Pop Art**) y perfiles personalizados.
 
+## 🗓️ Sesión 2026-08-15 — Estado al Cierre
+
+### ✅ Completado Hoy
+- **Calendario — pastillas de resumen mensual con cifras completas**: Las tres pastillas de arriba (Ingresos, Balance, Gastos) en `CalendarGrid` ahora usan el componente `<Money>` en lugar de `compactAmount()`. Muestran el número completo (ej: `€1.250`, `€12.300`) respetando el símbolo de divisa y el modo privacidad. El balance compacto dentro de cada celda del calendario sigue usando el formato corto (`+€1,2m`).
+- **Archivos modificados**:
+  - `components/calendar/CalendarGrid.jsx` (import Money + sustitución en 3 puntos del JSX)
+- **Git push** exitoso a `origin/main` — commit `c29109c`.
+
+### 🔀 Estado Git Actual
+- Rama activa: `main`
+- Último commit: `c29109c` — *fix(calendar): show full amounts in monthly summary pills*
+- Árbol de trabajo limpio (cambios subidos a `origin/main`).
+
+### ⏭️ Pendiente para Próxima Sesión
+- Verificar deployment en Vercel (auto-deploy desde GitHub).
+  - Si no se auto-desplegó: ejecutar `npx vercel login` y luego `npx vercel --prod` en terminal.
+- Revisar `sugerencias.md` por si hay ideas nuevas acumuladas.
+
+---
+
 ## 🗓️ Sesión 2026-08-07 — Estado al Cierre
 
 ### ✅ Completado Hoy
@@ -47,15 +67,10 @@ El proyecto **Finanzas Visuales** (v1.4.27) es una aplicación web de contabilid
   - `components/dashboard/TransactionForm.jsx` (filtra hidden del selector)
 - **Git push** exitoso a `origin/main` — commit `6fcf019`.
 
-### 🔀 Estado Git Actual
+### 🔀 Estado Git Activo (cierre sesión 2026-08-07)
 - Rama activa: `main`
 - Último commit: `6fcf019` — *feat: fix account drag reorder + add visibility toggle per account*
-- Árbol de trabajo limpio (cambios subidos a `origin/main`).
-
-### ⏭️ Pendiente para Próxima Sesión
-- Verificar que el deployment en Vercel (auto-deploy desde GitHub) está activo.
-  - Si no se auto-desplegó: ejecutar `npx vercel login` y luego `npx vercel --prod` en terminal.
-- Revisar si hay nuevas sugerencias en `sugerencias.md`.
+- Árbol de trabajo limpio.
 
 ---
 
