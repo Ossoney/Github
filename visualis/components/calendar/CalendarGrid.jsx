@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { Money } from '@/components/ui/Money'
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameMonth, isSameDay, addMonths, subMonths, format } from 'date-fns'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useLiveQuery } from 'dexie-react-hooks'
@@ -126,7 +127,7 @@ export function CalendarGrid() {
                 <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-2.5 text-center">
                     <div className="text-[10px] text-emerald-500/70 font-semibold uppercase tracking-wider mb-0.5">{t('income') || 'Ingresos'}</div>
                     <div className="text-sm font-bold text-emerald-400 whitespace-nowrap">
-                        {compactAmount(monthlyTotals.totalIncome, symbol)}
+                        <Money amount={monthlyTotals.totalIncome} showDecimals={false} />
                     </div>
                 </div>
                 <div className={cn(
@@ -139,13 +140,13 @@ export function CalendarGrid() {
                         monthlyTotals.net >= 0 ? "text-emerald-400/70" : "text-rose-400/70"
                     )}>Balance</div>
                     <div className={cn("text-sm font-bold whitespace-nowrap", monthlyTotals.net >= 0 ? "text-emerald-400" : "text-rose-400")}>
-                        {compactAmount(monthlyTotals.net, symbol)}
+                        <Money amount={monthlyTotals.net} showDecimals={false} showPlus={monthlyTotals.net >= 0} />
                     </div>
                 </div>
                 <div className="bg-rose-500/10 border border-rose-500/20 rounded-xl p-2.5 text-center">
                     <div className="text-[10px] text-rose-500/70 font-semibold uppercase tracking-wider mb-0.5">{t('expense') || 'Gastos'}</div>
                     <div className="text-sm font-bold text-rose-400 whitespace-nowrap">
-                        {compactAmount(monthlyTotals.totalExpense, symbol)}
+                        <Money amount={monthlyTotals.totalExpense} showDecimals={false} />
                     </div>
                 </div>
             </div>
