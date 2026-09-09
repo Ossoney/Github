@@ -323,9 +323,13 @@ export function MonthSummary({ expandedType, onExpand }) {
         const avgExpense = monthsData.reduce((s, h) => s + h.expense, 0) / monthsData.length
         const avgResult = monthsData.reduce((s, h) => s + h.result, 0) / monthsData.length
 
-        // Best/Worst Logic: for expenses, "best" is less spending (min), "worst" is more spending (max)
-        const bestMonthIdx = type === 'expense'
-            ? values.indexOf(Math.min(...values))
+        // Peak month: for expenses, the month with the MOST spending (max); for income/result, the highest value (max)
+        // Only consider months with actual data (value > 0 for expense/income)
+        const nonZeroValues = type === 'expense'
+            ? values.map((v, i) => ({ v, i })).filter(x => x.v > 0)
+            : values.map((v, i) => ({ v, i }))
+        const bestMonthIdx = nonZeroValues.length > 0
+            ? nonZeroValues.reduce((best, cur) => cur.v > best.v ? cur : best, nonZeroValues[0]).i
             : values.indexOf(Math.max(...values))
         const bestMonth = monthsData[bestMonthIdx]
 
@@ -351,17 +355,33 @@ export function MonthSummary({ expandedType, onExpand }) {
         let trendColor = 'text-slate-400'
         
         if (monthsData.length >= 4) {
-            const trendPct = avgFirst > 0 ? Math.round(((avgSecond - avgFirst) / avgFirst) * 100) : 0
-            if (trendPct > 0) {
-                trendMsg = `+${trendPct}% vs 1ª mitad`
+            // For trend, always compare the last 6 months vs the 6 before that (if available),
+            // so the metric stays relevant regardless of how long the total history is.
+            const trendWindowSize = Math.min(6, Math.floor(monthsData.length / 2))
+            const trendSecond = monthsData.slice(-trendWindowSize)
+            const trendFirst = monthsData.slice(-(trendWindowSize * 2), -trendWindowSize)
+            const avgTrendFirst = trendFirst.length > 0
+                ? trendFirst.reduce((s, h) => s + getValue(h), 0) / trendFirst.length
+                : 0
+            const avgTrendSecond = trendSecond.reduce((s, h) => s + getValue(h), 0) / trendSecond.length
+            
+            const rawTrendPct = avgTrendFirst > 0
+                ? Math.round(((avgTrendSecond - avgTrendFirst) / avgTrendFirst) * 100)
+                : 0
+            // Cap at ±999% to avoid absurd numbers
+            const trendPct = Math.max(-999, Math.min(999, rawTrendPct))
+
+            if (trendPct > 5) {
+                trendMsg = `+${trendPct}% vs ant.`
                 trendColor = type === 'expense' ? 'text-rose-400' : 'text-emerald-400'
-            } else if (trendPct < 0) {
-                trendMsg = `${trendPct}% vs 1ª mitad`
+            } else if (trendPct < -5) {
+                trendMsg = `${trendPct}% vs ant.`
                 trendColor = type === 'expense' ? 'text-emerald-400' : 'text-rose-400'
             } else {
                 trendMsg = 'Estable'
             }
         }
+
 
         const renderHistoryChart = () => {
             const isNet = type === 'result'
@@ -416,40 +436,93 @@ export function MonthSummary({ expandedType, onExpand }) {
                     </div>
                 )
             } else {
-                const maxVal = Math.max(...monthsData.map(h => getValue(h)), 1)
-                const colorClass = type === 'income' 
-                    ? 'bg-emerald-500/70 hover:bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.15)]' 
-                    : 'bg-rose-500/70 hover:bg-rose-400 shadow-[0_0_8px_rgba(244,63,94,0.15)]'
-                const textClass = type === 'income' ? 'text-emerald-400' : 'text-rose-400'
-                
+                // SVG Area Chart — scales to 100% width, works for any number of months
+                const W = 600
+                const H = 120
+                const padX = 8
+                const padTop = 12
+                const padBottom = 26
+                const chartH = H - padTop - padBottom
+                const chartW = W - padX * 2
+
+                const rawValues = monthsData.map(getValue)
+                const maxVal = Math.max(...rawValues, 1)
+                const peakIdx = rawValues.indexOf(Math.max(...rawValues))
+
+                const pts = rawValues.map((v, i) => {
+                    const x = padX + (i / Math.max(rawValues.length - 1, 1)) * chartW
+                    const y = padTop + chartH - (v / maxVal) * chartH
+                    return { x, y, v, month: monthsData[i].month }
+                })
+
+                const tension = 0.3
+                const splinePath = pts.reduce((path, pt, i) => {
+                    if (i === 0) return `M ${pt.x},${pt.y}`
+                    const prev = pts[i - 1]
+                    const cp1x = prev.x + (pt.x - prev.x) * tension
+                    const cp1y = prev.y
+                    const cp2x = pt.x - (pt.x - prev.x) * tension
+                    const cp2y = pt.y
+                    return `${path} C ${cp1x},${cp1y} ${cp2x},${cp2y} ${pt.x},${pt.y}`
+                }, '')
+
+                const baselineY = padTop + chartH
+                const fillPath = pts.length > 0
+                    ? `${splinePath} L ${pts[pts.length - 1].x},${baselineY} L ${pts[0].x},${baselineY} Z`
+                    : ''
+
+                const strokeColor = type === 'income' ? '#10b981' : '#f43f5e'
+                const fillId = type === 'income' ? 'grad-income' : 'grad-expense'
+                const fillColorTop = type === 'income' ? 'rgba(16,185,129,0.30)' : 'rgba(244,63,94,0.30)'
+                const fillColorBot = type === 'income' ? 'rgba(16,185,129,0.0)' : 'rgba(244,63,94,0.0)'
+
+                const maxLabels = Math.min(6, pts.length)
+                const step = pts.length <= maxLabels ? 1 : Math.ceil(pts.length / maxLabels)
+                const labelIndices = new Set(
+                    pts.map((_, i) => i).filter((i) => i % step === 0 || i === pts.length - 1)
+                )
+
                 return (
-                    <div className="space-y-2 mt-2 mb-4">
-                        <div className="h-32 flex items-end justify-between gap-1 bg-slate-950/40 px-3 py-4 rounded-2xl border border-slate-800/80">
-                            {monthsData.map((h, i) => {
-                                const val = getValue(h)
-                                const pct = Math.min((val / maxVal) * 100, 100)
+                    <div className="mt-2 mb-4 bg-slate-950/40 rounded-2xl border border-slate-800/80 px-3 pt-3 pb-1">
+                        <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ overflow: 'visible' }}>
+                            <defs>
+                                <linearGradient id={fillId} x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stopColor={fillColorTop} />
+                                    <stop offset="100%" stopColor={fillColorBot} />
+                                </linearGradient>
+                            </defs>
+
+                            {[0.25, 0.5, 0.75].map(pct => {
+                                const y = padTop + chartH - pct * chartH
+                                return <line key={pct} x1={padX} y1={y} x2={W - padX} y2={y} stroke="rgba(148,163,184,0.07)" strokeWidth="1" />
+                            })}
+
+                            <line x1={padX} y1={baselineY} x2={W - padX} y2={baselineY} stroke="rgba(148,163,184,0.15)" strokeWidth="1" />
+
+                            {fillPath && <path d={fillPath} fill={`url(#${fillId})`} />}
+
+                            {splinePath && (
+                                <path d={splinePath} fill="none" stroke={strokeColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.9" />
+                            )}
+
+                            {pts[peakIdx] && (
+                                <>
+                                    <circle cx={pts[peakIdx].x} cy={pts[peakIdx].y} r="7" fill={strokeColor} opacity="0.15" />
+                                    <circle cx={pts[peakIdx].x} cy={pts[peakIdx].y} r="3.5" fill={strokeColor} opacity="0.95" />
+                                </>
+                            )}
+
+                            {pts.map((pt, i) => {
+                                if (!labelIndices.has(i)) return null
                                 return (
-                                    <div key={i} className="flex-1 h-full flex flex-col justify-end items-center relative group">
-                                        {/* Tooltip */}
-                                        <div className="absolute -top-12 bg-slate-900 border border-slate-700 px-2 py-1 rounded text-[10px] font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none z-30 transition-opacity shadow-xl flex flex-col items-center">
-                                            <span className="text-[9px] text-slate-500">{h.month}</span>
-                                            <span className={textClass}>
-                                                <Money amount={val} showDecimals={false} />
-                                            </span>
-                                        </div>
-                                        
-                                        {/* Bar */}
-                                        <div 
-                                            style={{ height: `${pct}%` }} 
-                                            className={cn("w-3 rounded-t-sm transition-all duration-300", colorClass)}
-                                        />
-                                        
-                                        {/* Month Label */}
-                                        <span className="text-[8px] text-slate-500 uppercase font-bold mt-1.5 shrink-0">{h.month}</span>
-                                    </div>
+                                    <text key={i} x={pt.x} y={H - 3} textAnchor="middle" fontSize="9"
+                                        fill="rgba(148,163,184,0.50)" fontWeight="bold"
+                                        style={{ textTransform: 'uppercase', fontFamily: 'inherit' }}>
+                                        {pt.month}
+                                    </text>
                                 )
                             })}
-                        </div>
+                        </svg>
                     </div>
                 )
             }
@@ -457,7 +530,7 @@ export function MonthSummary({ expandedType, onExpand }) {
 
         return (
             <div className="space-y-4">
-                {/* 1. Bar Chart */}
+                {/* 1. Area Chart */}
                 {renderHistoryChart()}
 
                 {/* 2. Key Insights Panel */}
