@@ -387,52 +387,136 @@ export function MonthSummary({ expandedType, onExpand }) {
             const isNet = type === 'result'
             
             if (isNet) {
-                const maxAbs = Math.max(...monthsData.map(h => Math.abs(h.result)), 1)
+                // SVG bidirectional chart — positive bars above baseline, negative below
+                const W = 600
+                const H = 130
+                const padX = 8
+                const padTop = 8
+                const padBottom = 26
+                const midY = padTop + (H - padTop - padBottom) / 2  // baseline (zero line)
+                const halfH = (H - padTop - padBottom) / 2
+                const chartW = W - padX * 2
+
+                const values = monthsData.map(h => h.result)
+                const maxAbs = Math.max(...values.map(v => Math.abs(v)), 1)
+
+                const pts = values.map((v, i) => {
+                    const x = padX + (i / Math.max(values.length - 1, 1)) * chartW
+                    return { x, v, month: monthsData[i].month }
+                })
+
+                // Max labels
+                const maxLabels = Math.min(6, pts.length)
+                const step = pts.length <= maxLabels ? 1 : Math.ceil(pts.length / maxLabels)
+                const labelIndices = new Set(
+                    pts.map((_, i) => i).filter((i) => i % step === 0 || i === pts.length - 1)
+                )
+
+                // Build smooth SVG line path through zero-anchored points
+                const linePts = pts.map(pt => ({
+                    x: pt.x,
+                    y: midY - (pt.v / maxAbs) * halfH * 0.92
+                }))
+                const tension = 0.3
+                const splinePath = linePts.reduce((path, pt, i) => {
+                    if (i === 0) return `M ${pt.x},${pt.y}`
+                    const prev = linePts[i - 1]
+                    const cp1x = prev.x + (pt.x - prev.x) * tension
+                    const cp2x = pt.x - (pt.x - prev.x) * tension
+                    return `${path} C ${cp1x},${prev.y} ${cp2x},${pt.y} ${pt.x},${pt.y}`
+                }, '')
+
+                // Positive area (above midY)
+                const posClipId = 'clip-pos-result'
+                const negClipId = 'clip-neg-result'
+
                 return (
-                    <div className="space-y-2 mt-2 mb-4">
-                        <div className="h-32 flex items-center justify-between gap-1 bg-slate-950/40 px-3 py-4 rounded-2xl border border-slate-800/80">
-                            {monthsData.map((h, i) => {
-                                const val = h.result
-                                const pct = Math.min((Math.abs(val) / maxAbs) * 100, 100)
+                    <div className="mt-2 mb-4 bg-slate-950/40 rounded-2xl border border-slate-800/80 px-3 pt-3 pb-1">
+                        <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ overflow: 'visible' }}>
+                            <defs>
+                                {/* Clip positive area (above midY) */}
+                                <clipPath id={posClipId}>
+                                    <rect x={padX} y={padTop} width={chartW} height={midY - padTop} />
+                                </clipPath>
+                                {/* Clip negative area (below midY) */}
+                                <clipPath id={negClipId}>
+                                    <rect x={padX} y={midY} width={chartW} height={halfH} />
+                                </clipPath>
+                                <linearGradient id="grad-pos" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stopColor="rgba(16,185,129,0.35)" />
+                                    <stop offset="100%" stopColor="rgba(16,185,129,0.0)" />
+                                </linearGradient>
+                                <linearGradient id="grad-neg" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stopColor="rgba(244,63,94,0.0)" />
+                                    <stop offset="100%" stopColor="rgba(244,63,94,0.35)" />
+                                </linearGradient>
+                            </defs>
+
+                            {/* Subtle grid lines */}
+                            {[0.5].map(pct => (
+                                <line key={pct}
+                                    x1={padX} y1={padTop + (H - padTop - padBottom) * (1 - pct)}
+                                    x2={W - padX} y2={padTop + (H - padTop - padBottom) * (1 - pct)}
+                                    stroke="rgba(148,163,184,0.06)" strokeWidth="1"
+                                />
+                            ))}
+
+                            {/* Zero baseline */}
+                            <line x1={padX} y1={midY} x2={W - padX} y2={midY}
+                                stroke="rgba(148,163,184,0.25)" strokeWidth="1" strokeDasharray="3,3" />
+
+                            {/* Positive fill area */}
+                            {splinePath && (
+                                <path
+                                    d={`${splinePath} L ${linePts[linePts.length - 1].x},${midY} L ${linePts[0].x},${midY} Z`}
+                                    fill="url(#grad-pos)"
+                                    clipPath={`url(#${posClipId})`}
+                                />
+                            )}
+
+                            {/* Negative fill area */}
+                            {splinePath && (
+                                <path
+                                    d={`${splinePath} L ${linePts[linePts.length - 1].x},${midY} L ${linePts[0].x},${midY} Z`}
+                                    fill="url(#grad-neg)"
+                                    clipPath={`url(#${negClipId})`}
+                                />
+                            )}
+
+                            {/* Line — green above zero, red below (drawn twice with clip) */}
+                            {splinePath && (<>
+                                <path d={splinePath} fill="none" stroke="#10b981" strokeWidth="2"
+                                    strokeLinecap="round" strokeLinejoin="round" opacity="0.9"
+                                    clipPath={`url(#${posClipId})`} />
+                                <path d={splinePath} fill="none" stroke="#f43f5e" strokeWidth="2"
+                                    strokeLinecap="round" strokeLinejoin="round" opacity="0.9"
+                                    clipPath={`url(#${negClipId})`} />
+                            </>)}
+
+                            {/* Dots on each data point colored by sign */}
+                            {linePts.map((pt, i) => {
+                                const v = values[i]
+                                if (Math.abs(v) < maxAbs * 0.02) return null // skip near-zero dots
+                                const color = v >= 0 ? '#10b981' : '#f43f5e'
                                 return (
-                                    <div key={i} className="flex-1 h-full flex flex-col items-center relative group">
-                                        {/* Tooltip */}
-                                        <div className="absolute -top-12 bg-slate-900 border border-slate-700 px-2 py-1 rounded text-[10px] font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none z-30 transition-opacity shadow-xl flex flex-col items-center">
-                                            <span className="text-[9px] text-slate-500">{h.month}</span>
-                                            <span className={val >= 0 ? "text-emerald-400" : "text-rose-400"}>
-                                                <Money amount={val} showDecimals={false} showPlus={val > 0} />
-                                            </span>
-                                        </div>
-                                        
-                                        {/* Positive Area */}
-                                        <div className="w-full h-1/2 flex items-end justify-center pb-[1px]">
-                                            {val > 0 && (
-                                                <div 
-                                                    style={{ height: `${pct}%` }} 
-                                                    className="w-3 bg-emerald-500/70 hover:bg-emerald-400 rounded-t-sm transition-all duration-300 shadow-[0_0_8px_rgba(16,185,129,0.15)]"
-                                                />
-                                            )}
-                                        </div>
-                                        
-                                        {/* Baseline */}
-                                        <div className="w-full h-[1.5px] bg-slate-800 relative z-10" />
-                                        
-                                        {/* Negative Area */}
-                                        <div className="w-full h-1/2 flex items-start justify-center pt-[1px]">
-                                            {val < 0 && (
-                                                <div 
-                                                    style={{ height: `${pct}%` }} 
-                                                    className="w-3 bg-rose-500/70 hover:bg-rose-400 rounded-b-sm transition-all duration-300 shadow-[0_0_8px_rgba(244,63,94,0.15)]"
-                                                />
-                                            )}
-                                        </div>
-                                        
-                                        {/* Month Label */}
-                                        <span className="text-[8px] text-slate-500 uppercase font-bold mt-1.5 shrink-0">{h.month}</span>
-                                    </div>
+                                    <circle key={i} cx={pt.x} cy={pt.y}
+                                        r="2.5" fill={color} opacity="0.8" />
                                 )
                             })}
-                        </div>
+
+                            {/* Month labels */}
+                            {pts.map((pt, i) => {
+                                if (!labelIndices.has(i)) return null
+                                return (
+                                    <text key={i} x={pt.x} y={H - 3}
+                                        textAnchor="middle" fontSize="9"
+                                        fill="rgba(148,163,184,0.50)" fontWeight="bold"
+                                        style={{ textTransform: 'uppercase', fontFamily: 'inherit' }}>
+                                        {pt.month}
+                                    </text>
+                                )
+                            })}
+                        </svg>
                     </div>
                 )
             } else {
