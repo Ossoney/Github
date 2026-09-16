@@ -1,4 +1,5 @@
 import Dexie from 'dexie';
+import { guessIcon } from './category-utils';
 
 // Check if we are in the browser
 const isBrowser = typeof window !== 'undefined';
@@ -350,6 +351,28 @@ if (isBrowser) {
         await tx.tags.toCollection().modify(tag => {
             if (tag.hidden === undefined) {
                 tag.hidden = false;
+            }
+        });
+    });
+
+    // Version 15: Ensure all categories have meaningful icons (Automóvil, Electricidad, Deporte, Viajes, etc.)
+    db.version(15).stores({
+        wallets: '++id, name, type, order',
+        categories: '++id, name, type, parentId',
+        transactions: '++id, walletId, toWalletId, categoryId, date, type, emotion, *tags',
+        settings: 'id',
+        recurring: '++id, walletId, categoryId, dayOfMonth, type, active',
+        tags: '++id, name, hidden',
+        budgets: '++id, categoryId, amount, type',
+        habits: '++id, name, goal, frequency, order, reminderTime, reminderEnabled',
+        habitLogs: '++id, habitId, date',
+    }).upgrade(async tx => {
+        await tx.categories.toCollection().modify(cat => {
+            if (!cat.icon || cat.icon === 'Circle' || cat.icon === 'Folder') {
+                const guessed = guessIcon(cat.name, !cat.parentId);
+                if (guessed && guessed !== 'Circle' && guessed !== 'Folder') {
+                    cat.icon = guessed;
+                }
             }
         });
     });

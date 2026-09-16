@@ -34,7 +34,8 @@ Visualis es una aplicación de gestión financiera personal diseñada para ser p
 ### **Categorización Inteligente**
 
 * **Sistema Jerárquico**: Categorías Principales (ej. Alimentación) y Subcategorías (ej. Supermercado, Restaurante).
-* **Iconos y Colores**: Cada categoría tiene su propio icono y color para rápida identificación visual.
+* **Iconos y Colores**: Cada categoría tiene su propio icono y color para rápida identificación visual. Detección semántica automática de iconos al escribir el nombre (ej. Electricidad → Zap, Automóvil → Car, Deporte → Dumbbell, Viajes → Plane, Alquiler → Home/Sun).
+* **Catálogo Extendido de Iconos de Reserva**: Selector de iconos ampliado con decenas de iconos específicos para finanzas, energía, movilidad, ocio, salud, deportes, tecnología y herramientas para nuevas categorías que cree el usuario.
 * **Personalización**: Posibilidad de crear, editar y eliminar categorías según las necesidades del usuario.
 
 ### **Etiquetas (#Tags)**

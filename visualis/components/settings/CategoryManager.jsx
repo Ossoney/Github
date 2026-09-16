@@ -369,10 +369,12 @@ export function CategoryManager() {
                             onChange={(e) => {
                                 const val = e.target.value
                                 setNewName(val)
-                                // Auto-guess icon if it's currently a generic one
-                                if (newIcon === 'Circle' || newIcon === 'Folder') {
+                                // Auto-guess icon when typing if icon is default or empty
+                                if (!newIcon || newIcon === 'Circle' || newIcon === 'Folder') {
                                     const guessed = guessIcon(val, categoryType === 'parent')
-                                    setNewIcon(guessed)
+                                    if (guessed && guessed !== 'Circle' && guessed !== 'Folder') {
+                                        setNewIcon(guessed)
+                                    }
                                 }
                             }}
                             className="bg-slate-950"

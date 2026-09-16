@@ -8,7 +8,7 @@
 > 2. `guia_acceso.md` (Para procesos de instalación y acceso)
 > 3. `estado_proyecto.md` (Este documento, para el estado actual, UX y Changelog)
 
-El proyecto **Finanzas Visuales** (v1.4.29) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
+El proyecto **Finanzas Visuales** (v1.4.30) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
 
 ## Tecnologías Principales
 
@@ -34,20 +34,28 @@ El proyecto **Finanzas Visuales** (v1.4.29) es una aplicación web de contabilid
 ## 🗓️ Sesión 2026-09-16 — Estado al Cierre
 
 ### ✅ Completado Hoy
+- **Asignación Integral de Iconos a Categorías (Automóvil, Electricidad, Deporte, Alquiler, Viajes, etc.)**:
+  - Actualizado y ampliado el motor de inferencia semántica `guessIcon` en `lib/category-utils.js` con mapeos directos y prioritarios para:
+    - **Electricidad / Luz / Suministros**: `Zap` / `Flame` / `Droplets` / `Wifi`
+    - **Automóvil / Coche / Gasolina**: `Car` / `Fuel` / `ParkingSquare` / `Wrench`
+    - **Deporte / Gimnasio / Fitness**: `Dumbbell` / `Trophy`
+    - **Alquiler / Hipoteca / Vivienda**: `Home` / `Sun` (vacacional)
+    - **Viajes / Hoteles / Vuelos**: `Plane` / `Bed` / `Compass`
+  - **Catálogo de Reserva Extendido**: Ampliado el componente selector `IconSelector.jsx` con decenas de iconos organizados temáticamente para que el usuario siempre tenga opciones de reserva atractivas al crear nuevas categorías.
+  - **Sugerencia Automática en Formulario**: Al crear una categoría en `CategoryManager.jsx`, al teclear el nombre el sistema sugiere automáticamente el icono pertinente si no ha sido seleccionado manualmente.
+  - **Migración DB v15**: Dexie actualiza en el cliente cualquier categoría preexistente sin icono o con iconos genéricos (`Circle`/`Folder`) asignándole el icono apropiado.
 - **Toggle de activación/visibilidad por etiqueta (#Tags)**:
-  - En **Configuración > Etiquetas** (`TagManager.jsx`), cada etiqueta ahora cuenta con un botón de visibilidad (icono de ojo `Eye` / `EyeOff`) idéntico al sistema de cuentas/proyectos.
-  - Las etiquetas desactivadas/ocultas se visualizan atenuadas con texto tachado en la configuración.
-  - Al desactivar una etiqueta, se oculta automáticamente del selector de sugerencias de etiquetas rápidas en el modal de transacciones (`TransactionForm.jsx`).
-- **Base de Datos Dexie (v14)**:
-  - Se añade el índice `hidden` a la tabla `tags` y migración que inicializa `hidden: false` para las etiquetas existentes.
-- **Internacionalización (i18n)**:
-  - Añadidas las claves `show_tag` y `hide_tag` en los diccionarios de idiomas (ES, EN).
+  - En **Configuración > Etiquetas** (`TagManager.jsx`), botón de visibilidad (`Eye` / `EyeOff`) idéntico a cuentas.
+  - Las etiquetas desactivadas/ocultas se visualizan atenuadas con texto tachado en configuración y no se muestran como sugerencias rápidas en el modal de transacciones.
+- **Base de Datos Dexie (v14 y v15)**:
+  - Migración v14 para `hidden: false` en tags.
+  - Migración v15 para actualización automática de iconos de categorías.
 - **Archivos modificados**:
-  - `lib/db.js` (versión 14 para tabla tags)
-  - `lib/i18n.js` (`show_tag`, `hide_tag`)
-  - `components/settings/TagManager.jsx` (toggle visibilidad, estilos y botón)
-  - `components/dashboard/TransactionForm.jsx` (filtro de etiquetas no ocultas en sugerencias)
-  - `package.json` (bump a 1.4.29)
+  - `lib/category-utils.js` (motor de mapeo e inferencia de iconos ampliado)
+  - `components/ui/IconSelector.jsx` (catálogo expandido de iconos de reserva)
+  - `components/settings/CategoryManager.jsx` (auto-guess mejorado y catálogo ampliado)
+  - `lib/db.js` (migración versión 15)
+  - `package.json` (bump a 1.4.30)
   - `caracteristicas.md` y `estado_proyecto.md`
 
 ---
