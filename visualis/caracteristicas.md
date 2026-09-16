@@ -41,6 +41,7 @@ Visualis es una aplicación de gestión financiera personal diseñada para ser p
 
 * **Clasificación Transversal**: Permite agrupar gastos de diferentes categorías bajo un mismo concepto (ej. `#Vacaciones2024`, `#BodaAlberto`).
 * **Gestión de Etiquetas**: Panel dedicado para crear y administrar etiquetas.
+* **Activación/Visibilidad de Etiquetas**: Botón de visibilidad (👁/🚫) para activar o desactivar etiquetas. Las etiquetas inactivas u ocultas no aparecen como sugerencias en el formulario de transacciones.
 
 ## 🔄 3. Planificación y Automatización
 

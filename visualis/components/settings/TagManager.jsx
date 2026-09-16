@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '@/lib/db'
 import { Button, Card, Input, ConfirmDialog } from '@/components/ui/UI'
-import { Tag, Plus, Trash2 } from 'lucide-react'
+import { Tag, Plus, Trash2, Eye, EyeOff } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useLanguage } from '@/lib/i18n'
 
@@ -28,11 +28,15 @@ export function TagManager() {
         }
 
         try {
-            await db.tags.add({ name: tagName })
+            await db.tags.add({ name: tagName, hidden: false })
             setNewTag('')
         } catch (err) {
             console.error(err)
         }
+    }
+
+    const handleToggleVisibility = async (tag) => {
+        await db.tags.update(tag.id, { hidden: !tag.hidden })
     }
 
     const handleDelete = async () => {
@@ -72,14 +76,37 @@ export function TagManager() {
                         <p className="col-span-full text-center text-xs text-slate-500 py-6 italic">{t('no_tags')}</p>
                     )}
                     {tags?.map(tag => (
-                        <div key={tag.id} className="flex items-center justify-between p-4 rounded-xl bg-slate-800/40 hover:bg-slate-800 transition-colors group border border-slate-800 hover:border-slate-700">
-                            <span className="font-bold text-lg text-slate-200">{tag.name}</span>
-                            <button
-                                onClick={() => setDeleteId(tag.id)}
-                                className="p-1.5 text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 rounded-lg transition-colors"
-                            >
-                                <Trash2 className="w-4 h-4" />
-                            </button>
+                        <div
+                            key={tag.id}
+                            className={`flex items-center justify-between p-4 rounded-xl transition-colors border ${
+                                tag.hidden
+                                    ? 'bg-slate-800/10 border-slate-800/30 opacity-50'
+                                    : 'bg-slate-800/40 hover:bg-slate-800 border-slate-800 hover:border-slate-700'
+                            }`}
+                        >
+                            <span className={`font-bold text-lg transition-colors ${tag.hidden ? 'text-slate-500 line-through' : 'text-slate-200'}`}>
+                                {tag.name}
+                            </span>
+                            <div className="flex items-center gap-1">
+                                <button
+                                    onClick={() => handleToggleVisibility(tag)}
+                                    className={`p-1.5 rounded-lg transition-colors ${
+                                        tag.hidden
+                                            ? 'text-slate-600 hover:text-slate-300 hover:bg-slate-800/50'
+                                            : 'text-sky-400 hover:text-sky-300 hover:bg-sky-500/10'
+                                    }`}
+                                    title={tag.hidden ? t('show_tag') : t('hide_tag')}
+                                >
+                                    {tag.hidden ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                                </button>
+                                <button
+                                    onClick={() => setDeleteId(tag.id)}
+                                    className="p-1.5 text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 rounded-lg transition-colors"
+                                    title={t('delete')}
+                                >
+                                    <Trash2 className="w-4 h-4" />
+                                </button>
+                            </div>
                         </div>
                     ))}
                 </div>

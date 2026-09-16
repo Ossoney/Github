@@ -116,7 +116,9 @@ export function TransactionForm() {
 
     const existingTags = useLiveQuery(async () => {
         const all = await db.tags.toArray()
-        return all.sort((a, b) => a.name.localeCompare(b.name))
+        return all
+            .filter(t => !t.hidden)
+            .sort((a, b) => a.name.localeCompare(b.name))
     })
 
     const handleTagClick = (tagName) => {

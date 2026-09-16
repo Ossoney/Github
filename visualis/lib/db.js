@@ -334,6 +334,25 @@ if (isBrowser) {
             }
         });
     });
+
+    // Version 14: Tags with hidden toggle
+    db.version(14).stores({
+        wallets: '++id, name, type, order',
+        categories: '++id, name, type, parentId',
+        transactions: '++id, walletId, toWalletId, categoryId, date, type, emotion, *tags',
+        settings: 'id',
+        recurring: '++id, walletId, categoryId, dayOfMonth, type, active',
+        tags: '++id, name, hidden',
+        budgets: '++id, categoryId, amount, type',
+        habits: '++id, name, goal, frequency, order, reminderTime, reminderEnabled',
+        habitLogs: '++id, habitId, date',
+    }).upgrade(async tx => {
+        await tx.tags.toCollection().modify(tag => {
+            if (tag.hidden === undefined) {
+                tag.hidden = false;
+            }
+        });
+    });
 }
 
 // Seed data

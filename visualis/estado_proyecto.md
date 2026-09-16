@@ -8,7 +8,7 @@
 > 2. `guia_acceso.md` (Para procesos de instalación y acceso)
 > 3. `estado_proyecto.md` (Este documento, para el estado actual, UX y Changelog)
 
-El proyecto **Finanzas Visuales** (v1.4.27) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
+El proyecto **Finanzas Visuales** (v1.4.29) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
 
 ## Tecnologías Principales
 
@@ -30,6 +30,27 @@ El proyecto **Finanzas Visuales** (v1.4.27) es una aplicación web de contabilid
 - **Seguridad y Privacidad:** Almacenamiento exclusivamente local, modo privacidad y copias de seguridad (JSON/Excel).
 - **Hábitos:** Rastreador de rutinas con metas semanales, efectos visuales y recordatorios inteligentes.
 - **Personalización Visual:** 11 temas artísticos (incluyendo **Mondrian** y **Pop Art**) y perfiles personalizados.
+
+## 🗓️ Sesión 2026-09-16 — Estado al Cierre
+
+### ✅ Completado Hoy
+- **Toggle de activación/visibilidad por etiqueta (#Tags)**:
+  - En **Configuración > Etiquetas** (`TagManager.jsx`), cada etiqueta ahora cuenta con un botón de visibilidad (icono de ojo `Eye` / `EyeOff`) idéntico al sistema de cuentas/proyectos.
+  - Las etiquetas desactivadas/ocultas se visualizan atenuadas con texto tachado en la configuración.
+  - Al desactivar una etiqueta, se oculta automáticamente del selector de sugerencias de etiquetas rápidas en el modal de transacciones (`TransactionForm.jsx`).
+- **Base de Datos Dexie (v14)**:
+  - Se añade el índice `hidden` a la tabla `tags` y migración que inicializa `hidden: false` para las etiquetas existentes.
+- **Internacionalización (i18n)**:
+  - Añadidas las claves `show_tag` y `hide_tag` en los diccionarios de idiomas (ES, EN).
+- **Archivos modificados**:
+  - `lib/db.js` (versión 14 para tabla tags)
+  - `lib/i18n.js` (`show_tag`, `hide_tag`)
+  - `components/settings/TagManager.jsx` (toggle visibilidad, estilos y botón)
+  - `components/dashboard/TransactionForm.jsx` (filtro de etiquetas no ocultas en sugerencias)
+  - `package.json` (bump a 1.4.29)
+  - `caracteristicas.md` y `estado_proyecto.md`
+
+---
 
 ## 🗓️ Sesión 2026-08-15 — Estado al Cierre
 
