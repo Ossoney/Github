@@ -11,7 +11,7 @@ export function RecurringManager() {
     const recurring = useLiveQuery(() => db.recurring.toArray())
     const wallets = useLiveQuery(() => db.wallets.toArray())
     const allCategories = useLiveQuery(() => db.categories.toArray())
-    const { t, formatMoney } = useLanguage()
+    const { t, tCategory, formatMoney } = useLanguage()
 
     const [isCreating, setIsCreating] = useState(false)
     const [editingId, setEditingId] = useState(null)
@@ -19,11 +19,20 @@ export function RecurringManager() {
     const [amount, setAmount] = useState('')
     const [day, setDay] = useState(1)
     const [walletId, setWalletId] = useState('')
-    const [categoryId, setCategoryId] = useState('')
+    const [parentCategoryId, setParentCategoryId] = useState('')
+    const [subCategoryId, setSubCategoryId] = useState('')
     const [description, setDescription] = useState('')
 
     // Confirm state
     const [deleteId, setDeleteId] = useState(null)
+
+    // Current category parents for selected type
+    const parentCategories = allCategories?.filter(c => c.type === type && !c.parentId) || []
+    
+    // Subcategories of selected parent
+    const availableSubcategories = parentCategoryId
+        ? allCategories?.filter(c => c.parentId === Number(parentCategoryId)) || []
+        : []
 
     const handleEdit = (item) => {
         setEditingId(item.id)
@@ -31,20 +40,42 @@ export function RecurringManager() {
         setAmount(item.amount)
         setDay(item.dayOfMonth)
         setWalletId(item.walletId)
-        setCategoryId(item.categoryId)
-        setDescription(item.description)
+
+        const itemCat = allCategories?.find(c => c.id === item.categoryId)
+        if (itemCat?.parentId) {
+            setParentCategoryId(itemCat.parentId.toString())
+            setSubCategoryId(itemCat.id.toString())
+        } else {
+            setParentCategoryId(item.categoryId ? item.categoryId.toString() : '')
+            setSubCategoryId('')
+        }
+
+        setDescription(item.description || '')
         setIsCreating(true)
     }
 
+    const handleTypeChange = (newType) => {
+        setType(newType)
+        setParentCategoryId('')
+        setSubCategoryId('')
+    }
+
+    const handleParentCategoryChange = (newParentId) => {
+        setParentCategoryId(newParentId)
+        setSubCategoryId('')
+    }
+
     const handleCreate = async () => {
-        if (!amount || !walletId || !categoryId) return
+        const finalCategoryId = subCategoryId ? parseInt(subCategoryId) : (parentCategoryId ? parseInt(parentCategoryId) : null)
+        if (!amount || !walletId || !finalCategoryId) return
+
         try {
             const data = {
                 type,
                 amount: parseFloat(amount),
                 dayOfMonth: parseInt(day),
                 walletId: parseInt(walletId),
-                categoryId: parseInt(categoryId),
+                categoryId: finalCategoryId,
                 description,
                 active: true,
             }
@@ -67,6 +98,8 @@ export function RecurringManager() {
         setAmount('')
         setDay(1)
         setDescription('')
+        setParentCategoryId('')
+        setSubCategoryId('')
         setEditingId(null)
     }
 
@@ -100,13 +133,13 @@ export function RecurringManager() {
                             <div className="grid grid-cols-2 gap-2">
                                 <Button
                                     variant={type === 'expense' ? 'destructive' : 'outline'}
-                                    onClick={() => setType('expense')}
+                                    onClick={() => handleTypeChange('expense')}
                                     className={type !== 'expense' ? "border-slate-700 text-slate-400" : ""}
                                 >{t('expense')}</Button>
                                 <Button
                                     variant={type === 'income' ? 'default' : 'outline'}
                                     className={type === 'income' ? "bg-emerald-600 hover:bg-emerald-700" : "border-slate-700 text-slate-400"}
-                                    onClick={() => setType('income')}
+                                    onClick={() => handleTypeChange('income')}
                                 >{t('income')}</Button>
                             </div>
 
@@ -139,16 +172,30 @@ export function RecurringManager() {
                                 {wallets?.map(w => <option key={w.id} value={w.id}>{w.name}</option>)}
                             </select>
 
-                            <select
-                                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200"
-                                value={categoryId}
-                                onChange={e => setCategoryId(e.target.value)}
-                            >
-                                <option value="" disabled>{t('select_category')}</option>
-                                {allCategories?.filter(c => c.type === type && !c.parentId).map(c => (
-                                    <option key={c.id} value={c.id}>{c.name}</option>
-                                ))}
-                            </select>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <select
+                                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200"
+                                    value={parentCategoryId}
+                                    onChange={e => handleParentCategoryChange(e.target.value)}
+                                >
+                                    <option value="" disabled>{t('select_category')}</option>
+                                    {parentCategories.map(c => (
+                                        <option key={c.id} value={c.id}>{tCategory(c.name)}</option>
+                                    ))}
+                                </select>
+
+                                <select
+                                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 disabled:opacity-50"
+                                    value={subCategoryId}
+                                    onChange={e => setSubCategoryId(e.target.value)}
+                                    disabled={!parentCategoryId || availableSubcategories.length === 0}
+                                >
+                                    <option value="">{t('select_subcategory')} {availableSubcategories.length === 0 ? '(Opcional)' : ''}</option>
+                                    {availableSubcategories.map(c => (
+                                        <option key={c.id} value={c.id}>{tCategory(c.name)}</option>
+                                    ))}
+                                </select>
+                            </div>
 
                             <Input
                                 placeholder={`${t('description')} (ej. Spotify)`}
@@ -167,6 +214,11 @@ export function RecurringManager() {
                         {recurring?.map(item => {
                             const wallet = wallets?.find(w => w.id === item.walletId)
                             const cat = allCategories?.find(c => c.id === item.categoryId)
+                            const parentCat = cat?.parentId ? allCategories?.find(c => c.id === cat.parentId) : null
+                            const categoryLabel = parentCat 
+                                ? `${tCategory(parentCat.name)} > ${tCategory(cat.name)}`
+                                : (cat ? tCategory(cat.name) : '')
+
                             return (
                                 <div
                                     key={item.id}
@@ -178,8 +230,12 @@ export function RecurringManager() {
                                             <CalendarClock className="w-5 h-5" />
                                         </div>
                                         <div>
-                                            <p className="font-medium text-slate-200 group-hover:text-sky-300 transition-colors">{item.description || cat?.name}</p>
-                                            <p className="text-xs text-slate-500">{t('day_of_month')} {item.dayOfMonth} • {wallet?.name}</p>
+                                            <p className="font-medium text-slate-200 group-hover:text-sky-300 transition-colors">
+                                                {item.description || categoryLabel}
+                                            </p>
+                                            <p className="text-xs text-slate-500">
+                                                {t('day_of_month')} {item.dayOfMonth} • {wallet?.name} {categoryLabel && item.description ? `• ${categoryLabel}` : ''}
+                                            </p>
                                         </div>
                                     </div>
                                     <div className="text-right flex items-center gap-3">

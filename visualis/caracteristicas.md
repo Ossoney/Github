@@ -56,6 +56,7 @@ Visualis es una aplicación de gestión financiera personal diseñada para ser p
 
 * **Automatización**: Configuración de ingresos o gastos fijos (Nómina, Alquiler, Netflix, etc.).
 * **Frecuencia Estándar**: Generación automática mensual el día elegido.
+* **Selección de Subcategorías**: Permite clasificar la recurrencia no solo a nivel de categoría padre sino en subcategorías específicas (ej. *Suministros > Luz*, *Automóvil > Combustible*).
 * **Gestión**: Panel para activar/desactivar recurrencias sin borrarlas.
 
 ## 📈 4. Seguimiento de Hábitos (Habit Tracker)

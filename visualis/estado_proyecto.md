@@ -8,7 +8,7 @@
 > 2. `guia_acceso.md` (Para procesos de instalación y acceso)
 > 3. `estado_proyecto.md` (Este documento, para el estado actual, UX y Changelog)
 
-El proyecto **Finanzas Visuales** (v1.4.30) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
+El proyecto **Finanzas Visuales** (v1.4.31) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
 
 ## Tecnologías Principales
 
@@ -30,6 +30,24 @@ El proyecto **Finanzas Visuales** (v1.4.30) es una aplicación web de contabilid
 - **Seguridad y Privacidad:** Almacenamiento exclusivamente local, modo privacidad y copias de seguridad (JSON/Excel).
 - **Hábitos:** Rastreador de rutinas con metas semanales, efectos visuales y recordatorios inteligentes.
 - **Personalización Visual:** 11 temas artísticos (incluyendo **Mondrian** y **Pop Art**) y perfiles personalizados.
+
+## 🗓️ Sesión 2026-09-23 — Estado al Cierre
+
+### ✅ Completado Hoy
+- **Soporte para Selección de Subcategorías en Transacciones Recurrentes**:
+  - En **Configuración > Recurrentes** (`RecurringManager.jsx`), se incorporó un selector dinámico en dos niveles (Categoría Principal y Subcategoría opcional).
+  - Al seleccionar una categoría padre (ej. *Suministros* o *Automóvil*), el segundo desplegable se activa automáticamente con sus subcategorías (*Luz*, *Agua*, *Combustible*, etc.).
+  - En la lista de transacciones recurrentes, ahora se muestra la jerarquía completa (`Categoría Padre > Subcategoría`) tanto en la descripción como en los metadatos.
+  - Al editar una recurrente existente vinculada a una subcategoría, el formulario precarga automáticamente ambos selectores de forma coherente.
+- **Internacionalización (i18n)**:
+  - Añadidas las claves `select_subcategory` y su soporte en traducciones multilingües.
+- **Archivos modificados**:
+  - `components/settings/RecurringManager.jsx`
+  - `lib/i18n.js`
+  - `package.json` (bump a 1.4.31)
+  - `caracteristicas.md` y `estado_proyecto.md`
+
+---
 
 ## 🗓️ Sesión 2026-09-16 — Estado al Cierre
 
