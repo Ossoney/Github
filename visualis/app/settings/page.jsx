@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/Button'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { useLanguage } from '@/lib/i18n'
+import { APP_VERSION } from '@/lib/version'
 
 export default function SettingsPage() {
     const [activeTab, setActiveTab] = useState('profile')
@@ -34,13 +35,19 @@ export default function SettingsPage() {
     return (
         <div className="pb-24">
             {/* Header */}
-            <header className="flex items-center gap-4 mb-8 pt-4">
-                <Link href="/">
-                    <Button variant="ghost" size="icon" className="rounded-full">
-                        <ChevronLeft className="w-6 h-6" />
-                    </Button>
-                </Link>
-                <h1 className="text-2xl font-bold text-slate-100">{t('settings')}</h1>
+            <header className="flex items-center justify-between mb-8 pt-4">
+                <div className="flex items-center gap-4">
+                    <Link href="/">
+                        <Button variant="ghost" size="icon" className="rounded-full">
+                            <ChevronLeft className="w-6 h-6" />
+                        </Button>
+                    </Link>
+                    <h1 className="text-2xl font-bold text-slate-100">{t('settings')}</h1>
+                </div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/60 border border-slate-700/60 shadow-sm">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span className="text-xs font-mono font-semibold text-slate-300">v{APP_VERSION}</span>
+                </div>
             </header>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -66,6 +73,9 @@ export default function SettingsPage() {
                             </button>
                         )
                     })}
+                    <div className="hidden md:block pt-4 mt-auto border-t border-slate-800 text-[11px] text-slate-500 font-mono text-center">
+                        Visualis v{APP_VERSION}
+                    </div>
                 </nav>
 
                 {/* Content Area */}

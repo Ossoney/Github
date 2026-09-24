@@ -3,6 +3,7 @@
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/UI'
 import { HelpCircle, BarChart3, Wallet, CalendarRange, Palette, Shield, Coffee, Heart, Zap, Sparkles, Smile, Fingerprint, Layers, Paintbrush } from 'lucide-react'
 import { useLanguage } from '@/lib/i18n'
+import { APP_VERSION, APP_VERSION_DATE } from '@/lib/version'
 
 export function VersionHelp() {
     const { t } = useLanguage()
@@ -162,9 +163,16 @@ export function VersionHelp() {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                         </span>
-                        <p className="text-xs text-slate-300 font-mono tracking-wider font-semibold">VISUALIS v1.4.25</p>
+                        <p className="text-xs text-slate-300 font-mono tracking-wider font-semibold">VISUALIS v{APP_VERSION}</p>
                     </div>
-                    <p className="text-[10px] text-slate-500 uppercase tracking-widest mt-2">{t('version_date') || 'Mayo 2026'}</p>
+                    <p className="text-[10px] text-slate-500 uppercase tracking-widest mt-2">{t('version_date') || APP_VERSION_DATE}</p>
+                    <button
+                        onClick={() => window.dispatchEvent(new CustomEvent('open-whats-new-modal'))}
+                        className="mt-3 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 text-xs font-semibold border border-sky-500/20 hover:border-sky-500/40 transition-all cursor-pointer"
+                    >
+                        <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
+                        Ver novedades de la versión
+                    </button>
                 </div>
             </CardContent>
         </Card>

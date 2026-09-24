@@ -1,6 +1,19 @@
 # 📜 Changelog - VISUALIS
 
-## [1.4.26] - 2026-04-06
+## [1.4.34] - 2026-09-24
+
+### Added
+
+- **Nuevas Apariencias Artísticas de Alto Contraste**: Estreno de **Cyberpunk Neón** (fondo noche abisal, bordes cian láser con resplandor y botones con degradado neón) y **Ukiyo-e Gran Ola** (estética de xilografía japonesa sobre papel washi, azul índigo de Hokusai y bermellón Torii).
+- **Subcategorías en Transacciones Recurrentes**: Selector jerárquico dinámico para clasificar ingresos y gastos fijos mensuales con subcategorías específicas (ej. *Suministros > Luz*).
+- **Iconos Inteligentes y Reserva**: Detección semántica automática para nuevas categorías (*Electricidad, Automóvil, Deporte, Viajes, Alquiler...*) y catálogo extendido de iconos de reserva.
+- **Acceso Directo a Novedades**: Botón "Ver novedades de la versión" en Configuración > Versión/Ayuda para abrir la ventana de novedades en cualquier momento.
+- **Identificador de Versión en Configuración**: Distintivo con la versión actual (v1.4.34) visible en la cabecera y barra lateral de Configuración.
+
+### Fixed
+
+- **Tema Eclipse Dorado (`gold`)**: Reparadas las variables CSS faltantes en `app/globals.css` y añadidas las traducciones multiidioma completas.
+
 
 ### Changed
 
