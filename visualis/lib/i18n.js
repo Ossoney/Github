@@ -168,14 +168,16 @@ const dictionaries = {
         "theme_names": {
             "sky": "Noche Estrellada",
             "gold": "Eclipse Dorado",
-            "forest": "Bosque Profundo",
+            "cyberpunk": "Cyberpunk Neón",
             "nebula": "Nebulosa Púrpura",
             "mondrian": "Estilo Mondrian",
+            "pop-art": "Pop Art",
+            "ukiyo-e": "Ukiyo-e (Gran Ola)",
             "wine": "Vino Selecto",
             "light-sky": "Cielo Ártico",
-            "light-mint": "Oasis Esmeralda",
             "light-warm": "Horizonte Ámbar",
-            "pop-art": "Pop Art"
+            "forest": "Bosque Profundo",
+            "light-mint": "Oasis Esmeralda"
         },
         "main_currency": "Moneda Principal",
         "manage_tags": "Gestionar Etiquetas",
@@ -372,14 +374,16 @@ const dictionaries = {
         "theme_names": {
             "sky": "Starry Night",
             "gold": "Golden Eclipse",
-            "forest": "Deep Forest",
+            "cyberpunk": "Neon Cyberpunk",
             "nebula": "Purple Nebula",
             "mondrian": "Mondrian Style",
+            "pop-art": "Pop Art",
+            "ukiyo-e": "Ukiyo-e (Great Wave)",
             "wine": "Select Wine",
             "light-sky": "Arctic Sky",
-            "light-mint": "Emerald Oasis",
             "light-warm": "Amber Horizon",
-            "pop-art": "Pop Art"
+            "forest": "Deep Forest",
+            "light-mint": "Emerald Oasis"
         },
         "category_names": {
             "Uber-Cabify": "Rideshare",
@@ -399,14 +403,16 @@ const dictionaries = {
         "theme_names": {
             "sky": "Noite Estrelada",
             "gold": "Eclipse Dourado",
-            "forest": "Bosque Profundo",
+            "cyberpunk": "Cyberpunk Neón",
             "nebula": "Nebulosa Púrpura",
             "mondrian": "Estilo Mondrian",
+            "pop-art": "Pop Art",
+            "ukiyo-e": "Ukiyo-e (Gran Onda)",
             "wine": "Viño Selecto",
             "light-sky": "Ceo Ártico",
-            "light-mint": "Oasis Esmeralda",
             "light-warm": "Horizonte Ámbar",
-            "pop-art": "Pop Art"
+            "forest": "Bosque Profundo",
+            "light-mint": "Oasis Esmeralda"
         },
         "category_names": {
             "Wallapop-Vinted": "Segunda Man",
@@ -425,14 +431,16 @@ const dictionaries = {
         "theme_names": {
             "sky": "Gau Izartsua",
             "gold": "Eguzki-eklipse Urreztatua",
-            "forest": "Baso Sakona",
+            "cyberpunk": "Cyberpunk Neoia",
             "nebula": "Nebulosa Morea",
             "mondrian": "Mondrian Estiloa",
+            "pop-art": "Pop Art",
+            "ukiyo-e": "Ukiyo-e (Uhin Handia)",
             "wine": "Ardo Hautatua",
             "light-sky": "Zeru Artikoa",
-            "light-mint": "Esmeralda Oasia",
             "light-warm": "Anbar Ostertza",
-            "pop-art": "Pop Art"
+            "forest": "Baso Sakona",
+            "light-mint": "Esmeralda Oasia"
         }
     },
     "ca": {
@@ -447,14 +455,16 @@ const dictionaries = {
         "theme_names": {
             "sky": "Nit Estrellada",
             "gold": "Eclipsi Daurat",
-            "forest": "Bosc Profund",
+            "cyberpunk": "Cyberpunk Neó",
             "nebula": "Nebulosa Púrpura",
             "mondrian": "Estilo Mondrian",
+            "pop-art": "Pop Art",
+            "ukiyo-e": "Ukiyo-e (Gran Onada)",
             "wine": "Viño Selecte",
             "light-sky": "Cel Àrtic",
-            "light-mint": "Oasi Maragda",
             "light-warm": "Horitzó Àmbar",
-            "pop-art": "Pop Art"
+            "forest": "Bosc Profund",
+            "light-mint": "Oasi Maragda"
         }
     }
 };

@@ -105,8 +105,11 @@ export function ThemeSettings() {
 
     useEffect(() => {
         if (settings?.theme) {
-            setCurrentTheme(settings.theme)
-            document.documentElement.setAttribute('data-theme', settings.theme)
+            let activeTheme = settings.theme
+            if (activeTheme === 'forest') activeTheme = 'cyberpunk'
+            if (activeTheme === 'light-mint') activeTheme = 'ukiyo-e'
+            setCurrentTheme(activeTheme)
+            document.documentElement.setAttribute('data-theme', activeTheme)
         }
     }, [settings])
 

@@ -47,17 +47,17 @@
     --primary-foreground: 15 23 42;
 }
 
-/* 3. BOSQUE PROFUNDO (Nature: Dark Onyx Pine) */
-[data-theme='forest'] {
-    --bg-800: 12 36 25;
-    --bg-900: 6 22 14;
-    --bg-950: 2 10 6;
-    /* Bright Emerald/Mint */
-    --primary-300: 110 231 183;
-    --primary-400: 52 211 153;
-    --primary-500: 16 185 129;
-    --primary-600: 5 150 105;
-    --primary-foreground: 255 255 255;
+/* 3. CYBERPUNK NEÓN (Synthwave: Deep Void, Electric Cyan & Laser Magenta) */
+[data-theme='cyberpunk'], [data-theme='forest'] {
+    --bg-800: 22 13 36;
+    --bg-900: 12 6 22;
+    --bg-950: 6 3 12;
+    /* Electric Laser Cyan */
+    --primary-300: 103 232 249;
+    --primary-400: 34 211 238;
+    --primary-500: 0 245 255;
+    --primary-600: 8 145 178;
+    --primary-foreground: 2 6 23;
 }
 
 /* 3. NEBULOSA PÚRPURA (Mystic: Obsidian Violet) */
@@ -123,24 +123,27 @@
     --primary-foreground: 255 255 255;
 }
 
-/* 8. CLARO MENTA (Light Mint: Emerald Tint) */
-[data-theme='light-mint'] {
-    --foreground-rgb: 9, 9, 11;
-    --bg-50: 9 9 11;
-    --bg-100: 24 24 27;
-    --bg-200: 39 39 42;
-    --bg-300: 63 63 70;
-    --bg-400: 82 82 91;
-    --bg-500: 161 161 170;
-    --bg-600: 212 212 216;
-    --bg-700: 228 228 231;
-    --bg-800: 244 244 245;
-    --bg-900: 255 255 255;
-    --bg-950: 243 250 245;
-    --primary-300: 110 231 183;
-    --primary-400: 52 211 153;
-    --primary-500: 16 185 129;
-    --primary-600: 5 150 105;
+/* 8. UKIYO-E / LA GRAN OLA (Japanese Woodblock: Rice Paper, Prussian Indigo & Torii Vermilion) */
+[data-theme='ukiyo-e'], [data-theme='light-mint'] {
+    --foreground-rgb: 26, 26, 26;
+    --bg-50: 20 20 20;
+    --bg-100: 38 38 38;
+    --bg-200: 64 64 64;
+    --bg-300: 82 82 82;
+    --bg-400: 115 115 115;
+    --bg-500: 163 163 163;
+    --bg-600: 212 208 199;
+    --bg-700: 228 224 214;
+    --bg-800: 242 238 228;
+    /* Cards: crisp Japanese washi rice paper */
+    --bg-900: 254 252 248;
+    /* Main body background: warm artisan paper tone */
+    --bg-950: 245 240 230;
+    /* Hokusai Great Wave Indigo */
+    --primary-300: 69 123 157;
+    --primary-400: 29 53 87;
+    --primary-500: 29 53 87;
+    --primary-600: 16 34 60;
     --primary-foreground: 255 255 255;
 }
 
@@ -169,7 +172,7 @@
 /* HIGH-CONTRAST OVERRIDES FOR LIGHT THEMES                               */
 /* Fixes the "text-white" and neon colors on white backgrounds            */
 /* ---------------------------------------------------------------------- */
-[data-theme^="light"] .text-white { color: rgb(var(--bg-100)) !important; }
+[data-theme^="light"] .text-white, [data-theme='ukiyo-e'] .text-white { color: rgb(var(--bg-100)) !important; }
 
 /* Status Text Adjustments for Light Mode */
 [data-theme^="light"] .text-emerald-500, [data-theme^="light"] .text-emerald-400 { color: #059669 !important; }
@@ -426,4 +429,242 @@ body {
     padding-left: 4px;
     padding-right: 4px;
     border: 1px solid #000;
-}
+}
+
+/* ---------------------------------------------------------------------- */
+/* HIGH-CONTRAST OVERRIDES FOR CYBERPUNK THEME                            */
+/* Neon glow, laser borders, deep synthwave void & high-energy contrast   */
+/* ---------------------------------------------------------------------- */
+[data-theme='cyberpunk'] .bg-slate-900\/50,
+[data-theme='cyberpunk'] .bg-slate-900\/30,
+[data-theme='cyberpunk'] .bg-slate-800\/60,
+[data-theme='cyberpunk'] .bg-slate-800\/50,
+[data-theme='cyberpunk'] .bg-slate-900,
+[data-theme='forest'] .bg-slate-900\/50,
+[data-theme='forest'] .bg-slate-900\/30,
+[data-theme='forest'] .bg-slate-800\/60,
+[data-theme='forest'] .bg-slate-800\/50,
+[data-theme='forest'] .bg-slate-900 {
+    background-color: rgba(14, 7, 26, 0.9) !important;
+    border: 1.5px solid #00f5ff !important;
+    box-shadow: 0 0 16px rgba(0, 245, 255, 0.16), inset 0 0 14px rgba(255, 0, 128, 0.06) !important;
+}
+
+[data-theme='cyberpunk'] .bg-slate-800,
+[data-theme='forest'] .bg-slate-800 {
+    background-color: #1a0f2e !important;
+    border: 1.5px solid rgba(0, 245, 255, 0.5) !important;
+}
+
+/* Primary buttons with neon gradient and glow */
+[data-theme='cyberpunk'] button.bg-sky-500, 
+[data-theme='cyberpunk'] .bg-primary,
+[data-theme='forest'] button.bg-sky-500, 
+[data-theme='forest'] .bg-primary {
+    background: linear-gradient(135deg, #00f5ff 0%, #ff007f 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid #ffffff !important;
+    box-shadow: 0 0 14px rgba(255, 0, 127, 0.45) !important;
+    font-weight: 700 !important;
+}
+
+/* Inputs, selects and switches */
+[data-theme='cyberpunk'] input, 
+[data-theme='cyberpunk'] select,
+[data-theme='forest'] input, 
+[data-theme='forest'] select {
+    border: 1.5px solid #00f5ff !important;
+    background-color: #0c0616 !important;
+    color: #ffffff !important;
+}
+
+[data-theme='cyberpunk'] input:focus, 
+[data-theme='cyberpunk'] select:focus,
+[data-theme='forest'] input:focus, 
+[data-theme='forest'] select:focus {
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.6) !important;
+}
+
+/* High contrast incomes & expenses */
+[data-theme='cyberpunk'] .text-emerald-500, 
+[data-theme='cyberpunk'] .text-emerald-400,
+[data-theme='cyberpunk'] .text-emerald-300,
+[data-theme='forest'] .text-emerald-500, 
+[data-theme='forest'] .text-emerald-400,
+[data-theme='forest'] .text-emerald-300 { 
+    color: #00ffcc !important; 
+    text-shadow: 0 0 8px rgba(0, 255, 204, 0.4);
+    font-weight: 600;
+}
+
+[data-theme='cyberpunk'] .text-rose-500, 
+[data-theme='cyberpunk'] .text-rose-400,
+[data-theme='cyberpunk'] .text-rose-300,
+[data-theme='forest'] .text-rose-500, 
+[data-theme='forest'] .text-rose-400,
+[data-theme='forest'] .text-rose-300 { 
+    color: #ff007f !important; 
+    text-shadow: 0 0 8px rgba(255, 0, 127, 0.4);
+    font-weight: 600;
+}
+
+/* Neon accents for badges and tag pills */
+[data-theme='cyberpunk'] .bg-emerald-500\/10, 
+[data-theme='cyberpunk'] .bg-emerald-500\/20,
+[data-theme='forest'] .bg-emerald-500\/10, 
+[data-theme='forest'] .bg-emerald-500\/20 {
+    background-color: rgba(0, 255, 204, 0.15) !important;
+    border: 1px solid #00ffcc !important;
+    color: #00ffcc !important;
+}
+
+[data-theme='cyberpunk'] .bg-rose-500\/10, 
+[data-theme='cyberpunk'] .bg-rose-500\/20,
+[data-theme='forest'] .bg-rose-500\/10, 
+[data-theme='forest'] .bg-rose-500\/20 {
+    background-color: rgba(255, 0, 127, 0.15) !important;
+    border: 1px solid #ff007f !important;
+    color: #ff007f !important;
+}
+
+[data-theme='cyberpunk'] .bg-sky-500\/10, 
+[data-theme='cyberpunk'] .bg-sky-500\/20,
+[data-theme='forest'] .bg-sky-500\/10, 
+[data-theme='forest'] .bg-sky-500\/20 {
+    background-color: rgba(0, 245, 255, 0.15) !important;
+    border: 1px solid #00f5ff !important;
+    color: #00f5ff !important;
+}
+
+/* ---------------------------------------------------------------------- */
+/* HIGH-CONTRAST OVERRIDES FOR UKIYO-E THEME                              */
+/* Japanese woodblock print aesthetic: Prussian Indigo ink borders,        */
+/* washi paper cards, Sumi-e black text and Torii vermilion accents       */
+/* ---------------------------------------------------------------------- */
+[data-theme='ukiyo-e'] .text-white,
+[data-theme='light-mint'] .text-white { 
+    color: #1a1a1a !important; 
+}
+
+[data-theme='ukiyo-e'] .bg-slate-900\/50,
+[data-theme='ukiyo-e'] .bg-slate-900\/30,
+[data-theme='ukiyo-e'] .bg-slate-800\/60,
+[data-theme='ukiyo-e'] .bg-slate-800\/50,
+[data-theme='ukiyo-e'] .bg-slate-900,
+[data-theme='light-mint'] .bg-slate-900\/50,
+[data-theme='light-mint'] .bg-slate-900\/30,
+[data-theme='light-mint'] .bg-slate-800\/60,
+[data-theme='light-mint'] .bg-slate-800\/50,
+[data-theme='light-mint'] .bg-slate-900 {
+    background-color: #fdfbf7 !important;
+    border: 2px solid #1d3557 !important;
+    box-shadow: 4px 4px 0px 0px rgba(29, 53, 87, 0.22) !important;
+    backdrop-filter: none !important;
+    color: #1a1a1a !important;
+}
+
+[data-theme='ukiyo-e'] .bg-slate-800,
+[data-theme='light-mint'] .bg-slate-800 {
+    background-color: #f2ece1 !important;
+    border: 1.5px solid #1d3557 !important;
+    color: #1a1a1a !important;
+}
+
+/* Primary buttons with Prussian indigo and clean vermilion shadow */
+[data-theme='ukiyo-e'] button.bg-sky-500, 
+[data-theme='ukiyo-e'] .bg-primary,
+[data-theme='light-mint'] button.bg-sky-500, 
+[data-theme='light-mint'] .bg-primary {
+    background-color: #1d3557 !important;
+    color: #ffffff !important;
+    border: 2px solid #1d3557 !important;
+    box-shadow: 3px 3px 0px 0px #e63946 !important;
+    font-weight: 700 !important;
+}
+
+/* Form inputs */
+[data-theme='ukiyo-e'] input, 
+[data-theme='ukiyo-e'] select,
+[data-theme='light-mint'] input, 
+[data-theme='light-mint'] select {
+    border: 2px solid #1d3557 !important;
+    background-color: #fefdfb !important;
+    color: #1a1a1a !important;
+}
+
+[data-theme='ukiyo-e'] input:focus, 
+[data-theme='ukiyo-e'] select:focus,
+[data-theme='light-mint'] input:focus, 
+[data-theme='light-mint'] select:focus {
+    box-shadow: 0 0 0 2px #e63946 !important;
+    border-color: #1d3557 !important;
+}
+
+/* High contrast text readability in woodblock mode */
+[data-theme='ukiyo-e'] .text-slate-800,
+[data-theme='ukiyo-e'] .text-slate-700,
+[data-theme='ukiyo-e'] .text-slate-600,
+[data-theme='ukiyo-e'] .text-slate-500,
+[data-theme='ukiyo-e'] .text-slate-400, 
+[data-theme='ukiyo-e'] .text-slate-300, 
+[data-theme='ukiyo-e'] .text-slate-200, 
+[data-theme='ukiyo-e'] .text-slate-100,
+[data-theme='light-mint'] .text-slate-800,
+[data-theme='light-mint'] .text-slate-700,
+[data-theme='light-mint'] .text-slate-600,
+[data-theme='light-mint'] .text-slate-500,
+[data-theme='light-mint'] .text-slate-400, 
+[data-theme='light-mint'] .text-slate-300, 
+[data-theme='light-mint'] .text-slate-200, 
+[data-theme='light-mint'] .text-slate-100 {
+    color: #1a1a1a !important;
+}
+
+/* High contrast incomes (Matcha Bamboo Green) & expenses (Torii Vermilion Red) */
+[data-theme='ukiyo-e'] .text-emerald-500, 
+[data-theme='ukiyo-e'] .text-emerald-400,
+[data-theme='ukiyo-e'] .text-emerald-300,
+[data-theme='light-mint'] .text-emerald-500, 
+[data-theme='light-mint'] .text-emerald-400,
+[data-theme='light-mint'] .text-emerald-300 { 
+    color: #1b6b47 !important; 
+    font-weight: 700;
+}
+
+[data-theme='ukiyo-e'] .text-rose-500, 
+[data-theme='ukiyo-e'] .text-rose-400,
+[data-theme='ukiyo-e'] .text-rose-300,
+[data-theme='light-mint'] .text-rose-500, 
+[data-theme='light-mint'] .text-rose-400,
+[data-theme='light-mint'] .text-rose-300 { 
+    color: #c1121f !important; 
+    font-weight: 700;
+}
+
+[data-theme='ukiyo-e'] .bg-emerald-500\/10, 
+[data-theme='ukiyo-e'] .bg-emerald-500\/20,
+[data-theme='light-mint'] .bg-emerald-500\/10, 
+[data-theme='light-mint'] .bg-emerald-500\/20 {
+    background-color: rgba(27, 107, 71, 0.14) !important;
+    border: 1.5px solid #1b6b47 !important;
+    color: #1b6b47 !important;
+}
+
+[data-theme='ukiyo-e'] .bg-rose-500\/10, 
+[data-theme='ukiyo-e'] .bg-rose-500\/20,
+[data-theme='light-mint'] .bg-rose-500\/10, 
+[data-theme='light-mint'] .bg-rose-500\/20 {
+    background-color: rgba(193, 18, 31, 0.14) !important;
+    border: 1.5px solid #c1121f !important;
+    color: #c1121f !important;
+}
+
+[data-theme='ukiyo-e'] .bg-sky-500\/10, 
+[data-theme='ukiyo-e'] .bg-sky-500\/20,
+[data-theme='light-mint'] .bg-sky-500\/10, 
+[data-theme='light-mint'] .bg-sky-500\/20 {
+    background-color: rgba(29, 53, 87, 0.14) !important;
+    border: 1.5px solid #1d3557 !important;
+    color: #1d3557 !important;
+}
+

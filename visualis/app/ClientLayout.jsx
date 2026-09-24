@@ -23,7 +23,10 @@ export function ClientLayout({ children }) {
         const loadTheme = async () => {
             const settings = await import('@/lib/db').then(m => m.db.settings.get('global'))
             if (settings?.theme) {
-                document.documentElement.setAttribute('data-theme', settings.theme)
+                let theme = settings.theme
+                if (theme === 'forest') theme = 'cyberpunk'
+                if (theme === 'light-mint') theme = 'ukiyo-e'
+                document.documentElement.setAttribute('data-theme', theme)
             }
         }
         loadTheme()
