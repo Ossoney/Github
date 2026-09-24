@@ -8,7 +8,7 @@
 > 2. `guia_acceso.md` (Para procesos de instalación y acceso)
 > 3. `estado_proyecto.md` (Este documento, para el estado actual, UX y Changelog)
 
-El proyecto **Finanzas Visuales** (v1.4.32) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
+El proyecto **Finanzas Visuales** (v1.4.33) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
 
 ## Tecnologías Principales
 
@@ -29,17 +29,23 @@ El proyecto **Finanzas Visuales** (v1.4.32) es una aplicación web de contabilid
 - **Gestor de Wallets/Proyectos:** Soporte multi-cuenta y traspasos entre cuentas propias.
 - **Seguridad y Privacidad:** Almacenamiento exclusivamente local, modo privacidad y copias de seguridad (JSON/Excel).
 - **Hábitos:** Rastreador de rutinas con metas semanales, efectos visuales y recordatorios inteligentes.
-- **Personalización Visual:** 11 temas artísticos (incluyendo **Mondrian** y **Pop Art**) y perfiles personalizados.
+- **Personalización Visual:** 10 temas artísticos (incluyendo **Eclipse Dorado**, **Mondrian** y **Pop Art**) y perfiles personalizados.
 
 ## 🗓️ Sesión 2026-09-24 — Estado al Cierre
 
 ### ✅ Completado Hoy
+- **Corrección Integral y Activación del Tema "Eclipse Dorado" (`gold`)**:
+  - **Diagnóstico**: Se revisó por qué seleccionar la apariencia "gold" no producía cambios en la interfaz. Se halló que aunque `lib/themes.js` contenía el selector con `{ id: 'gold', color: '#f59e0b' }` y el DOM recibía el atributo `data-theme="gold"`, `app/globals.css` no tenía definida ninguna regla `[data-theme='gold']`, por lo que el navegador continuaba aplicando las variables de `:root`.
+  - **Paleta implementada en `app/globals.css`**: Se configuraron las variables del sistema en tonos carbón y ámbar oscuro (`--bg-800: 38 28 12`, `--bg-900: 24 16 6`, `--bg-950: 14 9 2`) y acentos dorados primarios (`--primary-300: 252 211 77`, `--primary-400: 251 191 36`, `--primary-500: 245 158 11`, `--primary-600: 217 119 6`).
+  - **Internacionalización**: Se incorporaron las traducciones correspondientes para la clave `gold` en `theme_names` de todos los idiomas soportados en `lib/i18n.js` (Español, Inglés, Gallego, Euskera y Catalán).
 - **Optimización de Empaquetado y Rendimiento en Next.js (`optimizePackageImports`)**:
   - Habilitada la directiva nativa `experimental.optimizePackageImports` en `next.config.js` para `lucide-react` y `date-fns`.
   - Esta optimización transforma los imports de librerías con cientos de módulos independientes para que el compilador de Next.js sólo empaquete los iconos y funciones concretas utilizadas, aligerando el peso total de los bundles en el cliente y acelerando el tiempo de carga inicial y navegación.
 - **Archivos modificados**:
-  - `next.config.js`
-  - `package.json` (bump a 1.4.32)
+  - `app/globals.css`
+  - `lib/i18n.js`
+  - `package.json` (bump a 1.4.33)
+  - `caracteristicas.md`
   - `estado_proyecto.md`
 
 ---

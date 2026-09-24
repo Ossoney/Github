@@ -167,6 +167,7 @@ const dictionaries = {
         "choose_theme": "Elige el ambiente para tu aplicación:",
         "theme_names": {
             "sky": "Noche Estrellada",
+            "gold": "Eclipse Dorado",
             "forest": "Bosque Profundo",
             "nebula": "Nebulosa Púrpura",
             "mondrian": "Estilo Mondrian",
@@ -370,6 +371,7 @@ const dictionaries = {
         "day_su": "S",
         "theme_names": {
             "sky": "Starry Night",
+            "gold": "Golden Eclipse",
             "forest": "Deep Forest",
             "nebula": "Purple Nebula",
             "mondrian": "Mondrian Style",
@@ -396,6 +398,7 @@ const dictionaries = {
         "result": "Resultado",
         "theme_names": {
             "sky": "Noite Estrelada",
+            "gold": "Eclipse Dourado",
             "forest": "Bosque Profundo",
             "nebula": "Nebulosa Púrpura",
             "mondrian": "Estilo Mondrian",
@@ -421,6 +424,7 @@ const dictionaries = {
         "expense": "Gastuak",
         "theme_names": {
             "sky": "Gau Izartsua",
+            "gold": "Eguzki-eklipse Urreztatua",
             "forest": "Baso Sakona",
             "nebula": "Nebulosa Morea",
             "mondrian": "Mondrian Estiloa",
@@ -442,6 +446,7 @@ const dictionaries = {
         "expense": "Despeses",
         "theme_names": {
             "sky": "Nit Estrellada",
+            "gold": "Eclipsi Daurat",
             "forest": "Bosc Profund",
             "nebula": "Nebulosa Púrpura",
             "mondrian": "Estilo Mondrian",
