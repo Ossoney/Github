@@ -13,6 +13,9 @@ const withPWA = require("@ducanh2912/next-pwa").default({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    experimental: {
+        optimizePackageImports: ['lucide-react', 'date-fns']
+    }
 }
 
 module.exports = withPWA(nextConfig)

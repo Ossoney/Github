@@ -8,7 +8,7 @@
 > 2. `guia_acceso.md` (Para procesos de instalación y acceso)
 > 3. `estado_proyecto.md` (Este documento, para el estado actual, UX y Changelog)
 
-El proyecto **Finanzas Visuales** (v1.4.31) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
+El proyecto **Finanzas Visuales** (v1.4.32) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
 
 ## Tecnologías Principales
 
@@ -30,6 +30,19 @@ El proyecto **Finanzas Visuales** (v1.4.31) es una aplicación web de contabilid
 - **Seguridad y Privacidad:** Almacenamiento exclusivamente local, modo privacidad y copias de seguridad (JSON/Excel).
 - **Hábitos:** Rastreador de rutinas con metas semanales, efectos visuales y recordatorios inteligentes.
 - **Personalización Visual:** 11 temas artísticos (incluyendo **Mondrian** y **Pop Art**) y perfiles personalizados.
+
+## 🗓️ Sesión 2026-09-24 — Estado al Cierre
+
+### ✅ Completado Hoy
+- **Optimización de Empaquetado y Rendimiento en Next.js (`optimizePackageImports`)**:
+  - Habilitada la directiva nativa `experimental.optimizePackageImports` en `next.config.js` para `lucide-react` y `date-fns`.
+  - Esta optimización transforma los imports de librerías con cientos de módulos independientes para que el compilador de Next.js sólo empaquete los iconos y funciones concretas utilizadas, aligerando el peso total de los bundles en el cliente y acelerando el tiempo de carga inicial y navegación.
+- **Archivos modificados**:
+  - `next.config.js`
+  - `package.json` (bump a 1.4.32)
+  - `estado_proyecto.md`
+
+---
 
 ## 🗓️ Sesión 2026-09-23 — Estado al Cierre
 
