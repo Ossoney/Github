@@ -227,7 +227,7 @@ export function MonthSummary({ expandedType, onExpand }) {
             total = data.reduce((s, d) => s + d.amount, 0)
         }
 
-        if (total === 0) return <p className="text-center text-slate-500 py-4">No hay datos para este mes.</p>
+        if (total === 0) return <p className="text-center text-slate-500 py-4">{t('no_data_for_month') || 'No hay datos para este mes.'}</p>
 
         return (
             <div className="space-y-4 pt-2">
@@ -346,44 +346,19 @@ export function MonthSummary({ expandedType, onExpand }) {
         const totalExpense = monthsData.reduce((s, h) => s + h.expense, 0)
         const savingsRate = totalIncome > 0 ? Math.round(((totalIncome - totalExpense) / totalIncome) * 100) : 0
 
-        // Trend logic
-        const mid = Math.floor(monthsData.length / 2)
-        const firstHalf = monthsData.slice(0, mid)
-        const secondHalf = monthsData.slice(mid)
-        const getHalfAvg = (half) => half.reduce((s, h) => s + getValue(h), 0) / (half.length || 1)
-        const avgFirst = getHalfAvg(firstHalf)
-        const avgSecond = getHalfAvg(secondHalf)
-        
-        let trendMsg = ''
-        let trendColor = 'text-slate-400'
-        
-        if (monthsData.length >= 4) {
-            // For trend, always compare the last 6 months vs the 6 before that (if available),
-            // so the metric stays relevant regardless of how long the total history is.
-            const trendWindowSize = Math.min(6, Math.floor(monthsData.length / 2))
-            const trendSecond = monthsData.slice(-trendWindowSize)
-            const trendFirst = monthsData.slice(-(trendWindowSize * 2), -trendWindowSize)
-            const avgTrendFirst = trendFirst.length > 0
-                ? trendFirst.reduce((s, h) => s + getValue(h), 0) / trendFirst.length
-                : 0
-            const avgTrendSecond = trendSecond.reduce((s, h) => s + getValue(h), 0) / trendSecond.length
-            
-            const rawTrendPct = avgTrendFirst > 0
-                ? Math.round(((avgTrendSecond - avgTrendFirst) / avgTrendFirst) * 100)
-                : 0
-            // Cap at ±999% to avoid absurd numbers
-            const trendPct = Math.max(-999, Math.min(999, rawTrendPct))
-
-            if (trendPct > 5) {
-                trendMsg = `+${trendPct}% vs ant.`
-                trendColor = type === 'expense' ? 'text-rose-400' : 'text-emerald-400'
-            } else if (trendPct < -5) {
-                trendMsg = `${trendPct}% vs ant.`
-                trendColor = type === 'expense' ? 'text-emerald-400' : 'text-rose-400'
-            } else {
-                trendMsg = 'Estable'
+        // Total days in period for daily average metric
+        const totalDays = monthsData.reduce((acc, h) => {
+            if (h.fullDate) {
+                return acc + new Date(h.fullDate.getFullYear(), h.fullDate.getMonth() + 1, 0).getDate()
             }
-        }        const formatAxisNumber = (val) => {
+            return acc + 30
+        }, 0) || 1
+
+        const dailyExpense = Math.abs(totalExpense) / totalDays
+        const dailyIncome = totalIncome / totalDays
+        const dailyResult = (totalIncome - totalExpense) / totalDays
+
+        const formatAxisNumber = (val) => {
             if (isPrivacyMode) return '•••'
             const abs = Math.abs(val)
             if (abs >= 1000000) return `${(val / 1000000).toFixed(1).replace('.0', '')}M`
@@ -398,8 +373,8 @@ export function MonthSummary({ expandedType, onExpand }) {
 
             // Title & theme color
             const chartTitle = type === 'income' 
-                ? 'Evolución mensual de Ingresos' 
-                : (type === 'expense' ? 'Evolución mensual de Gastos' : 'Evolución del Balance Neto')
+                ? (t('evolution_income') || 'Evolución mensual de Ingresos')
+                : (type === 'expense' ? (t('evolution_expense') || 'Evolución mensual de Gastos') : (t('evolution_result') || 'Evolución del Balance Neto'))
             const badgeBg = type === 'income' 
                 ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30' 
                 : (type === 'expense' ? 'bg-rose-500/10 text-rose-400 border-rose-500/30' : 'bg-sky-500/10 text-sky-400 border-sky-500/30')
@@ -419,7 +394,7 @@ export function MonthSummary({ expandedType, onExpand }) {
                         <div>
                             <h4 className="text-xs font-bold text-slate-200 tracking-wide">{chartTitle}</h4>
                             <p className="text-[10px] text-slate-400">
-                                {monthsData.length} meses analizados • Escala vertical en euros (€)
+                                {monthsData.length} {t('month')}s • {t('scale_euros') || 'Escala de importes en euros'}
                             </p>
                         </div>
                     </div>
@@ -774,7 +749,7 @@ export function MonthSummary({ expandedType, onExpand }) {
                                         fontWeight="bold" 
                                         fill="#ffffff"
                                     >
-                                        Máx: {formatAxisNumber(rawValues[peakIdx])} €
+                                        {t('max_badge') || 'Máx'}: {formatAxisNumber(rawValues[peakIdx])} €
                                     </text>
                                 </g>
                             )}
@@ -842,7 +817,9 @@ export function MonthSummary({ expandedType, onExpand }) {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {/* Media mensual */}
                     <div className="flex flex-col p-2.5 rounded-xl bg-slate-800/40 border border-slate-800">
-                        <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider">Media mensual</span>
+                        <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider">
+                            {t('monthly_average') || 'Media mensual'}
+                        </span>
                         <span className={cn("text-sm font-bold mt-1", 
                             type === 'result' ? (avgResult >= 0 ? "text-emerald-400" : "text-rose-400") : 
                             (type === 'income' ? "text-emerald-400" : "text-rose-400")
@@ -853,7 +830,9 @@ export function MonthSummary({ expandedType, onExpand }) {
 
                     {/* Mes pico */}
                     <div className="flex flex-col p-2.5 rounded-xl bg-slate-800/40 border border-slate-800">
-                        <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider">Mes Máximo</span>
+                        <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider">
+                            {t('peak_month') || 'Mes Máximo'}
+                        </span>
                         {bestMonth ? (
                             <div className="flex flex-col mt-0.5">
                                 <span className="text-xs font-bold text-slate-200 truncate">
@@ -870,14 +849,18 @@ export function MonthSummary({ expandedType, onExpand }) {
                     <div className="flex flex-col p-2.5 rounded-xl bg-slate-800/40 border border-slate-800">
                         {type === 'expense' ? (
                             <>
-                                <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider">Total periodo</span>
+                                <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider">
+                                    {t('period_total') || 'Total periodo'}
+                                </span>
                                 <span className="text-sm font-bold text-rose-400 mt-1">
                                     <Money amount={total} showDecimals={false} forceSign="-" />
                                 </span>
                             </>
                         ) : (
                             <>
-                                <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider">Tasa Ahorro</span>
+                                <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider">
+                                    {t('savings_rate') || 'Tasa Ahorro'}
+                                </span>
                                 <span className={cn("text-sm font-bold mt-1", savingsRate >= 15 ? "text-emerald-400" : (savingsRate >= 0 ? "text-sky-400" : "text-orange-400"))}>
                                     {savingsRate}%
                                 </span>
@@ -885,18 +868,24 @@ export function MonthSummary({ expandedType, onExpand }) {
                         )}
                     </div>
 
-                    {/* Tendencia */}
+                    {/* Gasto / Ingreso / Balance diario medio */}
                     <div className="flex flex-col p-2.5 rounded-xl bg-slate-800/40 border border-slate-800">
-                        <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider">Tendencia</span>
-                        {trendMsg ? (
-                            <span className={cn("text-[11px] font-bold mt-2.5 leading-none", trendColor)}>
-                                {trendMsg}
+                        <span className="text-[9px] text-slate-500 uppercase font-bold tracking-wider truncate">
+                            {type === 'expense' ? (t('daily_expense_avg') || 'Gasto diario') : (type === 'income' ? (t('daily_income_avg') || 'Ingreso diario') : (t('daily_result_avg') || 'Balance diario'))}
+                        </span>
+                        <div className="flex items-baseline gap-1 mt-1">
+                            <span className={cn("text-sm font-bold", 
+                                type === 'result' ? (dailyResult >= 0 ? "text-emerald-400" : "text-rose-400") : 
+                                (type === 'income' ? "text-emerald-400" : "text-rose-400")
+                            )}>
+                                <Money 
+                                    amount={type === 'result' ? dailyResult : (type === 'income' ? dailyIncome : dailyExpense)} 
+                                    showDecimals={true} 
+                                    forceSign={type === 'expense' ? '-' : (type === 'result' && dailyResult > 0 ? '+' : null)} 
+                                />
                             </span>
-                        ) : (
-                            <span className="text-[11px] font-bold text-slate-500 mt-2.5 leading-none">
-                                {positiveMonths} {positiveMonths === 1 ? 'mes act.' : 'meses act.'}
-                            </span>
-                        )}
+                            <span className="text-[9px] text-slate-500 font-semibold lowercase">{t('per_day') || '/ día'}</span>
+                        </div>
                     </div>
                 </div>
 
@@ -905,7 +894,7 @@ export function MonthSummary({ expandedType, onExpand }) {
                     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-3">
                         <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
                             <PieChart className="w-3.5 h-3.5 text-slate-500" />
-                            {type === 'income' ? 'Principales Fuentes' : 'Mayores Gastos'} (Acumulado)
+                            {type === 'income' ? (t('top_income_sources') || 'Principales Fuentes') : (t('top_expenses') || 'Mayores Gastos')} {t('accumulated') || '(Acumulado)'}
                         </h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             {topCategories.map((c, i) => (

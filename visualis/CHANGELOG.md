@@ -1,5 +1,17 @@
 # 📜 Changelog - VISUALIS
 
+## [1.4.36] - 2026-10-01
+
+### Added
+
+- **Métrica de Gasto, Ingreso y Balance Diario Medio**:
+  - Sustituida la tarjeta abstracta de "Tendencia (+X%)" por la media diaria exacta calculada sobre los días naturales del periodo analizado (`Gasto diario`, `Ingreso diario` o `Balance diario` en `XX,XX € / día`).
+  - Proporciona una métrica aterrizada y realista del ritmo de vida financiero cotidiano.
+- **Restauración y Cobertura Total Multiidioma (i18n)**:
+  - Completadas y sincronizadas todas las 271 claves de traducción en los 5 idiomas soportados: **Galego**, **Català**, **Euskara**, **English** y **Español**.
+  - Corregido el problema por el cual menús, barra lateral de configuración, títulos y ayudas volvían a mostrarse en castellano al seleccionar Gallego u otros idiomas autonómicos.
+  - Traducidos al 100% todos los textos del panel de insights históricos y cabeceras gráficas.
+
 ## [1.4.35] - 2026-10-01
 
 ### Added

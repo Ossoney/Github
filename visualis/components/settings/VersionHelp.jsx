@@ -85,12 +85,12 @@ export function VersionHelp() {
                             <Sparkles className="w-6 h-6 text-indigo-400" />
                         </div>
                         <span className="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-                            Conoce Visualis
+                            {t('app_title')}
                         </span>
                     </div>
                 </CardTitle>
                 <p className="text-sm text-slate-400 mt-2">
-                    Tu motor financiero privado, local y altamente personalizable.
+                    {t('app_subtitle')}
                 </p>
             </CardHeader>
             <CardContent className="space-y-6 pt-6">
@@ -138,10 +138,10 @@ export function VersionHelp() {
                         <div>
                             <h3 className="text-sm font-semibold text-amber-400 flex items-center gap-2 mb-2">
                                 <Coffee className="w-4 h-4" />
-                                Apoya el Proyecto
+                                {t('donation_title')}
                             </h3>
                             <p className="text-xs text-slate-400 mb-3 leading-relaxed">
-                                Finanzas Visuales se sustenta por el cariño de sus usuarios. Si te aporta valor en tu día a día, invítame a un café.
+                                {t('donation_desc')}
                             </p>
                         </div>
                         <a
@@ -171,7 +171,7 @@ export function VersionHelp() {
                         className="mt-3 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 text-xs font-semibold border border-sky-500/20 hover:border-sky-500/40 transition-all cursor-pointer"
                     >
                         <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
-                        Ver novedades de la versión
+                        {t('whats_new') || 'Ver novedades de la versión'}
                     </button>
                 </div>
             </CardContent>

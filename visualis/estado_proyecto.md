@@ -8,7 +8,7 @@
 > 2. `guia_acceso.md` (Para procesos de instalación y acceso)
 > 3. `estado_proyecto.md` (Este documento, para el estado actual, UX y Changelog)
 
-El proyecto **Finanzas Visuales** (v1.4.35) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
+El proyecto **Finanzas Visuales** (v1.4.36) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
 
 ## Tecnologías Principales
 
@@ -31,7 +31,27 @@ El proyecto **Finanzas Visuales** (v1.4.35) es una aplicación web de contabilid
 - **Hábitos:** Rastreador de rutinas con metas semanales, efectos visuales y recordatorios inteligentes.
 - **Personalización Visual:** 10 temas artísticos (incluyendo **Cyberpunk Neón**, **Ukiyo-e**, **Mondrian**, **Pop Art** y **Eclipse Dorado**) y perfiles personalizados.
 
-## 🗓️ Sesión 2026-10-01 — Estado al Cierre
+## 🗓️ Sesión 2026-10-01 (Parte 2) — Estado al Cierre
+
+### ✅ Completado Hoy
+- **Sustitución de Tendencia por Gasto/Ingreso Diario Medio (v1.4.36)**:
+  - Se reemplazó la tarjeta críptica de "Tendencia (+X%)" en el panel de métricas históricas por el cálculo diario tangible: **Gasto diario** (ej. `-34,25 € / día`), **Ingreso diario** (ej. `+72,10 € / día`) o **Balance diario** (según el tipo consultado).
+  - Cálculo ponderado por los días naturales reales de cada mes analizado en la serie (`monthsData`).
+- **Restauración y Sincronización Total del Sistema i18n (271 claves)**:
+  - **Diagnóstico**: Al seleccionar Gallego (`gl`), la barra lateral de configuración, los menús y títulos volvían a mostrarse en castellano porque los diccionarios de idiomas autonómicos carecían de más de 230 claves estructurales y caían en el fallback español.
+  - **Resolución**: Se completaron y sincronizaron al 100% las 271 claves de traducción en los 5 idiomas soportados: **Galego**, **Català**, **Euskara**, **English** y **Español**.
+  - Ahora la navegación lateral de configuración, los formularios, los encabezados de gráficos, las descripciones de ayuda y los diálogos se muestran rigurosamente en el idioma elegido.
+- **Archivos modificados**:
+  - `lib/i18n.js`
+  - `components/dashboard/MonthSummary.jsx`
+  - `components/settings/VersionHelp.jsx`
+  - `package.json` (bump a 1.4.36)
+  - `lib/version.js`
+  - `caracteristicas.md`
+  - `CHANGELOG.md`
+  - `estado_proyecto.md`
+
+## 🗓️ Sesión 2026-10-01 (Parte 1) — Estado al Cierre
 
 ### ✅ Completado Hoy
 - **Escalas Claras, Eje Y y Visualización Interactiva en Gráficos Históricos (v1.4.35)**:
