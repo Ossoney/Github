@@ -1,5 +1,16 @@
 # 📜 Changelog - VISUALIS
 
+## [1.4.35] - 2026-10-01
+
+### Added
+
+- **Escalas Claras y Visualización Interactiva en Gráficos Históricos (6m / 12m / 24m / ∞)**:
+  - **Eje Y con Escalas en Euros**: Ahora los gráficos de evolución mensual incorporan referencias numéricas en el lateral izquierdo (`0 €`, valores medios y techo de escala máxima con redondeo inteligente). En el gráfico de Balance Neto, el eje es bidireccional mostrando valores positivos, línea cero y negativos.
+  - **Cabecera Contextual Descriptiva**: Título explicativo según el tipo consultado (*Evolución mensual de Ingresos*, *Evolución mensual de Gastos*, *Evolución mensual del Balance Neto*) con subtítulo que aclara la escala en euros.
+  - **Interacción Táctil y Hover**: Al deslizar el dedo o pasar el ratón sobre cualquier mes, se proyecta una guía vertical y un punto resaltado, mostrando el mes y el importe exacto en la cabecera del gráfico al instante.
+  - **Insignia de Récord Mensual**: Distintivo visual flotante permanente sobre el mes pico (`Máx: X.XXX €`) para identificar de inmediato el mes de mayor movimiento financiero sin tener que pulsar en cada punto.
+  - **Canvas Ampliado**: Mayor altura y espaciado lateral para una lectura gráfica espaciosa y descansada en dispositivos móviles y de escritorio.
+
 ## [1.4.34] - 2026-09-24
 
 ### Added

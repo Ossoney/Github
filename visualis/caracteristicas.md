@@ -1,4 +1,4 @@
-# 🌟 VISUALIS v1.4.34 (Marzo 2026) - Guía de Funcionalidades
+# 🌟 VISUALIS v1.4.35 (Octubre 2026) - Guía de Funcionalidades
 
 Visualis es una aplicación de gestión financiera personal diseñada para ser privada, potente y visualmente atractiva. A continuación se detallan todas sus capacidades:
 
@@ -10,6 +10,7 @@ Visualis es una aplicación de gestión financiera personal diseñada para ser p
 * **Filtrado por Cuenta**: Las tarjetas de la parte superior permiten filtrar **todo el dashboard** (estadísticas, desgloses, actividad y presupuestos) por una cuenta o proyecto específico.
 * **Selector Temporal e Histórico**: Navegación entre meses y opciones de histórico (6m, 12m, 24m) que aparecen según disponibilidad de datos.
 * **Histórico Completo (∞)**: Opción para visualizar automáticamente todo el historial disponible desde la primera transacción.
+* **Evolución Mensual con Escalas Claras e Interactivas**: Los gráficos históricos (6m, 12m, 24m, ∞) incorporan eje vertical en euros (base en 0 €, referencias intermedias y techo de escala máxima), interacción hover/touch para inspeccionar el importe exacto de cada mes y etiqueta destacada con el récord mensual alcanzado.
 * **Actividad Reciente**: Listado dinámico de las últimas operaciones realizadas, filtrado según la cuenta seleccionada.
 * **Resumen de Cuentas**: Estado y gestión de todas las cuentas/proyectos activos.
 * **Estadísticas Contextuales**: Las medias de ingresos y gastos se ocultan inteligentemente según la vista activa para evitar ruido visual.

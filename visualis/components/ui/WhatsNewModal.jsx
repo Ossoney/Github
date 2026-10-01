@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Sparkles, Palette, Layers, Zap, X } from 'lucide-react'
+import { Sparkles, Palette, Layers, Zap, X, TrendingUp } from 'lucide-react'
 import { APP_VERSION, APP_VERSION_DATE } from '@/lib/version'
 
 export function WhatsNewModal() {
@@ -37,7 +37,7 @@ export function WhatsNewModal() {
                 <div className="relative h-40 bg-gradient-to-br from-slate-950 via-slate-900 to-sky-950 flex items-center justify-center border-b border-slate-800 overflow-hidden">
                     {/* Close button */}
                     <button 
-                        onClick={() => setIsOpen(false)}
+                        onClick={() => setIsOpen(false)} 
                         className="absolute top-3 right-3 p-1.5 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors z-20"
                         aria-label="Cerrar"
                     >
@@ -61,6 +61,19 @@ export function WhatsNewModal() {
                 </div>
 
                 <div className="p-6 space-y-4 max-h-[62vh] overflow-y-auto">
+
+                    {/* Feature 0: Multi-month Interactive Chart Scales */}
+                    <div className="flex gap-4 p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 hover:border-sky-500/30 transition-colors">
+                        <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center shrink-0">
+                            <TrendingUp className="w-5 h-5 text-sky-400" />
+                        </div>
+                        <div>
+                            <h3 className="font-bold text-slate-100 text-sm">Escalas y Evolución Mensual (6m / 12m)</h3>
+                            <p className="text-[12px] text-slate-400 mt-1 leading-relaxed">
+                                Gráficos históricos ampliados con <span className="text-emerald-400 font-semibold">eje vertical de importes en euros</span> (0 €, niveles medios y techo máximo), <span className="text-sky-400 font-semibold">interacción táctil y hover</span> con desglose exacto al instante y distintivo permanente con el récord mensual alcanzado.
+                            </p>
+                        </div>
+                    </div>
 
                     {/* Feature 1: Art Themes */}
                     <div className="flex gap-4 p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 hover:border-sky-500/30 transition-colors">

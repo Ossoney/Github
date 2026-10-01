@@ -8,7 +8,7 @@
 > 2. `guia_acceso.md` (Para procesos de instalación y acceso)
 > 3. `estado_proyecto.md` (Este documento, para el estado actual, UX y Changelog)
 
-El proyecto **Finanzas Visuales** (v1.4.34) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
+El proyecto **Finanzas Visuales** (v1.4.35) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
 
 ## Tecnologías Principales
 
@@ -30,6 +30,19 @@ El proyecto **Finanzas Visuales** (v1.4.34) es una aplicación web de contabilid
 - **Seguridad y Privacidad:** Almacenamiento exclusivamente local, modo privacidad y copias de seguridad (JSON/Excel).
 - **Hábitos:** Rastreador de rutinas con metas semanales, efectos visuales y recordatorios inteligentes.
 - **Personalización Visual:** 10 temas artísticos (incluyendo **Cyberpunk Neón**, **Ukiyo-e**, **Mondrian**, **Pop Art** y **Eclipse Dorado**) y perfiles personalizados.
+
+## 🗓️ Sesión 2026-10-01 — Estado al Cierre
+
+### ✅ Completado Hoy
+- **Escalas Claras, Eje Y y Visualización Interactiva en Gráficos Históricos (v1.4.35)**:
+  - **Eje Vertical Y en Euros**: Se implementó una escala de valores a la izquierda del lienzo SVG (`0 €`, valores medios y techo de escala máxima con redondeo inteligente). En el gráfico de Balance Neto (`isNet`), la escala es simétrica y bidireccional mostrando importes positivos arriba, línea de equilibrio neutra en cero y valores negativos abajo.
+  - **Cabecera Contextual**: Se añadió un encabezado con icono temático, título descriptivo (*Evolución mensual de Ingresos*, *Gastos* o *Balance Neto*) y subtítulo que clarifica la unidad de medida y escala en euros.
+  - **Interacción Dinámica (Hover y Touch)**: Al pasar el ratón o tocar cualquier columna mensual, se resalta la línea vertical guía, el punto correspondiente y se despliega en tiempo real en la cabecera una tarjeta con el mes consultado y su importe exacto formateado (con soporte para modo privacidad).
+  - **Insignia Permanente de Récord Mensual**: Distintivo flotante (`Máx: X.XXX €`) posicionado directamente sobre la columna con el valor pico del periodo analizado, permitiendo ubicar el mes de mayor impacto a golpe de vista.
+  - **Canvas Ampliado**: Se incrementó la altura útil del gráfico (`H=175`) y se añadieron márgenes laterales generosos (`padLeft=60`, `padRight=20`) para evitar solapamientos y asegurar óptima legibilidad en pantallas táctiles y de escritorio.
+- **Ventana de Novedades y Configuración**:
+  - Actualizado `components/ui/WhatsNewModal.jsx` para destacar la nueva evolución gráfica y escalas mensuales.
+  - Bumps de versión a `1.4.35` en `package.json`, `lib/version.js`, `caracteristicas.md`, `CHANGELOG.md` y `estado_proyecto.md`.
 
 ## 🗓️ Sesión 2026-09-24 — Estado al Cierre
 

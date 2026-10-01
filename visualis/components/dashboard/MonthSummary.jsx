@@ -7,16 +7,19 @@ import { cn } from '@/lib/utils'
 import { useStore } from '@/hooks/useStore'
 import { useLanguage } from '@/lib/i18n'
 import { Money } from '@/components/ui/Money'
+import { usePrivacy } from '@/lib/privacy'
 
 export function MonthSummary({ expandedType, onExpand }) {
     const { currentDate, selectedWalletId } = useStore()
     const { t, tCategory, locale } = useLanguage()
+    const { isPrivacyMode } = usePrivacy()
 
     // UI State
     // expandedType is now controlled by parent
     const [viewMode, setViewMode] = useState('breakdown') // 'breakdown', 'history'
     const [historyLimit, setHistoryLimit] = useState(6) // 6, 12, 24, '∞'
     const [drillCategory, setDrillCategory] = useState(null) // { name, subcategories } or null
+    const [hoveredHistoryIndex, setHoveredHistoryIndex] = useState(null)
 
     // 0. Check data availability for Smart Intervals
     const availableMonths = useLiveQuery(async () => {
@@ -380,67 +383,122 @@ export function MonthSummary({ expandedType, onExpand }) {
             } else {
                 trendMsg = 'Estable'
             }
+        }        const formatAxisNumber = (val) => {
+            if (isPrivacyMode) return '•••'
+            const abs = Math.abs(val)
+            if (abs >= 1000000) return `${(val / 1000000).toFixed(1).replace('.0', '')}M`
+            if (abs >= 10000) return `${Math.round(val / 1000)}k`
+            if (abs >= 1000) return `${(val / 1000).toFixed(1).replace('.0', '')}k`
+            return `${Math.round(val)}`
         }
-
 
         const renderHistoryChart = () => {
             const isNet = type === 'result'
-            
+            const activePt = hoveredHistoryIndex !== null && monthsData[hoveredHistoryIndex] ? monthsData[hoveredHistoryIndex] : null
+
+            // Title & theme color
+            const chartTitle = type === 'income' 
+                ? 'Evolución mensual de Ingresos' 
+                : (type === 'expense' ? 'Evolución mensual de Gastos' : 'Evolución del Balance Neto')
+            const badgeBg = type === 'income' 
+                ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30' 
+                : (type === 'expense' ? 'bg-rose-500/10 text-rose-400 border-rose-500/30' : 'bg-sky-500/10 text-sky-400 border-sky-500/30')
+
+            const headerJSX = (
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3 pb-2.5 border-b border-slate-800/80">
+                    <div className="flex items-center gap-2.5">
+                        <div className={cn(
+                            "w-7 h-7 rounded-lg flex items-center justify-center border",
+                            type === 'income' ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" :
+                            (type === 'expense' ? "bg-rose-500/10 border-rose-500/20 text-rose-400" : "bg-sky-500/10 border-sky-500/20 text-sky-400")
+                        )}>
+                            {type === 'income' && <ArrowUpCircle className="w-4 h-4" />}
+                            {type === 'expense' && <ArrowDownCircle className="w-4 h-4" />}
+                            {type === 'result' && <TrendingUp className="w-4 h-4" />}
+                        </div>
+                        <div>
+                            <h4 className="text-xs font-bold text-slate-200 tracking-wide">{chartTitle}</h4>
+                            <p className="text-[10px] text-slate-400">
+                                {monthsData.length} meses analizados • Escala vertical en euros (€)
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Active point or helper */}
+                    <div className="text-xs">
+                        {activePt ? (
+                            <div className={cn("inline-flex items-center gap-2 px-3 py-1 rounded-xl border font-bold text-xs shadow-sm", badgeBg)}>
+                                <span className="capitalize text-[11px] opacity-90">{format(activePt.fullDate, 'MMMM yyyy', { locale })}:</span>
+                                <Money 
+                                    amount={getValue(activePt)} 
+                                    showDecimals={false} 
+                                    showPlus={type === 'income' || (type === 'result' && activePt.result > 0)}
+                                    forceSign={type === 'expense' ? '-' : null} 
+                                />
+                            </div>
+                        ) : (
+                            <span className="text-[10px] text-slate-400 flex items-center gap-1 font-medium bg-slate-900/60 px-2.5 py-1 rounded-lg border border-slate-800/60">
+                                <Zap className="w-3 h-3 text-amber-400" /> Toca cualquier mes para ver su importe exacto
+                            </span>
+                        )}
+                    </div>
+                </div>
+            )
+
             if (isNet) {
                 // SVG bidirectional chart — positive bars above baseline, negative below
-                const W = 600
-                const H = 130
-                const padX = 8
-                const padTop = 8
-                const padBottom = 26
-                const midY = padTop + (H - padTop - padBottom) / 2  // baseline (zero line)
-                const halfH = (H - padTop - padBottom) / 2
-                const chartW = W - padX * 2
+                const W = 640
+                const H = 175
+                const padLeft = 60
+                const padRight = 16
+                const padTop = 20
+                const padBottom = 28
+                const chartH = H - padTop - padBottom
+                const chartW = W - padLeft - padRight
+                const midY = padTop + chartH / 2
+                const halfH = chartH / 2
 
-                const values = monthsData.map(h => h.result)
-                const maxAbs = Math.max(...values.map(v => Math.abs(v)), 1)
+                const rawValues = monthsData.map(h => h.result)
+                const maxAbs = Math.max(...rawValues.map(v => Math.abs(v)), 1)
+                const ceilAbs = Math.ceil(maxAbs * 1.15)
 
-                const pts = values.map((v, i) => {
-                    const x = padX + (i / Math.max(values.length - 1, 1)) * chartW
-                    return { x, v, month: monthsData[i].month }
+                const pts = rawValues.map((v, i) => {
+                    const x = padLeft + (i / Math.max(rawValues.length - 1, 1)) * chartW
+                    const y = midY - (v / ceilAbs) * halfH
+                    return { x, y, v, month: monthsData[i].month }
                 })
 
-                // Max labels
-                const maxLabels = Math.min(6, pts.length)
+                const maxLabels = Math.min(8, pts.length)
                 const step = pts.length <= maxLabels ? 1 : Math.ceil(pts.length / maxLabels)
                 const labelIndices = new Set(
                     pts.map((_, i) => i).filter((i) => i % step === 0 || i === pts.length - 1)
                 )
 
-                // Build smooth SVG line path through zero-anchored points
-                const linePts = pts.map(pt => ({
-                    x: pt.x,
-                    y: midY - (pt.v / maxAbs) * halfH * 0.92
-                }))
                 const tension = 0.3
-                const splinePath = linePts.reduce((path, pt, i) => {
+                const splinePath = pts.reduce((path, pt, i) => {
                     if (i === 0) return `M ${pt.x},${pt.y}`
-                    const prev = linePts[i - 1]
+                    const prev = pts[i - 1]
                     const cp1x = prev.x + (pt.x - prev.x) * tension
                     const cp2x = pt.x - (pt.x - prev.x) * tension
                     return `${path} C ${cp1x},${prev.y} ${cp2x},${pt.y} ${pt.x},${pt.y}`
                 }, '')
 
-                // Positive area (above midY)
+                const colWidth = chartW / Math.max(pts.length, 1)
+                const activePtObj = hoveredHistoryIndex !== null && pts[hoveredHistoryIndex] ? pts[hoveredHistoryIndex] : null
+
                 const posClipId = 'clip-pos-result'
                 const negClipId = 'clip-neg-result'
 
                 return (
-                    <div className="mt-2 mb-4 bg-slate-950/40 rounded-2xl border border-slate-800/80 px-3 pt-3 pb-1">
-                        <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ overflow: 'visible' }}>
+                    <div className="mt-2 mb-4 bg-slate-950/60 rounded-2xl border border-slate-800 p-3.5">
+                        {headerJSX}
+                        <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ overflow: 'visible' }} onMouseLeave={() => setHoveredHistoryIndex(null)}>
                             <defs>
-                                {/* Clip positive area (above midY) */}
                                 <clipPath id={posClipId}>
-                                    <rect x={padX} y={padTop} width={chartW} height={midY - padTop} />
+                                    <rect x={padLeft} y={padTop} width={chartW} height={midY - padTop} />
                                 </clipPath>
-                                {/* Clip negative area (below midY) */}
                                 <clipPath id={negClipId}>
-                                    <rect x={padX} y={midY} width={chartW} height={halfH} />
+                                    <rect x={padLeft} y={midY} width={chartW} height={halfH} />
                                 </clipPath>
                                 <linearGradient id="grad-pos" x1="0" y1="0" x2="0" y2="1">
                                     <stop offset="0%" stopColor="rgba(16,185,129,0.35)" />
@@ -452,90 +510,140 @@ export function MonthSummary({ expandedType, onExpand }) {
                                 </linearGradient>
                             </defs>
 
-                            {/* Subtle grid lines */}
-                            {[0.5].map(pct => (
-                                <line key={pct}
-                                    x1={padX} y1={padTop + (H - padTop - padBottom) * (1 - pct)}
-                                    x2={W - padX} y2={padTop + (H - padTop - padBottom) * (1 - pct)}
-                                    stroke="rgba(148,163,184,0.06)" strokeWidth="1"
-                                />
-                            ))}
+                            {/* Reference Grid & Scale Values */}
+                            {/* Positive Ceiling */}
+                            <line x1={padLeft} y1={padTop} x2={W - padRight} y2={padTop} stroke="rgba(16,185,129,0.22)" strokeDasharray="3,3" strokeWidth="1" />
+                            <text x={padLeft - 8} y={padTop + 3.5} textAnchor="end" fontSize="9" fontWeight="bold" fill="#10b981">
+                                +{formatAxisNumber(ceilAbs)} €
+                            </text>
 
-                            {/* Zero baseline */}
-                            <line x1={padX} y1={midY} x2={W - padX} y2={midY}
-                                stroke="rgba(148,163,184,0.25)" strokeWidth="1" strokeDasharray="3,3" />
+                            {/* Positive Mid */}
+                            <line x1={padLeft} y1={padTop + halfH / 2} x2={W - padRight} y2={padTop + halfH / 2} stroke="rgba(148,163,184,0.08)" strokeDasharray="2,2" strokeWidth="1" />
+                            <text x={padLeft - 8} y={padTop + halfH / 2 + 3} textAnchor="end" fontSize="8" fill="rgba(148,163,184,0.45)">
+                                +{formatAxisNumber(ceilAbs / 2)} €
+                            </text>
 
-                            {/* Positive fill area */}
+                            {/* ZERO BASELINE */}
+                            <line x1={padLeft} y1={midY} x2={W - padRight} y2={midY} stroke="rgba(148,163,184,0.35)" strokeWidth="1.5" strokeDasharray="4,3" />
+                            <text x={padLeft - 8} y={midY + 3.5} textAnchor="end" fontSize="9" fontWeight="bold" fill="rgba(203,213,225,0.85)">
+                                0 €
+                            </text>
+
+                            {/* Negative Mid */}
+                            <line x1={padLeft} y1={midY + halfH / 2} x2={W - padRight} y2={midY + halfH / 2} stroke="rgba(148,163,184,0.08)" strokeDasharray="2,2" strokeWidth="1" />
+                            <text x={padLeft - 8} y={midY + halfH / 2 + 3} textAnchor="end" fontSize="8" fill="rgba(148,163,184,0.45)">
+                                -{formatAxisNumber(ceilAbs / 2)} €
+                            </text>
+
+                            {/* Negative Floor */}
+                            <line x1={padLeft} y1={padTop + chartH} x2={W - padRight} y2={padTop + chartH} stroke="rgba(244,63,94,0.22)" strokeDasharray="3,3" strokeWidth="1" />
+                            <text x={padLeft - 8} y={padTop + chartH + 3.5} textAnchor="end" fontSize="9" fontWeight="bold" fill="#f43f5e">
+                                -{formatAxisNumber(ceilAbs)} €
+                            </text>
+
+                            {/* Positive Area Fill */}
                             {splinePath && (
                                 <path
-                                    d={`${splinePath} L ${linePts[linePts.length - 1].x},${midY} L ${linePts[0].x},${midY} Z`}
+                                    d={`${splinePath} L ${pts[pts.length - 1].x},${midY} L ${pts[0].x},${midY} Z`}
                                     fill="url(#grad-pos)"
                                     clipPath={`url(#${posClipId})`}
                                 />
                             )}
 
-                            {/* Negative fill area */}
+                            {/* Negative Area Fill */}
                             {splinePath && (
                                 <path
-                                    d={`${splinePath} L ${linePts[linePts.length - 1].x},${midY} L ${linePts[0].x},${midY} Z`}
+                                    d={`${splinePath} L ${pts[pts.length - 1].x},${midY} L ${pts[0].x},${midY} Z`}
                                     fill="url(#grad-neg)"
                                     clipPath={`url(#${negClipId})`}
                                 />
                             )}
 
-                            {/* Line — green above zero, red below (drawn twice with clip) */}
+                            {/* Line Path */}
                             {splinePath && (<>
-                                <path d={splinePath} fill="none" stroke="#10b981" strokeWidth="2"
-                                    strokeLinecap="round" strokeLinejoin="round" opacity="0.9"
+                                <path d={splinePath} fill="none" stroke="#10b981" strokeWidth="2.5"
+                                    strokeLinecap="round" strokeLinejoin="round" opacity="0.95"
                                     clipPath={`url(#${posClipId})`} />
-                                <path d={splinePath} fill="none" stroke="#f43f5e" strokeWidth="2"
-                                    strokeLinecap="round" strokeLinejoin="round" opacity="0.9"
+                                <path d={splinePath} fill="none" stroke="#f43f5e" strokeWidth="2.5"
+                                    strokeLinecap="round" strokeLinejoin="round" opacity="0.95"
                                     clipPath={`url(#${negClipId})`} />
                             </>)}
 
-                            {/* Dots on each data point colored by sign */}
-                            {linePts.map((pt, i) => {
-                                const v = values[i]
-                                if (Math.abs(v) < maxAbs * 0.02) return null // skip near-zero dots
-                                const color = v >= 0 ? '#10b981' : '#f43f5e'
+                            {/* Dots */}
+                            {pts.map((pt, i) => {
+                                const color = pt.v >= 0 ? '#10b981' : '#f43f5e'
                                 return (
                                     <circle key={i} cx={pt.x} cy={pt.y}
-                                        r="2.5" fill={color} opacity="0.8" />
+                                        r="3" fill={color} stroke="#090d16" strokeWidth="1" opacity="0.85" />
                                 )
                             })}
+
+                            {/* Active Point Hover Crosshair */}
+                            {activePtObj && (
+                                <g pointerEvents="none">
+                                    <line x1={activePtObj.x} y1={padTop} x2={activePtObj.x} y2={padTop + chartH} stroke="rgba(255,255,255,0.4)" strokeDasharray="3,3" strokeWidth="1.5" />
+                                    <circle cx={activePtObj.x} cy={activePtObj.y} r="8" fill={activePtObj.v >= 0 ? '#10b981' : '#f43f5e'} opacity="0.25" />
+                                    <circle cx={activePtObj.x} cy={activePtObj.y} r="4.5" fill={activePtObj.v >= 0 ? '#10b981' : '#f43f5e'} stroke="#ffffff" strokeWidth="2" />
+                                </g>
+                            )}
 
                             {/* Month labels */}
                             {pts.map((pt, i) => {
                                 if (!labelIndices.has(i)) return null
+                                const isSelected = hoveredHistoryIndex === i
                                 return (
-                                    <text key={i} x={pt.x} y={H - 3}
-                                        textAnchor="middle" fontSize="9"
-                                        fill="rgba(148,163,184,0.50)" fontWeight="bold"
+                                    <text key={i} x={pt.x} y={H - 5}
+                                        textAnchor="middle" fontSize={isSelected ? "10" : "9"}
+                                        fill={isSelected ? "#ffffff" : "rgba(148,163,184,0.60)"}
+                                        fontWeight={isSelected ? "bold" : "600"}
                                         style={{ textTransform: 'uppercase', fontFamily: 'inherit' }}>
                                         {pt.month}
                                     </text>
+                                )
+                            })}
+
+                            {/* Touch/Hover Hitbox Columns */}
+                            {pts.map((pt, i) => {
+                                const rectX = i === 0 ? padLeft : pt.x - colWidth / 2
+                                const rectW = i === 0 || i === pts.length - 1 ? colWidth * 0.8 : colWidth
+                                return (
+                                    <rect
+                                        key={i}
+                                        x={rectX}
+                                        y={padTop}
+                                        width={rectW}
+                                        height={chartH + padBottom}
+                                        fill="transparent"
+                                        className="cursor-pointer"
+                                        onMouseEnter={() => setHoveredHistoryIndex(i)}
+                                        onTouchStart={() => setHoveredHistoryIndex(i)}
+                                        onClick={() => setHoveredHistoryIndex(hoveredHistoryIndex === i ? null : i)}
+                                    />
                                 )
                             })}
                         </svg>
                     </div>
                 )
             } else {
-                // SVG Area Chart — scales to 100% width, works for any number of months
-                const W = 600
-                const H = 120
-                const padX = 8
-                const padTop = 12
-                const padBottom = 26
+                // SVG Area Chart for Income or Expenses
+                const W = 640
+                const H = 175
+                const padLeft = 60
+                const padRight = 16
+                const padTop = 24
+                const padBottom = 28
                 const chartH = H - padTop - padBottom
-                const chartW = W - padX * 2
+                const chartW = W - padLeft - padRight
+                const baselineY = padTop + chartH
 
                 const rawValues = monthsData.map(getValue)
                 const maxVal = Math.max(...rawValues, 1)
+                const ceilVal = Math.ceil(maxVal * 1.18)
                 const peakIdx = rawValues.indexOf(Math.max(...rawValues))
 
                 const pts = rawValues.map((v, i) => {
-                    const x = padX + (i / Math.max(rawValues.length - 1, 1)) * chartW
-                    const y = padTop + chartH - (v / maxVal) * chartH
+                    const x = padLeft + (i / Math.max(rawValues.length - 1, 1)) * chartW
+                    const y = padTop + chartH - (v / ceilVal) * chartH
                     return { x, y, v, month: monthsData[i].month }
                 })
 
@@ -550,25 +658,40 @@ export function MonthSummary({ expandedType, onExpand }) {
                     return `${path} C ${cp1x},${cp1y} ${cp2x},${cp2y} ${pt.x},${pt.y}`
                 }, '')
 
-                const baselineY = padTop + chartH
                 const fillPath = pts.length > 0
                     ? `${splinePath} L ${pts[pts.length - 1].x},${baselineY} L ${pts[0].x},${baselineY} Z`
                     : ''
 
                 const strokeColor = type === 'income' ? '#10b981' : '#f43f5e'
                 const fillId = type === 'income' ? 'grad-income' : 'grad-expense'
-                const fillColorTop = type === 'income' ? 'rgba(16,185,129,0.30)' : 'rgba(244,63,94,0.30)'
+                const fillColorTop = type === 'income' ? 'rgba(16,185,129,0.35)' : 'rgba(244,63,94,0.35)'
                 const fillColorBot = type === 'income' ? 'rgba(16,185,129,0.0)' : 'rgba(244,63,94,0.0)'
 
-                const maxLabels = Math.min(6, pts.length)
+                const maxLabels = Math.min(8, pts.length)
                 const step = pts.length <= maxLabels ? 1 : Math.ceil(pts.length / maxLabels)
                 const labelIndices = new Set(
                     pts.map((_, i) => i).filter((i) => i % step === 0 || i === pts.length - 1)
                 )
 
+                const colWidth = chartW / Math.max(pts.length, 1)
+                const activePtObj = hoveredHistoryIndex !== null && pts[hoveredHistoryIndex] ? pts[hoveredHistoryIndex] : null
+
+                // Scale grid levels: 100%, 66%, 33%, 0%
+                const scaleLevels = [
+                    { pct: 1.0, label: `${formatAxisNumber(ceilVal)} €` },
+                    { pct: 0.66, label: `${formatAxisNumber(ceilVal * 0.66)} €` },
+                    { pct: 0.33, label: `${formatAxisNumber(ceilVal * 0.33)} €` },
+                    { pct: 0.0, label: '0 €' }
+                ]
+
+                // Peak badge position clamped
+                const peakPt = pts[peakIdx]
+                const peakBadgeX = peakPt ? Math.max(padLeft + 42, Math.min(W - padRight - 42, peakPt.x)) : 0
+
                 return (
-                    <div className="mt-2 mb-4 bg-slate-950/40 rounded-2xl border border-slate-800/80 px-3 pt-3 pb-1">
-                        <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ overflow: 'visible' }}>
+                    <div className="mt-2 mb-4 bg-slate-950/60 rounded-2xl border border-slate-800 p-3.5">
+                        {headerJSX}
+                        <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ overflow: 'visible' }} onMouseLeave={() => setHoveredHistoryIndex(null)}>
                             <defs>
                                 <linearGradient id={fillId} x1="0" y1="0" x2="0" y2="1">
                                     <stop offset="0%" stopColor={fillColorTop} />
@@ -576,34 +699,132 @@ export function MonthSummary({ expandedType, onExpand }) {
                                 </linearGradient>
                             </defs>
 
-                            {[0.25, 0.5, 0.75].map(pct => {
-                                const y = padTop + chartH - pct * chartH
-                                return <line key={pct} x1={padX} y1={y} x2={W - padX} y2={y} stroke="rgba(148,163,184,0.07)" strokeWidth="1" />
+                            {/* Scale reference lines & labels */}
+                            {scaleLevels.map((lvl, idx) => {
+                                const y = padTop + chartH - lvl.pct * chartH
+                                const isBase = lvl.pct === 0
+                                return (
+                                    <g key={idx}>
+                                        <line 
+                                            x1={padLeft} 
+                                            y1={y} 
+                                            x2={W - padRight} 
+                                            y2={y} 
+                                            stroke={isBase ? "rgba(148,163,184,0.25)" : "rgba(148,163,184,0.08)"} 
+                                            strokeWidth={isBase ? "1.2" : "1"}
+                                            strokeDasharray={isBase ? undefined : "3,3"}
+                                        />
+                                        <text 
+                                            x={padLeft - 8} 
+                                            y={y + 3.5} 
+                                            textAnchor="end" 
+                                            fontSize={isBase || lvl.pct === 1.0 ? "9" : "8"} 
+                                            fontWeight={isBase || lvl.pct === 1.0 ? "bold" : "normal"}
+                                            fill={isBase ? "rgba(203,213,225,0.8)" : (lvl.pct === 1.0 ? strokeColor : "rgba(148,163,184,0.5)")}
+                                        >
+                                            {lvl.label}
+                                        </text>
+                                    </g>
+                                )
                             })}
 
-                            <line x1={padX} y1={baselineY} x2={W - padX} y2={baselineY} stroke="rgba(148,163,184,0.15)" strokeWidth="1" />
-
+                            {/* Gradient Area Fill */}
                             {fillPath && <path d={fillPath} fill={`url(#${fillId})`} />}
 
+                            {/* Spline Path */}
                             {splinePath && (
-                                <path d={splinePath} fill="none" stroke={strokeColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.9" />
+                                <path d={splinePath} fill="none" stroke={strokeColor} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.95" />
                             )}
 
-                            {pts[peakIdx] && (
-                                <>
-                                    <circle cx={pts[peakIdx].x} cy={pts[peakIdx].y} r="7" fill={strokeColor} opacity="0.15" />
-                                    <circle cx={pts[peakIdx].x} cy={pts[peakIdx].y} r="3.5" fill={strokeColor} opacity="0.95" />
-                                </>
+                            {/* Data points */}
+                            {pts.map((pt, i) => (
+                                <circle 
+                                    key={i} 
+                                    cx={pt.x} 
+                                    cy={pt.y} 
+                                    r="3" 
+                                    fill={strokeColor} 
+                                    stroke="#090d16" 
+                                    strokeWidth="1" 
+                                    opacity="0.8" 
+                                />
+                            ))}
+
+                            {/* Peak Point Badge (Record Month) */}
+                            {peakPt && rawValues[peakIdx] > 0 && (
+                                <g pointerEvents="none">
+                                    <circle cx={peakPt.x} cy={peakPt.y} r="8" fill={strokeColor} opacity="0.2" />
+                                    <circle cx={peakPt.x} cy={peakPt.y} r="4.5" fill={strokeColor} stroke="#ffffff" strokeWidth="1.5" />
+                                    {/* Peak Tooltip Pill */}
+                                    <rect 
+                                        x={peakBadgeX - 36} 
+                                        y={Math.max(6, peakPt.y - 20)} 
+                                        width="72" 
+                                        height="14" 
+                                        rx="7" 
+                                        fill="#0f172a" 
+                                        stroke={strokeColor} 
+                                        strokeWidth="1" 
+                                    />
+                                    <text 
+                                        x={peakBadgeX} 
+                                        y={Math.max(6, peakPt.y - 20) + 10} 
+                                        textAnchor="middle" 
+                                        fontSize="8" 
+                                        fontWeight="bold" 
+                                        fill="#ffffff"
+                                    >
+                                        Máx: {formatAxisNumber(rawValues[peakIdx])} €
+                                    </text>
+                                </g>
                             )}
 
+                            {/* Active Point Hover Highlight */}
+                            {activePtObj && (
+                                <g pointerEvents="none">
+                                    <line x1={activePtObj.x} y1={padTop} x2={activePtObj.x} y2={baselineY} stroke="rgba(255,255,255,0.4)" strokeDasharray="3,3" strokeWidth="1.5" />
+                                    <circle cx={activePtObj.x} cy={activePtObj.y} r="9" fill={strokeColor} opacity="0.25" />
+                                    <circle cx={activePtObj.x} cy={activePtObj.y} r="5" fill={strokeColor} stroke="#ffffff" strokeWidth="2" />
+                                </g>
+                            )}
+
+                            {/* Month labels on X axis */}
                             {pts.map((pt, i) => {
                                 if (!labelIndices.has(i)) return null
+                                const isSelected = hoveredHistoryIndex === i
                                 return (
-                                    <text key={i} x={pt.x} y={H - 3} textAnchor="middle" fontSize="9"
-                                        fill="rgba(148,163,184,0.50)" fontWeight="bold"
-                                        style={{ textTransform: 'uppercase', fontFamily: 'inherit' }}>
+                                    <text 
+                                        key={i} 
+                                        x={pt.x} 
+                                        y={H - 5} 
+                                        textAnchor="middle" 
+                                        fontSize={isSelected ? "10" : "9"} 
+                                        fill={isSelected ? "#ffffff" : "rgba(148,163,184,0.60)"} 
+                                        fontWeight={isSelected ? "bold" : "600"}
+                                        style={{ textTransform: 'uppercase', fontFamily: 'inherit' }}
+                                    >
                                         {pt.month}
                                     </text>
+                                )
+                            })}
+
+                            {/* Touch/Hover Hitbox Columns */}
+                            {pts.map((pt, i) => {
+                                const rectX = i === 0 ? padLeft : pt.x - colWidth / 2
+                                const rectW = i === 0 || i === pts.length - 1 ? colWidth * 0.8 : colWidth
+                                return (
+                                    <rect
+                                        key={i}
+                                        x={rectX}
+                                        y={padTop}
+                                        width={rectW}
+                                        height={chartH + padBottom}
+                                        fill="transparent"
+                                        className="cursor-pointer"
+                                        onMouseEnter={() => setHoveredHistoryIndex(i)}
+                                        onTouchStart={() => setHoveredHistoryIndex(i)}
+                                        onClick={() => setHoveredHistoryIndex(hoveredHistoryIndex === i ? null : i)}
+                                    />
                                 )
                             })}
                         </svg>
