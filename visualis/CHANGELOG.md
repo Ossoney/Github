@@ -1,5 +1,23 @@
 # 📜 Changelog - VISUALIS
 
+## [1.4.38] - 2026-10-11
+
+### Added
+
+- **Nuevas Apariencias Artísticas de Vanguardia: Futurismo Dinámico y Fauvismo Salvaje**:
+  - **Sustitución de "Noche Estrellada" (`sky`) por "Futurismo Dinámico" (`futurism`)**:
+    - Inspirado en las vanguardias del Futurismo y el diseño aerodinámico contemporáneo.
+    - Fondo de grafito técnico oscuro con sutiles vectores diagonales de fuerza a 135°.
+    - Botones principales en **Cobalto Cinético** (`#0066ff`) con destellos degradados a cyan, bordes activos con brillo de propulsión y balances de ingresos en **Cyan Láser** (`#00f0ff`) para máxima visibilidad táctica.
+  - **Sustitución de "Eclipse Dorado" (`gold`) por "Fauvismo Salvaje" (`fauvism`)**:
+    - Inspirado en la fiera exaltación del color puro sin inhibiciones (Matisse, Derain).
+    - Fondo ciruela volcánico oscuro con tarjetas en violeta profundo enmarcadas en **Amarillo Cadmio Solar** puro (`#ffb703`).
+    - Sombras desplazadas en **Azul Ultramar Francés** (`#2040d0`), botones enérgicos de amarillo anaranjado y contrastes intensos para una experiencia sensorial viva.
+  - **Compatibilidad y Migración Transparente**:
+    - Redirección automática de configuraciones previas (`sky` -> `futurism`, `gold` -> `fauvism`).
+    - Actualizado el tema por defecto de la aplicación a `futurism`.
+    - Traducciones integradas en los 5 idiomas oficiales de la aplicación (`es`, `en`, `gl`, `eu`, `ca`).
+
 ## [1.4.37] - 2026-10-11
 
 ### Added

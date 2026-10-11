@@ -4,8 +4,8 @@
  * to avoid duplication and desync bugs.
  */
 export const THEMES = [
-    { id: 'sky',        color: '#0ea5e9' },
-    { id: 'gold',       color: '#f59e0b' },
+    { id: 'futurism',   color: '#0066ff' },
+    { id: 'fauvism',    color: '#ffb703' },
     { id: 'cyberpunk',  color: '#00f5ff' },
     { id: 'nebula',     color: '#8b5cf6' },
     { id: 'mondrian',   color: '#2563eb' },

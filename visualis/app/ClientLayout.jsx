@@ -28,7 +28,11 @@ export function ClientLayout({ children }) {
                 if (theme === 'light-mint') theme = 'ukiyo-e'
                 if (theme === 'light-sky') theme = 'bauhaus'
                 if (theme === 'light-warm') theme = 'brutalist'
+                if (theme === 'sky') theme = 'futurism'
+                if (theme === 'gold') theme = 'fauvism'
                 document.documentElement.setAttribute('data-theme', theme)
+            } else {
+                document.documentElement.setAttribute('data-theme', 'futurism')
             }
         }
         loadTheme()

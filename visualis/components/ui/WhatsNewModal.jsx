@@ -81,9 +81,9 @@ export function WhatsNewModal() {
                             <Palette className="w-5 h-5 text-sky-400" />
                         </div>
                         <div>
-                            <h3 className="font-bold text-slate-100 text-sm">Nuevos Temas Artísticos de Alto Impacto</h3>
+                            <h3 className="font-bold text-slate-100 text-sm">Nuevos Temas Artísticos de Vanguardia</h3>
                             <p className="text-[12px] text-slate-400 mt-1 leading-relaxed">
-                                Estreno de <span className="text-rose-400 font-semibold">Bauhaus Constructivista</span> (blanco yeso, cuadrícula arquitectónica, rojo cinabrio y esquinas rectas con sombras duras) y <span className="text-lime-400 font-semibold">Brutalismo Ácido</span> (negro carbón profundo, acentos en verde eléctrico volt #ccff00 y energía industrial).
+                                Incorporación de <span className="text-blue-400 font-semibold">Futurismo Dinámico</span> (fondo grafito aerodinámico, vectores de velocidad a 135°, cobalto cinético y cyan láser) y <span className="text-amber-400 font-semibold">Fauvismo Salvaje</span> (color puro desinhibido, amarillo cadmio solar, sombras ultramar y fondo ciruela volcánico).
                             </p>
                         </div>
                     </div>

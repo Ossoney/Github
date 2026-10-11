@@ -101,7 +101,7 @@ export function CurrencySettings() {
 export function ThemeSettings() {
     const settings = useLiveQuery(() => db.settings.get('global'))
     const { t } = useLanguage()
-    const [currentTheme, setCurrentTheme] = useState('sky')
+    const [currentTheme, setCurrentTheme] = useState('futurism')
 
     useEffect(() => {
         if (settings?.theme) {
@@ -110,6 +110,8 @@ export function ThemeSettings() {
             if (activeTheme === 'light-mint') activeTheme = 'ukiyo-e'
             if (activeTheme === 'light-sky') activeTheme = 'bauhaus'
             if (activeTheme === 'light-warm') activeTheme = 'brutalist'
+            if (activeTheme === 'sky') activeTheme = 'futurism'
+            if (activeTheme === 'gold') activeTheme = 'fauvism'
             setCurrentTheme(activeTheme)
             document.documentElement.setAttribute('data-theme', activeTheme)
         }

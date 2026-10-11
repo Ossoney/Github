@@ -166,6 +166,8 @@ const dictionaries = {
         "suggestions_desc": "Si tienes sugerencias que hacerme o errores que corregir, escríbeme a:",
         "choose_theme": "Elige tu apariencia",
         "theme_names": {
+            "futurism": "Futurismo Dinámico",
+            "fauvism": "Fauvismo Salvaje",
             "sky": "Noche Estrellada",
             "gold": "Eclipse Dorado",
             "cyberpunk": "Cyberpunk Neón",
@@ -457,6 +459,8 @@ const dictionaries = {
         "suggestions_desc": "Have an idea to improve Visualis? We would love to hear your thoughts.",
         "choose_theme": "Choose your appearance",
         "theme_names": {
+            "futurism": "Dynamic Futurism",
+            "fauvism": "Wild Fauvism",
             "sky": "Starry Night",
             "gold": "Golden Eclipse",
             "cyberpunk": "Neon Cyberpunk",
@@ -748,6 +752,8 @@ const dictionaries = {
         "suggestions_desc": "¿Tes algunha idea ou detectaches algo a mellorar? Encantaríanos coñecer a túa opinión.",
         "choose_theme": "Elixe a túa aparencia",
         "theme_names": {
+            "futurism": "Futurismo Dinámico",
+            "fauvism": "Fauvismo Salvaxe",
             "sky": "Noite Estrelada",
             "gold": "Eclipse Dourado",
             "cyberpunk": "Cyberpunk Neón",
@@ -1039,6 +1045,8 @@ const dictionaries = {
         "suggestions_desc": "Visualis hobetzeko ideiarik duzu? Zure iritzia jakitea asko eskertuko genuke.",
         "choose_theme": "Aukeratu zure itxura",
         "theme_names": {
+            "futurism": "Futurismo Dinamikoa",
+            "fauvism": "Fauvismo Basatia",
             "sky": "Gau Izartsua",
             "gold": "Eguzki-eklipse Urreztatua",
             "cyberpunk": "Cyberpunk Neoia",
@@ -1330,6 +1338,8 @@ const dictionaries = {
         "suggestions_desc": "Tens alguna idea per millorar Visualis? Ens encantaria conèixer la teva opinió.",
         "choose_theme": "Tria la teva aparença",
         "theme_names": {
+            "futurism": "Futurisme Dinàmic",
+            "fauvism": "Fauvisme Salvatge",
             "sky": "Nit Estrellada",
             "gold": "Eclipsi Daurat",
             "cyberpunk": "Cyberpunk Neó",

@@ -8,7 +8,7 @@
 > 2. `guia_acceso.md` (Para procesos de instalación y acceso)
 > 3. `estado_proyecto.md` (Este documento, para el estado actual, UX y Changelog)
 
-El proyecto **Finanzas Visuales** (v1.4.37) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
+El proyecto **Finanzas Visuales** (v1.4.38) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
 
 ## Tecnologías Principales
 
@@ -29,11 +29,23 @@ El proyecto **Finanzas Visuales** (v1.4.37) es una aplicación web de contabilid
 - **Gestor de Wallets/Proyectos:** Soporte multi-cuenta y traspasos entre cuentas propias.
 - **Seguridad y Privacidad:** Almacenamiento exclusivamente local, modo privacidad y copias de seguridad (JSON/Excel).
 - **Hábitos:** Rastreador de rutinas con metas semanales, efectos visuales y recordatorios inteligentes.
-- **Personalización Visual:** 10 temas artísticos (incluyendo **Bauhaus Constructivista**, **Brutalismo Ácido**, **Cyberpunk Neón**, **Ukiyo-e**, **Mondrian**, **Pop Art** y **Eclipse Dorado**) y perfiles personalizados.
+- **Personalización Visual:** 10 temas artísticos (incluyendo **Futurismo Dinámico**, **Fauvismo Salvaje**, **Bauhaus Constructivista**, **Brutalismo Ácido**, **Cyberpunk Neón**, **Ukiyo-e**, **Mondrian**, **Pop Art** y **Vino Selecto**) y perfiles personalizados.
 
 ## 🗓️ Sesión 2026-10-11 — Estado al Cierre
 
 ### ✅ Completado Hoy
+- **Nuevas Apariencias Artísticas de Vanguardia: Futurismo Dinámico y Fauvismo Salvaje (v1.4.38)**:
+  - **Sustitución de "Noche Estrellada" (`sky`) por "Futurismo Dinámico" (`futurism`)**:
+    - Inspirado en la estética de la velocidad, maquinaria y fuerza de Boccioni.
+    - Fondo grafito acerado (`#0b0e14`) con trama técnica de vectores dinámicos a 135°.
+    - Botones principales en **Cobalto Cinético** (`#0066ff`) con destellos a cian, bordes luminiscentes, ingresos en **Cyan Láser** (`#00f0ff`) y gastos en **Rojo Supersónico** (`#ff3b30`).
+  - **Sustitución de "Eclipse Dorado" (`gold`) por "Fauvismo Salvaje" (`fauvism`)**:
+    - Inspirado en la fiera exaltación del color puro (Matisse, Derain).
+    - Fondo ciruela volcánica (`#12040d`) con tarjetas en violeta oscuro de 14px enmarcadas en **Amarillo Cadmio Solar** puro (`#ffb703`).
+    - Sombras desplazadas en **Azul Ultramar Francés** (`#2040d0`), contrastes saturados y máxima energía visual.
+  - **Migración y Compatibilidad**: Redirección automática de los temas sustituidos (`sky` -> `futurism`, `gold` -> `fauvism`) y nuevo tema predeterminado del sistema.
+  - **Traducciones**: Actualizados los 5 idiomas (`es`, `en`, `gl`, `eu`, `ca`).
+
 - **Nuevas Apariencias Artísticas de Alto Impacto: Bauhaus y Brutalismo Ácido (v1.4.37)**:
   - **Sustitución de "Cielo Ártico" por "Bauhaus Constructivista" (`bauhaus`)**:
     - Inspirado en la vanguardia arquitectónica y constructivista de 1920 (Kandinsky, Walter Gropius, Bauhaus Dessau).

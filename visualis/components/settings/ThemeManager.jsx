@@ -12,7 +12,7 @@ import { THEMES } from '@/lib/themes'
 export function ThemeManager() {
     const settings = useLiveQuery(() => db.settings.get('global'))
     const { t } = useLanguage()
-    const [currentTheme, setCurrentTheme] = useState('sky')
+    const [currentTheme, setCurrentTheme] = useState('futurism')
 
     useEffect(() => {
         if (settings?.theme) {
@@ -21,6 +21,8 @@ export function ThemeManager() {
             if (activeTheme === 'light-mint') activeTheme = 'ukiyo-e'
             if (activeTheme === 'light-sky') activeTheme = 'bauhaus'
             if (activeTheme === 'light-warm') activeTheme = 'brutalist'
+            if (activeTheme === 'sky') activeTheme = 'futurism'
+            if (activeTheme === 'gold') activeTheme = 'fauvism'
             setCurrentTheme(activeTheme)
             // Apply to document
             document.documentElement.setAttribute('data-theme', activeTheme)
