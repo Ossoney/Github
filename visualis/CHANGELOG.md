@@ -1,5 +1,17 @@
 # 📜 Changelog - VISUALIS
 
+## [1.4.37] - 2026-10-11
+
+### Added
+
+- **Nuevas Apariencias Artísticas de Alto Impacto: Bauhaus y Brutalismo Ácido**:
+  - **Sustitución de "Cielo Ártico" por "Bauhaus Constructivista" (`bauhaus`)**:
+    - Estética de vanguardia arquitectónica de 1920. Fondo en blanco yeso crudo con cuadrícula técnica milimétrica, esquinas puras, bordes negros rotundos y sombras sólidas de bloque. Botones en rojo cinabrio (`#d62828`), acentos en azul cobalto (`#003049`) y máxima legibilidad tipográfica.
+  - **Sustitución de "Horizonte Ámbar" por "Brutalismo Ácido" (`brutalist`)**:
+    - Estética underground industrial y brutalismo web de alto voltaje. Fondo en negro carbón profundo con acentos e hipercontrastes en verde eléctrico fósforo **Toxic Volt** (`#ccff00`), bordes rotundos, sombras desplazadas sin difuminar y textos de balances ultravisibles.
+  - **Migración y Compatibilidad Automática**: Las preferencias previas de usuarios que tenían seleccionados los temas claros anteriores (`light-sky`, `light-warm`) se redirigen de forma transparente hacia los nuevos temas artísticos sin inconsistencias visuales.
+  - **Internacionalización**: Nuevas claves añadidas en los 5 idiomas (`es`, `en`, `gl`, `eu`, `ca`).
+
 ## [1.4.36] - 2026-10-01
 
 ### Added

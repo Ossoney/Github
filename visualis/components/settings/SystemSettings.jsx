@@ -108,6 +108,8 @@ export function ThemeSettings() {
             let activeTheme = settings.theme
             if (activeTheme === 'forest') activeTheme = 'cyberpunk'
             if (activeTheme === 'light-mint') activeTheme = 'ukiyo-e'
+            if (activeTheme === 'light-sky') activeTheme = 'bauhaus'
+            if (activeTheme === 'light-warm') activeTheme = 'brutalist'
             setCurrentTheme(activeTheme)
             document.documentElement.setAttribute('data-theme', activeTheme)
         }

@@ -26,6 +26,8 @@ export function ClientLayout({ children }) {
                 let theme = settings.theme
                 if (theme === 'forest') theme = 'cyberpunk'
                 if (theme === 'light-mint') theme = 'ukiyo-e'
+                if (theme === 'light-sky') theme = 'bauhaus'
+                if (theme === 'light-warm') theme = 'brutalist'
                 document.documentElement.setAttribute('data-theme', theme)
             }
         }

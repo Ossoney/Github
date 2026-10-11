@@ -81,9 +81,9 @@ export function WhatsNewModal() {
                             <Palette className="w-5 h-5 text-sky-400" />
                         </div>
                         <div>
-                            <h3 className="font-bold text-slate-100 text-sm">Nuevos Temas Artísticos</h3>
+                            <h3 className="font-bold text-slate-100 text-sm">Nuevos Temas Artísticos de Alto Impacto</h3>
                             <p className="text-[12px] text-slate-400 mt-1 leading-relaxed">
-                                Estreno de <span className="text-cyan-400 font-semibold">Cyberpunk Neón</span> (negro abisal y cian láser con resplandor) y <span className="text-amber-400 font-semibold">Ukiyo-e Gran Ola</span> (papel washi, azul índigo de Hokusai y bermellón Torii), junto a la restauración de <span className="text-yellow-400 font-semibold">Eclipse Dorado</span>.
+                                Estreno de <span className="text-rose-400 font-semibold">Bauhaus Constructivista</span> (blanco yeso, cuadrícula arquitectónica, rojo cinabrio y esquinas rectas con sombras duras) y <span className="text-lime-400 font-semibold">Brutalismo Ácido</span> (negro carbón profundo, acentos en verde eléctrico volt #ccff00 y energía industrial).
                             </p>
                         </div>
                     </div>

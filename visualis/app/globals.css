@@ -99,27 +99,27 @@
     --primary-foreground: 255 255 255;
 }
 
-/* 7. CLARO CIELO (Light Sky: Classic Light Mode) */
-[data-theme='light-sky'] {
-    --foreground-rgb: 15, 23, 42;
-    --bg-50: 2 6 23;
-    --bg-100: 15 23 42;
-    --bg-200: 51 65 85;
-    --bg-300: 71 85 105;
-    --bg-400: 100 116 139;
-    --bg-500: 148 163 184;
-    --bg-600: 203 213 225;
-    --bg-700: 226 232 240;
-    --bg-800: 241 245 249;
-    /* borders, hover menus */
+/* 7. BAUHAUS CONSTRUCTIVISTA (Architectural pure lines, Cinnabar Red #d62828, Prussian Blue & Chalk White) */
+[data-theme='bauhaus'], [data-theme='light-sky'] {
+    --foreground-rgb: 17, 17, 17;
+    --bg-50: 17 17 17;
+    --bg-100: 28 28 28;
+    --bg-200: 45 45 45;
+    --bg-300: 70 70 70;
+    --bg-400: 110 110 110;
+    --bg-500: 160 160 160;
+    --bg-600: 215 210 200;
+    --bg-700: 230 225 215;
+    --bg-800: 240 236 228;
+    /* Cards: crisp chalk white */
     --bg-900: 255 255 255;
-    /* Cards */
-    --bg-950: 248 250 252;
-    /* Main App bg */
-    --primary-300: 125 211 252;
-    --primary-400: 56 189 248;
-    --primary-500: 14 165 233;
-    --primary-600: 2 132 199;
+    /* Background: raw architectural chalk */
+    --bg-950: 244 241 234;
+    /* Bauhaus Red */
+    --primary-300: 239 68 68;
+    --primary-400: 220 38 38;
+    --primary-500: 214 40 40;
+    --primary-600: 185 28 28;
     --primary-foreground: 255 255 255;
 }
 
@@ -147,32 +147,35 @@
     --primary-foreground: 255 255 255;
 }
 
-/* 9. CLARO CÁLIDO (Light Warm: Rose/Orange Tint) */
-[data-theme='light-warm'] {
-    --foreground-rgb: 28, 25, 23;
-    --bg-50: 28 25 23;
-    --bg-100: 41 37 36;
-    --bg-200: 68 64 60;
-    --bg-300: 87 83 78;
-    --bg-400: 120 113 108;
-    --bg-500: 168 162 158;
-    --bg-600: 214 211 209;
-    --bg-700: 231 229 228;
-    --bg-800: 245 245 244;
-    --bg-900: 255 255 255;
-    --bg-950: 250 249 248;
-    --primary-300: 253 164 175;
-    --primary-400: 251 113 133;
-    --primary-500: 244 63 94;
-    --primary-600: 225 29 72;
-    --primary-foreground: 255 255 255;
+/* 9. BRUTALISMO ÁCIDO / TOXIC VOLT (Deep Charcoal & High-Voltage Electric Toxic Volt #ccff00) */
+[data-theme='brutalist'], [data-theme='light-warm'] {
+    --foreground-rgb: 255, 255, 255;
+    --bg-50: 255 255 255;
+    --bg-100: 240 240 240;
+    --bg-200: 200 200 200;
+    --bg-300: 160 160 160;
+    --bg-400: 120 120 120;
+    --bg-500: 80 80 80;
+    --bg-600: 40 40 40;
+    --bg-700: 28 28 28;
+    --bg-800: 20 20 20;
+    /* Cards: pitch industrial carbon */
+    --bg-900: 12 12 12;
+    /* Body bg: absolute void */
+    --bg-950: 6 6 6;
+    /* Volt Electric Yellow-Green */
+    --primary-300: 228 255 80;
+    --primary-400: 216 255 40;
+    --primary-500: 204 255 0;
+    --primary-600: 175 220 0;
+    --primary-foreground: 0 0 0;
 }
 
 /* ---------------------------------------------------------------------- */
 /* HIGH-CONTRAST OVERRIDES FOR LIGHT THEMES                               */
 /* Fixes the "text-white" and neon colors on white backgrounds            */
 /* ---------------------------------------------------------------------- */
-[data-theme^="light"] .text-white, [data-theme='ukiyo-e'] .text-white { color: rgb(var(--bg-100)) !important; }
+[data-theme^="light"] .text-white, [data-theme='ukiyo-e'] .text-white, [data-theme='bauhaus'] .text-white { color: rgb(var(--bg-100)) !important; }
 
 /* Status Text Adjustments for Light Mode */
 [data-theme^="light"] .text-emerald-500, [data-theme^="light"] .text-emerald-400 { color: #059669 !important; }
@@ -666,5 +669,271 @@ body {
     background-color: rgba(29, 53, 87, 0.14) !important;
     border: 1.5px solid #1d3557 !important;
     color: #1d3557 !important;
+}
+
+/* ---------------------------------------------------------------------- */
+/* BAUHAUS CONSTRUCTIVISTA THEME OVERRIDES                                */
+/* Architectural grid, sharp edges, ink black borders & solid offsets     */
+/* ---------------------------------------------------------------------- */
+[data-theme='bauhaus'] body,
+[data-theme='light-sky'] body {
+    background-color: #f4f1ea !important;
+    background-image: 
+        linear-gradient(rgba(17, 17, 17, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 17, 17, 0.05) 1px, transparent 1px) !important;
+    background-size: 24px 24px !important;
+    color: #111111 !important;
+}
+
+[data-theme='bauhaus'] .bg-slate-900\/50,
+[data-theme='bauhaus'] .bg-slate-900\/30,
+[data-theme='bauhaus'] .bg-slate-800\/60,
+[data-theme='bauhaus'] .bg-slate-800\/50,
+[data-theme='bauhaus'] .bg-slate-900,
+[data-theme='light-sky'] .bg-slate-900\/50,
+[data-theme='light-sky'] .bg-slate-900\/30,
+[data-theme='light-sky'] .bg-slate-800\/60,
+[data-theme='light-sky'] .bg-slate-800\/50,
+[data-theme='light-sky'] .bg-slate-900 {
+    background-color: #ffffff !important;
+    border: 2.5px solid #111111 !important;
+    border-radius: 4px !important;
+    box-shadow: 5px 5px 0px 0px #111111 !important;
+    color: #111111 !important;
+    backdrop-filter: none !important;
+}
+
+[data-theme='bauhaus'] .bg-slate-800,
+[data-theme='light-sky'] .bg-slate-800 {
+    background-color: #f7f5ef !important;
+    border: 2px solid #111111 !important;
+    border-radius: 4px !important;
+    box-shadow: 3px 3px 0px 0px #111111 !important;
+    color: #111111 !important;
+}
+
+[data-theme='bauhaus'] button.bg-sky-500,
+[data-theme='bauhaus'] .bg-primary,
+[data-theme='light-sky'] button.bg-sky-500,
+[data-theme='light-sky'] .bg-primary {
+    background-color: #d62828 !important; /* Cinnabar Red */
+    border: 2.5px solid #111111 !important;
+    border-radius: 4px !important;
+    box-shadow: 4px 4px 0px 0px #111111 !important;
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.04em !important;
+}
+
+[data-theme='bauhaus'] input,
+[data-theme='bauhaus'] select,
+[data-theme='light-sky'] input,
+[data-theme='light-sky'] select {
+    border: 2px solid #111111 !important;
+    border-radius: 4px !important;
+    background-color: #ffffff !important;
+    color: #111111 !important;
+    font-weight: 600 !important;
+}
+
+[data-theme='bauhaus'] input:focus,
+[data-theme='bauhaus'] select:focus,
+[data-theme='light-sky'] input:focus,
+[data-theme='light-sky'] select:focus {
+    box-shadow: 0 0 0 2px #d62828 !important;
+    border-color: #111111 !important;
+}
+
+[data-theme='bauhaus'] .text-slate-800,
+[data-theme='bauhaus'] .text-slate-700,
+[data-theme='bauhaus'] .text-slate-600,
+[data-theme='bauhaus'] .text-slate-500,
+[data-theme='bauhaus'] .text-slate-400,
+[data-theme='bauhaus'] .text-slate-300,
+[data-theme='bauhaus'] .text-slate-200,
+[data-theme='bauhaus'] .text-slate-100,
+[data-theme='light-sky'] .text-slate-800,
+[data-theme='light-sky'] .text-slate-700,
+[data-theme='light-sky'] .text-slate-600,
+[data-theme='light-sky'] .text-slate-500,
+[data-theme='light-sky'] .text-slate-400,
+[data-theme='light-sky'] .text-slate-300,
+[data-theme='light-sky'] .text-slate-200,
+[data-theme='light-sky'] .text-slate-100 {
+    color: #111111 !important;
+}
+
+[data-theme='bauhaus'] .text-emerald-500,
+[data-theme='bauhaus'] .text-emerald-400,
+[data-theme='bauhaus'] .text-emerald-300,
+[data-theme='light-sky'] .text-emerald-500,
+[data-theme='light-sky'] .text-emerald-400,
+[data-theme='light-sky'] .text-emerald-300 {
+    color: #007f5f !important;
+    font-weight: 800 !important;
+}
+
+[data-theme='bauhaus'] .text-rose-500,
+[data-theme='bauhaus'] .text-rose-400,
+[data-theme='bauhaus'] .text-rose-300,
+[data-theme='light-sky'] .text-rose-500,
+[data-theme='light-sky'] .text-rose-400,
+[data-theme='light-sky'] .text-rose-300 {
+    color: #d62828 !important;
+    font-weight: 800 !important;
+}
+
+[data-theme='bauhaus'] .bg-emerald-500\/10,
+[data-theme='bauhaus'] .bg-emerald-500\/20,
+[data-theme='light-sky'] .bg-emerald-500\/10,
+[data-theme='light-sky'] .bg-emerald-500\/20 {
+    background-color: rgba(0, 127, 95, 0.12) !important;
+    border: 1.5px solid #007f5f !important;
+    border-radius: 4px !important;
+    color: #007f5f !important;
+}
+
+[data-theme='bauhaus'] .bg-rose-500\/10,
+[data-theme='bauhaus'] .bg-rose-500\/20,
+[data-theme='light-sky'] .bg-rose-500\/10,
+[data-theme='light-sky'] .bg-rose-500\/20 {
+    background-color: rgba(214, 40, 40, 0.12) !important;
+    border: 1.5px solid #d62828 !important;
+    border-radius: 4px !important;
+    color: #d62828 !important;
+}
+
+[data-theme='bauhaus'] .bg-sky-500\/10,
+[data-theme='bauhaus'] .bg-sky-500\/20,
+[data-theme='light-sky'] .bg-sky-500\/10,
+[data-theme='light-sky'] .bg-sky-500\/20 {
+    background-color: rgba(0, 48, 73, 0.12) !important;
+    border: 1.5px solid #003049 !important;
+    border-radius: 4px !important;
+    color: #003049 !important;
+}
+
+/* ---------------------------------------------------------------------- */
+/* BRUTALISMO ÁCIDO / TOXIC VOLT OVERRIDES                                */
+/* Pitch black, electric volt borders #ccff00, zero radius & acid energy */
+/* ---------------------------------------------------------------------- */
+[data-theme='brutalist'] body,
+[data-theme='light-warm'] body {
+    background-color: #080808 !important;
+    color: #ffffff !important;
+    background-image: 
+        radial-gradient(circle at 10% 10%, rgba(204, 255, 0, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(204, 255, 0, 0.03) 0%, transparent 40%) !important;
+}
+
+[data-theme='brutalist'] .bg-slate-900\/50,
+[data-theme='brutalist'] .bg-slate-900\/30,
+[data-theme='brutalist'] .bg-slate-800\/60,
+[data-theme='brutalist'] .bg-slate-800\/50,
+[data-theme='brutalist'] .bg-slate-900,
+[data-theme='light-warm'] .bg-slate-900\/50,
+[data-theme='light-warm'] .bg-slate-900\/30,
+[data-theme='light-warm'] .bg-slate-800\/60,
+[data-theme='light-warm'] .bg-slate-800\/50,
+[data-theme='light-warm'] .bg-slate-900 {
+    background-color: #101010 !important;
+    border: 2px solid #ccff00 !important;
+    border-radius: 0px !important;
+    box-shadow: 5px 5px 0px 0px #ccff00 !important;
+    color: #ffffff !important;
+}
+
+[data-theme='brutalist'] .bg-slate-800,
+[data-theme='light-warm'] .bg-slate-800 {
+    background-color: #1a1a1a !important;
+    border: 1.5px solid #ccff00 !important;
+    border-radius: 0px !important;
+    box-shadow: 3px 3px 0px 0px #ffffff !important;
+    color: #ffffff !important;
+}
+
+[data-theme='brutalist'] button.bg-sky-500,
+[data-theme='brutalist'] .bg-primary,
+[data-theme='light-warm'] button.bg-sky-500,
+[data-theme='light-warm'] .bg-primary {
+    background-color: #ccff00 !important;
+    color: #000000 !important;
+    border: 2px solid #ffffff !important;
+    border-radius: 0px !important;
+    box-shadow: 4px 4px 0px 0px #ffffff !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+}
+
+[data-theme='brutalist'] input,
+[data-theme='brutalist'] select,
+[data-theme='light-warm'] input,
+[data-theme='light-warm'] select {
+    background-color: #000000 !important;
+    border: 2px solid #ccff00 !important;
+    border-radius: 0px !important;
+    color: #ccff00 !important;
+    font-weight: 700 !important;
+}
+
+[data-theme='brutalist'] input:focus,
+[data-theme='brutalist'] select:focus,
+[data-theme='light-warm'] input:focus,
+[data-theme='light-warm'] select:focus {
+    box-shadow: 0 0 0 2px #ffffff !important;
+    border-color: #ccff00 !important;
+}
+
+[data-theme='brutalist'] .text-emerald-500,
+[data-theme='brutalist'] .text-emerald-400,
+[data-theme='brutalist'] .text-emerald-300,
+[data-theme='light-warm'] .text-emerald-500,
+[data-theme='light-warm'] .text-emerald-400,
+[data-theme='light-warm'] .text-emerald-300 {
+    color: #00ff66 !important;
+    font-weight: 800 !important;
+    text-shadow: 0 0 6px rgba(0, 255, 102, 0.4);
+}
+
+[data-theme='brutalist'] .text-rose-500,
+[data-theme='brutalist'] .text-rose-400,
+[data-theme='brutalist'] .text-rose-300,
+[data-theme='light-warm'] .text-rose-500,
+[data-theme='light-warm'] .text-rose-400,
+[data-theme='light-warm'] .text-rose-300 {
+    color: #ff0055 !important;
+    font-weight: 800 !important;
+    text-shadow: 0 0 6px rgba(255, 0, 85, 0.4);
+}
+
+[data-theme='brutalist'] .bg-emerald-500\/10,
+[data-theme='brutalist'] .bg-emerald-500\/20,
+[data-theme='light-warm'] .bg-emerald-500\/10,
+[data-theme='light-warm'] .bg-emerald-500\/20 {
+    background-color: rgba(0, 255, 102, 0.15) !important;
+    border: 1.5px solid #00ff66 !important;
+    border-radius: 0px !important;
+    color: #00ff66 !important;
+}
+
+[data-theme='brutalist'] .bg-rose-500\/10,
+[data-theme='brutalist'] .bg-rose-500\/20,
+[data-theme='light-warm'] .bg-rose-500\/10,
+[data-theme='light-warm'] .bg-rose-500\/20 {
+    background-color: rgba(255, 0, 85, 0.15) !important;
+    border: 1.5px solid #ff0055 !important;
+    border-radius: 0px !important;
+    color: #ff0055 !important;
+}
+
+[data-theme='brutalist'] .bg-sky-500\/10,
+[data-theme='brutalist'] .bg-sky-500\/20,
+[data-theme='light-warm'] .bg-sky-500\/10,
+[data-theme='light-warm'] .bg-sky-500\/20 {
+    background-color: rgba(204, 255, 0, 0.12) !important;
+    border: 1.5px solid #ccff00 !important;
+    border-radius: 0px !important;
+    color: #ccff00 !important;
 }
 

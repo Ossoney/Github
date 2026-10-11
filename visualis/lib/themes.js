@@ -11,7 +11,7 @@ export const THEMES = [
     { id: 'mondrian',   color: '#2563eb' },
     { id: 'pop-art',    color: '#ffff00' },
     { id: 'ukiyo-e',    color: '#1d3557' },
+    { id: 'bauhaus',    color: '#d62828' },
+    { id: 'brutalist',  color: '#ccff00' },
     { id: 'wine',       color: '#f43f5e' },
-    { id: 'light-sky',  color: '#e0f2fe' },
-    { id: 'light-warm', color: '#ffe4e6' },
 ]

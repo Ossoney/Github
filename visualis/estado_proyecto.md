@@ -8,7 +8,7 @@
 > 2. `guia_acceso.md` (Para procesos de instalación y acceso)
 > 3. `estado_proyecto.md` (Este documento, para el estado actual, UX y Changelog)
 
-El proyecto **Finanzas Visuales** (v1.4.36) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
+El proyecto **Finanzas Visuales** (v1.4.37) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
 
 ## Tecnologías Principales
 
@@ -29,7 +29,35 @@ El proyecto **Finanzas Visuales** (v1.4.36) es una aplicación web de contabilid
 - **Gestor de Wallets/Proyectos:** Soporte multi-cuenta y traspasos entre cuentas propias.
 - **Seguridad y Privacidad:** Almacenamiento exclusivamente local, modo privacidad y copias de seguridad (JSON/Excel).
 - **Hábitos:** Rastreador de rutinas con metas semanales, efectos visuales y recordatorios inteligentes.
-- **Personalización Visual:** 10 temas artísticos (incluyendo **Cyberpunk Neón**, **Ukiyo-e**, **Mondrian**, **Pop Art** y **Eclipse Dorado**) y perfiles personalizados.
+- **Personalización Visual:** 10 temas artísticos (incluyendo **Bauhaus Constructivista**, **Brutalismo Ácido**, **Cyberpunk Neón**, **Ukiyo-e**, **Mondrian**, **Pop Art** y **Eclipse Dorado**) y perfiles personalizados.
+
+## 🗓️ Sesión 2026-10-11 — Estado al Cierre
+
+### ✅ Completado Hoy
+- **Nuevas Apariencias Artísticas de Alto Impacto: Bauhaus y Brutalismo Ácido (v1.4.37)**:
+  - **Sustitución de "Cielo Ártico" por "Bauhaus Constructivista" (`bauhaus`)**:
+    - Inspirado en la vanguardia arquitectónica y constructivista de 1920 (Kandinsky, Walter Gropius, Bauhaus Dessau).
+    - Fondo en blanco yeso crudo (`#f4f1ea`) con cuadrícula técnica milimétrica, tarjetas con bordes negros de 2.5px (`#111111`) y esquinas rectas puras con sombras sólidas desplazadas (`5px 5px 0px #111111`).
+    - Botones de acción en rojo cinabrio (`#d62828`), acentos en azul cobalto (`#003049`) y amarillo primario, ingresos en verde geométrico estricto y tipografía de cartel constructivista.
+  - **Sustitución de "Horizonte Ámbar" por "Brutalismo Ácido" (`brutalist`)**:
+    - Inspirado en el brutalismo web contemporáneo y la estética underground industrial/acid techno.
+    - Fondo en negro carbón absoluto (`#080808`), tarjetas en carbón mate (`#101010`) con bordes en verde fósforo brillante **Toxic Volt** (`#ccff00`) y sombras sólidas sin difuminar (`5px 5px 0px #ccff00`).
+    - Botones en amarillo-verde neón brillante con texto negro rotundo, ingresos en verde menta fosforescente (`#00ff66`), gastos en magenta neón punzante (`#ff0055`) y máxima visibilidad de números.
+  - **Compatibilidad y migración automática**: Se añadieron selectores duales en `app/globals.css` y fallbacks automáticos en `ClientLayout.jsx`, `ThemeManager.jsx` y `SystemSettings.jsx` para que usuarios previos de `light-sky` y `light-warm` migren sin fricción a `bauhaus` y `brutalist`.
+  - **Internacionalización completa**: Incorporados los nombres de los temas en los 5 idiomas (`es`, `en`, `gl`, `eu`, `ca`) en `lib/i18n.js`.
+- **Archivos modificados**:
+  - `lib/themes.js`
+  - `app/globals.css`
+  - `lib/i18n.js`
+  - `app/ClientLayout.jsx`
+  - `components/settings/SystemSettings.jsx`
+  - `components/settings/ThemeManager.jsx`
+  - `components/ui/WhatsNewModal.jsx`
+  - `package.json` (bump a 1.4.37)
+  - `lib/version.js`
+  - `caracteristicas.md`
+  - `CHANGELOG.md`
+  - `estado_proyecto.md`
 
 ## 🗓️ Sesión 2026-10-01 (Parte 2) — Estado al Cierre
 
