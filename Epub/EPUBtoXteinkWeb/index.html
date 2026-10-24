@@ -1413,18 +1413,45 @@
             <label for="authEmail" data-i18n="emailLabel">Correo Electrónico</label>
             <input type="email" id="authEmail" class="form-input" required placeholder="tu@email.com">
           </div>
-          <div class="form-group">
+          <div class="form-group" id="formGroupPassword">
             <label for="authPassword" data-i18n="passwordLabel">Contraseña (mín. 6 caracteres)</label>
-            <input type="password" id="authPassword" class="form-input" required minlength="6" placeholder="••••••••">
+            <input type="password" id="authPassword" class="form-input" minlength="6" placeholder="••••••••">
+          </div>
+          <div style="text-align: right; margin-top: -8px; margin-bottom: 12px;" id="forgotPasswordWrap">
+            <a href="#" style="color: var(--text-muted); font-size: 0.8rem; text-decoration: underline;" onclick="toggleForgotPassword(event)" data-i18n="forgotPassword">¿Olvidaste tu contraseña?</a>
           </div>
           <button type="submit" class="btn-submit" style="margin-top: 10px;" id="btnAuthSubmit">
             <span data-i18n="btnLogin">Iniciar Sesión</span>
           </button>
         </form>
-        <div style="margin-top: 16px; text-align: center; font-size: 0.85rem;">
+        <div style="margin-top: 16px; text-align: center; font-size: 0.85rem;" id="authSwitchContainer">
           <span id="authToggleText" data-i18n="noAccount">¿No tienes cuenta?</span>
           <a href="#" style="color: var(--accent); font-weight: 600;" onclick="toggleAuthMode(event)" id="authToggleLink" data-i18n="registerHere">Regístrate aquí</a>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Reset Password (con Token) -->
+  <div class="modal-overlay" id="resetModal" onclick="closeResetModal(event)">
+    <div class="modal-content" style="max-width: 420px;" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title" data-i18n="resetTitle">Nueva Contraseña</div>
+        <button class="btn-close-modal" onclick="closeResetModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;" data-i18n="resetSubtitle">
+          Introduce tu nueva contraseña (mínimo 6 caracteres).
+        </p>
+        <form onsubmit="handleResetSubmit(event)">
+          <div class="form-group">
+            <label for="newResetPassword" data-i18n="newPasswordLabel">Nueva Contraseña</label>
+            <input type="password" id="newResetPassword" class="form-input" required minlength="6" placeholder="••••••••">
+          </div>
+          <button type="submit" class="btn-submit" style="margin-top: 10px;">
+            <span data-i18n="btnSavePassword">Guardar Contraseña</span>
+          </button>
+        </form>
       </div>
     </div>
   </div>
@@ -1527,6 +1554,15 @@
         hasAccount: "¿Ya tienes cuenta?",
         registerHere: "Regístrate aquí",
         loginHere: "Inicia sesión aquí",
+        forgotPassword: "¿Olvidaste tu contraseña?",
+        forgotTitle: "Recuperar Contraseña",
+        forgotSubtitle: "Indica tu correo electrónico para restablecer la contraseña de tu cuenta.",
+        btnSendReset: "Enviar Enlace de Recuperación",
+        backToLogin: "Volver a iniciar sesión",
+        resetTitle: "Nueva Contraseña",
+        resetSubtitle: "Introduce tu nueva contraseña (mínimo 6 caracteres).",
+        newPasswordLabel: "Nueva Contraseña",
+        btnSavePassword: "Guardar Nueva Contraseña",
         pricingTitle: "☕ Recargar Conversiones con Ko-fi",
         pricingSubtitle: "Los créditos no caducan y se utilizan automáticamente al agotar tu cupo diario gratuito.",
         plan100Title: "Pack Estándar",
@@ -1614,6 +1650,15 @@
         hasAccount: "Already have an account?",
         registerHere: "Sign up here",
         loginHere: "Sign in here",
+        forgotPassword: "Forgot your password?",
+        forgotTitle: "Password Recovery",
+        forgotSubtitle: "Enter your email address to reset your account password.",
+        btnSendReset: "Send Reset Link",
+        backToLogin: "Back to login",
+        resetTitle: "New Password",
+        resetSubtitle: "Enter your new password (minimum 6 characters).",
+        newPasswordLabel: "New Password",
+        btnSavePassword: "Save New Password",
         pricingTitle: "☕ Top Up Conversions with Ko-fi",
         pricingSubtitle: "Purchased credits never expire and are automatically used when your free daily allowance is exhausted.",
         plan100Title: "Standard Pack",
@@ -1749,6 +1794,9 @@
       }
     }
 
+    let authMode = 'login'; // 'login', 'register' o 'forgot'
+    let activeResetToken = null;
+
     function openAuthModal() {
       authMode = 'login';
       updateAuthModalUI();
@@ -1766,22 +1814,45 @@
       updateAuthModalUI();
     }
 
+    function toggleForgotPassword(e) {
+      if (e) e.preventDefault();
+      authMode = authMode === 'forgot' ? 'login' : 'forgot';
+      updateAuthModalUI();
+    }
+
     function updateAuthModalUI() {
       const title = document.getElementById('authModalTitle');
       const submitBtn = document.getElementById('btnAuthSubmit');
       const toggleText = document.getElementById('authToggleText');
       const toggleLink = document.getElementById('authToggleLink');
+      const pwdGroup = document.getElementById('formGroupPassword');
+      const forgotWrap = document.getElementById('forgotPasswordWrap');
+      const authPassword = document.getElementById('authPassword');
 
       if (authMode === 'login') {
         title.innerText = t('authTitle');
         submitBtn.querySelector('span').innerText = t('btnLogin');
         toggleText.innerText = t('noAccount');
         toggleLink.innerText = t('registerHere');
-      } else {
+        pwdGroup.style.display = 'flex';
+        forgotWrap.style.display = 'block';
+        authPassword.required = true;
+      } else if (authMode === 'register') {
         title.innerText = t('btnRegister');
         submitBtn.querySelector('span').innerText = t('btnRegister');
         toggleText.innerText = t('hasAccount');
         toggleLink.innerText = t('loginHere');
+        pwdGroup.style.display = 'flex';
+        forgotWrap.style.display = 'none';
+        authPassword.required = true;
+      } else if (authMode === 'forgot') {
+        title.innerText = t('forgotTitle');
+        submitBtn.querySelector('span').innerText = t('btnSendReset');
+        toggleText.innerText = "";
+        toggleLink.innerText = t('backToLogin');
+        pwdGroup.style.display = 'none';
+        forgotWrap.style.display = 'none';
+        authPassword.required = false;
       }
     }
 
@@ -1789,6 +1860,30 @@
       e.preventDefault();
       const email = document.getElementById('authEmail').value;
       const password = document.getElementById('authPassword').value;
+
+      if (authMode === 'forgot') {
+        try {
+          const res = await fetch('/api/auth/forgot-password', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.detail || "Error al solicitar recuperación");
+          
+          if (data.reset_link) {
+            // Mostrar modal o enlace directo al usuario
+            alert((currentLang === 'es' ? "Enlace de recuperación generado:\n\n" : "Recovery link generated:\n\n") + data.reset_link);
+            window.location.href = data.reset_link;
+          } else {
+            alert(data.message);
+          }
+        } catch (err) {
+          alert(err.message);
+        }
+        return;
+      }
+
       const endpoint = authMode === 'login' ? '/api/auth/login' : '/api/auth/register';
 
       try {
@@ -1803,6 +1898,39 @@
         }
         closeAuthModal();
         await refreshQuota();
+      } catch (err) {
+        alert(err.message);
+      }
+    }
+
+    function openResetModal(token) {
+      activeResetToken = token;
+      document.getElementById('resetModal').classList.add('active');
+    }
+
+    function closeResetModal(e) {
+      if (e) e.stopPropagation();
+      document.getElementById('resetModal').classList.remove('active');
+    }
+
+    async function handleResetSubmit(e) {
+      e.preventDefault();
+      const newPassword = document.getElementById('newResetPassword').value;
+      if (!activeResetToken || newPassword.length < 6) return;
+
+      try {
+        const res = await fetch('/api/auth/reset-password', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token: activeResetToken, password: newPassword })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.detail || "Error al cambiar la contraseña");
+
+        alert(currentLang === 'es' ? "¡Contraseña actualizada con éxito! Ya puedes iniciar sesión." : "Password updated successfully! You can now log in.");
+        closeResetModal();
+        window.history.replaceState({}, document.title, "/");
+        openAuthModal();
       } catch (err) {
         alert(err.message);
       }
@@ -2526,7 +2654,7 @@
     setLanguage(currentLang);
     refreshQuota();
 
-    // Comprobar retorno de pago
+    // Comprobar retorno de pago o token de recuperación de contraseña
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('payment') === 'success') {
       const added = urlParams.get('added') || '';
@@ -2535,6 +2663,9 @@
         : `Payment successful! ${added} conversions added to your account.`);
       window.history.replaceState({}, document.title, "/");
       refreshQuota();
+    } else if (urlParams.get('reset_token')) {
+      const resetToken = urlParams.get('reset_token');
+      openResetModal(resetToken);
     }
   </script>
 </body>

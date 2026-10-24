@@ -115,6 +115,51 @@ async def api_login(request):
     except Exception as e:
         return JSONResponse({"detail": str(e)}, status_code=500)
 
+async def api_forgot_password(request):
+    try:
+        body = await request.json()
+        email = body.get("email", "").strip().lower()
+        if not email:
+            return JSONResponse({"detail": "Indica un correo electrónico"}, status_code=400)
+
+        token = database.create_password_reset_token(email)
+        if not token:
+            # Por privacidad no revelamos si existe o no, pero informamos positivamente
+            return JSONResponse({
+                "success": True, 
+                "message": "Si el correo está registrado, se ha generado el enlace de restablecimiento."
+            })
+
+        host_url = str(request.base_url).rstrip("/")
+        reset_link = f"{host_url}/?reset_token={token}"
+        print(f"🔑 [PASSWORD RESET] Enlace generado para {email}: {reset_link}")
+
+        return JSONResponse({
+            "success": True,
+            "message": "Enlace de restablecimiento generado con éxito.",
+            "reset_link": reset_link,
+            "token": token
+        })
+    except Exception as e:
+        return JSONResponse({"detail": str(e)}, status_code=500)
+
+async def api_reset_password(request):
+    try:
+        body = await request.json()
+        token = body.get("token", "").strip()
+        new_password = body.get("password", "").strip()
+
+        if not token or len(new_password) < 6:
+            return JSONResponse({"detail": "Token requerido y contraseña de mín. 6 caracteres"}, status_code=400)
+
+        success = database.complete_password_reset(token, new_password)
+        if not success:
+            return JSONResponse({"detail": "El enlace ha caducado o no es válido"}, status_code=400)
+
+        return JSONResponse({"success": True, "message": "Contraseña actualizada correctamente"})
+    except Exception as e:
+        return JSONResponse({"detail": str(e)}, status_code=500)
+
 async def api_logout(request):
     token = request.cookies.get("session_token")
     if token:
@@ -370,6 +415,8 @@ routes = [
     Route("/api/auth/register", api_register, methods=["POST"]),
     Route("/api/auth/login", api_login, methods=["POST"]),
     Route("/api/auth/logout", api_logout, methods=["POST"]),
+    Route("/api/auth/forgot-password", api_forgot_password, methods=["POST"]),
+    Route("/api/auth/reset-password", api_reset_password, methods=["POST"]),
     Route("/api/payment/create-checkout", api_create_checkout, methods=["POST"]),
     Route("/api/payment/success", api_payment_success, methods=["GET"]),
     Route("/api/kofi/webhook", api_kofi_webhook, methods=["POST"]),

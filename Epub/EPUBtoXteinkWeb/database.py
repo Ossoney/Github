@@ -44,6 +44,16 @@ def init_db():
             last_used_date TEXT DEFAULT ''
         )
         """)
+        # Tabla de códigos de recuperación de contraseña
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS password_resets (
+            token TEXT PRIMARY KEY,
+            user_id INTEGER NOT NULL,
+            created_at TEXT NOT NULL,
+            expires_at TEXT NOT NULL,
+            FOREIGN KEY (user_id) REFERENCES users (id)
+        )
+        """)
         # Tabla de pagos (Stripe sessions)
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS payments (
@@ -91,6 +101,70 @@ def verify_user(email: str, password: str):
         if pwd_hash == row['password_hash']:
             return row
     return None
+
+def reset_password(email: str, new_password: str) -> bool:
+    email = email.strip().lower()
+    salt = secrets.token_hex(16)
+    pwd_hash = _hash_password(new_password, salt)
+    with get_db() as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT id FROM users WHERE email = ?", (email,))
+        row = cursor.fetchone()
+        if not row:
+            return False
+        user_id = row['id']
+        cursor.execute(
+            "UPDATE users SET password_hash = ?, salt = ? WHERE id = ?",
+            (pwd_hash, salt, user_id)
+        )
+        # Invalidar sesiones antiguas por seguridad
+        cursor.execute("DELETE FROM sessions WHERE user_id = ?", (user_id,))
+        conn.commit()
+        return True
+
+def create_password_reset_token(email: str) -> str:
+    email = email.strip().lower()
+    user = get_user_by_email(email)
+    if not user:
+        return None
+    token = secrets.token_urlsafe(24)
+    now = datetime.datetime.now()
+    expires = (now + datetime.timedelta(hours=2)).isoformat()
+    with get_db() as conn:
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM password_resets WHERE user_id = ?", (user['id'],))
+        cursor.execute(
+            "INSERT INTO password_resets (token, user_id, created_at, expires_at) VALUES (?, ?, ?, ?)",
+            (token, user['id'], now.isoformat(), expires)
+        )
+        conn.commit()
+    return token
+
+def verify_reset_token(token: str):
+    now = datetime.datetime.now().isoformat()
+    with get_db() as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT user_id FROM password_resets WHERE token = ? AND expires_at > ?",
+            (token, now)
+        )
+        row = cursor.fetchone()
+        if row:
+            cursor.execute("SELECT * FROM users WHERE id = ?", (row['user_id'],))
+            return cursor.fetchone()
+    return None
+
+def complete_password_reset(token: str, new_password: str) -> bool:
+    user = verify_reset_token(token)
+    if not user:
+        return False
+    success = reset_password(user['email'], new_password)
+    if success:
+        with get_db() as conn:
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM password_resets WHERE token = ?", (token,))
+            conn.commit()
+    return success
 
 def create_session(user_id: int) -> str:
     token = secrets.token_urlsafe(32)
