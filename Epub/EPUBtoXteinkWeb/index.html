@@ -1223,6 +1223,9 @@
         </div>
       </div>
       <div class="top-bar-right" id="userControls">
+        <button class="btn-pricing" id="btnAdminPanel" onclick="openAdminModal()" style="display: none; background: linear-gradient(135deg, #8a2be2, #4158d0); color: white;">
+          <span>👑</span> <span data-i18n="adminPanel">Panel Master</span>
+        </button>
         <button class="btn-pricing" onclick="openPricingModal()">
           <span>💳</span> <span data-i18n="buyCredits">Comprar Créditos</span>
         </button>
@@ -1459,6 +1462,94 @@
     </div>
   </div>
 
+  <!-- Modal: Panel de Control Master -->
+  <div class="modal-overlay" id="adminModal" onclick="closeAdminModal(event)">
+    <div class="modal-content" style="max-width: 850px;" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>👑</span> <span>Panel de Mando Master (Administración)</span>
+        </div>
+        <button class="btn-close-modal" onclick="closeAdminModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <!-- Sub-pestañas del panel de administración -->
+        <div style="display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
+          <button class="btn-control-toggle active" id="tabAdminUsers" onclick="switchAdminSubTab('users')">👥 Usuarios Registrados (<span id="countRegUsers">0</span>)</button>
+          <button class="btn-control-toggle" id="tabAdminAnon" onclick="switchAdminSubTab('anon')">🌐 Usuarios Anónimos (<span id="countAnonUsers">0</span>)</button>
+          <button class="btn-control-toggle" id="tabAdminPayments" onclick="switchAdminSubTab('payments')">💰 Historial de Pagos (<span id="countPayments">0</span>)</button>
+        </div>
+
+        <!-- Sección: Usuarios Registrados -->
+        <div id="adminSectionUsers">
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+            Modifica o añade descargas contratadas/créditos a cualquier usuario en tiempo real:
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="modal-table" style="font-size: 0.82rem;">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Correo</th>
+                  <th>Uso Hoy</th>
+                  <th>Créditos Disponibles</th>
+                  <th>Último Acceso</th>
+                  <th>Acción / Asignar</th>
+                </tr>
+              </thead>
+              <tbody id="adminUsersTableBody">
+                <tr><td colspan="6" style="text-align: center;">Cargando...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Sección: Usuarios Anónimos -->
+        <div id="adminSectionAnon" style="display: none;">
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+            Registro de IPs e identificadores que han usado el cupo anónimo (1/día):
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="modal-table" style="font-size: 0.82rem;">
+              <thead>
+                <tr>
+                  <th>IP / Identificador</th>
+                  <th>Uso Hoy</th>
+                  <th>Última Fecha</th>
+                </tr>
+              </thead>
+              <tbody id="adminAnonTableBody">
+                <tr><td colspan="3" style="text-align: center;">Cargando...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Sección: Pagos -->
+        <div id="adminSectionPayments" style="display: none;">
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+            Transacciones y recargas registradas a través de Ko-fi y pasarelas:
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="modal-table" style="font-size: 0.82rem;">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Usuario</th>
+                  <th>Importe</th>
+                  <th>Créditos Sumados</th>
+                  <th>ID Sesión / Origen</th>
+                </tr>
+              </thead>
+              <tbody id="adminPaymentsTableBody">
+                <tr><td colspan="5" style="text-align: center;">Cargando...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal: Pricing & Buy Credits (Ko-fi) -->
   <div class="modal-overlay" id="pricingModal" onclick="closePricingModal(event)">
     <div class="modal-content" style="max-width: 620px;" onclick="event.stopPropagation()">
@@ -1526,6 +1617,7 @@
         badgeTitle: "E-INK OPTIMIZATION SUITE",
         subtitle: "Adapta, reduce, comprime y estabiliza tus libros electrónicos e imágenes para Xteink X3, X4 y X4 Pro.",
         buyCredits: "Comprar Créditos",
+        adminPanel: "Panel Master",
         loginRegister: "Acceso / Registro",
         logout: "Cerrar sesión",
         tabEpub: "📚 Optimiza tus libros EPUB para Xteink",
@@ -1622,6 +1714,7 @@
         badgeTitle: "E-INK OPTIMIZATION SUITE",
         subtitle: "Adapt, shrink, compress and stabilize your e-books and images for Xteink X3, X4 and X4 Pro.",
         buyCredits: "Buy Credits",
+        adminPanel: "Master Panel",
         loginRegister: "Login / Register",
         logout: "Log out",
         tabEpub: "📚 Optimize your EPUB books for Xteink",
@@ -1767,6 +1860,8 @@
         const badgeText = document.getElementById('quotaText');
         const authBtn = document.getElementById('btnAuthToggle');
 
+        const adminBtn = document.getElementById('btnAdminPanel');
+
         if (data.logged_in) {
           authBtn.innerText = `${data.email} (${t('logout')})`;
           authBtn.onclick = handleLogout;
@@ -1776,6 +1871,7 @@
             badge.classList.remove('low');
             badge.style.borderColor = "var(--gold)";
             badge.style.color = "var(--gold)";
+            if (adminBtn) adminBtn.style.display = 'inline-flex';
           } else {
             badgeText.innerText = t('quotaUser', {
               rem: data.daily_remaining,
@@ -1784,10 +1880,12 @@
             badge.classList.toggle('low', data.total_available === 0);
             badge.style.borderColor = "";
             badge.style.color = "";
+            if (adminBtn) adminBtn.style.display = 'none';
           }
         } else {
           authBtn.innerText = t('loginRegister');
           authBtn.onclick = openAuthModal;
+          if (adminBtn) adminBtn.style.display = 'none';
 
           badgeText.innerText = t('quotaAnon', { rem: data.daily_remaining });
           badge.classList.toggle('low', data.daily_remaining === 0);
@@ -1937,6 +2035,137 @@
       } catch (err) {
         alert(err.message);
       }
+    }
+
+    // ==========================================
+    // PANEL DE MANDO MASTER / ADMINISTRACIÓN
+    // ==========================================
+    async function openAdminModal() {
+      document.getElementById('adminModal').classList.add('active');
+      await loadAdminStats();
+    }
+
+    function closeAdminModal(e) {
+      if (e) e.stopPropagation();
+      document.getElementById('adminModal').classList.remove('active');
+    }
+
+    function switchAdminSubTab(tab) {
+      document.getElementById('tabAdminUsers').classList.toggle('active', tab === 'users');
+      document.getElementById('tabAdminAnon').classList.toggle('active', tab === 'anon');
+      document.getElementById('tabAdminPayments').classList.toggle('active', tab === 'payments');
+
+      document.getElementById('adminSectionUsers').style.display = tab === 'users' ? 'block' : 'none';
+      document.getElementById('adminSectionAnon').style.display = tab === 'anon' ? 'block' : 'none';
+      document.getElementById('adminSectionPayments').style.display = tab === 'payments' ? 'block' : 'none';
+    }
+
+    async function loadAdminStats() {
+      try {
+        const res = await fetch('/api/admin/stats');
+        if (!res.ok) throw new Error("No tienes permisos para ver el panel Master");
+        const data = await res.json();
+
+        document.getElementById('countRegUsers').innerText = data.total_registered_users;
+        document.getElementById('countAnonUsers').innerText = data.total_anon_tracked;
+        document.getElementById('countPayments').innerText = data.payments.length;
+
+        // Render Usuarios Registrados
+        const usersTbody = document.getElementById('adminUsersTableBody');
+        usersTbody.innerHTML = '';
+        data.users.forEach(u => {
+          const tr = document.createElement('tr');
+          const isMaster = (u.email.toLowerCase() === 'ossoney@yahoo.es' || u.email.toLowerCase() === 'ossoney@gmail.com');
+          tr.innerHTML = `
+            <td>#${u.id}</td>
+            <td><strong>${u.email}</strong> ${isMaster ? '<span style="color:var(--gold);">👑 Master</span>' : ''}</td>
+            <td>${u.daily_used} hoy</td>
+            <td>
+              <span id="user-credits-val-${u.id}" style="font-weight:700; color:var(--accent); font-size:0.95rem;">
+                ${isMaster ? '∞' : u.credits_purchased}
+              </span>
+            </td>
+            <td><small style="color:var(--text-muted);">${u.last_used_date || 'Sin uso aún'}</small></td>
+            <td>
+              ${isMaster ? '<small style="color:var(--gold);">Ilimitado</small>' : `
+                <div style="display:flex; align-items:center; gap:4px;">
+                  <input type="number" id="input-credits-${u.id}" value="${u.credits_purchased}" min="0" style="width:70px; background:#0d1117; color:white; border:1px solid var(--border); padding:3px 6px; border-radius:4px; font-size:0.8rem;">
+                  <button class="btn-item-crop" onclick="saveUserCredits(${u.id})">Guardar</button>
+                  <button class="btn-item-crop" style="background:rgba(63,185,80,0.15); color:var(--success); border-color:var(--success);" onclick="quickAddCredits(${u.id}, 100)">+100</button>
+                </div>
+              `}
+            </td>
+          `;
+          usersTbody.appendChild(tr);
+        });
+
+        // Render Usuarios Anónimos
+        const anonTbody = document.getElementById('adminAnonTableBody');
+        anonTbody.innerHTML = '';
+        if (data.anon_users.length === 0) {
+          anonTbody.innerHTML = '<tr><td colspan="3" style="text-align:center;">No hay registros anónimos todavía.</td></tr>';
+        } else {
+          data.anon_users.forEach(a => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td><code>${a.identifier}</code></td>
+              <td>${a.daily_used} / 1 hoy</td>
+              <td><small style="color:var(--text-muted);">${a.last_used_date || '-'}</small></td>
+            `;
+            anonTbody.appendChild(tr);
+          });
+        }
+
+        // Render Pagos
+        const payTbody = document.getElementById('adminPaymentsTableBody');
+        payTbody.innerHTML = '';
+        if (data.payments.length === 0) {
+          payTbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No hay pagos registrados aún.</td></tr>';
+        } else {
+          data.payments.forEach(p => {
+            const tr = document.createElement('tr');
+            const eur = (p.amount_cents / 100).toFixed(2);
+            tr.innerHTML = `
+              <td><small>${p.created_at.split('T')[0]}</small></td>
+              <td><strong>${p.email || 'Desconocido'}</strong></td>
+              <td style="color:var(--gold); font-weight:700;">${eur} €</td>
+              <td><strong style="color:var(--success);">+${p.credits_added}</strong></td>
+              <td><code>${p.session_id}</code></td>
+            `;
+            payTbody.appendChild(tr);
+          });
+        }
+      } catch (err) {
+        alert("Error cargando panel de control: " + err.message);
+      }
+    }
+
+    async function saveUserCredits(userId) {
+      const input = document.getElementById(`input-credits-${userId}`);
+      if (!input) return;
+      const credits = parseInt(input.value) || 0;
+
+      try {
+        const res = await fetch('/api/admin/update-credits', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user_id: userId, credits })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.detail || "Error actualizando créditos");
+
+        document.getElementById(`user-credits-val-${userId}`).innerText = credits;
+        alert(`¡Créditos actualizados! El usuario #${userId} ahora tiene ${credits} descargas disponibles.`);
+      } catch (e) {
+        alert("Error: " + e.message);
+      }
+    }
+
+    async function quickAddCredits(userId, amount) {
+      const input = document.getElementById(`input-credits-${userId}`);
+      if (!input) return;
+      input.value = (parseInt(input.value) || 0) + amount;
+      await saveUserCredits(userId);
     }
 
     async function handleLogout() {

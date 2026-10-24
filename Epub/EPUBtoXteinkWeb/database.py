@@ -377,3 +377,63 @@ def record_payment(session_id: str, user_id: int, amount_cents: int, credits_add
             (session_id, user_id, amount_cents, credits_added, status, now)
         )
         conn.commit()
+
+# ==========================================
+# PANEL DE CONTROL / ADMINISTRACIÓN MASTER
+# ==========================================
+
+def get_admin_dashboard_stats():
+    """
+    Retorna datos agregados para el panel de control master:
+    - Lista de usuarios registrados (email, créditos comprados, uso hoy, fecha registro)
+    - Lista de actividad de usuarios anónimos (IP/ID, uso hoy, última fecha)
+    - Lista de pagos registrados (Stripe / Ko-fi)
+    """
+    with get_db() as conn:
+        cursor = conn.cursor()
+        
+        # Usuarios registrados
+        cursor.execute("""
+            SELECT id, email, credits_purchased, daily_used, last_used_date, created_at
+            FROM users
+            ORDER BY id DESC
+        """)
+        users = [dict(r) for r in cursor.fetchall()]
+
+        # Usuarios anónimos
+        cursor.execute("""
+            SELECT identifier, daily_used, last_used_date
+            FROM anon_usage
+            ORDER BY last_used_date DESC, daily_used DESC
+            LIMIT 100
+        """)
+        anon_users = [dict(r) for r in cursor.fetchall()]
+
+        # Pagos / Recargas
+        cursor.execute("""
+            SELECT p.session_id, p.amount_cents, p.credits_added, p.status, p.created_at, u.email
+            FROM payments p
+            LEFT JOIN users u ON p.user_id = u.id
+            ORDER BY p.created_at DESC
+            LIMIT 50
+        """)
+        payments = [dict(r) for r in cursor.fetchall()]
+
+        return {
+            "total_registered_users": len(users),
+            "total_anon_tracked": len(anon_users),
+            "users": users,
+            "anon_users": anon_users,
+            "payments": payments
+        }
+
+def set_user_credits(user_id: int, new_credits: int) -> bool:
+    """Permite al master asignar o modificar directamente los créditos contratados/disponibles de un usuario."""
+    with get_db() as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            "UPDATE users SET credits_purchased = ? WHERE id = ?",
+            (max(0, new_credits), user_id)
+        )
+        conn.commit()
+        return cursor.rowcount > 0

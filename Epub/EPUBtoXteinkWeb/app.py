@@ -180,6 +180,33 @@ async def api_logout(request):
     resp.delete_cookie("session_token")
     return resp
 
+# ----------------- PANEL DE CONTROL MASTER -----------------
+async def api_admin_stats(request):
+    user = get_current_user(request)
+    if not user or not database.is_master_user(user['email']):
+        return JSONResponse({"detail": "Acceso restringido a usuarios Master"}, status_code=403)
+
+    stats = database.get_admin_dashboard_stats()
+    return JSONResponse(stats)
+
+async def api_admin_update_credits(request):
+    user = get_current_user(request)
+    if not user or not database.is_master_user(user['email']):
+        return JSONResponse({"detail": "Acceso restringido a usuarios Master"}, status_code=403)
+
+    try:
+        body = await request.json()
+        target_user_id = int(body.get("user_id"))
+        new_credits = int(body.get("credits"))
+
+        success = database.set_user_credits(target_user_id, new_credits)
+        if not success:
+            return JSONResponse({"detail": "Usuario no encontrado"}, status_code=404)
+
+        return JSONResponse({"success": True, "user_id": target_user_id, "new_credits": new_credits})
+    except Exception as e:
+        return JSONResponse({"detail": str(e)}, status_code=500)
+
 # ----------------- STRIPE CHECKOUT & CREDITS -----------------
 async def api_create_checkout(request):
     user = get_current_user(request)
@@ -431,6 +458,8 @@ routes = [
     Route("/api/auth/logout", api_logout, methods=["POST"]),
     Route("/api/auth/forgot-password", api_forgot_password, methods=["POST"]),
     Route("/api/auth/reset-password", api_reset_password, methods=["POST"]),
+    Route("/api/admin/stats", api_admin_stats, methods=["GET"]),
+    Route("/api/admin/update-credits", api_admin_update_credits, methods=["POST"]),
     Route("/api/payment/create-checkout", api_create_checkout, methods=["POST"]),
     Route("/api/payment/success", api_payment_success, methods=["GET"]),
     Route("/api/kofi/webhook", api_kofi_webhook, methods=["POST"]),
