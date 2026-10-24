@@ -5,10 +5,13 @@ import shutil
 import zipfile
 import json
 import datetime
+import re
 from pathlib import Path
 
 from starlette.applications import Starlette
-from starlette.responses import HTMLResponse, JSONResponse, FileResponse, RedirectResponse
+from starlette.responses import HTMLResponse, JSONResponse, FileResponse, RedirectResponse, Response
+from starlette.middleware import Middleware
+from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.routing import Route
 import uvicorn
 import stripe
@@ -22,6 +25,19 @@ FAVICON_ICO = BASE_DIR / "favicon.ico"
 FAVICON_PNG = BASE_DIR / "favicon.png"
 PROCESSED_STORAGE = BASE_DIR / "temp_downloads"
 PROCESSED_STORAGE.mkdir(exist_ok=True)
+
+# Límite máximo de tamaño por archivo: 50 MB
+MAX_UPLOAD_SIZE = 50 * 1024 * 1024
+
+# Middleware global de seguridad (OWASP Security Headers)
+class SecurityHeadersMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request, call_next):
+        response: Response = await call_next(request)
+        response.headers["X-Frame-Options"] = "SAMEORIGIN"
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-XSS-Protection"] = "1; mode=block"
+        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+        return response
 
 # Configuración de Stripe y Ko-fi
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "sk_test_placeholder_key")
@@ -345,13 +361,25 @@ async def api_kofi_webhook(request):
 
 # ----------------- CONVERSIÓN CON CONTROL DE CUPO -----------------
 async def api_convert(request):
-    filename = request.query_params.get("filename", "document.epub")
+    raw_filename = request.query_params.get("filename", "document.epub")
+    # Sanitizar nombre del archivo para prevenir ataques Path Traversal
+    filename = Path(raw_filename).name
+    # Eliminar cualquier caracter peligroso del nombre
+    filename = re.sub(r'[^a-zA-Z0-9_\.\-\(\)\s]', '_', filename).strip() or "document.epub"
+
+    raw_batch = request.query_params.get("batch_id", "")
+    batch_id = re.sub(r'[^a-zA-Z0-9_\-]', '', raw_batch) if raw_batch else ""
+
     device = request.query_params.get("device", "X4p")
     mode = request.query_params.get("mode", "epub")
-    batch_id = request.query_params.get("batch_id", "")
 
     if device not in DEVICE_PROFILES:
         device = "X4p"
+
+    # Verificar Content-Length si viene en cabeceras para rechazo temprano
+    content_length = request.headers.get("content-length")
+    if content_length and int(content_length) > MAX_UPLOAD_SIZE:
+        return JSONResponse({"detail": "El archivo excede el tamaño máximo permitido (50 MB)"}, status_code=413)
 
     # Verificar cupos / créditos
     user = get_current_user(request)
@@ -372,6 +400,9 @@ async def api_convert(request):
     body_bytes = await request.body()
     if not body_bytes:
         return JSONResponse({"detail": "No se recibieron datos"}, status_code=400)
+
+    if len(body_bytes) > MAX_UPLOAD_SIZE:
+        return JSONResponse({"detail": "El archivo excede el tamaño máximo permitido (50 MB)"}, status_code=413)
 
     task_id = str(uuid.uuid4())
     work_dir = PROCESSED_STORAGE / (batch_id if batch_id else task_id)
@@ -468,7 +499,11 @@ routes = [
     Route("/api/download_batch/{batch_id}", api_download_zip, methods=["GET"]),
 ]
 
-app = Starlette(routes=routes)
+middleware = [
+    Middleware(SecurityHeadersMiddleware)
+]
+
+app = Starlette(routes=routes, middleware=middleware)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8080))
