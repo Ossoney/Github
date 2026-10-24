@@ -1,4 +1,4 @@
-# 🌟 VISUALIS v1.4.38 (Octubre 2026) - Guía de Funcionalidades
+# 🌟 VISUALIS v1.4.40 (Octubre 2026) - Guía de Funcionalidades
 
 Visualis es una aplicación de gestión financiera personal diseñada para ser privada, potente y visualmente atractiva. A continuación se detallan todas sus capacidades:
 
@@ -122,3 +122,7 @@ Soporte completo multi-idioma:
 ### **Modo Privacidad**
 
 * **Ocultación de saldos**: Botón en la cabecera (icono de ojo) que permite ofuscar todos los importes sensibles de la aplicación con un solo clic, ideal para usar la app en público.
+
+### **Registro Local de Eventos y Errores (Logging)**
+
+* **Archivo `visualis.log` en el programa**: Registro automático de eventos e incidencias directamente en el archivo `visualis.log` de la carpeta del proyecto. Captura excepciones de cliente y eventos clave de ejecución.

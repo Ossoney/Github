@@ -9,6 +9,7 @@ import { ToastProvider } from '@/components/ui/UI'
 import { useStore } from '@/hooks/useStore'
 import { db } from '@/lib/db'
 import { WhatsNewModal } from '@/components/ui/WhatsNewModal'
+import { logger } from '@/lib/logger'
 
 export function ClientLayout({ children }) {
     const { setSelectedWalletId } = useStore()
@@ -16,6 +17,27 @@ export function ClientLayout({ children }) {
     // ... (keep existing useEffect)
     // Check for recurring transactions & Theme on mount
     useEffect(() => {
+        logger.info('Visualis iniciado en el cliente')
+
+        const handleGlobalError = (event) => {
+            logger.error('Error no controlado en la aplicación', {
+                message: event.message,
+                filename: event.filename,
+                lineno: event.lineno,
+                colno: event.colno,
+                error: event.error ? event.error.stack : null
+            }, 'window.onerror')
+        }
+
+        const handleUnhandledRejection = (event) => {
+            logger.error('Promesa rechazada no controlada', {
+                reason: event.reason instanceof Error ? event.reason.stack : event.reason
+            }, 'unhandledrejection')
+        }
+
+        window.addEventListener('error', handleGlobalError)
+        window.addEventListener('unhandledrejection', handleUnhandledRejection)
+
         processRecurringTransactions()
         processAutosave()
 
@@ -49,6 +71,11 @@ export function ClientLayout({ children }) {
             }
         }
         loadSettings()
+
+        return () => {
+            window.removeEventListener('error', handleGlobalError)
+            window.removeEventListener('unhandledrejection', handleUnhandledRejection)
+        }
     }, [])
 
     return (

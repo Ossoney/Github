@@ -1,5 +1,16 @@
 # 📜 Changelog - VISUALIS
 
+## [1.4.39] - 2026-10-15
+
+### Added
+
+- **Sistema Local de Logging de Eventos y Errores (`visualis.log`)**:
+  - Implementado endpoint API interno en Next.js (`/api/log`) para registrar eventos y excepciones en tiempo de ejecución.
+  - Generación y persistencia directa en el archivo `visualis.log` en la carpeta raíz del proyecto (`C:\Users\OscarSson\Videos\GitHub\visualis\`).
+  - Módulo cliente `lib/logger.js` con métodos `logger.info`, `logger.warn` y `logger.error`.
+  - Capturador global de errores (`window.onerror` y `unhandledrejection`) configurado en `ClientLayout.jsx` para registrar automáticamente cualquier fallo de ejecución en el cliente.
+  - Exclusión de `visualis.log` y `*.log` en `.gitignore` para preservar la limpieza del repositorio.
+
 ## [1.4.38] - 2026-10-11
 
 ### Added

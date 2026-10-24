@@ -8,7 +8,7 @@
 > 2. `guia_acceso.md` (Para procesos de instalación y acceso)
 > 3. `estado_proyecto.md` (Este documento, para el estado actual, UX y Changelog)
 
-El proyecto **Finanzas Visuales** (v1.4.38) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
+El proyecto **Finanzas Visuales** (v1.4.40) es una aplicación web de contabilidad personal diseñada bajo una arquitectura **"Local-First"**. Esto significa que los datos se almacenan directamente en el dispositivo del usuario utilizando IndexedDB, descartando el uso de bases de datos externas para garantizar la máxima privacidad y velocidad.
 
 ## Tecnologías Principales
 
@@ -30,6 +30,17 @@ El proyecto **Finanzas Visuales** (v1.4.38) es una aplicación web de contabilid
 - **Seguridad y Privacidad:** Almacenamiento exclusivamente local, modo privacidad y copias de seguridad (JSON/Excel).
 - **Hábitos:** Rastreador de rutinas con metas semanales, efectos visuales y recordatorios inteligentes.
 - **Personalización Visual:** 10 temas artísticos (incluyendo **Futurismo Dinámico**, **Fauvismo Salvaje**, **Bauhaus Constructivista**, **Brutalismo Ácido**, **Cyberpunk Neón**, **Ukiyo-e**, **Mondrian**, **Pop Art** y **Vino Selecto**) y perfiles personalizados.
+- **Diagnóstico y Logging:** Sistema local de registro de errores y eventos en `visualis.log` en la carpeta raíz del programa.
+
+## 🗓️ Sesión 2026-10-15 — Estado al Cierre
+
+### ✅ Completado Hoy
+- **Sistema de Logging de Eventos y Errores en Disco (`visualis.log`) (v1.4.39)**:
+  - Creado endpoint interno `/api/log` en Next.js para persistencia segura de eventos en disco mediante `fs.appendFileSync`.
+  - Creado módulo `lib/logger.js` para emisión de logs con niveles (`INFO`, `WARN`, `ERROR`), timestamps ISO y metadatos.
+  - Integrada captura global de excepciones (`window.onerror` y `unhandledrejection`) en `app/ClientLayout.jsx`.
+  - Configurado `.gitignore` para ignorar `visualis.log` y patrones `*.log`.
+  - Creado archivo inicial `visualis.log` en `C:\Users\OscarSson\Videos\GitHub\visualis\`.
 
 ## 🗓️ Sesión 2026-10-11 — Estado al Cierre
 
