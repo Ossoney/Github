@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronLeft, User, LayoutGrid, Calculator, Repeat, Tag, Wallet, Palette, Database, HelpCircle } from 'lucide-react'
+import { ChevronLeft, User, LayoutGrid, Calculator, Repeat, Tag, Wallet, Palette, Database, HelpCircle, Shield } from 'lucide-react'
 import { ProfileSettings, ThemeSettings, LanguageSettings, CurrencySettings } from '@/components/settings/SystemSettings'
+import { SecuritySettings } from '@/components/settings/SecuritySettings'
 import { DataSettings } from '@/components/settings/DataSettings'
 import { AccountManager } from '@/components/settings/AccountManager'
 import { CategoryManager } from '@/components/settings/CategoryManager'
@@ -22,6 +23,7 @@ export default function SettingsPage() {
 
     const menuItems = [
         { id: 'profile', label: t('profile'), icon: User },
+        { id: 'security', label: t('security'), icon: Shield },
         { id: 'appearance', label: t('appearance'), icon: Palette },
         { id: 'accounts', label: t('accounts'), icon: Wallet },
         { id: 'categories', label: t('categories'), icon: LayoutGrid },
@@ -89,6 +91,7 @@ export default function SettingsPage() {
                             </div>
                         </div>
                     )}
+                    {activeTab === 'security' && <SecuritySettings />}
                     {activeTab === 'appearance' && <ThemeSettings />}
                     {activeTab === 'accounts' && <AccountManager />}
                     {activeTab === 'categories' && <CategoryManager />}

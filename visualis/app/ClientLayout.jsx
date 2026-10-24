@@ -5,6 +5,8 @@ import { processRecurringTransactions } from '@/lib/recurring'
 import { processAutosave } from '@/lib/autosave'
 import { LanguageProvider, useLanguage } from '@/lib/i18n'
 import { PrivacyProvider } from '@/lib/privacy'
+import { PinProvider } from '@/lib/pin'
+import { PinLockScreen } from '@/components/ui/PinLockScreen'
 import { ToastProvider } from '@/components/ui/UI'
 import { useStore } from '@/hooks/useStore'
 import { db } from '@/lib/db'
@@ -81,11 +83,14 @@ export function ClientLayout({ children }) {
     return (
         <LanguageProvider>
             <PrivacyProvider>
-                <ToastProvider>
-                    <DynamicTitle />
-                    <WhatsNewModal />
-                    {children}
-                </ToastProvider>
+                <PinProvider>
+                    <ToastProvider>
+                        <DynamicTitle />
+                        <WhatsNewModal />
+                        <PinLockScreen />
+                        {children}
+                    </ToastProvider>
+                </PinProvider>
             </PrivacyProvider>
         </LanguageProvider>
     )

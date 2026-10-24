@@ -3,28 +3,37 @@ import fs from 'fs'
 import path from 'path'
 
 const LOG_FILE_PATH = path.join(process.cwd(), 'visualis.log')
+const isVercel = !!process.env.VERCEL
 
 export async function POST(request) {
     try {
         const body = await request.json()
         const { level = 'INFO', message = '', details = null, source = 'client' } = body
 
+        // Limitar tamaño de mensaje para evitar abusos o desbordamiento
+        const safeMessage = String(message).slice(0, 500)
         const timestamp = new Date().toISOString()
-        let logLine = `[${timestamp}] [${level.toUpperCase()}] [${source}]: ${message}`
+        let logLine = `[${timestamp}] [${String(level).toUpperCase()}] [${String(source).slice(0, 50)}]: ${safeMessage}`
         
         if (details) {
-            const formattedDetails = typeof details === 'object' ? JSON.stringify(details) : String(details)
+            const formattedDetails = typeof details === 'object' ? JSON.stringify(details).slice(0, 2000) : String(details).slice(0, 2000)
             logLine += ` | Details: ${formattedDetails}`
         }
-        
-        logLine += '\n'
 
-        // Escribir en modo append de forma síncrona/segura
-        fs.appendFileSync(LOG_FILE_PATH, logLine, 'utf8')
+        // Si está en Vercel, emitir a consola estándar (se ve en panel Vercel Logs) sin bloquear disco efímero
+        if (isVercel) {
+            console.log(logLine)
+        } else {
+            // En local, persistir en visualis.log
+            try {
+                fs.appendFileSync(LOG_FILE_PATH, logLine + '\n', 'utf8')
+            } catch (fsErr) {
+                console.log(logLine)
+            }
+        }
 
         return NextResponse.json({ success: true })
     } catch (error) {
-        console.error('Error al registrar log en disco:', error)
-        return NextResponse.json({ success: false, error: error.message }, { status: 500 })
+        return NextResponse.json({ success: false, error: 'Invalid payload' }, { status: 400 })
     }
 }
