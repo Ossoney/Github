@@ -18,6 +18,8 @@ import database
 
 BASE_DIR = Path(__file__).resolve().parent
 INDEX_HTML = BASE_DIR / "index.html"
+FAVICON_ICO = BASE_DIR / "favicon.ico"
+FAVICON_PNG = BASE_DIR / "favicon.png"
 PROCESSED_STORAGE = BASE_DIR / "temp_downloads"
 PROCESSED_STORAGE.mkdir(exist_ok=True)
 
@@ -47,6 +49,16 @@ async def serve_index(request):
     with open(INDEX_HTML, "r", encoding="utf-8") as f:
         content = f.read()
     return HTMLResponse(content)
+
+async def serve_favicon_ico(request):
+    if FAVICON_ICO.exists():
+        return FileResponse(FAVICON_ICO, media_type="image/x-icon")
+    return JSONResponse({"detail": "Not found"}, status_code=404)
+
+async def serve_favicon_png(request):
+    if FAVICON_PNG.exists():
+        return FileResponse(FAVICON_PNG, media_type="image/png")
+    return JSONResponse({"detail": "Not found"}, status_code=404)
 
 async def api_devices(request):
     return JSONResponse(DEVICE_PROFILES)
@@ -410,6 +422,8 @@ async def api_download(request):
 
 routes = [
     Route("/", serve_index, methods=["GET"]),
+    Route("/favicon.ico", serve_favicon_ico, methods=["GET"]),
+    Route("/favicon.png", serve_favicon_png, methods=["GET"]),
     Route("/api/devices", api_devices, methods=["GET"]),
     Route("/api/auth/status", api_auth_status, methods=["GET"]),
     Route("/api/auth/register", api_register, methods=["POST"]),
