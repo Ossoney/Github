@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: epubtoxteink
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: KOFI_VERIFICATION_TOKEN
+        value: 31acdb13-7457-4cca-83ca-47609905621e
+      - key: STRIPE_SECRET_KEY
+        sync: false

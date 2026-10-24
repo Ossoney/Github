@@ -1,0 +1,2541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EPUBtoXteink Web - Optimizador E-Ink</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card-bg: rgba(22, 27, 34, 0.88);
+      --border: #30363d;
+      --accent: #58a6ff;
+      --accent-hover: #1f6feb;
+      --text: #f0f6fc;
+      --text-muted: #8b949e;
+      --success: #3fb950;
+      --error: #f85149;
+      --gold: #f1e05a;
+      --eink-black: #000000;
+      --eink-dark: #555555;
+      --eink-light: #aaaaaa;
+      --eink-white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(31, 111, 235, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(88, 166, 255, 0.1) 0px, transparent 50%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 40px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 880px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Top Bar (Idioma + Usuario + Créditos) */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 8px 12px;
+      background: rgba(22, 27, 34, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.88rem;
+    }
+
+    .top-bar-left, .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lang-switcher {
+      display: flex;
+      gap: 4px;
+      background: #161b22;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2px;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      padding: 3px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: #0d1117;
+    }
+
+    .credit-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(88, 166, 255, 0.12);
+      border: 1px solid rgba(88, 166, 255, 0.3);
+      border-radius: 20px;
+      color: #79c0ff;
+      font-weight: 600;
+      font-size: 0.82rem;
+    }
+
+    .credit-badge.low {
+      background: rgba(248, 81, 73, 0.15);
+      border-color: rgba(248, 81, 73, 0.35);
+      color: var(--error);
+    }
+
+    .btn-auth-action {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .btn-auth-action:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-pricing {
+      background: linear-gradient(135deg, #d29922, #e3b341);
+      color: #0d1117;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-pricing:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(227, 179, 65, 0.35);
+    }
+
+    header {
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(88, 166, 255, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(88, 166, 255, 0.3);
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-help {
+      background: rgba(88, 166, 255, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(88, 166, 255, 0.4);
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .btn-help:hover {
+      background: var(--accent);
+      color: #0d1117;
+      transform: scale(1.1);
+      box-shadow: 0 0 12px rgba(88, 166, 255, 0.5);
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+    }
+
+    .tabs {
+      display: flex;
+      width: 100%;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      font-weight: 600;
+      padding: 12px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      word-break: normal;
+    }
+
+    .tab-btn.active {
+      background: rgba(88, 166, 255, 0.15);
+      border-color: rgba(88, 166, 255, 0.35);
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    /* Device Selector Cards */
+    .device-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .device-card {
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: rgba(13, 17, 23, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .device-card:hover {
+      border-color: rgba(88, 166, 255, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .device-card.selected {
+      border-color: var(--accent);
+      background: rgba(88, 166, 255, 0.08);
+      box-shadow: 0 0 15px rgba(88, 166, 255, 0.2);
+    }
+
+    .device-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .device-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .device-tag {
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #21262d;
+      color: #79c0ff;
+      font-weight: 600;
+    }
+
+    .device-specs {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .palette-strip {
+      display: flex;
+      height: 6px;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    .palette-strip span { flex: 1; height: 100%; }
+
+    /* Drop Area */
+    .drop-zone {
+      border: 2px dashed #388bfd;
+      border-radius: 12px;
+      padding: 36px 20px;
+      text-align: center;
+      cursor: pointer;
+      background: rgba(56, 139, 253, 0.03);
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .drop-zone:hover, .drop-zone.dragover {
+      border-color: #58a6ff;
+      background: rgba(56, 139, 253, 0.08);
+    }
+
+    .drop-zone input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .drop-icon {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .drop-text {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .drop-hint {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    /* Batch File List */
+    .file-queue-container {
+      display: none;
+      margin-top: 18px;
+      background: #161b22;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .file-queue-container.active {
+      display: block;
+    }
+
+    .queue-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .queue-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .btn-clear-queue {
+      background: none;
+      border: none;
+      color: var(--error);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* Queue List and Grid Styles */
+    .file-queue-list {
+      max-height: 380px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* Vista de Cuadrícula para Fondos de Pantalla */
+    .file-queue-list.grid-view {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+      max-height: 420px;
+    }
+
+    .file-queue-list.grid-view .queue-item {
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      text-align: center;
+      position: relative;
+      gap: 6px;
+    }
+
+    .file-queue-list.grid-view .queue-item-left {
+      flex-direction: column;
+      align-items: center;
+      max-width: 100%;
+      width: 100%;
+      gap: 6px;
+    }
+
+    .file-queue-list.grid-view .queue-thumb {
+      width: 100%;
+      height: 140px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    .file-queue-list.grid-view .item-name {
+      font-size: 0.78rem;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .size-badge {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+      margin-top: 2px;
+    }
+
+    .size-saving {
+      color: var(--success);
+      font-weight: 600;
+    }
+
+    .queue-summary-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      background: rgba(13, 17, 23, 0.7);
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      font-size: 0.82rem;
+      border: 1px solid #21262d;
+    }
+
+    .queue-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: #0d1117;
+      border-radius: 6px;
+      border: 1px solid #21262d;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .queue-item.clickable {
+      cursor: pointer;
+    }
+
+    .queue-item.clickable:hover {
+      border-color: var(--accent);
+      background: rgba(88, 166, 255, 0.06);
+    }
+
+    .queue-item.active-preview {
+      border-color: var(--accent);
+      background: rgba(88, 166, 255, 0.12);
+      box-shadow: 0 0 10px rgba(88, 166, 255, 0.25);
+    }
+
+    .queue-item-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow: hidden;
+      max-width: 70%;
+    }
+
+    .queue-thumb {
+      width: 32px;
+      height: 42px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: #000;
+      flex-shrink: 0;
+    }
+
+    .btn-item-crop {
+      background: rgba(88, 166, 255, 0.15);
+      border: 1px solid rgba(88, 166, 255, 0.3);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-item-crop:hover {
+      background: var(--accent);
+      color: #0d1117;
+    }
+
+    .item-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    .item-status {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .item-status.ok { color: var(--success); }
+    .item-status.err { color: var(--error); }
+    .item-status.proc { color: var(--accent); }
+
+    /* Action button */
+    .btn-submit {
+      width: 100%;
+      margin-top: 20px;
+      padding: 15px 20px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.08rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(31, 111, 235, 0.35);
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(31, 111, 235, 0.5);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Progress & Status */
+    .progress-box {
+      display: none;
+      margin-top: 24px;
+      padding: 20px;
+      background: #161b22;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .progress-box.active {
+      display: block;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .progress-bar-bg {
+      height: 9px;
+      background: #21262d;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #58a6ff, #3fb950);
+      transition: width 0.25s ease;
+    }
+
+    .progress-logs {
+      font-family: "Consolas", monospace;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-height: 120px;
+      overflow-y: auto;
+    }
+
+    /* Batch Download Banner */
+    .result-box {
+      display: none;
+      margin-top: 20px;
+      padding: 18px 24px;
+      background: rgba(63, 185, 80, 0.12);
+      border: 1px solid rgba(63, 185, 80, 0.35);
+      border-radius: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .result-box.active {
+      display: flex;
+    }
+
+    .result-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .result-icon {
+      font-size: 1.6rem;
+      color: var(--success);
+    }
+
+    .btn-download {
+      padding: 11px 22px;
+      background: var(--success);
+      color: #0d1117;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-download:hover {
+      background: #46c759;
+      transform: translateY(-1px);
+    }
+
+    /* Modals Generales */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #161b22;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      max-width: 780px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 28px;
+      color: var(--text);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    .modal-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-close-modal {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s ease;
+    }
+
+    .btn-close-modal:hover {
+      color: var(--error);
+    }
+
+    /* Pricing Plans */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .pricing-card {
+      background: #0d1117;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(241, 224, 90, 0.15);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -10px;
+      right: 14px;
+      background: var(--gold);
+      color: #0d1117;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    .pricing-amount {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin: 12px 0 6px;
+      color: var(--text);
+    }
+
+    .pricing-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .btn-kofi-pay {
+      background: #ff5e5b;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+    }
+
+    .btn-kofi-pay:hover {
+      background: #ff4743;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 94, 91, 0.4);
+      color: white;
+    }
+
+    .btn-kofi-pay.featured {
+      background: linear-gradient(135deg, #f1e05a 0%, #e3b341 100%);
+      color: #0d1117;
+    }
+
+    .btn-kofi-pay.featured:hover {
+      background: linear-gradient(135deg, #ffd700 0%, #d4a017 100%);
+      box-shadow: 0 6px 20px rgba(241, 224, 90, 0.4);
+    }
+
+    /* Auth Form */
+    .form-group {
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+    }
+
+    .form-group label {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .form-input {
+      background: #0d1117;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 14px;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    /* Frame y Canvas Interactivo de Previsualización E-Ink */
+    .preview-container {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background: #161b22;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .preview-container.active {
+      display: flex;
+    }
+
+    .preview-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .preview-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .preview-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      background: #0d1117;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid #21262d;
+    }
+
+    .control-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .control-item input[type="range"] {
+      width: 110px;
+      cursor: pointer;
+    }
+
+    .btn-control-toggle {
+      background: #21262d;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-control-toggle.active {
+      background: var(--accent);
+      color: #0d1117;
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* El marco exterior simulando el dispositivo Xteink */
+    .xteink-device-frame {
+      background: #262c36;
+      border: 3px solid #3b4354;
+      border-radius: 20px;
+      padding: 18px 14px 28px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(255, 255, 255, 0.1);
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .xteink-device-logo {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #8b949e;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    .xteink-screen-bezel {
+      background: #111;
+      padding: 4px;
+      border-radius: 6px;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #previewCanvas {
+      background: #e8e8e8;
+      display: block;
+      cursor: grab;
+      border-radius: 2px;
+      image-rendering: pixelated;
+    }
+
+    #previewCanvas:active {
+      cursor: grabbing;
+    }
+
+    .preview-actions {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .btn-apply-crop {
+      background: var(--success);
+      color: #0d1117;
+      font-weight: 700;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-apply-crop:hover {
+      background: #46c759;
+      transform: translateY(-1px);
+    }
+
+    .modal-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.88rem;
+    }
+
+    .modal-table th, .modal-table td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+    }
+
+    .modal-table th {
+      background: #21262d;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .modal-table td {
+      background: rgba(13, 17, 23, 0.5);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    /* Mobile Friendly Responsiveness */
+    @media (max-width: 680px) {
+      body {
+        padding: 12px 10px 30px;
+      }
+
+      .container {
+        gap: 14px;
+      }
+
+      .top-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 10px 12px;
+      }
+
+      .top-bar-left, .top-bar-right {
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+
+      header p {
+        font-size: 0.92rem;
+        padding: 0 4px;
+      }
+
+      .card {
+        padding: 16px 14px;
+        border-radius: 12px;
+      }
+
+      .tabs {
+        flex-direction: column;
+        gap: 8px;
+        padding-bottom: 12px;
+        margin-bottom: 16px;
+      }
+
+      .tab-btn {
+        width: 100%;
+        font-size: 0.92rem;
+        padding: 11px 14px;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .device-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .upload-zone {
+        padding: 24px 14px;
+      }
+
+      .upload-icon {
+        font-size: 2.2rem;
+      }
+
+      .upload-text {
+        font-size: 0.92rem;
+      }
+
+      .upload-hint {
+        font-size: 0.78rem;
+      }
+
+      .btn-submit {
+        padding: 13px 16px;
+        font-size: 1rem;
+      }
+
+      .queue-item {
+        padding: 8px 10px;
+      }
+
+      .item-name {
+        max-width: 52%;
+        font-size: 0.82rem;
+      }
+
+      .item-status {
+        font-size: 0.75rem;
+      }
+
+      .result-box {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 16px 14px;
+      }
+
+      .result-info {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .btn-download {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .modal-overlay {
+        padding: 10px;
+      }
+
+      .modal-content {
+        padding: 18px 14px;
+        max-height: 92vh;
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      .modal-title {
+        font-size: 1.15rem;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-card {
+        padding: 18px 14px;
+      }
+
+      .pricing-amount {
+        font-size: 1.8rem;
+      }
+
+      .modal-table {
+        font-size: 0.78rem;
+        display: block;
+        overflow-x: auto;
+        white-space: normal;
+      }
+
+      .modal-table th, .modal-table td {
+        padding: 6px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Top Bar: Idioma + Estado de Cuenta & Cupos -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <div class="lang-switcher">
+          <button class="lang-btn active" id="btnLangEs" onclick="setLanguage('es')">ES</button>
+          <button class="lang-btn" id="btnLangEn" onclick="setLanguage('en')">EN</button>
+        </div>
+        <div class="credit-badge" id="quotaBadge">
+          <span id="quotaIcon">⚡</span>
+          <span id="quotaText">Comprobando cupo...</span>
+        </div>
+      </div>
+      <div class="top-bar-right" id="userControls">
+        <button class="btn-pricing" onclick="openPricingModal()">
+          <span>💳</span> <span data-i18n="buyCredits">Comprar Créditos</span>
+        </button>
+        <button class="btn-auth-action" id="btnAuthToggle" onclick="openAuthModal()">
+          <span data-i18n="loginRegister">Acceso / Registro</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+      <h1>EPUB to <span>Xteink Web</span> <button class="btn-help" onclick="openHelpModal()" title="¿Qué hace el programa y cuáles son sus ventajas?">?</button></h1>
+      <p id="appSubtitle" data-i18n="subtitle">Adapta, reduce, comprime y estabiliza tus libros electrónicos e imágenes para Xteink X3, X4 y X4 Pro.</p>
+    </header>
+
+    <div class="card">
+      <div class="tabs">
+        <button class="tab-btn active" id="tabEpub" onclick="switchMode('epub')" data-i18n="tabEpub">📚 Optimiza tus libros EPUB para Xteink</button>
+        <button class="tab-btn" id="tabWallpaper" onclick="switchMode('wallpaper')" data-i18n="tabWallpaper">🎨 Crea fondos de pantalla para Xteink</button>
+      </div>
+
+      <!-- Section 1: Device Selection -->
+      <div class="section-title" data-i18n="section1">1. Dispositivo Objetivo</div>
+      <div class="device-grid">
+        <div class="device-card" id="cardX3" onclick="selectDevice('X3')">
+          <div class="device-header">
+            <span class="device-title">Xteink X3</span>
+            <span class="device-tag">_X3</span>
+          </div>
+          <div class="device-specs">3.7" • 480 × 640 px (≈250 PPI)</div>
+          <div class="palette-strip">
+            <span style="background: var(--eink-black);"></span>
+            <span style="background: var(--eink-dark);"></span>
+            <span style="background: var(--eink-light);"></span>
+            <span style="background: var(--eink-white);"></span>
+          </div>
+        </div>
+
+        <div class="device-card" id="cardX4" onclick="selectDevice('X4')">
+          <div class="device-header">
+            <span class="device-title">Xteink X4</span>
+            <span class="device-tag">_X4</span>
+          </div>
+          <div class="device-specs">4.3" • 480 × 800 px (≈220 PPI)</div>
+          <div class="palette-strip">
+            <span style="background: var(--eink-black);"></span>
+            <span style="background: var(--eink-dark);"></span>
+            <span style="background: var(--eink-light);"></span>
+            <span style="background: var(--eink-white);"></span>
+          </div>
+        </div>
+
+        <div class="device-card selected" id="cardX4p" onclick="selectDevice('X4p')">
+          <div class="device-header">
+            <span class="device-title">Xteink X4 Pro</span>
+            <span class="device-tag">_X4p</span>
+          </div>
+          <div class="device-specs">4.3" • 480 × 800 px (ESP32-S3)</div>
+          <div class="palette-strip">
+            <span style="background: var(--eink-black);"></span>
+            <span style="background: var(--eink-dark);"></span>
+            <span style="background: var(--eink-light);"></span>
+            <span style="background: var(--eink-white);"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Files -->
+      <div class="section-title" id="fileSectionTitle" data-i18n="section2">2. Archivos para Procesar</div>
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept=".epub" multiple>
+        <div class="drop-icon" id="dropIcon">📚</div>
+        <div class="drop-text" id="dropText" data-i18n="dropTextEpub">Arrastra hasta 100 libros .epub o haz clic para seleccionarlos</div>
+        <div class="drop-hint" id="dropHint" data-i18n="dropHintEpub">Optimiza portada nítida, divide capítulos > 300KB y cuantiza a 4 grises</div>
+      </div>
+
+      <!-- Contenedor Interactivo de Previsualización & Recorte de Fondos -->
+      <div class="preview-container" id="wallpaperPreviewBox">
+        <div class="preview-header-bar">
+          <div class="preview-title">
+            <span>🔍</span> <span data-i18n="previewTitle">Vista Previa & Encuadre en Xteink</span>
+          </div>
+          <button class="btn-clear-queue" onclick="closeWallpaperPreview()" data-i18n="closePreview">✕ Cerrar vista</button>
+        </div>
+
+        <div class="preview-controls">
+          <div class="control-item">
+            <span data-i18n="zoom">Zoom:</span>
+            <input type="range" id="cropZoom" min="0.5" max="3" step="0.05" value="1" oninput="onCropParamChange()">
+          </div>
+          <div class="control-item">
+            <span data-i18n="contrast">Contraste:</span>
+            <input type="range" id="cropContrast" min="0.5" max="2" step="0.05" value="1.1" oninput="onCropParamChange()">
+          </div>
+          <div class="control-item">
+            <button class="btn-control-toggle active" id="btnToggleDither" onclick="toggleDitherMode()">
+              <span data-i18n="ditherMode">4 Grises E-Ink</span>
+            </button>
+          </div>
+          <div class="control-item">
+            <button class="btn-control-toggle" onclick="resetCropParams()">
+              <span data-i18n="resetView">Reset</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dispositivo Xteink con Canvas interactivo -->
+        <div class="xteink-device-frame">
+          <div class="xteink-screen-bezel">
+            <canvas id="previewCanvas" width="240" height="400"></canvas>
+          </div>
+          <div class="xteink-device-logo" id="previewDeviceLabel">XTEINK X4 PRO</div>
+        </div>
+
+        <div class="preview-actions" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; width: 100%;">
+          <button class="btn-apply-crop" onclick="prevWallpaper()" id="btnPrevWall" style="background:#21262d; color:var(--text); border:1px solid var(--border);">
+            <span>◀</span> <span data-i18n="prevImg">Anterior</span>
+          </button>
+          <button class="btn-apply-crop" onclick="applyCurrentCrop()">
+            <span>✂️</span> <span data-i18n="btnApplyCrop">Confirmar encuadre</span>
+          </button>
+          <button class="btn-apply-crop" onclick="nextWallpaper()" id="btnNextWall" style="background:#21262d; color:var(--text); border:1px solid var(--border);">
+            <span data-i18n="nextImg">Siguiente</span> <span>▶</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Batch File Queue preview -->
+      <div class="file-queue-container" id="queueContainer">
+        <div class="queue-header">
+          <span class="queue-title" id="queueTitle">Archivos preparados (0)</span>
+          <button class="btn-clear-queue" onclick="clearQueue()" data-i18n="clearList">Limpiar lista</button>
+        </div>
+        <div class="queue-summary-bar" id="queueSummaryBar">
+          <span id="summaryOriginalSize">Espacio original: 0 MB</span>
+          <span id="summaryEstimatedSize">Estimado tras optimizar: 0 MB</span>
+          <span class="size-saving" id="summarySaving">Ahorro: ~0%</span>
+        </div>
+        <div class="file-queue-list" id="queueList"></div>
+      </div>
+
+      <button class="btn-submit" id="btnSubmit" disabled onclick="startBatchProcessing()">
+        <span id="btnSubmitText">Optimizar para Xteink X4 Pro</span>
+      </button>
+
+      <!-- Progress box -->
+      <div class="progress-box" id="progressBox">
+        <div class="progress-header">
+          <span id="progressStatus">Procesando...</span>
+          <span id="progressPercent">0%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+        <div class="progress-logs" id="progressLogs"></div>
+      </div>
+
+      <!-- Result Box -->
+      <div class="result-box" id="resultBox">
+        <div class="result-info">
+          <span class="result-icon">✓</span>
+          <div>
+            <div style="font-weight: 700;" id="resultTitle" data-i18n="resultReady">¡Lote completado con éxito!</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);" id="resultSub" data-i18n="resultReadySub">Todos los archivos optimizados están empaquetados</div>
+          </div>
+        </div>
+        <a href="#" class="btn-download" id="downloadBtn" download>
+          📦 Descargar Todo (.ZIP)
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      EPUBtoXteink Web • Pipeline de alto rendimiento y anti-bloqueo para lectores E-Ink
+    </footer>
+  </div>
+
+  <!-- Modal: Auth (Login / Register) -->
+  <div class="modal-overlay" id="authModal" onclick="closeAuthModal(event)">
+    <div class="modal-content" style="max-width: 420px;" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title" id="authModalTitle" data-i18n="authTitle">Acceso de Usuario</div>
+        <button class="btn-close-modal" onclick="closeAuthModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;" data-i18n="authSubtitle">
+          Inicia sesión para disfrutar de 2 conversiones gratis al día o comprar packs de créditos.
+        </p>
+        <form onsubmit="handleAuthSubmit(event)">
+          <div class="form-group">
+            <label for="authEmail" data-i18n="emailLabel">Correo Electrónico</label>
+            <input type="email" id="authEmail" class="form-input" required placeholder="tu@email.com">
+          </div>
+          <div class="form-group">
+            <label for="authPassword" data-i18n="passwordLabel">Contraseña (mín. 6 caracteres)</label>
+            <input type="password" id="authPassword" class="form-input" required minlength="6" placeholder="••••••••">
+          </div>
+          <button type="submit" class="btn-submit" style="margin-top: 10px;" id="btnAuthSubmit">
+            <span data-i18n="btnLogin">Iniciar Sesión</span>
+          </button>
+        </form>
+        <div style="margin-top: 16px; text-align: center; font-size: 0.85rem;">
+          <span id="authToggleText" data-i18n="noAccount">¿No tienes cuenta?</span>
+          <a href="#" style="color: var(--accent); font-weight: 600;" onclick="toggleAuthMode(event)" id="authToggleLink" data-i18n="registerHere">Regístrate aquí</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Pricing & Buy Credits (Ko-fi) -->
+  <div class="modal-overlay" id="pricingModal" onclick="closePricingModal(event)">
+    <div class="modal-content" style="max-width: 620px;" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title" data-i18n="pricingTitle">☕ Recargar Conversiones con Ko-fi</div>
+        <button class="btn-close-modal" onclick="closePricingModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="color: var(--text-muted); font-size: 0.92rem;" data-i18n="pricingSubtitle">
+          Los créditos comprados no caducan y se utilizan automáticamente cuando agotas tu cupo diario gratuito.
+        </p>
+        <div style="background: rgba(255, 94, 91, 0.1); border: 1px dashed rgba(255, 94, 91, 0.4); border-radius: 8px; padding: 10px 14px; margin-top: 14px; font-size: 0.84rem; color: #ffb4b3;" data-i18n="kofiNote">
+          💡 Al pagar en Ko-fi, indica tu correo o tu usuario en el mensaje para que tus créditos se sumen automáticamente.
+        </div>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div>
+              <h3 style="color: var(--text);" data-i18n="plan100Title">Pack Estándar</h3>
+              <div class="pricing-amount">5 €</div>
+              <div class="pricing-desc" data-i18n="plan100Desc">100 Conversiones completas</div>
+            </div>
+            <button class="btn-kofi-pay" onclick="buyPlan('100')">
+              <span>☕</span> <span data-i18n="payCard">Comprar con Ko-fi (5 €)</span>
+            </button>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="pricing-badge" data-i18n="bestValue">MEJOR PRECIO</div>
+            <div>
+              <h3 style="color: var(--gold);" data-i18n="plan300Title">Pack Pro / Biblioteca</h3>
+              <div class="pricing-amount">10 €</div>
+              <div class="pricing-desc" data-i18n="plan300Desc">300 Conversiones completas (3x más)</div>
+            </div>
+            <button class="btn-kofi-pay featured" onclick="buyPlan('300')">
+              <span>☕</span> <span data-i18n="payCardPro">Comprar con Ko-fi (10 €)</span>
+            </button>
+          </div>
+        </div>
+        <p style="margin-top: 18px; font-size: 0.78rem; color: var(--text-muted); text-align: center;" data-i18n="stripeSecure">
+          🔒 Pagos seguros con Tarjeta, Google Pay, Apple Pay o PayPal a través de Ko-fi.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Explicación y Ventajas -->
+  <div class="modal-overlay" id="helpModal" onclick="closeHelpModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title" data-i18n="helpTitle">📖 ¿Qué hace el programa y cuáles son sus ventajas?</div>
+        <button class="btn-close-modal" onclick="closeHelpModal()">✕</button>
+      </div>
+      <div class="modal-body" id="helpBodyContent">
+        <!-- Renderizado dinámico según idioma -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==========================================
+    // SISTEMA BILINGÜE (ES / EN)
+    // ==========================================
+    const I18N = {
+      es: {
+        badgeTitle: "E-INK OPTIMIZATION SUITE",
+        subtitle: "Adapta, reduce, comprime y estabiliza tus libros electrónicos e imágenes para Xteink X3, X4 y X4 Pro.",
+        buyCredits: "Comprar Créditos",
+        loginRegister: "Acceso / Registro",
+        logout: "Cerrar sesión",
+        tabEpub: "📚 Optimiza tus libros EPUB para Xteink",
+        tabWallpaper: "🎨 Crea fondos de pantalla para Xteink",
+        section1: "1. Dispositivo Objetivo",
+        section2: "2. Archivos para Procesar",
+        dropTextEpub: "Arrastra hasta 20 libros .epub o haz clic para seleccionarlos",
+        dropHintEpub: "Optimiza portada nítida, divide capítulos > 300KB y cuantiza a 4 grises",
+        dropTextWall: "Arrastra hasta 20 imágenes (.jpg, .png, .webp) o haz clic",
+        dropHintWall: "Genera BMPs 24b cuantizados a los 4 tonos físicos exactos del panel",
+        clearList: "Limpiar lista",
+        resultReady: "¡Lote completado con éxito!",
+        resultReadySub: "Todos los archivos optimizados están empaquetados",
+        downloadSingle: "⬇️ Descargar Archivo Optimizado",
+        downloadZip: "📦 Descargar Lote ({count} archivos en .ZIP)",
+        btnSubmitEpub: "Optimizar {count} libro(s) para {device}",
+        btnSubmitWall: "Generar {count} fondo(s) para {device}",
+        btnSubmitDefault: "Optimizar para {device}",
+        quotaAnon: "Sin cuenta: {rem}/1 gratis hoy",
+        quotaUser: "Cuenta: {rem}/2 hoy + {purchased} créditos",
+        quotaMaster: "👑 Usuario Master: Conversiones Ilimitadas (∞)",
+        authTitle: "Acceso de Usuario",
+        authSubtitle: "Inicia sesión para disfrutar de 2 conversiones gratis al día o comprar packs de créditos.",
+        emailLabel: "Correo Electrónico",
+        passwordLabel: "Contraseña (mín. 6 caracteres)",
+        btnLogin: "Iniciar Sesión",
+        btnRegister: "Crear Cuenta",
+        noAccount: "¿No tienes cuenta?",
+        hasAccount: "¿Ya tienes cuenta?",
+        registerHere: "Regístrate aquí",
+        loginHere: "Inicia sesión aquí",
+        pricingTitle: "☕ Recargar Conversiones con Ko-fi",
+        pricingSubtitle: "Los créditos no caducan y se utilizan automáticamente al agotar tu cupo diario gratuito.",
+        plan100Title: "Pack Estándar",
+        plan100Desc: "100 Conversiones completas",
+        plan300Title: "Pack Pro / Biblioteca",
+        plan300Desc: "300 Conversiones completas (3x más)",
+        payCard: "☕ Comprar con Ko-fi (5 €)",
+        payCardPro: "☕ Comprar con Ko-fi (10 €)",
+        bestValue: "MEJOR PRECIO",
+        kofiNote: "💡 Al pagar en Ko-fi, indica tu correo o tu usuario en el mensaje para que tus créditos se sumen automáticamente.",
+        stripeSecure: "🔒 Pagos seguros con Tarjeta, Google Pay, Apple Pay o PayPal a través de Ko-fi.",
+        previewTitle: "Vista Previa & Encuadre en Xteink",
+        closePreview: "✕ Cerrar vista",
+        zoom: "Zoom:",
+        contrast: "Contraste:",
+        ditherMode: "4 Grises E-Ink",
+        resetView: "Restablecer",
+        btnApplyCrop: "Confirmar encuadre",
+        prevImg: "Anterior",
+        nextImg: "Siguiente",
+        origSpace: "Espacio original",
+        estSpace: "Estimado tras optimizar",
+        saving: "Ahorro total",
+        helpTitle: "📖 ¿Qué hace el programa y cuáles son sus ventajas?",
+        helpHTML: `
+          <p>Los lectores de tinta electrónica con microcontroladores (como los <strong>Xteink X3, X4 y X4 Pro</strong> con chips ESP32 / ESP32-S3 y solo <strong>128 MB de RAM</strong>) sufren cuelgues constantes, congelaciones al pasar página o imágenes corruptas cuando intentan abrir EPUBs comerciales diseñados para tablets o PCs.</p>
+          <p><strong>EPUBtoXteink</strong> desmonta el libro por completo, reestructura su código y elementos gráficos para adaptarlos a la física de la pantalla E-Ink, y lo vuelve a empaquetar de forma ultra-ligera y estable.</p>
+          <h3 style="color:var(--accent); margin:18px 0 8px;">⚙️ Proceso de Optimización</h3>
+          <ul style="margin-left:20px; line-height:1.6;">
+            <li><strong>Purga de Fuentes y Basura:</strong> Elimina fuentes embebidas (.ttf, .otf, .woff) que pesan megabytes, junto con scripts, estilos CSS pesados, iframes y etiquetas incompatibles.</li>
+            <li><strong>Dithering Floyd-Steinberg a 4 Grises Nativos:</strong> Las imágenes interiores se convierten a BMP 24-bits cuantizadas exactamente a los 4 tonos físicos del panel (<code>#000000</code>, <code>#555555</code>, <code>#AAAAAA</code>, <code>#FFFFFF</code>). El lector no gasta batería ni CPU en calcular gradientes en tiempo real.</li>
+            <li><strong>Portadas Nítidas sin Halos:</strong> Conserva la portada en escala de grises limpia (modo L de 8 bits) a máxima calidad y recalcula dinámicamente los contenedores vectoriales <code>&lt;svg viewBox&gt;</code> para que no aparezca borrosa, estirada ni recortada en la estantería.</li>
+            <li><strong>Aplanado de Canal Alfa:</strong> Las transparencias de imágenes PNG se combinan sobre fondo blanco para evitar los típicos fondos negros de los visores E-Ink.</li>
+            <li><strong>Splitting Recursivo Anti-Crash:</strong> Si un capítulo HTML excede los <strong>300 KB</strong> (límite de desbordamiento de RAM del visor), lo divide iterativamente a la mitad respetando la jerarquía DOM.</li>
+            <li><strong>Sincronización Total de Índices:</strong> Mantiene al día el manifiesto OPF y los índices de navegación tanto en EPUB 2 (<code>toc.ncx</code>) como en el estándar moderno EPUB 3 (<code>nav.xhtml</code>).</li>
+          </ul>
+          <h3 style="color:var(--accent); margin:18px 0 8px;">✨ Cuadro de Ventajas</h3>
+          <table class="modal-table">
+            <thead>
+              <tr><th>Ventaja</th><th>Impacto en el Lector</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Cero cuelgues de RAM</strong></td><td>Capítulos siempre bajo 300 KB para evitar desbordamientos de memoria en el ESP32.</td></tr>
+              <tr><td><strong>Mayor duración de batería</strong></td><td>El PC procesa el dithering; el lector solo pinta píxeles sin sobrecargar su CPU.</td></tr>
+              <tr><td><strong>Hasta 70% menos de peso</strong></td><td>Libros limpios de fuentes pesadas, ahorrando espacio en la tarjeta microSD.</td></tr>
+              <tr><td><strong>Compatibilidad Universal</strong></td><td>Imágenes en BMP 24b compatibles con firmware oficial, <strong>CrossPoint</strong> y <strong>CrossInk</strong> sin colores invertidos.</td></tr>
+              <tr><td><strong>Subida en Lote (hasta 20)</strong></td><td>Procesa colecciones completas y las descarga empaquetadas en un único archivo <code>.zip</code>.</td></tr>
+              <tr><td><strong>Preservación Absoluta</strong></td><td>Tus archivos originales nunca se tocan; siempre se generan archivos nuevos con el sufijo (<code>_X3</code>, <code>_X4</code>, <code>_X4p</code>).</td></tr>
+            </tbody>
+          </table>
+        `
+      },
+      en: {
+        badgeTitle: "E-INK OPTIMIZATION SUITE",
+        subtitle: "Adapt, shrink, compress and stabilize your e-books and images for Xteink X3, X4 and X4 Pro.",
+        buyCredits: "Buy Credits",
+        loginRegister: "Login / Register",
+        logout: "Log out",
+        tabEpub: "📚 Optimize your EPUB books for Xteink",
+        tabWallpaper: "🎨 Create wallpapers for Xteink",
+        section1: "1. Target Device",
+        section2: "2. Files to Process",
+        dropTextEpub: "Drag up to 20 .epub books here or click to browse",
+        dropHintEpub: "Sharp covers, auto-split chapters > 300KB and 4-gray E-ink quantization",
+        dropTextWall: "Drag up to 20 images (.jpg, .png, .webp) or click",
+        dropHintWall: "Generates 24-bit BMPs quantized to the exact 4 physical panel grays",
+        clearList: "Clear list",
+        resultReady: "Batch completed successfully!",
+        resultReadySub: "All optimized files are packaged and ready",
+        downloadSingle: "⬇️ Download Optimized File",
+        downloadZip: "📦 Download Batch ({count} files in .ZIP)",
+        btnSubmitEpub: "Optimize {count} book(s) for {device}",
+        btnSubmitWall: "Generate {count} wallpaper(s) for {device}",
+        btnSubmitDefault: "Optimize for {device}",
+        quotaAnon: "No account: {rem}/1 free today",
+        quotaUser: "Account: {rem}/2 today + {purchased} credits",
+        quotaMaster: "👑 Master User: Unlimited Conversions (∞)",
+        authTitle: "User Login",
+        authSubtitle: "Sign in to get 2 free conversions per day or purchase credit packs.",
+        emailLabel: "Email Address",
+        passwordLabel: "Password (min. 6 characters)",
+        btnLogin: "Sign In",
+        btnRegister: "Create Account",
+        noAccount: "Don't have an account?",
+        hasAccount: "Already have an account?",
+        registerHere: "Sign up here",
+        loginHere: "Sign in here",
+        pricingTitle: "☕ Top Up Conversions with Ko-fi",
+        pricingSubtitle: "Purchased credits never expire and are automatically used when your free daily allowance is exhausted.",
+        plan100Title: "Standard Pack",
+        plan100Desc: "100 Full Conversions",
+        plan300Title: "Pro / Library Pack",
+        plan300Desc: "300 Full Conversions (3x value)",
+        payCard: "☕ Buy via Ko-fi (5 €)",
+        payCardPro: "☕ Buy via Ko-fi (10 €)",
+        bestValue: "BEST VALUE",
+        kofiNote: "💡 When checking out on Ko-fi, enter your email or username in the message so your credits are added automatically.",
+        stripeSecure: "🔒 Secure payments via Card, Google Pay, Apple Pay or PayPal on Ko-fi.",
+        previewTitle: "Preview & Framing on Xteink",
+        closePreview: "✕ Close preview",
+        zoom: "Zoom:",
+        contrast: "Contrast:",
+        ditherMode: "4 E-Ink Grays",
+        resetView: "Reset",
+        btnApplyCrop: "Confirm crop",
+        prevImg: "Previous",
+        nextImg: "Next",
+        origSpace: "Original size",
+        estSpace: "Estimated after optimization",
+        saving: "Total savings",
+        helpTitle: "📖 What does the program do and what are its advantages?",
+        helpHTML: `
+          <p>Microcontroller-based e-readers (such as the <strong>Xteink X3, X4 and X4 Pro</strong> with ESP32 / ESP32-S3 chips and only <strong>128 MB of RAM</strong>) constantly crash, freeze on page turns, or display corrupt images when opening commercial EPUBs designed for tablets or PCs.</p>
+          <p><strong>EPUBtoXteink</strong> completely disassembles the book, restructures its code and graphics to match the physical constraints of the E-Ink panel, and repacks it into an ultra-lightweight, crash-free EPUB.</p>
+          <h3 style="color:var(--accent); margin:18px 0 8px;">⚙️ Optimization Pipeline</h3>
+          <ul style="margin-left:20px; line-height:1.6;">
+            <li><strong>Purge Fonts & Bloat:</strong> Strips embedded fonts (.ttf, .otf, .woff) weighing megabytes, along with scripts, heavy CSS styles, iframes and unsupported tags.</li>
+            <li><strong>4-Gray Native Floyd-Steinberg Dithering:</strong> Internal images are converted to 24-bit BMPs quantized to the panel's 4 physical tones (<code>#000000</code>, <code>#555555</code>, <code>#AAAAAA</code>, <code>#FFFFFF</code>). The e-reader saves battery and CPU without computing gradients in real-time.</li>
+            <li><strong>Sharp Covers without Halos:</strong> Preserves the cover in clean grayscale (8-bit L mode) at maximum quality and dynamically updates vector <code>&lt;svg viewBox&gt;</code> containers so it never looks blurry or stretched.</li>
+            <li><strong>Alpha Channel Flattening:</strong> PNG transparencias are flattened over pure white to prevent ugly black boxes on E-Ink engines.</li>
+            <li><strong>Anti-Crash Recursive Splitting:</strong> Any XHTML chapter exceeding <strong>300 KB</strong> (the ESP32 RAM crash threshold) is recursively split in half while preserving clean DOM hierarchy.</li>
+            <li><strong>Full Standards Synchronization:</strong> Synchronizes OPF manifests, EPUB 2 NCX tables (<code>toc.ncx</code>) and modern EPUB 3 navigation files (<code>nav.xhtml</code>).</li>
+          </ul>
+          <h3 style="color:var(--accent); margin:18px 0 8px;">✨ Advantages Table</h3>
+          <table class="modal-table">
+            <thead>
+              <tr><th>Advantage</th><th>Benefit on E-Reader</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Zero RAM crashes</strong></td><td>Chapters always under 300 KB to avoid memory overflows on ESP32.</td></tr>
+              <tr><td><strong>Extended battery life</strong></td><td>Dithering is calculated on your PC; e-reader just draws pixels effortlessly.</td></tr>
+              <tr><td><strong>Up to 70% smaller size</strong></td><td>Stripped of heavy font bloat, saving valuable microSD storage.</td></tr>
+              <tr><td><strong>Universal compatibility</strong></td><td>24-bit BMP format compatible with official firmware, <strong>CrossPoint</strong> and <strong>CrossInk</strong> without inverted colors.</td></tr>
+              <tr><td><strong>Batch Upload (up to 20)</strong></td><td>Convert entire collections and download them packaged in a single <code>.zip</code> file.</td></tr>
+              <tr><td><strong>Absolute Preservation</strong></td><td>Your original files are never altered; a clean file with your device suffix (<code>_X3</code>, <code>_X4</code>, <code>_X4p</code>) is created.</td></tr>
+            </tbody>
+          </table>
+        `
+      }
+    };
+
+    // Detección automática del idioma del navegador
+    let userLang = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+    let currentLang = userLang.startsWith('es') ? 'es' : 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.getElementById('btnLangEs').classList.toggle('active', lang === 'es');
+      document.getElementById('btnLangEn').classList.toggle('active', lang === 'en');
+      applyLanguage();
+    }
+
+    function t(key, vars = {}) {
+      let str = (I18N[currentLang] && I18N[currentLang][key]) || (I18N['es'][key]) || key;
+      for (const [k, v] of Object.entries(vars)) {
+        str = str.replace(new RegExp(`\\{${k}\\}`, 'g'), v);
+      }
+      return str;
+    }
+
+    function applyLanguage() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.innerText = t(key);
+      });
+
+      document.getElementById('helpBodyContent').innerHTML = I18N[currentLang].helpHTML;
+      updateDropTexts();
+      updateButtonText();
+      refreshQuota();
+    }
+
+    // ==========================================
+    // ESTADO DE USUARIO Y CUOTAS / STRIPE
+    // ==========================================
+    let currentUser = null;
+    let authMode = 'login'; // 'login' o 'register'
+
+    async function refreshQuota() {
+      try {
+        const res = await fetch('/api/auth/status');
+        if (!res.ok) {
+          console.warn("API de cuotas no disponible en este momento");
+          return;
+        }
+        const data = await res.json();
+        currentUser = data;
+
+        const badge = document.getElementById('quotaBadge');
+        const badgeText = document.getElementById('quotaText');
+        const authBtn = document.getElementById('btnAuthToggle');
+
+        if (data.logged_in) {
+          authBtn.innerText = `${data.email} (${t('logout')})`;
+          authBtn.onclick = handleLogout;
+
+          if (data.is_master) {
+            badgeText.innerText = t('quotaMaster');
+            badge.classList.remove('low');
+            badge.style.borderColor = "var(--gold)";
+            badge.style.color = "var(--gold)";
+          } else {
+            badgeText.innerText = t('quotaUser', {
+              rem: data.daily_remaining,
+              purchased: data.purchased_credits
+            });
+            badge.classList.toggle('low', data.total_available === 0);
+            badge.style.borderColor = "";
+            badge.style.color = "";
+          }
+        } else {
+          authBtn.innerText = t('loginRegister');
+          authBtn.onclick = openAuthModal;
+
+          badgeText.innerText = t('quotaAnon', { rem: data.daily_remaining });
+          badge.classList.toggle('low', data.daily_remaining === 0);
+        }
+      } catch (e) {
+        console.error("Error al refrescar cuota:", e);
+      }
+    }
+
+    function openAuthModal() {
+      authMode = 'login';
+      updateAuthModalUI();
+      document.getElementById('authModal').classList.add('active');
+    }
+
+    function closeAuthModal(e) {
+      if (e) e.stopPropagation();
+      document.getElementById('authModal').classList.remove('active');
+    }
+
+    function toggleAuthMode(e) {
+      if (e) e.preventDefault();
+      authMode = authMode === 'login' ? 'register' : 'login';
+      updateAuthModalUI();
+    }
+
+    function updateAuthModalUI() {
+      const title = document.getElementById('authModalTitle');
+      const submitBtn = document.getElementById('btnAuthSubmit');
+      const toggleText = document.getElementById('authToggleText');
+      const toggleLink = document.getElementById('authToggleLink');
+
+      if (authMode === 'login') {
+        title.innerText = t('authTitle');
+        submitBtn.querySelector('span').innerText = t('btnLogin');
+        toggleText.innerText = t('noAccount');
+        toggleLink.innerText = t('registerHere');
+      } else {
+        title.innerText = t('btnRegister');
+        submitBtn.querySelector('span').innerText = t('btnRegister');
+        toggleText.innerText = t('hasAccount');
+        toggleLink.innerText = t('loginHere');
+      }
+    }
+
+    async function handleAuthSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('authEmail').value;
+      const password = document.getElementById('authPassword').value;
+      const endpoint = authMode === 'login' ? '/api/auth/login' : '/api/auth/register';
+
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.detail || "Error en la autenticación");
+        }
+        closeAuthModal();
+        await refreshQuota();
+      } catch (err) {
+        alert(err.message);
+      }
+    }
+
+    async function handleLogout() {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      await refreshQuota();
+    }
+
+    function openPricingModal() {
+      if (!currentUser || !currentUser.logged_in) {
+        alert(currentLang === 'es' 
+          ? "Por favor, inicia sesión o crea una cuenta antes de comprar créditos."
+          : "Please log in or create an account before purchasing credits.");
+        openAuthModal();
+        return;
+      }
+      document.getElementById('pricingModal').classList.add('active');
+    }
+
+    function closePricingModal(e) {
+      if (e) e.stopPropagation();
+      document.getElementById('pricingModal').classList.remove('active');
+    }
+
+    function buyPlan(plan) {
+      if (!currentUser || !currentUser.logged_in) {
+        alert(currentLang === 'es' 
+          ? "Por favor, inicia sesión o crea una cuenta antes de comprar créditos."
+          : "Please log in or create an account before purchasing credits.");
+        openAuthModal();
+        return;
+      }
+
+      // ko-fi.com/epubtoxteink
+      // Plan 100 -> 5€ | Plan 300 -> 10€
+      const amount = plan === '300' ? 10 : 5;
+      const userEmail = currentUser.email || '';
+      
+      // Abre Ko-fi en una nueva pestaña
+      const kofiUrl = `https://ko-fi.com/epubtoxteink?amount=${amount}`;
+      window.open(kofiUrl, '_blank');
+
+      alert(currentLang === 'es'
+        ? `Se ha abierto Ko-fi para completar tu aporte de ${amount} €.\n\nRecuerda indicar tu correo (${userEmail}) en el mensaje de Ko-fi para que tus créditos se añadan de forma inmediata.`
+        : `Ko-fi opened to complete your ${amount} € support.\n\nPlease remember to include your email (${userEmail}) in the Ko-fi message so your credits are added immediately.`);
+      
+      closePricingModal();
+    }
+
+    // ==========================================
+    // MODAL DE AYUDA
+    // ==========================================
+    function openHelpModal() {
+      document.getElementById('helpModal').classList.add('active');
+    }
+
+    function closeHelpModal(e) {
+      if (e) e.stopPropagation();
+      document.getElementById('helpModal').classList.remove('active');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeHelpModal();
+        closeAuthModal();
+        closePricingModal();
+      }
+    });
+
+    // ==========================================
+    // LOGICA DE CONVERSIÓN Y ARCHIVOS
+    // ==========================================
+    let currentMode = 'epub';
+    let currentDevice = 'X4p';
+    let fileQueue = [];
+
+    const deviceNames = {
+      'X3': 'Xteink X3',
+      'X4': 'Xteink X4',
+      'X4p': 'Xteink X4 Pro'
+    };
+
+    function selectDevice(dev) {
+      currentDevice = dev;
+      document.querySelectorAll('.device-card').forEach(c => c.classList.remove('selected'));
+      document.getElementById('card' + dev).classList.add('selected');
+      updateButtonText();
+      updateCanvasResolution();
+      if (cropSourceImg) {
+        renderCanvasPreview();
+      }
+    }
+
+    function switchMode(mode) {
+      currentMode = mode;
+      document.getElementById('tabEpub').classList.toggle('active', mode === 'epub');
+      document.getElementById('tabWallpaper').classList.toggle('active', mode === 'wallpaper');
+      clearQueue();
+      closeWallpaperPreview();
+      updateDropTexts();
+      updateButtonText();
+    }
+
+    function updateDropTexts() {
+      const fileInput = document.getElementById('fileInput');
+      const dropText = document.getElementById('dropText');
+      const dropHint = document.getElementById('dropHint');
+      const dropIcon = document.getElementById('dropIcon');
+
+      if (currentMode === 'epub') {
+        fileInput.accept = ".epub";
+        dropIcon.innerText = "📚";
+        dropText.innerText = t('dropTextEpub');
+        dropHint.innerText = t('dropHintEpub');
+      } else {
+        fileInput.accept = ".jpg,.jpeg,.png,.webp,.bmp";
+        dropIcon.innerText = "🖼️";
+        dropText.innerText = t('dropTextWall');
+        dropHint.innerText = t('dropHintWall');
+      }
+    }
+
+    function updateButtonText() {
+      const btn = document.getElementById('btnSubmit');
+      const devName = deviceNames[currentDevice] || currentDevice;
+      const count = fileQueue.length;
+      if (count > 0) {
+        const key = currentMode === 'epub' ? 'btnSubmitEpub' : 'btnSubmitWall';
+        btn.querySelector('span').innerText = t(key, { count, device: devName });
+      } else {
+        btn.querySelector('span').innerText = t('btnSubmitDefault', { device: devName });
+      }
+    }
+
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+
+    ['dragenter', 'dragover'].forEach(evt => {
+      dropZone.addEventListener(evt, e => {
+        e.preventDefault();
+        dropZone.classList.add('dragover');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(evt => {
+      dropZone.addEventListener(evt, e => {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+      });
+    });
+
+    dropZone.addEventListener('drop', e => {
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        addFilesToQueue(Array.from(e.dataTransfer.files));
+      }
+    });
+
+    fileInput.addEventListener('change', e => {
+      if (e.target.files && e.target.files.length > 0) {
+        addFilesToQueue(Array.from(e.target.files));
+      }
+    });
+
+    function addFilesToQueue(files) {
+      const validFiles = files.filter(f => {
+        const ext = f.name.slice(f.name.lastIndexOf('.')).toLowerCase();
+        if (currentMode === 'epub') return ext === '.epub';
+        return ['.jpg', '.jpeg', '.png', '.webp', '.bmp'].includes(ext);
+      });
+
+      const spaceLeft = 20 - fileQueue.length;
+      const filesToAdd = validFiles.slice(0, spaceLeft);
+
+      if (validFiles.length > spaceLeft) {
+        alert(currentLang === 'es'
+          ? "El límite máximo de subida es de 20 archivos a la vez."
+          : "The maximum upload limit is 20 files at a time.");
+      }
+
+      filesToAdd.forEach(file => {
+        if (!fileQueue.some(item => item.name === file.name && item.size === file.size)) {
+          fileQueue.push(file);
+        }
+      });
+
+      // Si estamos en modo wallpaper, abrir la vista previa con el primer archivo seleccionado
+      if (currentMode === 'wallpaper' && fileQueue.length > 0) {
+        currentPreviewIndex = 0;
+        initWallpaperPreview(fileQueue[0]);
+      }
+
+      renderQueue();
+    }
+
+    function renderQueue() {
+      const queueContainer = document.getElementById('queueContainer');
+      const queueList = document.getElementById('queueList');
+      const queueTitle = document.getElementById('queueTitle');
+      const btnSubmit = document.getElementById('btnSubmit');
+
+      if (fileQueue.length === 0) {
+        queueContainer.classList.remove('active');
+        btnSubmit.disabled = true;
+        closeWallpaperPreview();
+        updateButtonText();
+        return;
+      }
+
+      const isWall = currentMode === 'wallpaper';
+      queueTitle.innerText = `${t('section2')} (${fileQueue.length}/20)`;
+      queueList.innerHTML = '';
+      
+      // Aplicar o quitar la clase grid-view según el modo
+      queueList.classList.toggle('grid-view', isWall);
+
+      let totalOriginalBytes = 0;
+      let totalEstimatedBytes = 0;
+
+      // Cálculo del tamaño esperado de un BMP según el modelo
+      // X3: 480x640x3 + 54 = ~921.654 bytes (0.88 MB)
+      // X4/X4p: 480x800x3 + 54 = ~1.152.054 bytes (1.10 MB)
+      const spec = deviceResolutions[currentDevice] || deviceResolutions['X4p'];
+      const targetBmpBytes = (spec.w * spec.h * 3) + 54;
+
+      fileQueue.forEach((file, index) => {
+        totalOriginalBytes += file.size;
+
+        let itemEstimatedBytes = 0;
+        let estimateText = '';
+
+        if (isWall) {
+          itemEstimatedBytes = targetBmpBytes;
+          const origMb = (file.size / (1024 * 1024)).toFixed(2);
+          const estMb = (itemEstimatedBytes / (1024 * 1024)).toFixed(2);
+          estimateText = `<div class="size-badge">Actual: <strong>${origMb} MB</strong> ➔ Estimado: <strong style="color:var(--accent);">${estMb} MB</strong> (BMP 24b)</div>`;
+        } else {
+          // En EPUBs el ahorro suele rondar entre el 40% y el 70% por purga de fuentes ttf/otf y BMPs de 4 grises
+          itemEstimatedBytes = Math.max(50 * 1024, Math.round(file.size * 0.45));
+          const origMb = (file.size / (1024 * 1024)).toFixed(2);
+          const estMb = (itemEstimatedBytes / (1024 * 1024)).toFixed(2);
+          estimateText = `<div class="size-badge">Actual: <strong>${origMb} MB</strong> ➔ Estimado: <strong class="size-saving">~${estMb} MB</strong> (~55% ahorro)</div>`;
+        }
+        totalEstimatedBytes += itemEstimatedBytes;
+
+        const row = document.createElement('div');
+        const isActive = isWall && index === currentPreviewIndex;
+
+        row.className = `queue-item ${isWall ? 'clickable' : ''} ${isActive ? 'active-preview' : ''}`;
+        row.id = `queue-row-${index}`;
+        
+        let thumbHtml = '';
+        if (isWall) {
+          const thumbUrl = URL.createObjectURL(file);
+          thumbHtml = `<img src="${thumbUrl}" class="queue-thumb" alt="thumb">`;
+        }
+
+        const actionBtn = isWall ? `
+          <button class="btn-item-crop" onclick="event.stopPropagation(); selectWallpaperByIndex(${index})">
+            <span>👁️</span> <span>${isActive ? 'Editando' : 'Editar'}</span>
+          </button>
+        ` : '';
+
+        if (isWall) {
+          row.innerHTML = `
+            <div class="queue-item-left">
+              ${thumbHtml}
+              <div style="overflow:hidden; width:100%;">
+                <div class="item-name" title="${file.name}">${index + 1}. ${file.name}</div>
+                ${estimateText}
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px; margin-top:4px;">
+              ${actionBtn}
+              <span class="item-status" id="item-status-${index}">...</span>
+            </div>
+          `;
+          row.onclick = () => selectWallpaperByIndex(index);
+        } else {
+          row.innerHTML = `
+            <div class="queue-item-left">
+              <div style="overflow:hidden;">
+                <div class="item-name">${index + 1}. ${file.name}</div>
+                ${estimateText}
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="item-status" id="item-status-${index}">...</span>
+            </div>
+          `;
+        }
+
+        queueList.appendChild(row);
+      });
+
+      // Actualizar barra resumen de espacio y ahorro total
+      const origTotalMb = (totalOriginalBytes / (1024 * 1024)).toFixed(1);
+      const estTotalMb = (totalEstimatedBytes / (1024 * 1024)).toFixed(1);
+      const diffPct = Math.round(((totalOriginalBytes - totalEstimatedBytes) / totalOriginalBytes) * 100);
+
+      document.getElementById('summaryOriginalSize').innerText = `${t('origSpace')}: ${origTotalMb} MB`;
+      document.getElementById('summaryEstimatedSize').innerText = `${t('estSpace')}: ${estTotalMb} MB`;
+
+      const savingEl = document.getElementById('summarySaving');
+      if (diffPct > 0) {
+        savingEl.innerText = `${t('saving')}: ~${diffPct}% 📉`;
+        savingEl.style.color = "var(--success)";
+      } else {
+        savingEl.innerText = `BMP Nativo (${spec.w}x${spec.h})`;
+        savingEl.style.color = "var(--text-muted)";
+      }
+
+      queueContainer.classList.add('active');
+      btnSubmit.disabled = false;
+      document.getElementById('resultBox').classList.remove('active');
+      document.getElementById('progressBox').classList.remove('active');
+      updateButtonText();
+    }
+
+    function clearQueue() {
+      fileQueue = [];
+      fileInput.value = '';
+      renderQueue();
+    }
+
+    function addLog(msg) {
+      const logs = document.getElementById('progressLogs');
+      const item = document.createElement('div');
+      item.innerText = msg;
+      logs.appendChild(item);
+      logs.scrollTop = logs.scrollHeight;
+    }
+
+    async function startBatchProcessing() {
+      if (fileQueue.length === 0) return;
+
+      const btn = document.getElementById('btnSubmit');
+      btn.disabled = true;
+
+      const progressBox = document.getElementById('progressBox');
+      const progressBar = document.getElementById('progressBar');
+      const progressStatus = document.getElementById('progressStatus');
+      const progressPercent = document.getElementById('progressPercent');
+      const progressLogs = document.getElementById('progressLogs');
+      const resultBox = document.getElementById('resultBox');
+
+      progressLogs.innerHTML = '';
+      progressBox.classList.add('active');
+      resultBox.classList.remove('active');
+
+      const batchId = 'batch_' + Date.now();
+      const total = fileQueue.length;
+      let successCount = 0;
+
+      addLog(`[START] Processing ${total} file(s) for Xteink ${currentDevice}...`);
+
+      for (let i = 0; i < total; i++) {
+        const file = fileQueue[i];
+        const statusEl = document.getElementById(`item-status-${i}`);
+        if (statusEl) {
+          statusEl.innerText = "⏳...";
+          statusEl.className = "item-status proc";
+        }
+
+        const pct = Math.round((i / total) * 100);
+        progressBar.style.width = pct + '%';
+        progressPercent.innerText = pct + '%';
+        progressStatus.innerText = `[${i + 1}/${total}] ${file.name}`;
+        addLog(`[${i + 1}/${total}] ${file.name}...`);
+
+        try {
+          const queryParams = new URLSearchParams({
+            filename: file.name,
+            device: currentDevice,
+            mode: currentMode,
+            batch_id: batchId
+          });
+
+          const response = await fetch(`/api/convert?${queryParams.toString()}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/octet-stream' },
+            body: file
+          });
+
+          if (!response.ok) {
+            let errorMsg = `Error ${response.status}`;
+            try {
+              const err = await response.json();
+              errorMsg = err.detail || errorMsg;
+            } catch (_) {
+              const errText = await response.text();
+              errorMsg = errText || errorMsg;
+            }
+            throw new Error(errorMsg);
+          }
+
+          successCount++;
+          if (statusEl) {
+            statusEl.innerText = "✓";
+            statusEl.className = "item-status ok";
+          }
+          addLog(`  -> [OK] Finished.`);
+          await refreshQuota();
+        } catch (err) {
+          if (statusEl) {
+            statusEl.innerText = "✕";
+            statusEl.className = "item-status err";
+          }
+          addLog(`  -> [ERROR] ${err.message}`);
+          if (err.message.includes("límite") || err.message.includes("limit")) {
+            alert(err.message);
+            break;
+          }
+        }
+      }
+
+      progressBar.style.width = '100%';
+      progressPercent.innerText = '100%';
+      progressStatus.innerText = `Done (${successCount}/${total})`;
+      addLog(`[COMPLETE] Finished processing batch.`);
+
+      if (successCount > 0) {
+        const downloadBtn = document.getElementById('downloadBtn');
+        if (total === 1) {
+          downloadBtn.href = `/api/download/${batchId}`;
+          downloadBtn.innerText = t('downloadSingle');
+        } else {
+          downloadBtn.href = `/api/download_batch/${batchId}`;
+          downloadBtn.innerText = t('downloadZip', { count: successCount });
+        }
+        resultBox.classList.add('active');
+      }
+
+      btn.disabled = false;
+      await refreshQuota();
+    }
+
+    // ==========================================
+    // VISTA PREVIA Y ENCUADRE INTERACTIVO E-INK
+    // ==========================================
+    let cropSourceImg = null;
+    let cropActiveFile = null;
+    let currentPreviewIndex = 0;
+    let cropZoomVal = 1;
+    let cropContrastVal = 1.1;
+    let cropPanX = 0;
+    let cropPanY = 0;
+    let isDraggingCanvas = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let enableDitherSim = true;
+
+    const deviceResolutions = {
+      'X3': { w: 480, h: 640, label: 'XTEINK X3 (480x640)' },
+      'X4': { w: 480, h: 800, label: 'XTEINK X4 (480x800)' },
+      'X4p': { w: 480, h: 800, label: 'XTEINK X4 PRO (480x800)' }
+    };
+
+    function updateCanvasResolution() {
+      const canvas = document.getElementById('previewCanvas');
+      const label = document.getElementById('previewDeviceLabel');
+      const spec = deviceResolutions[currentDevice] || deviceResolutions['X4p'];
+      
+      // Tamaño visible en la pantalla (escalado a la mitad para diseño cómodo)
+      canvas.width = spec.w / 2;
+      canvas.height = spec.h / 2;
+      canvas.style.width = (spec.w / 2) + "px";
+      canvas.style.height = (spec.h / 2) + "px";
+      if (label) {
+        const idxText = fileQueue.length > 0 ? ` [${currentPreviewIndex + 1}/${fileQueue.length}]` : '';
+        label.innerText = spec.label + idxText;
+      }
+    }
+
+    function selectWallpaperByIndex(index) {
+      if (index < 0 || index >= fileQueue.length) return;
+      currentPreviewIndex = index;
+      initWallpaperPreview(fileQueue[index]);
+      renderQueue();
+    }
+
+    function prevWallpaper() {
+      if (fileQueue.length === 0) return;
+      let nextIdx = currentPreviewIndex - 1;
+      if (nextIdx < 0) nextIdx = fileQueue.length - 1;
+      selectWallpaperByIndex(nextIdx);
+    }
+
+    function nextWallpaper() {
+      if (fileQueue.length === 0) return;
+      let nextIdx = currentPreviewIndex + 1;
+      if (nextIdx >= fileQueue.length) nextIdx = 0;
+      selectWallpaperByIndex(nextIdx);
+    }
+
+    function initWallpaperPreview(file) {
+      cropActiveFile = file;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        cropSourceImg = new Image();
+        cropSourceImg.onload = function() {
+          resetCropParams();
+          document.getElementById('wallpaperPreviewBox').classList.add('active');
+          updateCanvasResolution();
+          renderCanvasPreview();
+        };
+        cropSourceImg.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function closeWallpaperPreview() {
+      document.getElementById('wallpaperPreviewBox').classList.remove('active');
+    }
+
+    function resetCropParams() {
+      cropZoomVal = 1;
+      cropContrastVal = 1.1;
+      cropPanX = 0;
+      cropPanY = 0;
+      document.getElementById('cropZoom').value = "1";
+      document.getElementById('cropContrast').value = "1.1";
+      if (cropSourceImg) renderCanvasPreview();
+    }
+
+    function onCropParamChange() {
+      cropZoomVal = parseFloat(document.getElementById('cropZoom').value) || 1;
+      cropContrastVal = parseFloat(document.getElementById('cropContrast').value) || 1;
+      renderCanvasPreview();
+    }
+
+    function toggleDitherMode() {
+      enableDitherSim = !enableDitherSim;
+      document.getElementById('btnToggleDither').classList.toggle('active', enableDitherSim);
+      renderCanvasPreview();
+    }
+
+    function renderCanvasPreview() {
+      const canvas = document.getElementById('previewCanvas');
+      if (!canvas || !cropSourceImg) return;
+      const ctx = canvas.getContext('2d');
+      const cw = canvas.width;
+      const ch = canvas.height;
+
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, cw, ch);
+
+      // Calcular proporción cover
+      const imgRatio = cropSourceImg.width / cropSourceImg.height;
+      const canvasRatio = cw / ch;
+
+      let drawW, drawH;
+      if (imgRatio > canvasRatio) {
+        drawH = ch * cropZoomVal;
+        drawW = drawH * imgRatio;
+      } else {
+        drawW = cw * cropZoomVal;
+        drawH = drawW / imgRatio;
+      }
+
+      const drawX = (cw - drawW) / 2 + cropPanX;
+      const drawY = (ch - drawH) / 2 + cropPanY;
+
+      // Dibujar imagen centrada con pan
+      ctx.drawImage(cropSourceImg, drawX, drawY, drawW, drawH);
+
+      // Aplicar simulación de 4 tonos E-Ink Floyd-Steinberg en cliente
+      if (enableDitherSim) {
+        applyClientEinkDither(ctx, cw, ch, cropContrastVal);
+      }
+    }
+
+    // Algoritmo rápido de cuantización y dithering en tiempo real (4 tonos nativos Xteink)
+    function applyClientEinkDither(ctx, width, height, contrast) {
+      const imgData = ctx.getImageData(0, 0, width, height);
+      const data = imgData.data;
+      const grays = new Float32Array(width * height);
+
+      // Convertir a escala de grises y ajustar contraste
+      for (let i = 0; i < data.length; i += 4) {
+        let r = data[i];
+        let g = data[i + 1];
+        let b = data[i + 2];
+        let lum = 0.299 * r + 0.587 * g + 0.114 * b;
+        lum = ((lum / 255 - 0.5) * contrast + 0.5) * 255;
+        grays[i / 4] = Math.max(0, Math.min(255, lum));
+      }
+
+      const palette = [0, 85, 170, 255]; // Los 4 grises físicos del panel Xteink
+
+      function findClosest(val) {
+        let best = palette[0];
+        let minDiff = Math.abs(val - best);
+        for (let p of palette) {
+          let diff = Math.abs(val - p);
+          if (diff < minDiff) {
+            minDiff = diff;
+            best = p;
+          }
+        }
+        return best;
+      }
+
+      // Floyd-Steinberg error diffusion
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          const idx = y * width + x;
+          const oldVal = grays[idx];
+          const newVal = findClosest(oldVal);
+          grays[idx] = newVal;
+          const err = oldVal - newVal;
+
+          if (x + 1 < width) grays[idx + 1] += err * (7 / 16);
+          if (x - 1 >= 0 && y + 1 < height) grays[idx + width - 1] += err * (3 / 16);
+          if (y + 1 < height) grays[idx + width] += err * (5 / 16);
+          if (x + 1 < width && y + 1 < height) grays[idx + width + 1] += err * (1 / 16);
+        }
+      }
+
+      // Reasignar al canvas
+      for (let i = 0; i < grays.length; i++) {
+        const v = grays[i];
+        const p = i * 4;
+        data[p] = v;
+        data[p + 1] = v;
+        data[p + 2] = v;
+        data[p + 3] = 255;
+      }
+
+      ctx.putImageData(imgData, 0, 0);
+    }
+
+    // Interacción de arrastre táctil y ratón sobre el canvas
+    const pCanvas = document.getElementById('previewCanvas');
+    pCanvas.addEventListener('mousedown', (e) => {
+      isDraggingCanvas = true;
+      dragStartX = e.clientX - cropPanX;
+      dragStartY = e.clientY - cropPanY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDraggingCanvas) return;
+      cropPanX = e.clientX - dragStartX;
+      cropPanY = e.clientY - dragStartY;
+      renderCanvasPreview();
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDraggingCanvas = false;
+    });
+
+    // Soporte táctil en móvil
+    pCanvas.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        isDraggingCanvas = true;
+        dragStartX = e.touches[0].clientX - cropPanX;
+        dragStartY = e.touches[0].clientY - cropPanY;
+      }
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDraggingCanvas || e.touches.length === 0) return;
+      cropPanX = e.touches[0].clientX - dragStartX;
+      cropPanY = e.touches[0].clientY - dragStartY;
+      renderCanvasPreview();
+    });
+
+    window.addEventListener('touchend', () => {
+      isDraggingCanvas = false;
+    });
+
+    // Confirmar encuadre: genera un Blob PNG con la imagen encuadrada a resolución nativa y la reemplaza en la cola
+    function applyCurrentCrop() {
+      if (!cropActiveFile || !cropSourceImg) return;
+      const spec = deviceResolutions[currentDevice] || deviceResolutions['X4p'];
+      
+      const offCanvas = document.createElement('canvas');
+      offCanvas.width = spec.w;
+      offCanvas.height = spec.h;
+      const oCtx = offCanvas.getContext('2d');
+
+      const imgRatio = cropSourceImg.width / cropSourceImg.height;
+      const canvasRatio = spec.w / spec.h;
+
+      let drawW, drawH;
+      if (imgRatio > canvasRatio) {
+        drawH = spec.h * cropZoomVal;
+        drawW = drawH * imgRatio;
+      } else {
+        drawW = spec.w * cropZoomVal;
+        drawH = drawW / imgRatio;
+      }
+
+      // Escalar el pan al tamaño real nativo
+      const scaleFactor = spec.w / (spec.w / 2);
+      const realPanX = cropPanX * scaleFactor;
+      const realPanY = cropPanY * scaleFactor;
+
+      const drawX = (spec.w - drawW) / 2 + realPanX;
+      const drawY = (spec.h - drawH) / 2 + realPanY;
+
+      oCtx.fillStyle = '#ffffff';
+      oCtx.fillRect(0, 0, spec.w, spec.h);
+      oCtx.drawImage(cropSourceImg, drawX, drawY, drawW, drawH);
+
+      offCanvas.toBlob((blob) => {
+        const croppedFile = new File([blob], cropActiveFile.name, { type: "image/png" });
+        const idx = fileQueue.findIndex(f => f.name === cropActiveFile.name);
+        if (idx !== -1) {
+          fileQueue[idx] = croppedFile;
+        }
+        renderQueue();
+        alert(currentLang === 'es'
+          ? "¡Encuadre confirmado! La imagen ha sido recortada exactamente para tu " + spec.label
+          : "Framing confirmed! Image cropped exactly for your " + spec.label);
+      }, 'image/png');
+    }
+
+    // Inicializar idioma y cuotas al cargar
+    setLanguage(currentLang);
+    refreshQuota();
+
+    // Comprobar retorno de pago
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('payment') === 'success') {
+      const added = urlParams.get('added') || '';
+      alert(currentLang === 'es' 
+        ? `¡Pago completado con éxito! Se han añadido ${added} conversiones a tu cuenta.`
+        : `Payment successful! ${added} conversions added to your account.`);
+      window.history.replaceState({}, document.title, "/");
+      refreshQuota();
+    }
+  </script>
+</body>
+</html>
