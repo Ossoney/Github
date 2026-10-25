@@ -1606,27 +1606,15 @@
         <div style="background: rgba(255, 94, 91, 0.1); border: 1px dashed rgba(255, 94, 91, 0.4); border-radius: 8px; padding: 10px 14px; margin-top: 14px; font-size: 0.84rem; color: #ffb4b3;" data-i18n="kofiNote">
           💡 Al pagar en Ko-fi, indica tu correo o tu usuario en el mensaje para que tus créditos se sumen automáticamente.
         </div>
-        <div class="pricing-grid">
-          <div class="pricing-card">
+        <div class="pricing-grid" style="grid-template-columns: 1fr; max-width: 320px; margin: 16px auto 0;">
+          <div class="pricing-card featured">
             <div>
-              <h3 style="color: var(--text);" data-i18n="plan100Title">Pack Estándar</h3>
+              <h3 style="color: var(--gold);" data-i18n="plan100Title">Pack Estándar</h3>
               <div class="pricing-amount">5 €</div>
               <div class="pricing-desc" data-i18n="plan100Desc">100 Conversiones completas</div>
             </div>
-            <button class="btn-kofi-pay" onclick="buyPlan('100')">
+            <button class="btn-kofi-pay featured" onclick="buyPlan('100')">
               <span>☕</span> <span data-i18n="payCard">Comprar con Ko-fi (5 €)</span>
-            </button>
-          </div>
-
-          <div class="pricing-card featured">
-            <div class="pricing-badge" data-i18n="bestValue">MEJOR PRECIO</div>
-            <div>
-              <h3 style="color: var(--gold);" data-i18n="plan300Title">Pack Pro / Biblioteca</h3>
-              <div class="pricing-amount">10 €</div>
-              <div class="pricing-desc" data-i18n="plan300Desc">300 Conversiones completas (3x más)</div>
-            </div>
-            <button class="btn-kofi-pay featured" onclick="buyPlan('300')">
-              <span>☕</span> <span data-i18n="payCardPro">Comprar con Ko-fi (10 €)</span>
             </button>
           </div>
         </div>
@@ -2264,8 +2252,8 @@
       }
 
       // ko-fi.com/epubtoxteink
-      // Plan 100 -> 5€ | Plan 300 -> 10€
-      const amount = plan === '300' ? 10 : 5;
+      // Plan 100 -> 5€
+      const amount = 5;
       const userEmail = currentUser.email || '';
       
       // Abre Ko-fi en una nueva pestaña
