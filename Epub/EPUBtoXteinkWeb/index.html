@@ -1683,9 +1683,10 @@
         saving: "Ahorro total",
         helpTitle: "📖 ¿Qué hace el programa y cuáles son sus ventajas?",
         helpHTML: `
-          <p>Los lectores de tinta electrónica con microcontroladores (como los <strong>Xteink X3, X4 y X4 Pro</strong> con chips ESP32 / ESP32-S3 y solo <strong>128 MB de RAM</strong>) sufren cuelgues constantes, congelaciones al pasar página o imágenes corruptas cuando intentan abrir EPUBs comerciales diseñados para tablets o PCs.</p>
-          <p><strong>EPUBtoXteink</strong> desmonta el libro por completo, reestructura su código y elementos gráficos para adaptarlos a la física de la pantalla E-Ink, y lo vuelve a empaquetar de forma ultra-ligera y estable.</p>
-          <h3 style="color:var(--accent); margin:18px 0 8px;">⚙️ Proceso de Optimización</h3>
+          <p>Los lectores de tinta electrónica con microcontroladores (como los <strong>Xteink X3, X4 y X4 Pro</strong> con chips ESP32 / ESP32-S3 y solo <strong>128 MB de RAM</strong>) sufren cuelgues constantes, congelaciones al pasar página o imágenes corruptas cuando intentan abrir EPUBs comerciales o fotos convencionales diseñadas para pantallas a color.</p>
+          <p><strong>EPUBtoXteink</strong> adapta y reestructura de forma integral tanto tus <strong>libros EPUB</strong> como tus <strong>imágenes y fondos de pantalla</strong> para la física real del panel de tinta electrónica.</p>
+
+          <h3 style="color:var(--accent); margin:18px 0 8px;">📚 1. Optimización Avanzada de Libros EPUB</h3>
           <ul style="margin-left:20px; line-height:1.6;">
             <li><strong>Purga de Fuentes y Basura:</strong> Elimina fuentes embebidas (.ttf, .otf, .woff) que pesan megabytes, junto con scripts, estilos CSS pesados, iframes y etiquetas incompatibles.</li>
             <li><strong>Dithering Floyd-Steinberg a 4 Grises Nativos:</strong> Las imágenes interiores se convierten a BMP 24-bits cuantizadas exactamente a los 4 tonos físicos del panel (<code>#000000</code>, <code>#555555</code>, <code>#AAAAAA</code>, <code>#FFFFFF</code>). El lector no gasta batería ni CPU en calcular gradientes en tiempo real.</li>
@@ -1694,18 +1695,29 @@
             <li><strong>Splitting Recursivo Anti-Crash:</strong> Si un capítulo HTML excede los <strong>300 KB</strong> (límite de desbordamiento de RAM del visor), lo divide iterativamente a la mitad respetando la jerarquía DOM.</li>
             <li><strong>Sincronización Total de Índices:</strong> Mantiene al día el manifiesto OPF y los índices de navegación tanto en EPUB 2 (<code>toc.ncx</code>) como en el estándar moderno EPUB 3 (<code>nav.xhtml</code>).</li>
           </ul>
-          <h3 style="color:var(--accent); margin:18px 0 8px;">✨ Cuadro de Ventajas</h3>
+
+          <h3 style="color:var(--accent); margin:18px 0 8px;">🎨 2. Procesamiento y Creación de Fondos de Pantalla (Imágenes)</h3>
+          <ul style="margin-left:20px; line-height:1.6;">
+            <li><strong>Resolución Nativa Pixel a Pixel:</strong> Ajusta y redimensiona con algoritmo Lanczos de alta precisión a la resolución exacta de cada modelo: <strong>480 × 640 px</strong> para Xteink X3 y <strong>480 × 800 px</strong> para Xteink X4 / X4 Pro. La pantalla no tiene que reescalar nada.</li>
+            <li><strong>Formato BMP 24-bit Oficial:</strong> Genera archivos de mapa de bits (<code>.bmp</code>) sin compresión con pérdida, garantizando compatibilidad total tanto con el firmware oficial de fábrica como con <strong>CrossPoint OS</strong> y <strong>CrossInk</strong> sin inversión de colores.</li>
+            <li><strong>Cuantización a 4 Tonos Físicos E-Ink:</strong> Aplica difusión de error Floyd-Steinberg convirtiendo cualquier foto a color o degradado suave en una textura de puntos nítida optimizada para paneles de 4 grises, eliminando banding y borrones.</li>
+            <li><strong>Eliminación de Transparencias (Fondo Blanco):</strong> Detecta canales alfa en archivos PNG/WebP y los aplana automáticamente sobre fondo blanco puro, evitando que los logotipos o pegatinas transparentes se muestren sobre fondos negros opacos.</li>
+            <li><strong>Simulador Interactivo con Marco de Dispositivo:</strong> Permite previsualizar en tiempo real el aspecto real de la tinta electrónica, con herramientas táctiles de encuadre, zoom y ajuste de contraste foto por foto antes de procesar.</li>
+          </ul>
+
+          <h3 style="color:var(--accent); margin:18px 0 8px;">✨ Cuadro Resumen de Ventajas</h3>
           <table class="modal-table">
             <thead>
-              <tr><th>Ventaja</th><th>Impacto en el Lector</th></tr>
+              <tr><th>Ventaja</th><th>Impacto en tu Lector Xteink</th></tr>
             </thead>
             <tbody>
-              <tr><td><strong>Cero cuelgues de RAM</strong></td><td>Capítulos siempre bajo 300 KB para evitar desbordamientos de memoria en el ESP32.</td></tr>
-              <tr><td><strong>Mayor duración de batería</strong></td><td>El PC procesa el dithering; el lector solo pinta píxeles sin sobrecargar su CPU.</td></tr>
-              <tr><td><strong>Hasta 70% menos de peso</strong></td><td>Libros limpios de fuentes pesadas, ahorrando espacio en la tarjeta microSD.</td></tr>
-              <tr><td><strong>Compatibilidad Universal</strong></td><td>Imágenes en BMP 24b compatibles con firmware oficial, <strong>CrossPoint</strong> y <strong>CrossInk</strong> sin colores invertidos.</td></tr>
-              <tr><td><strong>Subida en Lote (hasta 20)</strong></td><td>Procesa colecciones completas y las descarga empaquetadas en un único archivo <code>.zip</code>.</td></tr>
-              <tr><td><strong>Preservación Absoluta</strong></td><td>Tus archivos originales nunca se tocan; siempre se generan archivos nuevos con el sufijo (<code>_X3</code>, <code>_X4</code>, <code>_X4p</code>).</td></tr>
+              <tr><td><strong>Cero cuelgues de memoria RAM</strong></td><td>Capítulos siempre bajo 300 KB e imágenes formateadas para no desbordar el microcontrolador ESP32.</td></tr>
+              <tr><td><strong>Mayor duración de batería</strong></td><td>Todo el cálculo matemático de degradados se hace en servidor; el lector solo dibuja píxeles directos.</td></tr>
+              <tr><td><strong>Fondos de pantalla perfectos</strong></td><td>Resolución exacta (480x640 / 480x800) en formato BMP 24b compatible con modo reposo y apagado.</td></tr>
+              <tr><td><strong>Hasta 70% menos de peso en libros</strong></td><td>Limpieza exhaustiva de fuentes y elementos superfluos, ahorrando espacio valioso en la tarjeta microSD.</td></tr>
+              <tr><td><strong>Compatibilidad Universal</strong></td><td>Totalmente compatible con firmware de fábrica, <strong>CrossPoint</strong> y <strong>CrossInk</strong>.</td></tr>
+              <tr><td><strong>Subida en Lote (hasta 20 archivos)</strong></td><td>Convierte colecciones de libros o lotes de imágenes a la vez y descárgalos agrupados en un solo <code>.zip</code>.</td></tr>
+              <tr><td><strong>Preservación Absoluta</strong></td><td>Tus archivos originales nunca se modifican; se genera siempre una copia nueva con el sufijo (<code>_X3</code>, <code>_X4</code>, <code>_X4p</code>).</td></tr>
             </tbody>
           </table>
         `
@@ -1780,9 +1792,10 @@
         saving: "Total savings",
         helpTitle: "📖 What does the program do and what are its advantages?",
         helpHTML: `
-          <p>Microcontroller-based e-readers (such as the <strong>Xteink X3, X4 and X4 Pro</strong> with ESP32 / ESP32-S3 chips and only <strong>128 MB of RAM</strong>) constantly crash, freeze on page turns, or display corrupt images when opening commercial EPUBs designed for tablets or PCs.</p>
-          <p><strong>EPUBtoXteink</strong> completely disassembles the book, restructures its code and graphics to match the physical constraints of the E-Ink panel, and repacks it into an ultra-lightweight, crash-free EPUB.</p>
-          <h3 style="color:var(--accent); margin:18px 0 8px;">⚙️ Optimization Pipeline</h3>
+          <p>Microcontroller-based e-readers (such as the <strong>Xteink X3, X4 and X4 Pro</strong> with ESP32 / ESP32-S3 chips and only <strong>128 MB of RAM</strong>) constantly crash, freeze on page turns, or display corrupt images when opening commercial EPUBs or standard color photos designed for tablets or PCs.</p>
+          <p><strong>EPUBtoXteink</strong> disassembles and restructures both your <strong>EPUB e-books</strong> and your <strong>wallpaper images</strong> to perfectly match the physical requirements of E-Ink panels.</p>
+
+          <h3 style="color:var(--accent); margin:18px 0 8px;">📚 1. Advanced EPUB Optimization Pipeline</h3>
           <ul style="margin-left:20px; line-height:1.6;">
             <li><strong>Purge Fonts & Bloat:</strong> Strips embedded fonts (.ttf, .otf, .woff) weighing megabytes, along with scripts, heavy CSS styles, iframes and unsupported tags.</li>
             <li><strong>4-Gray Native Floyd-Steinberg Dithering:</strong> Internal images are converted to 24-bit BMPs quantized to the panel's 4 physical tones (<code>#000000</code>, <code>#555555</code>, <code>#AAAAAA</code>, <code>#FFFFFF</code>). The e-reader saves battery and CPU without computing gradients in real-time.</li>
@@ -1791,18 +1804,29 @@
             <li><strong>Anti-Crash Recursive Splitting:</strong> Any XHTML chapter exceeding <strong>300 KB</strong> (the ESP32 RAM crash threshold) is recursively split in half while preserving clean DOM hierarchy.</li>
             <li><strong>Full Standards Synchronization:</strong> Synchronizes OPF manifests, EPUB 2 NCX tables (<code>toc.ncx</code>) and modern EPUB 3 navigation files (<code>nav.xhtml</code>).</li>
           </ul>
-          <h3 style="color:var(--accent); margin:18px 0 8px;">✨ Advantages Table</h3>
+
+          <h3 style="color:var(--accent); margin:18px 0 8px;">🎨 2. Wallpaper & Image Processing</h3>
+          <ul style="margin-left:20px; line-height:1.6;">
+            <li><strong>Exact Pixel-to-Pixel Resolution:</strong> Resizes using high-grade Lanczos filtering to match your device hardware natively: <strong>480 × 640 px</strong> for Xteink X3 and <strong>480 × 800 px</strong> for Xteink X4 / X4 Pro. The e-reader does not need to scale or resample on the fly.</li>
+            <li><strong>Official 24-bit BMP Format:</strong> Generates lossless bitmap images (<code>.bmp</code>) ensuring 100% compatibility with official stock firmware, <strong>CrossPoint OS</strong>, and <strong>CrossInk</strong> without inverted colors.</li>
+            <li><strong>4-Gray Native Quantization:</strong> Applies Floyd-Steinberg error diffusion dithering to convert any color photo or gradient into a crisp dot matrix optimized for 4 physical panel shades, eliminating color banding.</li>
+            <li><strong>Alpha Flattening (Pure White Background):</strong> Replaces transparency in PNG/WebP files with pure white backgrounds so transparent stickers/logos never display inside black boxes.</li>
+            <li><strong>Interactive Device Frame Simulator:</strong> Real-time on-screen preview with pan, zoom, and contrast adjustment controls to frame and fine-tune each wallpaper before converting.</li>
+          </ul>
+
+          <h3 style="color:var(--accent); margin:18px 0 8px;">✨ Advantages Summary Table</h3>
           <table class="modal-table">
             <thead>
-              <tr><th>Advantage</th><th>Benefit on E-Reader</th></tr>
+              <tr><th>Advantage</th><th>Benefit on Your Xteink Device</th></tr>
             </thead>
             <tbody>
-              <tr><td><strong>Zero RAM crashes</strong></td><td>Chapters always under 300 KB to avoid memory overflows on ESP32.</td></tr>
-              <tr><td><strong>Extended battery life</strong></td><td>Dithering is calculated on your PC; e-reader just draws pixels effortlessly.</td></tr>
-              <tr><td><strong>Up to 70% smaller size</strong></td><td>Stripped of heavy font bloat, saving valuable microSD storage.</td></tr>
-              <tr><td><strong>Universal compatibility</strong></td><td>24-bit BMP format compatible with official firmware, <strong>CrossPoint</strong> and <strong>CrossInk</strong> without inverted colors.</td></tr>
-              <tr><td><strong>Batch Upload (up to 20)</strong></td><td>Convert entire collections and download them packaged in a single <code>.zip</code> file.</td></tr>
-              <tr><td><strong>Absolute Preservation</strong></td><td>Your original files are never altered; a clean file with your device suffix (<code>_X3</code>, <code>_X4</code>, <code>_X4p</code>) is created.</td></tr>
+              <tr><td><strong>Zero RAM crashes</strong></td><td>Chapters always kept under 300 KB and images formatted without overflowing the ESP32 chip.</td></tr>
+              <tr><td><strong>Extended battery life</strong></td><td>Gradient dithering is calculated beforehand on server; your e-reader draws pure pixels effortlessly.</td></tr>
+              <tr><td><strong>Perfect wallpapers</strong></td><td>Exact resolution (480x640 / 480x800) in 24-bit BMP ready for sleep and power-off screens.</td></tr>
+              <tr><td><strong>Up to 70% smaller book size</strong></td><td>Thoroughly stripped of heavy font bloat, saving valuable microSD storage space.</td></tr>
+              <tr><td><strong>Universal compatibility</strong></td><td>Compatible with official factory firmware, <strong>CrossPoint</strong>, and <strong>CrossInk</strong>.</td></tr>
+              <tr><td><strong>Batch Upload (up to 20 files)</strong></td><td>Process collections of books or image batches simultaneously and download them in a single <code>.zip</code> file.</td></tr>
+              <tr><td><strong>Absolute Preservation</strong></td><td>Your original files are never altered; a clean optimized file with your device suffix (<code>_X3</code>, <code>_X4</code>, <code>_X4p</code>) is created.</td></tr>
             </tbody>
           </table>
         `
