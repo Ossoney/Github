@@ -2659,6 +2659,13 @@
         const idxText = fileQueue.length > 0 ? ` [${currentPreviewIndex + 1}/${fileQueue.length}]` : '';
         label.innerText = spec.label + idxText;
       }
+
+      // Ocultar botones anterior/siguiente si solo hay 1 imagen o ninguna
+      const prevBtn = document.getElementById('btnPrevWall');
+      const nextBtn = document.getElementById('btnNextWall');
+      const showNav = fileQueue.length > 1;
+      if (prevBtn) prevBtn.style.display = showNav ? 'inline-flex' : 'none';
+      if (nextBtn) nextBtn.style.display = showNav ? 'inline-flex' : 'none';
     }
 
     function selectWallpaperByIndex(index) {
