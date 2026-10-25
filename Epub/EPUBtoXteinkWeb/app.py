@@ -227,7 +227,7 @@ async def api_admin_update_credits(request):
 async def api_create_checkout(request):
     user = get_current_user(request)
     if not user:
-        return JSONResponse({"detail": "Debes iniciar sesión para comprar créditos"}, status_code=401)
+        return JSONResponse({"detail": "Debes iniciar sesión para realizar una aportación"}, status_code=401)
 
     try:
         body = await request.json()
@@ -387,7 +387,7 @@ async def api_convert(request):
         allowed = database.deduct_user_credit(user['id'])
         if not allowed:
             return JSONResponse({
-                "detail": "Has alcanzado tu límite de conversiones (2/día). Compra un pack de 100 o 300 conversiones para continuar."
+                "detail": "Has alcanzado tu límite de conversiones (2/día). Realiza una aportación con Ko-fi para recibir 100 conversiones y continuar apoyando el servicio."
             }, status_code=429)
     else:
         ip = get_client_ip(request)

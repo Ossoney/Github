@@ -1269,7 +1269,7 @@
           <span>👑</span> <span data-i18n="adminPanel">Panel Master</span>
         </button>
         <button class="btn-pricing" onclick="openPricingModal()">
-          <span>💳</span> <span data-i18n="buyCredits">Comprar Créditos</span>
+          <span>☕</span> <span data-i18n="buyCredits">Aportar / Donar</span>
         </button>
         <button class="btn-auth-action" id="btnAuthToggle" onclick="openAuthModal()">
           <span data-i18n="loginRegister">Acceso / Registro</span>
@@ -1454,7 +1454,7 @@
       </div>
       <div class="modal-body">
         <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;" data-i18n="authSubtitle">
-          Inicia sesión para disfrutar de 2 conversiones gratis al día o comprar packs de créditos.
+          Inicia sesión para disfrutar de 2 conversiones gratis al día o recibir créditos con tu aportación.
         </p>
         <form onsubmit="handleAuthSubmit(event)">
           <div class="form-group">
@@ -1596,30 +1596,30 @@
   <div class="modal-overlay" id="pricingModal" onclick="closePricingModal(event)">
     <div class="modal-content" style="max-width: 620px;" onclick="event.stopPropagation()">
       <div class="modal-header">
-        <div class="modal-title" data-i18n="pricingTitle">☕ Recargar Conversiones con Ko-fi</div>
+        <div class="modal-title" data-i18n="pricingTitle">☕ Recargar Conversiones con tu Aportación</div>
         <button class="btn-close-modal" onclick="closePricingModal()">✕</button>
       </div>
       <div class="modal-body">
         <p style="color: var(--text-muted); font-size: 0.92rem;" data-i18n="pricingSubtitle">
-          Los créditos comprados no caducan y se utilizan automáticamente cuando agotas tu cupo diario gratuito.
+          Los créditos asociados a tu aportación no caducan y se utilizan automáticamente cuando agotas tu cupo diario gratuito.
         </p>
         <div style="background: rgba(255, 94, 91, 0.1); border: 1px dashed rgba(255, 94, 91, 0.4); border-radius: 8px; padding: 10px 14px; margin-top: 14px; font-size: 0.84rem; color: #ffb4b3;" data-i18n="kofiNote">
-          💡 Al pagar en Ko-fi, indica tu correo o tu usuario en el mensaje para que tus créditos se sumen automáticamente.
+          💡 Al realizar tu aportación en Ko-fi, indica tu correo o tu usuario en el mensaje para que tus créditos se sumen automáticamente.
         </div>
         <div class="pricing-grid" style="grid-template-columns: 1fr; max-width: 320px; margin: 16px auto 0;">
           <div class="pricing-card featured">
             <div>
-              <h3 style="color: var(--gold);" data-i18n="plan100Title">Pack Estándar</h3>
+              <h3 style="color: var(--gold);" data-i18n="plan100Title">Aportación Estándar</h3>
               <div class="pricing-amount">5 €</div>
               <div class="pricing-desc" data-i18n="plan100Desc">100 Conversiones completas</div>
             </div>
             <button class="btn-kofi-pay featured" onclick="buyPlan('100')">
-              <span>☕</span> <span data-i18n="payCard">Comprar con Ko-fi (5 €)</span>
+              <span>☕</span> <span data-i18n="payCard">Aportar con Ko-fi (5 €)</span>
             </button>
           </div>
         </div>
         <p style="margin-top: 18px; font-size: 0.78rem; color: var(--text-muted); text-align: center;" data-i18n="stripeSecure">
-          🔒 Pagos seguros con Tarjeta, Google Pay, Apple Pay o PayPal a través de Ko-fi.
+          🔒 Aportaciones seguras con Tarjeta, Google Pay, Apple Pay o PayPal a través de Ko-fi.
         </p>
       </div>
     </div>
@@ -1646,7 +1646,7 @@
       es: {
         badgeTitle: "E-INK OPTIMIZATION SUITE",
         subtitle: "Optimiza y comprime tus libros electrónicos e imágenes para Xteink X3, X4 y X4 Pro.",
-        buyCredits: "Comprar Créditos",
+        buyCredits: "Aportar / Donar",
         adminPanel: "Panel Master",
         loginRegister: "Acceso / Registro",
         logout: "Cerrar sesión",
@@ -1670,7 +1670,7 @@
         quotaUser: "Cuenta: {rem}/2 hoy + {purchased} créditos",
         quotaMaster: "👑 Usuario Master: Conversiones Ilimitadas (∞)",
         authTitle: "Acceso de Usuario",
-        authSubtitle: "Inicia sesión para disfrutar de 2 conversiones gratis al día o comprar packs de créditos.",
+        authSubtitle: "Inicia sesión para disfrutar de 2 conversiones gratis al día o recibir créditos con tu aportación.",
         emailLabel: "Correo Electrónico",
         passwordLabel: "Contraseña (mín. 6 caracteres)",
         btnLogin: "Iniciar Sesión",
@@ -1688,17 +1688,13 @@
         resetSubtitle: "Introduce tu nueva contraseña (mínimo 6 caracteres).",
         newPasswordLabel: "Nueva Contraseña",
         btnSavePassword: "Guardar Nueva Contraseña",
-        pricingTitle: "☕ Recargar Conversiones con Ko-fi",
-        pricingSubtitle: "Los créditos no caducan y se utilizan automáticamente al agotar tu cupo diario gratuito.",
-        plan100Title: "Pack Estándar",
+        pricingTitle: "☕ Recargar Conversiones con tu Aportación",
+        pricingSubtitle: "Los créditos asociados a tu aportación no caducan y se utilizan automáticamente al agotar tu cupo diario gratuito.",
+        plan100Title: "Aportación Estándar",
         plan100Desc: "100 Conversiones completas",
-        plan300Title: "Pack Pro / Biblioteca",
-        plan300Desc: "300 Conversiones completas (3x más)",
-        payCard: "☕ Comprar con Ko-fi (5 €)",
-        payCardPro: "☕ Comprar con Ko-fi (10 €)",
-        bestValue: "MEJOR PRECIO",
-        kofiNote: "💡 Al pagar en Ko-fi, indica tu correo o tu usuario en el mensaje para que tus créditos se sumen automáticamente.",
-        stripeSecure: "🔒 Pagos seguros con Tarjeta, Google Pay, Apple Pay o PayPal a través de Ko-fi.",
+        payCard: "☕ Aportar con Ko-fi (5 €)",
+        kofiNote: "💡 Al realizar tu aportación en Ko-fi, indica tu correo o tu usuario en el mensaje para que tus créditos se sumen automáticamente.",
+        stripeSecure: "🔒 Aportaciones seguras con Tarjeta, Google Pay, Apple Pay o PayPal a través de Ko-fi.",
         previewTitle: "Vista Previa & Encuadre en Xteink",
         closePreview: "✕ Cerrar vista",
         zoom: "Zoom:",
@@ -1755,7 +1751,7 @@
       en: {
         badgeTitle: "E-INK OPTIMIZATION SUITE",
         subtitle: "Optimize and compress your e-books and images for Xteink X3, X4 and X4 Pro.",
-        buyCredits: "Buy Credits",
+        buyCredits: "Contribute / Donate",
         adminPanel: "Master Panel",
         loginRegister: "Login / Register",
         logout: "Log out",
@@ -1779,7 +1775,7 @@
         quotaUser: "Account: {rem}/2 today + {purchased} credits",
         quotaMaster: "👑 Master User: Unlimited Conversions (∞)",
         authTitle: "User Login",
-        authSubtitle: "Sign in to get 2 free conversions per day or purchase credit packs.",
+        authSubtitle: "Sign in to get 2 free conversions per day or receive extra credits with your contribution.",
         emailLabel: "Email Address",
         passwordLabel: "Password (min. 6 characters)",
         btnLogin: "Sign In",
@@ -1797,17 +1793,13 @@
         resetSubtitle: "Enter your new password (minimum 6 characters).",
         newPasswordLabel: "New Password",
         btnSavePassword: "Save New Password",
-        pricingTitle: "☕ Top Up Conversions with Ko-fi",
-        pricingSubtitle: "Purchased credits never expire and are automatically used when your free daily allowance is exhausted.",
-        plan100Title: "Standard Pack",
+        pricingTitle: "☕ Top Up Conversions with Your Contribution",
+        pricingSubtitle: "Credits associated with your contribution never expire and are automatically used when your free daily allowance is exhausted.",
+        plan100Title: "Standard Contribution",
         plan100Desc: "100 Full Conversions",
-        plan300Title: "Pro / Library Pack",
-        plan300Desc: "300 Full Conversions (3x value)",
-        payCard: "☕ Buy via Ko-fi (5 €)",
-        payCardPro: "☕ Buy via Ko-fi (10 €)",
-        bestValue: "BEST VALUE",
-        kofiNote: "💡 When checking out on Ko-fi, enter your email or username in the message so your credits are added automatically.",
-        stripeSecure: "🔒 Secure payments via Card, Google Pay, Apple Pay or PayPal on Ko-fi.",
+        payCard: "☕ Contribute via Ko-fi (5 €)",
+        kofiNote: "💡 When making your contribution on Ko-fi, enter your email or username in the message so your credits are added automatically.",
+        stripeSecure: "🔒 Secure contributions via Card, Google Pay, Apple Pay or PayPal on Ko-fi.",
         previewTitle: "Preview & Framing on Xteink",
         closePreview: "✕ Close preview",
         zoom: "Zoom:",
@@ -2229,8 +2221,8 @@
     function openPricingModal() {
       if (!currentUser || !currentUser.logged_in) {
         alert(currentLang === 'es' 
-          ? "Por favor, inicia sesión o crea una cuenta antes de comprar créditos."
-          : "Please log in or create an account before purchasing credits.");
+          ? "Por favor, inicia sesión o crea una cuenta antes de realizar una aportación."
+          : "Please log in or create an account before contributing.");
         openAuthModal();
         return;
       }
@@ -2245,8 +2237,8 @@
     function buyPlan(plan) {
       if (!currentUser || !currentUser.logged_in) {
         alert(currentLang === 'es' 
-          ? "Por favor, inicia sesión o crea una cuenta antes de comprar créditos."
-          : "Please log in or create an account before purchasing credits.");
+          ? "Por favor, inicia sesión o crea una cuenta antes de realizar una aportación."
+          : "Please log in or create an account before contributing.");
         openAuthModal();
         return;
       }
