@@ -1112,8 +1112,45 @@
       }
 
       .device-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .device-card {
+        padding: 8px 6px;
+        border-radius: 8px;
+        gap: 2px;
+      }
+
+      .device-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+      }
+
+      .device-title {
+        font-size: 0.82rem;
+        line-height: 1.15;
+      }
+
+      .device-tag {
+        font-size: 0.62rem;
+        padding: 1px 4px;
+        border-radius: 3px;
+      }
+
+      .device-specs {
+        font-size: 0.68rem;
+        line-height: 1.15;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .palette-strip {
+        height: 4px;
+        margin-top: 4px;
       }
 
       .upload-zone {
