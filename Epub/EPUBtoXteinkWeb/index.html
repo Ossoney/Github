@@ -1519,6 +1519,7 @@
           <button class="btn-control-toggle active" id="tabAdminUsers" onclick="switchAdminSubTab('users')">👥 Usuarios Registrados (<span id="countRegUsers">0</span>)</button>
           <button class="btn-control-toggle" id="tabAdminAnon" onclick="switchAdminSubTab('anon')">🌐 Usuarios Anónimos (<span id="countAnonUsers">0</span>)</button>
           <button class="btn-control-toggle" id="tabAdminPayments" onclick="switchAdminSubTab('payments')">💰 Historial de Pagos (<span id="countPayments">0</span>)</button>
+          <button class="btn-control-toggle" id="tabAdminMessages" onclick="switchAdminSubTab('messages')">📩 Incidencias (<span id="countMessages">0</span>)</button>
         </div>
 
         <!-- Sección: Usuarios Registrados -->
@@ -1588,6 +1589,29 @@
             </table>
           </div>
         </div>
+
+        <!-- Sección: Mensajes / Incidencias -->
+        <div id="adminSectionMessages" style="display: none;">
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+            Mensajes, dudas e incidencias enviadas por usuarios y donantes:
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="modal-table" style="font-size: 0.82rem;">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Remitente</th>
+                  <th>Asunto</th>
+                  <th>Mensaje</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody id="adminMessagesTableBody">
+                <tr><td colspan="5" style="text-align: center;">Cargando...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1621,6 +1645,29 @@
         <p style="margin-top: 18px; font-size: 0.78rem; color: var(--text-muted); text-align: center;" data-i18n="stripeSecure">
           🔒 Aportaciones seguras con Tarjeta, Google Pay, Apple Pay o PayPal a través de Ko-fi.
         </p>
+        
+        <!-- Botón y formulario para comunicar incidencias -->
+        <div style="margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); text-align: center;">
+          <button type="button" class="btn-auth-action" onclick="toggleSupportTicketBox()" style="font-size: 0.8rem; padding: 5px 12px; color: var(--text-muted);">
+            <span>📩</span> <span data-i18n="btnReportIssue">¿Tienes alguna duda o incidencia con tu aportación?</span>
+          </button>
+          
+          <div id="supportTicketBox" style="display: none; margin-top: 12px; text-align: left; background: #161b22; border: 1px solid var(--border); border-radius: 8px; padding: 14px;">
+            <div style="font-weight: 600; font-size: 0.85rem; margin-bottom: 8px; color: var(--text);" data-i18n="supportTitle">
+              Mensaje directo al Administrador Master:
+            </div>
+            <div class="form-group" style="margin-bottom: 8px;">
+              <input type="text" id="supportSubject" class="form-input" style="font-size: 0.82rem; padding: 6px 10px;" placeholder="Asunto (ej. No veo mis créditos reflejados)">
+            </div>
+            <div class="form-group" style="margin-bottom: 10px;">
+              <textarea id="supportMessage" class="form-input" rows="3" style="font-size: 0.82rem; padding: 6px 10px; resize: vertical;" placeholder="Explica detalladamente qué ha ocurrido o incluye el ID de tu transacción de Ko-fi..."></textarea>
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 8px;">
+              <button type="button" class="btn-auth-action" onclick="toggleSupportTicketBox()" data-i18n="btnCancel">Cancelar</button>
+              <button type="button" class="btn-submit" onclick="submitSupportTicket()" style="margin: 0; padding: 6px 14px; font-size: 0.82rem;" data-i18n="btnSendTicket">Enviar mensaje</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1695,6 +1742,9 @@
         payCard: "☕ Aportar con Ko-fi (5 €)",
         kofiNote: "💡 Al realizar tu aportación en Ko-fi, indica tu correo o tu usuario en el mensaje para que tus créditos se sumen automáticamente.",
         stripeSecure: "🔒 Aportaciones seguras con Tarjeta, Google Pay, Apple Pay o PayPal a través de Ko-fi.",
+        btnReportIssue: "¿Tienes alguna duda o incidencia con tu aportación?",
+        supportTitle: "Mensaje directo al Administrador Master:",
+        btnSendTicket: "Enviar mensaje",
         previewTitle: "Vista Previa & Encuadre en Xteink",
         closePreview: "✕ Cerrar vista",
         zoom: "Zoom:",
@@ -1800,6 +1850,9 @@
         payCard: "☕ Contribute via Ko-fi (5 €)",
         kofiNote: "💡 When making your contribution on Ko-fi, enter your email or username in the message so your credits are added automatically.",
         stripeSecure: "🔒 Secure contributions via Card, Google Pay, Apple Pay or PayPal on Ko-fi.",
+        btnReportIssue: "Any questions or issues with your contribution?",
+        supportTitle: "Direct message to the Master Admin:",
+        btnSendTicket: "Send message",
         previewTitle: "Preview & Framing on Xteink",
         closePreview: "✕ Close preview",
         zoom: "Zoom:",
@@ -2099,10 +2152,12 @@
       document.getElementById('tabAdminUsers').classList.toggle('active', tab === 'users');
       document.getElementById('tabAdminAnon').classList.toggle('active', tab === 'anon');
       document.getElementById('tabAdminPayments').classList.toggle('active', tab === 'payments');
+      document.getElementById('tabAdminMessages').classList.toggle('active', tab === 'messages');
 
       document.getElementById('adminSectionUsers').style.display = tab === 'users' ? 'block' : 'none';
       document.getElementById('adminSectionAnon').style.display = tab === 'anon' ? 'block' : 'none';
       document.getElementById('adminSectionPayments').style.display = tab === 'payments' ? 'block' : 'none';
+      document.getElementById('adminSectionMessages').style.display = tab === 'messages' ? 'block' : 'none';
     }
 
     async function loadAdminStats() {
@@ -2114,6 +2169,7 @@
         document.getElementById('countRegUsers').innerText = data.total_registered_users;
         document.getElementById('countAnonUsers').innerText = data.total_anon_tracked;
         document.getElementById('countPayments').innerText = data.payments.length;
+        document.getElementById('countMessages').innerText = (data.messages || []).length;
 
         // Render Usuarios Registrados
         const usersTbody = document.getElementById('adminUsersTableBody');
@@ -2180,6 +2236,26 @@
             payTbody.appendChild(tr);
           });
         }
+
+        // Render Mensajes / Incidencias
+        const msgTbody = document.getElementById('adminMessagesTableBody');
+        msgTbody.innerHTML = '';
+        const msgList = data.messages || [];
+        if (msgList.length === 0) {
+          msgTbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No hay incidencias ni mensajes reportados.</td></tr>';
+        } else {
+          msgList.forEach(m => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td><small>${m.created_at.split('T')[0]}</small></td>
+              <td><strong>${m.email}</strong> ${m.user_id ? `<small style="color:var(--accent);">(#${m.user_id})</small>` : ''}</td>
+              <td><strong>${m.subject}</strong></td>
+              <td style="max-width: 260px; word-break: break-word;">${m.message}</td>
+              <td><span class="device-tag" style="background:#238636; color:white;">Recibido</span></td>
+            `;
+            msgTbody.appendChild(tr);
+          });
+        }
       } catch (err) {
         alert("Error cargando panel de control: " + err.message);
       }
@@ -2232,6 +2308,56 @@
     function closePricingModal(e) {
       if (e) e.stopPropagation();
       document.getElementById('pricingModal').classList.remove('active');
+      const box = document.getElementById('supportTicketBox');
+      if (box) box.style.display = 'none';
+    }
+
+    function toggleSupportTicketBox() {
+      const box = document.getElementById('supportTicketBox');
+      if (!box) return;
+      const isOpen = box.style.display === 'block';
+      box.style.display = isOpen ? 'none' : 'block';
+      if (!isOpen) {
+        document.getElementById('supportSubject').focus();
+      }
+    }
+
+    async function submitSupportTicket() {
+      const subject = document.getElementById('supportSubject').value.trim();
+      const message = document.getElementById('supportMessage').value.trim();
+      
+      let email = (currentUser && currentUser.email) ? currentUser.email : '';
+      if (!email) {
+        email = prompt(currentLang === 'es' ? "Indica tu correo de contacto:" : "Enter your contact email:");
+      }
+      if (!email || !email.includes('@')) {
+        alert(currentLang === 'es' ? "Se requiere un correo electrónico válido." : "A valid email address is required.");
+        return;
+      }
+      if (!message) {
+        alert(currentLang === 'es' ? "Por favor escribe un mensaje detallando tu consulta." : "Please write a message detailing your request.");
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/support/ticket', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, subject: subject || "Incidencia aportación", message })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.detail || "Error enviando incidencia");
+
+        alert(currentLang === 'es' 
+          ? "¡Mensaje enviado al Administrador Master! Revisaremos tu caso lo antes posible."
+          : "Message sent to the Master Admin! We will review your case as soon as possible.");
+        
+        document.getElementById('supportSubject').value = '';
+        document.getElementById('supportMessage').value = '';
+        document.getElementById('supportTicketBox').style.display = 'none';
+      } catch (err) {
+        alert(err.message);
+      }
     }
 
     function buyPlan(plan) {

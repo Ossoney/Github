@@ -223,6 +223,28 @@ async def api_admin_update_credits(request):
     except Exception as e:
         return JSONResponse({"detail": str(e)}, status_code=500)
 
+async def api_support_ticket(request):
+    try:
+        body = await request.json()
+        subject = body.get("subject", "").strip()
+        message = body.get("message", "").strip()
+        email = body.get("email", "").strip().lower()
+
+        user = get_current_user(request)
+        user_id = user['id'] if user else None
+        if user and not email:
+            email = user['email']
+
+        if not email or "@" not in email:
+            return JSONResponse({"detail": "Indica un correo electrónico de contacto válido."}, status_code=400)
+        if not message:
+            return JSONResponse({"detail": "Describe brevemente tu incidencia o consulta."}, status_code=400)
+
+        msg_id = database.create_support_message(email, subject or "Incidencia / Consulta", message, user_id)
+        return JSONResponse({"success": True, "ticket_id": msg_id, "message": "Tu incidencia ha sido enviada al administrador."})
+    except Exception as e:
+        return JSONResponse({"detail": str(e)}, status_code=500)
+
 # ----------------- STRIPE CHECKOUT & CREDITS -----------------
 async def api_create_checkout(request):
     user = get_current_user(request)
@@ -491,6 +513,7 @@ routes = [
     Route("/api/auth/reset-password", api_reset_password, methods=["POST"]),
     Route("/api/admin/stats", api_admin_stats, methods=["GET"]),
     Route("/api/admin/update-credits", api_admin_update_credits, methods=["POST"]),
+    Route("/api/support/ticket", api_support_ticket, methods=["POST"]),
     Route("/api/payment/create-checkout", api_create_checkout, methods=["POST"]),
     Route("/api/payment/success", api_payment_success, methods=["GET"]),
     Route("/api/kofi/webhook", api_kofi_webhook, methods=["POST"]),

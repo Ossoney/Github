@@ -65,6 +65,18 @@ def init_db():
             created_at TEXT NOT NULL
         )
         """)
+        # Tabla de mensajes de soporte / incidencias de usuarios
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS support_messages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER,
+            email TEXT NOT NULL,
+            subject TEXT NOT NULL,
+            message TEXT NOT NULL,
+            created_at TEXT NOT NULL,
+            status TEXT DEFAULT 'pending'
+        )
+        """)
         conn.commit()
 
 init_db()
@@ -419,13 +431,35 @@ def get_admin_dashboard_stats():
         """)
         payments = [dict(r) for r in cursor.fetchall()]
 
+        # Incidencias / Mensajes de soporte
+        cursor.execute("""
+            SELECT id, user_id, email, subject, message, created_at, status
+            FROM support_messages
+            ORDER BY id DESC
+            LIMIT 50
+        """)
+        messages = [dict(r) for r in cursor.fetchall()]
+
         return {
             "total_registered_users": len(users),
             "total_anon_tracked": len(anon_users),
             "users": users,
             "anon_users": anon_users,
-            "payments": payments
+            "payments": payments,
+            "messages": messages
         }
+
+def create_support_message(email: str, subject: str, message: str, user_id: int = None) -> int:
+    """Registra una incidencia o mensaje de usuario para el panel Master."""
+    now = datetime.datetime.now().isoformat()
+    with get_db() as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO support_messages (user_id, email, subject, message, created_at) VALUES (?, ?, ?, ?, ?)",
+            (user_id, email.strip().lower(), subject.strip(), message.strip(), now)
+        )
+        conn.commit()
+        return cursor.lastrowid
 
 def set_user_credits(user_id: int, new_credits: int) -> bool:
     """Permite al master asignar o modificar directamente los créditos contratados/disponibles de un usuario."""
