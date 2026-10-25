@@ -1112,45 +1112,50 @@
       }
 
       .device-grid {
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
+        flex-direction: column;
         gap: 8px;
         margin-bottom: 16px;
       }
 
       .device-card {
-        padding: 8px 6px;
+        padding: 9px 12px;
         border-radius: 8px;
-        gap: 2px;
+        gap: 0;
+        min-width: 0;
+        box-sizing: border-box;
       }
 
       .device-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 3px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        width: 100%;
       }
 
       .device-title {
-        font-size: 0.82rem;
-        line-height: 1.15;
+        font-size: 0.9rem;
+        line-height: 1.2;
       }
 
       .device-tag {
-        font-size: 0.62rem;
-        padding: 1px 4px;
-        border-radius: 3px;
+        font-size: 0.68rem;
+        padding: 1px 6px;
+        border-radius: 4px;
+        flex-shrink: 0;
       }
 
       .device-specs {
-        font-size: 0.68rem;
-        line-height: 1.15;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        font-size: 0.74rem;
+        line-height: 1.2;
+        margin-top: 2px;
+        white-space: normal;
       }
 
       .palette-strip {
-        height: 4px;
-        margin-top: 4px;
+        display: none;
       }
 
       .upload-zone {
