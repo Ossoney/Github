@@ -1363,8 +1363,22 @@
             <input type="range" id="cropContrast" min="0.5" max="2" step="0.05" value="1.1" oninput="onCropParamChange()">
           </div>
           <div class="control-item">
-            <button class="btn-control-toggle active" id="btnToggleDither" onclick="toggleDitherMode()">
-              <span data-i18n="ditherMode">4 Grises E-Ink</span>
+            <span data-i18n="brightness">Brillo:</span>
+            <input type="range" id="cropBrightness" min="-100" max="100" step="5" value="0" oninput="onCropParamChange()">
+          </div>
+          <div class="control-item">
+            <button class="btn-control-toggle" id="btnRotateWall" onclick="rotateWallpaper()">
+              <span>🔄</span> <span data-i18n="rotate">Girar 90°</span>
+            </button>
+          </div>
+          <div class="control-item">
+            <button class="btn-control-toggle" id="btnInvertWall" onclick="toggleInvertColors()">
+              <span>🌓</span> <span data-i18n="invert">Invertir</span>
+            </button>
+          </div>
+          <div class="control-item">
+            <button class="btn-control-toggle active" id="btnToggleDither" onclick="cycleDitherMode()">
+              <span id="ditherLabel" data-i18n="ditherMode">4 Grises (Difusión)</span>
             </button>
           </div>
           <div class="control-item">
@@ -1749,7 +1763,12 @@
         closePreview: "✕ Cerrar vista",
         zoom: "Zoom:",
         contrast: "Contraste:",
-        ditherMode: "4 Grises E-Ink",
+        brightness: "Brillo:",
+        rotate: "Girar 90°",
+        invert: "Invertir",
+        ditherMode: "4 Grises (Difusión)",
+        ditherThreshold: "4 Grises (Puro / Manga)",
+        ditherOff: "Escala Real",
         resetView: "Restablecer",
         btnApplyCrop: "Confirmar encuadre",
         prevImg: "Anterior",
@@ -1857,7 +1876,12 @@
         closePreview: "✕ Close preview",
         zoom: "Zoom:",
         contrast: "Contrast:",
-        ditherMode: "4 E-Ink Grays",
+        brightness: "Brightness:",
+        rotate: "Rotate 90°",
+        invert: "Invert",
+        ditherMode: "4 Grays (Diffusion)",
+        ditherThreshold: "4 Grays (Threshold / Manga)",
+        ditherOff: "Grayscale Real",
         resetView: "Reset",
         btnApplyCrop: "Confirm crop",
         prevImg: "Previous",
@@ -2780,12 +2804,15 @@
     let currentPreviewIndex = 0;
     let cropZoomVal = 1;
     let cropContrastVal = 1.1;
+    let cropBrightnessVal = 0;
+    let cropRotationDeg = 0;
+    let cropInvertColors = false;
+    let cropDitherMode = 'diffusion'; // 'diffusion', 'threshold', 'off'
     let cropPanX = 0;
     let cropPanY = 0;
     let isDraggingCanvas = false;
     let dragStartX = 0;
     let dragStartY = 0;
-    let enableDitherSim = true;
 
     const deviceResolutions = {
       'X3': { w: 480, h: 640, label: 'XTEINK X3 (480x640)' },
@@ -2860,23 +2887,72 @@
     function resetCropParams() {
       cropZoomVal = 1;
       cropContrastVal = 1.1;
+      cropBrightnessVal = 0;
+      cropRotationDeg = 0;
+      cropInvertColors = false;
+      cropDitherMode = 'diffusion';
       cropPanX = 0;
       cropPanY = 0;
       document.getElementById('cropZoom').value = "1";
       document.getElementById('cropContrast').value = "1.1";
+      document.getElementById('cropBrightness').value = "0";
+      
+      const invBtn = document.getElementById('btnInvertWall');
+      if (invBtn) invBtn.classList.remove('active');
+      
+      updateDitherButtonUI();
       if (cropSourceImg) renderCanvasPreview();
     }
 
     function onCropParamChange() {
       cropZoomVal = parseFloat(document.getElementById('cropZoom').value) || 1;
       cropContrastVal = parseFloat(document.getElementById('cropContrast').value) || 1;
+      cropBrightnessVal = parseFloat(document.getElementById('cropBrightness').value) || 0;
       renderCanvasPreview();
     }
 
-    function toggleDitherMode() {
-      enableDitherSim = !enableDitherSim;
-      document.getElementById('btnToggleDither').classList.toggle('active', enableDitherSim);
+    function rotateWallpaper() {
+      cropRotationDeg = (cropRotationDeg + 90) % 360;
+      // Intercambiar ligeramente el pan si procede para centrar
+      cropPanX = 0;
+      cropPanY = 0;
       renderCanvasPreview();
+    }
+
+    function toggleInvertColors() {
+      cropInvertColors = !cropInvertColors;
+      const invBtn = document.getElementById('btnInvertWall');
+      if (invBtn) invBtn.classList.toggle('active', cropInvertColors);
+      renderCanvasPreview();
+    }
+
+    function cycleDitherMode() {
+      if (cropDitherMode === 'diffusion') {
+        cropDitherMode = 'threshold';
+      } else if (cropDitherMode === 'threshold') {
+        cropDitherMode = 'off';
+      } else {
+        cropDitherMode = 'diffusion';
+      }
+      updateDitherButtonUI();
+      renderCanvasPreview();
+    }
+
+    function updateDitherButtonUI() {
+      const btn = document.getElementById('btnToggleDither');
+      const lbl = document.getElementById('ditherLabel');
+      if (!btn || !lbl) return;
+
+      if (cropDitherMode === 'diffusion') {
+        btn.classList.add('active');
+        lbl.innerText = t('ditherMode');
+      } else if (cropDitherMode === 'threshold') {
+        btn.classList.add('active');
+        lbl.innerText = t('ditherThreshold');
+      } else {
+        btn.classList.remove('active');
+        lbl.innerText = t('ditherOff');
+      }
     }
 
     function renderCanvasPreview() {
@@ -2889,8 +2965,17 @@
       ctx.fillStyle = '#ffffff';
       ctx.fillRect(0, 0, cw, ch);
 
+      // Guardar contexto para aplicar rotación y transformaciones
+      ctx.save();
+      ctx.translate(cw / 2 + cropPanX, ch / 2 + cropPanY);
+      ctx.rotate((cropRotationDeg * Math.PI) / 180);
+
+      const isRotated90 = (cropRotationDeg % 180 !== 0);
+      const effectiveW = isRotated90 ? cropSourceImg.height : cropSourceImg.width;
+      const effectiveH = isRotated90 ? cropSourceImg.width : cropSourceImg.height;
+
       // Calcular proporción cover
-      const imgRatio = cropSourceImg.width / cropSourceImg.height;
+      const imgRatio = effectiveW / effectiveH;
       const canvasRatio = cw / ch;
 
       let drawW, drawH;
@@ -2902,32 +2987,42 @@
         drawH = drawW / imgRatio;
       }
 
-      const drawX = (cw - drawW) / 2 + cropPanX;
-      const drawY = (ch - drawH) / 2 + cropPanY;
+      // Dibujar imagen centrada en el origen rotado
+      const renderW = isRotated90 ? drawH : drawW;
+      const renderH = isRotated90 ? drawW : drawH;
+      ctx.drawImage(cropSourceImg, -renderW / 2, -renderH / 2, renderW, renderH);
+      ctx.restore();
 
-      // Dibujar imagen centrada con pan
-      ctx.drawImage(cropSourceImg, drawX, drawY, drawW, drawH);
-
-      // Aplicar simulación de 4 tonos E-Ink Floyd-Steinberg en cliente
-      if (enableDitherSim) {
-        applyClientEinkDither(ctx, cw, ch, cropContrastVal);
-      }
+      // Aplicar ajustes y procesado E-Ink (Brillo, Contraste, Inversión, Tramado)
+      applyClientEinkProcessing(ctx, cw, ch, cropContrastVal, cropBrightnessVal, cropInvertColors, cropDitherMode);
     }
 
-    // Algoritmo rápido de cuantización y dithering en tiempo real (4 tonos nativos Xteink)
-    function applyClientEinkDither(ctx, width, height, contrast) {
+    // Algoritmo completo de procesado E-Ink en tiempo real (Brillo, Contraste, Invertir, Floyd-Steinberg / Threshold)
+    function applyClientEinkProcessing(ctx, width, height, contrast, brightness, invert, ditherMode) {
       const imgData = ctx.getImageData(0, 0, width, height);
       const data = imgData.data;
       const grays = new Float32Array(width * height);
 
-      // Convertir a escala de grises y ajustar contraste
+      // Convertir a escala de grises, contraste, brillo e inversión
       for (let i = 0; i < data.length; i += 4) {
         let r = data[i];
         let g = data[i + 1];
         let b = data[i + 2];
         let lum = 0.299 * r + 0.587 * g + 0.114 * b;
+        
+        // Ajuste de brillo (-100 a +100)
+        lum = lum + brightness;
+        
+        // Ajuste de contraste
         lum = ((lum / 255 - 0.5) * contrast + 0.5) * 255;
-        grays[i / 4] = Math.max(0, Math.min(255, lum));
+        lum = Math.max(0, Math.min(255, lum));
+
+        // Inversión si está activada
+        if (invert) {
+          lum = 255 - lum;
+        }
+
+        grays[i / 4] = lum;
       }
 
       const palette = [0, 85, 170, 255]; // Los 4 grises físicos del panel Xteink
@@ -2945,25 +3040,32 @@
         return best;
       }
 
-      // Floyd-Steinberg error diffusion
-      for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-          const idx = y * width + x;
-          const oldVal = grays[idx];
-          const newVal = findClosest(oldVal);
-          grays[idx] = newVal;
-          const err = oldVal - newVal;
+      if (ditherMode === 'diffusion') {
+        // Floyd-Steinberg error diffusion
+        for (let y = 0; y < height; y++) {
+          for (let x = 0; x < width; x++) {
+            const idx = y * width + x;
+            const oldVal = grays[idx];
+            const newVal = findClosest(oldVal);
+            grays[idx] = newVal;
+            const err = oldVal - newVal;
 
-          if (x + 1 < width) grays[idx + 1] += err * (7 / 16);
-          if (x - 1 >= 0 && y + 1 < height) grays[idx + width - 1] += err * (3 / 16);
-          if (y + 1 < height) grays[idx + width] += err * (5 / 16);
-          if (x + 1 < width && y + 1 < height) grays[idx + width + 1] += err * (1 / 16);
+            if (x + 1 < width) grays[idx + 1] += err * (7 / 16);
+            if (x - 1 >= 0 && y + 1 < height) grays[idx + width - 1] += err * (3 / 16);
+            if (y + 1 < height) grays[idx + width] += err * (5 / 16);
+            if (x + 1 < width && y + 1 < height) grays[idx + width + 1] += err * (1 / 16);
+          }
+        }
+      } else if (ditherMode === 'threshold') {
+        // Cuantización directa por umbrales puros (ideal cómics, manga, texto sin ruido)
+        for (let i = 0; i < grays.length; i++) {
+          grays[i] = findClosest(grays[i]);
         }
       }
 
       // Reasignar al canvas
       for (let i = 0; i < grays.length; i++) {
-        const v = grays[i];
+        const v = Math.round(Math.max(0, Math.min(255, grays[i])));
         const p = i * 4;
         data[p] = v;
         data[p + 1] = v;
@@ -3023,7 +3125,23 @@
       offCanvas.height = spec.h;
       const oCtx = offCanvas.getContext('2d');
 
-      const imgRatio = cropSourceImg.width / cropSourceImg.height;
+      oCtx.fillStyle = '#ffffff';
+      oCtx.fillRect(0, 0, spec.w, spec.h);
+
+      // Escalar el pan al tamaño real nativo
+      const scaleFactor = spec.w / (spec.w / 2);
+      const realPanX = cropPanX * scaleFactor;
+      const realPanY = cropPanY * scaleFactor;
+
+      oCtx.save();
+      oCtx.translate(spec.w / 2 + realPanX, spec.h / 2 + realPanY);
+      oCtx.rotate((cropRotationDeg * Math.PI) / 180);
+
+      const isRotated90 = (cropRotationDeg % 180 !== 0);
+      const effectiveW = isRotated90 ? cropSourceImg.height : cropSourceImg.width;
+      const effectiveH = isRotated90 ? cropSourceImg.width : cropSourceImg.height;
+
+      const imgRatio = effectiveW / effectiveH;
       const canvasRatio = spec.w / spec.h;
 
       let drawW, drawH;
@@ -3035,17 +3153,13 @@
         drawH = drawW / imgRatio;
       }
 
-      // Escalar el pan al tamaño real nativo
-      const scaleFactor = spec.w / (spec.w / 2);
-      const realPanX = cropPanX * scaleFactor;
-      const realPanY = cropPanY * scaleFactor;
+      const renderW = isRotated90 ? drawH : drawW;
+      const renderH = isRotated90 ? drawW : drawH;
+      oCtx.drawImage(cropSourceImg, -renderW / 2, -renderH / 2, renderW, renderH);
+      oCtx.restore();
 
-      const drawX = (spec.w - drawW) / 2 + realPanX;
-      const drawY = (spec.h - drawH) / 2 + realPanY;
-
-      oCtx.fillStyle = '#ffffff';
-      oCtx.fillRect(0, 0, spec.w, spec.h);
-      oCtx.drawImage(cropSourceImg, drawX, drawY, drawW, drawH);
+      // Aplicar filtros completos al canvas de alta resolución
+      applyClientEinkProcessing(oCtx, spec.w, spec.h, cropContrastVal, cropBrightnessVal, cropInvertColors, cropDitherMode);
 
       offCanvas.toBlob((blob) => {
         const croppedFile = new File([blob], cropActiveFile.name, { type: "image/png" });
@@ -3055,8 +3169,8 @@
         }
         renderQueue();
         alert(currentLang === 'es'
-          ? "¡Encuadre confirmado! La imagen ha sido recortada exactamente para tu " + spec.label
-          : "Framing confirmed! Image cropped exactly for your " + spec.label);
+          ? "¡Encuadre confirmado! La imagen ha sido procesada y adaptada para tu " + spec.label
+          : "Framing confirmed! Image processed and adapted for your " + spec.label);
       }, 'image/png');
     }
 
