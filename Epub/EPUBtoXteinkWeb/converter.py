@@ -12,10 +12,11 @@ except ImportError:
     BeautifulSoup = None
 
 try:
-    from PIL import Image
+    from PIL import Image, ImageStat
     Image.MAX_IMAGE_PIXELS = 200_000_000
 except ImportError:
     Image = None
+    ImageStat = None
 
 try:
     import lxml
@@ -89,6 +90,18 @@ class EPUBConverterCore:
                 background.paste(img, mask=img.split()[-1])
                 img = background
 
+            # Detectar y eliminar imágenes completamente en blanco o en negro sólido
+            # (típicas páginas vacías o fondos negros que bloquean o afean el e-reader)
+            if not is_cover and ImageStat:
+                gray_check = img.convert('L')
+                stat = ImageStat.Stat(gray_check)
+                # Varianza menor a 0.5 indica un color uniforme/sólido
+                # mean > 250 es blanco puro / casi blanco; mean < 5 es negro puro / casi negro
+                if stat.var and stat.var[0] < 0.5 and (stat.mean[0] >= 250 or stat.mean[0] <= 5):
+                    img.close()
+                    os.remove(file_path)
+                    return "deleted_blank_or_black"
+
             if is_cover:
                 # PORTADA: Convertir a escala de grises limpia (modo L) sin dithering destructivo en JPEG
                 # para que el bookshelf del e-reader muestre la portada nítida y sin artefactos 8x8.
@@ -114,6 +127,158 @@ class EPUBConverterCore:
         except Exception as e:
             logging.warning("[IMG SKIP] %s: %s", file_path, e)
             return "skipped"
+
+    def _is_empty_or_blank_html(self, file_path, cover_files=None):
+        """
+        Determina si un documento XHTML es una página en blanco, en negro o sin contenido.
+        Detecta:
+        - Ausencia de texto real (solo espacios, párrafos vacíos o &nbsp;)
+        - Ausencia de imágenes, SVGs o tablas con información
+        - O presencia única de una imagen que ya fue eliminada o que es sólida (blanco/negro)
+        """
+        if cover_files is None:
+            cover_files = set()
+
+        # Si el nombre del archivo es la portada reconocida, no se debe eliminar
+        if Path(file_path).name in cover_files:
+            return False
+
+        try:
+            with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                content = f.read()
+
+            if not content.strip():
+                return True
+
+            soup = BeautifulSoup(content, HTML_PARSER)
+            if not soup.body:
+                return True
+
+            # Si es el archivo de navegación o TOC, preservarlo
+            if soup.find('nav') or 'toc' in Path(file_path).name.lower() or 'nav' in Path(file_path).name.lower():
+                return False
+
+            # Comprobar texto legible
+            body_text = soup.body.get_text(strip=True)
+            # Limpiar caracteres invisibles habituales de maquetación (&nbsp;, \u200b, etc.)
+            clean_text = body_text.replace('\xa0', '').replace('\u200b', '').replace('\u3000', '').strip()
+
+            # Comprobar si contiene elementos visuales
+            imgs = soup.body.find_all(['img', 'image'])
+            svgs = soup.body.find_all('svg')
+            tables = soup.body.find_all('table')
+
+            # Si no hay texto ni elementos visuales, es una página vacía
+            if len(clean_text) == 0 and len(imgs) == 0 and len(svgs) == 0 and len(tables) == 0:
+                return True
+
+            # Si hay una imagen referenciada pero el archivo de la imagen no existe
+            # (por ejemplo, porque era una imagen de 1x1px o un bloque negro/blanco eliminado en _optimize_image)
+            if len(clean_text) == 0 and len(imgs) > 0:
+                base_dir = Path(file_path).parent
+                all_missing = True
+                for img_tag in imgs:
+                    src = img_tag.get('src') or img_tag.get('href') or img_tag.get('xlink:href') or ''
+                    src_clean = src.split('#')[0].split('?')[0]
+                    if src_clean:
+                        target_img = (base_dir / src_clean).resolve()
+                        target_bmp = target_img.with_suffix('.bmp')
+                        target_jpg = target_img.with_suffix('.jpg')
+                        if target_img.exists() or target_bmp.exists() or target_jpg.exists():
+                            all_missing = False
+                            break
+                if all_missing:
+                    return True
+
+            return False
+        except Exception as e:
+            logging.warning("[EMPTY CHECK ERROR] %s: %s", file_path, e)
+            return False
+
+    def _remove_empty_html_from_manifest_and_spine(self, temp_dir, empty_filenames):
+        """Elimina las páginas vacías del manifiesto OPF, spine y de la tabla de contenidos NCX/NAV."""
+        if not empty_filenames:
+            return
+
+        for root_dir, _, files in os.walk(temp_dir):
+            for file in files:
+                if not file.endswith('.opf'):
+                    continue
+
+                opf_path = os.path.join(root_dir, file)
+                try:
+                    if _LXML_AVAILABLE:
+                        import lxml.etree as etree
+                        tree = etree.parse(opf_path)
+                        root_el = tree.getroot()
+                        opf_ns = root_el.nsmap.get(None, 'http://www.idpf.org/2007/opf')
+                        ns = f'{{{opf_ns}}}' if opf_ns else ''
+
+                        manifest = root_el.find(f'{ns}manifest')
+                        spine = root_el.find(f'{ns}spine')
+
+                        if manifest is not None and spine is not None:
+                            removed_ids = set()
+                            for item in list(manifest):
+                                href = item.get('href', '')
+                                if Path(href).name in empty_filenames:
+                                    item_id = item.get('id')
+                                    if item_id:
+                                        removed_ids.add(item_id)
+                                    manifest.remove(item)
+
+                            for itemref in list(spine):
+                                if itemref.get('idref') in removed_ids:
+                                    spine.remove(itemref)
+
+                        tree.write(opf_path, xml_declaration=True, encoding='UTF-8', pretty_print=True)
+                    else:
+                        with open(opf_path, 'r', encoding='utf-8') as f:
+                            soup = BeautifulSoup(f.read(), 'xml')
+                        manifest = soup.find('manifest')
+                        spine = soup.find('spine')
+                        if manifest and spine:
+                            removed_ids = set()
+                            for item in manifest.find_all('item'):
+                                href = item.get('href', '')
+                                if Path(href).name in empty_filenames:
+                                    item_id = item.get('id')
+                                    if item_id:
+                                        removed_ids.add(item_id)
+                                    item.decompose()
+
+                            for itemref in spine.find_all('itemref'):
+                                if itemref.get('idref') in removed_ids:
+                                    itemref.decompose()
+
+                        with open(opf_path, 'w', encoding='utf-8') as f:
+                            f.write(str(soup))
+                except Exception as e:
+                    logging.warning('[OPF CLEAN ERROR] %s: %s', opf_path, e)
+
+        # Limpiar referencias de páginas vacías en NCX (si las hubiera)
+        for root_dir, _, files in os.walk(temp_dir):
+            for file in files:
+                if file.endswith('.ncx'):
+                    ncx_path = os.path.join(root_dir, file)
+                    try:
+                        if _LXML_AVAILABLE:
+                            import lxml.etree as etree
+                            tree = etree.parse(ncx_path)
+                            root_el = tree.getroot()
+                            ncx_ns = root_el.nsmap.get(None, 'http://www.daisy.org/z3986/2005/ncx/')
+                            ns = f'{{{ncx_ns}}}' if ncx_ns else ''
+                            for nav_point in list(root_el.findall(f'.//{ns}navPoint')):
+                                cnt = nav_point.find(f'{ns}content')
+                                if cnt is not None:
+                                    src = cnt.get('src', '').split('#')[0]
+                                    if Path(src).name in empty_filenames:
+                                        parent = nav_point.getparent()
+                                        if parent is not None:
+                                            parent.remove(nav_point)
+                            tree.write(ncx_path, xml_declaration=True, encoding='UTF-8', pretty_print=True)
+                    except Exception as e:
+                        logging.warning('[NCX CLEAN ERROR] %s: %s', ncx_path, e)
 
     def _purge_html_soup(self, soup, cover_files=None):
         if cover_files is None:
@@ -539,10 +704,26 @@ class EPUBConverterCore:
 
             self.progress_callback("Purgando estilos, ajustando cubierta y dividiendo capítulos > 300KB...", 65)
             html_queue = list(html_tasks)
+            all_processed_html = []
             while html_queue:
                 html_path = html_queue.pop(0)
                 nuevos = self._optimize_and_split_html(html_path, opf_modifier_queue, cover_files)
+                all_processed_html.append(html_path)
                 html_queue.extend(nuevos)
+
+            # Detectar y purgar páginas en blanco, en negro o sin contenido
+            self.progress_callback("Eliminando páginas en blanco, en negro o sin contenido...", 75)
+            empty_filenames = set()
+            for h_path in all_processed_html:
+                if self._is_empty_or_blank_html(h_path, cover_files):
+                    try:
+                        empty_filenames.add(Path(h_path).name)
+                        os.remove(h_path)
+                    except OSError:
+                        pass
+
+            if empty_filenames:
+                self._remove_empty_html_from_manifest_and_spine(temp_dir, empty_filenames)
 
             self.progress_callback("Sincronizando manifiestos OPF y tablas TOC...", 85)
             self._patch_opf_manifest(temp_dir, opf_modifier_queue)
