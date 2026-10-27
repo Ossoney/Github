@@ -1272,14 +1272,14 @@
           <span>☕</span> <span data-i18n="buyCredits">Aportar / Donar</span>
         </button>
         <button class="btn-auth-action" id="btnAuthToggle" onclick="openAuthModal()">
-          <span data-i18n="loginRegister">Acceso / Registro</span>
+          <span id="authBtnText" data-i18n="loginRegister">Acceso / Registro</span>
         </button>
       </div>
     </div>
 
     <!-- Header -->
     <header>
-      <h1>EPUB to <span>Xteink Web</span> <button class="btn-help" onclick="openHelpModal()" title="¿Qué hace el programa y cuáles son sus ventajas?">?</button></h1>
+      <h1>EPUB to <span>Xteink Web</span> <button class="btn-help" id="btnHelp" onclick="openHelpModal()" title="¿Qué hace el programa y cuáles son sus ventajas?">?</button></h1>
       <p id="appSubtitle" data-i18n="subtitle">Optimiza y comprime tus libros electrónicos e imágenes para Xteink X3, X4 y X4 Pro.</p>
     </header>
 
@@ -1448,13 +1448,13 @@
             <div style="font-size: 0.85rem; color: var(--text-muted);" id="resultSub" data-i18n="resultReadySub">Todos los archivos optimizados están empaquetados</div>
           </div>
         </div>
-        <a href="#" class="btn-download" id="downloadBtn" download>
+        <a href="#" class="btn-download" id="downloadBtn" download data-i18n="downloadZipDefault">
           📦 Descargar Todo (.ZIP)
         </a>
       </div>
     </div>
 
-    <footer>
+    <footer data-i18n="footerText">
       EPUBtoXteink Web • Pipeline de alto rendimiento y anti-bloqueo para lectores E-Ink
     </footer>
   </div>
@@ -1523,38 +1523,38 @@
     <div class="modal-content" style="max-width: 850px;" onclick="event.stopPropagation()">
       <div class="modal-header">
         <div class="modal-title">
-          <span>👑</span> <span>Panel de Mando Master (Administración)</span>
+          <span>👑</span> <span data-i18n="adminModalTitle">Panel de Mando Master (Administración)</span>
         </div>
         <button class="btn-close-modal" onclick="closeAdminModal()">✕</button>
       </div>
       <div class="modal-body">
         <!-- Sub-pestañas del panel de administración -->
         <div style="display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-          <button class="btn-control-toggle active" id="tabAdminUsers" onclick="switchAdminSubTab('users')">👥 Usuarios Registrados (<span id="countRegUsers">0</span>)</button>
-          <button class="btn-control-toggle" id="tabAdminAnon" onclick="switchAdminSubTab('anon')">🌐 Usuarios Anónimos (<span id="countAnonUsers">0</span>)</button>
-          <button class="btn-control-toggle" id="tabAdminPayments" onclick="switchAdminSubTab('payments')">💰 Historial de Pagos (<span id="countPayments">0</span>)</button>
-          <button class="btn-control-toggle" id="tabAdminMessages" onclick="switchAdminSubTab('messages')">📩 Incidencias (<span id="countMessages">0</span>)</button>
+          <button class="btn-control-toggle active" id="tabAdminUsers" onclick="switchAdminSubTab('users')">👥 <span data-i18n="adminTabUsers">Usuarios Registrados</span> (<span id="countRegUsers">0</span>)</button>
+          <button class="btn-control-toggle" id="tabAdminAnon" onclick="switchAdminSubTab('anon')">🌐 <span data-i18n="adminTabAnon">Usuarios Anónimos</span> (<span id="countAnonUsers">0</span>)</button>
+          <button class="btn-control-toggle" id="tabAdminPayments" onclick="switchAdminSubTab('payments')">💰 <span data-i18n="adminTabPayments">Historial de Pagos</span> (<span id="countPayments">0</span>)</button>
+          <button class="btn-control-toggle" id="tabAdminMessages" onclick="switchAdminSubTab('messages')">📩 <span data-i18n="adminTabMessages">Incidencias</span> (<span id="countMessages">0</span>)</button>
         </div>
 
         <!-- Sección: Usuarios Registrados -->
         <div id="adminSectionUsers">
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;" data-i18n="adminUsersDesc">
             Modifica o añade descargas contratadas/créditos a cualquier usuario en tiempo real:
           </p>
           <div style="overflow-x: auto;">
             <table class="modal-table" style="font-size: 0.82rem;">
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Correo</th>
-                  <th>Uso Hoy</th>
-                  <th>Créditos Disponibles</th>
-                  <th>Último Acceso</th>
-                  <th>Acción / Asignar</th>
+                  <th data-i18n="thId">ID</th>
+                  <th data-i18n="thEmail">Correo</th>
+                  <th data-i18n="thDailyUsed">Uso Hoy</th>
+                  <th data-i18n="thCreditsAvail">Créditos Disponibles</th>
+                  <th data-i18n="thLastAccess">Último Acceso</th>
+                  <th data-i18n="thActionAssign">Acción / Asignar</th>
                 </tr>
               </thead>
               <tbody id="adminUsersTableBody">
-                <tr><td colspan="6" style="text-align: center;">Cargando...</td></tr>
+                <tr><td colspan="6" style="text-align: center;" data-i18n="loading">Cargando...</td></tr>
               </tbody>
             </table>
           </div>
@@ -1562,20 +1562,20 @@
 
         <!-- Sección: Usuarios Anónimos -->
         <div id="adminSectionAnon" style="display: none;">
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;" data-i18n="adminAnonDesc">
             Registro de IPs e identificadores que han usado el cupo anónimo (1/día):
           </p>
           <div style="overflow-x: auto;">
             <table class="modal-table" style="font-size: 0.82rem;">
               <thead>
                 <tr>
-                  <th>IP / Identificador</th>
-                  <th>Uso Hoy</th>
-                  <th>Última Fecha</th>
+                  <th data-i18n="thIpId">IP / Identificador</th>
+                  <th data-i18n="thDailyUsed">Uso Hoy</th>
+                  <th data-i18n="thLastDate">Última Fecha</th>
                 </tr>
               </thead>
               <tbody id="adminAnonTableBody">
-                <tr><td colspan="3" style="text-align: center;">Cargando...</td></tr>
+                <tr><td colspan="3" style="text-align: center;" data-i18n="loading">Cargando...</td></tr>
               </tbody>
             </table>
           </div>
@@ -1583,22 +1583,22 @@
 
         <!-- Sección: Pagos -->
         <div id="adminSectionPayments" style="display: none;">
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;" data-i18n="adminPaymentsDesc">
             Transacciones y recargas registradas a través de Ko-fi y pasarelas:
           </p>
           <div style="overflow-x: auto;">
             <table class="modal-table" style="font-size: 0.82rem;">
               <thead>
                 <tr>
-                  <th>Fecha</th>
-                  <th>Usuario</th>
-                  <th>Importe</th>
-                  <th>Créditos Sumados</th>
-                  <th>ID Sesión / Origen</th>
+                  <th data-i18n="thDate">Fecha</th>
+                  <th data-i18n="thUser">Usuario</th>
+                  <th data-i18n="thAmount">Importe</th>
+                  <th data-i18n="thCreditsAdded">Créditos Sumados</th>
+                  <th data-i18n="thSessionId">ID Sesión / Origen</th>
                 </tr>
               </thead>
               <tbody id="adminPaymentsTableBody">
-                <tr><td colspan="5" style="text-align: center;">Cargando...</td></tr>
+                <tr><td colspan="5" style="text-align: center;" data-i18n="loading">Cargando...</td></tr>
               </tbody>
             </table>
           </div>
@@ -1606,22 +1606,22 @@
 
         <!-- Sección: Mensajes / Incidencias -->
         <div id="adminSectionMessages" style="display: none;">
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;" data-i18n="adminMessagesDesc">
             Mensajes, dudas e incidencias enviadas por usuarios y donantes:
           </p>
           <div style="overflow-x: auto;">
             <table class="modal-table" style="font-size: 0.82rem;">
               <thead>
                 <tr>
-                  <th>Fecha</th>
-                  <th>Remitente</th>
-                  <th>Asunto</th>
-                  <th>Mensaje</th>
-                  <th>Estado</th>
+                  <th data-i18n="thDate">Fecha</th>
+                  <th data-i18n="thSender">Remitente</th>
+                  <th data-i18n="thSubject">Asunto</th>
+                  <th data-i18n="thMessage">Mensaje</th>
+                  <th data-i18n="thStatus">Estado</th>
                 </tr>
               </thead>
               <tbody id="adminMessagesTableBody">
-                <tr><td colspan="5" style="text-align: center;">Cargando...</td></tr>
+                <tr><td colspan="5" style="text-align: center;" data-i18n="loading">Cargando...</td></tr>
               </tbody>
             </table>
           </div>
@@ -1776,6 +1776,37 @@
         origSpace: "Espacio original",
         estSpace: "Estimado tras optimizar",
         saving: "Ahorro total",
+        btnCancel: "Cancelar",
+        footerText: "EPUBtoXteink Web • Pipeline de alto rendimiento y anti-bloqueo para lectores E-Ink",
+        downloadZipDefault: "📦 Descargar Todo (.ZIP)",
+        helpTooltip: "¿Qué hace el programa y cuáles son sus ventajas?",
+        adminModalTitle: "Panel de Mando Master (Administración)",
+        adminTabUsers: "Usuarios Registrados",
+        adminTabAnon: "Usuarios Anónimos",
+        adminTabPayments: "Historial de Pagos",
+        adminTabMessages: "Incidencias",
+        adminUsersDesc: "Modifica o añade descargas contratadas/créditos a cualquier usuario en tiempo real:",
+        adminAnonDesc: "Registro de IPs e identificadores que han usado el cupo anónimo (1/día):",
+        adminPaymentsDesc: "Transacciones y recargas registradas a través de Ko-fi y pasarelas:",
+        adminMessagesDesc: "Mensajes, dudas e incidencias enviadas por usuarios y donantes:",
+        thId: "ID",
+        thEmail: "Correo",
+        thDailyUsed: "Uso Hoy",
+        thCreditsAvail: "Créditos Disponibles",
+        thLastAccess: "Último Acceso",
+        thActionAssign: "Acción / Asignar",
+        thIpId: "IP / Identificador",
+        thLastDate: "Última Fecha",
+        thDate: "Fecha",
+        thUser: "Usuario",
+        thAmount: "Importe",
+        thCreditsAdded: "Créditos Sumados",
+        thSessionId: "ID Sesión / Origen",
+        thSender: "Remitente",
+        thSubject: "Asunto",
+        thMessage: "Mensaje",
+        thStatus: "Estado",
+        loading: "Cargando...",
         helpTitle: "📖 ¿Qué hace el programa y cuáles son sus ventajas?",
         helpHTML: `
           <p>Los lectores de tinta electrónica con microcontroladores (como los <strong>Xteink X3, X4 y X4 Pro</strong> con chips ESP32 / ESP32-S3 y solo <strong>128 MB de RAM</strong>) sufren cuelgues constantes, congelaciones al pasar página o imágenes corruptas cuando intentan abrir EPUBs comerciales o fotos convencionales diseñadas para pantallas a color.</p>
@@ -1889,6 +1920,37 @@
         origSpace: "Original size",
         estSpace: "Estimated after optimization",
         saving: "Total savings",
+        btnCancel: "Cancel",
+        footerText: "EPUBtoXteink Web • High performance anti-crash pipeline for E-Ink readers",
+        downloadZipDefault: "📦 Download All (.ZIP)",
+        helpTooltip: "What does the program do and what are its advantages?",
+        adminModalTitle: "Master Control Panel (Administration)",
+        adminTabUsers: "Registered Users",
+        adminTabAnon: "Anonymous Users",
+        adminTabPayments: "Payment History",
+        adminTabMessages: "Issues & Tickets",
+        adminUsersDesc: "Modify or add contracted downloads/credits to any user in real time:",
+        adminAnonDesc: "Log of IPs and identifiers using the anonymous quota (1/day):",
+        adminPaymentsDesc: "Transactions and top-ups recorded via Ko-fi and gateways:",
+        adminMessagesDesc: "Messages, questions and issues sent by users and contributors:",
+        thId: "ID",
+        thEmail: "Email",
+        thDailyUsed: "Used Today",
+        thCreditsAvail: "Available Credits",
+        thLastAccess: "Last Access",
+        thActionAssign: "Action / Assign",
+        thIpId: "IP / Identifier",
+        thLastDate: "Last Date",
+        thDate: "Date",
+        thUser: "User",
+        thAmount: "Amount",
+        thCreditsAdded: "Credits Added",
+        thSessionId: "Session ID / Source",
+        thSender: "Sender",
+        thSubject: "Subject",
+        thMessage: "Message",
+        thStatus: "Status",
+        loading: "Loading...",
         helpTitle: "📖 What does the program do and what are its advantages?",
         helpHTML: `
           <p>Microcontroller-based e-readers (such as the <strong>Xteink X3, X4 and X4 Pro</strong> with ESP32 / ESP32-S3 chips and only <strong>128 MB of RAM</strong>) constantly crash, freeze on page turns, or display corrupt images when opening commercial EPUBs or standard color photos designed for tablets or PCs.</p>
@@ -1957,6 +2019,41 @@
         el.innerText = t(key);
       });
 
+      // Actualizar botón de acceso / usuario de forma síncrona
+      const authBtn = document.getElementById('btnAuthToggle');
+      if (authBtn) {
+        if (currentUser && currentUser.logged_in) {
+          authBtn.innerHTML = `<span>${currentUser.email} (${t('logout')})</span>`;
+          authBtn.onclick = handleLogout;
+        } else {
+          authBtn.innerHTML = `<span id="authBtnText" data-i18n="loginRegister">${t('loginRegister')}</span>`;
+          authBtn.onclick = openAuthModal;
+        }
+      }
+
+      // Actualizar tooltips y placeholders
+      const btnHelp = document.getElementById('btnHelp');
+      if (btnHelp) btnHelp.title = t('helpTooltip');
+
+      const supportSubj = document.getElementById('supportSubject');
+      if (supportSubj) {
+        supportSubj.placeholder = currentLang === 'es' 
+          ? "Asunto (ej. No veo mis créditos reflejados)" 
+          : "Subject (e.g. Credits not showing)";
+      }
+
+      const supportMsg = document.getElementById('supportMessage');
+      if (supportMsg) {
+        supportMsg.placeholder = currentLang === 'es'
+          ? "Explica detalladamente qué ha ocurrido o incluye el ID de tu transacción de Ko-fi..."
+          : "Explain in detail what happened or include your Ko-fi transaction ID...";
+      }
+
+      const authEmail = document.getElementById('authEmail');
+      if (authEmail) {
+        authEmail.placeholder = currentLang === 'es' ? "tu@email.com" : "your@email.com";
+      }
+
       document.getElementById('helpBodyContent').innerHTML = I18N[currentLang].helpHTML;
       updateDropTexts();
       updateButtonText();
@@ -1985,7 +2082,7 @@
         const adminBtn = document.getElementById('btnAdminPanel');
 
         if (data.logged_in) {
-          authBtn.innerText = `${data.email} (${t('logout')})`;
+          authBtn.innerHTML = `<span>${data.email} (${t('logout')})</span>`;
           authBtn.onclick = handleLogout;
 
           if (data.is_master) {
@@ -2005,7 +2102,7 @@
             if (adminBtn) adminBtn.style.display = 'none';
           }
         } else {
-          authBtn.innerText = t('loginRegister');
+          authBtn.innerHTML = `<span id="authBtnText" data-i18n="loginRegister">${t('loginRegister')}</span>`;
           authBtn.onclick = openAuthModal;
           if (adminBtn) adminBtn.style.display = 'none';
 
@@ -2201,21 +2298,25 @@
         data.users.forEach(u => {
           const tr = document.createElement('tr');
           const isMaster = (u.email.toLowerCase() === 'ossoney@yahoo.es' || u.email.toLowerCase() === 'ossoney@gmail.com');
+          const btnSaveTxt = currentLang === 'es' ? 'Guardar' : 'Save';
+          const unlimitedTxt = currentLang === 'es' ? 'Ilimitado' : 'Unlimited';
+          const todayTxt = currentLang === 'es' ? 'hoy' : 'today';
+          const noUseTxt = currentLang === 'es' ? 'Sin uso aún' : 'No activity yet';
           tr.innerHTML = `
             <td>#${u.id}</td>
             <td><strong>${u.email}</strong> ${isMaster ? '<span style="color:var(--gold);">👑 Master</span>' : ''}</td>
-            <td>${u.daily_used} hoy</td>
+            <td>${u.daily_used} ${todayTxt}</td>
             <td>
               <span id="user-credits-val-${u.id}" style="font-weight:700; color:var(--accent); font-size:0.95rem;">
                 ${isMaster ? '∞' : u.credits_purchased}
               </span>
             </td>
-            <td><small style="color:var(--text-muted);">${u.last_used_date || 'Sin uso aún'}</small></td>
+            <td><small style="color:var(--text-muted);">${u.last_used_date || noUseTxt}</small></td>
             <td>
-              ${isMaster ? '<small style="color:var(--gold);">Ilimitado</small>' : `
+              ${isMaster ? `<small style="color:var(--gold);">${unlimitedTxt}</small>` : `
                 <div style="display:flex; align-items:center; gap:4px;">
                   <input type="number" id="input-credits-${u.id}" value="${u.credits_purchased}" min="0" style="width:70px; background:#0d1117; color:white; border:1px solid var(--border); padding:3px 6px; border-radius:4px; font-size:0.8rem;">
-                  <button class="btn-item-crop" onclick="saveUserCredits(${u.id})">Guardar</button>
+                  <button class="btn-item-crop" onclick="saveUserCredits(${u.id})">${btnSaveTxt}</button>
                   <button class="btn-item-crop" style="background:rgba(63,185,80,0.15); color:var(--success); border-color:var(--success);" onclick="quickAddCredits(${u.id}, 100)">+100</button>
                 </div>
               `}
@@ -2228,13 +2329,14 @@
         const anonTbody = document.getElementById('adminAnonTableBody');
         anonTbody.innerHTML = '';
         if (data.anon_users.length === 0) {
-          anonTbody.innerHTML = '<tr><td colspan="3" style="text-align:center;">No hay registros anónimos todavía.</td></tr>';
+          anonTbody.innerHTML = `<tr><td colspan="3" style="text-align:center;">${currentLang === 'es' ? 'No hay registros anónimos todavía.' : 'No anonymous records yet.'}</td></tr>`;
         } else {
+          const todayTxt = currentLang === 'es' ? 'hoy' : 'today';
           data.anon_users.forEach(a => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
               <td><code>${a.identifier}</code></td>
-              <td>${a.daily_used} / 1 hoy</td>
+              <td>${a.daily_used} / 1 ${todayTxt}</td>
               <td><small style="color:var(--text-muted);">${a.last_used_date || '-'}</small></td>
             `;
             anonTbody.appendChild(tr);
@@ -2245,14 +2347,15 @@
         const payTbody = document.getElementById('adminPaymentsTableBody');
         payTbody.innerHTML = '';
         if (data.payments.length === 0) {
-          payTbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No hay pagos registrados aún.</td></tr>';
+          payTbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">${currentLang === 'es' ? 'No hay pagos registrados aún.' : 'No payments recorded yet.'}</td></tr>`;
         } else {
+          const unknownTxt = currentLang === 'es' ? 'Desconocido' : 'Unknown';
           data.payments.forEach(p => {
             const tr = document.createElement('tr');
             const eur = (p.amount_cents / 100).toFixed(2);
             tr.innerHTML = `
               <td><small>${p.created_at.split('T')[0]}</small></td>
-              <td><strong>${p.email || 'Desconocido'}</strong></td>
+              <td><strong>${p.email || unknownTxt}</strong></td>
               <td style="color:var(--gold); font-weight:700;">${eur} €</td>
               <td><strong style="color:var(--success);">+${p.credits_added}</strong></td>
               <td><code>${p.session_id}</code></td>
@@ -2266,8 +2369,9 @@
         msgTbody.innerHTML = '';
         const msgList = data.messages || [];
         if (msgList.length === 0) {
-          msgTbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No hay incidencias ni mensajes reportados.</td></tr>';
+          msgTbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">${currentLang === 'es' ? 'No hay incidencias ni mensajes reportados.' : 'No support messages reported yet.'}</td></tr>`;
         } else {
+          const receivedTxt = currentLang === 'es' ? 'Recibido' : 'Received';
           msgList.forEach(m => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
@@ -2275,7 +2379,7 @@
               <td><strong>${m.email}</strong> ${m.user_id ? `<small style="color:var(--accent);">(#${m.user_id})</small>` : ''}</td>
               <td><strong>${m.subject}</strong></td>
               <td style="max-width: 260px; word-break: break-word;">${m.message}</td>
-              <td><span class="device-tag" style="background:#238636; color:white;">Recibido</span></td>
+              <td><span class="device-tag" style="background:#238636; color:white;">${receivedTxt}</span></td>
             `;
             msgTbody.appendChild(tr);
           });
