@@ -884,6 +884,43 @@
       border-color: var(--accent);
     }
 
+    /* Input con botón para alternar visibilidad de contraseña */
+    .password-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .password-input-wrapper .form-input {
+      width: 100%;
+      padding-right: 42px;
+      box-sizing: border-box;
+    }
+
+    .btn-toggle-pwd {
+      position: absolute;
+      right: 8px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 6px 8px;
+      font-size: 1.15rem;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      transition: color 0.2s ease, background 0.2s ease;
+      user-select: none;
+    }
+
+    .btn-toggle-pwd:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
     /* Frame y Canvas Interactivo de Previsualización E-Ink */
     .preview-container {
       display: none;
@@ -1477,7 +1514,10 @@
           </div>
           <div class="form-group" id="formGroupPassword">
             <label for="authPassword" data-i18n="passwordLabel">Contraseña (mín. 6 caracteres)</label>
-            <input type="password" id="authPassword" class="form-input" minlength="6" placeholder="••••••••">
+            <div class="password-input-wrapper">
+              <input type="password" id="authPassword" class="form-input" minlength="6" placeholder="••••••••">
+              <button type="button" class="btn-toggle-pwd" id="btnToggleAuthPwd" onclick="togglePasswordVisibility('authPassword', 'btnToggleAuthPwd')" title="Mostrar u ocultar contraseña">👁️</button>
+            </div>
           </div>
           <div style="text-align: right; margin-top: -8px; margin-bottom: 12px;" id="forgotPasswordWrap">
             <a href="#" style="color: var(--text-muted); font-size: 0.8rem; text-decoration: underline;" onclick="toggleForgotPassword(event)" data-i18n="forgotPassword">¿Olvidaste tu contraseña?</a>
@@ -1508,7 +1548,10 @@
         <form onsubmit="handleResetSubmit(event)">
           <div class="form-group">
             <label for="newResetPassword" data-i18n="newPasswordLabel">Nueva Contraseña</label>
-            <input type="password" id="newResetPassword" class="form-input" required minlength="6" placeholder="••••••••">
+            <div class="password-input-wrapper">
+              <input type="password" id="newResetPassword" class="form-input" required minlength="6" placeholder="••••••••">
+              <button type="button" class="btn-toggle-pwd" id="btnToggleResetPwd" onclick="togglePasswordVisibility('newResetPassword', 'btnToggleResetPwd')" title="Mostrar u ocultar contraseña">👁️</button>
+            </div>
           </div>
           <button type="submit" class="btn-submit" style="margin-top: 10px;">
             <span data-i18n="btnSavePassword">Guardar Contraseña</span>
@@ -2117,8 +2160,29 @@
     let authMode = 'login'; // 'login', 'register' o 'forgot'
     let activeResetToken = null;
 
+    function togglePasswordVisibility(inputId, btnId) {
+      const input = document.getElementById(inputId);
+      const btn = document.getElementById(btnId);
+      if (!input) return;
+      const isPassword = input.type === 'password';
+      input.type = isPassword ? 'text' : 'password';
+      if (btn) {
+        btn.innerText = isPassword ? '🙈' : '👁️';
+        btn.title = isPassword 
+          ? (currentLang === 'es' ? "Ocultar contraseña" : "Hide password")
+          : (currentLang === 'es' ? "Mostrar contraseña" : "Show password");
+      }
+    }
+
     function openAuthModal() {
       authMode = 'login';
+      const pwdInput = document.getElementById('authPassword');
+      const toggleBtn = document.getElementById('btnToggleAuthPwd');
+      if (pwdInput) pwdInput.type = 'password';
+      if (toggleBtn) {
+        toggleBtn.innerText = '👁️';
+        toggleBtn.title = currentLang === 'es' ? "Mostrar u ocultar contraseña" : "Show or hide password";
+      }
       updateAuthModalUI();
       document.getElementById('authModal').classList.add('active');
     }
@@ -2225,6 +2289,13 @@
 
     function openResetModal(token) {
       activeResetToken = token;
+      const pwdInput = document.getElementById('newResetPassword');
+      const toggleBtn = document.getElementById('btnToggleResetPwd');
+      if (pwdInput) pwdInput.type = 'password';
+      if (toggleBtn) {
+        toggleBtn.innerText = '👁️';
+        toggleBtn.title = currentLang === 'es' ? "Mostrar u ocultar contraseña" : "Show or hide password";
+      }
       document.getElementById('resetModal').classList.add('active');
     }
 
