@@ -471,3 +471,18 @@ def set_user_credits(user_id: int, new_credits: int) -> bool:
         )
         conn.commit()
         return cursor.rowcount > 0
+
+
+def seed_master_accounts():
+    """Garantiza que las cuentas Master existan siempre en la base de datos tras cada despliegue o reinicio del contenedor."""
+    masters = [
+        ("ossoney@yahoo.es", "admin123"),
+        ("ossoney@gmail.com", "admin123")
+    ]
+    for email, default_pwd in masters:
+        user = get_user_by_email(email)
+        if not user:
+            create_user(email, default_pwd)
+
+# Sembrar cuentas maestras al iniciar la base de datos
+seed_master_accounts()
