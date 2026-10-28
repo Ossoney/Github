@@ -49,6 +49,43 @@ DEVICE_PROFILES = {
 
 EINK_4GRAY_PALETTE = [0, 0, 0,  85, 85, 85,  170, 170, 170,  255, 255, 255] + [0] * (768 - 12)
 
+def clean_mojibake_and_typography(text: str) -> str:
+    """
+    Detecta y repara mojibake (errores comunes de doble codificación UTF-8 interpretada
+    como Windows-1252 o ISO-8859-1) y normaliza caracteres conflictivos en pantallas E-Ink.
+    Ejemplo: 'camiÃ³n' -> 'camión', 'Â¿QuÃ©?' -> '¿Qué?'
+    """
+    if not text:
+        return text
+
+    if 'Ã' in text or 'Â' in text or 'â€' in text:
+        replacements = [
+            # Vocales acentuadas y diéresis minúsculas
+            ('Ã¡', 'á'), ('Ã©', 'é'), ('Ã\xad', 'í'), ('Ã­', 'í'), ('Ã³', 'ó'), ('Ãº', 'ú'),
+            ('Ã\xa0', 'à'), ('Ã¨', 'è'), ('Ã¬', 'ì'), ('Ã²', 'ò'), ('Ã¹', 'ù'),
+            ('Ã¤', 'ä'), ('Ã«', 'ë'), ('Ã¯', 'ï'), ('Ã¶', 'ö'), ('Ã¼', 'ü'),
+            ('Ã¢', 'â'), ('Ãª', 'ê'), ('Ã®', 'î'), ('Ã´', 'ô'), ('Ã»', 'û'),
+            # Vocales mayúsculas
+            ('Ã\x81', 'Á'), ('Ã\x89', 'É'), ('Ã\x8d', 'Í'), ('Ã\x93', 'Ó'), ('Ã\x9a', 'Ú'),
+            ('Ã\x80', 'À'), ('Ã\x88', 'È'), ('Ã\x8c', 'Ì'), ('Ã\x92', 'Ò'), ('Ã\x99', 'Ù'),
+            ('Ã\x84', 'Ä'), ('Ã\x8b', 'Ë'), ('Ã\x8f', 'Ï'), ('Ã\x96', 'Ö'), ('Ã\x9c', 'Ü'),
+            # Letra eñe y cedilla
+            ('Ã±', 'ñ'), ('Ã\x91', 'Ñ'), ('Ã§', 'ç'), ('Ã\x87', 'Ç'),
+            # Signos de puntuación y apertura en español
+            ('Â¿', '¿'), ('Â¡', '¡'), ('Â«', '«'), ('Â»', '»'),
+            # Comillas y guiones tipográficos corruptos
+            ('â€“', '–'), ('â€”', '—'), ('â€˜', '‘'), ('â€™', '’'),
+            ('â€œ', '“'), ('â€\x9d', '”'), ('â€¦', '…'),
+            ('Â ', ' '), ('Â·', '·'), ('Â°', '°')
+        ]
+        for bad, good in replacements:
+            text = text.replace(bad, good)
+
+    # Eliminar marcas de orden de bytes (BOM) residuales
+    text = text.replace('\ufeff', '')
+
+    return text
+
 def create_4gray_palette_image():
     if not Image:
         return None
@@ -334,6 +371,9 @@ class EPUBConverterCore:
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
                 content = f.read()
+
+            # Reparar caracteres corruptos (mojibake) y normalizar tipografía
+            content = clean_mojibake_and_typography(content)
 
             soup = BeautifulSoup(content, HTML_PARSER)
             soup = self._purge_html_soup(soup, cover_files)
@@ -702,7 +742,7 @@ class EPUBConverterCore:
 
             self._patch_opf_images(temp_dir, cover_files)
 
-            self.progress_callback("Purgando estilos, ajustando cubierta y dividiendo capítulos > 300KB...", 65)
+            self.progress_callback("Purgando estilos, reparando tipografía/mojibake y dividiendo capítulos > 300KB...", 65)
             html_queue = list(html_tasks)
             all_processed_html = []
             while html_queue:

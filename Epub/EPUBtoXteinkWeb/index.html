@@ -1860,6 +1860,7 @@
           <h3 style="color:var(--accent); margin:18px 0 8px;">📚 1. Optimización Avanzada de Libros EPUB</h3>
           <ul style="margin-left:20px; line-height:1.6;">
             <li><strong>Purga de Fuentes y Basura:</strong> Elimina fuentes embebidas (.ttf, .otf, .woff) que pesan megabytes, junto con scripts, estilos CSS pesados, iframes y etiquetas incompatibles.</li>
+            <li><strong>Reparación de Tipografía y Mojibake:</strong> Detecta y repara automáticamente caracteres corruptos por doble codificación (tildes, eñes, comillas o guiones con símbolos extraños como <code>Ã¡</code>, <code>Â¿</code> o <code>â€”</code>), garantizando un texto limpio y legible.</li>
             <li><strong>Dithering Floyd-Steinberg a 4 Grises Nativos:</strong> Las imágenes interiores se convierten a BMP 24-bits cuantizadas exactamente a los 4 tonos físicos del panel (<code>#000000</code>, <code>#555555</code>, <code>#AAAAAA</code>, <code>#FFFFFF</code>). El lector no gasta batería ni CPU en calcular gradientes en tiempo real.</li>
             <li><strong>Portadas Nítidas sin Halos:</strong> Conserva la portada en escala de grises limpia (modo L de 8 bits) a máxima calidad y recalcula dinámicamente los contenedores vectoriales <code>&lt;svg viewBox&gt;</code> para que no aparezca borrosa, estirada ni recortada en la estantería.</li>
             <li><strong>Aplanado de Canal Alfa:</strong> Las transparencias de imágenes PNG se combinan sobre fondo blanco para evitar los típicos fondos negros de los visores E-Ink.</li>
@@ -2006,6 +2007,7 @@
           <h3 style="color:var(--accent); margin:18px 0 8px;">📚 1. Advanced EPUB Optimization Pipeline</h3>
           <ul style="margin-left:20px; line-height:1.6;">
             <li><strong>Purge Fonts & Bloat:</strong> Strips embedded fonts (.ttf, .otf, .woff) weighing megabytes, along with scripts, heavy CSS styles, iframes and unsupported tags.</li>
+            <li><strong>Typography & Mojibake Repair:</strong> Automatically cleans up broken double-encoded characters (accents, curly quotes, em-dashes like <code>Ã¡</code>, <code>Â¿</code>, or <code>â€”</code>), ensuring pristine reading typography.</li>
             <li><strong>4-Gray Native Floyd-Steinberg Dithering:</strong> Internal images are converted to 24-bit BMPs quantized to the panel's 4 physical tones (<code>#000000</code>, <code>#555555</code>, <code>#AAAAAA</code>, <code>#FFFFFF</code>). The e-reader saves battery and CPU without computing gradients in real-time.</li>
             <li><strong>Sharp Covers without Halos:</strong> Preserves the cover in clean grayscale (8-bit L mode) at maximum quality and dynamically updates vector <code>&lt;svg viewBox&gt;</code> containers so it never looks blurry or stretched.</li>
             <li><strong>Alpha Channel Flattening:</strong> PNG transparencias are flattened over pure white to prevent ugly black boxes on E-Ink engines.</li>
