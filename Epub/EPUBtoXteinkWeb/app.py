@@ -255,14 +255,14 @@ async def api_create_checkout(request):
         body = await request.json()
         plan = body.get("plan") # "100" o "300"
         
-        if plan == "100":
+        if plan == "50" or plan == "100":
             amount_cents = 500 # 5,00 €
-            credits_to_add = 100
-            plan_name = "100 Conversiones EPUBtoXteink"
+            credits_to_add = 50
+            plan_name = "50 Conversiones EPUBtoXteink"
         elif plan == "300":
             amount_cents = 1000 # 10,00 €
-            credits_to_add = 300
-            plan_name = "300 Conversiones EPUBtoXteink"
+            credits_to_add = 150
+            plan_name = "150 Conversiones EPUBtoXteink"
         else:
             return JSONResponse({"detail": "Plan no válido"}, status_code=400)
 
@@ -354,15 +354,14 @@ async def api_kofi_webhook(request):
                     target_email = cand_user['email']
 
         # Determinar créditos según importe donado:
-        # 5 € o más -> 100 créditos (o múltiplo)
-        # 10 € o más -> 300 créditos
+        # 5 € o más -> 50 créditos (o múltiplo de 10 créditos por cada euro)
         if amount >= 9.90:
-            credits = 300
-        elif amount >= 4.90:
             credits = 100
+        elif amount >= 4.90:
+            credits = 50
         else:
-            # Cálculo proporcional si donan otra cantidad (20 créditos por cada euro)
-            credits = int(amount * 20)
+            # Cálculo proporcional si donan otra cantidad (10 créditos por cada euro)
+            credits = int(amount * 10)
 
         if credits > 0 and target_email:
             user = database.get_user_by_email(target_email)
