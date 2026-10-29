@@ -1,0 +1,94 @@
+# =====================================================================
+# EPUBtoXTEINK - Optimizador de E-Books para E-Readers Xteink X3/X4
+# =====================================================================
+#
+# ¿EN QUÉ CONSISTE EL PROGRAMA?
+# ---------------------------------------------------------------------
+# EPUBtoXteink es una herramienta especializada para depurar, adelgazar
+# y adaptar archivos EPUB modernos a lectores de tinta electrónica con
+# especificaciones humildes o antiguas (como los Xteink X3/X4/X4 Pro).
+# Previene desbordes de RAM y cuelgues causados por CSS pesado, imágenes
+# enormes y capítulos de longitud kilométrica.
+#
+# Funciones principales:
+# - Procesamiento de Imágenes (Multihilo):
+#     Pipeline de 6 pasos por imagen:
+#       1. Elimina miniaturas decorativas (<= 15 px).
+#       2. Redimensiona al perfil del dispositivo seleccionado
+#          (X3: 480x640 px, X4/X4 Pro: 480x800 px portrait).
+#       3. Aplana canal Alpha sobre fondo blanco.
+#       4. Convierte a escala de grises de 8 bits.
+#       5. Dithering Floyd-Steinberg cuantizado a los 4 grises nativos
+#          del panel E-Ink: #000000 / #555555 / #AAAAAA / #FFFFFF.
+#          (Cuantizar en PC evita que el ESP32 lo haga en RAM.)
+#       6. Guarda como BMP 24 bits RGB (máxima compatibilidad con
+#          CrossPoint, CrossInk y firmware oficial). Sin tabla de
+#          paleta (CLUT) → sin riesgo de colores invertidos.
+#     Usa ThreadPoolExecutor (min(8, cpu_count) workers) en paralelo.
+#     Límite de seguridad: 200 millones de píxeles (Decompression Bomb).
+#
+# - Actualización de referencias de imagen:
+#     _purge_html_soup reescribe todos los src/href de <img> y <image>
+#     SVG a .bmp. _patch_opf_images actualiza hrefs y media-types en
+#     el manifiesto OPF.
+#
+# - Limpieza Web (lxml / html.parser):
+#     Purga iframes, scripts, canvas, video, audio, fuentes externas
+#     (.ttf, .otf, .woff) y atributos CSS en línea.
+#
+# - Splitting Dinámico de Capítulos (iterativo):
+#     Si un archivo .xhtml/.html interno supera los 300 KB, lo corta
+#     por la mitad con extract(). El proceso se repite sobre los
+#     fragmentos nuevos hasta que todos queden bajo el umbral.
+#     Los _part2 se registran en el OPF y en el toc.ncx.
+#
+# - Logger Persistente:
+#     Toda la salida se guarda en EPUBtoXteink.log en ~/Documents/Epubbiblio.
+#
+# ESTADO Y SITUACIÓN DEL PROYECTO
+# ---------------------------------------------------------------------
+# [ESTADO: ESTABLE V1.5 - FORMATO BMP OPTIMIZADO]
+#
+# Historial de cambios:
+#   v1.0 - Implementación inicial con Multihilo, lxml y Splitting.
+#   v1.1 - Auditoría completa. Corregidos 7 bugs (Alpha/PNG, extract(),
+#           OPF href relativo, MAX_IMAGE_PIXELS, log en CWD, imports).
+#   v1.2 - Optimización residual: quality PNG, splitting iterativo,
+#           logging de excepciones, max_workers dinámico.
+#   v1.3 - _patch_opf_manifest con lxml.etree nativo. Nuevo _patch_ncx
+#           para actualizar toc.ncx tras splitting.
+#   v1.4 - Soporte por modelo (X3 / X4): DEVICE_PROFILES, select_device(),
+#           resoluciones reales por pantalla, sufijo de salida por modelo.
+#   v1.5 - Pipeline de imagen adaptado al hardware real del X4 Pro:
+#           · Cuantización a 4 grises nativos del panel E-Ink con paleta
+#             exacta (#000/#555/#AAA/#FFF) en lugar de 16 niveles.
+#           · Salida como BMP 24 bits RGB (sin CLUT): máxima compatibilidad
+#             con CrossPoint, CrossInk y firmware oficial. Elimina el
+#             problema de colores invertidos documentado en firmwares ESP32.
+#           · Fichero original (jpg/png/webp…) eliminado tras crear el .bmp.
+#           · _purge_html_soup reescribe src/xlink:href de imágenes a .bmp.
+#           · Nuevo _patch_opf_images: actualiza hrefs y media-type en OPF.
+#
+# Pendiente / Futuras mejoras:
+#   - (ninguna conocida)
+#
+# ¿CÓMO INSTALAR LAS DEPENDENCIAS?
+# ---------------------------------------------------------------------
+# Abre tu consola (CMD o PowerShell) en esta carpeta y ejecuta:
+#
+#     pip install -r EPUBtoXteink_requirements.txt
+#
+# Esto instalará:
+#   · beautifulsoup4  → Parseo y manipulación de HTML/XML.
+#   · Pillow          → Procesamiento de imágenes (redimensionado, grises).
+#   · lxml            → Motor de parseo HTML ultra-rápido (hiper-recomendado).
+#
+# Sin lxml el programa funciona igualmente usando el parser nativo de
+# Python, pero será considerablemente más lento con libros grandes.
+#
+# =====================================================================
+# LIBRERÍAS (NO BORRAR):
+
+beautifulsoup4>=4.12.0
+Pillow>=10.0.0
+lxml>=4.9.0

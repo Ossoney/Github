@@ -1,0 +1,8 @@
+# Archivos de datos locales y caché
+data/
+*.db
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
